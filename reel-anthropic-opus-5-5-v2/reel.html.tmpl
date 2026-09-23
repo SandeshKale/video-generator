@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Opus 5.5 Pricing — @sandesh.explains</title>
+<style>
+  /* ===== CANVAS ===== */
+  html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;
+    overflow:hidden;font-family:'Poppins','Segoe UI',sans-serif;}
+
+  /* Marker frame for render_reel.py content-based trim */
+  .marker{position:absolute;inset:0;background:#FF00FF;z-index:9999;}
+
+  /* Safe zone container (top 250 / bottom 400 / right rail 230 incl. margin) */
+  .safe-box{position:absolute;top:250px;left:40px;right:230px;bottom:400px;}
+
+  /* OPTICAL CENTERING (PATCH v2): column centered on x=540, width 660
+     => spans 210..870, inside safe span [40,850] and clear of right rail */
+  .center-col{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);
+    width:660px;}
+
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;gap:26px;}
+
+  /* Branding: profile pic top-right (audit-clean coordinates) */
+  .brand-pic{position:absolute;top:260px;right:200px;width:84px;height:84px;
+    border-radius:50%;border:3px solid rgba(255,255,255,0.92);
+    object-fit:cover;z-index:50;will-change:transform;}
+
+  /* Ambient chrome */
+  .bg-wash{position:absolute;inset:0;will-change:transform,opacity;
+    background:
+      radial-gradient(ellipse 820px 620px at 24% 18%, rgba(96,64,214,0.34), transparent 62%),
+      radial-gradient(ellipse 900px 700px at 80% 82%, rgba(24,144,190,0.28), transparent 62%),
+      radial-gradient(ellipse 500px 380px at 55% 50%, rgba(74,222,128,0.10), transparent 70%),
+      linear-gradient(180deg,#0e0e12,#15121f 50%,#0e0e12);}
+  .chrome-top{position:absolute;top:0;left:0;right:0;height:120px;
+    background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);}
+  .chrome-bottom{position:absolute;bottom:0;left:0;right:0;height:340px;
+    background:linear-gradient(0deg,rgba(0,0,0,0.55),transparent);}
+  .progress{position:absolute;bottom:30px;left:40px;right:230px;height:4px;
+    background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;}
+  .progress-fill{position:absolute;top:0;left:0;bottom:0;background:#fff;width:0%;}
+
+  /* Type */
+  .head{color:#fff;font-size:64px;font-weight:700;text-align:center;line-height:1.22;
+    will-change:transform,opacity;}
+  .head .acc{color:#4ade80;}
+  .q{color:#cfe3ff;font-size:52px;font-weight:600;text-align:center;line-height:1.3;
+    will-change:transform,opacity;}
+  .chip{color:#9aa;font-size:26px;text-align:center;will-change:opacity;}
+  .card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;padding:34px 44px;text-align:center;will-change:transform,opacity;}
+  .big{color:#fbbf24;font-size:88px;font-weight:800;letter-spacing:1px;}
+  .lbl{color:#9aa;font-size:28px;margin-top:6px;}
+  .strike{color:#8b93a7;text-decoration:line-through;}
+  .row{display:flex;align-items:center;gap:30px;}
+  .badge{background:rgba(74,222,128,0.16);border:1px solid rgba(74,222,128,0.5);
+    color:#4ade80;font-size:44px;font-weight:800;border-radius:16px;padding:14px 26px;
+    will-change:transform,opacity;}
+  .cta-main{color:#fff;font-size:56px;font-weight:800;text-align:center;}
+  .cta-sub{color:#9db8e8;font-size:36px;font-weight:500;text-align:center;margin-top:14px;}
+  .stack{display:flex;flex-direction:column;gap:20px;align-items:center;}
+  .pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px;padding:16px 36px;color:#fff;font-size:38px;font-weight:600;
+    will-change:transform,opacity;}
+  .pill .g{color:#4ade80;font-weight:800;}
+  svg{overflow:visible;}
+  svg text{font-family:'Poppins','Segoe UI',sans-serif;}
+</style>
+</head>
+<body>
+  <div class="marker" id="marker"></div>
+
+  <!-- BRANDING: substitute {{PROFILE_PIC_B64}} before render (lint ERRORs on leftover token) -->
+  <img class="brand-pic" id="brandpic" alt="" src="data:image/jpeg;base64,{{PROFILE_PIC_B64}}">
+
+  <div class="bg-wash" id="bgwash"></div>
+  <div class="chrome-top"></div>
+  <div class="chrome-bottom"></div>
+
+  <div class="safe-box">
+    <div class="center-col">
+
+      <!-- S1 HOOK: vector price tag cracks -->
+      <div class="scene" id="sc1">
+        <svg width="660" height="300" viewBox="0 0 660 300" data-visual="1">
+          <g id="s1tag">
+            <path d="M120 150 L250 60 L540 60 L540 240 L250 240 Z" fill="rgba(251,191,36,0.14)"
+                  stroke="#fbbf24" stroke-width="6" stroke-linejoin="round"/>
+            <circle cx="285" cy="150" r="18" fill="none" stroke="#fbbf24" stroke-width="6"/>
+            <text x="360" y="172" fill="#fbbf24" font-size="64" font-weight="800">$ / tok</text>
+          </g>
+          <path id="s1crack" d="M400 60 L380 110 L420 150 L390 200 L415 240" fill="none"
+                stroke="#4ade80" stroke-width="7" stroke-linecap="round"/>
+          <polygon id="s1sh1" points="560,80 585,95 565,110" fill="#4ade80"/>
+          <polygon id="s1sh2" points="575,180 600,170 595,200" fill="#fbbf24"/>
+          <polygon id="s1sh3" points="90,90 70,110 95,115" fill="#60a5fa"/>
+        </svg>
+        <div class="head" id="s1head">Anthropic just broke<br>the AI pricing model<span class="acc">.</span></div>
+      </div>
+
+      <!-- S2 LOOP: orbiting token dots around the question -->
+      <div class="scene" id="sc2">
+        <svg width="660" height="360" viewBox="0 0 660 360" data-visual="1">
+          <circle id="s2ring" cx="330" cy="180" r="140" fill="none"
+                  stroke="rgba(154,170,255,0.5)" stroke-width="4" stroke-dasharray="18 14"/>
+          <text x="330" y="216" fill="#fff" font-size="120" font-weight="800" text-anchor="middle">?</text>
+          <circle id="s2d0" r="12" fill="#4ade80"/>
+          <circle id="s2d1" r="10" fill="#fbbf24"/>
+          <circle id="s2d2" r="8"  fill="#60a5fa"/>
+        </svg>
+        <div class="q" id="s2q">How is their most powerful model<br>suddenly cheaper?</div>
+      </div>
+
+      <!-- S3 REVEAL 1: counting stat + self-drawing ring -->
+      <div class="scene" id="sc3">
+        <svg width="360" height="360" viewBox="0 0 360 360" data-visual="1">
+          <circle cx="180" cy="180" r="150" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="10"/>
+          <circle id="s3ring" cx="180" cy="180" r="150" fill="none" stroke="#4ade80" stroke-width="10"
+                  stroke-linecap="round" transform="rotate(-90 180 180)"/>
+          <text id="s3in" x="180" y="168" fill="#fbbf24" font-size="72" font-weight="800" text-anchor="middle">$0</text>
+          <text id="s3out" x="180" y="238" fill="#fff" font-size="52" font-weight="700" text-anchor="middle">/ $0</text>
+        </svg>
+        <div class="lbl" id="s3lbl">per million input / output tokens</div>
+        <div class="chip" id="s3src">Source: Anthropic pricing, Sep 2026</div>
+      </div>
+
+      <!-- S4 REVEAL 2: old vs new tag + traveling dots -->
+      <div class="scene" id="sc4">
+        <div class="row">
+          <div class="card" id="s4old">
+            <div class="lbl">Opus 5</div>
+            <div class="big strike" style="font-size:56px;">$5 / $25</div>
+          </div>
+          <svg width="150" height="80" viewBox="0 0 150 80" data-visual="1">
+            <path d="M10 40 L110 40" stroke="rgba(255,255,255,0.35)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M110 40 L92 26 M110 40 L92 54" stroke="rgba(255,255,255,0.35)" stroke-width="5" stroke-linecap="round"/>
+            <circle id="s4t0" cy="40" r="8" fill="#4ade80"/>
+            <circle id="s4t1" cy="40" r="6" fill="#4ade80"/>
+          </svg>
+          <div class="card" id="s4new">
+            <div class="lbl">Opus 5.5</div>
+            <div class="big" style="font-size:56px;">$4 / $20</div>
+          </div>
+        </div>
+        <div class="badge" id="s4badge">−20%</div>
+        <div class="chip" id="s4src">Anthropic: same flagship line, lower price</div>
+      </div>
+
+      <!-- S5 REVEAL 3: benchmark bar race (qualitative, attributed) -->
+      <div class="scene" id="sc5">
+        <svg width="640" height="420" viewBox="0 0 640 420" data-visual="1">
+          <text x="40" y="60" fill="#fff" font-size="34" font-weight="700">Key agentic benchmarks</text>
+          <rect x="40" y="100" width="560" height="64" rx="12" fill="rgba(255,255,255,0.06)"/>
+          <rect id="s5b1" x="40" y="100" width="0" height="64" rx="12" fill="#4ade80"/>
+          <text x="40" y="200" fill="#cfe9d9" font-size="30" font-weight="600">Opus 5.5 — ahead</text>
+          <rect x="40" y="240" width="560" height="64" rx="12" fill="rgba(255,255,255,0.06)"/>
+          <rect id="s5b2" x="40" y="240" width="0" height="64" rx="12" fill="#60a5fa"/>
+          <text x="40" y="340" fill="#c9d6ee" font-size="30" font-weight="600">Fable 5.1</text>
+          <text id="s5flag" x="40" y="396" fill="#9aa" font-size="24">Beats Fable 5.1 (relative) — VentureBeat</text>
+        </svg>
+      </div>
+
+      <!-- S6 MECHANISM: cache-read token streams, 20x math -->
+      <div class="scene" id="sc6">
+        <div class="head" style="font-size:46px;" id="s6head">Agent loops re-read context.<br>Re-reads just got <span class="acc">20× cheaper</span>.</div>
+        <svg width="660" height="260" viewBox="0 0 660 260" data-visual="1">
+          <text x="40" y="60" fill="#9aa" font-size="28">fresh input&nbsp; $4 / M</text>
+          <path d="M40 90 L620 90" stroke="rgba(255,255,255,0.25)" stroke-width="4"/>
+          <circle id="s6a0" cy="90" r="9" fill="#fbbf24"/><circle id="s6a1" cy="90" r="9" fill="#fbbf24"/>
+          <circle id="s6a2" cy="90" r="9" fill="#fbbf24"/>
+          <text x="40" y="170" fill="#9aa" font-size="28">cache read&nbsp; $0.20 / M</text>
+          <path d="M40 200 L620 200" stroke="rgba(74,222,128,0.5)" stroke-width="4"/>
+          <circle id="s6b0" cy="200" r="9" fill="#4ade80"/><circle id="s6b1" cy="200" r="9" fill="#4ade80"/>
+          <circle id="s6b2" cy="200" r="9" fill="#4ade80"/><circle id="s6b3" cy="200" r="9" fill="#4ade80"/>
+          <circle id="s6b4" cy="200" r="9" fill="#4ade80"/>
+        </svg>
+        <div class="badge" id="s6math">$4 ÷ $0.20 = <span id="s6x">1×</span></div>
+      </div>
+
+      <!-- S7 PAYOFF: staggered stat pills + resolving line -->
+      <div class="scene" id="sc7">
+        <div class="stack">
+          <div class="pill" id="s7p0">More capable</div>
+          <div class="pill" id="s7p1"><span class="g">20%</span> cheaper sticker</div>
+          <div class="pill" id="s7p2"><span class="g">20×</span> cheaper replays</div>
+        </div>
+        <svg width="420" height="26" viewBox="0 0 420 26" data-visual="1">
+          <path id="s7line" d="M10 13 L410 13" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div class="q" style="font-size:44px;" id="s7q">That's how better got cheaper.</div>
+      </div>
+
+      <!-- S8 CTA: breathing end card, both handles -->
+      <div class="scene" id="sc8">
+        <svg width="460" height="460" viewBox="0 0 460 460" data-visual="1"
+             style="position:absolute;left:50%;top:50%;margin:-230px 0 0 -230px;">
+          <circle id="s8halo" cx="230" cy="230" r="200" fill="none"
+                  stroke="rgba(157,184,232,0.45)" stroke-width="4"/>
+        </svg>
+        <div class="card" id="s8card" style="padding:44px 60px;">
+          <div class="cta-main">@sandesh.explains</div>
+          <div class="cta-sub">linkedin /sandesh-kale</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="progress"><div class="progress-fill" id="progress"></div></div>
+
+<script>
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+  function eoc(x) { x = clamp(x, 0, 1); return 1 - Math.pow(1 - x, 3); }  // ease-out cubic
+  function $(id) { return document.getElementById(id); }
+
+  // Ring circumferences (precomputed, static dasharray)
+  var C3 = 2 * Math.PI * 150;   // s3 ring
+  var S1CRACK = 210;            // approx crack path length
+  var S7LINE = 400;
+  $('s3ring').style.strokeDasharray = C3;
+  $('s3ring').style.strokeDashoffset = C3;
+  $('s1crack').style.strokeDasharray = S1CRACK;
+  $('s1crack').style.strokeDashoffset = S1CRACK;
+  $('s7line').style.strokeDasharray = S7LINE;
+  $('s7line').style.strokeDashoffset = S7LINE;
+
+  var SCENES = [
+    { start: 0,    duration: 3.5, el: $('sc1'), render: function (el, t) {
+        var e = eoc(t / 0.55);
+        var h = $('s1head');
+        h.style.opacity = 0.35 + 0.65 * e;
+        h.style.transform = 'scale(' + ((0.94 + 0.06 * e) * (1 + 0.012 * Math.sin(t * 2.1))) + ')';
+        $('s1tag').setAttribute('transform',
+          'rotate(' + (1.6 * Math.sin(t * 1.7)) + ' 330 150) translate(0 ' + (3 * Math.sin(t * 2.3)) + ')');
+        $('s1crack').style.strokeDashoffset = S1CRACK * (1 - eoc((t - 0.4) / 0.8));
+        var d = eoc((t - 0.9) / 1.6);
+        $('s1sh1').setAttribute('transform', 'translate(' + (46 * d) + ' ' + (-30 * d) + ') rotate(' + (40 * d) + ' 570 95)');
+        $('s1sh2').setAttribute('transform', 'translate(' + (52 * d) + ' ' + (22 * d) + ') rotate(' + (-30 * d) + ' 590 185)');
+        $('s1sh3').setAttribute('transform', 'translate(' + (-40 * d) + ' ' + (-26 * d) + ') rotate(' + (35 * d) + ' 85 105)');
+        var so = 0.9 - 0.35 * d;
+        $('s1sh1').style.opacity = so; $('s1sh2').style.opacity = so; $('s1sh3').style.opacity = so;
+    }},
+    { start: 3.5,  duration: 4.0, el: $('sc2'), render: function (el, t) {
+        var e = eoc(t / 0.5);
+        var q = $('s2q');
+        q.style.opacity = e;
+        q.style.transform = 'translateY(' + (18 * (1 - e)) + 'px) scale(' + (1 + 0.012 * Math.sin(t * 2)) + ')';
+        $('s2ring').style.strokeDashoffset = -t * 46;
+        for (var i = 0; i < 3; i++) {
+          var a = t * (1.5 + i * 0.22) + i * 2.09;
+          var dot = $('s2d' + i);
+          dot.setAttribute('cx', 330 + 140 * Math.cos(a));
+          dot.setAttribute('cy', 180 + 140 * Math.sin(a));
+          dot.style.opacity = 0.75 + 0.25 * Math.sin(t * 3 + i);
+        }
+    }},
+    { start: 7.5,  duration: 5.0, el: $('sc3'), render: function (el, t) {
+        var e = eoc(t / 1.2);
+        $('s3in').textContent = '$' + Math.round(4 * e);
+        $('s3out').textContent = '/ $' + Math.round(20 * e);
+        var e2 = eoc((t - 0.2) / 1.4);
+        $('s3ring').style.strokeDashoffset = C3 * (1 - e2);
+        $('s3ring').style.strokeOpacity = 0.75 + 0.25 * Math.sin(t * 2);
+        var le = eoc((t - 0.8) / 0.5);
+        $('s3lbl').style.opacity = le;
+        var se = eoc((t - 1.6) / 0.5);
+        $('s3src').style.opacity = 0.9 * se;
+    }},
+    { start: 12.5, duration: 5.0, el: $('sc4'), render: function (el, t) {
+        var eo = eoc(t / 0.5), en = eoc((t - 0.3) / 0.55);
+        $('s4old').style.opacity = 0.55 * eo + 0.25;
+        $('s4old').style.transform = 'translateX(' + (-24 * (1 - eo)) + 'px)';
+        $('s4new').style.opacity = 0.3 + 0.7 * en;
+        $('s4new').style.transform = 'scale(' + ((0.92 + 0.08 * en) * (1 + 0.015 * Math.sin(t * 2.2))) + ')';
+        for (var i = 0; i < 2; i++) {
+          var p = (t * 0.7 + i * 0.5) % 1;
+          $('s4t' + i).setAttribute('cx', 10 + p * 100);
+          $('s4t' + i).style.opacity = 0.9 - 0.5 * p;
+        }
+        var be = eoc((t - 1.0) / 0.45);
+        $('s4badge').style.opacity = be;
+        $('s4badge').style.transform = 'scale(' + ((0.9 + 0.1 * be) * (1 + 0.04 * Math.sin(t * 3))) + ')';
+        $('s4src').style.opacity = 0.9 * eoc((t - 1.8) / 0.5);
+    }},
+    { start: 17.5, duration: 6.0, el: $('sc5'), render: function (el, t) {
+        var e = eoc((t - 0.3) / 1.9);
+        $('s5b1').setAttribute('width', 560 * e);
+        $('s5b2').setAttribute('width', 470 * e);
+        $('s5b1').style.opacity = 0.85 + 0.15 * Math.sin(t * 2.4);
+        $('s5b2').style.opacity = 0.85 + 0.15 * Math.sin(t * 2.4 + 1.2);
+        $('s5flag').style.opacity = eoc((t - 2.4) / 0.6);
+    }},
+    { start: 23.5, duration: 5.0, el: $('sc6'), render: function (el, t) {
+        var e = eoc(t / 0.55);
+        var hd = $('s6head');
+        hd.style.opacity = 0.35 + 0.65 * e;
+        hd.style.transform = 'translateY(' + (14 * (1 - e)) + 'px)';
+        for (var i = 0; i < 3; i++) {
+          var pa = (t * 0.35 + i / 3) % 1;
+          $('s6a' + i).setAttribute('cx', 40 + pa * 580);
+          $('s6a' + i).style.opacity = 0.85 - 0.4 * pa;
+        }
+        for (var j = 0; j < 5; j++) {
+          var pb = (t * 0.8 + j / 5) % 1;
+          $('s6b' + j).setAttribute('cx', 40 + pb * 580);
+          $('s6b' + j).style.opacity = 0.9 - 0.3 * pb;
+        }
+        var ce = eoc((t - 0.9) / 1.3);
+        $('s6x').textContent = Math.round(1 + 19 * ce) + '×';
+        $('s6math').style.opacity = 0.3 + 0.7 * eoc((t - 0.7) / 0.5);
+        $('s6math').style.transform = 'scale(' + (1 + 0.03 * Math.sin(t * 2.6)) + ')';
+    }},
+    { start: 28.5, duration: 4.5, el: $('sc7'), render: function (el, t) {
+        for (var i = 0; i < 3; i++) {
+          var e = eoc((t - 0.15 * i - 0.1) / 0.5);
+          var p = $('s7p' + i);
+          p.style.opacity = e;
+          p.style.transform = 'translateY(' + (26 * (1 - e)) + 'px) scale(' + (0.94 + 0.06 * e) + ')';
+        }
+        $('s7line').style.strokeDashoffset = S7LINE * (1 - eoc((t - 0.9) / 0.8));
+        var qe = eoc((t - 1.4) / 0.5);
+        var q = $('s7q');
+        q.style.opacity = qe;
+        q.style.transform = 'scale(' + (1 + 0.015 * Math.sin(t * 2.2)) + ')';
+    }},
+    { start: 33.0, duration: 4.0, el: $('sc8'), render: function (el, t) {
+        var e = eoc(t / 0.55);
+        var c = $('s8card');
+        c.style.opacity = 0.4 + 0.6 * e;
+        c.style.transform = 'scale(' + ((0.95 + 0.05 * e) * (1 + 0.02 * Math.sin(t * 1.8))) + ')';
+        var halo = $('s8halo');
+        halo.style.strokeDasharray = '30 22';
+        halo.style.strokeDashoffset = -t * 40;
+        halo.style.strokeOpacity = 0.3 + 0.25 * Math.sin(t * 1.6);
+        halo.setAttribute('transform', 'rotate(' + (t * 8) + ' 230 230)');
+    }}
+  ];
+
+  window.__reelDurationSec = Math.max.apply(null,
+    SCENES.map(function (s) { return s.start + s.duration; }));
+
+  var marker = $('marker');
+  var started = false;
+
+  // THE ONE STATE FUNCTION - pure function of t, called every tick
+  window.__seek = function (t) {
+    if (!started) { marker.style.display = 'none'; started = true; }
+
+    SCENES.forEach(function (scene) {
+      var localT = clamp(t - scene.start, 0, scene.duration);
+      var active = t >= scene.start && t < scene.start + scene.duration;
+      scene.el.style.display = active ? '' : 'none';
+      if (active) scene.render(scene.el, localT);
+    });
+
+    // ambient chrome + branding pulse (transform/opacity only)
+    $('bgwash').style.opacity = 0.75 + 0.25 * Math.sin(t * 1.1);
+    $('bgwash').style.transform = 'scale(' + (1 + 0.06 * Math.sin(t * 0.9)) + ')';
+    $('brandpic').style.transform = 'scale(' + (1 + 0.02 * Math.sin(t * 1.8)) + ')';
+    $('progress').style.width = (100 * clamp(t / window.__reelDurationSec, 0, 1)) + '%';
+  };
+
+  window.__autoplay = function () {
+    var start = performance.now();
+    function tick() {
+      var t = (performance.now() - start) / 1000;
+      window.__seek(t);
+      if (t < window.__reelDurationSec) requestAnimationFrame(tick);
+    }
+    tick();
+  };
+</script>
+</body>
+</html>
