@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>reel-anthropic-opus-5-5</title>
+<style>
+html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overflow:hidden;font-family:'Poppins',sans-serif;}
+.marker{position:absolute;inset:0;background:#FF00FF;z-index:9999;}
+.safe-box{position:absolute;top:250px;left:40px;right:230px;bottom:400px;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.brand-pic{position:absolute;top:260px;right:200px;width:84px;height:84px;border-radius:50%;border:3px solid rgba(255,255,255,0.92);object-fit:cover;z-index:50;will-change:transform,opacity;}
+.bg-wash{position:absolute;inset:0;background:radial-gradient(ellipse 800px 600px at 20% 15%, rgba(255,100,50,0.35), transparent 60%),radial-gradient(ellipse 900px 700px at 85% 85%, rgba(50,150,255,0.30), transparent 60%),linear-gradient(180deg,#0e0e12,#15121f 50%,#0e0e12);}
+.chrome-top{position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);}
+.chrome-bottom{position:absolute;bottom:0;left:0;right:0;height:340px;background:linear-gradient(0deg,rgba(0,0,0,0.55),transparent);}
+.progress{position:absolute;bottom:30px;left:40px;right:230px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;}
+.progress-fill{position:absolute;top:0;left:0;bottom:0;background:#fff;width:0%;}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;will-change:transform,opacity;}
+.headline{color:#fff;font-size:72px;font-weight:800;margin:0;will-change:transform,opacity;}
+.sub{color:#9aa;font-size:42px;font-weight:500;margin-top:24px;will-change:transform,opacity;}
+.cta{color:#fff;font-size:54px;font-weight:700;text-align:center;will-change:transform,opacity;}
+.cta .sub{color:#9ad;font-size:38px;font-weight:500;margin-top:14px;}
+.stat{color:#ffb84d;font-size:96px;font-weight:900;margin:20px 0;will-change:transform,opacity;}
+</style>
+</head>
+<body>
+<div class="marker" id="marker"></div>
+<img class="brand-pic" id="brandpic" alt="" src="data:image/jpeg;base64,{{PROFILE_PIC_B64}}">
+<div class="bg-wash" id="bgwash"></div>
+<div class="chrome-top"></div>
+<div class="chrome-bottom"></div>
+
+<div class="safe-box" id="safebox">
+  <div class="scene" id="scene0"><div class="headline" id="h0">Anthropic just broke the AI pricing model.</div></div>
+  <div class="scene" id="scene1"><div class="sub" id="s1">How is their most powerful model suddenly cheaper?</div></div>
+  <div class="scene" id="scene2"><div class="headline" id="h2">Meet Opus 5.5</div><div class="sub" id="s2">Matches Fable 5.1 performance</div></div>
+  <div class="scene" id="scene3"><div class="sub" id="s3">Top-tier agentic coding</div><div class="sub" id="s3b">without burning API credits.</div></div>
+  <div class="scene" id="scene4"><div class="stat" id="st4">40% CHEAPER</div><div class="sub" id="s4">Same frontier brain.</div></div>
+  <div class="scene" id="scene5"><div class="cta">@sandesh.explains<div class="sub">linkedin /sandesh-kale</div></div></div>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progress"></div></div>
+
+<script>
+var SCENES = [
+  { start: 0, duration: 2.5, el: document.getElementById('scene0') },
+  { start: 2.5, duration: 3.0, el: document.getElementById('scene1') },
+  { start: 5.5, duration: 4.5, el: document.getElementById('scene2') },
+  { start: 10.0, duration: 4.0, el: document.getElementById('scene3') },
+  { start: 14.0, duration: 3.0, el: document.getElementById('scene4') },
+  { start: 17.0, duration: 4.0, el: document.getElementById('scene5') }
+];
+window.__reelDurationSec = 21.0;
+var marker = document.getElementById('marker');
+var started = false;
+
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+window.__seek = function(t) {
+  if (!started) { marker.style.display = 'none'; started = true; }
+  
+  SCENES.forEach(function(scene) {
+    var localT = clamp(t - scene.start, 0, scene.duration);
+    var active = t >= scene.start && t < scene.start + scene.duration;
+    scene.el.style.display = active ? 'flex' : 'none';
+    
+    if (active) {
+      var entrance = clamp(localT / 0.5, 0, 1);
+      var ease = easeOutCubic(entrance);
+      var scale = 0.94 + 0.06 * ease;
+      var opacity = 0.35 + 0.65 * ease;
+      var pulse = 1 + 0.03 * Math.sin(localT * 2);
+      
+      scene.el.style.transform = 'scale(' + (scale * pulse) + ')';
+      scene.el.style.opacity = opacity;
+      
+      var children = scene.el.children;
+      for(var i=0; i<children.length; i++) {
+        var drift = Math.sin(localT * 1.5 + i) * 5;
+        children[i].style.transform = 'translateY(' + drift + 'px)';
+      }
+    }
+  });
+  
+  var bp = document.getElementById('brandpic');
+  bp.style.transform = 'scale(' + (1 + 0.02 * Math.sin(t * 1.8)) + ')';
+  
+  document.getElementById('progress').style.width = (100 * clamp(t / window.__reelDurationSec, 0, 1)) + '%';
+  
+  var bg = document.getElementById('bgwash');
+  bg.style.opacity = 0.6 + 0.4 * Math.sin(t * 1.1);
+  bg.style.transform = 'scale(' + (1 + 0.08 * Math.sin(t * 0.9)) + ')';
+};
+
+window.__autoplay = function() {
+  var start = performance.now();
+  function tick() {
+    var t = (performance.now() - start) / 1000;
+    window.__seek(t);
+    if (t < window.__reelDurationSec) requestAnimationFrame(tick);
+  }
+  tick();
+};
+</script>
+</body>
+</html>

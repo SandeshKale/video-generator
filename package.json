@@ -1,0 +1,13 @@
+{
+  "name": "video-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Renders animated HTML reels to MP4 using the html-video (nexu-io/html-video) Hyperframes render recipe: headless Chromium + frame-accurate window.__seek stepping, encoded with ffmpeg.",
+  "type": "module",
+  "scripts": {
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.56.0"
+  }
+}
