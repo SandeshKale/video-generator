@@ -858,6 +858,7 @@ svg{overflow:visible;}
 
 <div class="progress"><div class="progress-fill" id="progress"></div></div>
 
+<script src="../assets/animations/gsap/gsap.min.js"></script>
 <script>
 function $(id){ return document.getElementById(id); }
 function clamp(v,lo,hi){ return Math.max(lo, Math.min(hi, v)); }
@@ -871,40 +872,54 @@ function enter(el, e, driftY, extraScale){
 }
 
 // --- extra entrance styles for tumbling / dropping / running motion ---
-function easeOutBack(x){ var c1=1.70158, c3=c1+1; x=clamp(x,0,1); return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2); }
-function easeOutBounce(x){
-  x = clamp(x,0,1);
-  var n1=7.5625, d1=2.75;
-  if (x < 1/d1) return n1*x*x;
-  if (x < 2/d1) { x -= 1.5/d1; return n1*x*x + 0.75; }
-  if (x < 2.5/d1) { x -= 2.25/d1; return n1*x*x + 0.9375; }
-  x -= 2.625/d1; return n1*x*x + 0.984375;
+// Built on GSAP (assets/animations/gsap/gsap.min.js): each helper builds a
+// single paused gsap.timeline() per element (memoized on the element, since
+// every call site always passes the same params for a given element) and
+// scrubs it with tl.progress(e) — never tl.play(). That keeps everything a
+// pure function of the e/t passed in from window.__seek, same contract as
+// the hand-rolled easing math it replaces, but with GSAP's battle-tested
+// bounce/back/power curves instead of copy-pasted formulas.
+var __entranceTl = new WeakMap();
+function scrubTl(el, cacheKey, buildTl, e){
+  if(!el || typeof gsap === 'undefined') return;
+  var cached = __entranceTl.get(el);
+  if(!cached || cached.key !== cacheKey){
+    cached = { key: cacheKey, tl: buildTl() };
+    __entranceTl.set(el, cached);
+  }
+  cached.tl.progress(clamp(e,0,1));
 }
 // Drops from above and bounces to a settled stop — for icons/chips that
 // should feel like they landed with a bit of weight.
 function dropIn(el, e, dropHeight, rotateDeg){
-  if(!el) return;
-  var ee = clamp(e,0,1);
-  var b = easeOutBounce(ee);
-  el.style.opacity = clamp(ee*3,0,1);
-  el.style.transform = 'translateY(' + (dropHeight*(1-b)) + 'px) rotate(' + ((rotateDeg||0)*(1-b)) + 'deg)';
+  scrubTl(el, 'drop:' + dropHeight + ':' + rotateDeg, function(){
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 1/3, ease: 'none' }, 0);
+    tl.fromTo(el, { y: dropHeight || 0, rotation: rotateDeg || 0 },
+                   { y: 0, rotation: 0, duration: 1, ease: 'bounce.out' }, 0);
+    return tl;
+  }, e);
 }
 // Rotates in from an angle while popping past 100% scale and settling —
 // for elements that should feel like they tumbled into frame.
 function tumbleIn(el, e, rotateFromDeg){
-  if(!el) return;
-  var ee = clamp(e,0,1);
-  var b = easeOutBack(ee);
-  el.style.opacity = clamp(ee*2.4,0,1);
-  el.style.transform = 'rotate(' + ((rotateFromDeg||90)*(1-b)) + 'deg) scale(' + (0.55+0.45*b) + ')';
+  scrubTl(el, 'tumble:' + rotateFromDeg, function(){
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 1/2.4, ease: 'none' }, 0);
+    tl.fromTo(el, { rotation: rotateFromDeg || 90, scale: 0.55 },
+                   { rotation: 0, scale: 1, duration: 1, ease: 'back.out(1.7)' }, 0);
+    return tl;
+  }, e);
 }
 // Slides in horizontally with a slight lean, like it ran into place.
 function runIn(el, e, fromX){
-  if(!el) return;
-  var ee = clamp(e,0,1);
-  var eo = eoc(ee);
-  el.style.opacity = clamp(ee*2.6,0,1);
-  el.style.transform = 'translateX(' + ((fromX||0)*(1-eo)) + 'px) rotate(' + (-7*(1-eo)) + 'deg)';
+  scrubTl(el, 'run:' + fromX, function(){
+    var tl = gsap.timeline({ paused: true });
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 1/2.6, ease: 'none' }, 0);
+    tl.fromTo(el, { x: fromX || 0, rotation: -7 },
+                   { x: 0, rotation: 0, duration: 1, ease: 'power2.out' }, 0);
+    return tl;
+  }, e);
 }
 
 var C4 = 2*Math.PI*86;

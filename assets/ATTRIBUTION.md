@@ -28,6 +28,7 @@ below.
 | `animations/magic-css/` | [miniMAC/magic](https://github.com/miniMAC/magic) | MIT | `dist/` — one-liner CSS entrance/exit transition classes. |
 | `animations/csshake/` | [elrumordelaluz/csshake](https://github.com/elrumordelaluz/csshake) | MIT | `dist/` — shake/bounce CSS micro-animation classes. |
 | `animations/hover-css/` | [IanLunn/Hover](https://github.com/IanLunn/Hover) | MIT | `hover.css` (+min) — hover-triggered CSS transition classes. |
+| `animations/gsap/` | [greensock/GSAP](https://github.com/greensock/GSAP) (via [npm: gsap](https://www.npmjs.com/package/gsap), v3.15.0) | GSAP Standard "no charge" license (free for this use — see `LICENSE.md` in this folder); **not MIT** | `gsap.min.js` — core animation engine only (no bonus/club plugins). Loaded as a classic `<script>` tag (works over `file://`, no bundler needed) so plain self-contained-HTML reels can use it. |
 
 ## ⚠️ Using `animations/*` with the render pipeline — read before using
 
@@ -63,18 +64,27 @@ packs, which loop forever by design.
 
 ## Libraries deliberately not vendored (they're code, not assets)
 
-The animation *engines* named alongside these packs — **GSAP**,
-**anime.js**, **Vivus**, **KUTE.js**, **flubber**, **mo.js**,
-**rough-notation**, **motion** (Framer Motion), **lazy-line-painter**,
-**walkway**, **progressbar.js** — are JS libraries, not media files, so
-they don't belong in `assets/`. If a reel needs one, `npm install` it into
-`reel-app/` (the React/Vite POC) as a normal dependency instead. **GSAP in
-particular is worth calling out**: its timeline API has a native
-`.seek(t)` / `.progress()`, which maps almost exactly onto this project's
-`window.__seek(t)` contract — a GSAP timeline can be driven deterministically
-frame-by-frame with far less manual `animation-delay` bookkeeping than raw
-CSS keyframes, and is the more natural fit here if a reel needs richer
-choreography than plain transform/opacity tweening.
+The animation *engines* named alongside these packs — **anime.js**,
+**Vivus**, **KUTE.js**, **flubber**, **mo.js**, **rough-notation**,
+**motion** (Framer Motion), **lazy-line-painter**, **walkway**,
+**progressbar.js** — are JS libraries, not media files, so they don't
+belong in `assets/`. If a reel needs one, `npm install` it into
+`reel-app/` (the React/Vite POC) as a normal dependency instead.
+
+**GSAP is the one exception, and it *is* now vendored** (as
+`animations/gsap/gsap.min.js`, see the table above), specifically because
+its timeline API has a native `.progress()` / `.seek(t)`, which maps almost
+exactly onto this project's `window.__seek(t)` contract — a GSAP timeline
+can be driven deterministically frame-by-frame (`tl.progress(e)` inside
+`__seek`, timeline built once with `paused: true`, never played) with far
+less manual `animation-delay` bookkeeping than raw CSS keyframes, and with
+built-in, well-tested easing curves (`bounce.out`, `back.out(1.7)`,
+`power3.out`, etc.) in place of hand-rolled easing math. It's vendored as a
+plain minified UMD build (not the npm ESM/CJS entry) so it loads via a
+classic `<script>` tag and works over `file://` in the plain self-contained
+HTML reels, not just in the `reel-app/` bundle. See
+`reel-anthropic-rundown-ios/build.mjs`'s `dropIn`/`tumbleIn`/`runIn`
+helpers for the pattern.
 
 **Lottie** and **Rive** were not pulled at all: their runtimes
 (`lottie-web`, `@lottiefiles/lottie-player`, `@rive-app/*`) are npm
