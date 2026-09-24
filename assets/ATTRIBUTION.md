@@ -18,6 +18,73 @@ below.
 | `logos/gilbarbara/` | [gilbarbara/logos](https://github.com/gilbarbara/logos) | CC0 (see `LICENSE.txt`) — **but note:** CC0 covers the SVG *files themselves*; the brand marks depicted are still trademarks of their respective owners | ~137 dev-tooling/cloud/language/SaaS logos (AWS, Azure, GCP, Kubernetes, Docker, React, Python, OpenAI, Anthropic, etc.) curated out of ~1,900 available. |
 | `logos/svg-logos/` | [detain/svg-logos](https://github.com/detain/svg-logos) | **No license — mirror of [WorldVectorLogo](https://worldvectorlogo.com)**; logos are trademarks/copyrighted artwork of their owners, use for identification only (see Legal note below) | 69 recognizable tech/hardware/enterprise logos (Intel-adjacent hardware makers, IBM, Cisco, Dell, Atlassian, Cloudflare, etc.) curated out of ~120,000 files — the full repo is a generic WorldVectorLogo mirror, not tech-specific. |
 | `logos/unilogo/` | [zhoudaxia233/UniLogo](https://github.com/zhoudaxia233/UniLogo) | Repo code is MIT (see `LICENSE`); the university crests/wordmarks themselves are each institution's own mark | 36 transparent PNG logos for top research/engineering universities (MIT, Stanford, CMU, Oxford, Cambridge, ETH Zurich, IITs, Tsinghua, etc.) curated out of 835. |
+| `animations/svg-loaders/` | [SamHerbert/svg-loaders](https://github.com/SamHerbert/svg-loaders) | MIT | Full set — 12 small SMIL-animated SVG spinners. |
+| `animations/svg-spinners/` | [n3r4zzurr0/svg-spinners](https://github.com/n3r4zzurr0/svg-spinners) | MIT | Full set — 90+ SVG spinners (both CSS- and SMIL-animated variants). |
+| `animations/spinkit/` | [tobiasahlin/SpinKit](https://github.com/tobiasahlin/SpinKit) | MIT | `spinkit.css` (+min) — CSS-only spinner classes. |
+| `animations/three-dots/` | [nzbin/three-dots](https://github.com/nzbin/three-dots) | MIT | `dist/` — compiled CSS three-dot loading animations. |
+| `animations/loaders-css/` | [ConnorAtherton/loaders.css](https://github.com/ConnorAtherton/loaders.css) | MIT (stated in README, no separate LICENSE file upstream — excerpt saved as `LICENSE.md` here) | `loaders.css` (+min) — CSS-only loader animations. |
+| `animations/css-loaders/` | [lukehaas/css-loaders](https://github.com/lukehaas/css-loaders) | MIT | `css/` — full set of single-element CSS loaders. |
+| `animations/animate-css/` | [animate-css/animate.css](https://github.com/animate-css/animate.css) | **Hippocratic License 2.1**, not MIT — an "ethical source" license with human-rights-compliance conditions layered on top of otherwise-permissive terms. Read `LICENSE` before using commercially. | `animate.css` (+min, +compat) — the standard `animate__*` entrance/exit/attention class library. |
+| `animations/magic-css/` | [miniMAC/magic](https://github.com/miniMAC/magic) | MIT | `dist/` — one-liner CSS entrance/exit transition classes. |
+| `animations/csshake/` | [elrumordelaluz/csshake](https://github.com/elrumordelaluz/csshake) | MIT | `dist/` — shake/bounce CSS micro-animation classes. |
+| `animations/hover-css/` | [IanLunn/Hover](https://github.com/IanLunn/Hover) | MIT | `hover.css` (+min) — hover-triggered CSS transition classes. |
+
+## ⚠️ Using `animations/*` with the render pipeline — read before using
+
+Everything under `animations/` is CSS `@keyframes` / SMIL, driven by the
+**browser's own real-time clock**, not by `window.__seek(t)`. That's a
+problem for this repo's render pipeline specifically: `scripts/render.mjs`
+steps through virtual time in fixed 1/60s increments, but each
+`page.screenshot()` call takes a variable amount of *wall-clock* time. An
+autonomous CSS-clock animation drifts out of sync with everything else in
+the scene — it'll play back at the wrong, jittery speed in the encoded
+video, because the video assumes 1 captured frame = exactly 1/60s of
+animation time.
+
+**To use one of these assets correctly, it must be seeked, not left
+autonomous.** The standard trick: pause it globally, then set a *negative*
+`animation-delay` equal to `-t` so the browser deterministically renders
+exactly what the animation looks like at virtual time `t`:
+
+```css
+.loader { animation-play-state: paused; }
+```
+```js
+// inside window.__seek(t), per animated element:
+el.style.animationDelay = `-${t}s`;
+```
+
+This is the same freeze-then-seek approach `html-video`'s Hyperframes
+adapter uses for its own font-load race (see `render.ts` notes referenced
+earlier in this project) — same idea, applied per-element instead of
+page-wide. `animate.css`/`magic.css`/`hover.css` classes are typically
+single-run (not `infinite`), so this matters most for the spinner/loader
+packs, which loop forever by design.
+
+## Libraries deliberately not vendored (they're code, not assets)
+
+The animation *engines* named alongside these packs — **GSAP**,
+**anime.js**, **Vivus**, **KUTE.js**, **flubber**, **mo.js**,
+**rough-notation**, **motion** (Framer Motion), **lazy-line-painter**,
+**walkway**, **progressbar.js** — are JS libraries, not media files, so
+they don't belong in `assets/`. If a reel needs one, `npm install` it into
+`reel-app/` (the React/Vite POC) as a normal dependency instead. **GSAP in
+particular is worth calling out**: its timeline API has a native
+`.seek(t)` / `.progress()`, which maps almost exactly onto this project's
+`window.__seek(t)` contract — a GSAP timeline can be driven deterministically
+frame-by-frame with far less manual `animation-delay` bookkeeping than raw
+CSS keyframes, and is the more natural fit here if a reel needs richer
+choreography than plain transform/opacity tweening.
+
+**Lottie** and **Rive** were not pulled at all: their runtimes
+(`lottie-web`, `@lottiefiles/lottie-player`, `@rive-app/*`) are npm
+packages, same as above, and the actual ready-made *animations* live on
+hosted platforms (lottiefiles.com, Rive's community marketplace) rather
+than in a git repo — there's nothing to `git clone`. If a reel wants a
+specific free Lottie/Rive file, it'd need to be downloaded individually
+from those sites by name, with its own license check (LottieFiles' free
+tier and Rive community files carry per-file terms, not a blanket repo
+license).
 
 ## Not pulled from this round of sources, and why
 
