@@ -59,10 +59,17 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#050607;overf
 .step-dot{width:11px;height:11px;border-radius:50%;background:rgba(0,229,255,0.18);border:1px solid rgba(0,229,255,0.3);}
 .step-dot.done{background:#0ff1e0;border-color:#0ff1e0;box-shadow:0 0 10px rgba(0,229,255,0.65);}
 
-/* Small pulsing "signal flow" caret bridging the gap between a scene's
-   headline and its main content block — cheap, on-theme way to make that
-   gap read as an intentional connector instead of empty space. */
-.flow-caret{font-family:'JBMono',monospace;font-size:30px;color:rgba(0,229,255,0.5);text-align:center;width:100%;z-index:1;will-change:transform,opacity;}
+/* Signal bridge: fills the gap between a scene's headline and its main
+   content block with a real, content-aware component instead of empty
+   space — a vertical "data wire" with a traveling pulse, feeding into a
+   live-typing terminal readout line specific to that scene (e.g. "spinning
+   up 3 reviewer roles..."). Replaces an earlier single-glyph caret there,
+   which read as decorative rather than substantial. */
+.signal-bridge{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;z-index:1;position:relative;padding:6px 0;}
+.sig-wire{position:relative;width:2px;height:64px;background:linear-gradient(180deg, rgba(0,229,255,0.12), rgba(0,229,255,0.6), rgba(0,229,255,0.12));}
+.sig-pulse{position:absolute;left:50%;top:0;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:#0ff1e0;box-shadow:0 0 18px 5px rgba(0,229,255,0.65);opacity:0;}
+.sig-readout{font-family:'JBMono',monospace;font-weight:500;font-size:29px;color:#5fd8e8;letter-spacing:0.01em;min-height:38px;}
+.sig-cursor{color:#0ff1e0;font-weight:700;margin-left:3px;}
 /* Merged band: a scene's visual + its sub-line grouped as one unit in the
    middle of the frame, instead of two separately-centered islands with a
    dead gap between them. */
@@ -274,7 +281,7 @@ svg{overflow:visible;}
       <div class="step-head" id="s3step"><div class="mono-label" style="font-size:24px;">STEP 1 / 5</div><div class="step-dots"><span class="step-dot done"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span></div></div>
       <div class="headline" id="s3head" style="font-size:66px;">Step 1 — Pick a workflow that needs improvement.</div>
     </div>
-    <div class="flow-caret" id="s3caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s3pulse"></div></div><div class="sig-readout"><span id="s3readout"></span><span class="sig-cursor" id="s3cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s3spot" style="width:840px;height:840px;margin:-420px 0 0 -420px;"></div>
       <div class="tag-col">
@@ -292,7 +299,7 @@ svg{overflow:visible;}
       <div class="step-head" id="s4step"><div class="mono-label" style="font-size:24px;">STEP 2 / 5</div><div class="step-dots"><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span></div></div>
       <div class="headline" id="s4head" style="font-size:66px;">Step 2 — Build a 3-agent review panel.</div>
     </div>
-    <div class="flow-caret" id="s4caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s4pulse"></div></div><div class="sig-readout"><span id="s4readout"></span><span class="sig-cursor" id="s4cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s4spot" style="width:840px;height:840px;margin:-420px 0 0 -420px;"></div>
       <div class="tag-row" style="align-items:stretch;">
@@ -322,7 +329,7 @@ svg{overflow:visible;}
       <div class="step-head" id="s5step"><div class="mono-label" style="font-size:24px;">STEP 3 / 5</div><div class="step-dots"><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot"></span><span class="step-dot"></span></div></div>
       <div class="headline" id="s5head" style="font-size:66px;">Step 3 — Define "done" before you start.</div>
     </div>
-    <div class="flow-caret" id="s5caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s5pulse"></div></div><div class="sig-readout"><span id="s5readout"></span><span class="sig-cursor" id="s5cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s5spot" style="width:840px;height:840px;margin:-420px 0 0 -420px;"></div>
       <div class="panel" id="s5card" style="width:100%;padding:56px 48px;box-sizing:border-box;display:flex;flex-direction:column;gap:36px;">
@@ -374,7 +381,7 @@ svg{overflow:visible;}
       <div class="step-head" id="s7step"><div class="mono-label" style="font-size:24px;">STEP 5 / 5</div><div class="step-dots"><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot done"></span><span class="step-dot done"></span></div></div>
       <div class="headline" id="s7head" style="font-size:66px;">Step 5 — Test on a brand-new example.</div>
     </div>
-    <div class="flow-caret" id="s7caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s7pulse"></div></div><div class="sig-readout"><span id="s7readout"></span><span class="sig-cursor" id="s7cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s7spot" style="width:840px;height:840px;margin:-420px 0 0 -420px;"></div>
       <div class="tag-row" style="align-items:center;">
@@ -396,7 +403,7 @@ svg{overflow:visible;}
     <div class="band band-tight">
       <div class="mono-label" id="s8eyebrow" style="font-size:30px;">// PRO TIP</div>
     </div>
-    <div class="flow-caret" id="s8caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s8pulse"></div></div><div class="sig-readout"><span id="s8readout"></span><span class="sig-cursor" id="s8cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight magenta" id="s8spot" style="width:880px;height:880px;margin:-440px 0 0 -440px;"></div>
       <div class="panel tip-panel" id="s8card" style="padding:70px 54px;">
@@ -414,7 +421,7 @@ svg{overflow:visible;}
     <div class="band band-tight">
       <div class="headline" id="s9head" style="font-size:72px;">Save the loop prompt.</div>
     </div>
-    <div class="flow-caret" id="s9caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s9pulse"></div></div><div class="sig-readout"><span id="s9readout"></span><span class="sig-cursor" id="s9cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s9spot" style="width:880px;height:880px;margin:-440px 0 0 -440px;"></div>
       <div class="icon-badge" id="s9bookmark" style="width:320px;height:320px;color:#0ff1e0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
@@ -515,7 +522,7 @@ svg{overflow:visible;}
       </g>
     </svg></div>
     </div>
-    <div class="flow-caret" id="s10caret">▾</div>
+    <div class="signal-bridge"><div class="sig-wire"><div class="sig-pulse" id="s10pulse"></div></div><div class="sig-readout"><span id="s10readout"></span><span class="sig-cursor" id="s10cursor">▌</span></div></div>
     <div class="band-content">
       <div class="spotlight" id="s10spot" style="width:900px;height:900px;margin:-450px 0 0 -450px;"></div>
       <div class="panel cta-panel" id="s10card" style="padding:58px 74px;">
@@ -588,6 +595,21 @@ function runIn(el, e, fromX){
 var RING_C = 2*Math.PI*80;
 $('s6ring').style.strokeDasharray = RING_C;
 
+// Signal bridge: a traveling pulse down the wire (0.35 -> 0.85 of e), then
+// a terminal-style typewriter reveal of a context-specific line, then a
+// steady blinking cursor. sceneT is the scene-local time (not e) so the
+// cursor keeps blinking for the rest of the scene once typing finishes.
+function sigBridge(prefix, pulseEl, readoutEl, cursorEl, text, e, sceneT){
+  if(!pulseEl || !readoutEl) return;
+  var ee = clamp(e,0,1);
+  pulseEl.style.opacity = eoc(clamp((ee-0.05)/0.3,0,1)) * (1 - eoc(clamp((ee-0.55)/0.3,0,1)));
+  pulseEl.style.top = (2 + 58*clamp((ee-0.05)/0.5,0,1)) + 'px';
+  var typeE = clamp((ee-0.4)/0.5,0,1);
+  var n = Math.floor(typeE * text.length);
+  readoutEl.textContent = prefix + text.slice(0, n);
+  if (cursorEl) cursorEl.style.opacity = (typeE < 1 || Math.floor(sceneT*2.2) % 2 === 0) ? 1 : 0;
+}
+
 var SCENES = [
   { start: 0, duration: 5, el: $('sc1'), render: function(t){
       runIn($('s1human'), t/0.55, -180);
@@ -607,7 +629,7 @@ var SCENES = [
   { start: 9, duration: 6, el: $('sc3'), render: function(t){
       enter($('s3step'), eoc(t/0.3), 12, 1);
       enter($('s3head'), eoc((t-0.15)/0.5), 20, 1);
-      enter($('s3caret'), eoc((t-0.55)/0.3), 8, 1);
+      sigBridge('> ', $('s3pulse'), $('s3readout'), $('s3cursor'), 'scanning recent outputs for drift...', (t-0.5)/1.1, t);
       dropIn($('s3c0'), (t-0.35)/0.4, -140, -10);
       dropIn($('s3c1'), (t-0.5)/0.4, -140, 0);
       dropIn($('s3c2'), (t-0.65)/0.4, -140, 10);
@@ -616,7 +638,7 @@ var SCENES = [
   { start: 15, duration: 7, el: $('sc4'), render: function(t){
       enter($('s4step'), eoc(t/0.3), 12, 1);
       enter($('s4head'), eoc((t-0.15)/0.5), 20, 1);
-      enter($('s4caret'), eoc((t-0.55)/0.3), 8, 1);
+      sigBridge('> ', $('s4pulse'), $('s4readout'), $('s4cursor'), 'spinning up 3 reviewer roles...', (t-0.5)/1.1, t);
       dropIn($('s4quality'), (t-0.3)/0.5, -220, -12);
       dropIn($('s4prompt'), (t-0.5)/0.5, -220, 0);
       dropIn($('s4expert'), (t-0.7)/0.5, -220, 12);
@@ -625,7 +647,7 @@ var SCENES = [
   { start: 22, duration: 6, el: $('sc5'), render: function(t){
       enter($('s5step'), eoc(t/0.3), 12, 1);
       enter($('s5head'), eoc((t-0.15)/0.5), 20, 1);
-      enter($('s5caret'), eoc((t-0.55)/0.3), 8, 1);
+      sigBridge('> ', $('s5pulse'), $('s5readout'), $('s5cursor'), 'writing acceptance criteria...', (t-0.5)/1.1, t);
       enter($('s5card'), eoc((t-0.3)/0.5), 24, 1);
       dropIn($('s5c0'), (t-0.4)/0.4, -100, 0);
       dropIn($('s5c1'), (t-0.6)/0.4, -100, 0);
@@ -656,7 +678,7 @@ var SCENES = [
   { start: 38, duration: 6, el: $('sc7'), render: function(t){
       enter($('s7step'), eoc(t/0.3), 12, 1);
       enter($('s7head'), eoc((t-0.15)/0.5), 20, 1);
-      enter($('s7caret'), eoc((t-0.55)/0.3), 8, 1);
+      sigBridge('> ', $('s7pulse'), $('s7readout'), $('s7cursor'), 'running against a holdout example...', (t-0.5)/1.1, t);
       dropIn($('s7new'), (t-0.35)/0.4, -140, -8);
       runIn($('s7arrow'), (t-0.55)/0.3, -40);
       dropIn($('s7check1'), (t-0.75)/0.35, -120, -8);
@@ -667,20 +689,20 @@ var SCENES = [
   }},
   { start: 44, duration: 6, el: $('sc8'), render: function(t){
       enter($('s8eyebrow'), eoc(t/0.4), 16, 1);
-      enter($('s8caret'), eoc((t-0.35)/0.3), 8, 1);
+      sigBridge('> ', $('s8pulse'), $('s8readout'), $('s8cursor'), 'patch(workflow) > patch(output)', (t-0.3)/1.1, t);
       enter($('s8card'), eoc((t-0.55)/0.5), 26, 1);
       dropIn($('s8chip1'), (t-1.15)/0.4, -110, 6);
   }},
   { start: 50, duration: 5, el: $('sc9'), render: function(t){
       enter($('s9head'), eoc(t/0.45), 20, 1);
-      enter($('s9caret'), eoc((t-0.15)/0.3), 8, 1);
+      sigBridge('> ', $('s9pulse'), $('s9readout'), $('s9cursor'), 'saving prompt as "loop-method.v1"...', (t-0.1)/1.1, t);
       dropIn($('s9bookmark'), (t-0.3)/0.55, -220, -10);
       enter($('s9sub'), eoc((t-0.75)/0.5), 18, 1);
       dropIn($('s9chip1'), (t-1.1)/0.4, -110, 6);
   }},
   { start: 55, duration: 5, el: $('sc10'), render: function(t){
       runIn($('s10human'), t/0.55, -200);
-      enter($('s10caret'), eoc((t-0.2)/0.3), 8, 1);
+      sigBridge('> ', $('s10pulse'), $('s10readout'), $('s10cursor'), 'connecting @sandesh.explains...', (t-0.15)/1.1, t);
       dropIn($('s10card'), (t-0.3)/0.5, -160, 0);
       dropIn($('s10chip1'), (t-0.75)/0.4, -110, 6);
   }}

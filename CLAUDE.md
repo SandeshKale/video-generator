@@ -272,6 +272,42 @@ see"). If you add or edit a scene, apply these patterns:
     on-screen size against whatever's behind it?" If a future reel keeps
     tripping on this, add that enforced primitive rather than continuing to
     eyeball it.
+- **The gap between a headline/step-head band and the content block below
+  it is a hard, non-negotiable fill requirement — not a place for a
+  decorative glyph.** Confirmed by hand-annotated screenshots (red
+  scribbles marking the exact dead zone) across six scenes of the Loop
+  Method reel — a single small caret character (`▾`) sitting in that gap
+  still reads as empty space, even though technically non-blank. The fix
+  that actually worked: a **signal bridge** component —
+  `reel-openai-loop-method/build.mjs`'s `.signal-bridge` (`.sig-wire` +
+  `.sig-pulse` + `.sig-readout` + `.sig-cursor`, driven by the `sigBridge()`
+  JS helper) — a short vertical "data wire" with a traveling glow pulse,
+  feeding into a **terminal-style typewriter line that is specific to that
+  scene's content** (e.g. `> spinning up 3 reviewer roles...` on the
+  review-panel step, `> saving prompt as "loop-method.v1"...` on the save
+  step), with a steady blinking cursor once typing finishes. This is the
+  pattern to reuse (adapted to each reel's own visual system/theme, not
+  copy-pasted verbatim) any time a band-tight-header-then-content layout
+  leaves a gap:
+  - **It must be content-aware, not generic filler.** Every line is written
+    for the specific scene it sits in — restating or extending what that
+    scene is about — never a stock phrase reused across scenes. A reader
+    should be able to tell which scene they're on from the readout line
+    alone.
+  - **It must be a real, deliberately-designed component, not a background
+    watermark icon.** A large, low-opacity ghost icon behind the content
+    was tried earlier in this same reel and was explicitly rejected as
+    "cheap" — see the git history around that fix. The bar is: does this
+    look like it was designed on purpose for this exact spot, or does it
+    look like padding? If it's the latter, it doesn't satisfy this rule.
+  - **It must still be `t`-driven and deterministic** — a real wire pulse,
+    typewriter character reveal, and cursor blink computed from local
+    scene time (see `sigBridge()`), never a real-time CSS animation.
+  - Apply this to *every* scene that has a distinct header band followed by
+    a content band with a visible gap between them — which in practice has
+    been most step/beat scenes in every reel built so far. A scene whose
+    content already fills that gap on its own (e.g. a big hero visual
+    starting right under the headline) doesn't need it.
 
 Verify visually, don't just trust the code: use Playwright to screenshot the
 page at several representative `t` values while iterating (`page.evaluate(t
