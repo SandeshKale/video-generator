@@ -280,6 +280,62 @@ at the images. Several bugs in this repo's history (icon overflow, invisible
 logo marks, over-large empty bands) were only caught this way, not by
 reading the generated CSS/markup.
 
+## Typography house style
+
+Checked against `reel-anthropic-rundown-ios/build.mjs`'s actual CSS —
+some of this the reels already do right, some is a real gap worth fixing
+in every new reel (and worth retrofitting into an existing one if it's
+getting a re-render anyway):
+
+- **Never pure `#fff` for headline/body text.** Use a slightly tinted
+  off-white instead (e.g. `#f1f3f8`, or Tailwind's `slate-50`/`slate-200`
+  range). This matters *specifically* in this repo because every scene's
+  text sits directly on top of `.bg-dots`/`.bg-hatch` — the drifting
+  textured background from the layout system above — and pure white
+  against any moving background visually "vibrates." (The existing
+  `.sub`/`.stat-label` color, `#b9c6da`, already gets this right; `.headline`
+  and most inline text still use raw `#fff` — fix that.)
+- **Give headline/body text a soft text-shadow when it sits over the
+  textured background or any illustration**, not just a flat color:
+  `text-shadow: 0 4px 12px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.8);` A
+  large soft shadow, not a harsh 1px drop shadow. This is the single
+  highest-value fix for legibility given every scene in this repo overlays
+  text on moving texture — currently `build.mjs` uses zero `text-shadow`
+  anywhere.
+- **Two-font contrast, not one font for everything.** Current reels use a
+  single family (`Poppins`) for headlines, body, labels, and chips alike.
+  Prefer: a geometric/bold display font (Poppins works fine here) for
+  headlines/stats only, and a neutral, highly legible sans (Inter, or
+  system `-apple-system`/`'Segoe UI'` fallback already in the stack) for
+  body/sub/caption/label text. Load a second family the same way the
+  existing brand-logo/icon assets are handled — vendor the font files (or
+  a Google Fonts `<link>` if network access at render time is acceptable)
+  rather than relying on the system having it installed, since Chromium
+  headless font availability shouldn't be assumed.
+- **Letter-spacing scale**, keyed off font size, not one fixed value
+  everywhere:
+  - Large headlines (~60-90px): `-0.02em` to `-0.04em` (i.e. roughly
+    -1.5px to -3px at 74px — the current `.headline`'s `-0.5px` is too
+    weak to read as intentional tightening).
+  - Body/sub text: default (`0`), don't tighten.
+  - Small uppercase labels/eyebrows (`STAT-LABEL`, chip badges like
+    `ERROR`/`FIXED`): `0.1em`-`0.2em` positive tracking + `font-weight:
+    500-600`. The existing `.stat-label` (`1.5px` at 28px ≈ 0.05em) is in
+    the right direction but could go a bit further.
+- **Line-height**: tight (`1.1`-`1.2`) for headlines, loose (`1.5`-`1.6`)
+  for any longer body/paragraph text. Current `.headline` (`1.15`) and
+  `.sub` (`1.32`) are close to right already — the sub could loosen
+  slightly if a scene ever needs 3+ lines of body copy.
+- **Gradient text** (`background: linear-gradient(...); background-clip:
+  text; color: transparent;`) is a good option for a single hero
+  stat/headline per reel (e.g. a big number or the reel's core claim) to
+  give it a "premium" metallic feel — don't overuse it, one gradient
+  moment per reel reads as a highlight; gradient on every headline reads
+  as noise.
+- Apply all of the above starting with the next reel built from scratch;
+  retrofitting an already-shipped reel is optional and only worth it if
+  that reel is getting re-rendered anyway for another reason.
+
 ## Directory sources & the module-script/CORS gotcha
 
 `reel-app/` is a React + Vite proof-of-concept validating that the same
