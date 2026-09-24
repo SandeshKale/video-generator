@@ -321,6 +321,12 @@ has the full provenance note.
 
 ## Cover images
 
+**See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
+pattern** (asset reuse, hero-graphic composition ideas, house-style
+carryover rules, rendering snippet, and a pre-ship checklist) — invoke it
+whenever a reel needs a cover. The summary below is kept for context but
+the skill is the authoritative, up-to-date version.
+
 A reel's Instagram cover/thumbnail should be a **purpose-built design**,
 not a screenshot pulled from the middle of the reel. A frame grab was
 tried first for `reel-openai-loop-method` and explicitly rejected: "why
