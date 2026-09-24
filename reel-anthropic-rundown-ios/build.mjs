@@ -128,9 +128,18 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overf
    as everything else, so it never desyncs and never fights the foreground
    for attention. */
 .bg-texture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
-.bg-dots{position:absolute;inset:-80px;background-image:radial-gradient(circle, rgba(255,255,255,0.09) 1.8px, transparent 1.8px);background-size:48px 48px;}
-.bg-hatch{position:absolute;inset:-120px;background-image:repeating-linear-gradient(118deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 2px, transparent 2px, transparent 68px);}
-.bg-glow{position:absolute;inset:-80px;background-image:radial-gradient(circle 240px, rgba(74,222,128,0.05), transparent 70%);}
+.bg-dots{position:absolute;inset:-80px;background-image:radial-gradient(circle, rgba(255,255,255,0.14) 2.2px, transparent 2.2px);background-size:50px 50px;}
+.bg-hatch{position:absolute;inset:-120px;background-image:repeating-linear-gradient(118deg, rgba(255,255,255,0.07) 0px, rgba(255,255,255,0.07) 2px, transparent 2px, transparent 68px);}
+.bg-glow{position:absolute;inset:-80px;background-image:radial-gradient(circle 260px, rgba(74,222,128,0.07), transparent 70%);}
+
+/* Vertical "data stream" accent lines in the left/right gutters — fills
+   the empty side margins with real, continuous motion (small glowing
+   dots traveling down a dashed line) instead of leaving them flat black.
+   Purely decorative, sits behind all scene content (z-index 0). */
+.streamline{position:absolute;top:150px;bottom:50px;width:2px;background:repeating-linear-gradient(180deg, rgba(255,255,255,0.14) 0px, rgba(255,255,255,0.14) 10px, transparent 10px, transparent 26px);z-index:0;}
+.streamline.left{left:64px;}
+.streamline.right{right:64px;}
+.stream-dot{position:absolute;width:10px;height:10px;border-radius:50%;left:-4px;box-shadow:0 0 12px 3px currentColor;}
 
 .chrome-top{position:absolute;top:0;left:0;right:0;height:110px;background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);}
 .brand-pic{position:absolute;top:56px;right:40px;width:76px;height:76px;border-radius:50%;border:3px solid rgba(255,255,255,0.92);object-fit:cover;z-index:50;will-change:transform;}
@@ -145,8 +154,12 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overf
    is distributed across the full frame instead of clumping at the top
    and leaving the bottom half empty. */
 .band{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;position:relative;}
-.band-top{flex:1.15 1 0;}
+.band-top{flex:1.25 1 0;}
 .band-bottom{padding-bottom:8px;}
+/* A band holding only a short headline doesn't need a full equal share —
+   free that space for the visual/icon band instead of leaving it centered
+   in a mostly-empty third of the frame. */
+.band-tight{flex:0.62 1 0;}
 
 .visual{width:100%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;position:relative;will-change:transform,opacity;z-index:1;}
 .headline{color:#fff;font-size:74px;font-weight:800;text-align:center;line-height:1.15;letter-spacing:-0.5px;width:100%;will-change:transform,opacity;z-index:1;}
@@ -188,6 +201,16 @@ svg{overflow:visible;}
   <div class="bg-dots" id="bgdots"></div>
   <div class="bg-glow" id="bgglow"></div>
 </div>
+<div class="streamline left">
+  <div class="stream-dot" id="sdot0" style="color:#4ade80;"></div>
+  <div class="stream-dot" id="sdot1" style="color:#60a5fa;"></div>
+  <div class="stream-dot" id="sdot2" style="color:#4ade80;"></div>
+</div>
+<div class="streamline right">
+  <div class="stream-dot" id="sdot3" style="color:#fbbf24;"></div>
+  <div class="stream-dot" id="sdot4" style="color:#4ade80;"></div>
+  <div class="stream-dot" id="sdot5" style="color:#60a5fa;"></div>
+</div>
 <div class="chrome-top"></div>
 <img class="brand-pic" id="brandpic" alt="" src="data:image/jpeg;base64,${profileB64}">
 
@@ -202,7 +225,7 @@ svg{overflow:visible;}
         <div class="icon-badge" id="s1phone" style="width:190px;height:190px;position:absolute;right:170px;bottom:0;color:#b9c6da;">${I.deviceMobile}</div>
       </div>
     </div>
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s1head">I shipped an iPhone app to the <span class="acc">App&nbsp;Store</span> without opening Xcode once.</div>
     </div>
     <div class="band band-bottom">
@@ -237,7 +260,7 @@ svg{overflow:visible;}
 
   <!-- SCENE 3: REFRAME 0:08-0:14 -->
   <div class="scene" id="sc3">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s3head" style="font-size:66px;">The system: let AI run the checklist. You click only what Apple locks.</div>
     </div>
     <div class="band band-top">
@@ -263,7 +286,7 @@ svg{overflow:visible;}
 
   <!-- SCENE 4: STEP 1 0:14-0:20 -->
   <div class="scene" id="sc4">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s4head" style="font-size:66px;">Step 1 &mdash; Point Codex at your project folder.</div>
     </div>
     <div class="band band-top">
@@ -292,7 +315,7 @@ svg{overflow:visible;}
 
   <!-- SCENE 5: STEP 2 0:20-0:26 -->
   <div class="scene" id="sc5">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s5head" style="font-size:66px;">Step 2 &mdash; Apple Developer Program.</div>
     </div>
     <div class="band band-top">
@@ -317,7 +340,7 @@ svg{overflow:visible;}
 
   <!-- SCENE 6: STEP 3 0:26-0:34 -->
   <div class="scene" id="sc6">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s6head" style="font-size:66px;">Step 3 &mdash; Codex audits the release gaps.</div>
     </div>
     <div class="band band-top">
@@ -337,25 +360,27 @@ svg{overflow:visible;}
 
   <!-- SCENE 7: STEP 4 0:34-0:42 -->
   <div class="scene" id="sc7">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s7head" style="font-size:62px;">Step 4 &mdash; Docs, archive, upload.</div>
     </div>
     <div class="band band-top">
-      <div class="chip-row" style="width:100%;align-items:flex-start;">
-        <div class="stack" id="s7docs" style="width:290px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:210px;height:210px;">${documentFolders}</div>
-          <div class="icon-badge" style="width:52px;height:52px;margin-top:10px;">${notion}</div>
-          <div style="color:#b9c6da;font-size:26px;font-weight:600;margin-top:6px;">privacy + support</div>
-        </div>
-        <div class="stack" id="s7arch" style="width:290px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:112px;height:112px;color:#fff;">${I.archive}</div>
-          <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Archive</div>
-          <div style="color:#b9c6da;font-size:26px;font-weight:600;">in Xcode</div>
-        </div>
-        <div class="stack" id="s7upload" style="width:290px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:112px;height:112px;color:#4ade80;">${I.upload}</div>
-          <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Upload</div>
-          <div style="color:#b9c6da;font-size:26px;font-weight:600;">App Store Connect</div>
+      <div id="s7card" style="width:100%;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.16);border-radius:36px;padding:56px 24px;box-sizing:border-box;will-change:transform,opacity;">
+        <div class="chip-row" style="width:100%;align-items:flex-start;">
+          <div class="stack" id="s7docs" style="width:290px;will-change:transform,opacity;">
+            <div class="icon-badge" style="width:210px;height:210px;">${documentFolders}</div>
+            <div class="icon-badge" style="width:52px;height:52px;margin-top:10px;">${notion}</div>
+            <div style="color:#b9c6da;font-size:26px;font-weight:600;margin-top:6px;">privacy + support</div>
+          </div>
+          <div class="stack" id="s7arch" style="width:290px;will-change:transform,opacity;">
+            <div class="icon-badge" style="width:112px;height:112px;color:#fff;">${I.archive}</div>
+            <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Archive</div>
+            <div style="color:#b9c6da;font-size:26px;font-weight:600;">in Xcode</div>
+          </div>
+          <div class="stack" id="s7upload" style="width:290px;will-change:transform,opacity;">
+            <div class="icon-badge" style="width:112px;height:112px;color:#4ade80;">${I.upload}</div>
+            <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Upload</div>
+            <div style="color:#b9c6da;font-size:26px;font-weight:600;">App Store Connect</div>
+          </div>
         </div>
       </div>
     </div>
@@ -384,16 +409,23 @@ svg{overflow:visible;}
 
   <!-- SCENE 9: PRO TIP 0:50-0:55 -->
   <div class="scene" id="sc9">
-    <div class="band">
+    <div class="band band-tight">
       <div class="headline" id="s9head" style="font-size:66px;">Pro tip:</div>
     </div>
     <div class="band band-top">
-      <div class="chip-row" style="width:100%;align-items:center;">
-        <div class="icon-badge" id="s9err" style="width:130px;height:130px;color:#f87171;">${I.alertCircle}</div>
-        <div class="icon-badge" id="s9arrow1" style="width:68px;height:68px;color:#8b96a8;">${I.arrowRight}</div>
-        <div class="icon-badge" id="s9chat" style="width:130px;height:130px;color:#fff;">${I.messageCircle}</div>
-        <div class="icon-badge" id="s9arrow2" style="width:68px;height:68px;color:#8b96a8;">${I.arrowRight}</div>
-        <div class="icon-badge" id="s9check" style="width:130px;height:130px;color:#4ade80;">${I.circleCheck}</div>
+      <div id="s9card" style="width:100%;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.16);border-radius:36px;padding:70px 30px;box-sizing:border-box;will-change:transform,opacity;">
+        <div class="chip-row" style="width:100%;align-items:center;">
+          <div class="icon-badge" id="s9err" style="width:150px;height:150px;color:#f87171;">${I.alertCircle}</div>
+          <div class="icon-badge" id="s9arrow1" style="width:76px;height:76px;color:#8b96a8;">${I.arrowRight}</div>
+          <div class="icon-badge" id="s9chat" style="width:150px;height:150px;color:#fff;">${I.messageCircle}</div>
+          <div class="icon-badge" id="s9arrow2" style="width:76px;height:76px;color:#8b96a8;">${I.arrowRight}</div>
+          <div class="icon-badge" id="s9check" style="width:150px;height:150px;color:#4ade80;">${I.circleCheck}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:28px;padding:0 6px;">
+          <span style="color:#b9c6da;font-size:24px;font-weight:700;">ERROR</span>
+          <span style="color:#b9c6da;font-size:24px;font-weight:700;">ASK CODEX</span>
+          <span style="color:#b9c6da;font-size:24px;font-weight:700;">FIXED</span>
+        </div>
       </div>
     </div>
     <div class="band band-bottom">
@@ -536,6 +568,7 @@ var SCENES = [
   }},
   { start: 34, duration: 8, el: $('sc7'), render: function(t){
       enter($('s7head'), eoc(t/0.5), 20, 1);
+      enter($('s7card'), eoc((t-0.1)/0.5), 26, 1);
       dropIn($('s7docs'), (t-0.3)/0.5, -200, -10);
       dropIn($('s7arch'), (t-0.55)/0.5, -200, 0);
       dropIn($('s7upload'), (t-0.8)/0.5, -200, 10);
@@ -554,6 +587,7 @@ var SCENES = [
   }},
   { start: 50, duration: 5, el: $('sc9'), render: function(t){
       enter($('s9head'), eoc(t/0.4), 18, 1);
+      enter($('s9card'), eoc((t-0.1)/0.5), 26, 1);
       dropIn($('s9err'), (t-0.25)/0.4, -180, -14);
       runIn($('s9arrow1'), (t-0.45)/0.3, -50);
       dropIn($('s9chat'), (t-0.6)/0.4, -180, 0);
@@ -590,6 +624,18 @@ window.__seek = function(t){
   $('bgdots').style.transform = 'translate(' + ((t*13)%48) + 'px,' + ((t*9)%48) + 'px)';
   $('bghatch').style.transform = 'translate(' + (-(t*10)%68) + 'px, ' + ((t*4)%68) + 'px)';
   $('bgglow').style.transform = 'translate(' + (140*Math.sin(t*0.18)) + 'px, ' + (220*Math.cos(t*0.13)) + 'px)';
+
+  // Streamline dots: continuous top-to-bottom travel, staggered per dot so
+  // the gutters always have something moving through them regardless of
+  // which scene is active — fills the side margins without depending on
+  // any one scene's content.
+  var streamH = 1920 - 150 - 50;
+  for (var si = 0; si < 6; si++) {
+    var speed = 0.14 + si * 0.015;
+    var phase = (t * speed + si / 6) % 1;
+    $('sdot' + si).style.top = (phase * streamH) + 'px';
+    $('sdot' + si).style.opacity = 0.35 + 0.35 * Math.sin(phase * Math.PI);
+  }
 };
 
 window.__autoplay = function(){
