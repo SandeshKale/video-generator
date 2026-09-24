@@ -1,0 +1,21 @@
+Fonts vendored in this folder:
+
+- poppins/poppins-latin-800-normal.woff2
+- poppins/poppins-latin-900-normal.woff2
+- inter/inter-latin-500-normal.woff2
+- inter/inter-latin-600-normal.woff2
+- inter/inter-latin-700-normal.woff2
+- jetbrains-mono/jetbrains-mono-latin-500-normal.woff2
+- jetbrains-mono/jetbrains-mono-latin-700-normal.woff2
+
+Extracted from the @fontsource/poppins, @fontsource/inter and
+@fontsource/jetbrains-mono npm packages (v5.3.0), which repackage the
+original Google Fonts / JetBrains releases of Poppins (Indian Type
+Foundry), Inter (Rasmus Andersson), and JetBrains Mono (JetBrains).
+
+Both are licensed under the SIL Open Font License, Version 1.1 — free for
+commercial and non-commercial use, including embedding in video renders.
+Full license text: https://openfontlicense.org
+
+Source packages: https://www.npmjs.com/package/@fontsource/poppins
+                  https://www.npmjs.com/package/@fontsource/inter
