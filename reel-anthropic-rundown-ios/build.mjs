@@ -121,36 +121,44 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overf
     radial-gradient(ellipse 900px 700px at 80% 86%, rgba(24,144,190,0.28), transparent 62%),
     radial-gradient(ellipse 520px 400px at 55% 50%, rgba(74,222,128,0.08), transparent 70%),
     linear-gradient(180deg,#0e0e12,#15121f 50%,#0e0e12);}
+
+/* Textured moving background: a slow-drifting dot grid + a slower diagonal
+   hatch layer (parallax), standing in for the old per-scene watermark icon.
+   Kept very low-opacity and driven off window.__seek(t) each frame, same
+   as everything else, so it never desyncs and never fights the foreground
+   for attention. */
+.bg-texture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.bg-dots{position:absolute;inset:-80px;background-image:radial-gradient(circle, rgba(255,255,255,0.09) 1.8px, transparent 1.8px);background-size:48px 48px;}
+.bg-hatch{position:absolute;inset:-120px;background-image:repeating-linear-gradient(118deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 2px, transparent 2px, transparent 68px);}
+.bg-glow{position:absolute;inset:-80px;background-image:radial-gradient(circle 240px, rgba(74,222,128,0.05), transparent 70%);}
+
 .chrome-top{position:absolute;top:0;left:0;right:0;height:110px;background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);}
 .brand-pic{position:absolute;top:56px;right:40px;width:76px;height:76px;border-radius:50%;border:3px solid rgba(255,255,255,0.92);object-fit:cover;z-index:50;will-change:transform;}
 .progress{position:absolute;bottom:26px;left:40px;right:40px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;}
 .progress-fill{position:absolute;top:0;left:0;bottom:0;background:#fff;width:0%;}
 
-.safe{position:absolute;top:150px;left:0;right:0;bottom:50px;}
-.scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:stretch;padding:0 56px;box-sizing:border-box;}
+.safe{position:absolute;top:150px;left:0;right:0;bottom:50px;z-index:1;}
+.scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:stretch;padding:0 48px;box-sizing:border-box;}
 .scene.active{display:flex;}
 
 /* Three equal-height bands span the whole safe area so a scene's content
    is distributed across the full frame instead of clumping at the top
    and leaving the bottom half empty. */
-.band{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;position:relative;}
+.band{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;position:relative;}
 .band-top{flex:1.15 1 0;}
 .band-bottom{padding-bottom:8px;}
 
-.bg-icon{position:absolute;left:50%;top:50%;width:980px;height:980px;margin:-490px 0 0 -490px;color:rgba(255,255,255,0.045);z-index:0;pointer-events:none;}
-.bg-icon svg{width:100%;height:100%;}
-
 .visual{width:100%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;position:relative;will-change:transform,opacity;z-index:1;}
-.headline{color:#fff;font-size:58px;font-weight:700;text-align:center;line-height:1.22;width:100%;will-change:transform,opacity;z-index:1;}
+.headline{color:#fff;font-size:74px;font-weight:800;text-align:center;line-height:1.15;letter-spacing:-0.5px;width:100%;will-change:transform,opacity;z-index:1;}
 .headline .acc{color:#4ade80;}
 .headline .amb{color:#fbbf24;}
-.sub{color:#9db0c9;font-size:34px;font-weight:500;text-align:center;line-height:1.4;width:100%;will-change:transform,opacity;z-index:1;}
+.sub{color:#b9c6da;font-size:40px;font-weight:600;text-align:center;line-height:1.32;width:100%;will-change:transform,opacity;z-index:1;}
 .strike{text-decoration:line-through;color:#6b7280;}
 
-.chips{width:100%;display:flex;flex-direction:column;gap:18px;z-index:1;}
-.chip-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
-.chip{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.16);border-radius:18px;padding:20px 28px;color:#fff;font-size:30px;font-weight:600;will-change:transform,opacity;}
-.chip-icon{width:36px;height:36px;flex:0 0 36px;color:#4ade80;}
+.chips{width:100%;display:flex;flex-direction:column;gap:20px;z-index:1;}
+.chip-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.chip{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.2);border-radius:20px;padding:24px 32px;color:#fff;font-size:36px;font-weight:700;will-change:transform,opacity;}
+.chip-icon{width:44px;height:44px;flex:0 0 44px;color:#4ade80;}
 .chip-icon svg{width:100%;height:100%;}
 .chip.amber .chip-icon{color:#fbbf24;}
 .chip.red .chip-icon{color:#f87171;}
@@ -158,23 +166,28 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overf
 .icon-badge{width:100%;height:100%;color:#fff;}
 .icon-badge svg{width:100%;height:100%;}
 
-.stack{display:flex;flex-direction:column;align-items:center;gap:6px;}
-.big-stat{color:#fbbf24;font-size:88px;font-weight:900;line-height:1;}
-.stat-label{color:#9db0c9;font-size:24px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+.stack{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.big-stat{color:#fbbf24;font-size:120px;font-weight:900;line-height:1;letter-spacing:-1px;}
+.stat-label{color:#b9c6da;font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-top:8px;}
 
-.warn-banner{display:flex;align-items:center;gap:14px;background:rgba(248,113,113,0.14);border:1px solid rgba(248,113,113,0.5);border-radius:18px;padding:20px 28px;color:#fca5a5;font-size:30px;font-weight:700;will-change:transform,opacity;}
-.warn-banner svg{width:40px;height:40px;flex:0 0 40px;color:#f87171;}
+.warn-banner{display:flex;align-items:center;gap:18px;background:rgba(248,113,113,0.16);border:2px solid rgba(248,113,113,0.55);border-radius:20px;padding:26px 34px;color:#fecaca;font-size:38px;font-weight:800;will-change:transform,opacity;}
+.warn-banner svg{width:50px;height:50px;flex:0 0 50px;color:#f87171;}
 
-.cta-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:26px;padding:40px 56px;display:flex;flex-direction:column;align-items:center;gap:18px;will-change:transform,opacity;}
-.cta-pic{width:130px;height:130px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.92);}
-.cta-main{color:#fff;font-size:50px;font-weight:800;}
-.cta-sub{color:#9db8e8;font-size:32px;font-weight:500;}
+.cta-card{background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.18);border-radius:30px;padding:48px 64px;display:flex;flex-direction:column;align-items:center;gap:22px;will-change:transform,opacity;}
+.cta-pic{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.92);}
+.cta-main{color:#fff;font-size:64px;font-weight:800;}
+.cta-sub{color:#a8c0f5;font-size:38px;font-weight:600;}
 svg{overflow:visible;}
 </style>
 </head>
 <body>
 <div class="marker" id="marker"></div>
 <div class="bg-wash" id="bgwash"></div>
+<div class="bg-texture">
+  <div class="bg-hatch" id="bghatch"></div>
+  <div class="bg-dots" id="bgdots"></div>
+  <div class="bg-glow" id="bgglow"></div>
+</div>
 <div class="chrome-top"></div>
 <img class="brand-pic" id="brandpic" alt="" src="data:image/jpeg;base64,${profileB64}">
 
@@ -182,12 +195,11 @@ svg{overflow:visible;}
 
   <!-- SCENE 1: HOOK 0:00-0:04 -->
   <div class="scene" id="sc1">
-    <div class="bg-icon">${I.rocket}</div>
     <div class="band band-top">
-      <div class="visual" id="s1visual" style="width:760px;height:600px;">
-        <div class="icon-badge" id="s1human" style="width:320px;height:406px;position:absolute;left:40px;top:10px;">${humanSvg}</div>
-        <div class="icon-badge" id="s1apple" style="width:220px;height:270px;position:absolute;right:30px;top:40px;">${apple}</div>
-        <div class="icon-badge" id="s1phone" style="width:150px;height:150px;position:absolute;right:150px;bottom:0;color:#9db0c9;">${I.deviceMobile}</div>
+      <div class="visual" id="s1visual" style="width:900px;height:700px;">
+        <div class="icon-badge" id="s1human" style="width:400px;height:508px;position:absolute;left:10px;top:0;">${humanSvg}</div>
+        <div class="icon-badge" id="s1apple" style="width:280px;height:344px;position:absolute;right:0px;top:30px;">${apple}</div>
+        <div class="icon-badge" id="s1phone" style="width:190px;height:190px;position:absolute;right:170px;bottom:0;color:#b9c6da;">${I.deviceMobile}</div>
       </div>
     </div>
     <div class="band">
@@ -207,12 +219,11 @@ svg{overflow:visible;}
 
   <!-- SCENE 2: TWIST 0:04-0:08 -->
   <div class="scene" id="sc2">
-    <div class="bg-icon">${I.terminal2}</div>
     <div class="band band-top">
-      <div class="visual" id="s2visual" style="width:640px;height:640px;">${manQuestionMarks}</div>
+      <div class="visual" id="s2visual" style="width:780px;height:780px;">${manQuestionMarks}</div>
     </div>
     <div class="band">
-      <div class="headline" id="s2head" style="font-size:68px;">Well... <span class="strike" id="s2strike">almost</span>.</div>
+      <div class="headline" id="s2head" style="font-size:84px;">Well... <span class="strike" id="s2strike">almost</span>.</div>
       <div class="sub" id="s2sub">There's still one Mac-only click.</div>
     </div>
     <div class="band band-bottom">
@@ -226,44 +237,42 @@ svg{overflow:visible;}
 
   <!-- SCENE 3: REFRAME 0:08-0:14 -->
   <div class="scene" id="sc3">
-    <div class="bg-icon">${apple}</div>
     <div class="band">
-      <div class="headline" id="s3head" style="font-size:54px;">The system: let AI run the checklist. You click only what Apple locks.</div>
+      <div class="headline" id="s3head" style="font-size:66px;">The system: let AI run the checklist. You click only what Apple locks.</div>
     </div>
     <div class="band band-top">
       <div class="chip-row" style="width:100%;align-items:center;">
-        <div class="stack" id="s3codex" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:26px;padding:44px 34px;width:250px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:100px;height:100px;">${openai}</div>
-          <div style="color:#fff;font-size:28px;font-weight:700;margin-top:12px;">Codex</div>
-          <div style="color:#9db0c9;font-size:22px;">scans &amp; audits</div>
+        <div class="stack" id="s3codex" style="background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.18);border-radius:30px;padding:52px 38px;width:290px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:124px;height:124px;">${openai}</div>
+          <div style="color:#fff;font-size:34px;font-weight:800;margin-top:16px;">Codex</div>
+          <div style="color:#b9c6da;font-size:26px;font-weight:600;">scans &amp; audits</div>
         </div>
-        <div class="icon-badge" id="s3arrow" style="width:64px;height:64px;align-self:center;color:#6b7280;">${I.arrowRight}</div>
-        <div class="stack" id="s3xcode" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:26px;padding:44px 34px;width:250px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:100px;height:100px;color:#fff;">${I.terminal2}</div>
-          <div style="color:#fff;font-size:28px;font-weight:700;margin-top:12px;">Xcode</div>
-          <div style="color:#9db0c9;font-size:22px;">builds &amp; signs</div>
+        <div class="icon-badge" id="s3arrow" style="width:76px;height:76px;align-self:center;color:#8b96a8;">${I.arrowRight}</div>
+        <div class="stack" id="s3xcode" style="background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.18);border-radius:30px;padding:52px 38px;width:290px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:124px;height:124px;color:#fff;">${I.terminal2}</div>
+          <div style="color:#fff;font-size:34px;font-weight:800;margin-top:16px;">Xcode</div>
+          <div style="color:#b9c6da;font-size:26px;font-weight:600;">builds &amp; signs</div>
         </div>
       </div>
     </div>
     <div class="band band-bottom">
-      <div class="icon-badge" id="s3apple" style="width:120px;height:144px;">${apple}</div>
-      <div class="sub" id="s3sub2" style="font-size:28px;">Apple Developer owns membership.</div>
+      <div class="icon-badge" id="s3apple" style="width:150px;height:180px;">${apple}</div>
+      <div class="sub" id="s3sub2" style="font-size:34px;">Apple Developer owns membership.</div>
     </div>
   </div>
 
   <!-- SCENE 4: STEP 1 0:14-0:20 -->
   <div class="scene" id="sc4">
-    <div class="bg-icon">${I.fileText}</div>
     <div class="band">
-      <div class="headline" id="s4head" style="font-size:54px;">Step 1 &mdash; Point Codex at your project folder.</div>
+      <div class="headline" id="s4head" style="font-size:66px;">Step 1 &mdash; Point Codex at your project folder.</div>
     </div>
     <div class="band band-top">
-      <div class="visual" id="s4ringwrap" style="width:560px;height:560px;">
+      <div class="visual" id="s4ringwrap" style="width:660px;height:660px;">
         <svg viewBox="0 0 200 200" style="width:100%;height:100%;">
-          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="10"/>
-          <circle id="s4ring" cx="100" cy="100" r="86" fill="none" stroke="#4ade80" stroke-width="10" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="11"/>
+          <circle id="s4ring" cx="100" cy="100" r="86" fill="none" stroke="#4ade80" stroke-width="11" stroke-linecap="round" transform="rotate(-90 100 100)"/>
         </svg>
-        <div class="icon-badge" style="width:76px;height:76px;position:absolute;color:#9db0c9;">${I.fileText}</div>
+        <div class="icon-badge" style="width:92px;height:92px;position:absolute;color:#b9c6da;">${I.fileText}</div>
       </div>
     </div>
     <div class="band band-bottom">
@@ -283,39 +292,37 @@ svg{overflow:visible;}
 
   <!-- SCENE 5: STEP 2 0:20-0:26 -->
   <div class="scene" id="sc5">
-    <div class="bg-icon">${I.currencyDollar}</div>
     <div class="band">
-      <div class="headline" id="s5head" style="font-size:54px;">Step 2 &mdash; Apple Developer Program.</div>
+      <div class="headline" id="s5head" style="font-size:66px;">Step 2 &mdash; Apple Developer Program.</div>
     </div>
     <div class="band band-top">
       <div class="chip-row">
-        <div class="stack" id="s5cost" style="background:rgba(251,191,36,0.10);border:1px solid rgba(251,191,36,0.4);border-radius:26px;padding:46px 40px;width:280px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:72px;height:72px;color:#fbbf24;">${I.currencyDollar}</div>
-          <div class="big-stat" id="s5costnum" style="font-size:72px;">$0</div>
+        <div class="stack" id="s5cost" style="background:rgba(251,191,36,0.12);border:2px solid rgba(251,191,36,0.45);border-radius:30px;padding:54px 46px;width:320px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:84px;height:84px;color:#fbbf24;">${I.currencyDollar}</div>
+          <div class="big-stat" id="s5costnum">$0</div>
           <div class="stat-label">per year</div>
         </div>
-        <div class="stack" id="s5time" style="background:rgba(251,191,36,0.10);border:1px solid rgba(251,191,36,0.4);border-radius:26px;padding:46px 40px;width:280px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:72px;height:72px;color:#fbbf24;">${I.clock}</div>
-          <div class="big-stat" id="s5timenum" style="font-size:72px;">0h</div>
+        <div class="stack" id="s5time" style="background:rgba(251,191,36,0.12);border:2px solid rgba(251,191,36,0.45);border-radius:30px;padding:54px 46px;width:320px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:84px;height:84px;color:#fbbf24;">${I.clock}</div>
+          <div class="big-stat" id="s5timenum">0h</div>
           <div class="stat-label">to approve</div>
         </div>
       </div>
     </div>
     <div class="band band-bottom">
       <div class="sub" id="s5sub">Start this first &mdash; it's the only step with a waiting line.</div>
-      <div class="icon-badge" id="s5apple" style="width:100px;height:120px;">${apple}</div>
+      <div class="icon-badge" id="s5apple" style="width:118px;height:142px;">${apple}</div>
     </div>
   </div>
 
   <!-- SCENE 6: STEP 3 0:26-0:34 -->
   <div class="scene" id="sc6">
-    <div class="bg-icon">${I.search}</div>
     <div class="band">
-      <div class="headline" id="s6head" style="font-size:54px;">Step 3 &mdash; Codex audits the release gaps.</div>
+      <div class="headline" id="s6head" style="font-size:66px;">Step 3 &mdash; Codex audits the release gaps.</div>
     </div>
     <div class="band band-top">
-      <div class="visual" id="s6illus" style="width:540px;height:540px;">${authFormFields}</div>
-      <div class="icon-badge" id="s6search" style="width:68px;height:68px;position:absolute;color:#4ade80;">${I.search}</div>
+      <div class="visual" id="s6illus" style="width:640px;height:640px;">${authFormFields}</div>
+      <div class="icon-badge" id="s6search" style="width:80px;height:80px;position:absolute;color:#4ade80;">${I.search}</div>
     </div>
     <div class="band band-bottom">
       <div class="chips">
@@ -323,47 +330,45 @@ svg{overflow:visible;}
           ${chip(I.listCheck, 'Export compliance', 's6c0')}
           ${chip(I.shieldCheck, 'Signing team', 's6c1')}
         </div>
-        <div class="sub" id="s6sub" style="font-size:30px;">Every check shows its evidence.</div>
+        <div class="sub" id="s6sub" style="font-size:36px;">Every check shows its evidence.</div>
       </div>
     </div>
   </div>
 
   <!-- SCENE 7: STEP 4 0:34-0:42 -->
   <div class="scene" id="sc7">
-    <div class="bg-icon">${I.upload}</div>
     <div class="band">
-      <div class="headline" id="s7head" style="font-size:52px;">Step 4 &mdash; Docs, archive, upload.</div>
+      <div class="headline" id="s7head" style="font-size:62px;">Step 4 &mdash; Docs, archive, upload.</div>
     </div>
     <div class="band band-top">
       <div class="chip-row" style="width:100%;align-items:flex-start;">
-        <div class="stack" id="s7docs" style="width:250px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:180px;height:180px;">${documentFolders}</div>
-          <div class="icon-badge" style="width:44px;height:44px;margin-top:8px;">${notion}</div>
-          <div style="color:#9db0c9;font-size:22px;margin-top:4px;">privacy + support</div>
+        <div class="stack" id="s7docs" style="width:290px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:210px;height:210px;">${documentFolders}</div>
+          <div class="icon-badge" style="width:52px;height:52px;margin-top:10px;">${notion}</div>
+          <div style="color:#b9c6da;font-size:26px;font-weight:600;margin-top:6px;">privacy + support</div>
         </div>
-        <div class="stack" id="s7arch" style="width:250px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:96px;height:96px;color:#fff;">${I.archive}</div>
-          <div style="color:#fff;font-size:26px;font-weight:700;margin-top:10px;">Archive</div>
-          <div style="color:#9db0c9;font-size:22px;">in Xcode</div>
+        <div class="stack" id="s7arch" style="width:290px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:112px;height:112px;color:#fff;">${I.archive}</div>
+          <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Archive</div>
+          <div style="color:#b9c6da;font-size:26px;font-weight:600;">in Xcode</div>
         </div>
-        <div class="stack" id="s7upload" style="width:250px;will-change:transform,opacity;">
-          <div class="icon-badge" style="width:96px;height:96px;color:#4ade80;">${I.upload}</div>
-          <div style="color:#fff;font-size:26px;font-weight:700;margin-top:10px;">Upload</div>
-          <div style="color:#9db0c9;font-size:22px;">App Store Connect</div>
+        <div class="stack" id="s7upload" style="width:290px;will-change:transform,opacity;">
+          <div class="icon-badge" style="width:112px;height:112px;color:#4ade80;">${I.upload}</div>
+          <div style="color:#fff;font-size:30px;font-weight:800;margin-top:12px;">Upload</div>
+          <div style="color:#b9c6da;font-size:26px;font-weight:600;">App Store Connect</div>
         </div>
       </div>
     </div>
     <div class="band band-bottom">
-      <div class="icon-badge" id="s7apple" style="width:96px;height:116px;">${apple}</div>
-      <div class="sub" id="s7sub2" style="font-size:28px;">Same bundle ID, start to finish.</div>
+      <div class="icon-badge" id="s7apple" style="width:112px;height:136px;">${apple}</div>
+      <div class="sub" id="s7sub2" style="font-size:34px;">Same bundle ID, start to finish.</div>
     </div>
   </div>
 
   <!-- SCENE 8: WARNING 0:42-0:50 -->
   <div class="scene" id="sc8">
-    <div class="bg-icon">${I.lock}</div>
     <div class="band band-top">
-      <div class="visual" id="s8illus" style="width:600px;height:600px;">${passwordLockKey}</div>
+      <div class="visual" id="s8illus" style="width:700px;height:700px;">${passwordLockKey}</div>
     </div>
     <div class="band">
       <div class="warn-banner" id="s8warn">${I.alertTriangle}<span>Never paste passwords or 2FA codes into Codex.</span></div>
@@ -373,35 +378,33 @@ svg{overflow:visible;}
         <div class="chip red"><span class="chip-icon">${I.lock}</span><span>Passwords</span></div>
         <div class="chip red"><span class="chip-icon">${I.key}</span><span>2FA codes</span></div>
       </div>
-      <div class="sub" id="s8sub2" style="font-size:28px;">Do those steps yourself, in Apple's own surfaces.</div>
+      <div class="sub" id="s8sub2" style="font-size:34px;">Do those steps yourself, in Apple's own surfaces.</div>
     </div>
   </div>
 
   <!-- SCENE 9: PRO TIP 0:50-0:55 -->
   <div class="scene" id="sc9">
-    <div class="bg-icon">${I.messageCircle}</div>
     <div class="band">
-      <div class="headline" id="s9head" style="font-size:52px;">Pro tip:</div>
+      <div class="headline" id="s9head" style="font-size:66px;">Pro tip:</div>
     </div>
     <div class="band band-top">
       <div class="chip-row" style="width:100%;align-items:center;">
-        <div class="icon-badge" id="s9err" style="width:104px;height:104px;color:#f87171;">${I.alertCircle}</div>
-        <div class="icon-badge" id="s9arrow1" style="width:56px;height:56px;color:#6b7280;">${I.arrowRight}</div>
-        <div class="icon-badge" id="s9chat" style="width:104px;height:104px;color:#fff;">${I.messageCircle}</div>
-        <div class="icon-badge" id="s9arrow2" style="width:56px;height:56px;color:#6b7280;">${I.arrowRight}</div>
-        <div class="icon-badge" id="s9check" style="width:104px;height:104px;color:#4ade80;">${I.circleCheck}</div>
+        <div class="icon-badge" id="s9err" style="width:130px;height:130px;color:#f87171;">${I.alertCircle}</div>
+        <div class="icon-badge" id="s9arrow1" style="width:68px;height:68px;color:#8b96a8;">${I.arrowRight}</div>
+        <div class="icon-badge" id="s9chat" style="width:130px;height:130px;color:#fff;">${I.messageCircle}</div>
+        <div class="icon-badge" id="s9arrow2" style="width:68px;height:68px;color:#8b96a8;">${I.arrowRight}</div>
+        <div class="icon-badge" id="s9check" style="width:130px;height:130px;color:#4ade80;">${I.circleCheck}</div>
       </div>
     </div>
     <div class="band band-bottom">
-      <div class="sub" id="s9sub" style="font-size:36px;">Paste the exact Apple error into Codex. Ask for the smallest next step.</div>
+      <div class="sub" id="s9sub" style="font-size:42px;">Paste the exact Apple error into Codex. Ask for the smallest next step.</div>
     </div>
   </div>
 
   <!-- SCENE 10: CTA 0:55-1:00 -->
   <div class="scene" id="sc10">
-    <div class="bg-icon">${I.rocket}</div>
     <div class="band band-top">
-      <div class="icon-badge" id="s10human" style="width:320px;height:406px;">${humanSvg}</div>
+      <div class="icon-badge" id="s10human" style="width:400px;height:508px;">${humanSvg}</div>
     </div>
     <div class="band">
       <div class="cta-card" id="s10card">
@@ -435,32 +438,69 @@ function enter(el, e, driftY, extraScale){
   el.style.transform = 'translateY(' + (driftY*(1-ee)) + 'px) scale(' + ((0.92+0.08*ee) * (extraScale||1)) + ')';
 }
 
+// --- extra entrance styles for tumbling / dropping / running motion ---
+function easeOutBack(x){ var c1=1.70158, c3=c1+1; x=clamp(x,0,1); return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2); }
+function easeOutBounce(x){
+  x = clamp(x,0,1);
+  var n1=7.5625, d1=2.75;
+  if (x < 1/d1) return n1*x*x;
+  if (x < 2/d1) { x -= 1.5/d1; return n1*x*x + 0.75; }
+  if (x < 2.5/d1) { x -= 2.25/d1; return n1*x*x + 0.9375; }
+  x -= 2.625/d1; return n1*x*x + 0.984375;
+}
+// Drops from above and bounces to a settled stop — for icons/chips that
+// should feel like they landed with a bit of weight.
+function dropIn(el, e, dropHeight, rotateDeg){
+  if(!el) return;
+  var ee = clamp(e,0,1);
+  var b = easeOutBounce(ee);
+  el.style.opacity = clamp(ee*3,0,1);
+  el.style.transform = 'translateY(' + (dropHeight*(1-b)) + 'px) rotate(' + ((rotateDeg||0)*(1-b)) + 'deg)';
+}
+// Rotates in from an angle while popping past 100% scale and settling —
+// for elements that should feel like they tumbled into frame.
+function tumbleIn(el, e, rotateFromDeg){
+  if(!el) return;
+  var ee = clamp(e,0,1);
+  var b = easeOutBack(ee);
+  el.style.opacity = clamp(ee*2.4,0,1);
+  el.style.transform = 'rotate(' + ((rotateFromDeg||90)*(1-b)) + 'deg) scale(' + (0.55+0.45*b) + ')';
+}
+// Slides in horizontally with a slight lean, like it ran into place.
+function runIn(el, e, fromX){
+  if(!el) return;
+  var ee = clamp(e,0,1);
+  var eo = eoc(ee);
+  el.style.opacity = clamp(ee*2.6,0,1);
+  el.style.transform = 'translateX(' + ((fromX||0)*(1-eo)) + 'px) rotate(' + (-7*(1-eo)) + 'deg)';
+}
+
 var C4 = 2*Math.PI*86;
 $('s4ring').style.strokeDasharray = C4;
 $('s4ring').style.strokeDashoffset = C4;
 
 var SCENES = [
   { start: 0,  duration: 4, el: $('sc1'), render: function(t){
-      enter($('s1human'), eoc(t/0.6), -30, 1 + 0.02*Math.sin(t*2));
-      enter($('s1apple'), eoc((t-0.15)/0.6), -30, 1 + 0.02*Math.sin(t*2.2));
-      enter($('s1phone'), eoc((t-0.3)/0.6), -20, 1);
+      runIn($('s1human'), t/0.55, -180);
+      dropIn($('s1apple'), (t-0.2)/0.55, -260, 22);
+      tumbleIn($('s1phone'), (t-0.4)/0.5, -110);
       enter($('s1head'), eoc((t-0.35)/0.55), 22, 1 + 0.012*Math.sin(t*2));
-      enter($('s1chip1'), eoc((t-0.85)/0.45), 24, 1);
-      enter($('s1chip2'), eoc((t-1.05)/0.45), 24, 1);
+      dropIn($('s1chip1'), (t-0.85)/0.4, -120, -8);
+      dropIn($('s1chip2'), (t-1.05)/0.4, -120, 8);
   }},
   { start: 4,  duration: 4, el: $('sc2'), render: function(t){
-      enter($('s2visual'), eoc(t/0.55), -24, 1 + 0.02*Math.sin(t*1.8));
+      tumbleIn($('s2visual'), t/0.55, -140);
       enter($('s2head'), eoc((t-0.15)/0.5), 20, 1);
       $('s2strike').style.opacity = t > 0.9 ? 1 : 0.15;
       enter($('s2sub'), eoc((t-1.1)/0.5), 18, 1);
-      enter($('s2chip1'), eoc((t-1.5)/0.45), 20, 1);
+      dropIn($('s2chip1'), (t-1.5)/0.4, -110, 10);
   }},
   { start: 8,  duration: 6, el: $('sc3'), render: function(t){
       enter($('s3head'), eoc(t/0.55), 20, 1);
-      enter($('s3codex'), eoc((t-0.35)/0.55), -20, 1 + 0.015*Math.sin(t*2));
-      enter($('s3arrow'), eoc((t-0.55)/0.4), 0, 1);
-      enter($('s3xcode'), eoc((t-0.7)/0.55), -20, 1 + 0.015*Math.sin(t*2+1));
-      enter($('s3apple'), eoc((t-1.1)/0.5), 18, 1 + 0.02*Math.sin(t*1.6));
+      dropIn($('s3codex'), (t-0.35)/0.5, -220, -14);
+      runIn($('s3arrow'), (t-0.55)/0.4, -70);
+      dropIn($('s3xcode'), (t-0.7)/0.5, -220, 14);
+      tumbleIn($('s3apple'), (t-1.1)/0.5, 130);
       enter($('s3sub2'), eoc((t-1.35)/0.5), 16, 1);
   }},
   { start: 14, duration: 6, el: $('sc4'), render: function(t){
@@ -469,61 +509,62 @@ var SCENES = [
       $('s4ring').style.strokeDashoffset = C4 * (1-re);
       $('s4ring').style.strokeOpacity = 0.75 + 0.25*Math.sin(t*2.1);
       $('s4ringwrap').style.opacity = 0.3 + 0.7*eoc((t-0.1)/0.5);
+      var rots = [-14,-7,0,7,14];
       ['s4c0','s4c1','s4c2','s4c3','s4c4'].forEach(function(id,i){
-        enter($(id), eoc((t-0.6-0.15*i)/0.45), 22, 1);
+        dropIn($(id), (t-0.6-0.13*i)/0.4, -140, rots[i]);
       });
   }},
   { start: 20, duration: 6, el: $('sc5'), render: function(t){
       enter($('s5head'), eoc(t/0.5), 20, 1);
-      enter($('s5cost'), eoc((t-0.3)/0.55), -20, 1 + 0.02*Math.sin(t*2));
-      enter($('s5time'), eoc((t-0.45)/0.55), -20, 1 + 0.02*Math.sin(t*2+1));
+      dropIn($('s5cost'), (t-0.3)/0.5, -240, -12);
+      dropIn($('s5time'), (t-0.45)/0.5, -240, 12);
       $('s5costnum').textContent = '$' + Math.round(99*eoc((t-0.35)/0.9));
       $('s5timenum').textContent = Math.round(48*eoc((t-0.5)/0.9)) + 'h';
       enter($('s5sub'), eoc((t-1.3)/0.5), 18, 1);
-      enter($('s5apple'), eoc((t-1.6)/0.5), 16, 1 + 0.02*Math.sin(t*1.6));
+      tumbleIn($('s5apple'), (t-1.6)/0.5, -110);
   }},
   { start: 26, duration: 8, el: $('sc6'), render: function(t){
       enter($('s6head'), eoc(t/0.5), 20, 1);
-      enter($('s6illus'), eoc((t-0.25)/0.6), -24, 1 + 0.015*Math.sin(t*1.7));
+      tumbleIn($('s6illus'), (t-0.25)/0.6, -130);
       var sx = 130 + 260*((t*0.5) % 1);
       $('s6search').style.left = sx + 'px';
       $('s6search').style.top = (170 + 60*Math.sin(t*1.3)) + 'px';
       $('s6search').style.opacity = t > 0.6 ? 0.9 : 0;
-      $('s6c0') && enter($('s6c0'), eoc((t-1.0)/0.5), 22, 1);
-      $('s6c1') && enter($('s6c1'), eoc((t-1.2)/0.5), 22, 1);
+      $('s6c0') && dropIn($('s6c0'), (t-1.0)/0.4, -120, -10);
+      $('s6c1') && dropIn($('s6c1'), (t-1.2)/0.4, -120, 10);
       enter($('s6sub'), eoc((t-1.6)/0.5), 18, 1);
   }},
   { start: 34, duration: 8, el: $('sc7'), render: function(t){
       enter($('s7head'), eoc(t/0.5), 20, 1);
-      enter($('s7docs'), eoc((t-0.3)/0.55), -20, 1);
-      enter($('s7arch'), eoc((t-0.55)/0.55), -20, 1);
-      enter($('s7upload'), eoc((t-0.8)/0.55), -20, 1 + 0.02*Math.sin(t*2));
-      enter($('s7apple'), eoc((t-1.3)/0.5), 16, 1 + 0.02*Math.sin(t*1.6));
+      dropIn($('s7docs'), (t-0.3)/0.5, -200, -10);
+      dropIn($('s7arch'), (t-0.55)/0.5, -200, 0);
+      dropIn($('s7upload'), (t-0.8)/0.5, -200, 10);
+      tumbleIn($('s7apple'), (t-1.3)/0.5, 120);
       enter($('s7sub2'), eoc((t-1.55)/0.5), 16, 1);
   }},
   { start: 42, duration: 8, el: $('sc8'), render: function(t){
-      enter($('s8illus'), eoc(t/0.55), -24, 1 + 0.015*Math.sin(t*1.6));
+      dropIn($('s8illus'), t/0.6, -260, -6);
       var we = eoc((t-0.5)/0.5);
       $('s8warn').style.opacity = we;
-      var shakeX = t < 0.85 ? Math.sin(t*38) * 6 : 0;
+      var shakeX = t < 0.85 ? Math.sin(t*38) * 8 : 0;
       $('s8warn').style.transform = 'translateY(' + (18*(1-we)) + 'px) translateX(' + shakeX + 'px)';
-      enter($('.chip.red') && document.querySelectorAll('#sc8 .chip')[0], eoc((t-1.0)/0.45), 20, 1);
-      enter(document.querySelectorAll('#sc8 .chip')[1], eoc((t-1.15)/0.45), 20, 1);
+      dropIn(document.querySelectorAll('#sc8 .chip')[0], (t-1.0)/0.4, -140, -12);
+      dropIn(document.querySelectorAll('#sc8 .chip')[1], (t-1.15)/0.4, -140, 12);
       enter($('s8sub2'), eoc((t-1.5)/0.5), 16, 1);
   }},
   { start: 50, duration: 5, el: $('sc9'), render: function(t){
       enter($('s9head'), eoc(t/0.4), 18, 1);
-      enter($('s9err'), eoc((t-0.25)/0.4), -16, 1 + 0.03*Math.sin(t*2.4));
-      enter($('s9arrow1'), eoc((t-0.45)/0.35), 0, 1);
-      enter($('s9chat'), eoc((t-0.6)/0.4), -16, 1 + 0.03*Math.sin(t*2.4+1));
-      enter($('s9arrow2'), eoc((t-0.8)/0.35), 0, 1);
-      enter($('s9check'), eoc((t-0.95)/0.4), -16, 1 + 0.03*Math.sin(t*2.4+2));
+      dropIn($('s9err'), (t-0.25)/0.4, -180, -14);
+      runIn($('s9arrow1'), (t-0.45)/0.3, -50);
+      dropIn($('s9chat'), (t-0.6)/0.4, -180, 0);
+      runIn($('s9arrow2'), (t-0.8)/0.3, -50);
+      dropIn($('s9check'), (t-0.95)/0.4, -180, 14);
       enter($('s9sub'), eoc((t-1.4)/0.5), 18, 1);
   }},
   { start: 55, duration: 5, el: $('sc10'), render: function(t){
-      enter($('s10human'), eoc(t/0.55), -24, 1 + 0.02*Math.sin(t*1.8));
-      enter($('s10card'), eoc((t-0.3)/0.55), 20, 1 + 0.015*Math.sin(t*1.7));
-      enter($('s10chip'), eoc((t-0.8)/0.45), 20, 1);
+      runIn($('s10human'), t/0.55, -200);
+      dropIn($('s10card'), (t-0.3)/0.5, -160, 0);
+      dropIn($('s10chip'), (t-0.8)/0.4, -110, 8);
   }}
 ];
 
@@ -543,9 +584,12 @@ window.__seek = function(t){
   $('brandpic').style.transform = 'scale(' + (1 + 0.02*Math.sin(t*1.8)) + ')';
   $('progress').style.width = (100*clamp(t/window.__reelDurationSec,0,1)) + '%';
 
-  document.querySelectorAll('.scene.active .bg-icon').forEach(function(el){
-    el.style.transform = 'scale(' + (1 + 0.03*Math.sin(t*0.6)) + ') rotate(' + (t*1.5) + 'deg)';
-  });
+  // Textured moving background: dot grid drifts one way, hatch lines drift
+  // the other (parallax), a soft glow drifts slowly on its own path. All
+  // deterministic in t, all low-opacity so foreground always reads first.
+  $('bgdots').style.transform = 'translate(' + ((t*13)%48) + 'px,' + ((t*9)%48) + 'px)';
+  $('bghatch').style.transform = 'translate(' + (-(t*10)%68) + 'px, ' + ((t*4)%68) + 'px)';
+  $('bgglow').style.transform = 'translate(' + (140*Math.sin(t*0.18)) + 'px, ' + (220*Math.cos(t*0.13)) + 'px)';
 };
 
 window.__autoplay = function(){
