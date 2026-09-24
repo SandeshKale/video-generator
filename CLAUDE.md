@@ -236,16 +236,42 @@ see"). If you add or edit a scene, apply these patterns:
   - **Right ~15% (right ~162px of the 1080px canvas, i.e. `x > 918`)**:
     reserve for nothing. This is where Instagram draws its vertical action
     rail (like/comment/share/save/audio-thumbnail icons).
+  - **Top ~7-8% (top ~140px of the 1920px canvas, i.e. `y < 140`)**: also
+    reserve for nothing, for two separate reasons that stack: (1) the
+    phone's own status bar / notch / Dynamic Island physically covers this
+    strip regardless of app, and (2) Instagram draws its own top overlay
+    (back caret top-left, camera/create icon top-right) over roughly the
+    same band on top of that. The same rundown-ios screenshot showed a
+    small circular profile picture placed near the top-right corner —
+    right where Instagram's own top-right icon sits — reading as
+    cramped/half-obscured rather than as a clean brand mark.
   - **Bias primary text/content toward the upper-middle third** of the
     remaining safe area — it's the zone Instagram never covers regardless
     of caption length or UI state.
+  - **Small brand/profile elements need deliberate contrast, not just
+    placement.** The same screenshot showed a small (84px) circular profile
+    picture that was hard to make out at a glance — it sat close in tone to
+    a large pale illustration behind it, so the border/edge that should
+    separate it from the background didn't read clearly at real playback
+    size/compression (a render viewed as a still frame during development
+    looks crisper than the same frame does after Instagram's own
+    video-compression pass and at actual on-screen size). When placing a
+    profile picture or small brand mark: keep it clear of the top exclusion
+    zone above, give it a border/shadow with enough contrast to separate it
+    from *any* background content behind it (not just the background it
+    happened to be checked against during development), and prefer
+    checking it at roughly its real on-screen size rather than only in a
+    full-frame screenshot, where small details are easy to misjudge as
+    "clear enough."
   - Not yet encoded as an enforced layout primitive (e.g. a CSS
     `.safe-zone` class with `pointer-events`/visual guide, or a lint check
     in `build.mjs`) — until it is, treat this as a manual checklist item on
     every scene: before finalizing a scene's layout, ask "would this element
-    survive Instagram's own UI drawn on top of the bottom 20% and right
-    15%?" If a future reel keeps tripping on this, add that enforced
-    primitive rather than continuing to eyeball it.
+    survive Instagram's own UI drawn on top of the top ~8%, bottom ~20%,
+    and right ~15%, and is every small/brand element still legible at real
+    on-screen size against whatever's behind it?" If a future reel keeps
+    tripping on this, add that enforced primitive rather than continuing to
+    eyeball it.
 
 Verify visually, don't just trust the code: use Playwright to screenshot the
 page at several representative `t` values while iterating (`page.evaluate(t
