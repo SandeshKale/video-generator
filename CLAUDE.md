@@ -55,6 +55,51 @@ window.__seek = function(t) {
 Full detail and the reasoning behind it is in `assets/ATTRIBUTION.md` under
 "Using `animations/*` with the render pipeline".
 
+## Every reel needs its own visual identity — hard, non-negotiable rule
+
+`reel-openai-loop-method` was first built by copying
+`reel-anthropic-rundown-ios/build.mjs` as a template and only swapping the
+script content — same dot-grid/hatch texture, same streamline gutters, same
+card style, same color wash, same `reel-app/src/humaaans` character. This
+was called out explicitly and strongly: reusing a prior reel's palette,
+background texture, component language, or character is not acceptable,
+even when the underlying layout mechanics (safe-zone, band system, GSAP
+entrances) are legitimately worth reusing. **Every new reel needs a
+genuinely distinct design system**, decided before writing any scene markup:
+
+- **Color palette** — pick new accent colors; don't default to whatever the
+  last reel used. `reel-anthropic-rundown-ios` is green/blue/amber on navy;
+  `reel-openai-loop-method` is cyan/magenta on near-black. The next reel
+  needs a third combination, not a variation on either.
+- **Background texture/motion language** — the *kind* of background motion
+  should differ, not just its color. Rundown-ios uses a drifting dot-grid +
+  diagonal hatch; loop-method uses a graph-paper grid + horizontal scanline
+  sweep + vertical data-readout gutters (replacing dots entirely). Pick a
+  texture metaphor that fits the new reel's topic.
+- **Component language** — rundown-ios uses rounded-rect cards and pill
+  chips; loop-method uses angular clip-corner panels and monospace
+  bracket-tags. Don't reuse one reel's card/chip shape verbatim in the next.
+- **Typography** — see "Typography" below; pick a display font suited to
+  the new reel, don't reflexively reach for whatever the last reel used.
+- **Characters** — see "Character variety" below; never reuse the exact
+  same humaaans pose (or, ideally, the same pose+colors) across reels, and
+  don't reuse the same pose twice *within* one reel either.
+
+**Practical workflow**: before building all of a new reel's scenes, mock up
+2-3 representative scenes in the proposed new visual system (a small
+throwaway `mockup.mjs` + static HTML, screenshotted with Playwright) and
+get them approved before committing to the full build — this is what
+avoided a wasted full rebuild when the first loop-method attempt reused
+rundown-ios's system. Delete the mockup files once the full build
+supersedes them (don't leave stale mockup HTML/scripts committed).
+
+The one thing that *should* carry over between reels unchanged is the
+**mechanics**, not the look: the `window.__seek(t)` contract, the safe-zone
+box, the GSAP-scrubbed entrance pattern, the signal-bridge-style
+gap-filling requirement (see "Layout system" below), and the typography
+*rules* (contrast, shadow, letter-spacing scale) — just applied through
+each reel's own distinct palette/fonts/components.
+
 ## Repository map
 
 ```
@@ -62,11 +107,16 @@ video-generator/
 ├── scripts/
 │   ├── render.mjs            Generic renderer: node scripts/render.mjs <src> <out.mp4> [scale]
 │   └── static-server.mjs     Zero-dep Node http server, used only for directory sources
-├── assets/                   Curated third-party icon/illustration/logo/photo/animation library
+├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library
+│   ├── fonts/                 Vendored webfonts (Poppins, Inter, JetBrains Mono, Space Grotesk, ...) — see "Typography" below
+│   ├── animations/gsap/       Vendored GSAP core (gsap.min.js) — see "Entrance animations" below
+│   ├── illustrations/humaaans-react/  24 pre-composed humaaans character poses — see "Character variety" below
 │   └── ATTRIBUTION.md        License table per source + the animation-seeking caveat above
 ├── reel-anthropic-opus-5-5/          Reel 1 (template-based, hand-written HTML + profile pic substitution)
 ├── reel-anthropic-opus-5-5-v2/       Reel 1, v2 (denser)
-├── reel-anthropic-rundown-ios/       Reel 2 (programmatically built from build.mjs)
+├── reel-anthropic-rundown-ios/       Reel 2 (programmatically built from build.mjs; navy dot-grid/streamline visual system)
+├── reel-openai-loop-method/          Reel 3 (programmatically built; cyan/magenta "Terminal/Signal" visual system —
+│                                       see build.mjs, and cover-build.mjs for its purpose-built cover image)
 ├── reel-app/                         React/Vite POC proving the contract also works from a bundled app
 ├── package.json                      Root deps: playwright
 ├── README.md                         User-facing overview and quick start
@@ -125,9 +175,13 @@ time within the scene. `reel-anthropic-opus-5-5/reel.html.tmpl` shows the
 templated form (`{{PROFILE_PIC_B64}}` substitution) used to generate a
 variant with a different profile picture.
 
-### 2. Generated HTML via a Node build script (`reel-anthropic-rundown-ios/build.mjs`)
+### 2. Generated HTML via a Node build script (`reel-anthropic-rundown-ios/build.mjs`, `reel-openai-loop-method/build.mjs`)
 
-Used when a reel needs many real icons/logos/illustrations pulled from
+This is now the standard pattern for a new reel — two live examples exist
+(`reel-anthropic-rundown-ios` and `reel-openai-loop-method`), each with its
+own fully distinct visual system built on the same underlying `build.mjs`
+structure (see "Every reel needs its own visual identity" above). Used
+when a reel needs many real icons/logos/illustrations pulled from
 `assets/` rather than a handful of hand-copied inline SVGs — keeps the
 curated asset folder as the single source of truth instead of risking drift
 from copy-pasted SVG markup. **`reel.html` in this folder is a generated
@@ -153,26 +207,138 @@ Key pieces of `build.mjs`:
     against its own (also recolored) white square.
   - `flowbiteIllustration(name)` — keeps full multi-color illustration SVGs
     as-is.
-  - `humaaansPart(relPath)` — converts humaaans body-part files (authored as
-    React/JSX components with embedded SVG path data) to plain static SVG:
-    regex-replaces JSX-cased attributes (`strokeWidth={1}` →
-    `stroke-width="1"`, `fillRule="evenodd"` → `fill-rule="evenodd"`) and
+  - `humaaansPart(relPath)` — the older pattern: converts a single humaaans
+    body-part file (authored as a React/JSX component with embedded SVG
+    path data) to plain static SVG, regex-replacing JSX-cased attributes
+    (`strokeWidth={1}` → `stroke-width="1"`, `fillRule="evenodd"` →
+    `fill-rule="evenodd"`), then manually stitches head+torso+bottom
+    together with hardcoded `translate()` offsets. **Prefer `humaaansFull()`
+    for new reels** (see "Character variety (humaaans)" below) — it works
+    on full pre-composed poses with resolvable color props instead of
+    manually-positioned parts, and gives access to 24 poses instead of one.
+    `humaaansPart`/the single curated `reel-app/src/humaaans` figure are
+    kept only because `reel-anthropic-rundown-ios` still depends on them;
+    don't extend that pattern further.
     strips the component wrapper.
 - **`buildHtml({...})`** — the template-literal function that emits the full
   HTML document: CSS (`<style>`), scene markup (10 scenes), and the
   `<script>` block containing the `SCENES` array and `window.__seek`.
 - **Entrance-animation helpers** (defined inside the generated `<script>`,
-  all driven by an eased progress value `e ∈ [0,1]` computed from `t`):
+  all driven by an eased progress value `e ∈ [0,1]` computed from `t`, and
+  built on **GSAP** — `assets/animations/gsap/gsap.min.js`, vendored core
+  build, loaded via a plain `<script src="../assets/animations/gsap/gsap.min.js">`
+  tag so it works over `file://`):
+  - `scrubTl(el, cacheKey, buildTl, e)` — the shared primitive. Builds a
+    `gsap.timeline({ paused: true })` once per element (memoized on the
+    element via a `WeakMap`, keyed by `cacheKey` so the same element can be
+    reused with different params without going stale) and scrubs it with
+    `tl.progress(clamp(e, 0, 1))` — **never `tl.play()`**. This keeps every
+    entrance a pure function of `e` (and therefore of `t`), same invariant
+    as the rest of the render contract, while getting GSAP's tested easing
+    curves instead of hand-rolled bounce/back/cubic math.
   - `dropIn(el, e, dropHeight, rotateDeg)` — bounce-drop entrance
-    (`easeOutBounce`), for "falling into place" elements.
+    (`ease: 'bounce.out'`), for "falling into place" elements.
   - `tumbleIn(el, e, rotateFromDeg)` — rotate+scale entrance
-    (`easeOutBack`), slight overshoot, for a "tumbling in" feel.
-  - `runIn(el, e, fromX)` — horizontal slide+tilt entrance (`easeOutCubic`),
-    for a "running in from the side" feel.
-  - Use these instead of the older generic `enter()` helper when you want
+    (`ease: 'back.out(1.7)'`), slight overshoot, for a "tumbling in" feel.
+  - `runIn(el, e, fromX)` — horizontal slide+tilt entrance
+    (`ease: 'power2.out'`), for a "running in from the side" feel.
+  - Use these instead of the older generic `enter()` helper (still present,
+    plain CSS `transform`/`opacity` interpolation, no GSAP) when you want
     more kinetic, less uniform motion — mixing all three across a scene's
-    elements is what gives the rundown-ios reel its "tumbling, dropping,
-    running" character per the brief that shaped it.
+    elements is what gives these reels their "tumbling, dropping, running"
+    character. `reel-openai-loop-method/build.mjs` has the same three
+    helpers verbatim — copy that block into a new reel rather than
+    re-deriving it, but keep `enter()`'s plain-CSS fallback for anything
+    that doesn't need the extra weight of a GSAP timeline.
+
+## Scene-to-scene transitions
+
+Hard cuts between scenes work but feel abrupt; a short crossfade reads as
+more polished without calling attention to itself. Pattern from
+`reel-openai-loop-method/build.mjs`'s `window.__seek`:
+
+- Each scene's visibility window is extended backward by a small
+  `TRANS` constant (e.g. `0.32` seconds). For `raw = t - scene.start`:
+  - `raw < 0` (still in the pre-roll/overlap with the previous scene):
+    opacity eases `0 → 1` and the scene drifts in a small amount
+    (`translateY`, ~20px) as `raw` approaches `0`.
+  - `raw > duration - TRANS` (approaching the next scene): opacity eases
+    `1 → 0` with the same small drift, in the *opposite* direction.
+  - Otherwise: fully visible, `scene.render(t)` runs normally.
+- This means **two scenes render simultaneously during the overlap
+  window** — `.scene` visibility can no longer be a single CSS
+  `.active` class toggle; drive `display`/`opacity`/`transform` directly
+  via `style.*` in `__seek` instead.
+- Skip the fade-out on the very last scene (`i === SCENES.length - 1`) —
+  fading the final scene to nothing right before the video ends looks like
+  a bug, not a transition.
+- **Keep it subtle.** A short opacity+small-drift crossfade, not a wipe,
+  zoom, spin, or any transition effect that draws attention to itself —
+  explicitly requested as "cool but not over the top." If a transition
+  effect is noticeable as an *effect* rather than just a smooth handoff,
+  it's too much.
+
+## Character variety (humaaans)
+
+Early reels (`reel-anthropic-rundown-ios`, and the first draft of
+`reel-openai-loop-method`) all reused the exact same single humaaans
+figure — assembled from `reel-app/src/humaaans/{head/Short.jsx,
+torso/PointingUp.jsx, bottom/SkinnyJeans.jsx}` — including using it *twice
+in the same reel* (hook scene and CTA scene). This was called out
+explicitly: reusing one character everywhere reads as templated, not
+designed.
+
+**Use `assets/illustrations/humaaans-react/` instead** — 24 full
+pre-composed "standing" poses (plus several "sitting" poses), vendored
+from the `react-humaaans` npm package (MIT). Unlike the old
+`reel-app/src/humaaans` set (three separate body-part files manually
+stitched together with hardcoded `translate()` offsets), each pose here is
+one self-contained file with its own color props already resolved —
+`standing/standing-N/StandingN.js`. Extraction pattern (see
+`reel-openai-loop-method/build.mjs`'s `humaaansFull()`):
+
+1. Read the pose file's source text.
+2. Parse its `defaultProps` block (`skinColor`, `hairColor`, `shoeColor`,
+   `coatColor`, `shirtColor`, `pantColor`) via regex — or pass an
+   `overrides` object to recolor specific props for a given reel's palette
+   (e.g. `{ coatColor: '#0e7c86' }` to tint a character toward a reel's
+   accent color).
+3. Extract the inner `<svg>...</svg>` markup and substitute every
+   `{propName}` JSX interpolation with its resolved hex value, plus the
+   couple of `{darken(propName)}` calls (a small hand-rolled HSL-darken
+   helper in `build.mjs`, ~10% lightness reduction, replicating what the
+   source's `tinycolor2`-based `darken()` does — no need to vendor
+   `tinycolor2` itself for one operation).
+4. Wrap the result as `<svg viewBox="0 0 380 480">...</svg>` — same
+   viewBox the old single-figure set used, so it drops into existing
+   sizing/positioning code unchanged.
+
+**Rule going forward**: pick a *different* pose (and consider different
+color overrides) for each character appearance, both across reels and
+within a single reel if it uses more than one. Never reuse the exact same
+`standing-N` pose+color combination twice. `assets/illustrations/humaaans-react/LICENSE.md`
+has the full provenance note.
+
+## Cover images
+
+A reel's Instagram cover/thumbnail should be a **purpose-built design**,
+not a screenshot pulled from the middle of the reel. A frame grab was
+tried first for `reel-openai-loop-method` and explicitly rejected: "why
+pull out a frame from the reel only... be creative." The fix —
+`reel-openai-loop-method/cover-build.mjs` — is a small standalone script
+(reuses the reel's own icon/logo extraction helpers, duplicated locally
+rather than imported, since there's no shared module between reel folders
+yet) that composes a dedicated single-frame layout: a custom hero graphic
+that doesn't appear anywhere in the reel itself (an orbiting-icon ring
+around the brand mark, one icon per step, in this case), a large title
+lockup, a one-line subtitle, and a small branding footer. Rendered once
+with Playwright (`page.screenshot()` on the standalone `cover.html`, no
+`__seek` loop needed since it's a single static composition) to a PNG.
+
+Pattern for a new reel's cover: write a `cover-build.mjs` alongside the
+reel's `build.mjs`, reusing that reel's own visual system (colors, fonts,
+component shapes) but inventing a genuinely new composition for the
+thumbnail — not a scene from the video.
 
 ## Layout system — avoiding empty/dead frame regions
 
@@ -318,36 +484,61 @@ reading the generated CSS/markup.
 
 ## Typography house style
 
-Checked against `reel-anthropic-rundown-ios/build.mjs`'s actual CSS —
-some of this the reels already do right, some is a real gap worth fixing
-in every new reel (and worth retrofitting into an existing one if it's
-getting a re-render anyway):
-
+- **Fonts must be vendored, not assumed present, and never system fonts
+  described as if a real font ("Poppins" etc.) is being used.** Chromium
+  headless has no reason to have any particular font installed — an
+  unavailable `font-family` silently falls back to whatever generic sans
+  the container happens to have, and every reel through `reel-anthropic-*`
+  did exactly this for months without anyone noticing (checked with
+  `fc-list` — Poppins was never actually installed; the rendered output
+  was a fallback font that merely looked close enough not to be flagged).
+  **Vendoring pattern** (used for Poppins/Inter/JetBrains Mono/Space
+  Grotesk, all in `assets/fonts/<family>/`): install the `@fontsource/*`
+  npm package with `npm install --no-save @fontsource/<name>` (OFL-licensed,
+  ships real `.woff2` files per weight), copy only the specific weight(s)
+  actually used out of `node_modules/@fontsource/<name>/files/` into
+  `assets/fonts/<name>/`, then `npm uninstall` the package — the repo keeps
+  the extracted font files, not the npm dependency. Reference them with
+  `@font-face` + a relative `url('../assets/fonts/<name>/<file>.woff2')` in
+  the reel's `<style>`, with `font-display: block` (so a frame captured
+  before the font loads doesn't silently fall back and desync from later
+  frames that did load it in time). Update `assets/fonts/LICENSE-OFL.txt`
+  with each new family.
+- **Pick a display font that suits each reel's own visual identity — don't
+  reflexively reuse the last reel's font.** `reel-anthropic-rundown-ios`
+  uses Poppins; `reel-openai-loop-method` switched to **Space Grotesk**
+  after feedback that fonts should be "bigger and more fun" — a display
+  font with more character/personality than a plain geometric sans, while
+  staying legible at reel sizes. Every reel should still pair a display
+  font (headlines/stats, weight 700+) with a neutral body font (Inter,
+  body/sub/caption text) and, if the reel's theme calls for it, a
+  monospace family for labels/tags/terminal-style text (JetBrains Mono in
+  the Terminal/Signal system) — but *which* display font is a per-reel
+  design decision, part of "every reel needs its own visual identity"
+  above.
 - **Never pure `#fff` for headline/body text.** Use a slightly tinted
-  off-white instead (e.g. `#f1f3f8`, or Tailwind's `slate-50`/`slate-200`
-  range). This matters *specifically* in this repo because every scene's
-  text sits directly on top of `.bg-dots`/`.bg-hatch` — the drifting
-  textured background from the layout system above — and pure white
-  against any moving background visually "vibrates." (The existing
-  `.sub`/`.stat-label` color, `#b9c6da`, already gets this right; `.headline`
-  and most inline text still use raw `#fff` — fix that.)
+  off-white instead (e.g. `#f1f3f8`/`#eef8fb`, or Tailwind's
+  `slate-50`/`slate-200` range). This matters *specifically* in this repo
+  because every scene's text sits directly on top of a moving textured
+  background, and pure white against any moving background visually
+  "vibrates."
 - **Give headline/body text a soft text-shadow when it sits over the
   textured background or any illustration**, not just a flat color:
   `text-shadow: 0 4px 12px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.8);` A
   large soft shadow, not a harsh 1px drop shadow. This is the single
   highest-value fix for legibility given every scene in this repo overlays
-  text on moving texture — currently `build.mjs` uses zero `text-shadow`
-  anywhere.
-- **Two-font contrast, not one font for everything.** Current reels use a
-  single family (`Poppins`) for headlines, body, labels, and chips alike.
-  Prefer: a geometric/bold display font (Poppins works fine here) for
-  headlines/stats only, and a neutral, highly legible sans (Inter, or
-  system `-apple-system`/`'Segoe UI'` fallback already in the stack) for
-  body/sub/caption/label text. Load a second family the same way the
-  existing brand-logo/icon assets are handled — vendor the font files (or
-  a Google Fonts `<link>` if network access at render time is acceptable)
-  rather than relying on the system having it installed, since Chromium
-  headless font availability shouldn't be assumed.
+  text on moving texture.
+  - **Gotcha**: `text-shadow` is inherited by child elements. A gradient-text
+    span (`background: linear-gradient(...); background-clip: text; color:
+    transparent;`) inside a headline that has its own `text-shadow` will
+    inherit that shadow — and since the fill is transparent, the *shadow*
+    becomes the only visible thing, rendering as a solid dark silhouette
+    instead of the intended gradient. This actually happened in
+    `reel-openai-loop-method`'s first build. Fix: explicitly set
+    `text-shadow: none` on the gradient-text span, and use `filter:
+    drop-shadow(...)` on that span instead if it still needs a glow (unlike
+    `text-shadow`, `drop-shadow` works correctly on a transparent-fill
+    clipped-background element).
 - **Letter-spacing scale**, keyed off font size, not one fixed value
   everywhere:
   - Large headlines (~60-90px): `-0.02em` to `-0.04em` (i.e. roughly
@@ -398,6 +589,12 @@ provenance in `assets/ATTRIBUTION.md` — **read it before**:
 - Wiring up anything under `assets/animations/` (all real-time-clock by
   default — see the seeking technique above; required, not optional, for
   correctness under this repo's render pipeline).
+- Adding a font or a character pose — see "Typography house style" and
+  "Character variety (humaaans)" above for the vendoring patterns
+  (`npm install --no-save`, extract, `npm uninstall`) used for
+  `assets/fonts/` and `assets/illustrations/humaaans-react/`. The same
+  pattern applies to any future third-party npm-distributed asset: vendor
+  the extracted files into `assets/`, not the npm dependency itself.
 
 ## Git / workflow conventions observed in this repo
 
@@ -413,11 +610,32 @@ provenance in `assets/ATTRIBUTION.md` — **read it before**:
 - Commit messages should be descriptive of *why*, not just *what* (e.g. "Fix
   Notion logo recolor stripping its background square" rather than "update
   build.mjs").
+- Design-approval mockup files (a throwaway `mockup.mjs` + static HTML used
+  to get sign-off on a new visual system before the full build — see
+  "Every reel needs its own visual identity" above) should be deleted once
+  the full `build.mjs`/`reel.html` supersedes them — don't leave stale
+  mockups committed alongside the finished reel.
+- **Standard deliverable set for a finished reel**, beyond the rendered
+  MP4 itself: an elaborate Instagram caption (restating each scene's
+  content in prose, not just a one-liner), a hashtag set (~25-30 tags,
+  mixing broad and niche), and a purpose-built cover image (see "Cover
+  images" above — never a frame grab). Produce these once a reel's design
+  is finalized, not before — captions/hashtags reference the reel's actual
+  final script, and the cover reuses the reel's finalized palette.
 
 ## Known platform limits worth knowing about
 
 - File-delivery tooling in this environment (`SendUserFile`) has a **30 MiB
   upload limit**. A CRF-18 Full HD 60s render can exceed this (~34MB
-  observed). If so, re-encode at a higher CRF (see "Encoding" above) rather
-  than reducing resolution/framerate, and mention to the user that a
-  slightly more compressed version was sent for that reason.
+  observed on the brighter navy dot-grid reel). If so, re-encode at a
+  higher CRF (see "Encoding" above) rather than reducing
+  resolution/framerate, and mention to the user that a slightly more
+  compressed version was sent for that reason.
+- **A darker, lower-contrast color palette compresses to a meaningfully
+  smaller file at the same CRF than a brighter one.** The near-black
+  cyan/magenta "Terminal/Signal" reel rendered at ~14-17MB at identical
+  settings (CRF 18, same resolution/duration/framerate) where the brighter
+  navy/dot-grid reel needed ~34MB and a CRF bump to fit the 30MB limit —
+  worth factoring in when picking a new reel's background brightness if
+  staying under the delivery limit without an extra re-encode pass
+  matters.
