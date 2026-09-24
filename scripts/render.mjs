@@ -17,22 +17,29 @@
  * sequence to ffmpeg exactly like the adapter's webm->mp4 step. Duration is
  * read from the page's own window.__reelDurationSec so each template is
  * free to define its own scene timeline/length.
+ *
+ * <source> may be either a plain HTML file (loaded directly over file://)
+ * or a directory (a Vite `dist/` build) — Chromium enforces CORS on
+ * `type="module"` scripts even over file://, which breaks a bare file://
+ * load of a Vite build (its entry script is always a module), so directory
+ * sources are served over a local http://127.0.0.1 static server instead.
  */
 import { chromium } from 'playwright';
-import { mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { spawn } from 'node:child_process';
+import { serveDir } from './static-server.mjs';
 
 const [, , sourceArg, outputArg] = process.argv;
 
 if (!sourceArg || !outputArg) {
-  console.error('Usage: node scripts/render.mjs <source.html> <output.mp4>');
+  console.error('Usage: node scripts/render.mjs <source.html|dist-dir> <output.mp4>');
   process.exit(1);
 }
 
-const SOURCE_HTML = resolve(sourceArg);
+const SOURCE_PATH = resolve(sourceArg);
 const OUTPUT_MP4 = resolve(outputArg);
 
 // Source documents are a fixed 1080x1920 (9:16) canvas. deviceScaleFactor 2
@@ -59,14 +66,24 @@ async function main() {
     args: ['--no-sandbox', '--force-color-profile=srgb'],
   });
 
+  let server;
   try {
+    const isDir = (await stat(SOURCE_PATH)).isDirectory();
+    let entryUrl;
+    if (isDir) {
+      server = await serveDir(SOURCE_PATH);
+      entryUrl = `${server.url}/index.html`;
+      console.log(`Serving ${SOURCE_PATH} at ${server.url}`);
+    } else {
+      entryUrl = pathToFileURL(SOURCE_PATH).href;
+    }
+
     const page = await browser.newPage({
       viewport: { width: CSS_WIDTH, height: CSS_HEIGHT },
       deviceScaleFactor: SCALE,
     });
 
-    const fileUrl = pathToFileURL(SOURCE_HTML).href;
-    await page.goto(fileUrl, { waitUntil: 'load' });
+    await page.goto(entryUrl, { waitUntil: 'load' });
     await page.waitForFunction(() => typeof window.__seek === 'function');
 
     const DURATION_SEC = await page.evaluate(() => window.__reelDurationSec);
@@ -75,7 +92,7 @@ async function main() {
     }
 
     const totalFrames = Math.round(DURATION_SEC * FPS);
-    console.log(`Source: ${SOURCE_HTML}`);
+    console.log(`Source: ${SOURCE_PATH}`);
     console.log(`Duration: ${DURATION_SEC}s -> ${totalFrames} frames at ${CSS_WIDTH * SCALE}x${CSS_HEIGHT * SCALE}, ${FPS}fps...`);
 
     for (let i = 0; i < totalFrames; i++) {
@@ -106,6 +123,7 @@ async function main() {
     console.log(`Done: ${OUTPUT_MP4}`);
   } finally {
     await browser.close();
+    if (server) await server.close();
     await rm(frameDir, { recursive: true, force: true }).catch(() => {});
   }
 }
