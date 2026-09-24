@@ -216,14 +216,36 @@ see"). If you add or edit a scene, apply these patterns:
   for the pattern. Prefer this over just increasing flex-basis on the
   containing band — that alone tends to make sparse content look *more*
   isolated, not less.
-- **9:16 safe-zone guidance** (from platform/reel-design references the
-  user supplied): keep primary text/content out of the extreme edges —
-  leave roughly the bottom ~20% and right-edge ~15% clear of critical
-  content (UI chrome / captions typically overlay there on-platform), and
-  bias important text toward the upper-middle third of the frame. Not yet
-  systematically encoded as a layout primitive in this repo — apply
-  judgment per scene when adding new ones, and consider formalizing it
-  (e.g. a `.safe-zone` band) if a future reel needs stricter compliance.
+- **9:16 safe-zone guidance — treat as a hard requirement, not a
+  suggestion.** Confirmed with a real on-device screenshot (Instagram Reels
+  playback, iPhone 13 Pro Max) of `reel-anthropic-rundown-ios`: a caption
+  pill ("Xcode still has to sign it") placed near the bottom of the
+  1080×1920 canvas visually collided with Instagram's own UI chrome
+  (username, caption text, audio credit) that Instagram overlays on top of
+  the video — the app doesn't letterbox around a reel's content, it draws
+  its own controls directly over the bottom and right edges of the frame.
+  Any reel content placed there will look overlapped/cramped in the actual
+  app, even though it renders perfectly clean in isolation (which is why
+  this wasn't caught by screenshotting the raw MP4/HTML during
+  development — always mentally check final placement against Instagram's
+  own chrome, not just the bare frame).
+  - **Bottom ~20% (bottom ~384px of the 1920px canvas, i.e. `y > 1536`)**:
+    reserve for nothing. No pills, captions, CTAs, or icons should render
+    here — this is exactly where Instagram draws the username, caption
+    text (2-3 lines), audio attribution, and the progress bar.
+  - **Right ~15% (right ~162px of the 1080px canvas, i.e. `x > 918`)**:
+    reserve for nothing. This is where Instagram draws its vertical action
+    rail (like/comment/share/save/audio-thumbnail icons).
+  - **Bias primary text/content toward the upper-middle third** of the
+    remaining safe area — it's the zone Instagram never covers regardless
+    of caption length or UI state.
+  - Not yet encoded as an enforced layout primitive (e.g. a CSS
+    `.safe-zone` class with `pointer-events`/visual guide, or a lint check
+    in `build.mjs`) — until it is, treat this as a manual checklist item on
+    every scene: before finalizing a scene's layout, ask "would this element
+    survive Instagram's own UI drawn on top of the bottom 20% and right
+    15%?" If a future reel keeps tripping on this, add that enforced
+    primitive rather than continuing to eyeball it.
 
 Verify visually, don't just trust the code: use Playwright to screenshot the
 page at several representative `t` values while iterating (`page.evaluate(t
