@@ -32,10 +32,11 @@ import { pathToFileURL } from 'node:url';
 import { spawn } from 'node:child_process';
 import { serveDir } from './static-server.mjs';
 
-const [, , sourceArg, outputArg] = process.argv;
+const [, , sourceArg, outputArg, scaleArg] = process.argv;
 
 if (!sourceArg || !outputArg) {
-  console.error('Usage: node scripts/render.mjs <source.html|dist-dir> <output.mp4>');
+  console.error('Usage: node scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]');
+  console.error('  scale: deviceScaleFactor, default 2 (2160x3840 4K). Pass 1 for 1080x1920 Full HD.');
   process.exit(1);
 }
 
@@ -43,10 +44,11 @@ const SOURCE_PATH = resolve(sourceArg);
 const OUTPUT_MP4 = resolve(outputArg);
 
 // Source documents are a fixed 1080x1920 (9:16) canvas. deviceScaleFactor 2
-// renders it at 2160x3840 — 4K UHD for vertical/portrait video.
+// renders it at 2160x3840 (4K UHD); deviceScaleFactor 1 renders it at the
+// native 1080x1920 (Full HD) — both at native pixel density, no upscaling.
 const CSS_WIDTH = 1080;
 const CSS_HEIGHT = 1920;
-const SCALE = 2;
+const SCALE = scaleArg ? Number(scaleArg) : 2;
 const FPS = 60;
 
 function runFfmpeg(args) {
