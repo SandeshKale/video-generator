@@ -9,12 +9,15 @@ Fonts vendored in this folder:
 - jetbrains-mono/jetbrains-mono-latin-700-normal.woff2
 - space-grotesk/space-grotesk-latin-600-normal.woff2
 - space-grotesk/space-grotesk-latin-700-normal.woff2
+- sora/sora-latin-700-normal.woff2
+- sora/sora-latin-800-normal.woff2
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
-@fontsource/jetbrains-mono and @fontsource/space-grotesk npm packages
-(v5.3.0), which repackage the original Google Fonts / JetBrains releases
-of Poppins (Indian Type Foundry), Inter (Rasmus Andersson), JetBrains
-Mono (JetBrains), and Space Grotesk (Florian Karsten).
+@fontsource/jetbrains-mono, @fontsource/space-grotesk, and
+@fontsource/sora npm packages (v5.3.0), which repackage the original
+Google Fonts releases of Poppins (Indian Type Foundry), Inter (Rasmus
+Andersson), JetBrains Mono (JetBrains), Space Grotesk (Florian Karsten),
+and Sora (Jonathan Pinhorn / Omnibus-Type).
 
 Both are licensed under the SIL Open Font License, Version 1.1 — free for
 commercial and non-commercial use, including embedding in video renders.
