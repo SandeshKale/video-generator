@@ -27,14 +27,22 @@ const [anthropic, openai] = await Promise.all([
 ]);
 const profileB64 = (await read('/tmp/pic_b64.txt')).trim();
 
-// Diverging duel chart: two polylines from a shared origin near center,
-// one dropping to the lower-left (OpenAI, -50%), one climbing to the
-// upper-right (Claude, winning) — a dramatic "fork" shape that never
-// appears in the reel itself (the reel only shows small side-by-side
-// badges and flat candlesticks, never a big diverging trend duel).
-const cx = 340, cy = 460;
-const downPath = `M ${cx} ${cy} L ${cx - 60} ${cy + 70} L ${cx - 40} ${cy + 130} L ${cx - 110} ${cy + 230} L ${cx - 90} ${cy + 300} L ${cx - 170} ${cy + 400}`;
-const upPath = `M ${cx} ${cy} L ${cx + 90} ${cy - 40} L ${cx + 70} ${cy - 100} L ${cx + 160} ${cy - 170} L ${cx + 140} ${cy - 250} L ${cx + 230} ${cy - 330}`;
+// Diverging duel chart: two polylines from a shared origin at the
+// canvas's horizontal center, one dropping to the lower-left (OpenAI,
+// -50%), one climbing to the upper-right (Claude, winning) — a dramatic
+// "fork" shape that never appears in the reel itself (the reel only
+// shows small side-by-side badges and flat candlesticks, never a big
+// diverging trend duel). Endpoints are computed from the badge centers
+// themselves so the lines always terminate exactly on the badges,
+// mirrored symmetrically around the canvas center (540) and kept close
+// together rather than spread edge-to-edge.
+const CANVAS_W = 1080;
+const originX = CANVAS_W / 2, originY = 430;
+const badgeSize = 120;
+const downCenter = { x: originX - 110, y: originY + 300 };
+const upCenter = { x: originX + 110, y: originY - 300 };
+const downPath = `M ${originX} ${originY} L ${originX - 40} ${originY + 70} L ${originX - 55} ${originY + 130} L ${originX - 90} ${originY + 190} L ${downCenter.x + 30} ${downCenter.y - 60} L ${downCenter.x} ${downCenter.y}`;
+const upPath = `M ${originX} ${originY} L ${originX + 40} ${originY - 70} L ${originX + 55} ${originY - 130} L ${originX + 90} ${originY - 190} L ${upCenter.x - 30} ${upCenter.y + 60} L ${upCenter.x} ${upCenter.y}`;
 
 const html = `<!DOCTYPE html>
 <html><head><meta charset="utf-8">
@@ -86,12 +94,12 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--plum);o
     <svg viewBox="0 0 1080 830">
       <path d="${downPath}" fill="none" stroke="var(--coral)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
       <path d="${upPath}" fill="none" stroke="var(--lime)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-      <circle cx="340" cy="460" r="10" fill="var(--ink)"/>
+      <circle cx="${originX}" cy="${originY}" r="10" fill="var(--ink)"/>
     </svg>
-    <div class="badge lose" style="left:110px;top:790px;">${openai}</div>
-    <div class="badge-tag lose" style="left:120px;top:730px;">-50%</div>
-    <div class="badge win" style="left:800px;top:60px;">${anthropic}</div>
-    <div class="badge-tag win" style="left:790px;top:190px;">WINNING</div>
+    <div class="badge lose" style="left:${downCenter.x - badgeSize / 2}px;top:${downCenter.y - badgeSize / 2}px;">${openai}</div>
+    <div class="badge-tag lose" style="left:${downCenter.x - badgeSize / 2 - 10}px;top:${downCenter.y - badgeSize / 2 - 58}px;">-50%</div>
+    <div class="badge win" style="left:${upCenter.x - badgeSize / 2}px;top:${upCenter.y - badgeSize / 2}px;">${anthropic}</div>
+    <div class="badge-tag win" style="left:${upCenter.x - badgeSize / 2 - 10}px;top:${upCenter.y + badgeSize / 2 + 14}px;">WINNING</div>
   </div>
 
   <div class="vignette"></div>
