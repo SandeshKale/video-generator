@@ -10,6 +10,7 @@ Headless Chromium for capture · ffmpeg for encoding · zero reliance on the bro
 ![fps](https://img.shields.io/badge/framerate-60fps-informational)
 ![codec](https://img.shields.io/badge/codec-H.264%20%2F%20libx264-lightgrey)
 ![renderer](https://img.shields.io/badge/renderer-Playwright%20%2B%20Chromium-2ea44f)
+![runtime](https://img.shields.io/badge/runtime-Bun-fbf0df?logo=bun&logoColor=black)
 
 </div>
 
@@ -38,7 +39,7 @@ browser's real-time clock, so every render is bit-for-bit reproducible
 and frame-accurate at 60fps.
 
 ```
-   HTML / React source              scripts/render.mjs                 ffmpeg
+   HTML / React source              scripts/render.mjs (Bun)           ffmpeg
 ┌────────────────────┐        ┌─────────────────────────┐        ┌───────────────┐
 │  window.__seek(t)   │  ───▶  │  for i in 0..duration*60 │  ───▶  │  libx264       │
 │  __reelDurationSec  │        │   seek(i/60) → screenshot │        │  yuv420p, crf18 │
@@ -96,7 +97,7 @@ video-generator/
 │   └── reel-fullhd60.mp4           Delivered Full HD 60fps render
 │
 ├── reel-app/                    React/Vite proof-of-concept for the same rendering contract
-├── package.json                 Root deps (playwright) + `npm run render` script
+├── package.json / bun.lock      Root deps (Bun-managed: playwright, gsap) + `bun run render` script
 └── README.md / CLAUDE.md        This file / agent-facing technical guide
 ```
 
@@ -104,27 +105,38 @@ video-generator/
 
 ## 🚀 Quick start
 
+This repo is developed and run with **[Bun](https://bun.sh)**, not
+Node/npm — `bun` is a drop-in runtime for these plain-Node scripts, plus
+the package manager (`bun install`, backed by the committed `bun.lock`).
+
 ```bash
-npm install                        # installs Playwright (root) — run once
-npx playwright install chromium    # if Chromium isn't already present
+bun install                        # installs Playwright + gsap (root) — run once
+bunx playwright install chromium   # if Chromium isn't already present
 
 # Render a plain self-contained HTML reel (Full HD, 60fps)
-node scripts/render.mjs reel-openai-loop-method/reel.html \
-     reel-openai-loop-method/reel-fullhd60.mp4 1
+bun scripts/render.mjs reel-openai-loop-method/reel.html \
+    reel-openai-loop-method/reel-fullhd60.mp4 1
 
 # Render at 4K (deviceScaleFactor 2 — this is the default, scale arg optional)
-node scripts/render.mjs reel-anthropic-opus-5-5/reel.html \
-     reel-anthropic-opus-5-5/reel-4k60.mp4
+bun scripts/render.mjs reel-anthropic-opus-5-5/reel.html \
+    reel-anthropic-opus-5-5/reel-4k60.mp4
 
 # Render a directory-based source (e.g. a Vite build's dist/ folder)
-npm --prefix reel-app run build
-node scripts/render.mjs reel-app/dist reel-app/reel-poc-4k60.mp4
+cd reel-app && bun install && bun run build && cd ..
+bun scripts/render.mjs reel-app/dist reel-app/reel-poc-4k60.mp4
 ```
+
+> [!NOTE]
+> `playwright` is pinned to an **exact** version in `package.json` (not a
+> caret range) so `bun install` always resolves the `playwright-core`
+> build whose expected Chromium revision matches what's already
+> downloaded. If you bump the `playwright` version, re-run `bunx
+> playwright install chromium` afterward.
 
 ### `scripts/render.mjs` usage
 
 ```
-node scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]
+bun scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]
 ```
 
 | Argument | Meaning |
@@ -147,8 +159,8 @@ literals. To change anything about a reel:
 
 ```bash
 cd reel-openai-loop-method      # or reel-anthropic-rundown-ios
-node build.mjs                                             # regenerates reel.html
-node ../scripts/render.mjs reel.html reel-fullhd60.mp4 1   # re-render
+bun build.mjs                                             # regenerates reel.html
+bun ../scripts/render.mjs reel.html reel-fullhd60.mp4 1   # re-render
 ```
 
 If the resulting MP4 is too large to deliver (e.g. exceeds a host's
@@ -214,7 +226,7 @@ file before:
 
 - 🏷️ Using a brand/company logo in a new reel — trademark/nominative-use caveats.
 - 🎞️ Wiring up anything under `assets/animations/` — real-time-clock caveat above.
-- 🔤 Adding a new font or character pose — both are vendored the same way: install the npm package with `--no-save`, extract only the needed files, then `npm uninstall` — the repo keeps the extracted files, not the dependency.
+- 🔤 Adding a new font or character pose — both are vendored the same way: install the npm package with `bun add --no-save`, extract only the needed files, then `bun remove` — the repo keeps the extracted files, not the dependency.
 
 ---
 
@@ -247,6 +259,6 @@ image (see the [`cover-art` skill](./.claude/skills/cover-art/SKILL.md))
 
 —
 
-Built with 🎨 HTML/CSS, 🎬 Playwright, and ⚙️ ffmpeg — no video editor required.
+Built with 🎨 HTML/CSS, 🎬 Playwright, ⚙️ ffmpeg, and 🥟 Bun — no video editor required.
 
 </div>

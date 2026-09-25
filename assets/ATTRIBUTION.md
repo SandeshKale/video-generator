@@ -29,7 +29,7 @@ below.
 | `animations/csshake/` | [elrumordelaluz/csshake](https://github.com/elrumordelaluz/csshake) | MIT | `dist/` — shake/bounce CSS micro-animation classes. |
 | `animations/hover-css/` | [IanLunn/Hover](https://github.com/IanLunn/Hover) | MIT | `hover.css` (+min) — hover-triggered CSS transition classes. |
 | `animations/gsap/` | [greensock/GSAP](https://github.com/greensock/GSAP) (via [npm: gsap](https://www.npmjs.com/package/gsap), v3.15.0) | GSAP Standard "no charge" license (free for this use — see `LICENSE.md` in this folder); **not MIT** | `gsap.min.js` — core animation engine only (no bonus/club plugins). Loaded as a classic `<script>` tag (works over `file://`, no bundler needed) so plain self-contained-HTML reels can use it. |
-| `fonts/poppins/`, `fonts/inter/`, `fonts/jetbrains-mono/`, `fonts/space-grotesk/` | Google Fonts / JetBrains releases, repackaged via the `@fontsource/*` npm packages (v5.3.0) | SIL Open Font License 1.1 — see `LICENSE-OFL.txt` in `fonts/` | Specific `.woff2` weights only (not full family ranges) extracted from each `@fontsource` package's `files/` directory — `npm install --no-save @fontsource/<name>`, copy the needed weight(s), `npm uninstall`. Loaded per reel via `@font-face` + a relative `url(...)`. |
+| `fonts/poppins/`, `fonts/inter/`, `fonts/jetbrains-mono/`, `fonts/space-grotesk/` | Google Fonts / JetBrains releases, repackaged via the `@fontsource/*` npm packages (v5.3.0) | SIL Open Font License 1.1 — see `LICENSE-OFL.txt` in `fonts/` | Specific `.woff2` weights only (not full family ranges) extracted from each `@fontsource` package's `files/` directory — `bun add --no-save @fontsource/<name>`, copy the needed weight(s), `bun remove @fontsource/<name>`. Loaded per reel via `@font-face` + a relative `url(...)`. |
 | `illustrations/humaaans-react/` | [react-humaaans on npm](https://www.npmjs.com/package/react-humaaans) v1.0.1 (original art: [humaaans.com](https://www.humaaans.com) by Pablo Stanley) | MIT (react-humaaans package; no separate upstream LICENSE file) | 24 full pre-composed "standing" character poses + several "sitting" poses, as React source files with resolvable color props — see `illustrations/humaaans-react/LICENSE.md` for the extraction pattern (`humaaansFull()` in a reel's `build.mjs`). Supersedes the older single-figure `reel-app/src/humaaans/` set (still present, used by `reel-anthropic-rundown-ios`) for any new reel — use a different pose per character appearance instead of reusing one figure everywhere. |
 
 ## ⚠️ Using `animations/*` with the render pipeline — read before using
@@ -70,7 +70,7 @@ The animation *engines* named alongside these packs — **anime.js**,
 **Vivus**, **KUTE.js**, **flubber**, **mo.js**, **rough-notation**,
 **motion** (Framer Motion), **lazy-line-painter**, **walkway**,
 **progressbar.js** — are JS libraries, not media files, so they don't
-belong in `assets/`. If a reel needs one, `npm install` it into
+belong in `assets/`. If a reel needs one, `bun add` it into
 `reel-app/` (the React/Vite POC) as a normal dependency instead.
 
 **GSAP is the one exception, and it *is* now vendored** (as

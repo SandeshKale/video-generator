@@ -105,8 +105,8 @@ each reel's own distinct palette/fonts/components.
 ```
 video-generator/
 ├── scripts/
-│   ├── render.mjs            Generic renderer: node scripts/render.mjs <src> <out.mp4> [scale]
-│   └── static-server.mjs     Zero-dep Node http server, used only for directory sources
+│   ├── render.mjs            Generic renderer: bun scripts/render.mjs <src> <out.mp4> [scale]
+│   └── static-server.mjs     Zero-dep Node-API http server, used only for directory sources
 ├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library
 │   ├── fonts/                 Vendored webfonts (Poppins, Inter, JetBrains Mono, Space Grotesk, ...) — see "Typography" below
 │   ├── animations/gsap/       Vendored GSAP core (gsap.min.js) — see "Entrance animations" below
@@ -118,15 +118,41 @@ video-generator/
 ├── reel-openai-loop-method/          Reel 3 (programmatically built; cyan/magenta "Terminal/Signal" visual system —
 │                                       see build.mjs, and cover-build.mjs for its purpose-built cover image)
 ├── reel-app/                         React/Vite POC proving the contract also works from a bundled app
-├── package.json                      Root deps: playwright
+├── package.json / bun.lock            Root deps (Bun-managed): playwright, gsap
 ├── README.md                         User-facing overview and quick start
 └── CLAUDE.md                         This file
 ```
 
+**Runtime/package manager: Bun**, not Node/npm. `bun install` resolves
+`package.json` against the committed `bun.lock` (a human-readable text
+lockfile — diff and commit it like any other source file, unlike npm's
+`package-lock.json`); every script in this repo (`render.mjs`,
+`static-server.mjs`, every reel's `build.mjs`/`cover-build.mjs`) is run
+with `bun <script>` instead of `node <script>`. This is a drop-in swap —
+none of these scripts use anything beyond standard `node:fs`/`node:path`/
+`node:http`/`node:child_process` APIs, which Bun implements natively, so
+no source changes were needed to move off Node. `reel-app/` (the Vite
+POC) is likewise installed and built with `bun install` / `bun run
+build`; Vite's own CLI is unchanged, only the package manager invoking it
+is different.
+
+**Playwright's Chromium download must stay version-pinned.** This repo
+pins `playwright` to an exact version (not a caret range) in
+`package.json` precisely so `bun install` resolves to the same
+`playwright-core` build whose expected Chromium revision matches whatever
+build is already sitting in `PLAYWRIGHT_BROWSERS_PATH` — letting the
+version float can silently resolve to a newer `playwright-core` that
+expects a Chromium revision nobody has downloaded yet, which fails at
+render time with a confusing "executable doesn't exist" error rather than
+an install-time one. If you ever bump the `playwright` version
+intentionally, re-run `npx/bunx playwright install chromium` (or confirm
+the environment's pre-provisioned browser cache covers the new revision)
+before trusting a render.
+
 ## `scripts/render.mjs`
 
 ```
-node scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]
+bun scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]
 ```
 
 - **Source resolution**: `stat()`s the source path. If it's a directory
@@ -188,7 +214,7 @@ from copy-pasted SVG markup. **`reel.html` in this folder is a generated
 artifact — never hand-edit it.** Edit `build.mjs` and regenerate:
 
 ```bash
-cd reel-anthropic-rundown-ios && node build.mjs
+cd reel-anthropic-rundown-ios && bun build.mjs
 ```
 
 Key pieces of `build.mjs`:
@@ -500,11 +526,11 @@ reading the generated CSS/markup.
   was a fallback font that merely looked close enough not to be flagged).
   **Vendoring pattern** (used for Poppins/Inter/JetBrains Mono/Space
   Grotesk, all in `assets/fonts/<family>/`): install the `@fontsource/*`
-  npm package with `npm install --no-save @fontsource/<name>` (OFL-licensed,
+  npm package with `bun add --no-save @fontsource/<name>` (OFL-licensed,
   ships real `.woff2` files per weight), copy only the specific weight(s)
   actually used out of `node_modules/@fontsource/<name>/files/` into
-  `assets/fonts/<name>/`, then `npm uninstall` the package — the repo keeps
-  the extracted font files, not the npm dependency. Reference them with
+  `assets/fonts/<name>/`, then `bun remove @fontsource/<name>` — the repo
+  keeps the extracted font files, not the npm dependency. Reference them with
   `@font-face` + a relative `url('../assets/fonts/<name>/<file>.woff2')` in
   the reel's `<style>`, with `font-display: block` (so a frame captured
   before the font loads doesn't silently fall back and desync from later
@@ -597,7 +623,7 @@ provenance in `assets/ATTRIBUTION.md` — **read it before**:
   correctness under this repo's render pipeline).
 - Adding a font or a character pose — see "Typography house style" and
   "Character variety (humaaans)" above for the vendoring patterns
-  (`npm install --no-save`, extract, `npm uninstall`) used for
+  (`bun add --no-save`, extract, `bun remove`) used for
   `assets/fonts/` and `assets/illustrations/humaaans-react/`. The same
   pattern applies to any future third-party npm-distributed asset: vendor
   the extracted files into `assets/`, not the npm dependency itself.
