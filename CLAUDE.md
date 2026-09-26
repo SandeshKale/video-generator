@@ -111,6 +111,7 @@ video-generator/
 │   ├── fonts/                 Vendored webfonts (Poppins, Inter, JetBrains Mono, Space Grotesk, ...) — see "Typography" below
 │   ├── animations/gsap/       Vendored GSAP core (gsap.min.js) — see "Entrance animations" below
 │   ├── animations/lottie/     Vendored lottie-web runtime (lottie.min.js) — see "Lottie" below
+│   ├── animations/video-overlay/ 3 real-footage texture clips (grain/leaks/dust) — see "Video overlays" below
 │   ├── illustrations/humaaans-react/  24 pre-composed humaaans character poses — see "Character variety" below
 │   └── ATTRIBUTION.md        License table per source + the animation-seeking caveat above
 ├── reel-anthropic-opus-5-5/          Reel 1 (template-based, hand-written HTML + profile pic substitution)
@@ -329,6 +330,60 @@ p5.js is safe but not enough of a win over this repo's existing
 CSS/SVG-driven textures to justify the dependency weight). Don't reach
 for tsParticles for a reel background — it cannot be made to satisfy
 the core render contract without patching its internals.
+
+## Video overlays — real footage textures (film grain, light leaks, dust)
+
+`assets/animations/video-overlay/` holds a small set of transparent-mood
+texture clips (`light-leak-dust.webm`, `dust-particles.webm`,
+`film-grain.webm` — see `assets/ATTRIBUTION.md` for sourcing/license)
+sourced from Pixabay and re-encoded to VP9/WebM. This is a fourth,
+narrower exception to "engines aren't assets" in the same family as
+GSAP/Lottie: a plain HTML `<video>` element's `currentTime` + `seeked`
+event is itself a deterministic seek primitive, no different in kind from
+`tl.progress(e)` or `anim.goToAndStop(frame, true)`.
+
+```js
+function videoSeek(videoEl, t) {
+  return new Promise((resolve) => {
+    function onSeeked() { videoEl.removeEventListener('seeked', onSeeked); resolve(); }
+    videoEl.addEventListener('seeked', onSeeked);
+    videoEl.currentTime = t;
+  });
+}
+// inside an async window.__seek(t):
+await videoSeek(overlayEl, (localFrame + 0.5) / overlayFps);
+```
+
+**Two things that will break this if skipped** (hand-verified with
+synthetic frame-numbered test clips before vendoring — see
+`assets/ATTRIBUTION.md` for the full verification writeup):
+
+1. **The overlay file must be VP9/WebM, never H.264/MP4.** This repo's
+   pinned Playwright Chromium (`headless_shell`) cannot decode H.264 at
+   all — `video.error.code` comes back `4`
+   (`MEDIA_ERR_SRC_NOT_SUPPORTED`), because open-source Chromium builds
+   don't ship the proprietary decoder. Every stock-video site defaults to
+   MP4 downloads, so transcode before vendoring:
+   `ffmpeg -i in.mp4 -an -c:v libvpx-vp9 -crf 34 -b:v 0 -vf scale=1080:-2
+   out.webm` (the scale flag also cuts 4K source footage down to this
+   repo's canvas width — no reel needs more).
+2. **Seek to the middle of the frame's window, not its exact boundary.**
+   `t = (frame + 0.5) / fps`, not `t = frame / fps` — landing exactly on
+   a boundary risks an off-by-one from floating-point rounding, the same
+   class of bug as Lottie's `totalFrames - 1` fix. Verified correct
+   across both a single-keyframe ("long GOP") encode and an
+   all-intraframe encode, seeking forward and backward — real video
+   seeking through B/P frames decodes precisely, it isn't snapped to
+   keyframes.
+
+**Cost worth knowing before overusing this:** ~12ms per seek-and-capture
+round-trip in testing. One overlay running for a full 60s/60fps render
+adds roughly 45s of render time — fine for a texture on 2-3 scenes, not
+something to put on every scene of every reel. `film-grain.webm`
+specifically is white with black scratches (a photographed film-damage
+texture, not synthetic grain) — composite it with `mix-blend-mode:
+multiply` so the white background stays neutral and only the marks
+darken what's underneath.
 
 ## Scene-to-scene transitions
 

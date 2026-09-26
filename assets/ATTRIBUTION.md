@@ -30,6 +30,7 @@ below.
 | `animations/hover-css/` | [IanLunn/Hover](https://github.com/IanLunn/Hover) | MIT | `hover.css` (+min) — hover-triggered CSS transition classes. |
 | `animations/gsap/` | [greensock/GSAP](https://github.com/greensock/GSAP) (via [npm: gsap](https://www.npmjs.com/package/gsap), v3.15.0) | GSAP Standard "no charge" license (free for this use — see `LICENSE.md` in this folder); **not MIT** | `gsap.min.js` — core animation engine only (no bonus/club plugins). Loaded as a classic `<script>` tag (works over `file://`, no bundler needed) so plain self-contained-HTML reels can use it. |
 | `animations/lottie/` | [airbnb/lottie-web](https://github.com/airbnb/lottie-web) (via [npm: lottie-web](https://www.npmjs.com/package/lottie-web), v5.13.0) | MIT | `lottie.min.js` — the full SVG-renderer build (not `lottie_light`, which drops expression support some AE exports rely on). A second GSAP-style exception to "engines aren't assets" (see below) — its `goToAndStop(frame, true)` + `totalFrames` API is a clean, native fit for `window.__seek(t)`. No bundled `.json` animation files are included — see the note below on why those still have to be sourced per-reel. |
+| `animations/video-overlay/` | [Pixabay](https://pixabay.com) (3 individual clips — see `LICENSE.md` in this folder for each source URL) | [Pixabay License](https://pixabay.com/service/license-summary/) — free for commercial use, no attribution required | 3 texture overlays (`light-leak-dust.webm`, `dust-particles.webm`, `film-grain.webm`), transcoded from the source MP4s to VP9/WebM and scaled to 1080px wide (230KB-2.3MB each, down from 8-98MB). A third GSAP/Lottie-style exception — `video.currentTime` + the `seeked` event is a clean fit for `window.__seek(t)`, hand-verified (see "Video overlays" below) before vendoring. |
 | `fonts/poppins/`, `fonts/inter/`, `fonts/jetbrains-mono/`, `fonts/space-grotesk/` | Google Fonts / JetBrains releases, repackaged via the `@fontsource/*` npm packages (v5.3.0) | SIL Open Font License 1.1 — see `LICENSE-OFL.txt` in `fonts/` | Specific `.woff2` weights only (not full family ranges) extracted from each `@fontsource` package's `files/` directory — `bun add --no-save @fontsource/<name>`, copy the needed weight(s), `bun remove @fontsource/<name>`. Loaded per reel via `@font-face` + a relative `url(...)`. |
 | `illustrations/humaaans-react/` | [react-humaaans on npm](https://www.npmjs.com/package/react-humaaans) v1.0.1 (original art: [humaaans.com](https://www.humaaans.com) by Pablo Stanley) | MIT (react-humaaans package; no separate upstream LICENSE file) | 24 full pre-composed "standing" character poses + several "sitting" poses, as React source files with resolvable color props — see `illustrations/humaaans-react/LICENSE.md` for the extraction pattern (`humaaansFull()` in a reel's `build.mjs`). Supersedes the older single-figure `reel-app/src/humaaans/` set (still present, used by `reel-anthropic-rundown-ios`) for any new reel — use a different pose per character appearance instead of reusing one figure everywhere. |
 
@@ -150,6 +151,57 @@ this repo), but it adds a ~1MB dependency for what boils down to a
 CSS/SVG-driven background textures to justify vendoring. If a future
 reel's background genuinely needs Perlin/simplex noise, a small
 standalone noise function is cheaper than the whole library.
+
+## Video overlays — the H.264 gotcha, and why Mixkit was skipped
+
+`animations/video-overlay/` (see the table above) works the same way
+Lottie does: `<video>` + `currentTime` + the `seeked` event is a native,
+already-deterministic seek API — a fourth "engine that's actually a
+render-contract-compatible adapter" alongside GSAP/Lottie. Hand-verified
+before vendoring (synthetic frame-numbered test clips, both a
+single-keyframe and an all-intraframe encode, seeked forward and
+backward): landing exactly on a frame boundary (`t = frame/fps`) risks an
+off-by-one from float rounding — same class of bug as Lottie's
+`totalFrames - 1` fix — so always seek to **the middle of the frame's
+window**, `t = (frame + 0.5) / fps`, same principle as `lottieSeek`:
+
+```js
+function videoSeek(videoEl, t) {
+  return new Promise((resolve) => {
+    function onSeeked() { videoEl.removeEventListener('seeked', onSeeked); resolve(); }
+    videoEl.addEventListener('seeked', onSeeked);
+    videoEl.currentTime = t;
+  });
+}
+// inside an async __seek(t): await videoSeek(overlayEl, (localFrame + 0.5) / overlayFps);
+```
+
+**The one non-negotiable gotcha: this repo's pinned Playwright Chromium
+(`headless_shell`) cannot decode H.264/MP4 at all** — `video.error.code`
+comes back `4` (`MEDIA_ERR_SRC_NOT_SUPPORTED`), because open-source
+Chromium builds don't ship the proprietary H.264 decoder. VP9/WebM loads
+and seeks perfectly. Every stock-video site defaults to MP4 downloads, so
+**any video overlay must be transcoded to WebM before vendoring** —
+`ffmpeg -i in.mp4 -an -c:v libvpx-vp9 -crf 34 -b:v 0 out.webm` (add `-vf
+scale=1080:-2` to also cut it down to this repo's canvas width; source
+stock footage is routinely 4K, which is both unnecessary weight and,
+before transcoding, a multi-tens-of-MB file). This also has a real
+performance cost worth knowing before overusing it: ~12ms per
+seek-and-screenshot round-trip in testing, so one overlay active for a
+full 60s/60fps render adds roughly 45s to render time.
+
+**Mixkit was evaluated and rejected as a source.** Its category pages
+advertise "Mixkit License, free commercial use," but per-clip pages don't
+consistently honor that — several free-tier downloads (checked by hand,
+not assumed from the category blurb) turned out to be gated behind
+"Mixkit Restricted License" (personal use only), with true commercial
+clearance requiring an Envato Elements subscription. Its download links
+are also JS-gated (no static file URL in the page HTML), making them
+unfetchable by a script even before the license question. **Pixabay was
+used instead** — the Pixabay License is unambiguous (commercial use,
+modification, no attribution, across the whole site, not per-clip), and
+individual video pages embed a direct `cdn.pixabay.com/.../<id>_large.mp4`
+URL that's fetchable without a browser session.
 
 ## Not pulled from this round of sources, and why
 
