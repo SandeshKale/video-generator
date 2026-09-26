@@ -681,6 +681,24 @@ provenance in `assets/ATTRIBUTION.md` — **read it before**:
   pattern applies to any future third-party npm-distributed asset: vendor
   the extracted files into `assets/`, not the npm dependency itself.
 
+**`assets/photos/servicestack/`** — 147 real Unsplash-sourced JPEGs
+(2560x1000, ~30MB total), no attribution required. Unlike everything
+else built so far, no reel has actually used a real photo yet — every
+reel's visual identity has been abstract CSS/SVG-driven texture (dot-grid,
+graph-grid, ticker-tape, ripples, price-staircase). A photo is trivially
+compatible with the render contract (it's just a static
+`background-image`, nothing to seek), but using one as a scene's hero
+background is a *design* decision, not a mechanical one — pick a photo
+whose subject/mood actually fits that reel's topic (architecture for a
+hardware story, macro/texture for an abstract concept, etc.), not a
+generic "photo behind text" filler, and keep the same off-white
+text/soft-shadow/contrast rules from "Typography house style" for
+anything overlaid on it. If a reel needs a specific photo not covered by
+this set, don't fetch one ad hoc — check `assets/ATTRIBUTION.md`'s
+"Real-photo sourcing repos evaluated" note first, since most obvious-
+looking "bulk photo dataset" repos on GitHub turn out to be metadata-only
+or link-lists, not actual files.
+
 ## Git / workflow conventions observed in this repo
 
 - Every reel-generation session works on a dedicated branch

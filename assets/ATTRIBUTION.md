@@ -14,7 +14,7 @@ below.
 | `icons/simple-icons/` | [simple-icons/simple-icons](https://github.com/simple-icons/simple-icons) | CC0 (see `LICENSE.md`) | ~100 brand/logo SVGs for platforms and tools likely to show up in reels (Instagram, LinkedIn, X, YouTube, TikTok, GitHub, OpenAI, Anthropic, Stripe, etc.). Full set has 3,000+ brands. |
 | `illustrations/flowbite/` | [themesberg/flowbite-illustrations](https://github.com/themesberg/flowbite-illustrations) | MIT | Full set (107 SVGs, ~3MB) — small enough to keep entirely. |
 | `illustrations/bioicons/` | [duerrsimon/bioicons](https://github.com/duerrsimon/bioicons) | Mixed — license varies **per icon**, encoded in the folder name (`cc-0/`, `cc-by-sa-4.0/`, etc.); the repo's own `LICENSE` (MIT) covers only the webapp code, not the icons themselves | A small (~34 icon) sample from the more general-purpose categories (Machine Learning, Computer Hardware, People, General Items, Lab Apparatus). This repo is mostly biology/chemistry-specific and not a great fit for social reels — kept as a token set per the source list. |
-| `photos/servicestack/` | [ServiceStack/images](https://github.com/ServiceStack/images) | Sourced from [Unsplash](https://unsplash.com) — free for commercial and personal use, no attribution required | 30 of 147 hero photos (2560x1000), evenly sampled for variety. |
+| `photos/servicestack/` | [ServiceStack/images](https://github.com/ServiceStack/images) | Sourced from [Unsplash](https://unsplash.com) — free for commercial and personal use, no attribution required | Full set — all 147 hero photos (2560x1000, ~30MB total). Expanded from an initial 30-photo sample once real usage started calling for more topic variety (architecture, nature, abstract/texture, macro) than a small subset could cover. Hand-spot-checked a random sample across categories for watermarks/branding before expanding — none found, consistent with Unsplash's own no-watermark policy. |
 | `logos/gilbarbara/` | [gilbarbara/logos](https://github.com/gilbarbara/logos) | CC0 (see `LICENSE.txt`) — **but note:** CC0 covers the SVG *files themselves*; the brand marks depicted are still trademarks of their respective owners | ~137 dev-tooling/cloud/language/SaaS logos (AWS, Azure, GCP, Kubernetes, Docker, React, Python, OpenAI, Anthropic, etc.) curated out of ~1,900 available. |
 | `logos/svg-logos/` | [detain/svg-logos](https://github.com/detain/svg-logos) | **No license — mirror of [WorldVectorLogo](https://worldvectorlogo.com)**; logos are trademarks/copyrighted artwork of their owners, use for identification only (see Legal note below) | 69 recognizable tech/hardware/enterprise logos (Intel-adjacent hardware makers, IBM, Cisco, Dell, Atlassian, Cloudflare, etc.) curated out of ~120,000 files — the full repo is a generic WorldVectorLogo mirror, not tech-specific. |
 | `logos/unilogo/` | [zhoudaxia233/UniLogo](https://github.com/zhoudaxia233/UniLogo) | Repo code is MIT (see `LICENSE`); the university crests/wordmarks themselves are each institution's own mark | 36 transparent PNG logos for top research/engineering universities (MIT, Stanford, CMU, Oxford, Cambridge, ETH Zurich, IITs, Tsinghua, etc.) curated out of 835. |
@@ -161,6 +161,45 @@ standalone noise function is cheaper than the whole library.
 ## Not included (from the previous round), and why
 
 - **`bradtraversy/design-resources-for-developers`**, **`neutraltone/awesome-stock-resources`**, **`MrPeker/awesome-illustrations`**, **`darelova/Awesome-Design-Resources-List`** — these are curated *link lists* (Markdown pages pointing to Freepik, Unsplash, dribbble, etc.), not repos containing actual downloadable asset files. Nothing to pull.
+
+## Real-photo sourcing repos evaluated (and why the actual pull was elsewhere)
+
+A round of suggested "high-quality real photo" repos was checked before
+expanding `photos/servicestack/` above — verified by hand (fetching each
+repo's README), not taken at face value, since several turned out not to
+contain what their names implied:
+
+- **`unsplash/datasets`** — metadata/CSV only (photo IDs, keywords, search
+  terms, and URLs), not image binaries, and its own terms explicitly state
+  "it cannot be used to redistribute the images contained within." Not
+  usable for vendoring regardless of interest — pulling from it would mean
+  scraping each URL individually (thousands of HTTP requests) and would
+  still violate the dataset's own redistribution restriction.
+- **`cj-mills/pexels-dataset`** — same shape: this GitHub repo holds only
+  `attributes_df.json`/`tags.txt` metadata; the actual image files live on
+  separate Kaggle dataset pages ("Pexels 110k 512p/768p JPEG"), which
+  aren't a git-clonable source and carry their own separate terms to check.
+- **`castano/image-datasets`**, **`neutraltone/awesome-stock-resources`**,
+  **`jennybc/free-photos`** — curated *link lists* pointing to other sites
+  (Unsplash, Pexels, Kaboompics, CC0.photo, etc.), same category as the
+  design-resource lists above. Nothing to clone.
+- **`jparkerweb/random-pexels-image`**, **`xcollantes/free-stock-images-mcp`**
+  — live API wrappers requiring a runtime Pexels/Unsplash API key, not a
+  pre-populated asset dump. Would fit a "fetch a specific photo on demand"
+  workflow (same shape as the Brandfetch/Logo.dev note above), not this
+  repo's "curate once, vendor the files" pattern — revisit only if a reel
+  ever needs a truly dynamic, script-driven photo (not a hand-picked one).
+
+**What actually happened instead**: `photos/servicestack/` (already in
+this repo, see the table above) turned out to be exactly what those repos
+were gesturing at but didn't deliver — a real, git-clonable collection of
+actual Unsplash-sourced JPEGs with a permissive, redistribution-friendly
+license. It was already partially vendored (30 of 147); the fix was
+pulling the rest of an already-good source rather than chasing new ones
+that don't actually bundle files. Random-sampled several across categories
+(architecture, coastal/aerial, macro/nature) and visually confirmed no
+watermarks before expanding — consistent with Unsplash's own no-watermark
+policy, but worth checking by hand rather than assuming.
 - **`lukaszadam/illustrations`** — no longer exists at that path (404/renamed/removed); couldn't locate a successor repo.
 - **`jktzes/humaaans`** — assets are React components with SVG path data embedded in JSX (`.js` files), not standalone `.svg` files. A single figure was hand-extracted from a source like this early on (`reel-app/src/humaaans/`, three separate body-part files manually stitched together) — usable, but painstaking per-part work, and it left every reel reusing the exact same one figure. **Resolved later** via `illustrations/humaaans-react/` (see the main table above): the `react-humaaans` npm package ships 24 full pre-composed poses per file with resolvable color props, extractable in a few lines of regex — no more manual part-stitching, and real character variety across reels.
 
