@@ -110,6 +110,7 @@ video-generator/
 ├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library
 │   ├── fonts/                 Vendored webfonts (Poppins, Inter, JetBrains Mono, Space Grotesk, ...) — see "Typography" below
 │   ├── animations/gsap/       Vendored GSAP core (gsap.min.js) — see "Entrance animations" below
+│   ├── animations/lottie/     Vendored lottie-web runtime (lottie.min.js) — see "Lottie" below
 │   ├── illustrations/humaaans-react/  24 pre-composed humaaans character poses — see "Character variety" below
 │   └── ATTRIBUTION.md        License table per source + the animation-seeking caveat above
 ├── reel-anthropic-opus-5-5/          Reel 1 (template-based, hand-written HTML + profile pic substitution)
@@ -276,6 +277,58 @@ Key pieces of `build.mjs`:
     helpers verbatim — copy that block into a new reel rather than
     re-deriving it, but keep `enter()`'s plain-CSS fallback for anything
     that doesn't need the extra weight of a GSAP timeline.
+
+## Lottie — for motion-designer-authored animations
+
+`assets/animations/lottie/lottie.min.js` (vendored the same way as GSAP —
+see `assets/ATTRIBUTION.md` for the full license/usage note) plays back
+After Effects animations exported via the Bodymovin/Lottie plugin. It's
+a second, narrower exception to "engines aren't assets": a Lottie export
+is a baked keyframe timeline, and `anim.goToAndStop(frame, true)` +
+`anim.totalFrames` is a clean match for `window.__seek(t)`, same
+principle as GSAP's `tl.progress(e)`.
+
+Use this only when a motion designer hands you an actual `.json`
+Bodymovin export to bring in — it's a playback runtime, not a source of
+animations; nothing under `assets/animations/lottie/` is itself an
+animation to reuse. Reach for GSAP's `dropIn`/`tumbleIn`/`runIn` first
+for anything a JS timeline can express — Lottie is worth the extra
+weight specifically when a scene needs something only After
+Effects can author reasonably (complex character animation, hand-drawn
+frame-by-frame work, elaborate masking).
+
+**Two non-obvious things that will break this if skipped** (verified by
+hand — the JSON schema is unforgiving about both):
+
+1. **Inline the JSON as `animationData`, never load it via `path`.**
+   `path` triggers an XHR fetch, which hangs forever under `file://` —
+   the exact same CORS class of bug as Vite's `type="module"` scripts
+   (see "Directory sources" below). `build.mjs` should `JSON.parse` the
+   exported file at build time and inline the object into the generated
+   `<script>`, the same way a profile picture gets inlined as base64
+   rather than referenced by URL.
+2. **Seek using `e * (anim.totalFrames - 1)`, not `e * anim.totalFrames`.**
+   Valid frame indices are `0..totalFrames-1`; asking for frame
+   `totalFrames` overshoots by one and lottie-web holds an unexpected
+   in-between value at exactly `e = 1` (confirmed by hand-testing a
+   scale-keyframe animation — off by one frame produced a visibly wrong
+   final value instead of the authored end state).
+
+```js
+function lottieSeek(anim, e) {
+  if (!anim || !anim.totalFrames) return;
+  anim.goToAndStop(clamp(e, 0, 1) * (anim.totalFrames - 1), true);
+}
+// inside window.__seek(t): lottieSeek(anim, (t - scene.start) / scene.duration);
+```
+
+**tsParticles and p5.js were evaluated for generative backgrounds and
+deliberately not vendored** — see `assets/ATTRIBUTION.md` for why
+(tsParticles is a live physics sim with no deterministic-seek API;
+p5.js is safe but not enough of a win over this repo's existing
+CSS/SVG-driven textures to justify the dependency weight). Don't reach
+for tsParticles for a reel background — it cannot be made to satisfy
+the core render contract without patching its internals.
 
 ## Scene-to-scene transitions
 

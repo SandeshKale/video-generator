@@ -29,6 +29,7 @@ below.
 | `animations/csshake/` | [elrumordelaluz/csshake](https://github.com/elrumordelaluz/csshake) | MIT | `dist/` — shake/bounce CSS micro-animation classes. |
 | `animations/hover-css/` | [IanLunn/Hover](https://github.com/IanLunn/Hover) | MIT | `hover.css` (+min) — hover-triggered CSS transition classes. |
 | `animations/gsap/` | [greensock/GSAP](https://github.com/greensock/GSAP) (via [npm: gsap](https://www.npmjs.com/package/gsap), v3.15.0) | GSAP Standard "no charge" license (free for this use — see `LICENSE.md` in this folder); **not MIT** | `gsap.min.js` — core animation engine only (no bonus/club plugins). Loaded as a classic `<script>` tag (works over `file://`, no bundler needed) so plain self-contained-HTML reels can use it. |
+| `animations/lottie/` | [airbnb/lottie-web](https://github.com/airbnb/lottie-web) (via [npm: lottie-web](https://www.npmjs.com/package/lottie-web), v5.13.0) | MIT | `lottie.min.js` — the full SVG-renderer build (not `lottie_light`, which drops expression support some AE exports rely on). A second GSAP-style exception to "engines aren't assets" (see below) — its `goToAndStop(frame, true)` + `totalFrames` API is a clean, native fit for `window.__seek(t)`. No bundled `.json` animation files are included — see the note below on why those still have to be sourced per-reel. |
 | `fonts/poppins/`, `fonts/inter/`, `fonts/jetbrains-mono/`, `fonts/space-grotesk/` | Google Fonts / JetBrains releases, repackaged via the `@fontsource/*` npm packages (v5.3.0) | SIL Open Font License 1.1 — see `LICENSE-OFL.txt` in `fonts/` | Specific `.woff2` weights only (not full family ranges) extracted from each `@fontsource` package's `files/` directory — `bun add --no-save @fontsource/<name>`, copy the needed weight(s), `bun remove @fontsource/<name>`. Loaded per reel via `@font-face` + a relative `url(...)`. |
 | `illustrations/humaaans-react/` | [react-humaaans on npm](https://www.npmjs.com/package/react-humaaans) v1.0.1 (original art: [humaaans.com](https://www.humaaans.com) by Pablo Stanley) | MIT (react-humaaans package; no separate upstream LICENSE file) | 24 full pre-composed "standing" character poses + several "sitting" poses, as React source files with resolvable color props — see `illustrations/humaaans-react/LICENSE.md` for the extraction pattern (`humaaansFull()` in a reel's `build.mjs`). Supersedes the older single-figure `reel-app/src/humaaans/` set (still present, used by `reel-anthropic-rundown-ios`) for any new reel — use a different pose per character appearance instead of reusing one figure everywhere. |
 
@@ -88,15 +89,67 @@ HTML reels, not just in the `reel-app/` bundle. See
 `reel-anthropic-rundown-ios/build.mjs`'s `dropIn`/`tumbleIn`/`runIn`
 helpers for the pattern.
 
-**Lottie** and **Rive** were not pulled at all: their runtimes
-(`lottie-web`, `@lottiefiles/lottie-player`, `@rive-app/*`) are npm
-packages, same as above, and the actual ready-made *animations* live on
-hosted platforms (lottiefiles.com, Rive's community marketplace) rather
-than in a git repo — there's nothing to `git clone`. If a reel wants a
-specific free Lottie/Rive file, it'd need to be downloaded individually
-from those sites by name, with its own license check (LottieFiles' free
-tier and Rive community files carry per-file terms, not a blanket repo
-license).
+**Lottie's runtime is now the second exception (see the table above),
+but no `.json` animation files are bundled with it.** A Lottie/Bodymovin
+export is itself a baked keyframe timeline (not a live simulation), which
+is exactly why `lottie-web` was safe to add: `anim.goToAndStop(frame,
+true)` lets `__seek(t)` land on an exact frame deterministically, same
+principle as GSAP's `tl.progress(e)`. What's still missing is the actual
+*animations* — those live on hosted platforms (lottiefiles.com) or come
+from a motion designer's own After Effects + Bodymovin export, not from a
+git-clonable asset repo, so there's nothing to pull in bulk. If a reel
+wants a specific Lottie file, source it individually (with its own
+license check — LottieFiles' free tier carries per-file terms, not a
+blanket license) and inline the `.json` into that reel's `build.mjs`.
+Usage pattern:
+
+```js
+// vendored runtime, classic <script> tag (works over file://):
+// <script src="../assets/animations/lottie/lottie.min.js"></script>
+var anim = lottie.loadAnimation({
+  container: document.getElementById('lottie-mount'),
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  // Use animationData (an inlined JS object), never `path`. `path` does
+  // an XHR fetch for the JSON — verified this hangs forever under
+  // file://, the same class of CORS gotcha this repo already knows
+  // about from Vite's type="module" scripts. build.mjs should
+  // JSON.parse the exported file at build time and inline it, exactly
+  // like a reel's other embedded assets (e.g. the base64 profile pic).
+  animationData: LOTTIE_JSON_INLINED_AT_BUILD_TIME,
+});
+function lottieSeek(anim, e) {
+  if (!anim || !anim.totalFrames) return;
+  // totalFrames - 1, not totalFrames: valid frame indices are
+  // 0..totalFrames-1, so e=1 * totalFrames overshoots by one frame and
+  // lottie-web holds an unexpected in-between value at that exact edge.
+  anim.goToAndStop(clamp(e, 0, 1) * (anim.totalFrames - 1), true);
+}
+// inside window.__seek(t): lottieSeek(anim, (t - sceneStart) / sceneDuration);
+```
+
+**Rive** (`@rive-app/*`) was considered and skipped for now: its runtime
+is WASM-based and its state-machine model doesn't expose as simple a
+"jump to normalized progress" primitive as Lottie's frame-indexed
+timeline — revisit only if a specific reel needs Rive-authored content
+and the seek story is worth solving for that one case.
+
+**tsParticles and p5.js were evaluated for generative/particle
+backgrounds and deliberately not vendored.** tsParticles is a live
+physics simulation (particles integrate velocity/gravity/collisions
+every tick via its own internal `requestAnimationFrame` loop) with no
+public "render exactly this normalized time `t`" API — forcing it to be
+deterministic would mean patching its internal update loop, which risks
+reintroducing exactly the real-time-clock drift this repo's core render
+contract (see `CLAUDE.md`) exists to rule out. p5.js's `noLoop()` +
+manual `redraw()` *is* safe (the sketch's own `draw()` is fully
+author-controlled, same as any hand-rolled canvas/SVG texture already in
+this repo), but it adds a ~1MB dependency for what boils down to a
+`noise()` convenience function — not enough of a win over the existing
+CSS/SVG-driven background textures to justify vendoring. If a future
+reel's background genuinely needs Perlin/simplex noise, a small
+standalone noise function is cheaper than the whole library.
 
 ## Not pulled from this round of sources, and why
 
