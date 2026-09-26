@@ -81,8 +81,8 @@ async function humaaansFull(kind, name, overrides = {}) {
 }
 
 async function main() {
-  const [robot, target, activity, brain] = await Promise.all(
-    ['robot', 'target', 'activity', 'brain'].map(tablerIcon)
+  const [robot, target, activity, brain, percentage] = await Promise.all(
+    ['robot', 'target', 'activity', 'brain', 'percentage'].map(tablerIcon)
   );
 
   // Two fresh humaaans poses, unused in any prior reel (used so far across
@@ -94,7 +94,7 @@ async function main() {
 
   const profileB64 = (await read('/tmp/pic_b64.txt')).trim();
 
-  const icons = { robot, target, activity, brain };
+  const icons = { robot, target, activity, brain, percentage };
 
   const html = buildHtml({ icons, humanScientist, humanCta, profileB64 });
   await writeFile(join(__dirname, 'reel.html'), html, 'utf8');
@@ -264,15 +264,16 @@ svg{overflow:visible;}
       <div class="eyebrow" id="s1eyebrow">// AI BIOLOGY WATCH</div>
       <div class="headline" id="s1head">An AI just found something <span class="hi-green">no human</span> has ever seen.</div>
       <div class="sub" id="s1sub">Even its creators don't know what it does yet.</div>
+      ${petriChip('', 'FIRST RESULTS: JUST IN', 's1chip')}
     </div>
   </div>
 
   <!-- SCENE 2: SETUP 0:05-0:10 -->
   <div class="scene" id="sc2">
     <div class="band-content">
-      <div class="icon-badge" id="s2icon" style="width:170px;height:170px;">${I.robot}</div>
+      <div class="icon-badge" id="s2icon" style="width:210px;height:210px;">${I.robot}</div>
       <div class="headline" id="s2head" style="font-size:64px;">Meet Anthropic's <span class="hi-violet">AI biology lab.</span></div>
-      <div class="sub" id="s2sub">950 Claude agents, turned loose on a DNA database.</div>
+      ${petri('The setup', '950 Claude agents, turned loose on a DNA database.', 's2card')}
       ${petriChip('', 'GOAL: FIND SOMETHING NEW', 's2chip')}
     </div>
   </div>
@@ -324,9 +325,10 @@ svg{overflow:visible;}
   <div class="scene" id="sc6">
     <div class="band-content">
       <div class="eyebrow" id="s6eyebrow">// THE HUMAN ROLE</div>
-      <div class="human-wrap" id="s6human">${humanScientist}</div>
+      <div class="human-wrap" id="s6human" style="width:320px;height:404px;">${humanScientist}</div>
       <div class="headline" id="s6head" style="font-size:58px;">"Mostly, though not entirely" <span class="hi-green">Claude's.</span></div>
-      <div class="sub" id="s6sub" style="font-size:36px;">Scientists picked the target. Claude suggested the experiments.</div>
+      <div class="sub" id="s6sub" style="font-size:38px;">Scientists picked the target. Claude suggested the experiments.</div>
+      ${petriChip('', 'HUMAN + AI COLLABORATION', 's6chip')}
     </div>
   </div>
 
@@ -346,19 +348,21 @@ svg{overflow:visible;}
   <div class="scene" id="sc8">
     <div class="band-content">
       <div class="eyebrow" id="s8eyebrow">// THE TREND</div>
-      <div class="icon-badge" id="s8icon" style="width:150px;height:150px;">${I.brain}</div>
+      <div class="icon-badge" id="s8icon" style="width:190px;height:190px;">${I.brain}</div>
       <div class="headline" id="s8head" style="font-size:58px;">Models went from failing basic math in 2023 to cracking open problems this year.</div>
-      <div class="sub" id="s8sub">Biology looks like it's next.</div>
+      ${petri('The read', "Biology looks like it's next.", 's8card', 'violet')}
     </div>
   </div>
 
   <!-- SCENE 9: STAT CALLOUT 0:51-0:55 -->
   <div class="scene" id="sc9">
-    <div class="band-content" style="gap:12px;">
+    <div class="band-content" style="gap:16px;">
       <div class="eyebrow" id="s9eyebrow">// STAT CALLOUT</div>
+      <div class="icon-badge" id="s9icon" style="width:110px;height:110px;">${I.percentage}</div>
       <div class="stat-big" id="s9stat">26%</div>
       <div class="stat-label" id="s9statlabel">of Anthropic's own AI R&amp;D — led end-to-end by Claude</div>
       <div class="sub" id="s9sub" style="margin-top:10px;">Up from under 1% in February.</div>
+      ${petriChip('', 'SOURCE: ANTHROPIC INSTITUTE', 's9chip')}
     </div>
   </div>
 
@@ -476,11 +480,12 @@ var SCENES = [
       enter($('s1eyebrow'), eoc(t/0.35), 14, 1);
       enter($('s1head'), eoc((t-0.25)/0.55), 22, 1);
       enter($('s1sub'), eoc((t-0.9)/0.45), 18, 1);
+      dropIn($('s1chip'), (t-1.5)/0.4, -100, 4);
   }},
   { start: 5, duration: 5, el: $('sc2'), render: function(t){
       dropIn($('s2icon'), t/0.5, -200, -8);
       enter($('s2head'), eoc((t-0.4)/0.5), 20, 1);
-      enter($('s2sub'), eoc((t-0.85)/0.5), 16, 1);
+      dropIn($('s2card'), (t-1.0)/0.45, -140, 0);
       dropIn($('s2chip'), (t-1.5)/0.4, -100, -4);
   }},
   { start: 10, duration: 7, el: $('sc3'), render: function(t){
@@ -511,6 +516,7 @@ var SCENES = [
       runIn($('s6human'), (t-0.3)/0.55, -180);
       enter($('s6head'), eoc((t-0.9)/0.5), 20, 1);
       enter($('s6sub'), eoc((t-1.4)/0.45), 16, 1);
+      dropIn($('s6chip'), (t-1.9)/0.4, -100, -4);
   }},
   { start: 38, duration: 7, el: $('sc7'), render: function(t){
       enter($('s7eyebrow'), eoc(t/0.3), 12, 1);
@@ -522,13 +528,15 @@ var SCENES = [
       enter($('s8eyebrow'), eoc(t/0.3), 12, 1);
       tumbleIn($('s8icon'), (t-0.3)/0.5, 140);
       enter($('s8head'), eoc((t-0.9)/0.5), 20, 1);
-      enter($('s8sub'), eoc((t-1.4)/0.45), 16, 1);
+      dropIn($('s8card'), (t-1.5)/0.4, -120, 0);
   }},
   { start: 51, duration: 4, el: $('sc9'), render: function(t){
-      enter($('s9eyebrow'), eoc(t/0.3), 12, 1);
-      tumbleIn($('s9stat'), (t-0.2)/0.5, -20);
-      enter($('s9statlabel'), eoc((t-0.7)/0.4), 14, 1);
-      enter($('s9sub'), eoc((t-1.05)/0.45), 16, 1);
+      enter($('s9eyebrow'), eoc(t/0.25), 12, 1);
+      dropIn($('s9icon'), t/0.35, -140, -6);
+      tumbleIn($('s9stat'), (t-0.35)/0.45, -20);
+      enter($('s9statlabel'), eoc((t-0.75)/0.35), 14, 1);
+      enter($('s9sub'), eoc((t-1.0)/0.4), 16, 1);
+      dropIn($('s9chip'), (t-1.4)/0.35, -100, 4);
   }},
   { start: 55, duration: 5, el: $('sc10'), usesPhoto: true, render: function(t){
       runIn($('s10human'), t/0.5, -180);
