@@ -145,7 +145,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .hexgrid-svg{position:absolute;inset:0;opacity:0.28;}
 .helix-gutter{position:absolute;top:150px;bottom:400px;width:120px;opacity:0.6;}
 .helix-gutter.left{left:36px;}
-.helix-gutter.right{right:226px;transform:scaleX(-1);}
+.helix-gutter.right{right:36px;transform:scaleX(-1);}
 .helix-glow-dot{filter:drop-shadow(0 0 6px currentColor);}
 .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 42%, rgba(0,0,0,0.55) 100%);}
 
@@ -155,7 +155,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .photo-duo{position:absolute;inset:0;background:linear-gradient(135deg, rgba(61,255,176,0.62), rgba(178,107,255,0.58));mix-blend-mode:color;}
 .photo-scrim{position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,9,7,0.35) 0%, rgba(3,9,7,0.55) 55%, rgba(3,9,7,0.94) 100%);}
 
-.safe{position:absolute;top:224px;left:0;right:190px;bottom:400px;z-index:2;}
+.safe{position:absolute;top:224px;left:190px;right:190px;bottom:400px;z-index:2;}
 .scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:stretch;padding:0 44px;box-sizing:border-box;}
 
 .band{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;}
