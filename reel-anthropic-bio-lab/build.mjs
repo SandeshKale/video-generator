@@ -162,12 +162,16 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .band-tight{flex:0.62 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
 .band-content{flex:2.25 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;position:relative;}
 
-.eyebrow{font-family:'JBMono',monospace;font-weight:700;font-size:28px;letter-spacing:0.14em;color:var(--bio-green);text-transform:uppercase;text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
-.headline{font-family:'Outfit',sans-serif;font-weight:800;font-size:72px;line-height:1.16;letter-spacing:-0.01em;color:var(--ink);text-shadow:0 6px 20px rgba(0,0,0,.65);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
+.eyebrow{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:0.14em;color:var(--bio-green);text-transform:uppercase;text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
+.headline{font-family:'Outfit',sans-serif;font-weight:800;font-size:80px;line-height:1.14;letter-spacing:-0.01em;color:var(--ink);text-shadow:0 6px 20px rgba(0,0,0,.65);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
 .headline .hi-green{color:var(--bio-green);}
 .headline .hi-violet{color:var(--bio-violet);}
-.sub{font-family:'Inter',sans-serif;font-weight:600;font-size:40px;line-height:1.4;color:var(--ink-dim);text-shadow:0 3px 10px rgba(0,0,0,.5);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
-.mono-label{font-family:'JBMono',monospace;font-weight:700;font-size:26px;letter-spacing:0.06em;color:var(--bio-violet);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
+.sub{font-family:'Inter',sans-serif;font-weight:600;font-size:44px;line-height:1.4;color:var(--ink-dim);text-shadow:0 3px 10px rgba(0,0,0,.5);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
+.mono-label{font-family:'JBMono',monospace;font-weight:700;font-size:29px;letter-spacing:0.06em;color:var(--bio-violet);text-align:center;width:100%;will-change:transform,opacity;z-index:1;}
+
+.quote-mark{font-family:'Outfit',sans-serif;font-weight:800;font-size:220px;line-height:0.4;color:var(--bio-violet);text-shadow:0 0 46px rgba(178,107,255,0.55);opacity:0.92;will-change:transform,opacity;}
+.quote-card{position:relative;background:rgba(255,255,255,0.05);border:1.5px solid rgba(178,107,255,0.4);padding:36px 48px 44px;width:100%;max-width:780px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:8px;
+  clip-path:polygon(6% 0%, 94% 0%, 100% 50%, 94% 100%, 6% 100%, 0% 50%);will-change:transform,opacity;}
 
 /* Helix bridge: this reel's signal-bridge equivalent — feeds a terminal-
    style typewriter line off the DNA-helix motif, then a blinking cursor.
@@ -330,8 +334,11 @@ svg{overflow:visible;}
   <div class="scene" id="sc7">
     <div class="band-content">
       <div class="eyebrow" id="s7eyebrow">// THE VERDICT</div>
-      <div class="headline" id="s7head">"Work I would have been proud of <span class="hi-violet">as a PhD student.</span>"</div>
-      <div class="mono-label" id="s7label">— DARIO AMODEI, ANTHROPIC CEO</div>
+      <div class="quote-mark" id="s7mark">&rdquo;</div>
+      <div class="quote-card" id="s7card">
+        <div class="headline" id="s7head" style="font-size:60px;">Work I would have been proud of <span class="hi-violet">as a PhD student.</span></div>
+        <div class="mono-label" id="s7label">— DARIO AMODEI, ANTHROPIC CEO</div>
+      </div>
     </div>
   </div>
 
@@ -507,8 +514,9 @@ var SCENES = [
   }},
   { start: 38, duration: 7, el: $('sc7'), render: function(t){
       enter($('s7eyebrow'), eoc(t/0.3), 12, 1);
-      enter($('s7head'), eoc((t-0.3)/0.55), 22, 1);
-      enter($('s7label'), eoc((t-1.0)/0.4), 14, 1);
+      tumbleIn($('s7mark'), (t-0.25)/0.5, -60);
+      dropIn($('s7card'), (t-0.7)/0.5, -160, 0);
+      enter($('s7label'), eoc((t-1.5)/0.4), 14, 1);
   }},
   { start: 45, duration: 6, el: $('sc8'), render: function(t){
       enter($('s8eyebrow'), eoc(t/0.3), 12, 1);
