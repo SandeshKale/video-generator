@@ -145,7 +145,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .hexgrid-svg{position:absolute;inset:0;opacity:0.28;}
 .helix-gutter{position:absolute;top:150px;bottom:400px;width:120px;opacity:0.6;}
 .helix-gutter.left{left:36px;}
-.helix-gutter.right{right:36px;transform:scaleX(-1);}
+.helix-gutter.right{right:226px;transform:scaleX(-1);}
 .helix-glow-dot{filter:drop-shadow(0 0 6px currentColor);}
 .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 42%, rgba(0,0,0,0.55) 100%);}
 
