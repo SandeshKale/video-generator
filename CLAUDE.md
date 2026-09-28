@@ -466,6 +466,16 @@ closing wordmark, all wrapped in fake-editor HUD chrome) is the approved
 feasibility demo/reference implementation for this whole category. Check
 the catalog before inventing a new showreel/sting style from scratch.
 
+## Design-polish notes
+
+`DESIGN-POLISH-NOTES.md` (repo root) is a checklist of small, concrete
+CSS/SVG techniques for the next reel build — tabular numbers on counters,
+the nested-border-radius formula, shadow-based elevation, squircle
+corners, icon-morph crossfades, and an asymmetric (faster/quieter) exit
+timing for the scene crossfade. All zero-dependency, all compatible with
+the deterministic `window.__seek(t)` contract. Skim it when polishing a
+new reel's component details.
+
 ## Cover images
 
 **See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
