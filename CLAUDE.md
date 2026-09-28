@@ -453,6 +453,19 @@ within a single reel if it uses more than one. Never reuse the exact same
 `standing-N` pose+color combination twice. `assets/illustrations/humaaans-react/LICENSE.md`
 has the full provenance note.
 
+## Motion-showreel styles (intro stings / abstract showreel reels)
+
+`MOTION-SHOWREEL-STYLES.md` (repo root) is a reserve catalog of abstract
+motion-graphics styles for a standalone showreel/sting — kinetic
+typography, glitch transitions, isometric blueprint, liquid glass,
+particle fields, CRT terminal, brutalist type, and more — each with a
+concrete `t`-driven CSS/SVG build technique already checked against this
+repo's deterministic-seek constraint. `reel-motion-showreel-demo/`
+(starburst → morphing shape with a live rotation gizmo → wave grid →
+closing wordmark, all wrapped in fake-editor HUD chrome) is the approved
+feasibility demo/reference implementation for this whole category. Check
+the catalog before inventing a new showreel/sting style from scratch.
+
 ## Cover images
 
 **See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
