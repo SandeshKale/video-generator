@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>motion-showreel-demo</title>
+<style>
+@font-face{font-family:'Outfit';font-weight:800;src:url('../assets/fonts/outfit/outfit-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+
+:root{ --bg:#08090c; --ink:#f3f5f9; --blue:#3355ff; --line:rgba(243,245,249,0.35); }
+html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-family:'JBMono',monospace;color:var(--ink);}
+.stage{position:absolute;inset:0;}
+
+/* ---- fake-editor HUD chrome: persists across all shots ---- */
+.hud{position:absolute;inset:0;z-index:5;pointer-events:none;}
+.hud-corner{position:absolute;width:36px;height:36px;border-color:rgba(243,245,249,0.5);}
+.hud-corner.tl{top:56px;left:44px;border-top:2px solid;border-left:2px solid;}
+.hud-corner.tr{top:56px;right:44px;border-top:2px solid;border-right:2px solid;}
+.hud-corner.bl{bottom:56px;left:44px;border-bottom:2px solid;border-left:2px solid;}
+.hud-corner.br{bottom:56px;right:44px;border-bottom:2px solid;border-right:2px solid;}
+.hud-label-tl{position:absolute;top:70px;left:96px;font-size:22px;font-weight:700;letter-spacing:0.04em;color:var(--ink);}
+.hud-label-tl .dim{color:rgba(243,245,249,0.5);font-weight:500;}
+.hud-label-tr{position:absolute;top:70px;right:96px;font-size:20px;font-weight:500;color:rgba(243,245,249,0.6);text-align:right;}
+.hud-tc{position:absolute;bottom:76px;left:96px;font-size:24px;font-weight:700;letter-spacing:0.03em;}
+.hud-frame{position:absolute;bottom:76px;right:96px;font-size:20px;font-weight:500;color:rgba(243,245,249,0.6);}
+.hud-bar{position:absolute;bottom:56px;left:96px;right:96px;height:2px;background:rgba(243,245,249,0.18);}
+.hud-bar-fill{position:absolute;top:0;left:0;bottom:0;background:var(--blue);width:0%;}
+.shot-label{position:absolute;top:1780px;left:0;right:0;text-align:center;font-size:22px;font-weight:700;letter-spacing:0.08em;color:rgba(243,245,249,0.55);text-transform:uppercase;}
+
+/* ---- shot 1: starburst ---- */
+.burst-wrap{position:absolute;top:50%;left:50%;width:640px;height:640px;margin:-320px 0 0 -320px;}
+.burst-ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(243,245,249,0.25);}
+.burst-spoke{position:absolute;top:50%;left:50%;width:8px;height:220px;margin:-220px -4px 0 -4px;transform-origin:50% 220px;background:linear-gradient(180deg, var(--blue), rgba(51,85,255,0));border-radius:4px;}
+
+/* ---- shot 2: morphing shape + gizmo ---- */
+.morph-wrap{position:absolute;top:50%;left:50%;width:1080px;height:1080px;margin:-540px 0 0 -540px;}
+.morph-bg{position:absolute;inset:0;background:var(--blue);}
+.morph-shape{position:absolute;top:50%;left:50%;width:300px;height:300px;margin:-150px 0 0 -150px;background:var(--ink);}
+.gizmo{position:absolute;top:50%;left:50%;width:420px;height:420px;margin:-210px 0 0 -210px;border:1.5px dashed rgba(243,245,249,0.4);}
+.gizmo-handle{position:absolute;width:14px;height:14px;background:var(--ink);border:2px solid var(--blue);margin:-7px;}
+.gizmo-readout{position:absolute;top:50%;left:calc(50% + 260px);font-size:22px;font-weight:700;line-height:1.5;white-space:nowrap;}
+
+/* ---- shot 3: wave grid ---- */
+.grid-wrap{position:absolute;top:50%;left:50%;width:760px;height:760px;margin:-380px 0 0 -380px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:18px;}
+.grid-cell{background:var(--ink);border-radius:6px;}
+
+/* ---- shot 4: closing card ---- */
+.card-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;}
+.card-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:96px;letter-spacing:-0.02em;text-align:center;line-height:1.05;text-shadow:0 8px 30px rgba(51,85,255,0.35);}
+.card-title .hi{color:var(--blue);}
+.card-sub{font-size:26px;letter-spacing:0.08em;color:rgba(243,245,249,0.6);text-transform:uppercase;}
+.card-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(51,85,255,0.35);}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <!-- SHOT 1: STARBURST 0-4s -->
+  <div id="shot1" style="position:absolute;inset:0;">
+    <div class="burst-wrap" id="burstWrap">
+      <div class="burst-ring" style="width:100%;height:100%;"></div>
+      <div class="burst-ring" style="inset:70px;"></div>
+      <div id="spokes"></div>
+    </div>
+    <div class="shot-label">01 — Identity</div>
+  </div>
+
+  <!-- SHOT 2: MORPHING SHAPE 4-8s -->
+  <div id="shot2" style="position:absolute;inset:0;display:none;">
+    <div class="morph-wrap">
+      <div class="morph-bg"></div>
+      <div class="morph-shape" id="morphShape"></div>
+      <div class="gizmo" id="gizmo">
+        <div class="gizmo-handle" id="gh0"></div>
+        <div class="gizmo-handle" id="gh1"></div>
+        <div class="gizmo-handle" id="gh2"></div>
+        <div class="gizmo-handle" id="gh3"></div>
+      </div>
+      <div class="gizmo-readout" id="gizmoReadout"></div>
+    </div>
+    <div class="shot-label">02 — Morphing</div>
+  </div>
+
+  <!-- SHOT 3: WAVE GRID 8-12s -->
+  <div id="shot3" style="position:absolute;inset:0;display:none;">
+    <div class="grid-wrap" id="gridWrap"></div>
+    <div class="shot-label">03 — Rhythm</div>
+  </div>
+
+  <!-- SHOT 4: CLOSING CARD 12-15s -->
+  <div id="shot4" style="position:absolute;inset:0;display:none;">
+    <div class="card-ring" id="cardRing1" style="width:900px;height:900px;top:50%;left:50%;margin:-450px 0 0 -450px;"></div>
+    <div class="card-ring" id="cardRing2" style="width:1200px;height:1200px;top:50%;left:50%;margin:-600px 0 0 -600px;"></div>
+    <div class="card-wrap">
+      <div class="card-title" id="cardTitle">CLAUDE <span class="hi">MOTION</span> REEL</div>
+      <div class="card-sub">Rendered entirely from HTML + CSS + t</div>
+    </div>
+    <div class="shot-label">04 — Sign-off</div>
+  </div>
+
+  <div class="hud">
+    <div class="hud-corner tl"></div>
+    <div class="hud-corner tr"></div>
+    <div class="hud-corner bl"></div>
+    <div class="hud-corner br"></div>
+    <div class="hud-label-tl">CLAUDE <span class="dim">· MOTION REEL 2026</span></div>
+    <div class="hud-label-tr" id="hudBar">BAR 1/8 &nbsp;·&nbsp; 128 BPM</div>
+    <div class="hud-tc" id="hudTc">00:00:00:00</div>
+    <div class="hud-frame" id="hudFrame">60 FPS</div>
+    <div class="hud-bar"><div class="hud-bar-fill" id="hudBarFill"></div></div>
+  </div>
+</div>
+
+<script>
+function $(id){ return document.getElementById(id); }
+function clamp(v,lo,hi){ return Math.max(lo, Math.min(hi, v)); }
+function eoc(x){ x = clamp(x,0,1); return 1 - Math.pow(1-x,3); }
+function eio(x){ x = clamp(x,0,1); return x<0.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
+
+// Shot 1: 12 spokes radiating from center, staggered scale-in, then a
+// slow continuous rotation of the whole burst driven by t.
+var SPOKE_N = 12;
+var spokesEl = $('spokes');
+var spokeDivs = [];
+for (var i = 0; i < SPOKE_N; i++) {
+  var d = document.createElement('div');
+  d.className = 'burst-spoke';
+  d.style.transform = 'rotate(' + (i * 360 / SPOKE_N) + 'deg) scaleY(0)';
+  spokesEl.appendChild(d);
+  spokeDivs.push(d);
+}
+function renderShot1(t){
+  var burstRotate = t * 14; // slow continuous spin, deg/sec
+  $('burstWrap').style.transform = 'rotate(' + burstRotate + 'deg)';
+  for (var i = 0; i < SPOKE_N; i++) {
+    var e = eoc(clamp((t - i * 0.05) / 0.4, 0, 1));
+    spokeDivs[i].style.transform = 'rotate(' + (i * 360 / SPOKE_N) + 'deg) scaleY(' + e + ')';
+  }
+}
+
+// Shot 2: rounded square rotates continuously; a dashed gizmo box with 4
+// corner handles rotates in lockstep; a mono readout reports the current
+// rotation angle, like a design tool's live transform HUD.
+function renderShot2(t){
+  var local = t - 4;
+  var rot = local * 22; // deg/sec
+  var scale = 0.9 + 0.08 * Math.sin(local * 1.6);
+  $('morphShape').style.borderRadius = (18 + 22 * (0.5 + 0.5 * Math.sin(local * 1.1))) + 'px';
+  $('morphShape').style.transform = 'rotate(' + rot + 'deg) scale(' + scale + ')';
+  $('gizmo').style.transform = 'rotate(' + rot + 'deg) scale(' + (scale * 1.4) + ')';
+  var half = 210;
+  var pts = [[-half,-half],[half,-half],[half,half],[-half,half]];
+  for (var i = 0; i < 4; i++) {
+    $('gh' + i).style.left = (540 + pts[i][0]) + 'px';
+    $('gh' + i).style.top = (960 + pts[i][1]) + 'px';
+  }
+  $('gizmoReadout').style.top = (960) + 'px';
+  var normRot = ((rot % 360) + 360) % 360;
+  $('gizmoReadout').innerHTML = 'ROT ' + normRot.toFixed(1) + '&deg;<br>SHAPE: SQUARE';
+}
+
+// Shot 3: 6x6 grid of cells, each scaling in a diagonal wave driven by t
+// (distance-from-corner determines phase offset) — a classic motion-
+// graphics "rhythm" beat, entirely t-driven.
+var GRID_N = 6;
+var gridWrap = $('gridWrap');
+var gridDivs = [];
+for (var gy = 0; gy < GRID_N; gy++) {
+  for (var gx = 0; gx < GRID_N; gx++) {
+    var gd = document.createElement('div');
+    gd.className = 'grid-cell';
+    gridWrap.appendChild(gd);
+    gridDivs.push({ el: gd, phase: (gx + gy) / (2 * (GRID_N - 1)) });
+  }
+}
+function renderShot3(t){
+  var local = t - 8;
+  for (var i = 0; i < gridDivs.length; i++) {
+    var g = gridDivs[i];
+    var wave = 0.5 + 0.5 * Math.sin((local * 2.2 - g.phase * 3.2));
+    var s = 0.25 + 0.75 * eio(wave);
+    g.el.style.transform = 'scale(' + s + ')';
+    g.el.style.opacity = 0.35 + 0.65 * wave;
+  }
+}
+
+// Shot 4: closing wordmark drops in with two concentric rings expanding
+// outward from center, all driven by local elapsed time.
+function renderShot4(t){
+  var local = t - 12;
+  var e = eoc(clamp(local / 0.6, 0, 1));
+  $('cardTitle').style.opacity = e;
+  $('cardTitle').style.transform = 'translateY(' + ((1 - e) * 24) + 'px) scale(' + (0.94 + 0.06 * e) + ')';
+  var r1 = eoc(clamp((local - 0.1) / 1.2, 0, 1));
+  var r2 = eoc(clamp((local - 0.3) / 1.4, 0, 1));
+  $('cardRing1').style.transform = 'scale(' + (0.7 + 0.3 * r1) + ')';
+  $('cardRing1').style.opacity = 0.5 * (1 - r1 * 0.4);
+  $('cardRing2').style.transform = 'scale(' + (0.6 + 0.4 * r2) + ')';
+  $('cardRing2').style.opacity = 0.35 * (1 - r2 * 0.4);
+}
+
+var SHOTS = [
+  { start: 0, end: 4, el: $('shot1'), render: renderShot1 },
+  { start: 4, end: 8, el: $('shot2'), render: renderShot2 },
+  { start: 8, end: 12, el: $('shot3'), render: renderShot3 },
+  { start: 12, end: 15, el: $('shot4'), render: renderShot4 },
+];
+
+window.__reelDurationSec = 15.0;
+window.__seek = function(t){
+  SHOTS.forEach(function(shot){
+    var visible = t >= shot.start && t < shot.end;
+    shot.el.style.display = visible ? 'block' : 'none';
+    if (visible) shot.render(t);
+  });
+
+  // HUD: running timecode (mm:ss:ff @ 60fps display), frame counter, a
+  // beat/bar readout derived from BPM, and a bottom progress bar — all
+  // computed straight from t, same as every other reel's progress bar.
+  var totalFrames = Math.round(t * 60);
+  var mm = Math.floor(t / 60);
+  var ss = Math.floor(t % 60);
+  var ff = totalFrames % 60;
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  $('hudTc').textContent = pad(mm) + ':' + pad(ss) + ':' + pad(ff);
+  $('hudFrame').textContent = 'FRAME ' + totalFrames;
+  var beatsPerSec = 128 / 60;
+  var beat = t * beatsPerSec;
+  var bar = Math.floor(beat / 4) % 8 + 1;
+  var beatInBar = Math.floor(beat % 4) + 1;
+  document.querySelector('.hud-label-tr').textContent = 'BAR ' + bar + '/8  ·  BEAT ' + beatInBar + '  ·  128 BPM';
+  $('hudBarFill').style.width = (100 * clamp(t / window.__reelDurationSec, 0, 1)) + '%';
+};
+
+window.__autoplay = function(){
+  var startTime = performance.now();
+  function frame(){
+    var t = (performance.now() - startTime) / 1000;
+    if (t > window.__reelDurationSec) t = 0, startTime = performance.now();
+    window.__seek(t);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+};
+if (window.location.search.includes('autoplay')) window.__autoplay();
+else window.__seek(0);
+</script>
+</body>
+</html>
