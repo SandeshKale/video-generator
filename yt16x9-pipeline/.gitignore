@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.env
+artifacts/
+out/
+.remotion/
+test/fixtures/generated/
