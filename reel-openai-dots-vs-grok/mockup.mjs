@@ -141,11 +141,21 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 
 .bg-texture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
 .bg-wash{position:absolute;inset:0;background:
-  radial-gradient(ellipse 900px 700px at 22% 18%, rgba(91,107,255,0.14), transparent 60%),
-  radial-gradient(ellipse 900px 900px at 82% 78%, rgba(255,171,46,0.10), transparent 60%),
+  radial-gradient(ellipse 1100px 900px at 12% 10%, rgba(91,107,255,0.30), transparent 58%),
+  radial-gradient(ellipse 1100px 1000px at 90% 88%, rgba(255,171,46,0.24), transparent 58%),
   var(--bg);}
-.app-tile{position:absolute;width:34px;height:34px;border-radius:9px;background:rgba(238,240,247,0.05);}
-.vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 40%, rgba(0,0,0,0.6) 100%);}
+/* Arena split: a bold diagonal seam dividing the frame into an indigo
+   "dots" half and an amber "grok" half — a literal head-to-head arena,
+   this reel's signature background device (distinct from every prior
+   reel's grid/hatch/hex/particle texture). */
+.arena-split{position:absolute;inset:-10% -30%;transform:rotate(-11deg);background:linear-gradient(90deg,
+  rgba(91,107,255,0.16) 0%, rgba(91,107,255,0.05) 46%, transparent 50%,
+  rgba(255,171,46,0.05) 54%, rgba(255,171,46,0.16) 100%);}
+.arena-seam{position:absolute;left:50%;top:-10%;bottom:-10%;width:3px;transform:rotate(-11deg) translateX(-50%);
+  background:linear-gradient(180deg, transparent, rgba(238,240,247,0.5) 20%, rgba(238,240,247,0.5) 80%, transparent);
+  box-shadow:0 0 40px 6px rgba(238,240,247,0.25);}
+.app-tile{position:absolute;width:34px;height:34px;border-radius:9px;background:rgba(238,240,247,0.06);}
+.vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 34%, rgba(0,0,0,0.62) 100%);}
 
 .safe{position:absolute;top:224px;left:190px;right:190px;bottom:400px;z-index:2;}
 .frame{position:absolute;inset:0;display:none;flex-direction:column;align-items:stretch;padding:0 44px;box-sizing:border-box;}
@@ -162,8 +172,15 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 
 /* Browser-window card: title bar + traffic-light dots + URL pill —
    this reel's card language, on-theme with the domain-redirect story. */
-.browser-card{width:100%;max-width:800px;border-radius:16px;overflow:hidden;background:#1b1e27;
-  box-shadow:0 1px 2px rgba(0,0,0,.4), 0 20px 50px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,0.06);}
+.browser-card{width:100%;max-width:900px;border-radius:18px;overflow:hidden;background:#1b1e27;flex-shrink:0;
+  box-shadow:0 1px 2px rgba(0,0,0,.4), 0 26px 60px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,0.06);}
+
+/* VS badge — a bold fight-poster/scoreboard mark, the reel's signature
+   head-to-head device wherever the two rivals meet on screen. */
+.vs-badge{position:relative;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, var(--indigo), var(--amber));
+  box-shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 26px rgba(0,0,0,.5), 0 0 0 4px #15171d, 0 0 0 6px rgba(255,255,255,0.12);}
+.vs-badge span{font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;color:#0d0e12;letter-spacing:-0.02em;}
 .browser-titlebar{height:52px;display:flex;align-items:center;gap:10px;padding:0 20px;background:#22262f;}
 .browser-dot{width:13px;height:13px;border-radius:50%;}
 .browser-dot.r{background:#ff5f57;} .browser-dot.a{background:#febc2e;} .browser-dot.g{background:#28c840;}
@@ -198,7 +215,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .addr-pill .icon-sz svg{width:100%;height:100%;}
 .addr-cursor{color:var(--indigo);font-weight:700;}
 
-.human-wrap{width:230px;height:290px;filter:drop-shadow(0 16px 26px rgba(0,0,0,.5));}
+.human-wrap{width:270px;height:340px;flex-shrink:0;filter:drop-shadow(0 16px 26px rgba(0,0,0,.5));}
 .human-wrap svg{width:100%;height:100%;}
 
 /* Fake "screenshot" landing-page panel — a stylized, clearly-a-mockup
@@ -221,6 +238,8 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 <body>
 <div class="bg-texture">
   <div class="bg-wash"></div>
+  <div class="arena-split"></div>
+  <div class="arena-seam"></div>
   ${appTiles()}
   <div class="vignette"></div>
 </div>
@@ -231,9 +250,13 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
   <div class="frame" id="f1">
     <div class="band-tight">
       <div class="eyebrow">// THE AGENT ARMS RACE</div>
-      <div class="human-wrap" style="margin:0 auto;">${humanHook}</div>
     </div>
-    <div class="band-content">
+    <div class="band-content" style="gap:20px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:28px;width:100%;">
+        <div class="human-wrap" style="width:220px;height:276px;">${humanHook}</div>
+        <div class="vs-badge"><span>VS</span></div>
+        <div class="brand-badge" style="width:120px;height:120px;"><div class="grok-mark" style="font-size:40px;">grok</div></div>
+      </div>
       <div class="headline" style="font-size:66px;">OpenAI just launched its biggest AI agent. Its own <span class="hi-amber">domain</span> sends you to the competition.</div>
       <div class="addr-bridge">
         <div class="addr-pill"><span class="icon-sz">${I.link}</span><span>dot.com</span><span class="addr-cursor">▌</span></div>
@@ -242,6 +265,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
     <div class="band-tight">
       <div class="chip-row">
         <div class="chip amber"><span class="icon-sz" style="width:22px;height:22px;">${I.flame}</span><span>SEPT 29, 2026</span></div>
+        <div class="chip"><span class="icon-sz" style="width:22px;height:22px;">${I.world}</span><span>DEVDAY 2026</span></div>
       </div>
     </div>
   </div>
@@ -252,7 +276,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
       <div class="eyebrow amber">// THE REDIRECT</div>
       <div class="sub" style="font-size:30px;">Whois records show the transfer happened in July — months before DevDay.</div>
     </div>
-    <div class="band-content" style="gap:18px;">
+    <div class="band-content" style="gap:22px;">
       <div class="browser-card">
         <div class="browser-titlebar">
           <div class="browser-dot r"></div><div class="browser-dot a"></div><div class="browser-dot g"></div>
@@ -261,7 +285,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
         <div class="browser-urlrow">
           <div class="browser-urlpill"><span class="icon-sz">${I.link}</span><span>dot.com</span></div>
         </div>
-        <div class="browser-body" style="gap:20px;">
+        <div class="browser-body" style="gap:24px;">
           <div class="snap">
             <div class="snap-nav"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="navlabel">grok.com/bot</span></div>
             <div class="snap-hero">
@@ -271,15 +295,18 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
             </div>
           </div>
           <div class="redirect-arrow">
-            <div class="brand-badge" style="width:70px;height:70px;"><div style="color:var(--indigo);width:40px;height:40px;">${openai}</div></div>
-            <span class="icon-sz">${I.link}</span>
-            <div class="brand-badge" style="width:70px;height:70px;"><div class="grok-mark" style="font-size:30px;">grok</div></div>
+            <div class="brand-badge" style="width:78px;height:78px;"><div style="color:var(--indigo);width:44px;height:44px;">${openai}</div></div>
+            <div class="vs-badge" style="width:64px;height:64px;"><span style="font-size:20px;">VS</span></div>
+            <div class="brand-badge" style="width:78px;height:78px;"><div class="grok-mark" style="font-size:32px;">grok</div></div>
           </div>
         </div>
       </div>
+      <div class="chip-row">
+        <div class="chip"><span class="icon-sz" style="width:20px;height:20px;">${I.cloud}</span><span>AUG 11 → SEPT 29 · 49 DAYS</span></div>
+      </div>
     </div>
     <div class="band-tight">
-      <div class="human-wrap" style="width:190px;height:240px;margin:0 auto;">${humanReact}</div>
+      <div class="human-wrap" style="width:220px;height:276px;margin:0 auto;">${humanReact}</div>
     </div>
   </div>
 
@@ -289,7 +316,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
       <div class="eyebrow">// HEAD TO HEAD</div>
       <div class="headline" style="font-size:58px;">Two agents. <span class="hi-indigo">One</span> launched six weeks after the <span class="hi-amber">other.</span></div>
     </div>
-    <div class="band-content">
+    <div class="band-content" style="gap:20px;">
       <div class="browser-card">
         <div class="browser-titlebar">
           <div class="browser-dot r"></div><div class="browser-dot a"></div><div class="browser-dot g"></div>
@@ -305,9 +332,10 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
       </div>
     </div>
     <div class="band-tight">
-      <div style="display:flex;align-items:flex-end;justify-content:center;gap:36px;">
-        <div class="human-wrap" style="width:170px;height:214px;">${humanHook}</div>
-        <div class="human-wrap" style="width:170px;height:214px;">${humanReact}</div>
+      <div style="display:flex;align-items:flex-end;justify-content:center;gap:20px;">
+        <div class="human-wrap" style="width:200px;height:252px;">${humanHook}</div>
+        <div class="vs-badge" style="margin-bottom:60px;"><span>VS</span></div>
+        <div class="human-wrap" style="width:200px;height:252px;">${humanReact}</div>
       </div>
     </div>
   </div>
