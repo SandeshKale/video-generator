@@ -89,12 +89,12 @@ async function humaaansFull(kind, name, overrides = {}) {
 }
 
 async function main() {
-  const [world, link, cloud, server, flame, search] = await Promise.all(['world', 'link', 'cloud', 'server', 'flame', 'search'].map(tablerIcon));
+  const [world, link, cloud, server, flame] = await Promise.all(['world', 'link', 'cloud', 'server', 'flame'].map(tablerIcon));
   const openai = await brandLogo('logos/gilbarbara/openai-icon.svg');
   const humanHook = await humaaansFull('standing', 'standing-8', { coatColor: '#5b6bff', pantColor: '#15171d' });
   const humanReact = await humaaansFull('standing', 'standing-21', { coatColor: '#ffab2e', pantColor: '#15171d', shirtColor: '#eef0f7' });
 
-  const html = buildHtml({ icons: { world, link, cloud, server, flame, search }, openai, humanHook, humanReact });
+  const html = buildHtml({ icons: { world, link, cloud, server, flame }, openai, humanHook, humanReact });
   await writeFile(join(__dirname, 'mockup.html'), html, 'utf8');
   console.log('wrote mockup.html');
 
@@ -249,8 +249,8 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
   <!-- FRAME 2: the redirect reveal -->
   <div class="frame" id="f2">
     <div class="band-tight">
-      <div class="eyebrow amber">// THE REVEAL</div>
-      <div class="chip amber"><span class="icon-sz" style="width:20px;height:20px;">${I.search}</span><span>WHOIS RECORD: TRANSFERRED JULY 2026</span></div>
+      <div class="eyebrow amber">// THE REDIRECT</div>
+      <div class="sub" style="font-size:30px;">Whois records show the transfer happened in July — months before DevDay.</div>
     </div>
     <div class="band-content" style="gap:18px;">
       <div class="browser-card">
