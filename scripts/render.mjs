@@ -26,6 +26,7 @@
  */
 import { chromium } from 'playwright';
 import { mkdir, mkdtemp, rm, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -63,9 +64,16 @@ async function main() {
   await mkdir(dirname(OUTPUT_MP4), { recursive: true });
   const frameDir = await mkdtemp(join(tmpdir(), 'reel-frames-'));
 
+  // Playwright's expected Chromium revision can drift ahead of whatever
+  // build is actually sitting in PLAYWRIGHT_BROWSERS_PATH (see CLAUDE.md's
+  // "Playwright's Chromium download must stay version-pinned" note) —
+  // fall back to the pre-provisioned build's own executable when present
+  // rather than failing with a confusing "executable doesn't exist" error.
+  const preProvisionedChromium = '/opt/pw-browsers/chromium';
   const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--force-color-profile=srgb'],
+    ...(existsSync(preProvisionedChromium) ? { executablePath: preProvisionedChromium } : {}),
   });
 
   let server;
