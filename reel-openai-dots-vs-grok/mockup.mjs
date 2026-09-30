@@ -41,11 +41,60 @@ async function brandLogo(path) {
 
 function hash(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
 
-async function main() {
-  const [world, link, cloud, server] = await Promise.all(['world', 'link', 'cloud', 'server'].map(tablerIcon));
-  const openai = await brandLogo('logos/gilbarbara/openai-icon.svg');
+function clamp01(x) { return Math.max(0, Math.min(1, x)); }
+function hexToHsl(hex) {
+  hex = hex.replace('#', '');
+  const r = parseInt(hex.slice(0, 2), 16) / 255, g = parseInt(hex.slice(2, 4), 16) / 255, b = parseInt(hex.slice(4, 6), 16) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if (max === r) h = (g - b) / d + (g < b ? 6 : 0);
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h /= 6;
+  }
+  return [h, s, l];
+}
+function hslToHex(h, s, l) {
+  let r, g, b;
+  if (s === 0) { r = g = b = l; }
+  else {
+    const hue2rgb = (p, q, t) => { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1 / 6) return p + (q - p) * 6 * t; if (t < 1 / 2) return q; if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6; return p; };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3); g = hue2rgb(p, q, h); b = hue2rgb(p, q, h - 1 / 3);
+  }
+  const toHex = (x) => Math.round(clamp01(x) * 255).toString(16).padStart(2, '0');
+  return '#' + toHex(r) + toHex(g) + toHex(b);
+}
+function darkenHex(hex, amt) {
+  const [h, s, l] = hexToHsl(hex);
+  return hslToHex(h, s, clamp01(l - (amt || 0.1)));
+}
+async function humaaansFull(kind, name, overrides = {}) {
+  const compName = name.split('-').map((p, i) => i === 0 ? p[0].toUpperCase() + p.slice(1) : p).join('');
+  const src = await read(join(ROOT, `assets/illustrations/humaaans-react/${kind}/${name}/${compName}.js`));
+  const defaults = {};
+  const defBlockMatch = src.match(/\.defaultProps\s*=\s*\{([\s\S]*?)\};/);
+  if (defBlockMatch) for (const m of defBlockMatch[1].matchAll(/(\w+):\s*'([^']*)'/g)) defaults[m[1]] = m[2];
+  const colors = { ...defaults, ...overrides };
+  const svgMatch = src.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
+  let body = svgMatch[1];
+  body = body.replace(/\{darken\((\w+)\)\}/g, (_, key) => darkenHex(colors[key], 0.1));
+  body = body.replace(/\{(\w+)\}/g, (_, key) => (key in colors ? colors[key] : '#000000'));
+  return `<svg viewBox="0 0 380 480">${body}</svg>`;
+}
 
-  const html = buildHtml({ icons: { world, link, cloud, server }, openai });
+async function main() {
+  const [world, link, cloud, server, flame] = await Promise.all(['world', 'link', 'cloud', 'server', 'flame'].map(tablerIcon));
+  const openai = await brandLogo('logos/gilbarbara/openai-icon.svg');
+  const humanHook = await humaaansFull('standing', 'standing-8', { coatColor: '#5b6bff', pantColor: '#15171d' });
+  const humanReact = await humaaansFull('standing', 'standing-21', { coatColor: '#ffab2e', pantColor: '#15171d', shirtColor: '#eef0f7' });
+
+  const html = buildHtml({ icons: { world, link, cloud, server, flame }, openai, humanHook, humanReact });
   await writeFile(join(__dirname, 'mockup.html'), html, 'utf8');
   console.log('wrote mockup.html');
 
@@ -70,7 +119,7 @@ function appTiles() {
   return out;
 }
 
-function buildHtml({ icons: I, openai }) {
+function buildHtml({ icons: I, openai, humanHook, humanReact }) {
 return `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>mockup</title>
 <style>
@@ -122,6 +171,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .browser-urlrow{display:flex;align-items:center;gap:12px;padding:18px 22px;background:#191c24;}
 .browser-urlpill{flex:1;display:flex;align-items:center;gap:10px;background:#0d0e12;border-radius:20px;padding:12px 22px;font-family:'JBMono',monospace;font-size:26px;color:var(--ink);}
 .icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
 .browser-urlpill .icon-sz{width:22px;height:22px;color:var(--ink-dim);}
 .browser-urlpill .icon-sz svg{width:100%;height:100%;}
 .browser-body{padding:36px 34px 42px;display:flex;flex-direction:column;align-items:center;gap:16px;}
@@ -147,6 +197,26 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .addr-pill .icon-sz{width:22px;height:22px;color:var(--indigo);}
 .addr-pill .icon-sz svg{width:100%;height:100%;}
 .addr-cursor{color:var(--indigo);font-weight:700;}
+
+.human-wrap{width:230px;height:290px;filter:drop-shadow(0 16px 26px rgba(0,0,0,.5));}
+.human-wrap svg{width:100%;height:100%;}
+
+/* Fake "screenshot" landing-page panel — a stylized, clearly-a-mockup
+   representation of a portal page (never claimed as a real captured
+   screenshot), sitting inside the browser body for authenticity. */
+.snap{width:100%;background:#0d0e12;border-radius:10px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06);}
+.snap-nav{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.snap-nav .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.18);}
+.snap-nav .navlabel{margin-left:auto;font-family:'JBMono',monospace;font-size:16px;color:var(--ink-dim);}
+.snap-hero{padding:30px 26px 34px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+.snap-hero h3{margin:0;font-family:'Manrope',sans-serif;font-weight:800;font-size:34px;color:var(--ink);}
+.snap-hero p{margin:0;font-family:'Inter',sans-serif;font-size:19px;color:var(--ink-dim);}
+.snap-pill{display:inline-block;font-family:'JBMono',monospace;font-weight:700;font-size:18px;color:#0d0e12;background:var(--amber);padding:8px 20px;border-radius:16px;}
+
+.chip{display:inline-flex;align-items:center;gap:12px;font-family:'JBMono',monospace;font-weight:700;font-size:22px;color:var(--ink);padding:14px 24px;border-radius:14px;
+  background:rgba(91,107,255,0.1);box-shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.3), inset 0 0 0 1.5px rgba(91,107,255,0.35);}
+.chip.amber{background:rgba(255,171,46,0.1);box-shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 20px rgba(0,0,0,.3), inset 0 0 0 1.5px rgba(255,171,46,0.4);color:var(--amber);}
+.chip-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;width:100%;}
 </style></head>
 <body>
 <div class="bg-texture">
@@ -159,11 +229,19 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 
   <!-- FRAME 1: hook -->
   <div class="frame" id="f1">
-    <div class="band-content">
+    <div class="band-tight">
       <div class="eyebrow">// THE AGENT ARMS RACE</div>
-      <div class="headline">OpenAI just launched its biggest AI agent. Its own <span class="hi-amber">domain</span> sends you to the competition.</div>
+      <div class="human-wrap" style="margin:0 auto;">${humanHook}</div>
+    </div>
+    <div class="band-content">
+      <div class="headline" style="font-size:66px;">OpenAI just launched its biggest AI agent. Its own <span class="hi-amber">domain</span> sends you to the competition.</div>
       <div class="addr-bridge">
         <div class="addr-pill"><span class="icon-sz">${I.link}</span><span>dot.com</span><span class="addr-cursor">▌</span></div>
+      </div>
+    </div>
+    <div class="band-tight">
+      <div class="chip-row">
+        <div class="chip amber"><span class="icon-sz" style="width:22px;height:22px;">${I.flame}</span><span>SEPT 29, 2026</span></div>
       </div>
     </div>
   </div>
@@ -172,25 +250,36 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
   <div class="frame" id="f2">
     <div class="band-tight">
       <div class="eyebrow amber">// THE REVEAL</div>
+      <div class="sub" style="font-size:30px;">Whois records show the transfer happened in July — months before DevDay.</div>
     </div>
-    <div class="band-content">
+    <div class="band-content" style="gap:18px;">
       <div class="browser-card">
         <div class="browser-titlebar">
           <div class="browser-dot r"></div><div class="browser-dot a"></div><div class="browser-dot g"></div>
-          <div class="browser-tab">New Tab</div>
+          <div class="browser-tab">dot.com</div>
         </div>
         <div class="browser-urlrow">
           <div class="browser-urlpill"><span class="icon-sz">${I.link}</span><span>dot.com</span></div>
         </div>
-        <div class="browser-body">
-          <div class="redirect-arrow">
-            <div class="brand-badge"><div style="color:var(--indigo);width:56px;height:56px;">${openai}</div></div>
-            <span class="icon-sz">${I.link}</span>
-            <div class="brand-badge"><div class="grok-mark">grok</div></div>
+        <div class="browser-body" style="gap:20px;">
+          <div class="snap">
+            <div class="snap-nav"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span class="navlabel">grok.com/bot</span></div>
+            <div class="snap-hero">
+              <h3>Meet Grok <span style="color:var(--amber);">Bot</span></h3>
+              <p>Always-on. Browses like a person. No API needed.</p>
+              <span class="snap-pill">$20 / month</span>
+            </div>
           </div>
-          <div class="sub" style="font-size:32px;">Quietly transferred to xAI in July. Redirects straight to Grok Bot.</div>
+          <div class="redirect-arrow">
+            <div class="brand-badge" style="width:70px;height:70px;"><div style="color:var(--indigo);width:40px;height:40px;">${openai}</div></div>
+            <span class="icon-sz">${I.link}</span>
+            <div class="brand-badge" style="width:70px;height:70px;"><div class="grok-mark" style="font-size:30px;">grok</div></div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="band-tight">
+      <div class="human-wrap" style="width:190px;height:240px;margin:0 auto;">${humanReact}</div>
     </div>
   </div>
 
@@ -198,7 +287,7 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
   <div class="frame" id="f3">
     <div class="band-tight">
       <div class="eyebrow">// HEAD TO HEAD</div>
-      <div class="headline" style="font-size:60px;">Two agents. <span class="hi-indigo">One</span> launched six weeks after the <span class="hi-amber">other.</span></div>
+      <div class="headline" style="font-size:58px;">Two agents. <span class="hi-indigo">One</span> launched six weeks after the <span class="hi-amber">other.</span></div>
     </div>
     <div class="band-content">
       <div class="browser-card">
@@ -213,6 +302,12 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
           <div class="spec-row"><span class="spec-label">grok bot compute</span><span class="spec-value amber">one shared computer</span></div>
           <div class="spec-row"><span class="spec-label">dots ecosystem</span><span class="spec-value indigo">4,000+ apps</span></div>
         </div>
+      </div>
+    </div>
+    <div class="band-tight">
+      <div style="display:flex;align-items:flex-end;justify-content:center;gap:36px;">
+        <div class="human-wrap" style="width:170px;height:214px;">${humanHook}</div>
+        <div class="human-wrap" style="width:170px;height:214px;">${humanReact}</div>
       </div>
     </div>
   </div>
