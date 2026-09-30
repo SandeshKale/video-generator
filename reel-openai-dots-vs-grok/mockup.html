@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>mockup</title>
+<style>
+@font-face{font-family:'Manrope';font-weight:700;src:url('../assets/fonts/manrope/manrope-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Manrope';font-weight:800;src:url('../assets/fonts/manrope/manrope-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+:root{
+  --bg: #15171d;
+  --bg-2: #0d0e12;
+  --indigo: #5b6bff;
+  --amber: #ffab2e;
+  --ink: #eef0f7;
+  --ink-dim: #9aa0b4;
+}
+html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);overflow:hidden;font-family:'Inter',sans-serif;color:var(--ink);}
+
+.bg-texture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.bg-wash{position:absolute;inset:0;background:
+  radial-gradient(ellipse 900px 700px at 22% 18%, rgba(91,107,255,0.14), transparent 60%),
+  radial-gradient(ellipse 900px 900px at 82% 78%, rgba(255,171,46,0.10), transparent 60%),
+  var(--bg);}
+.app-tile{position:absolute;width:34px;height:34px;border-radius:9px;background:rgba(238,240,247,0.05);}
+.vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 40%, rgba(0,0,0,0.6) 100%);}
+
+.safe{position:absolute;top:224px;left:190px;right:190px;bottom:400px;z-index:2;}
+.frame{position:absolute;inset:0;display:none;flex-direction:column;align-items:stretch;padding:0 44px;box-sizing:border-box;}
+.frame.active{display:flex;}
+.band-content{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;position:relative;}
+.band-tight{flex:0.62 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+
+.eyebrow{font-family:'JBMono',monospace;font-weight:700;font-size:28px;letter-spacing:0.14em;color:var(--indigo);text-transform:uppercase;text-align:center;width:100%;}
+.eyebrow.amber{color:var(--amber);}
+.headline{font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);text-shadow:0 6px 20px rgba(0,0,0,.7);text-align:center;width:100%;}
+.headline .hi-indigo{color:var(--indigo);}
+.headline .hi-amber{color:var(--amber);}
+.sub{font-family:'Inter',sans-serif;font-weight:600;font-size:38px;line-height:1.4;color:var(--ink-dim);text-shadow:0 3px 10px rgba(0,0,0,.5);text-align:center;width:100%;}
+
+/* Browser-window card: title bar + traffic-light dots + URL pill —
+   this reel's card language, on-theme with the domain-redirect story. */
+.browser-card{width:100%;max-width:800px;border-radius:16px;overflow:hidden;background:#1b1e27;
+  box-shadow:0 1px 2px rgba(0,0,0,.4), 0 20px 50px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,0.06);}
+.browser-titlebar{height:52px;display:flex;align-items:center;gap:10px;padding:0 20px;background:#22262f;}
+.browser-dot{width:13px;height:13px;border-radius:50%;}
+.browser-dot.r{background:#ff5f57;} .browser-dot.a{background:#febc2e;} .browser-dot.g{background:#28c840;}
+.browser-tab{margin-left:16px;font-family:'JBMono',monospace;font-size:20px;color:var(--ink-dim);}
+.browser-urlrow{display:flex;align-items:center;gap:12px;padding:18px 22px;background:#191c24;}
+.browser-urlpill{flex:1;display:flex;align-items:center;gap:10px;background:#0d0e12;border-radius:20px;padding:12px 22px;font-family:'JBMono',monospace;font-size:26px;color:var(--ink);}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.browser-urlpill .icon-sz{width:22px;height:22px;color:var(--ink-dim);}
+.browser-urlpill .icon-sz svg{width:100%;height:100%;}
+.browser-body{padding:36px 34px 42px;display:flex;flex-direction:column;align-items:center;gap:16px;}
+
+.redirect-arrow{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;}
+.redirect-arrow .icon-sz{width:44px;height:44px;color:var(--amber);}
+.redirect-arrow .icon-sz svg{width:100%;height:100%;}
+
+.brand-badge{width:100px;height:100px;border-radius:22px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);}
+.brand-badge svg{width:56px;height:56px;color:var(--ink);}
+.grok-mark{font-family:'Manrope',sans-serif;font-weight:800;font-size:44px;color:var(--amber);letter-spacing:-0.02em;}
+
+/* Spec ticket rows */
+.spec-row{display:flex;justify-content:space-between;align-items:center;width:100%;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.spec-row:last-child{border-bottom:none;}
+.spec-label{font-family:'JBMono',monospace;font-size:22px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.04em;}
+.spec-value{font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--ink);}
+.spec-value.indigo{color:var(--indigo);}
+.spec-value.amber{color:var(--amber);}
+
+.addr-bridge{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 0;}
+.addr-pill{display:flex;align-items:center;gap:10px;background:#0d0e12;border-radius:20px;padding:12px 26px;font-family:'JBMono',monospace;font-size:24px;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(91,107,255,0.35);}
+.addr-pill .icon-sz{width:22px;height:22px;color:var(--indigo);}
+.addr-pill .icon-sz svg{width:100%;height:100%;}
+.addr-cursor{color:var(--indigo);font-weight:700;}
+</style></head>
+<body>
+<div class="bg-texture">
+  <div class="bg-wash"></div>
+  <div class="app-tile" style="left:0px;top:507px;"></div><div class="app-tile" style="left:995px;top:1791px;"></div><div class="app-tile" style="left:62px;top:152px;"></div><div class="app-tile" style="left:603px;top:318px;"></div><div class="app-tile" style="left:404px;top:955px;"></div><div class="app-tile" style="left:490px;top:1715px;"></div><div class="app-tile" style="left:676px;top:660px;"></div><div class="app-tile" style="left:179px;top:1099px;"></div><div class="app-tile" style="left:355px;top:1376px;"></div><div class="app-tile" style="left:583px;top:1815px;"></div><div class="app-tile" style="left:1049px;top:400px;"></div><div class="app-tile" style="left:887px;top:1231px;"></div><div class="app-tile" style="left:193px;top:90px;"></div><div class="app-tile" style="left:1075px;top:60px;"></div><div class="app-tile" style="left:881px;top:959px;"></div><div class="app-tile" style="left:477px;top:877px;"></div><div class="app-tile" style="left:1001px;top:898px;"></div><div class="app-tile" style="left:469px;top:1759px;"></div><div class="app-tile" style="left:696px;top:771px;"></div><div class="app-tile" style="left:348px;top:1911px;"></div><div class="app-tile" style="left:821px;top:514px;"></div><div class="app-tile" style="left:601px;top:1464px;"></div><div class="app-tile" style="left:714px;top:1870px;"></div><div class="app-tile" style="left:453px;top:205px;"></div><div class="app-tile" style="left:147px;top:2px;"></div><div class="app-tile" style="left:357px;top:1404px;"></div><div class="app-tile" style="left:535px;top:588px;"></div><div class="app-tile" style="left:0px;top:402px;"></div><div class="app-tile" style="left:175px;top:1794px;"></div><div class="app-tile" style="left:454px;top:518px;"></div>
+  <div class="vignette"></div>
+</div>
+
+<div class="safe">
+
+  <!-- FRAME 1: hook -->
+  <div class="frame" id="f1">
+    <div class="band-content">
+      <div class="eyebrow">// THE AGENT ARMS RACE</div>
+      <div class="headline">OpenAI just launched its biggest AI agent. Its own <span class="hi-amber">domain</span> sends you to the competition.</div>
+      <div class="addr-bridge">
+        <div class="addr-pill"><span class="icon-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg></span><span>dot.com</span><span class="addr-cursor">▌</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRAME 2: the redirect reveal -->
+  <div class="frame" id="f2">
+    <div class="band-tight">
+      <div class="eyebrow amber">// THE REVEAL</div>
+    </div>
+    <div class="band-content">
+      <div class="browser-card">
+        <div class="browser-titlebar">
+          <div class="browser-dot r"></div><div class="browser-dot a"></div><div class="browser-dot g"></div>
+          <div class="browser-tab">New Tab</div>
+        </div>
+        <div class="browser-urlrow">
+          <div class="browser-urlpill"><span class="icon-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg></span><span>dot.com</span></div>
+        </div>
+        <div class="browser-body">
+          <div class="redirect-arrow">
+            <div class="brand-badge"><div style="color:var(--indigo);width:56px;height:56px;"><svg viewBox="0 0 256 260" fill="currentColor">
+        <path d="M239.183914,106.202783 C245.054304,88.5242096 243.02228,69.1733805 233.607599,53.0998864 C219.451678,28.4588021 190.999703,15.7836129 163.213007,21.739505 C147.554077,4.32145883 123.794909,-3.42398554 100.87901,1.41873898 C77.9631105,6.26146349 59.3690093,22.9572536 52.0959621,45.2214219 C33.8436494,48.9644867 18.0901721,60.392749 8.86672513,76.5818033 C-5.443491,101.182962 -2.19544431,132.215255 16.8986662,153.320094 C11.0060865,170.990656 13.0197283,190.343991 22.4238231,206.422991 C36.5975553,231.072344 65.0680342,243.746566 92.8695738,237.783372 C105.235639,251.708249 123.001113,259.630942 141.623968,259.52692 C170.105359,259.552169 195.337611,241.165718 204.037777,214.045661 C222.28734,210.296356 238.038489,198.869783 247.267014,182.68528 C261.404453,158.127515 258.142494,127.262775 239.183914,106.202783 L239.183914,106.202783 Z M141.623968,242.541207 C130.255682,242.559177 119.243876,238.574642 110.519381,231.286197 L112.054146,230.416496 L163.724595,200.590881 C166.340648,199.056444 167.954321,196.256818 167.970781,193.224005 L167.970781,120.373788 L189.815614,133.010026 C190.034132,133.121423 190.186235,133.330564 190.224885,133.572774 L190.224885,193.940229 C190.168603,220.758427 168.442166,242.484864 141.623968,242.541207 Z M37.1575749,197.93062 C31.456498,188.086359 29.4094818,176.546984 31.3766237,165.342426 L32.9113895,166.263285 L84.6329973,196.088901 C87.2389349,197.618207 90.4682717,197.618207 93.0742093,196.088901 L156.255402,159.663793 L156.255402,184.885111 C156.243557,185.149771 156.111725,185.394602 155.89729,185.550176 L103.561776,215.733903 C80.3054953,229.131632 50.5924954,221.165435 37.1575749,197.93062 Z M23.5493181,85.3811273 C29.2899861,75.4733097 38.3511911,67.9162648 49.1287482,64.0478825 L49.1287482,125.438515 C49.0891492,128.459425 50.6965386,131.262556 53.3237748,132.754232 L116.198014,169.025864 L94.3531808,181.662102 C94.1132325,181.789434 93.8257461,181.789434 93.5857979,181.662102 L41.3526015,151.529534 C18.1419426,138.076098 10.1817681,108.385562 23.5493181,85.125333 L23.5493181,85.3811273 Z M203.0146,127.075598 L139.935725,90.4458545 L161.7294,77.8607748 C161.969348,77.7334434 162.256834,77.7334434 162.496783,77.8607748 L214.729979,108.044502 C231.032329,117.451747 240.437294,135.426109 238.871504,154.182739 C237.305714,172.939368 225.050719,189.105572 207.414262,195.67963 L207.414262,134.288998 C207.322521,131.276867 205.650697,128.535853 203.0146,127.075598 Z M224.757116,94.3850867 L223.22235,93.4642272 L171.60306,63.3828173 C168.981293,61.8443751 165.732456,61.8443751 163.110689,63.3828173 L99.9806554,99.8079259 L99.9806554,74.5866077 C99.9533004,74.3254088 100.071095,74.0701869 100.287609,73.9215426 L152.520805,43.7889738 C168.863098,34.3743518 189.174256,35.2529043 204.642579,46.0434841 C220.110903,56.8340638 227.949269,75.5923959 224.757116,94.1804513 L224.757116,94.3850867 Z M88.0606409,139.097931 L66.2158076,126.512851 C65.9950399,126.379091 65.8450965,126.154176 65.8065367,125.898945 L65.8065367,65.684966 C65.8314495,46.8285367 76.7500605,29.6846032 93.8270852,21.6883055 C110.90411,13.6920079 131.063833,16.2835462 145.5632,28.338998 L144.028434,29.2086986 L92.3579852,59.0343142 C89.7419327,60.5687513 88.1282597,63.3683767 88.1117998,66.4011901 L88.0606409,139.097931 Z M99.9294965,113.5185 L128.06687,97.3011417 L156.255402,113.5185 L156.255402,145.953218 L128.169187,162.170577 L99.9806554,145.953218 L99.9294965,113.5185 Z"></path>
+    </svg></div></div>
+            <span class="icon-sz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg></span>
+            <div class="brand-badge"><div class="grok-mark">grok</div></div>
+          </div>
+          <div class="sub" style="font-size:32px;">Quietly transferred to xAI in July. Redirects straight to Grok Bot.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRAME 3: spec comparison -->
+  <div class="frame" id="f3">
+    <div class="band-tight">
+      <div class="eyebrow">// HEAD TO HEAD</div>
+      <div class="headline" style="font-size:60px;">Two agents. <span class="hi-indigo">One</span> launched six weeks after the <span class="hi-amber">other.</span></div>
+    </div>
+    <div class="band-content">
+      <div class="browser-card">
+        <div class="browser-titlebar">
+          <div class="browser-dot r"></div><div class="browser-dot a"></div><div class="browser-dot g"></div>
+          <div class="browser-tab">dots vs grok bot</div>
+        </div>
+        <div class="browser-body" style="padding-top:28px;">
+          <div class="spec-row"><span class="spec-label">dots · openai</span><span class="spec-value indigo">$100/mo Pro</span></div>
+          <div class="spec-row"><span class="spec-label">grok bot · xai</span><span class="spec-value amber">$20/mo flat</span></div>
+          <div class="spec-row"><span class="spec-label">dots compute</span><span class="spec-value indigo">own cloud computer</span></div>
+          <div class="spec-row"><span class="spec-label">grok bot compute</span><span class="spec-value amber">one shared computer</span></div>
+          <div class="spec-row"><span class="spec-label">dots ecosystem</span><span class="spec-value indigo">4,000+ apps</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function $(id){ return document.getElementById(id); }
+window.__showFrame = function(n){
+  [1,2,3].forEach(function(i){ $('f'+i).classList.toggle('active', i===n); });
+};
+window.__showFrame(1);
+</script>
+</body></html>

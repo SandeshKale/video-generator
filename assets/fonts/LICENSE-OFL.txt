@@ -20,17 +20,20 @@ Fonts vendored in this folder:
 - fraunces/fraunces-latin-900-normal.woff2
 - fraunces/fraunces-latin-900-italic.woff2
 - anton/anton-latin-400-normal.woff2
+- manrope/manrope-latin-700-normal.woff2
+- manrope/manrope-latin-800-normal.woff2
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
 @fontsource/jetbrains-mono, @fontsource/space-grotesk,
 @fontsource/sora, @fontsource/plus-jakarta-sans, @fontsource/unbounded,
-@fontsource/outfit, @fontsource/fraunces, and @fontsource/anton npm
-packages (v5.3.0), which repackage the original Google Fonts releases of
-Poppins (Indian Type Foundry), Inter (Rasmus Andersson), JetBrains Mono
-(JetBrains), Space Grotesk (Florian Karsten), Sora (Jonathan Pinhorn /
-Omnibus-Type), Plus Jakarta Sans (Tokotype), Unbounded (Ilya Ruderman /
-typoregistr), Outfit (Rodrigo Fuenzalida), Fraunces (Undercase Type /
-Google Fonts), and Anton (Vernon Adams).
+@fontsource/outfit, @fontsource/fraunces, @fontsource/anton, and
+@fontsource/manrope npm packages (v5.3.0), which repackage the original
+Google Fonts releases of Poppins (Indian Type Foundry), Inter (Rasmus
+Andersson), JetBrains Mono (JetBrains), Space Grotesk (Florian Karsten),
+Sora (Jonathan Pinhorn / Omnibus-Type), Plus Jakarta Sans (Tokotype),
+Unbounded (Ilya Ruderman / typoregistr), Outfit (Rodrigo Fuenzalida),
+Fraunces (Undercase Type / Google Fonts), Anton (Vernon Adams), and
+Manrope (Mikhail Sharanda).
 
 Both are licensed under the SIL Open Font License, Version 1.1 — free for
 commercial and non-commercial use, including embedding in video renders.
