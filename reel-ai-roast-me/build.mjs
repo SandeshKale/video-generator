@@ -128,6 +128,19 @@ function chip(icon, label, id, variant) {
 function emberBridge(id) {
   return `<div class="ember-bridge" id="${id}wrap"><div class="eb-trail" id="${id}trail"></div><div class="eb-readout"><span id="${id}readout"></span><span class="eb-cursor" id="${id}cursor">▌</span></div></div>`;
 }
+function feedGrid(id, flameIcon, burningTile) {
+  const tiles = [...Array(9)].map((_, i) => `<div class="feed-tile" style="background:${i % 2 === 0 ? '#2a3a4a' : '#3a2f4a'};" id="${id}tile${i}">${i === (burningTile ?? 4) ? `<div class="flame-badge" id="${id}flame">${flameIcon}</div>` : ''}</div>`).join('');
+  return `<div class="feed-frame" id="${id}"><div class="feed-notch"></div><div class="feed-grid">${tiles}</div></div>`;
+}
+function roastMeter(id, label) {
+  return `<div class="roast-meter" id="${id}"><div class="rm-track"><div class="rm-fill" id="${id}fill"></div><div class="rm-ticks">${[...Array(9)].map(() => '<span></span>').join('')}</div></div><div class="rm-label" id="${id}label"><span class="hot">${label || 'MILD'}</span></div></div>`;
+}
+function heatRow(id, icon, n) {
+  return `<div class="heat-row" id="${id}">${[...Array(n)].map((_, i) => `<div class="icon-badge orange" id="${id}f${i}">${icon}</div>`).join('')}</div>`;
+}
+function growthChart(id, n) {
+  return `<div class="growth-chart" id="${id}">${[...Array(n)].map((_, i) => `<div class="growth-bar" id="${id}bar${i}" style="height:0px;"></div>`).join('')}</div>`;
+}
 
 function buildHtml({ icons: I, humanPsych, humanCta, profileB64, embers }) {
 return `<!DOCTYPE html>
@@ -243,6 +256,40 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
 .cta-main{font-family:'Anton',sans-serif;color:var(--ink);font-size:46px;font-weight:400;letter-spacing:0.01em;text-transform:uppercase;}
 .cta-sub{font-family:'JBMono',monospace;color:var(--orange);font-size:23px;font-weight:500;letter-spacing:0.02em;}
 
+/* Feed grid: a phone-frame mockup holding a 3x3 "Instagram feed" grid,
+   one tile catching fire — this reel's concrete, recognizable hero
+   graphic (replaces an abstract badge for the hook scene). */
+.feed-frame{position:relative;width:300px;padding:18px 14px 22px;border-radius:34px;background:rgba(255,255,255,0.04);
+  box-shadow:0 1px 2px rgba(0,0,0,.35), 0 18px 44px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,122,41,0.3);will-change:transform,opacity;}
+.feed-notch{width:70px;height:8px;border-radius:6px;background:rgba(255,255,255,0.12);margin:0 auto 14px;}
+.feed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.feed-tile{aspect-ratio:1;border-radius:6px;position:relative;overflow:hidden;}
+.feed-tile.burning{box-shadow:0 0 22px 4px rgba(255,122,41,0.7);}
+.feed-tile .flame-badge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--orange);background:rgba(22,11,5,0.35);}
+.feed-tile .flame-badge svg{width:60%;height:60%;filter:drop-shadow(0 0 8px rgba(255,122,41,0.9));}
+
+/* Roast meter: a segmented heat gauge with a glowing indicator — a
+   recurring motif that ties scenes together and reads instantly (a
+   spice/heat-level gauge), distinct from every card/chip already in
+   this reel's language. */
+.roast-meter{width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;gap:10px;will-change:transform,opacity;}
+.rm-track{position:relative;width:100%;height:14px;border-radius:8px;background:rgba(255,255,255,0.08);overflow:hidden;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.5);}
+.rm-fill{position:absolute;top:0;left:0;bottom:0;border-radius:8px;background:linear-gradient(90deg,#3fd8ff,#ff7a29,#ff3b1a);width:0%;}
+.rm-ticks{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 2px;}
+.rm-ticks span{width:2px;height:100%;background:rgba(0,0,0,0.35);}
+.rm-label{font-family:'JBMono',monospace;font-weight:700;font-size:24px;letter-spacing:0.1em;color:var(--ink-dim);text-transform:uppercase;}
+.rm-label .hot{color:var(--orange);}
+
+/* Heat rating: N flame icons, a simple recognizable "spice level" row. */
+.heat-row{display:flex;gap:10px;justify-content:center;}
+.heat-row .icon-badge{width:44px;height:44px;}
+
+/* Mini growth chart: deterministic ascending bars, a small dataviz
+   flourish for the scale scene. */
+.growth-chart{display:flex;align-items:flex-end;gap:14px;height:120px;}
+.growth-bar{width:34px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#ff7a29,#a04010);box-shadow:0 0 14px rgba(255,122,41,0.35);}
+
 .progress{position:absolute;bottom:26px;left:40px;right:40px;height:3px;background:rgba(255,122,41,0.14);overflow:hidden;}
 .progress-fill{position:absolute;top:0;left:0;bottom:0;background:var(--orange);width:0%;box-shadow:0 0 10px rgba(255,122,41,0.6);}
 svg{overflow:visible;}
@@ -261,24 +308,33 @@ svg{overflow:visible;}
 
   <!-- SCENE 1: HOOK 0:00-0:05 -->
   <div class="scene" id="sc1">
-    <div class="band-content">
+    <div class="band band-tight">
       <div class="eyebrow" id="s1eyebrow">// THE TREND EVERYONE'S DOING</div>
-      <div class="squircle" id="s1badge">${I.flame}</div>
-      <div class="headline" id="s1head">310,000+ people asked AI to <span class="hi-orange">destroy them.</span></div>
+    </div>
+    <div class="band-content">
+      ${feedGrid('s1grid', I.flame, 4)}
+      <div class="headline" id="s1head" style="font-size:68px;">310,000+ people asked AI to <span class="hi-orange">destroy them.</span></div>
       ${chip(I.camera, 'SCREENSHOT. UPLOAD. BRACE.', 's1chip')}
+    </div>
+    <div class="band band-tight">
+      ${roastMeter('s1meter', 'MILD')}
     </div>
   </div>
 
   <!-- SCENE 2: THE MECHANIC 0:05-0:10 -->
   <div class="scene" id="sc2">
-    <div class="band-content">
+    <div class="band band-tight">
       <div class="eyebrow" id="s2eyebrow">// HOW IT WORKS</div>
-      <div class="headline" id="s2head" style="font-size:64px;">Screenshot your feed. Type <span class="hi-orange">"roast me."</span></div>
+      <div class="headline" id="s2head" style="font-size:60px;">Screenshot your feed. Type <span class="hi-orange">"roast me."</span></div>
+    </div>
+    ${emberBridge('s2')}
+    <div class="band-content">
       <div class="chip-row">
         ${chip(I.camera, 'UPLOAD YOUR FEED', 's2chip1')}
         ${chip(I.message, '"ROAST ME"', 's2chip2')}
         ${chip(I.flame, 'BRACE FOR IMPACT', 's2chip3', 'cyan')}
       </div>
+      ${roastMeter('s2meter', 'MEDIUM')}
     </div>
   </div>
 
@@ -287,21 +343,33 @@ svg{overflow:visible;}
     <div class="band band-tight">
       <div class="eyebrow" id="s3eyebrow">// THE BURN</div>
     </div>
-    <div class="band-content" style="flex:1.5;">
-      <div class="glitch-wrap">
-        <div class="headline" id="s3head" style="font-size:72px;">"Brand deal <span class="hi-orange">with beige.</span>"</div>
-        <div class="glitch-layer r headline" id="s3headR" style="font-size:72px;">"Brand deal with beige."</div>
-        <div class="glitch-layer b headline" id="s3headB" style="font-size:72px;">"Brand deal with beige."</div>
+    <div class="band-content">
+      <div class="scorch-card" id="s3card">
+        <div class="glitch-wrap">
+          <div class="headline" id="s3head" style="font-size:66px;">"Brand deal <span class="hi-orange">with beige.</span>"</div>
+          <div class="glitch-layer r headline" id="s3headR" style="font-size:66px;">"Brand deal with beige."</div>
+          <div class="glitch-layer b headline" id="s3headB" style="font-size:66px;">"Brand deal with beige."</div>
+        </div>
+        <div class="mono-label" id="s3label">— THE MODEL, UNPROMPTED FOR MERCY</div>
       </div>
-      <div class="mono-label" id="s3label">— THE MODEL, UNPROMPTED FOR MERCY</div>
+      ${heatRow('s3heat', I.flame, 3)}
+      ${roastMeter('s3meter', 'CHARRED')}
     </div>
   </div>
 
   <!-- SCENE 4: THE TWIST 0:17-0:24 -->
   <div class="scene" id="sc4">
+    <div class="band band-tight">
+      <div class="eyebrow" id="s4eyebrow">// THE TWIST</div>
+      <div class="icon-badge" id="s4icon" style="width:110px;height:110px;">${I.alertTriangle}</div>
+    </div>
+    ${emberBridge('s4')}
     <div class="band-content">
-      <div class="icon-badge" id="s4icon" style="width:120px;height:120px;">${I.alertTriangle}</div>
-      <div class="headline" id="s4head" style="font-size:66px;">It doesn't sting like a friend. It stings like <span class="hi-cyan">something with nothing to lose.</span></div>
+      <div class="headline" id="s4head" style="font-size:58px;">It doesn't sting like a friend. It stings like <span class="hi-cyan">something with nothing to lose.</span></div>
+      <div class="chip-row">
+        ${chip(I.heart, 'A FRIEND SOFTENS IT', 's4chip1', 'cyan')}
+        ${chip(I.flame, 'AI DOESN’T CARE', 's4chip2')}
+      </div>
     </div>
   </div>
 
@@ -309,20 +377,28 @@ svg{overflow:visible;}
   <div class="scene" id="sc5">
     <div class="band band-tight">
       <div class="eyebrow" id="s5eyebrow">// WHY IT ACTUALLY WORKS</div>
-      <div class="headline" id="s5head" style="font-size:62px;">No relationship <span class="hi-orange">on the line.</span></div>
+      <div class="headline" id="s5head" style="font-size:60px;">No relationship <span class="hi-orange">on the line.</span></div>
     </div>
     ${emberBridge('s5')}
     <div class="band-content">
       ${scorchCard('The trade', 'No social cost to hearing the truth. That’s catharsis, not cruelty.', 's5card')}
+      <div class="chip-row">
+        ${chip(I.checks, 'ZERO AWKWARDNESS', 's5chip1', 'cyan')}
+        ${chip(I.checks, 'ZERO GRUDGES HELD', 's5chip2', 'cyan')}
+      </div>
     </div>
   </div>
 
   <!-- SCENE 6: THE PSYCHOLOGY 0:31-0:38 -->
   <div class="scene" id="sc6">
-    <div class="band-content">
+    <div class="band band-tight">
       <div class="eyebrow" id="s6eyebrow">// THE PSYCHOLOGY</div>
-      <div class="human-wrap" id="s6human" style="width:280px;height:353px;">${humanPsych}</div>
-      <div class="headline" id="s6head" style="font-size:58px;">Honesty lands easier from something with <span class="hi-orange">nothing to lose.</span></div>
+      <div class="human-wrap" id="s6human" style="width:250px;height:315px;margin:0 auto;">${humanPsych}</div>
+    </div>
+    ${emberBridge('s6')}
+    <div class="band-content">
+      <div class="headline" id="s6head" style="font-size:56px;">Honesty lands easier from something with <span class="hi-orange">nothing to lose.</span></div>
+      ${scorchCard('The mechanism', 'No friendship on the line means no reason to soften the read.', 's6card')}
     </div>
   </div>
 
@@ -341,28 +417,35 @@ svg{overflow:visible;}
         </div>
         <div class="scorch-body">The nice bio you wrote → the roast it earned. Same pattern-matching, new punchline.</div>
       </div>
+      ${chip(I.alertTriangle, 'JAGGED, NOT PSYCHIC', 's7chip')}
     </div>
   </div>
 
   <!-- SCENE 8: THE SCALE 0:45-0:51 -->
   <div class="scene" id="sc8">
-    <div class="band-content" style="gap:14px;">
+    <div class="band band-tight">
       <div class="eyebrow" id="s8eyebrow">// THE SCALE</div>
+    </div>
+    <div class="band-content" style="gap:14px;">
       <div class="stat-big" id="s8stat">310K<span style="font-size:0.35em;">+</span></div>
       <div class="stat-label" id="s8statlabel">roasts posted in under a month</div>
-      <div class="sub" id="s8sub" style="margin-top:6px;font-size:36px;">And climbing.</div>
+      ${growthChart('s8chart', 5)}
+      <div class="sub" id="s8sub" style="margin-top:6px;font-size:34px;">Week one to now. And climbing.</div>
     </div>
   </div>
 
   <!-- SCENE 9: THE TAKEAWAY 0:51-0:55 -->
   <div class="scene" id="sc9">
-    <div class="band-content">
+    <div class="band band-tight">
       <div class="eyebrow" id="s9eyebrow">// THE TAKEAWAY</div>
-      <div class="headline" id="s9head" style="font-size:66px;">Let it roast your feed. <span class="hi-cyan">Not your self-worth.</span></div>
+    </div>
+    <div class="band-content">
+      <div class="headline" id="s9head" style="font-size:62px;">Let it roast your feed. <span class="hi-cyan">Not your self-worth.</span></div>
       <div class="chip-row">
         ${chip(I.flame, 'ROAST THE FEED', 's9chip1')}
         ${chip(I.checks, 'KEEP THE CONFIDENCE', 's9chip2', 'cyan')}
       </div>
+      ${scorchCard('Bottom line', 'It’s a party trick, not a personality read. Enjoy the burn, keep the self-worth.', 's9card', 'cyan')}
     </div>
   </div>
 
@@ -491,40 +574,100 @@ function glitchBurst(rEl, bEl, localT){
   bEl.style.transform = 'translate(' + (-decay*7 + wob*-2) + 'px,' + (-decay*4) + 'px)';
 }
 
+// Roast meter: fills a percentage width as a pure function of local
+// progress e — the gradient track itself supplies the color shift from
+// cyan (mild) through orange to red (charred), so only width changes.
+function roastFill(id, pct, e){
+  var el = $(id + 'fill');
+  if(!el) return;
+  el.style.width = (clamp(e,0,1) * pct) + '%';
+}
+
+// Feed-grid tiles: a quick staggered reveal (scale+fade), each tile's
+// local progress offset by a fixed index-seeded delay.
+function feedTilesReveal(id, e){
+  for (var i = 0; i < 9; i++){
+    var el = $(id + 'tile' + i);
+    if(!el) continue;
+    var localE = clamp((e - i*0.05)/0.3, 0, 1);
+    el.style.opacity = localE;
+    el.style.transform = 'scale(' + (0.7+0.3*localE) + ')';
+  }
+}
+
+// Heat-row: N flame icons revealed in sequence, a simple "spice level" row.
+function heatReveal(id, n, e){
+  for (var i = 0; i < n; i++){
+    var el = $(id + 'f' + i);
+    if(!el) continue;
+    var localE = clamp((e - i*0.18)/0.4, 0, 1);
+    el.style.opacity = localE;
+    el.style.transform = 'scale(' + (0.5+0.5*localE) + ')';
+  }
+}
+
+// Growth chart: bars rise to their target heights in a staggered sequence,
+// each an eased pure function of local progress.
+function growthReveal(id, heights, e){
+  for (var i = 0; i < heights.length; i++){
+    var el = $(id + 'bar' + i);
+    if(!el) continue;
+    var localE = clamp((e - i*0.12)/0.5, 0, 1);
+    el.style.height = (eoc(localE) * heights[i]) + 'px';
+  }
+}
+
 var SCENES = [
   { start: 0, duration: 5, el: $('sc1'), render: function(t){
       enter($('s1eyebrow'), eoc(t/0.35), 14, 1);
-      dropIn($('s1badge'), t/0.5, -160, -6);
-      enter($('s1head'), eoc((t-0.5)/0.55), 22, 1);
-      dropIn($('s1chip'), (t-1.2)/0.4, -100, 4);
+      dropIn($('s1grid'), t/0.5, -160, -4);
+      feedTilesReveal('s1grid', (t-0.25)/0.6);
+      enter($('s1head'), eoc((t-0.75)/0.5), 22, 1);
+      dropIn($('s1chip'), (t-1.4)/0.4, -100, 4);
+      enter($('s1meter'), eoc((t-1.9)/0.35), 14, 1);
+      roastFill('s1meter', 26, (t-1.9)/0.5);
   }},
   { start: 5, duration: 5, el: $('sc2'), render: function(t){
       enter($('s2eyebrow'), eoc(t/0.3), 12, 1);
       enter($('s2head'), eoc((t-0.15)/0.5), 20, 1);
-      dropIn($('s2chip1'), (t-0.8)/0.35, -100, -4);
-      dropIn($('s2chip2'), (t-1.0)/0.35, -100, 0);
-      dropIn($('s2chip3'), (t-1.2)/0.35, -100, 4);
+      emberBridge($('s2trail'), $('s2readout'), $('s2cursor'), 'opening the chat...', (t-0.55)/0.7, t);
+      dropIn($('s2chip1'), (t-1.3)/0.35, -100, -4);
+      dropIn($('s2chip2'), (t-1.5)/0.35, -100, 0);
+      dropIn($('s2chip3'), (t-1.7)/0.35, -100, 4);
+      enter($('s2meter'), eoc((t-2.1)/0.35), 14, 1);
+      roastFill('s2meter', 55, (t-2.1)/0.5);
   }},
   { start: 10, duration: 7, el: $('sc3'), render: function(t){
       enter($('s3eyebrow'), eoc(t/0.3), 12, 1);
-      tumbleIn($('s3head'), (t-0.2)/0.5, -14);
+      dropIn($('s3card'), (t-0.2)/0.5, -140, 0);
       glitchBurst($('s3headR'), $('s3headB'), t);
       enter($('s3label'), eoc((t-1.0)/0.4), 14, 1);
+      heatReveal('s3heat', 3, (t-1.6)/0.6);
+      enter($('s3meter'), eoc((t-2.1)/0.35), 14, 1);
+      roastFill('s3meter', 96, (t-2.1)/0.5);
   }},
   { start: 17, duration: 7, el: $('sc4'), render: function(t){
-      dropIn($('s4icon'), t/0.5, -180, -8);
-      enter($('s4head'), eoc((t-0.5)/0.6), 24, 1);
+      enter($('s4eyebrow'), eoc(t/0.3), 12, 1);
+      dropIn($('s4icon'), (t-0.15)/0.5, -180, -8);
+      emberBridge($('s4trail'), $('s4readout'), $('s4cursor'), 'measuring the sting...', (t-0.7)/0.7, t);
+      enter($('s4head'), eoc((t-1.5)/0.55), 24, 1);
+      dropIn($('s4chip1'), (t-2.2)/0.35, -100, -4);
+      dropIn($('s4chip2'), (t-2.4)/0.35, -100, 4);
   }},
   { start: 24, duration: 7, el: $('sc5'), render: function(t){
       enter($('s5eyebrow'), eoc(t/0.3), 12, 1);
       enter($('s5head'), eoc((t-0.15)/0.5), 20, 1);
       emberBridge($('s5trail'), $('s5readout'), $('s5cursor'), 'measuring the fallout...', (t-0.5)/1.0, t);
       dropIn($('s5card'), (t-1.5)/0.45, -140, 0);
+      dropIn($('s5chip1'), (t-2.2)/0.35, -100, -4);
+      dropIn($('s5chip2'), (t-2.4)/0.35, -100, 4);
   }},
   { start: 31, duration: 7, el: $('sc6'), render: function(t){
       enter($('s6eyebrow'), eoc(t/0.3), 12, 1);
       runIn($('s6human'), (t-0.3)/0.55, -180);
-      tumbleIn($('s6head'), (t-1.0)/0.5, -20);
+      emberBridge($('s6trail'), $('s6readout'), $('s6cursor'), 'weighing the friendship cost...', (t-0.9)/0.8, t);
+      tumbleIn($('s6head'), (t-1.8)/0.5, -20);
+      dropIn($('s6card'), (t-2.5)/0.45, -140, 0);
   }},
   { start: 38, duration: 7, el: $('sc7'), render: function(t){
       enter($('s7eyebrow'), eoc(t/0.3), 12, 1);
@@ -532,18 +675,21 @@ var SCENES = [
       emberBridge($('s7trail'), $('s7readout'), $('s7cursor'), 'pattern-matching your captions...', (t-0.5)/1.0, t);
       dropIn($('s7card'), (t-1.5)/0.45, -140, 0);
       iconMorph($('s7heart'), $('s7flame'), (t-2.0)/0.9);
+      dropIn($('s7chip'), (t-3.0)/0.35, -100, 0);
   }},
   { start: 45, duration: 6, el: $('sc8'), render: function(t){
       enter($('s8eyebrow'), eoc(t/0.3), 12, 1);
       tumbleIn($('s8stat'), (t-0.3)/0.5, -20);
       enter($('s8statlabel'), eoc((t-0.9)/0.4), 14, 1);
-      enter($('s8sub'), eoc((t-1.25)/0.4), 16, 1);
+      growthReveal('s8chart', [26, 46, 70, 94, 120], (t-1.3)/0.9);
+      enter($('s8sub'), eoc((t-2.3)/0.4), 16, 1);
   }},
   { start: 51, duration: 4, el: $('sc9'), render: function(t){
       enter($('s9eyebrow'), eoc(t/0.25), 12, 1);
       tumbleIn($('s9head'), (t-0.25)/0.45, -14);
       dropIn($('s9chip1'), (t-0.9)/0.35, -100, -4);
       dropIn($('s9chip2'), (t-1.1)/0.35, -100, 4);
+      dropIn($('s9card'), (t-1.5)/0.4, -100, 0);
   }},
   { start: 55, duration: 5, el: $('sc10'), render: function(t){
       runIn($('s10human'), t/0.5, -180);
