@@ -37,19 +37,23 @@ const [, , sourceArg, outputArg, scaleArg] = process.argv;
 
 if (!sourceArg || !outputArg) {
   console.error('Usage: node scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]');
-  console.error('  scale: deviceScaleFactor, default 2 (2160x3840 4K). Pass 1 for 1080x1920 Full HD.');
+  console.error('  scale: deviceScaleFactor, default 1 (1080x1920 Full HD). Pass 2 for 2160x3840 4K.');
   process.exit(1);
 }
 
 const SOURCE_PATH = resolve(sourceArg);
 const OUTPUT_MP4 = resolve(outputArg);
 
-// Source documents are a fixed 1080x1920 (9:16) canvas. deviceScaleFactor 2
-// renders it at 2160x3840 (4K UHD); deviceScaleFactor 1 renders it at the
-// native 1080x1920 (Full HD) — both at native pixel density, no upscaling.
+// Source documents are a fixed 1080x1920 (9:16) canvas. deviceScaleFactor 1
+// renders it at the native 1080x1920 (Full HD); deviceScaleFactor 2 renders
+// it at 2160x3840 (4K UHD) — both at native pixel density, no upscaling.
+// Full HD is the default per standing instruction: always render in Full
+// HD, never 4K (4K capture is dramatically slower in this environment's
+// software-rendered/swiftshader Chromium — a 58s reel took ~3hrs projected
+// at scale 2 vs ~15min at scale 1 — and 1080x1920 is plenty for Reels).
 const CSS_WIDTH = 1080;
 const CSS_HEIGHT = 1920;
-const SCALE = scaleArg ? Number(scaleArg) : 2;
+const SCALE = scaleArg ? Number(scaleArg) : 1;
 const FPS = 60;
 
 function runFfmpeg(args) {

@@ -169,10 +169,19 @@ bun scripts/render.mjs <source.html|dist-dir> <output.mp4> [scale]
     and load fine over `file://` directly — no server needed for those.
 - **Canvas size**: source documents are always authored at a fixed CSS size
   of 1080×1920 (9:16 vertical). `deviceScaleFactor` (the optional `scale`
-  arg, default `2`) determines the actual pixel output:
-  - `2` (default) → 2160×3840, 4K UHD.
-  - `1` → 1080×1920, native Full HD.
+  arg, default `1`) determines the actual pixel output:
+  - `1` (default) → 1080×1920, native Full HD.
+  - `2` → 2160×3840, 4K UHD.
   - Both are captured at native pixel density — never upscaled.
+  - **Always render at Full HD (scale 1) — never 4K (scale 2) — standing
+    instruction.** 4K capture is dramatically slower in this repo's
+    typical execution environment: a 58s reel measured ~20 frames/min at
+    scale 2 (headless Chromium falls back to a software/swiftshader GL
+    renderer there, and compositing cost scales with pixel count), a
+    ~3 hour projected render, versus ~4 frames/sec at scale 1, under 15
+    minutes for the same reel. Full HD is also plenty of resolution for
+    an Instagram Reels upload. Don't pass `2` unless a human explicitly
+    asks for a 4K render for a specific reason.
 - **Frame rate**: hardcoded to 60fps. Total frame count = `round(duration *
   60)`, duration read from `window.__reelDurationSec` on the loaded page.
 - **Encoding**: `ffmpeg -framerate 60 -i frame-%06d.png -c:v libx264 -pix_fmt
