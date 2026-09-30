@@ -578,6 +578,34 @@ obvious, using this topic's own real numbers?"* for every scene — not
 answer is "just a headline and a supporting sentence," that scene needs
 either a sharper fact to hang it on or to be merged with a neighbor.
 
+### Banned: a bare sentence sitting alone that reads like a script note
+
+Caught on `reel-openai-dots-vs-grok`'s mockup — a supporting fact
+(`Whois records show the transfer happened in July — months before
+DevDay.`) was placed as plain `.sub`-styled prose directly under the
+eyebrow, above the scene's actual visual. Flagged immediately: "looks
+like a script guideline" — i.e. it read as a leftover production
+note/caption explaining the scene to a reader, not as part of the
+designed frame. The fix was to fold the same fact into a small styled
+evidence chip (`🔍 WHOIS RECORD: TRANSFERRED JULY 2026`, mono font,
+tracked caps, bordered pill) sitting where a badge belongs, not as a
+freestanding sentence.
+
+**The tell**: if a piece of copy would make sense pasted into a script
+document — "here's a fact the viewer should know before the next
+beat" — and it's rendered as plain body text with no card, chip, badge,
+or other visual object wrapping it, that's the bug. This is distinct
+from a scene's actual headline (which *is* allowed to be large plain
+type, that's the point) and distinct from a `.sub` line that's doing
+real supporting-copy work directly under a headline as part of one
+cohesive statement. What's banned specifically is **expository/citation-
+style text** (sourcing a claim, narrating what's about to happen,
+explaining context) sitting bare instead of inside a designed
+component. Every fact worth including should already have a home from
+the "Creative benchmark" section above — a chip, a spec-row, a stamp, a
+mono-label readout — never a loose sentence bolted onto a band on its
+own.
+
 ## Cover images
 
 **See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
