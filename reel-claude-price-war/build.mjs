@@ -400,10 +400,10 @@ svg{overflow:visible;}
     </div>
   </div>
 
-  <!-- SCENE 9: STAT CALLOUT 0:52-0:56 -->
+  <!-- SCENE 9: THE REAL COST 0:52-0:56 -->
   <div class="scene" id="sc9">
     <div class="band-content" style="gap:16px;">
-      <div class="mono-label" id="s9eyebrow">// STAT CALLOUT</div>
+      <div class="mono-label" id="s9eyebrow">// THE REAL COST</div>
       <div class="big-stat" id="s9stat">22%</div>
       <div class="big-stat-label" id="s9statlabel">of a monthly budget · one task · four hours</div>
       <div class="sub" id="s9sub" style="margin-top:12px;">That's the number that matters — not the 50% off sticker price.</div>

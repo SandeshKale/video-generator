@@ -137,8 +137,8 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:#0e0e12;overf
    dots traveling down a dashed line) instead of leaving them flat black.
    Purely decorative, sits behind all scene content (z-index 0). */
 .streamline{position:absolute;top:150px;bottom:50px;width:2px;background:repeating-linear-gradient(180deg, rgba(255,255,255,0.14) 0px, rgba(255,255,255,0.14) 10px, transparent 10px, transparent 26px);z-index:0;}
-.streamline.left{left:64px;}
-.streamline.right{right:64px;}
+.streamline.left{left:150px;}
+.streamline.right{right:150px;}
 .stream-dot{position:absolute;width:10px;height:10px;border-radius:50%;left:-4px;box-shadow:0 0 12px 3px currentColor;}
 
 .chrome-top{position:absolute;top:0;left:0;right:0;height:110px;background:linear-gradient(180deg,rgba(0,0,0,0.5),transparent);}

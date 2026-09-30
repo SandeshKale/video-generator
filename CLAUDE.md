@@ -476,6 +476,26 @@ timing for the scene crossfade. All zero-dependency, all compatible with
 the deterministic `window.__seek(t)` contract. Skim it when polishing a
 new reel's component details.
 
+## Scene eyebrow/tag copy must be content-specific, never a generic reused label
+
+`// STAT CALLOUT` was copy-pasted verbatim as a scene-9 eyebrow across
+**four separate reels** (`reel-anthropic-bio-lab`, `reel-claude-price-war`,
+`reel-meta-muse-takeover`, `reel-openai-pro-max`) before this was caught —
+a scene-type label standing in for what should have been a line specific
+to that scene's actual number (e.g. bio-lab's "26% of Anthropic's own AI
+R&D led by Claude" got the same tag as price-war's "22% of a monthly
+budget" and muse-takeover's "5:1 giants joined vs. blocked" — three
+unrelated stats, one interchangeable label). The eyebrow/mono-label tag
+above a headline or stat should read like a caption written for *that*
+number, not a category name for the slot it fills — compare the fix
+(`// THE HANDOFF`, `// THE REAL COST`, `// THE SCOREBOARD`, `// THE NEW
+CEILING` — one per reel's actual stat) against the generic version. This
+generalizes past just the stat scene: any `// EYEBROW` tag in a new
+reel's `build.mjs` should be written fresh for its own scene's content,
+never reused from a previous reel's structurally-similar scene, and
+worth a quick grep across a new reel's own scenes for accidental
+duplicates before considering it done.
+
 ## Cover images
 
 **See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
@@ -565,6 +585,31 @@ see"). If you add or edit a scene, apply these patterns:
   - **Right ~15% (right ~162px of the 1080px canvas, i.e. `x > 918`)**:
     reserve for nothing. This is where Instagram draws its vertical action
     rail (like/comment/share/save/audio-thumbnail icons).
+  - **Left and right ~15% can also be physically cropped out of the
+    picture, not just covered by UI — confirmed on `reel-anthropic-bio-lab`
+    with a real on-device Reels-playback screenshot.** The DNA-helix
+    gutters (`left:36px`/`right:36px`, 120px wide) were completely
+    invisible in actual playback — not dimmed or overlapped, just entirely
+    gone, on *both* the left edge (which has no Instagram UI overlay at
+    all) and the right. This is a different mechanism from the action-rail
+    finding above: Instagram Reels scales/crops the source video itself to
+    fill a device's screen aspect ratio, and on a screen taller/narrower
+    than exactly 9:16 (common — most modern phones are closer to 19.5:9 or
+    20:9), that crop eats a meaningful slice off *both* left and right
+    edges, independent of anything Instagram draws on top. Observed impact
+    was severe enough to erase a 120px-wide element starting 36px from the
+    edge entirely, meaning the real crop is well beyond the 15px
+    action-rail margin — treat **~150-190px from each edge (matching this
+    repo's own `.safe` content margin)** as the realistic limit of what
+    survives on an arbitrary device, not just the 918px/162px UI-overlay
+    boundary. **Practical rule: any decorative edge element (gutters,
+    streamline dots, side accents) must be positioned with the same inset
+    as the content safe-zone, never anchored near the raw canvas edge —
+    "36px from the edge" is not a safe distance even though nothing else
+    is drawn on top of it there.** `reel-anthropic-rundown-ios`'s
+    `.streamline` gutters (`left:64px`/`right:64px`) have the same latent
+    risk and should get the same inward fix whenever that reel is next
+    touched.
   - **Top ~7-8% (top ~140px of the 1920px canvas, i.e. `y < 140`)**: also
     reserve for nothing, for two separate reasons that stack: (1) the
     phone's own status bar / notch / Dynamic Island physically covers this

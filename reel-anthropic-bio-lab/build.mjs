@@ -144,8 +144,8 @@ html,body{margin:0;padding:0;width:1080px;height:1920px;background:var(--bg);ove
   var(--bg);}
 .hexgrid-svg{position:absolute;inset:0;opacity:0.28;}
 .helix-gutter{position:absolute;top:150px;bottom:400px;width:120px;opacity:0.6;}
-.helix-gutter.left{left:36px;}
-.helix-gutter.right{right:36px;transform:scaleX(-1);}
+.helix-gutter.left{left:150px;}
+.helix-gutter.right{right:150px;transform:scaleX(-1);}
 .helix-glow-dot{filter:drop-shadow(0 0 6px currentColor);}
 .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 900px 1500px at 50% 42%, transparent 42%, rgba(0,0,0,0.55) 100%);}
 
@@ -354,10 +354,10 @@ svg{overflow:visible;}
     </div>
   </div>
 
-  <!-- SCENE 9: STAT CALLOUT 0:51-0:55 -->
+  <!-- SCENE 9: THE HANDOFF 0:51-0:55 -->
   <div class="scene" id="sc9">
     <div class="band-content" style="gap:16px;">
-      <div class="eyebrow" id="s9eyebrow">// STAT CALLOUT</div>
+      <div class="eyebrow" id="s9eyebrow">// THE HANDOFF</div>
       <div class="icon-badge" id="s9icon" style="width:110px;height:110px;">${I.percentage}</div>
       <div class="stat-big" id="s9stat">26%</div>
       <div class="stat-label" id="s9statlabel">of Anthropic's own AI R&amp;D — led end-to-end by Claude</div>
