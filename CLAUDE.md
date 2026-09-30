@@ -496,6 +496,88 @@ never reused from a previous reel's structurally-similar scene, and
 worth a quick grep across a new reel's own scenes for accidental
 duplicates before considering it done.
 
+## Creative benchmark — what made the strongest reels actually work
+
+`reel-openai-pro-max` ("$500/Month"), `reel-claude-price-war`, and
+`reel-openai-loop-method` are this repo's high bar — explicitly named by
+the user as the standard to clear. `reel-ai-roast-me` was explicitly
+called out as falling short ("low on creativity and frames are too
+empty") even after a density pass added more cards/chips to it. Comparing
+them side by side, the gap isn't card count — it's *what kind* of visual
+each scene builds. This section is a checklist to apply to the next
+reel's script/mockup, not a note to go rebuild roast-me.
+
+**The actual differences, concretely:**
+
+- **Real, specific numbers everywhere, not one stat plus vague sentences.**
+  Price-war's scenes cite exact prices (`$0.10 / $0.50`, `$2 / $10`),
+  exact percentages (`22% weekly limit`), exact durations (`4 hours`),
+  named benchmarks (`beats Fable 5.1`) — nearly every scene carries 2-4
+  concrete data points, not one headline claim restated in different
+  words. Roast-me had exactly one real number (310,000+) and filled the
+  rest with abstract restatement ("no relationship on the line," "it's
+  not reading you"). Before scripting a new reel, list out every hard
+  number/fact available on the topic and make sure most scenes anchor to
+  one, the way a real news segment would.
+- **A bespoke, literal data-visualization centerpiece per key beat — not
+  a reusable card with a new sentence in it.** This is the single biggest
+  gap. Compare:
+  - `reel-openai-pro-max`'s `priceTag()` ladder (scene 3): four pricing
+    tiers stacked with escalating visual weight so the *jump* from $200
+    to $500 is something you see, not just read.
+  - `reel-claude-price-war`'s `ticket` component (`.ticket` + `.stamp`):
+    a dashed-border receipt card with multiple `label → value` rows and a
+    rotated rubber-stamp verdict (`-50%`, `4 HOURS`, `WINNING`) punched
+    in the corner — used differently in every scene it appears in because
+    each scene's *data* differs, not just its wrapper text.
+  - `reel-openai-loop-method`'s scene 6: a **live circular progress
+    ring** (SVG `stroke-dasharray`/`stroke-dashoffset`, t-driven) with a
+    counting number in the center (`1` → `2` → `3`) synced to a `LOOP 1/3`
+    label, plus an actual **icon → arrow → icon → arrow → icon** flow row
+    showing a real process pipeline. This reads as "designed motion
+    graphics," not "a styled div."
+  A reusable card component (this reel's scorch-card, price-war's
+  ticket, whatever) is fine as connective tissue between scenes, but at
+  least 2-4 scenes per reel need something built specifically for that
+  scene's data — a ladder, a ring, a stamped receipt, a ticker — that
+  would look wrong or empty in any other scene.
+- **Head-to-head / comparison visual language when the topic has two
+  sides.** Price-war puts real OpenAI and Anthropic logos side by side
+  with explicit win/lose color coding (`.brand-badge.win` /
+  `.brand-badge.lose`) rather than describing the comparison in prose.
+  If a topic has a rival, a before/after, or a such-vs-such shape, show
+  both sides as objects on screen, not as two sentences.
+- **Explicit narrative scaffolding via a numbered step tracker.**
+  `checkpointHead(current, total, id)` (price-war) and `stepHead(current,
+  total, id)` (loop-method) render a small `CHECKPOINT 2/5` /
+  `STEP 4/5` readout with a dot-progress row, so the viewer always knows
+  where they are in the story. Any reel with a sequence (steps, stages,
+  checkpoints) should make that sequence visible on screen, not just
+  implicit in the voiceover-style copy.
+- **A persistent scrolling ticker-tape marquee for a data-heavy topic.**
+  Price-war runs two full-width marquees (top and bottom gutters,
+  `.ticker-top`/`.ticker-bottom`) scrolling real headline fragments and
+  numbers (`SOL -50%`, `OPUS 5.5 BENCHMARK LEADER`, `22% BUDGET`) on a
+  continuous loop for the *entire* reel — ambient reinforcement of the
+  story's data density, and it doubles as gutter-filling texture. Worth
+  reaching for specifically on a numbers-heavy topic (pricing, market,
+  benchmarks) — not a fit for every reel's tone.
+- **A real quote with real attribution.** Price-war's scene 7 is a bare
+  quote (`"My go-to agent changed to Claude Code with this release." —
+  Ben's Bites, this week`) — no card, no chip, just large type and a
+  named source. It reads as reported fact, which is a different kind of
+  credible than a stylized card making the same claim anonymously. Use
+  a real, findable quote when the research turns one up, attributed by
+  name.
+
+**Practical takeaway for scripting the next reel**: after drafting the
+10-scene script, go back through it and ask *"what is the one object I
+could put on screen that makes this scene's specific claim visually
+obvious, using this topic's own real numbers?"* for every scene — not
+"which existing component do I drop this text into." If the honest
+answer is "just a headline and a supporting sentence," that scene needs
+either a sharper fact to hang it on or to be merged with a neighbor.
+
 ## Cover images
 
 **See `.claude/skills/cover-art/SKILL.md` for the full step-by-step
