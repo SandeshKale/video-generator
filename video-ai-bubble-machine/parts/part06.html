@@ -1,0 +1,265 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 6</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .col{border:4px solid var(--edge);border-radius:14px 14px 0 0;box-shadow:8px 8px 0 var(--edge);transform-origin:50% 100%;}
+  .col.ghost{background:repeating-linear-gradient(135deg,rgba(255,197,61,.35) 0 14px,rgba(255,197,61,.12) 14px 28px)!important;border-style:dashed;border-color:var(--gold);box-shadow:none;}
+  .cv{font-family:'Bricolage',sans-serif;font-weight:800;font-size:50px;text-align:center;width:300px;white-space:nowrap;text-shadow:0 5px 0 rgba(12,6,20,.9);}
+  .cn{font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.1em;text-align:center;width:300px;color:var(--cream2);}
+  .flowbox{width:430px;height:210px;padding:26px 30px;}
+  .flowbox .t{font-family:'Bricolage',sans-serif;font-weight:800;font-size:50px;line-height:1;}
+  .flowbox .s{font-family:'JBMono',monospace;font-weight:700;font-size:19px;letter-spacing:.08em;margin-top:12px;line-height:1.3;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 06</div><div id="hdrTitle">THE BORROWED BOOM</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>06 / 12</div>
+  <div id="stage">
+  <div id="A" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card gold" id="aC" style="left:420px;top:140px;width:860px;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
+      <div class="lbl" style="font-size:24px;color:#4a3300;">THE BILL IS INCREASINGLY PAID BY</div>
+      <div class="big" style="font-size:150px;color:#1a0f26;">LENDERS</div></div>
+    <div class="pill cream" id="aP" style="left:470px;top:500px;font-size:26px;">BONDS · LOANS · PRIVATE CREDIT</div>
+  </div>
+  <div id="B" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs col " id="col0" style="left:70px;bottom:70px;width:230px;height:21px;background:#8a6dff;"></div>
+    <div class="abs cv" id="cv0" style="left:35px;bottom:105px;color:var(--cream);">$17B</div>
+    <div class="abs cn" id="cn0" style="left:35px;bottom:18px;">2024</div>
+    <div class="abs col " id="col1" style="left:390px;bottom:70px;width:230px;height:132px;background:#35f2b0;"></div>
+    <div class="abs cv" id="cv1" style="left:355px;bottom:216px;color:var(--cream);">$108B</div>
+    <div class="abs cn" id="cn1" style="left:355px;bottom:18px;">2025</div>
+    <div class="abs col " id="col2" style="left:710px;bottom:70px;width:230px;height:237px;background:#ffc53d;"></div>
+    <div class="abs cv" id="cv2" style="left:675px;bottom:321px;color:var(--cream);">$194B</div>
+    <div class="abs cn" id="cn2" style="left:675px;bottom:18px;">2026 · THROUGH LATE JULY</div>
+    <div class="abs col ghost" id="col3" style="left:1030px;bottom:70px;width:230px;height:305px;background:#ffc53d;"></div>
+    <div class="abs cv" id="cv3" style="left:995px;bottom:389px;color:var(--gold);">~$250B</div>
+    <div class="abs cn" id="cn3" style="left:995px;bottom:18px;">2026 · GOLDMAN EST.</div>
+    <div class="abs col ghost" id="col4" style="left:1350px;bottom:70px;width:230px;height:488px;background:#ffc53d;"></div>
+    <div class="abs cv" id="cv4" style="left:1315px;bottom:572px;color:var(--gold);">~$400B</div>
+    <div class="abs cn" id="cn4" style="left:1315px;bottom:18px;">2027 · GOLDMAN EST.</div>
+    <div class="pill" id="bTag" style="left:20px;top:0;font-size:22px;">AMAZON + ALPHABET + META + ORACLE · BONDS ISSUED</div>
+    <div class="pill coral" id="bUp" style="left:395px;top:340px;font-size:34px;rotate:-6deg;">+535%</div>
+    <div class="pill mint" id="bOver" style="left:700px;top:150px;font-size:28px;rotate:3deg;">2026 > ALL OF 2025</div>
+  </div>
+  <div id="C" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl" style="left:90px;top:0;font-size:26px;color:var(--cream2);">META · HYPERION DATA CENTER</div>
+    <div class="card flowbox" id="m1" style="left:40px;top:150px;"><div class="t">Meta</div><div class="s dim-t" style="color:#4a3a60">INVESTMENT-GRADE TENANT</div></div>
+    <div class="card flowbox gold" id="m2" style="left:635px;top:150px;"><div class="t">$30B SPV</div><div class="s" style="color:#4a3300">JOINT VENTURE WITH BLUE OWL</div></div>
+    <div class="card flowbox mint" id="m3" style="left:1230px;top:150px;"><div class="t">~$27B debt</div><div class="s" style="color:#0a4a38">BONDS + LOANS FROM LENDERS</div></div>
+    <svg class="abs" style="left:0;top:0" width="1700" height="720" viewBox="0 0 1700 720">
+      <path id="mp1" d="M470 255 L635 255" stroke="#f4efe6" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="12 12"/>
+      <path id="mp2" d="M1065 255 L1230 255" stroke="#f4efe6" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="12 12"/></svg>
+    <div class="card dark" id="mNote" style="left:300px;top:440px;width:1100px;height:170px;display:flex;align-items:center;justify-content:center;gap:30px;padding:0 40px;">
+      <div class="big mint-t" style="font-size:80px;">OFF</div><div class="h2" style="font-size:48px;">Meta's own balance sheet</div></div>
+  </div>
+  <div id="D" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl" style="left:90px;top:0;font-size:26px;color:var(--cream2);">ORACLE · FISCAL 2026</div>
+    <div class="card coral" id="oN" style="left:90px;top:80px;width:880px;height:330px;">
+      <div class="abs lbl" style="left:40px;top:30px;font-size:22px;color:#4a1410;">FREE CASH FLOW</div>
+      <div class="abs big" id="oV" style="left:34px;top:92px;font-size:178px;color:#1a0f26;">−$23.7B</div>
+      <div class="abs body" style="left:42px;top:272px;font-size:28px;color:#3a1410;">about a $250B AI buildout in progress</div></div>
+    <div class="card dark" id="oT" style="left:1010px;top:80px;width:600px;height:330px;padding:34px 40px;">
+      <div class="lbl coral-t" style="font-size:22px;">ONE DATA CENTER CAMPUS</div>
+      <div class="big" style="font-size:150px;margin-top:26px;">$38B</div>
+      <div class="body dim-t" style="font-size:28px;margin-top:10px;">of debt banks reportedly struggled to sell</div></div>
+    <div class="pill coral" id="oS" style="left:1330px;top:40px;font-size:30px;padding:12px 28px;rotate:7deg;">HARD TO SELL</div>
+    <div class="card" id="oQ" style="left:90px;top:470px;width:1520px;height:150px;display:flex;align-items:center;gap:36px;padding:0 44px;">
+      <div class="h2" style="font-size:44px;">Cash earned by the cloud business &lt; cash poured into data centers, chips and leases.</div></div>
+  </div>
+  <div id="E" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card coral" id="cwB" style="left:90px;top:70px;width:420px;height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="lbl" style="font-size:22px;color:#4a1410;">COREWEAVE · S&amp;P RATING</div>
+      <div class="big" style="font-size:230px;color:#1a0f26;margin-top:8px;">B+</div>
+      <div class="pill cream" style="position:relative;margin-top:6px;font-size:26px;">JUNK</div></div>
+    <div class="card dark" id="cwD" style="left:590px;top:70px;width:1020px;height:250px;padding:34px 44px;">
+      <div class="lbl mint-t" style="font-size:22px;">FEB 2026 · LANCASTER, PENNSYLVANIA</div>
+      <div class="h2" style="font-size:64px;margin-top:16px;">Blue Owl tried to raise <span class="gold-t">$4B</span></div>
+      <div class="body dim-t" style="font-size:28px;margin-top:14px;">for a data center with CoreWeave as the main tenant.</div></div>
+    <div class="stamp" id="cwS" style="left:1290px;top:215px;font-size:64px;rotate:-7deg;">FAILED</div>
+    <div class="card gold" id="cwQ" style="left:590px;top:380px;width:1020px;height:150px;display:flex;align-items:center;padding:0 44px;">
+      <div class="h2" style="font-size:62px;color:#1a0f26;">“We saw it. We passed.”</div></div>
+    <div class="lbl dim-t abs" id="cwQs" style="left:600px;top:550px;font-size:21px;">— A SPECIALIST LENDER, AS REPORTED</div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 06</div><div id="iTitle">THE BORROWED BOOM</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=5, DUR=78.875;
+var SENTS=[{"start":0.9,"end":5.35,"text":"So who's actually paying? Increasingly, the answer is lenders."},{"start":5.9,"end":24.35,"text":"Amazon, Alphabet, Meta and Oracle issued about a hundred and ninety four billion dollars of bonds through late July. That's already more than the hundred and eight billion they issued in all of twenty twenty five, which was itself up more than five hundred percent on the year before."},{"start":24.9,"end":34.425,"text":"Goldman Sachs expects the big hyperscalers to issue around two hundred and fifty billion this year, and four hundred billion in twenty twenty seven."},{"start":34.975,"end":46.775,"text":"Meta's Hyperion data center was financed through a thirty billion dollar structure with Blue Owl, including about twenty seven billion in debt, kept off Meta's own balance sheet."},{"start":47.325,"end":62.575,"text":"Oracle's free cash flow for fiscal twenty twenty six was negative twenty three point seven billion dollars. And banks reportedly struggled to sell thirty eight billion dollars of debt tied to one Oracle data center campus."},{"start":63.125,"end":77.775,"text":"Then there's CoreWeave. In February, Blue Owl failed to raise four billion dollars for a CoreWeave data center in Pennsylvania. CoreWeave's credit rating is B plus. Junk. As one lender put it: we saw it, we passed."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4,5].map(function(i){return CUE(i);});
+  function moodAt(t){return clamp(.15+.3*st(t,K[2],4)+.45*st(t,K[4],3),0,1);}
+  function render(t){
+    var a=win(t,K[0]-.05,K[1]-.1,.4); $('A').style.opacity=a;
+    pop($('aC'),st(t,K[0]+.2,.6),{rot:-3,s0:.5}); pop($('aP'),st(t,K[0]+2.2,.5),{dy:30});
+    var b=win(t,K[1]-.05,K[3]-.15,.45); $('B').style.opacity=b;
+    pop($('bTag'),st(t,K[1]+.1,.5),{dy:-20});
+    var reveal=[K[1]+1.3,K[1]+4.6,K[1]+9.0,K[2]+1.0,K[2]+3.4];
+    for(var i=0;i<5;i++){var e=st(t,reveal[i],1.0);$('col'+i).style.transform='scaleY('+eoc(e)+')';
+      pop($('cv'+i),st(t,reveal[i]+.7,.4),{dy:16}); pop($('cn'+i),st(t,reveal[i]-.3,.4),{dy:10});}
+    pop($('bUp'),st(t,K[1]+6.2,.5),{rot:-12,s0:.3,dy:0}); pop($('bOver'),st(t,K[1]+11.0,.5),{rot:8,s0:.3,dy:0});
+    var c=win(t,K[3]-.05,K[4]-.15,.45); $('C').style.opacity=c;
+    pop($('m1'),st(t,K[3]+.2,.5),{dx:-100,dy:0,s0:.9}); pop($('m2'),st(t,K[3]+1.2,.5),{dx:-100,dy:0,s0:.9}); pop($('m3'),st(t,K[3]+2.4,.5),{dx:-100,dy:0,s0:.9});
+    $('mp1').setAttribute('stroke-dashoffset',-(t*40)); $('mp2').setAttribute('stroke-dashoffset',-(t*40));
+    $('mp1').style.opacity=st(t,K[3]+.9,.3); $('mp2').style.opacity=st(t,K[3]+2.1,.3);
+    pop($('mNote'),st(t,K[3]+4.5,.5),{dy:40});
+    var d=win(t,K[4]-.05,K[5]-.15,.45); $('D').style.opacity=d;
+    pop($('oN'),st(t,K[4]+.2,.55),{dx:-100,dy:0,s0:.9});
+    var neg=st(t,K[4]+.9,1.6); $('oV').textContent='−$'+(23.7*eoc(neg)).toFixed(1)+'B';
+    pop($('oT'),st(t,K[4]+5.6,.55),{dx:100,dy:0,s0:.9}); pop($('oS'),st(t,K[4]+7.4,.5),{rot:14,s0:.3,dy:0});
+    pop($('oQ'),st(t,K[4]+9.0,.5),{dy:40});
+    var e5=st(t,K[5]-.05,.4); $('E').style.opacity=e5;
+    pop($('cwB'),st(t,K[5]+.5,.55),{dx:-100,dy:0,s0:.8,rot:-5}); pop($('cwD'),st(t,K[5]+3.4,.55),{dx:100,dy:0,s0:.92});
+    pop($('cwS'),st(t,K[5]+8.2,.45),{rot:-16,s0:.2,dy:0});
+    pop($('cwQ'),st(t,K[5]+10.6,.5),{dy:40}); fade($('cwQs'),st(t,K[5]+11.0,.5));
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 8</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .gl{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.1em;}
+  .bar8{height:92px;border:4px solid var(--edge);border-radius:14px;box-shadow:7px 7px 0 var(--edge);}
+  .gen{width:96px;height:96px;display:flex;align-items:center;justify-content:center;}
+  .gen svg{width:54px;height:54px;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 08</div><div id="hdrTitle">THE ACCOUNTING FIGHT</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>08 / 12</div>
+  <div id="stage">
+  <div id="A" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card dark" id="aCard" style="left:150px;top:110px;width:1400px;height:300px;display:flex;align-items:center;gap:56px;padding:0 60px;">
+      <div style="width:190px;height:190px;border-radius:50%;background:var(--coral);border:6px solid var(--edge);display:flex;align-items:center;justify-content:center;flex:0 0 190px;"><div class="big" style="font-size:96px;color:#1a0f26;">MB</div></div>
+      <div><div class="lbl coral-t" style="font-size:22px;">THE INVESTOR WHO SHORTED THE HOUSING MARKET</div>
+        <div class="big" style="font-size:112px;margin-top:12px;">Michael Burry</div></div></div>
+    <div class="pill coral" id="aP" style="left:480px;top:480px;font-size:30px;rotate:-2deg;">NOW PUBLICLY BETTING AGAINST AI STOCKS</div>
+  </div>
+  <div id="B" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card coral" id="b1" style="left:230px;top:90px;width:560px;height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div class="lbl" style="font-size:22px;color:#4a1410;">SHORT</div><div class="big" style="font-size:96px;color:#1a0f26;">NVIDIA</div></div>
+    <div class="card coral" id="b2" style="left:910px;top:90px;width:560px;height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div class="lbl" style="font-size:22px;color:#4a1410;">SHORT</div><div class="big" style="font-size:96px;color:#1a0f26;">PALANTIR</div></div>
+    <div class="card dark" id="bQ" style="left:230px;top:380px;width:1240px;height:210px;display:flex;align-items:center;justify-content:center;padding:0 50px;">
+      <div class="h2" style="font-size:64px;text-align:center;">His sharpest argument isn't <span class="coral-t" style="text-decoration:line-through;">demand.</span><br>It's <span class="gold-t">accounting.</span></div></div>
+  </div>
+  <div id="C" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl dim-t" style="left:360px;top:0;font-size:22px;">YEARS OF USEFUL LIFE FOR AN AI SERVER</div>
+    <div class="abs" style="left:360px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:340px;top:496px;width:44px;text-align:center;color:var(--cream2);">0</div><div class="abs" style="left:550px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:530px;top:496px;width:44px;text-align:center;color:var(--cream2);">1</div><div class="abs" style="left:740px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:720px;top:496px;width:44px;text-align:center;color:var(--cream2);">2</div><div class="abs" style="left:930px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:910px;top:496px;width:44px;text-align:center;color:var(--cream2);">3</div><div class="abs" style="left:1120px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:1100px;top:496px;width:44px;text-align:center;color:var(--cream2);">4</div><div class="abs" style="left:1310px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:1290px;top:496px;width:44px;text-align:center;color:var(--cream2);">5</div><div class="abs" style="left:1500px;top:60px;width:3px;height:430px;background:rgba(244,239,230,.16);"></div><div class="abs gl" style="left:1480px;top:496px;width:44px;text-align:center;color:var(--cream2);">6</div>
+    <div class="abs gl" style="left:0;top:96px;width:330px;color:var(--mint);font-size:22px;line-height:1.2;text-align:right;">WHAT CLOUD GIANTS BOOK</div>
+    <div class="abs bar8" id="cb1" style="left:360px;top:80px;width:0;background:var(--mint);"></div>
+    <div class="abs big" id="cv1" style="left:380px;top:98px;font-size:48px;color:#10241d;opacity:0;">5–6 YEARS</div>
+    <div class="abs gl" style="left:0;top:246px;width:330px;color:var(--coral);font-size:22px;line-height:1.2;text-align:right;">BURRY: REAL ECONOMIC LIFE</div>
+    <div class="abs bar8" id="cb2" style="left:360px;top:230px;width:0;background:var(--coral);"></div>
+    <div class="abs big" id="cv2" style="left:380px;top:248px;font-size:48px;color:#1a0f26;opacity:0;">2–3 YEARS</div>
+    <div class="card gold gen" id="gen0" style="left:502px;top:380px;width:96px;height:96px;border-radius:20px;"><div class="icon-sz" style="width:54px;height:54px;color:#1a0f26"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -12" /><path d="M9 9h6v6h-6l0 -6" /><path d="M3 10h2" /><path d="M3 14h2" /><path d="M10 3v2" /><path d="M14 3v2" /><path d="M21 10h-2" /><path d="M21 14h-2" /><path d="M14 21v-2" /><path d="M10 21v-2" /></svg></div></div><div class="card gold gen" id="gen1" style="left:692px;top:380px;width:96px;height:96px;border-radius:20px;"><div class="icon-sz" style="width:54px;height:54px;color:#1a0f26"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -12" /><path d="M9 9h6v6h-6l0 -6" /><path d="M3 10h2" /><path d="M3 14h2" /><path d="M10 3v2" /><path d="M14 3v2" /><path d="M21 10h-2" /><path d="M21 14h-2" /><path d="M14 21v-2" /><path d="M10 21v-2" /></svg></div></div><div class="card gold gen" id="gen2" style="left:882px;top:380px;width:96px;height:96px;border-radius:20px;"><div class="icon-sz" style="width:54px;height:54px;color:#1a0f26"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -12" /><path d="M9 9h6v6h-6l0 -6" /><path d="M3 10h2" /><path d="M3 14h2" /><path d="M10 3v2" /><path d="M14 3v2" /><path d="M21 10h-2" /><path d="M21 14h-2" /><path d="M14 21v-2" /><path d="M10 21v-2" /></svg></div></div>
+    <div class="pill cream" id="cGen" style="left:1060px;top:400px;font-size:23px;">NEW NVIDIA GENERATION · ~EVERY YEAR</div>
+  </div>
+  <div id="D" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs big" id="dV" style="left:150px;top:30px;width:1400px;text-align:center;font-size:330px;color:var(--coral);text-shadow:0 12px 0 rgba(12,6,20,.9);">$0B</div>
+    <div class="card dark" id="dC" style="left:260px;top:400px;width:1180px;height:140px;display:flex;align-items:center;justify-content:center;"><div class="h2" style="font-size:46px;text-align:center;">of depreciation understated, 2026–2028<span class="dim-t" style="font-size:30px;"> · Burry's estimate</span></div></div>
+    <div class="pill gold" id="dP" style="left:470px;top:580px;font-size:30px;rotate:-2deg;">FLATTERS REPORTED PROFITS</div>
+  </div>
+  <div id="E" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs big coral-t" id="eMark" style="left:60px;top:-60px;font-size:420px;line-height:1;opacity:.9;">“</div>
+    <div class="abs h2" id="eQ" style="left:200px;top:140px;width:1300px;font-size:92px;line-height:1.05;">one of the more common frauds of the modern era</div>
+    <div class="pill cream" id="eS" style="left:200px;top:520px;font-size:24px;">MICHAEL BURRY · ON STRETCHED DEPRECIATION SCHEDULES · AS REPORTED</div>
+  </div>
+  <div id="F" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card mint" id="fH" style="left:60px;top:70px;width:560px;height:210px;padding:34px 40px;"><div class="lbl" style="font-size:20px;color:#0a4a38;">NVIDIA CEO · JENSEN HUANG</div><div class="big" style="font-size:78px;margin-top:14px;color:#1a0f26;">Disagrees.</div></div>
+    <div class="card dark" id="fA" style="left:660px;top:70px;width:980px;height:520px;">
+      <div class="abs lbl mint-t" style="left:40px;top:28px;font-size:21px;">RESALE VALUE · SIX-YEAR-OLD A100 GPU</div>
+      <svg class="abs" style="left:40px;top:80px" width="900" height="300" viewBox="0 0 900 300">
+        <path id="fLine" d="M0 20 C150 40 260 170 420 230 C520 262 600 268 900 268" fill="none" stroke="#35f2b0" stroke-width="10" stroke-linecap="round"/>
+        <line id="fMark" x1="560" y1="20" x2="560" y2="290" stroke="#ffc53d" stroke-width="4" stroke-dasharray="10 10"/>
+        <g id="fDot"><circle r="14" fill="#ffc53d" stroke="#0c0614" stroke-width="4"/></g></svg>
+      <div class="pill gold" id="fTag" style="left:470px;top:96px;font-size:21px;">PRICES STOPPED FALLING · LATE 2025</div>
+      <div class="abs big" id="fV" style="left:40px;top:392px;font-size:92px;">~$5,000</div>
+      <div class="abs lbl dim-t" style="left:40px;top:488px;font-size:18px;width:880px;line-height:1.5;">SOURCE: SILICON DATA · CURVE SHAPE ILLUSTRATIVE</div></div>
+  </div>
+  <div id="G" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card coral" id="g1" style="left:130px;top:150px;width:560px;height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div class="big" style="font-size:150px;color:#1a0f26;">2–3</div><div class="lbl" style="font-size:22px;color:#4a1410;">YEARS · BURRY</div></div>
+    <div class="vs-q abs big" id="gq" style="left:760px;top:170px;width:180px;text-align:center;font-size:260px;color:var(--gold);text-shadow:0 10px 0 rgba(12,6,20,.9);">?</div>
+    <div class="card mint" id="g2" style="left:1010px;top:150px;width:560px;height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div class="big" style="font-size:150px;color:#1a0f26;">5–6</div><div class="lbl" style="font-size:22px;color:#0a4a38;">YEARS · CLOUD GIANTS</div></div>
+    <div class="pill cream" id="gP" style="left:330px;top:540px;font-size:30px;">THE MOST IMPORTANT ACCOUNTING ARGUMENT IN TECH?</div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 08</div><div id="iTitle">THE ACCOUNTING FIGHT</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=7, DUR=70.725;
+var SENTS=[{"start":0.9,"end":7.525,"text":"Michael Burry, the investor who famously shorted the housing market, is publicly betting against it."},{"start":8.075,"end":15.275,"text":"He's short Nvidia and Palantir. And his sharpest argument isn't about demand. It's about accounting."},{"start":15.825,"end":28.675,"text":"Cloud giants depreciate AI servers over five to six years. Burry says their real economic life is closer to two or three, because Nvidia ships a new generation almost every year."},{"start":29.225,"end":42.225,"text":"If he's right, he estimates cloud providers understate depreciation by about a hundred and seventy six billion dollars between twenty twenty six and twenty twenty eight, which flatters their profits."},{"start":42.775,"end":48.85,"text":"He's called stretched depreciation schedules one of the more common frauds of the modern era."},{"start":49.4,"end":63.2,"text":"Nvidia's Jensen Huang disagrees. And there's real data on his side. Six year old A one hundred chips still resell for around five thousand dollars, and their prices stopped falling in late twenty twenty five."},{"start":63.75,"end":69.625,"text":"So the debate isn't settled. It may be the most important accounting argument in tech."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4,5,6].map(function(i){return CUE(i);});
+  function moodAt(t){return .85;}
+  function render(t){
+    var a=win(t,K[0]-.05,K[1]-.1,.4); $('A').style.opacity=a;
+    pop($('aCard'),st(t,K[0]+.2,.6),{dy:50,s0:.8}); pop($('aP'),st(t,K[0]+3.8,.5),{dy:30,rot:-4});
+    var b=win(t,K[1]-.05,K[2]-.1,.4); $('B').style.opacity=b;
+    pop($('b1'),st(t,K[1]+.2,.5),{dx:-120,dy:0,s0:.85}); pop($('b2'),st(t,K[1]+.6,.5),{dx:120,dy:0,s0:.85}); pop($('bQ'),st(t,K[1]+3.6,.55),{dy:50});
+    var c=win(t,K[2]-.05,K[3]-.15,.45); $('C').style.opacity=c;
+    $('cb1').style.width=(190*6*eoc(st(t,K[2]+.5,1.3)))+'px'; fade($('cv1'),st(t,K[2]+1.4,.4));
+    $('cb2').style.width=(190*3*eoc(st(t,K[2]+3.5,1.0)))+'px'; fade($('cv2'),st(t,K[2]+4.3,.4));
+    for(var i=0;i<3;i++){pop($('gen'+i),st(t,K[2]+7.0+i*.9,.5),{dy:-40,rot:i*8-8,s0:.4});} pop($('cGen'),st(t,K[2]+9.8,.5),{dy:20});
+    var d=win(t,K[3]-.05,K[4]-.15,.45); $('D').style.opacity=d;
+    var v=176*eoc(st(t,K[3]+.4,2.2)); $('dV').textContent='$'+Math.round(v)+'B';
+    pop($('dC'),st(t,K[3]+2.2,.5),{dy:40}); pop($('dP'),st(t,K[3]+8.5,.5),{rot:-8,s0:.3,dy:0});
+    var e=win(t,K[4]-.05,K[5]-.15,.45); $('E').style.opacity=e;
+    pop($('eMark'),st(t,K[4]+.1,.5),{s0:.5}); rise($('eQ'),st(t,K[4]+.5,.7),30); pop($('eS'),st(t,K[4]+3.2,.5),{dy:20});
+    var f=win(t,K[5]-.05,K[6]-.15,.45); $('F').style.opacity=f;
+    pop($('fH'),st(t,K[5]+.2,.5),{dx:-120,dy:0,s0:.9}); pop($('fA'),st(t,K[5]+1.5,.55),{dx:120,dy:0,s0:.92});
+    var L=$('fLine'); var Ll=L.getTotalLength(); var ge=eoc(st(t,K[5]+3.0,3.0)); L.setAttribute('stroke-dasharray',Ll+' '+Ll); L.setAttribute('stroke-dashoffset',Ll*(1-ge));
+    var p=L.getPointAtLength(Ll*ge); $('fDot').setAttribute('transform','translate('+p.x+','+p.y+')'); $('fDot').style.opacity=st(t,K[5]+3.0,.3);
+    $('fMark').style.opacity=st(t,K[5]+5.5,.5); pop($('fTag'),st(t,K[5]+6.0,.5),{dy:20});
+    pop($('fV'),st(t,K[5]+8.4,.6),{s0:.6});
+    var g=st(t,K[6]-.05,.45); $('G').style.opacity=g;
+    pop($('g1'),st(t,K[6]+.2,.5),{dx:-120,dy:0,s0:.9}); pop($('g2'),st(t,K[6]+.5,.5),{dx:120,dy:0,s0:.9});
+    pop($('gq'),st(t,K[6]+1.1,.6),{s0:.2,rot:20}); $('gq').style.rotate=(6*Math.sin(t*2.6))+'deg';
+    pop($('gP'),st(t,K[6]+2.8,.5),{dy:30});
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

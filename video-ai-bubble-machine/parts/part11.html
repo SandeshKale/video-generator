@@ -1,0 +1,253 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 11</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .node{width:350px;height:150px;display:flex;align-items:center;gap:16px;padding:0 20px;}
+  .node .mk{width:84px;height:84px;flex:0 0 84px;display:flex;align-items:center;justify-content:center;}
+  .node .mk svg{width:100%;height:100%;}
+  .node .mk .wmk{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.03em;}
+  .node .nm{font-family:'Bricolage',sans-serif;font-weight:800;font-size:35px;line-height:1;white-space:nowrap;}
+  .node .rl{font-family:'JBMono',monospace;font-weight:700;font-size:14px;letter-spacing:.05em;margin-top:8px;line-height:1.25;opacity:.8;}
+  .node.dark .mk{color:var(--cream);} .node.dark .rl{color:var(--mint);}
+  .edgeLbl{font-size:21px;padding:8px 18px;}
+  .coinG text{font-family:'Bricolage',sans-serif;font-weight:800;font-size:15px;fill:#1a0f26;text-anchor:middle;}
+  
+  .node{overflow:visible;}
+  .ring{position:absolute;left:0;top:0;border-radius:50%;border:8px solid var(--coral);opacity:0;pointer-events:none;translate:-50% -50%;}
+  .tg{position:absolute;translate:-50% -50%;font-size:20px;padding:9px 20px;}
+  .spread{width:1000px;height:70px;}
+  .tgt{width:480px;height:330px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 11</div><div id="hdrTitle">IF ONE LINK SNAPS</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>11 / 12</div>
+  <div id="stage">
+  <div id="W" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <svg class="abs" style="left:0;top:0" width="1700" height="720" viewBox="0 0 1700 720"><path d="M 300 580 Q 300.0 370.0 300 160" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="5" stroke-linecap="round"/><path d="M 300 160 Q 575.0 260.0 850 360" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="5" stroke-linecap="round"/><path d="M 850 360 Q 1125.0 260.0 1400 160" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="5" stroke-linecap="round"/><path d="M 850 360 Q 1125.0 470.0 1400 580" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="5" stroke-linecap="round"/><path d="M 1400 160 Q 850.0 -30.0 300 160" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="5" stroke-linecap="round"/><path id="x1" d="M 300 580 Q 300.0 370.0 300 160" fill="none" stroke="#ff5d4d" stroke-width="9" stroke-linecap="round"/><path id="x2" d="M 300 160 Q 575.0 260.0 850 360" fill="none" stroke="#ff5d4d" stroke-width="9" stroke-linecap="round"/><path id="x3" d="M 850 360 Q 1125.0 260.0 1400 160" fill="none" stroke="#ff5d4d" stroke-width="9" stroke-linecap="round"/><path id="x4" d="M 850 360 Q 1125.0 470.0 1400 580" fill="none" stroke="#ff5d4d" stroke-width="9" stroke-linecap="round"/><path id="x5" d="M 1400 160 Q 850.0 -30.0 300 160" fill="none" stroke="#ff5d4d" stroke-width="9" stroke-linecap="round"/></svg>
+    <div class="card node dark" id="n_openai" style="left:675px;top:285px;">
+    <div class="mk"><svg viewBox="0 0 256 260" fill="currentColor">
+        <path d="M239.183914,106.202783 C245.054304,88.5242096 243.02228,69.1733805 233.607599,53.0998864 C219.451678,28.4588021 190.999703,15.7836129 163.213007,21.739505 C147.554077,4.32145883 123.794909,-3.42398554 100.87901,1.41873898 C77.9631105,6.26146349 59.3690093,22.9572536 52.0959621,45.2214219 C33.8436494,48.9644867 18.0901721,60.392749 8.86672513,76.5818033 C-5.443491,101.182962 -2.19544431,132.215255 16.8986662,153.320094 C11.0060865,170.990656 13.0197283,190.343991 22.4238231,206.422991 C36.5975553,231.072344 65.0680342,243.746566 92.8695738,237.783372 C105.235639,251.708249 123.001113,259.630942 141.623968,259.52692 C170.105359,259.552169 195.337611,241.165718 204.037777,214.045661 C222.28734,210.296356 238.038489,198.869783 247.267014,182.68528 C261.404453,158.127515 258.142494,127.262775 239.183914,106.202783 L239.183914,106.202783 Z M141.623968,242.541207 C130.255682,242.559177 119.243876,238.574642 110.519381,231.286197 L112.054146,230.416496 L163.724595,200.590881 C166.340648,199.056444 167.954321,196.256818 167.970781,193.224005 L167.970781,120.373788 L189.815614,133.010026 C190.034132,133.121423 190.186235,133.330564 190.224885,133.572774 L190.224885,193.940229 C190.168603,220.758427 168.442166,242.484864 141.623968,242.541207 Z M37.1575749,197.93062 C31.456498,188.086359 29.4094818,176.546984 31.3766237,165.342426 L32.9113895,166.263285 L84.6329973,196.088901 C87.2389349,197.618207 90.4682717,197.618207 93.0742093,196.088901 L156.255402,159.663793 L156.255402,184.885111 C156.243557,185.149771 156.111725,185.394602 155.89729,185.550176 L103.561776,215.733903 C80.3054953,229.131632 50.5924954,221.165435 37.1575749,197.93062 Z M23.5493181,85.3811273 C29.2899861,75.4733097 38.3511911,67.9162648 49.1287482,64.0478825 L49.1287482,125.438515 C49.0891492,128.459425 50.6965386,131.262556 53.3237748,132.754232 L116.198014,169.025864 L94.3531808,181.662102 C94.1132325,181.789434 93.8257461,181.789434 93.5857979,181.662102 L41.3526015,151.529534 C18.1419426,138.076098 10.1817681,108.385562 23.5493181,85.125333 L23.5493181,85.3811273 Z M203.0146,127.075598 L139.935725,90.4458545 L161.7294,77.8607748 C161.969348,77.7334434 162.256834,77.7334434 162.496783,77.8607748 L214.729979,108.044502 C231.032329,117.451747 240.437294,135.426109 238.871504,154.182739 C237.305714,172.939368 225.050719,189.105572 207.414262,195.67963 L207.414262,134.288998 C207.322521,131.276867 205.650697,128.535853 203.0146,127.075598 Z M224.757116,94.3850867 L223.22235,93.4642272 L171.60306,63.3828173 C168.981293,61.8443751 165.732456,61.8443751 163.110689,63.3828173 L99.9806554,99.8079259 L99.9806554,74.5866077 C99.9533004,74.3254088 100.071095,74.0701869 100.287609,73.9215426 L152.520805,43.7889738 C168.863098,34.3743518 189.174256,35.2529043 204.642579,46.0434841 C220.110903,56.8340638 227.949269,75.5923959 224.757116,94.1804513 L224.757116,94.3850867 Z M88.0606409,139.097931 L66.2158076,126.512851 C65.9950399,126.379091 65.8450965,126.154176 65.8065367,125.898945 L65.8065367,65.684966 C65.8314495,46.8285367 76.7500605,29.6846032 93.8270852,21.6883055 C110.90411,13.6920079 131.063833,16.2835462 145.5632,28.338998 L144.028434,29.2086986 L92.3579852,59.0343142 C89.7419327,60.5687513 88.1282597,63.3683767 88.1117998,66.4011901 L88.0606409,139.097931 Z M99.9294965,113.5185 L128.06687,97.3011417 L156.255402,113.5185 L156.255402,145.953218 L128.169187,162.170577 L99.9806554,145.953218 L99.9294965,113.5185 Z"></path>
+    </svg></div><div><div class="nm">OpenAI</div><div class="rl">BIGGEST COMPUTE BUYER</div></div></div><div class="card node " id="n_nvidia" style="left:125px;top:85px;">
+    <div class="mk"><svg viewBox="35.188 31.512 351.46 258.785" preserveAspectRatio="xMidYMid meet"><path d="M384.195 282.109c0 3.771-2.769 6.302-6.047 6.302v-.023c-3.371.023-6.089-2.508-6.089-6.278 0-3.769 2.718-6.293 6.089-6.293 3.279-.001 6.047 2.523 6.047 6.292zm2.453 0c0-5.176-4.02-8.18-8.5-8.18-4.511 0-8.531 3.004-8.531 8.18 0 5.172 4.021 8.188 8.531 8.188 4.48 0 8.5-3.016 8.5-8.188m-9.91.692h.91l2.109 3.703h2.315l-2.336-3.859c1.207-.086 2.2-.66 2.2-2.285 0-2.02-1.393-2.668-3.75-2.668h-3.411v8.812h1.961l.002-3.703m0-1.492v-2.121h1.364c.742 0 1.753.06 1.753.965 0 .984-.523 1.156-1.398 1.156h-1.719M329.406 237.027l10.598 28.992H318.48l10.926-28.992zm-11.35-11.289l-24.423 61.88h17.245l3.863-10.935h28.903l3.656 10.935h18.722l-24.605-61.888-23.361.008zm-49.033 61.903h17.497v-61.922l-17.5-.004.003 61.926zm-121.467-61.926l-14.598 49.078-13.984-49.074-18.879-.004 19.972 61.926h25.207l20.133-61.926h-17.851zm70.725 13.484h7.521c10.909 0 17.966 4.898 17.966 17.609 0 12.713-7.057 17.612-17.966 17.612h-7.521v-35.221zm-17.35-13.484v61.926h28.365c15.113 0 20.049-2.512 25.385-8.147 3.769-3.957 6.207-12.642 6.207-22.134 0-8.707-2.063-16.469-5.66-21.305-6.48-8.648-15.816-10.34-29.75-10.34h-24.547zm-165.743-.086v62.012h17.645v-47.086l13.672.004c4.527 0 7.754 1.129 9.934 3.457 2.765 2.945 3.894 7.699 3.894 16.396v27.229h17.098v-34.262c0-24.453-15.586-27.75-30.836-27.75H35.188zm137.583.086l.007 61.926h17.489v-61.926h-17.496z"/><path d="M82.211 102.414s22.504-33.203 67.437-36.638V53.73c-49.769 3.997-92.867 46.149-92.867 46.149s24.41 70.564 92.867 77.026v-12.804c-50.237-6.32-67.437-61.687-67.437-61.687zm67.437 36.223v11.727c-37.968-6.77-48.507-46.237-48.507-46.237s18.23-20.195 48.507-23.47v12.867c-.023 0-.039-.007-.058-.007-15.891-1.907-28.305 12.938-28.305 12.938s6.958 24.99 28.363 32.182m0-107.125V53.73c1.461-.112 2.922-.207 4.391-.257 56.582-1.907 93.449 46.406 93.449 46.406s-42.343 51.488-86.457 51.488c-4.043 0-7.828-.375-11.383-1.005v13.739a75.04 75.04 0 0 0 9.481.612c41.051 0 70.738-20.965 99.484-45.778 4.766 3.817 24.278 13.103 28.289 17.167-27.332 22.884-91.031 41.33-127.144 41.33-3.481 0-6.824-.211-10.11-.528v19.306H305.68V31.512H149.648zm0 49.144V65.777c1.446-.101 2.903-.179 4.391-.226 40.688-1.278 67.382 34.965 67.382 34.965s-28.832 40.042-59.746 40.042c-4.449 0-8.438-.715-12.028-1.922V93.523c15.84 1.914 19.028 8.911 28.551 24.786l21.181-17.859s-15.461-20.277-41.524-20.277c-2.834-.001-5.545.198-8.207.483" fill="#77b900"/></svg></div><div><div class="nm">Nvidia</div><div class="rl">MAKES THE CHIPS</div></div></div><div class="card node " id="n_oracle" style="left:1225px;top:85px;">
+    <div class="mk"><div class="wmk" style="font-size:19px;letter-spacing:.02em;color:#d9291d;">ORACLE</div></div><div><div class="nm">Oracle</div><div class="rl">BUILDS + RENTS DATA CENTERS</div></div></div><div class="card node mint" id="n_coreweave" style="left:125px;top:505px;">
+    <div class="mk"><div class="wmk" style="">CW</div></div><div><div class="nm">CoreWeave</div><div class="rl">RENTS OUT NVIDIA GPUs</div></div></div><div class="card node gold" id="n_amd" style="left:1225px;top:505px;">
+    <div class="mk"><div class="wmk" style="">↗</div></div><div><div class="nm">AMD</div><div class="rl">CHIPS · CHALLENGER</div></div></div>
+    <div class="ring" id="rg_openai" style="left:850px;top:360px;width:100px;height:100px;"></div><div class="ring" id="rg_nvidia" style="left:300px;top:160px;width:100px;height:100px;"></div><div class="ring" id="rg_oracle" style="left:1400px;top:160px;width:100px;height:100px;"></div><div class="ring" id="rg_coreweave" style="left:300px;top:580px;width:100px;height:100px;"></div><div class="ring" id="rg_amd" style="left:1400px;top:580px;width:100px;height:100px;"></div><div class="pill coral tg" id="tCW1" style="left:300px;top:676px;">CAN'T REFINANCE</div><div class="pill  tg" id="tCW2" style="left:690px;top:600px;">LENDERS TAKE LOSSES</div><div class="pill  tg" id="tCW3" style="left:690px;top:662px;">PROJECTS STALL</div><div class="pill coral tg" id="tNV" style="left:300px;top:52px;">SUPPLIER + SHAREHOLDER: HIT</div><div class="pill coral tg" id="tOA" style="left:850px;top:470px;">GROWTH SLOWS</div><div class="pill coral tg" id="tOR1" style="left:1400px;top:262px;">CAPACITY BUILT FOR ONE CUSTOMER</div><div class="pill  tg" id="tOR2" style="left:1400px;top:316px;">NEGATIVE FREE CASH FLOW</div>
+  </div>
+  <div id="S" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="lbl dim-t abs" style="left:250px;top:30px;font-size:24px;">20-YEAR+ HYPERSCALER BONDS · SPREAD OVER RISK-FREE RATES</div>
+    <div class="abs lbl" style="left:250px;top:130px;font-size:24px;color:var(--cream2);">A YEAR AGO</div>
+    <div class="abs" id="sb1" style="left:250px;top:170px;width:0;height:100px;background:var(--mint);border:4px solid var(--edge);border-radius:14px;box-shadow:7px 7px 0 var(--edge);"></div>
+    <div class="abs big" id="sv1" style="left:270px;top:188px;font-size:56px;color:#10241d;opacity:0;">~108 bps</div>
+    <div class="abs lbl" style="left:250px;top:330px;font-size:24px;color:var(--cream2);">NOW</div>
+    <div class="abs" id="sb2" style="left:250px;top:370px;width:0;height:100px;background:var(--coral);border:4px solid var(--edge);border-radius:14px;box-shadow:7px 7px 0 var(--edge);"></div>
+    <div class="abs big" id="sv2" style="left:270px;top:388px;font-size:56px;color:#1a0f26;opacity:0;">~118 bps</div>
+    <div class="pill gold" id="sP" style="left:1170px;top:250px;font-size:44px;padding:16px 32px;rotate:5deg;">+10 bps</div>
+    <div class="card dark" id="sC" style="left:250px;top:560px;width:1100px;height:110px;display:flex;align-items:center;justify-content:center;"><div class="h2" style="font-size:44px;">The bond market is getting tired.</div></div>
+  </div>
+  <div id="V" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card coral tgt" id="v1" style="left:70px;top:60px;"><div class="big" style="font-size:80px;color:#1a0f26;">Lenders</div><div class="lbl" style="font-size:20px;color:#4a1410;">FIRST TO TAKE LOSSES</div></div>
+    <div class="card coral tgt" id="v2" style="left:610px;top:60px;"><div class="big" style="font-size:80px;color:#1a0f26;">Suppliers</div><div class="lbl" style="font-size:20px;color:#4a1410;">ORDERS DRY UP</div></div>
+    <div class="card coral tgt" id="v3" style="left:1150px;top:60px;"><div class="big" style="font-size:80px;color:#1a0f26;">Shareholders</div><div class="lbl" style="font-size:20px;color:#4a1410;">VALUATIONS RESET</div></div>
+    <div class="card mint" id="v4" style="left:310px;top:430px;width:1080px;height:200px;display:flex;align-items:center;justify-content:center;gap:30px;">
+      <div class="big" style="font-size:70px;color:#1a0f26;text-decoration:line-through;text-decoration-thickness:10px;text-decoration-color:var(--coral);">The person using the chatbot</div></div>
+    <div class="pill cream" id="v5" style="left:560px;top:650px;font-size:28px;rotate:-2deg;">NOT WHO GETS HIT FIRST</div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 11</div><div id="iTitle">IF ONE LINK SNAPS</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=10, DUR=57.65;
+var SENTS=[{"start":0.9,"end":5.225,"text":"So what would a break actually look like? Follow the arrows backward."},{"start":5.775,"end":17.725,"text":"Say a weaker link like CoreWeave can't refinance. Its lenders take losses. Its data center projects stall. And Nvidia, as both supplier and shareholder, takes a hit."},{"start":18.275,"end":29.05,"text":"Say OpenAI's growth slows before it covers its commitments. Oracle is left with enormous capacity built for one customer, and negative free cash flow."},{"start":29.6,"end":41.525,"text":"Say the bond market gets tired. Spreads on long hyperscaler bonds have already widened to roughly one hundred and eighteen basis points, from about one hundred and eight a year ago."},{"start":42.075,"end":48.875,"text":"It wouldn't be one company failing. It would be a shockwave moving backward along every arrow in that circle."},{"start":49.425,"end":56.55,"text":"And notice who gets hit first. Lenders, suppliers and shareholders. Not the person using the chatbot."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4,5].map(function(i){return CUE(i);});
+  var IDS=['openai','nvidia','oracle','coreweave','amd'];
+  var INF={coreweave:K[1]+1.2, nvidia:K[1]+8.8, openai:K[2]+.8, oracle:K[2]+6.0, amd:K[4]+6.0};
+  function moodAt(t){return clamp(.15+.5*st(t,K[1]+1,6)+.35*st(t,K[2],8),0,1);}
+  function infected(id,t){return st(t,INF[id],.6);}
+  function render(t){
+    // web visibility: full for s0..s2 and s4; dimmed during bond-market (s3) and consequences (s5)
+    var wv=clamp(Math.min(st(t,.8,.5),1)-.96*win(t,K[3]-.05,K[4]-.1,.4)-.9*st(t,K[5]-.05,.5),.05,1);
+    $('W').style.opacity=wv;
+    IDS.forEach(function(id,i){
+      var n=$('n_'+id);var e=st(t,.9+i*.15,.6);pop(n,e,{dy:30,s0:.7});
+      var f=infected(id,t);
+      if(e>=1){n.style.transform='translate('+(f>0&&f<1?(6*Math.sin(t*60)):0)+'px,'+(2.5*Math.sin(t*1.7+i))+'px)';}
+      n.style.boxShadow='9px 9px 0 rgba('+Math.round(lerp(12,255,f))+','+Math.round(lerp(6,93,f))+','+Math.round(lerp(20,77,f))+',1)';
+      n.style.borderColor=f>.5?'var(--coral)':'var(--edge)';
+    });
+    // red flow along edges after the source node is hit
+    var src={x1:'coreweave',x2:'nvidia',x3:'openai',x4:'openai',x5:'oracle'};
+    for(var k=1;k<=5;k++){var p=$('x'+k);var L=p.getTotalLength();var s0=INF[src['x'+k]]+.9;
+      if(k===5){s0=INF.oracle+.9;} var e=eoc(st(t,s0,1.2));
+      p.setAttribute('stroke-dasharray',L+' '+L);p.setAttribute('stroke-dashoffset',L*(1-e));}
+    // tags
+    pop($('tCW1'),st(t,INF.coreweave+.2,.45),{s0:.4,dy:0}); pop($('tCW2'),st(t,K[1]+4.6,.45),{s0:.4,dy:0}); pop($('tCW3'),st(t,K[1]+6.6,.45),{s0:.4,dy:0});
+    pop($('tNV'),st(t,INF.nvidia+.3,.45),{s0:.4,dy:0});
+    pop($('tOA'),st(t,INF.openai+.2,.45),{s0:.4,dy:0});
+    pop($('tOR1'),st(t,INF.oracle+.3,.45),{s0:.4,dy:0}); pop($('tOR2'),st(t,INF.oracle+2.4,.45),{s0:.4,dy:0});
+    // shockwave rings along every arrow (sentence 4)
+    var order=['coreweave','nvidia','openai','oracle','amd'];
+    order.forEach(function(id,i){var r=$('rg_'+id);var u=st(t,K[4]+1.0+i*.9,1.4);
+      r.style.opacity=(u>0&&u<1)?(1-u)*.9:0; var s=100+520*eoc(u); r.style.width=s+'px'; r.style.height=s+'px';});
+    // bond spreads card
+    var s=win(t,K[3]-.05,K[4]-.1,.4); $('S').style.opacity=s;
+    $('sb1').style.width=(1000*108/118*eoc(st(t,K[3]+.6,1.0)))+'px'; fade($('sv1'),st(t,K[3]+1.3,.4));
+    $('sb2').style.width=(1000*eoc(st(t,K[3]+3.2,1.1)))+'px'; fade($('sv2'),st(t,K[3]+4.0,.4));
+    pop($('sP'),st(t,K[3]+5.2,.5),{rot:12,s0:.3,dy:0}); pop($('sC'),st(t,K[3]+7.0,.5),{dy:30});
+    // who gets hit first
+    var v=st(t,K[5]-.05,.45); $('V').style.opacity=v;
+    pop($('v1'),st(t,K[5]+.6,.5),{dy:60,rot:-2}); pop($('v2'),st(t,K[5]+1.4,.5),{dy:60}); pop($('v3'),st(t,K[5]+2.2,.5),{dy:60,rot:2});
+    pop($('v4'),st(t,K[5]+4.6,.55),{dy:50}); pop($('v5'),st(t,K[5]+6.4,.5),{rot:-6,s0:.4,dy:0});
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 10</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .yr{width:560px;height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .cell{width:40px;height:40px;border-radius:9px;border:3px solid var(--edge);}
+  .tomb{width:420px;height:300px;padding:30px;border-radius:200px 200px 24px 24px;text-align:center;}
+  .tomb .n{font-family:'Bricolage',sans-serif;font-weight:800;font-size:46px;line-height:1;margin-top:60px;}
+  .tomb .s{font-family:'JBMono',monospace;font-weight:700;font-size:19px;letter-spacing:.1em;margin-top:14px;}
+  .verdict{width:700px;height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px;text-align:center;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 10</div><div id="hdrTitle">WHAT NINETEEN NINETY NINE LEFT BEHIND</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>10 / 12</div>
+  <div id="stage">
+  <div id="A" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card yr dark" id="a26" style="left:130px;top:130px;"><div class="big" style="font-size:230px;">2026</div></div>
+    <div class="big abs" id="aQ" style="left:760px;top:140px;width:180px;text-align:center;font-size:270px;color:var(--gold);text-shadow:0 10px 0 rgba(12,6,20,.9);">?</div>
+    <div class="card yr gold" id="a99" style="left:1010px;top:130px;"><div class="big" style="font-size:230px;color:#1a0f26;">1999</div></div>
+    <div class="pill cream" id="aP" style="left:330px;top:560px;font-size:28px;">WHAT DID THE LAST INFRASTRUCTURE BUBBLE LEAVE BEHIND?</div>
+  </div>
+  <div id="B" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl dim-t" id="bL" style="left:100px;top:0;font-size:24px;">FIBER-OPTIC CABLE · 1995–2000 · "PERHAPS AS MUCH AS"</div>
+    <div class="abs big" id="bV" style="left:100px;top:50px;font-size:380px;color:var(--gold);text-shadow:0 14px 0 rgba(12,6,20,.9);">$2T</div>
+    <svg class="abs" style="left:0;top:0" width="1700" height="720" viewBox="0 0 1700 720">
+      <path id="cable" d="M60 640 C400 560 520 700 880 630 S1300 560 1650 640" fill="none" stroke="#35f2b0" stroke-width="12" stroke-linecap="round"/>
+      <path d="M60 640 C400 560 520 700 880 630 S1300 560 1650 640" fill="none" stroke="#f4efe6" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 22" id="cable2"/></svg>
+    <div class="card dark" id="bM" style="left:830px;top:90px;width:760px;height:300px;padding:34px 44px;"><div class="lbl mint-t" style="font-size:22px;">LAID IN FIVE YEARS</div><div class="big" style="font-size:150px;margin-top:10px;" id="bMv">0M</div><div class="body dim-t" style="font-size:30px;">miles of fiber, 80–90 million</div></div>
+  </div>
+  <div id="C" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl dim-t" id="cL" style="left:310px;top:0;font-size:22px;">100 STRANDS OF FIBER · 2002</div>
+    <div class="abs" id="cells" style="left:310px;top:50px;width:1080px;height:270px;"><div class="abs cell" id="fc0" style="left:0px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc1" style="left:54px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc2" style="left:108px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc3" style="left:162px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc4" style="left:216px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc5" style="left:270px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc6" style="left:324px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc7" style="left:378px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc8" style="left:432px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc9" style="left:486px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc10" style="left:540px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc11" style="left:594px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc12" style="left:648px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc13" style="left:702px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc14" style="left:756px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc15" style="left:810px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc16" style="left:864px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc17" style="left:918px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc18" style="left:972px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc19" style="left:1026px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc20" style="left:0px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc21" style="left:54px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc22" style="left:108px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc23" style="left:162px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc24" style="left:216px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc25" style="left:270px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc26" style="left:324px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc27" style="left:378px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc28" style="left:432px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc29" style="left:486px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc30" style="left:540px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc31" style="left:594px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc32" style="left:648px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc33" style="left:702px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc34" style="left:756px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc35" style="left:810px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc36" style="left:864px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc37" style="left:918px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc38" style="left:972px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc39" style="left:1026px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc40" style="left:0px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc41" style="left:54px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc42" style="left:108px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc43" style="left:162px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc44" style="left:216px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc45" style="left:270px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc46" style="left:324px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc47" style="left:378px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc48" style="left:432px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc49" style="left:486px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc50" style="left:540px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc51" style="left:594px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc52" style="left:648px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc53" style="left:702px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc54" style="left:756px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc55" style="left:810px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc56" style="left:864px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc57" style="left:918px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc58" style="left:972px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc59" style="left:1026px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc60" style="left:0px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc61" style="left:54px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc62" style="left:108px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc63" style="left:162px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc64" style="left:216px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc65" style="left:270px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc66" style="left:324px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc67" style="left:378px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc68" style="left:432px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc69" style="left:486px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc70" style="left:540px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc71" style="left:594px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc72" style="left:648px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc73" style="left:702px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc74" style="left:756px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc75" style="left:810px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc76" style="left:864px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc77" style="left:918px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc78" style="left:972px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc79" style="left:1026px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc80" style="left:0px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc81" style="left:54px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc82" style="left:108px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc83" style="left:162px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc84" style="left:216px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc85" style="left:270px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc86" style="left:324px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc87" style="left:378px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc88" style="left:432px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc89" style="left:486px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc90" style="left:540px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc91" style="left:594px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc92" style="left:648px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc93" style="left:702px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc94" style="left:756px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc95" style="left:810px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc96" style="left:864px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc97" style="left:918px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc98" style="left:972px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="fc99" style="left:1026px;top:216px;background:#2f1f4a;opacity:0;"></div></div>
+    <div class="abs big" id="cV" style="left:150px;top:370px;width:1400px;text-align:center;font-size:250px;color:var(--cream);text-shadow:0 10px 0 rgba(12,6,20,.9);">2.7%</div>
+    <div class="card dark" id="cS" style="left:380px;top:640px;width:940px;height:70px;display:flex;align-items:center;justify-content:center;"><div class="h2" style="font-size:30px;white-space:nowrap;">in use, per the Wall Street Journal · other estimates: ~95% dark</div></div>
+  </div>
+  <div id="D" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card coral" id="dP" style="left:60px;top:70px;width:640px;height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div class="lbl" style="font-size:22px;color:#4a1410;">BANDWIDTH PRICES</div><div class="big" id="dV" style="font-size:186px;color:#1a0f26;margin-top:8px;">−90%</div><div class="body" style="font-size:28px;color:#3a1410;">at the worst, within the bust</div></div>
+    <div class="card dark tomb" id="t1" style="left:770px;top:150px;"><div class="n">Global Crossing</div><div class="s coral-t">BANKRUPT</div></div>
+    <div class="card dark tomb" id="t2" style="left:1220px;top:150px;"><div class="n">WorldCom</div><div class="s coral-t">BANKRUPT</div></div>
+    <div class="stamp" id="dS" style="left:880px;top:520px;font-size:56px;rotate:-5deg;">BUST</div>
+  </div>
+  <div id="E" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs lbl dim-t" id="eL" style="left:310px;top:0;font-size:22px;">THE SAME FIBER · LATER</div>
+    <div class="abs" id="ecells" style="left:310px;top:50px;width:1080px;height:270px;"><div class="abs cell" id="ec0" style="left:0px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec1" style="left:54px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec2" style="left:108px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec3" style="left:162px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec4" style="left:216px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec5" style="left:270px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec6" style="left:324px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec7" style="left:378px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec8" style="left:432px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec9" style="left:486px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec10" style="left:540px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec11" style="left:594px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec12" style="left:648px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec13" style="left:702px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec14" style="left:756px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec15" style="left:810px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec16" style="left:864px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec17" style="left:918px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec18" style="left:972px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec19" style="left:1026px;top:0px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec20" style="left:0px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec21" style="left:54px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec22" style="left:108px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec23" style="left:162px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec24" style="left:216px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec25" style="left:270px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec26" style="left:324px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec27" style="left:378px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec28" style="left:432px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec29" style="left:486px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec30" style="left:540px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec31" style="left:594px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec32" style="left:648px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec33" style="left:702px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec34" style="left:756px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec35" style="left:810px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec36" style="left:864px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec37" style="left:918px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec38" style="left:972px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec39" style="left:1026px;top:54px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec40" style="left:0px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec41" style="left:54px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec42" style="left:108px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec43" style="left:162px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec44" style="left:216px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec45" style="left:270px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec46" style="left:324px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec47" style="left:378px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec48" style="left:432px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec49" style="left:486px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec50" style="left:540px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec51" style="left:594px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec52" style="left:648px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec53" style="left:702px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec54" style="left:756px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec55" style="left:810px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec56" style="left:864px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec57" style="left:918px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec58" style="left:972px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec59" style="left:1026px;top:108px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec60" style="left:0px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec61" style="left:54px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec62" style="left:108px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec63" style="left:162px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec64" style="left:216px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec65" style="left:270px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec66" style="left:324px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec67" style="left:378px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec68" style="left:432px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec69" style="left:486px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec70" style="left:540px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec71" style="left:594px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec72" style="left:648px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec73" style="left:702px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec74" style="left:756px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec75" style="left:810px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec76" style="left:864px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec77" style="left:918px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec78" style="left:972px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec79" style="left:1026px;top:162px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec80" style="left:0px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec81" style="left:54px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec82" style="left:108px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec83" style="left:162px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec84" style="left:216px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec85" style="left:270px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec86" style="left:324px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec87" style="left:378px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec88" style="left:432px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec89" style="left:486px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec90" style="left:540px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec91" style="left:594px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec92" style="left:648px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec93" style="left:702px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec94" style="left:756px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec95" style="left:810px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec96" style="left:864px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec97" style="left:918px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec98" style="left:972px;top:216px;background:#2f1f4a;opacity:0;"></div><div class="abs cell" id="ec99" style="left:1026px;top:216px;background:#2f1f4a;opacity:0;"></div></div>
+    <div class="card mint" id="eC" style="left:150px;top:380px;width:1400px;height:210px;display:flex;align-items:center;justify-content:center;"><div class="h2" style="font-size:66px;color:#1a0f26;text-align:center;">Streaming · Cloud · The modern internet</div></div>
+    <div class="pill gold" id="eP" style="left:430px;top:620px;font-size:30px;rotate:-2deg;">BOUGHT AT FIRE-SALE PRICES BY WHOEVER SURVIVED</div>
+  </div>
+  <div id="F" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card verdict mint" id="f1" style="left:90px;top:170px;"><div class="big" style="font-size:90px;color:#1a0f26;">The infrastructure</div><div class="big" style="font-size:150px;color:#1a0f26;">won.</div></div>
+    <div class="card verdict coral" id="f2" style="left:910px;top:170px;"><div class="big" style="font-size:90px;color:#1a0f26;">The investors who built it</div><div class="big" style="font-size:110px;color:#1a0f26;">mostly didn't.</div></div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 10</div><div id="iTitle">WHAT NINETEEN NINETY NINE LEFT BEHIND</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=9, DUR=51.325;
+var SENTS=[{"start":0.9,"end":8.85,"text":"So is it twenty twenty six, or nineteen ninety nine? Look at what the last infrastructure bubble actually left behind."},{"start":9.4,"end":17.475,"text":"Between nineteen ninety five and two thousand, perhaps as much as two trillion dollars went into laying fiber optic cable."},{"start":18.025,"end":27.325,"text":"By two thousand two, by some estimates only a few percent of that fiber was in use. The Wall Street Journal put it at two point seven percent."},{"start":27.875,"end":34.8,"text":"Bandwidth prices collapsed by as much as ninety percent. Global Crossing and WorldCom went bankrupt."},{"start":35.35,"end":45.175,"text":"And yet, that dark fiber is what later carried streaming, cloud computing, and the modern internet, bought at fire sale prices by whoever survived."},{"start":45.725,"end":50.225,"text":"The infrastructure won. The investors who built it mostly didn't."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4,5].map(function(i){return CUE(i);});
+  function moodAt(t){return clamp(.5*st(t,K[2],2)+.2*st(t,K[3],1)-.4*st(t,K[4],2)+.5*st(t,K[5],2),0,1);}
+  function render(t){
+    var a=win(t,K[0]-.05,K[1]-.1,.4); $('A').style.opacity=a;
+    pop($('a26'),st(t,K[0]+.2,.55),{dx:-120,dy:0,s0:.85}); pop($('a99'),st(t,K[0]+.6,.55),{dx:120,dy:0,s0:.85});
+    pop($('aQ'),st(t,K[0]+1.2,.6),{s0:.2,rot:20}); $('aQ').style.rotate=(7*Math.sin(t*2.4))+'deg'; pop($('aP'),st(t,K[0]+3.2,.5),{dy:30});
+    var b=win(t,K[1]-.05,K[2]-.15,.45); $('B').style.opacity=b;
+    fade($('bL'),st(t,K[1]+.1,.4)); pop($('bV'),st(t,K[1]+.3,.6),{s0:.5});
+    var cl=$('cable'); var Lc=cl.getTotalLength(); cl.setAttribute('stroke-dasharray',Lc+' '+Lc); cl.setAttribute('stroke-dashoffset',Lc*(1-eoc(st(t,K[1]+1.0,3.2))));
+    $('cable2').setAttribute('stroke-dashoffset',-(t*30));
+    pop($('bM'),st(t,K[1]+3.6,.55),{dx:120,dy:0,s0:.92}); $('bMv').textContent=Math.round(85*eoc(st(t,K[1]+4.2,2.4)))+'M';
+    var c=win(t,K[2]-.05,K[3]-.15,.45); $('C').style.opacity=c;
+    fade($('cL'),st(t,K[2]+.1,.4));
+    for(var i=0;i<100;i++){var e=st(t,K[2]+.3+i*.018,.25);var cc=$('fc'+i);cc.style.opacity=e;
+      var lit=(i===3||i===47||i===88); cc.style.background=lit?'#35f2b0':'#2f1f4a'; cc.style.transform='scale('+(.5+.5*eob(e))+')';}
+    pop($('cV'),st(t,K[2]+3.6,.6),{s0:.5}); pop($('cS'),st(t,K[2]+5.0,.5),{dy:30});
+    var d=win(t,K[3]-.05,K[4]-.15,.45); $('D').style.opacity=d;
+    pop($('dP'),st(t,K[3]+.2,.55),{dx:-120,dy:0,s0:.9}); $('dV').style.transform='translateY('+(18*(1-eoc(st(t,K[3]+.6,.9))))+'px)';
+    pop($('t1'),st(t,K[3]+2.0,.6),{dy:80,s0:.7}); pop($('t2'),st(t,K[3]+2.8,.6),{dy:80,s0:.7}); pop($('dS'),st(t,K[3]+4.2,.45),{rot:-14,s0:.2,dy:0});
+    var e5=win(t,K[4]-.05,K[5]-.15,.45); $('E').style.opacity=e5;
+    fade($('eL'),st(t,K[4]+.1,.4));
+    for(var j=0;j<100;j++){var ee=st(t,K[4]+.3,.3);var ec=$('ec'+j);ec.style.opacity=ee;
+      var tl=st(t,K[4]+1.0+hash(j+9)*5.0,.4); ec.style.background=tl>0?'#35f2b0':'#2f1f4a'; ec.style.transform='scale('+(1+.12*Math.sin(tl*Math.PI))+')';}
+    pop($('eC'),st(t,K[4]+2.4,.55),{dy:50}); pop($('eP'),st(t,K[4]+5.0,.5),{dy:30});
+    var f=st(t,K[5]-.05,.45); $('F').style.opacity=f;
+    pop($('f1'),st(t,K[5]+.3,.6),{dx:-140,dy:0,s0:.88,rot:-2}); pop($('f2'),st(t,K[5]+2.6,.6),{dx:140,dy:0,s0:.88,rot:2});
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

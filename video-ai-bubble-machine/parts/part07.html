@@ -1,0 +1,255 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 7</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .stat{width:500px;height:250px;padding:30px 36px;}
+  .stat .a{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.1em;}
+  .stat .b{font-family:'Bricolage',sans-serif;font-weight:800;font-size:112px;line-height:1;margin-top:14px;}
+  .stat .c{font-family:'Inter',sans-serif;font-weight:600;font-size:25px;margin-top:10px;line-height:1.25;}
+  .tile{width:62px;height:62px;border-radius:12px;border:4px solid var(--edge);}
+  .dot{width:36px;height:36px;border-radius:50%;border:3px solid var(--edge);}
+  .vbar{border:4px solid var(--edge);border-radius:12px 12px 0 0;box-shadow:7px 7px 0 var(--edge);transform-origin:50% 100%;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 07</div><div id="hdrTitle">THE REVENUE GAP</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>07 / 12</div>
+  <div id="stage">
+  <div id="A" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs big" id="aQ" style="left:150px;top:120px;width:1400px;text-align:center;font-size:150px;line-height:.98;">Who pays it <span class="coral-t">back?</span></div>
+    <div class="pill gold" id="aP" style="left:520px;top:520px;font-size:30px;rotate:-2deg;">THE ONE QUESTION EVERY LENDER ASKS</div>
+  </div>
+  <div id="B" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card stat dark" id="s1" style="left:30px;top:20px;"><div class="a mint-t">OPENAI · AUG 2026</div><div class="b">~$40B</div><div class="c dim-t">annualized revenue run rate</div></div>
+    <div class="card" id="bBars" style="left:570px;top:20px;width:1100px;height:310px;">
+      <div class="abs lbl" style="left:36px;top:24px;font-size:20px;color:#4a3a60;">Q1 2026 · ONE QUARTER</div>
+      <div class="abs" id="qb1" style="left:36px;top:80px;height:70px;width:0;background:var(--mint);border:4px solid var(--edge);border-radius:12px;"></div>
+      <div class="abs big" id="qv1" style="left:250px;top:96px;font-size:40px;opacity:0;">$5.7B revenue</div>
+      <div class="abs" id="qb2" style="left:36px;top:190px;height:70px;width:0;background:var(--coral);border:4px solid var(--edge);border-radius:12px;"></div>
+      <div class="abs big" id="qv2" style="left:56px;top:206px;font-size:40px;opacity:0;">$21.3B net loss</div>
+      <div class="abs lbl" id="qn" style="left:620px;top:274px;font-size:17px;color:#6a5a80;opacity:0;">~$12.4B OF THE LOSS WAS NON-CASH</div>
+    </div>
+    <div class="card tl5r dark" id="bTl" style="left:30px;top:400px;width:1640px;height:230px;">
+      <div class="abs lbl" style="left:40px;top:26px;font-size:20px;color:var(--cream2);">WHEN OPENAI EXPECTS TO BE CASH-FLOW POSITIVE</div>
+      <div class="abs" style="left:60px;top:120px;width:1520px;height:10px;border-radius:5px;background:rgba(244,239,230,.2);"></div>
+      <div class="abs" id="tlFill" style="left:60px;top:120px;width:0;height:10px;border-radius:5px;background:var(--mint);"></div>
+      <div class="abs lbl" style="left:20px;top:150px;width:80px;text-align:center;font-size:24px;color:var(--cream2);">2026</div><div class="abs" style="left:50px;top:110px;width:20px;height:30px;border-radius:50%;background:var(--cream2);border:3px solid var(--edge);"></div><div class="abs lbl" style="left:400px;top:150px;width:80px;text-align:center;font-size:24px;color:var(--cream2);">2027</div><div class="abs" style="left:430px;top:110px;width:20px;height:30px;border-radius:50%;background:var(--cream2);border:3px solid var(--edge);"></div><div class="abs lbl" style="left:780px;top:150px;width:80px;text-align:center;font-size:24px;color:var(--cream2);">2028</div><div class="abs" style="left:810px;top:110px;width:20px;height:30px;border-radius:50%;background:var(--cream2);border:3px solid var(--edge);"></div><div class="abs lbl" style="left:1160px;top:150px;width:80px;text-align:center;font-size:24px;color:var(--cream2);">2029</div><div class="abs" style="left:1190px;top:110px;width:20px;height:30px;border-radius:50%;background:var(--cream2);border:3px solid var(--edge);"></div><div class="abs lbl" style="left:1540px;top:150px;width:80px;text-align:center;font-size:24px;color:var(--mint);">2030</div><div class="abs" style="left:1570px;top:110px;width:20px;height:30px;border-radius:50%;background:var(--mint);border:3px solid var(--edge);"></div>
+      <div class="pill mint" id="tlP" style="left:1290px;top:60px;font-size:22px;rotate:-3deg;">≈ 2030</div>
+    </div>
+  </div>
+  <div id="C" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs" id="tiles" style="left:470px;top:60px;width:760px;height:152px;"><div class="abs tile" id="tile0" style="left:0px;top:0px;background:var(--gold);opacity:0;"></div><div class="abs tile" id="tile1" style="left:76px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile2" style="left:152px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile3" style="left:228px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile4" style="left:304px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile5" style="left:380px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile6" style="left:456px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile7" style="left:532px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile8" style="left:608px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile9" style="left:684px;top:0px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile10" style="left:0px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile11" style="left:76px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile12" style="left:152px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile13" style="left:228px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile14" style="left:304px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile15" style="left:380px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile16" style="left:456px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile17" style="left:532px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile18" style="left:608px;top:76px;background:#3a2a58;opacity:0;"></div><div class="abs tile" id="tile19" style="left:684px;top:76px;background:#3a2a58;opacity:0;"></div></div>
+    <div class="abs lbl" style="left:470px;top:20px;font-size:20px;color:var(--cream2);" id="cLbl">ANNUAL SPENDING · ONE TILE</div>
+    <div class="abs big" id="c20" style="left:350px;top:260px;width:1000px;text-align:center;font-size:330px;color:var(--coral);text-shadow:0 12px 0 rgba(12,6,20,.9);">20×</div>
+    <div class="card dark" id="cCard" style="left:350px;top:590px;width:1000px;height:110px;display:flex;align-items:center;justify-content:center;"><div class="h2" style="font-size:42px;">long-term compute commitments vs. annual spend</div></div>
+  </div>
+  <div id="D" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs" id="dots" style="left:60px;top:40px;width:960px;height:240px;"><div class="abs dot" id="dot0" style="left:0px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot1" style="left:48px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot2" style="left:96px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot3" style="left:144px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot4" style="left:192px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot5" style="left:240px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot6" style="left:288px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot7" style="left:336px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot8" style="left:384px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot9" style="left:432px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot10" style="left:480px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot11" style="left:528px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot12" style="left:576px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot13" style="left:624px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot14" style="left:672px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot15" style="left:720px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot16" style="left:768px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot17" style="left:816px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot18" style="left:864px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot19" style="left:912px;top:0px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot20" style="left:0px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot21" style="left:48px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot22" style="left:96px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot23" style="left:144px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot24" style="left:192px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot25" style="left:240px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot26" style="left:288px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot27" style="left:336px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot28" style="left:384px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot29" style="left:432px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot30" style="left:480px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot31" style="left:528px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot32" style="left:576px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot33" style="left:624px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot34" style="left:672px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot35" style="left:720px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot36" style="left:768px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot37" style="left:816px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot38" style="left:864px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot39" style="left:912px;top:48px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot40" style="left:0px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot41" style="left:48px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot42" style="left:96px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot43" style="left:144px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot44" style="left:192px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot45" style="left:240px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot46" style="left:288px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot47" style="left:336px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot48" style="left:384px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot49" style="left:432px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot50" style="left:480px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot51" style="left:528px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot52" style="left:576px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot53" style="left:624px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot54" style="left:672px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot55" style="left:720px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot56" style="left:768px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot57" style="left:816px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot58" style="left:864px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot59" style="left:912px;top:96px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot60" style="left:0px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot61" style="left:48px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot62" style="left:96px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot63" style="left:144px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot64" style="left:192px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot65" style="left:240px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot66" style="left:288px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot67" style="left:336px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot68" style="left:384px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot69" style="left:432px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot70" style="left:480px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot71" style="left:528px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot72" style="left:576px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot73" style="left:624px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot74" style="left:672px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot75" style="left:720px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot76" style="left:768px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot77" style="left:816px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot78" style="left:864px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot79" style="left:912px;top:144px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot80" style="left:0px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot81" style="left:48px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot82" style="left:96px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot83" style="left:144px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot84" style="left:192px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot85" style="left:240px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot86" style="left:288px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot87" style="left:336px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot88" style="left:384px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot89" style="left:432px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot90" style="left:480px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot91" style="left:528px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot92" style="left:576px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot93" style="left:624px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot94" style="left:672px;top:192px;background:var(--coral);opacity:0;"></div><div class="abs dot" id="dot95" style="left:720px;top:192px;background:var(--mint);opacity:0;"></div><div class="abs dot" id="dot96" style="left:768px;top:192px;background:var(--mint);opacity:0;"></div><div class="abs dot" id="dot97" style="left:816px;top:192px;background:var(--mint);opacity:0;"></div><div class="abs dot" id="dot98" style="left:864px;top:192px;background:var(--mint);opacity:0;"></div><div class="abs dot" id="dot99" style="left:912px;top:192px;background:var(--mint);opacity:0;"></div></div>
+    <div class="card coral" id="dBig" style="left:60px;top:330px;width:960px;height:210px;display:flex;align-items:center;gap:30px;padding:0 40px;">
+      <div class="big" style="font-size:150px;color:#1a0f26;">95%</div><div class="h2" style="font-size:44px;color:#1a0f26;">of enterprise AI pilots: no measurable profit impact</div></div>
+    <div class="card dark" id="dSrc" style="left:1110px;top:40px;width:520px;height:250px;padding:30px 34px;">
+      <div class="lbl mint-t" style="font-size:19px;">MIT · PROJECT NANDA · JULY 2025</div>
+      <div class="body" style="font-size:27px;margin-top:16px;line-height:1.3;">150 executive interviews, 300 deployments studied.</div></div>
+    <div class="card gold" id="dCav" style="left:1110px;top:330px;width:520px;height:210px;padding:28px 34px;">
+      <div class="lbl" style="font-size:19px;color:#4a3300;">THE CAVEAT</div>
+      <div class="h2" style="font-size:38px;margin-top:12px;color:#1a0f26;">Critics say the headline is often misread.</div></div>
+    <div class="pill cream" id="dP" style="left:60px;top:590px;font-size:26px;">ADOPTION IS LAGGING INFRASTRUCTURE</div>
+  </div>
+  <div id="E" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <svg class="abs" style="left:0;top:0" width="1700" height="720" viewBox="0 0 1700 720">
+      <g id="beam" transform="translate(850 330) rotate(0)">
+        <rect x="-520" y="-9" width="1040" height="18" rx="9" fill="#f4efe6" stroke="#0c0614" stroke-width="5"/>
+      </g>
+      <path d="M850 330 L760 620 L940 620 Z" fill="#f4efe6" stroke="#0c0614" stroke-width="6" stroke-linejoin="round"/>
+    </svg>
+    <div class="card" id="eL" style="left:0;top:0;width:330px;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--mint);">
+      <div class="big" style="font-size:62px;">TODAY</div><div class="lbl" style="font-size:18px;">REVENUE</div></div>
+    <div class="card" id="eR" style="left:0;top:0;width:430px;height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--coral);">
+      <div class="big" style="font-size:54px;">COMMITTED</div><div class="lbl" style="font-size:18px;">SPEND</div></div>
+    <div class="pill gold" id="eP" style="left:540px;top:90px;font-size:34px;rotate:-2deg;">THE BET: TOMORROW'S REVENUE CATCHES UP</div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 07</div><div id="iTitle">THE REVENUE GAP</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=6, DUR=58.3;
+var SENTS=[{"start":0.9,"end":6.25,"text":"Every lender asks the same question. Where does the money come from to pay this back?"},{"start":6.8,"end":25.675,"text":"OpenAI's annualized revenue hit around forty billion dollars in August, and it's growing fast. But in the first quarter it posted five point seven billion in revenue against more than twenty one billion in net loss, and it doesn't expect to be cash flow positive until twenty thirty."},{"start":26.225,"end":31.55,"text":"Its long term compute commitments are roughly twenty times its annual spending."},{"start":32.1,"end":50.875,"text":"Meanwhile, a widely cited MIT report from twenty twenty five found that ninety five percent of enterprise AI pilots showed no measurable profit impact. Critics say that headline is often misread, but the underlying point stands. Adoption is lagging infrastructure."},{"start":51.425,"end":57.2,"text":"The bet isn't that today's revenue pays for all of this. The bet is that tomorrow's will."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4].map(function(i){return CUE(i);});
+  function moodAt(t){return clamp(.45+.4*st(t,K[2],3),0,1);}
+  function render(t){
+    var a=win(t,K[0]-.05,K[1]-.1,.4); $('A').style.opacity=a;
+    pop($('aQ'),st(t,K[0]+.3,.7),{s0:.7}); pop($('aP'),st(t,K[0]+2.6,.5),{dy:30});
+    var b=win(t,K[1]-.05,K[2]-.15,.45); $('B').style.opacity=b;
+    pop($('s1'),st(t,K[1]+.2,.55),{dx:-100,dy:0,s0:.9}); pop($('bBars'),st(t,K[1]+1.6,.55),{dx:100,dy:0,s0:.92});
+    $('qb1').style.width=(180*eoc(st(t,K[1]+3.0,.9)))+'px'; fade($('qv1'),st(t,K[1]+3.6,.4));
+    $('qb2').style.width=(700*eoc(st(t,K[1]+5.2,1.1)))+'px'; fade($('qv2'),st(t,K[1]+6.0,.4)); fade($('qn'),st(t,K[1]+7.0,.5));
+    pop($('bTl'),st(t,K[1]+9.0,.55),{dy:50}); $('tlFill').style.width=(1520*eoc(st(t,K[1]+10.0,3.0)))+'px'; pop($('tlP'),st(t,K[1]+13.2,.45),{rot:-10,s0:.3,dy:0});
+    var c=win(t,K[2]-.05,K[3]-.15,.45); $('C').style.opacity=c;
+    for(var i=0;i<20;i++){var e=st(t,K[2]+.3+i*.12,.35);var tl=$('tile'+i);tl.style.opacity=e;tl.style.transform='scale('+(.4+.6*eob(e))+')';}
+    pop($('c20'),st(t,K[2]+2.8,.6),{s0:.3,rot:-6}); pop($('cCard'),st(t,K[2]+3.6,.5),{dy:40});
+    var d=win(t,K[3]-.05,K[4]-.15,.45); $('D').style.opacity=d;
+    for(var j=0;j<100;j++){var ee=st(t,K[3]+.4+j*.025,.3);var dd=$('dot'+j);dd.style.opacity=ee;dd.style.transform='scale('+(.3+.7*eob(ee))+')';}
+    pop($('dBig'),st(t,K[3]+3.6,.55),{dx:-100,dy:0,s0:.92});
+    pop($('dSrc'),st(t,K[3]+.8,.55),{dx:100,dy:0,s0:.92}); pop($('dCav'),st(t,K[3]+9.0,.55),{dx:100,dy:0,s0:.92}); pop($('dP'),st(t,K[3]+12.5,.5),{dy:30});
+    var e5=st(t,K[4]-.05,.45); $('E').style.opacity=e5;
+    var tilt=lerp(0,7,eio(st(t,K[4]+.5,1.6)))+1.2*Math.sin(t*1.7)*st(t,K[4]+2.4,.5);
+    $('beam').setAttribute('transform','translate(850 330) rotate('+tilt+')');
+    var ang=tilt*Math.PI/180, cs=Math.cos(ang), sn=Math.sin(ang);
+    var lx=850-520*cs, ly=330-520*sn-9-140, rx=850+520*cs, ry=330+520*sn-9-190;
+    var eL=$('eL'), eR=$('eR'); var ow=st(t,K[4]+.2,.5);
+    eL.style.opacity=ow; eR.style.opacity=ow;
+    eL.style.transform='translate('+(lx-165)+'px,'+(ly)+'px) rotate('+tilt+'deg)';
+    eR.style.transform='translate('+(rx-215)+'px,'+(ry)+'px) rotate('+tilt+'deg)';
+    pop($('eP'),st(t,K[4]+3.4,.5),{dy:-20});
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

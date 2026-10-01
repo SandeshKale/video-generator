@@ -1,0 +1,6 @@
+# regenerable intermediates (bun tts.py / bun render-parts.mjs recreate them)
+audio/
+out/part*-video.mp4
+out/part*.mp4
+out/concat.txt
+out/*.png

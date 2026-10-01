@@ -1,0 +1,268 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>part 5</title>
+<style>
+@font-face{font-family:'Bricolage';font-weight:700;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Bricolage';font-weight:800;src:url('../../assets/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../assets/fonts/inter/inter-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../assets/fonts/inter/inter-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('../../assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:500;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;src:url('../../assets/fonts/fraunces/fraunces-latin-900-italic.woff2') format('woff2');font-display:block;}
+
+:root{
+  --ink:#130a1f; --ink2:#1e1131; --ink3:#2a1844; --cream:#f4efe6; --cream2:#cfc7ba;
+  --mint:#35f2b0; --coral:#ff5d4d; --gold:#ffc53d; --violet:#8a6dff; --edge:#0c0614;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:var(--ink);overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:var(--ink);}
+.abs{position:absolute;}
+svg{overflow:visible;}
+.icon-sz{display:inline-flex;flex:0 0 auto;}
+.icon-sz svg{width:100%;height:100%;}
+
+/* ---------- background ---------- */
+#bg{position:absolute;inset:0;overflow:hidden;}
+#bgwash{position:absolute;inset:0;background:radial-gradient(ellipse 1500px 900px at 50% 40%, #24133d 0%, #130a1f 70%);}
+#iso{position:absolute;left:-400px;top:-400px;width:2720px;height:1880px;
+  background-image:
+   repeating-linear-gradient(30deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(150deg, rgba(244,239,230,0.055) 0 1.5px, transparent 1.5px 74px),
+   repeating-linear-gradient(90deg, rgba(244,239,230,0.03) 0 1px, transparent 1px 74px);}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);}
+#glowMint{width:1000px;height:760px;background:radial-gradient(closest-side, rgba(53,242,176,0.55), transparent);}
+#glowCoral{width:1100px;height:820px;background:radial-gradient(closest-side, rgba(255,93,77,0.55), transparent);}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse 1400px 800px at 50% 48%, transparent 55%, rgba(5,2,10,0.7) 100%);}
+#ambient{position:absolute;inset:0;width:1920px;height:1080px;opacity:.9;}
+
+/* ---------- chrome ---------- */
+#header{position:absolute;left:110px;top:58px;display:flex;align-items:center;gap:18px;opacity:0;}
+#hdrTick{width:10px;height:56px;border-radius:5px;background:var(--mint);box-shadow:0 0 18px rgba(53,242,176,.7);}
+#hdrKick{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.18em;color:var(--mint);}
+#hdrTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1.05;color:var(--cream);text-shadow:0 4px 14px rgba(0,0,0,.6);}
+#brand{position:absolute;right:110px;top:70px;text-align:right;font-family:'JBMono',monospace;font-weight:700;font-size:17px;letter-spacing:.2em;color:var(--cream2);opacity:.8;}
+#brand b{color:var(--coral);font-weight:700;}
+#stage{position:absolute;left:110px;top:170px;width:1700px;height:720px;}
+#cap{position:absolute;left:0;right:0;bottom:60px;display:flex;justify-content:center;opacity:0;}
+#captxt{max-width:1640px;padding:14px 32px;border-radius:20px;background:rgba(14,6,24,0.78);border:2px solid rgba(244,239,230,.12);
+  font-family:'Inter',sans-serif;font-weight:600;font-size:29px;line-height:1.3;text-align:center;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);}
+#rail{position:absolute;left:110px;right:110px;top:1044px;height:8px;display:flex;gap:6px;}
+.seg{flex:1;border-radius:4px;background:rgba(244,239,230,.12);position:relative;overflow:hidden;}
+.seg i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--mint);box-shadow:0 0 10px rgba(53,242,176,.7);}
+#intro{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:none;}
+.iwipe{position:absolute;left:0;top:0;width:1920px;height:1080px;}
+#iw1{background:var(--coral);} #iw2{background:var(--cream);}
+#iText{position:absolute;left:0;top:0;width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;}
+#iKick{font-family:'JBMono',monospace;font-weight:700;font-size:30px;letter-spacing:.3em;color:var(--coral);}
+#iTitle{font-family:'Bricolage',sans-serif;font-weight:800;font-size:124px;line-height:.98;letter-spacing:-.025em;color:var(--ink);text-align:center;max-width:1560px;text-transform:uppercase;}
+
+/* ---------- components ---------- */
+.card{position:absolute;background:var(--cream);color:#1a0f26;border:4px solid var(--edge);border-radius:24px;box-shadow:9px 9px 0 var(--edge);will-change:transform,opacity;}
+.card.mint{background:var(--mint);} .card.coral{background:var(--coral);} .card.gold{background:var(--gold);} .card.violet{background:var(--violet);color:#fff;}
+.card.dark{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(53,242,176,.95);}
+.card.darkc{background:var(--ink3);color:var(--cream);border-color:var(--cream);box-shadow:9px 9px 0 rgba(255,93,77,.95);}
+.lbl{font-family:'JBMono',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.big{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.95;}
+.h2{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;}
+.body{font-family:'Inter',sans-serif;font-weight:600;line-height:1.3;}
+.mint-t{color:var(--mint);} .coral-t{color:var(--coral);} .gold-t{color:var(--gold);} .dim-t{color:var(--cream2);}
+.pill{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;border:3px solid var(--edge);background:var(--gold);color:#1a0f26;
+  font-family:'JBMono',monospace;font-weight:700;font-size:21px;letter-spacing:.08em;box-shadow:5px 5px 0 var(--edge);white-space:nowrap;will-change:transform,opacity;}
+.pill.coral{background:var(--coral);} .pill.mint{background:var(--mint);} .pill.cream{background:var(--cream);}
+.stamp{position:absolute;font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--coral);
+  border:7px solid var(--coral);border-radius:14px;padding:6px 26px;background:rgba(19,10,31,.35);will-change:transform,opacity;}
+.logo{display:flex;align-items:center;justify-content:center;}
+.logo svg{width:100%;height:100%;}
+.wm{font-family:'Bricolage',sans-serif;font-weight:800;letter-spacing:-.02em;}
+
+  .cyc{width:350px;height:112px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 18px;}
+  .cyc .t{font-family:'Bricolage',sans-serif;font-weight:800;font-size:31px;line-height:1.05;}
+  .cyc .n{position:absolute;left:-22px;top:-22px;width:50px;height:50px;border-radius:50%;background:var(--coral);border:4px solid var(--edge);color:#1a0f26;
+    font-family:'Bricolage',sans-serif;font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;}
+  .ledger{width:470px;height:300px;padding:30px 34px;}
+  .ledger .a{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.12em;}
+  .ledger .b{font-family:'Bricolage',sans-serif;font-weight:800;font-size:56px;line-height:1;margin-top:14px;}
+  .ledger .c{font-family:'Inter',sans-serif;font-weight:600;font-size:26px;margin-top:14px;line-height:1.25;}
+  .bigcoin{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#ffc53d 55%,#c98a00);border:6px solid var(--edge);box-shadow:0 9px 0 var(--edge);
+    display:flex;align-items:center;justify-content:center;font-family:'Bricolage',sans-serif;font-weight:800;font-size:90px;color:#6b4a00;}
+  .minicoin{width:64px;height:64px;font-size:40px;border-width:4px;box-shadow:0 5px 0 var(--edge);}
+  .swapcard{width:480px;height:240px;padding:28px 34px;}
+  .swapcard .h{font-family:'Bricolage',sans-serif;font-weight:800;font-size:48px;line-height:1;}
+  .swapcard .s{font-family:'JBMono',monospace;font-weight:700;font-size:20px;letter-spacing:.08em;margin-top:12px;}
+  .tl5{width:1120px;height:112px;padding:0 36px;display:flex;align-items:center;gap:30px;}
+  .tl5 .d{font-family:'JBMono',monospace;font-weight:700;font-size:24px;letter-spacing:.1em;width:200px;}
+  .tl5 .q{font-family:'Bricolage',sans-serif;font-weight:800;font-size:35px;line-height:1.05;}
+  .edgeRow{width:1120px;height:104px;display:flex;align-items:center;gap:26px;padding:0 34px;}
+  .edgeRow .n{font-family:'Bricolage',sans-serif;font-weight:800;font-size:38px;flex:1;}
+  </style></head><body>
+<div id="world">
+  <div id="bg"><div id="bgwash"></div><div id="iso"></div><div class="glow" id="glowMint"></div><div class="glow" id="glowCoral"></div>
+    <svg id="ambient" viewBox="0 0 1920 1080"><path class="pipe" id="ambp0" d="M -50 210 C 420 90, 760 380, 1180 250 S 1760 120, 1980 300" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp1" d="M -50 820 C 380 960, 820 640, 1250 780 S 1740 960, 1980 780" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><path class="pipe" id="ambp2" d="M 340 -40 C 520 300, 160 520, 560 700 S 1000 1000, 880 1130" fill="none" stroke="rgba(244,239,230,0.07)" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/><g id="amb0"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb1"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb2"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb3"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb4"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb5"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb6"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb7"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g><g id="amb8"><circle r="16" fill="#ffc53d" opacity=".14"/><circle r="7" fill="#ffc53d"/></g></svg><div id="vig"></div></div>
+  <div id="header"><div id="hdrTick"></div><div><div id="hdrKick">CHAPTER 05</div><div id="hdrTitle">ONE DOLLAR, THREE LEDGERS</div></div></div>
+  <div id="brand">THE <b>AI BUBBLE</b> MACHINE<br>05 / 12</div>
+  <div id="stage">
+  <div id="A" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card gold" id="aCard" style="left:540px;top:170px;width:620px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+      <div class="icon-sz" id="aIc" style="width:140px;height:140px;color:#1a0f26"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg></div>
+      <div class="big" style="font-size:86px;color:#1a0f26;">Circular?</div></div>
+    <div class="pill coral" id="aPill" style="left:600px;top:590px;font-size:28px;">THIS IS WHAT MAKES PEOPLE NERVOUS</div>
+  </div>
+  <div id="B" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <svg class="abs" style="left:0;top:0" width="1700" height="720" viewBox="0 0 1700 720">
+      <path id="loopP" d="M850 134 C1180 134 1330 190 1330 360 C1330 530 1180 586 850 586 C520 586 370 530 370 360 C370 190 520 134 850 134" fill="none" stroke="rgba(244,239,230,.35)" stroke-width="6" stroke-dasharray="2 16" stroke-linecap="round"/>
+      <g id="loopCoin"><circle r="22" fill="#ffc53d" stroke="#0c0614" stroke-width="5"/><text y="9" text-anchor="middle" font-family="Bricolage" font-weight="800" font-size="26" fill="#6b4a00">$</text></g>
+    </svg>
+    <div class="card cyc " id="cy0" style="left:675px;top:22px;"><div class="n">1</div><div class="t">Invests in a customer</div></div><div class="card cyc gold" id="cy1" style="left:1155px;top:304px;"><div class="n">2</div><div class="t">Customer buys your product</div></div><div class="card cyc mint" id="cy2" style="left:675px;top:586px;"><div class="n">3</div><div class="t">Revenue up. Stock up.</div></div><div class="card cyc violet" id="cy3" style="left:195px;top:304px;"><div class="n">4</div><div class="t">Funds the next investment</div></div>
+    <div class="abs h2" id="bMid" style="left:560px;top:300px;width:580px;text-align:center;font-size:54px;line-height:1.05;">Each lap makes the<br>numbers look bigger.</div>
+  </div>
+  <div id="C" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="bigcoin abs" id="cCoin" style="left:775px;top:20px;">$</div>
+    <div class="abs lbl" id="cCap" style="left:500px;top:190px;width:700px;text-align:center;font-size:26px;color:var(--cream2);">ONE DOLLAR</div>
+    <div class="bigcoin minicoin abs" id="mc0" style="left:818px;top:50px;opacity:0;">$</div><div class="bigcoin minicoin abs" id="mc1" style="left:818px;top:50px;opacity:0;">$</div><div class="bigcoin minicoin abs" id="mc2" style="left:818px;top:50px;opacity:0;">$</div>
+    <div class="card ledger" id="L0" style="left:60px;top:300px;"><div class="a">BALANCE SHEET A</div><div class="b">Investment</div><div class="c">Counted as capital deployed into the customer.</div></div>
+    <div class="card ledger mint" id="L1" style="left:615px;top:300px;"><div class="a">BALANCE SHEET B</div><div class="b">Revenue</div><div class="c">Counted as a sale of product to the customer.</div></div>
+    <div class="card ledger coral" id="L2" style="left:1170px;top:300px;"><div class="a">BALANCE SHEET C</div><div class="b">Growth</div><div class="c">Counted as proof demand is exploding.</div></div>
+    <div class="pill gold" id="cX" style="left:640px;top:650px;font-size:30px;rotate:-2deg;">SAME DOLLAR · COUNTED 3×</div>
+  </div>
+  <div id="D" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card swapcard dark" id="sA" style="left:70px;top:180px;"><div class="h">Telecom A</div><div class="s mint-t">SELLS CAPACITY TO B</div><div class="pill mint" style="position:relative;display:inline-flex;margin-top:22px;">+ REVENUE</div></div>
+    <div class="card swapcard darkc" id="sB" style="left:1150px;top:180px;"><div class="h">Telecom B</div><div class="s coral-t">SELLS CAPACITY TO A</div><div class="pill mint" style="position:relative;display:inline-flex;margin-top:22px;">+ REVENUE</div></div>
+    <div class="icon-sz abs" id="sIc" style="left:775px;top:230px;width:150px;height:150px;color:var(--gold)"></div>
+    <div class="abs h2" id="sT" style="left:350px;top:470px;width:1000px;text-align:center;font-size:58px;">Booked as <span class="coral-t">real demand.</span></div>
+    <div class="pill cream" id="sP" style="left:560px;top:600px;font-size:24px;">THE TELECOM BOOM · CAPACITY SWAPS</div>
+  </div>
+  <div id="E" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="abs big" id="eBig" style="left:200px;top:0;width:860px;text-align:center;font-size:200px;color:var(--cream);text-shadow:0 10px 0 rgba(12,6,20,.9);">$100B</div>
+    <div class="abs" id="eStrike" style="left:210px;top:100px;width:0;height:18px;background:var(--coral);border:4px solid var(--edge);border-radius:6px;rotate:-4deg;"></div>
+    <div class="pill coral" id="eStamp" style="left:1110px;top:70px;font-size:40px;padding:14px 32px;rotate:-5deg;">NEVER BINDING</div>
+    <div class="card tl5 dark" id="e1" style="left:290px;top:250px;"><div class="d mint-t">SEPT 2025</div><div class="q">Letter of intent: <span class="mint-t">up to $100B</span></div></div>
+    <div class="card tl5 darkc" id="e2" style="left:290px;top:384px;"><div class="d coral-t">FEB 2026</div><div class="q">CEO: “never a binding commitment”</div></div>
+    <div class="card tl5 darkc" id="e3" style="left:290px;top:518px;"><div class="d coral-t">MAR 2026</div><div class="q">“Probably not in the cards” · far smaller stake</div></div>
+  </div>
+  <div id="F" class="abs" style="left:0;top:0;width:1700px;height:720px;">
+    <div class="card edgeRow" id="f1" style="left:290px;top:60px;background:#3a3050;color:var(--cream2);border-style:dashed;"><div class="n">Nvidia → OpenAI · $100B</div><div class="pill coral" style="position:relative;">LOOSENED</div></div>
+    <div class="card edgeRow mint" id="f2" style="left:290px;top:210px;"><div class="n">OpenAI ⇄ Oracle · $300B</div><div class="pill cream" style="position:relative;">STILL THERE</div></div>
+    <div class="card edgeRow gold" id="f3" style="left:290px;top:360px;"><div class="n">OpenAI ⇄ AMD · warrants</div><div class="pill cream" style="position:relative;">STILL THERE</div></div>
+    <div class="card edgeRow violet" id="f4" style="left:290px;top:510px;"><div class="n">Nvidia ⇄ CoreWeave</div><div class="pill cream" style="position:relative;">STILL THERE</div></div>
+  </div></div>
+  <div id="cap"><div id="captxt"></div></div>
+  <div id="rail"><div class="seg" id="seg0"><i></i></div><div class="seg" id="seg1"><i></i></div><div class="seg" id="seg2"><i></i></div><div class="seg" id="seg3"><i></i></div><div class="seg" id="seg4"><i></i></div><div class="seg" id="seg5"><i></i></div><div class="seg" id="seg6"><i></i></div><div class="seg" id="seg7"><i></i></div><div class="seg" id="seg8"><i></i></div><div class="seg" id="seg9"><i></i></div><div class="seg" id="seg10"><i></i></div><div class="seg" id="seg11"><i></i></div></div>
+  <div id="intro"><div class="iwipe" id="iw1"></div><div class="iwipe" id="iw2"></div>
+    <div id="iText"><div id="iKick">CHAPTER 05</div><div id="iTitle">ONE DOLLAR, THREE LEDGERS</div></div></div>
+</div>
+<script>
+
+function $(id){return document.getElementById(id);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,u){return a+(b-a)*u;}
+function st(t,a,d){return clamp((t-a)/d,0,1);}
+function eoc(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+function eio(x){x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}
+function eob(x,s){x=clamp(x,0,1);s=s||1.7;var c=x-1;return 1+(s+1)*c*c*c+s*c*c;}
+function eel(x){x=clamp(x,0,1);if(x===0||x===1)return x;return Math.pow(2,-9*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1;}
+function win(t,a,b,d){d=d||.35;return clamp(Math.min(st(t,a,d),1-st(t,b,d)),0,1);}
+function hash(i){var x=Math.sin(i*12.9898)*43758.5453;return x-Math.floor(x);}
+function mix(c1,c2,u){return [Math.round(lerp(c1[0],c2[0],u)),Math.round(lerp(c1[1],c2[1],u)),Math.round(lerp(c1[2],c2[2],u))];}
+function rgb(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+// pop-in: scale w/ overshoot + fade + slight rise. e in [0,1]
+function pop(el,e,o){o=o||{};if(!el)return;var s0=o.s0==null?.55:o.s0,dy=o.dy==null?26:o.dy,dx=o.dx||0,rot=o.rot||0;
+  var k=eob(e,o.back||1.9);el.style.opacity=clamp(e*3.2,0,1);
+  el.style.transform='translate('+(dx*(1-eoc(e)))+'px,'+(dy*(1-eoc(e)))+'px) scale('+(s0+(1-s0)*k)+') rotate('+(rot*(1-eoc(e)))+'deg)';}
+function rise(el,e,dy,dx){if(!el)return;var k=eoc(e);el.style.opacity=clamp(e*2.6,0,1);el.style.transform='translate('+((dx||0)*(1-k))+'px,'+((dy==null?30:dy)*(1-k))+'px)';}
+function fade(el,o){if(el)el.style.opacity=clamp(o,0,1);}
+function wipeW(el,e){if(el)el.style.width=(100*clamp(e,0,1))+'%';}
+function fmtN(v,d){d=d||0;var s=Math.abs(v).toFixed(d),p=s.split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (v<0?'-':'')+p.join('.');}
+function fmtB(v){ // billions -> $12B / $1.15T
+  if(Math.abs(v)>=1000)return '$'+(v/1000).toFixed(2)+'T'; return '$'+Math.round(v)+'B';}
+function typeText(el,txt,e){if(!el)return;el.textContent=txt.slice(0,Math.floor(clamp(e,0,1)*txt.length));}
+function ptOn(path,u){var L=path.getTotalLength();var p=path.getPointAtLength(clamp(u,0,1)*L);return p;}
+// coin (svg <g>) at fraction u of a path
+function coinAt(g,path,u,vis){var p=ptOn(path,u);g.setAttribute('transform','translate('+p.x+','+p.y+')');g.style.opacity=vis==null?1:vis;}
+
+var PIDX=4, DUR=60.325;
+var SENTS=[{"start":0.9,"end":7.625,"text":"Now, a big deal isn't automatically a suspicious one. Circularity is what makes people nervous."},{"start":8.175,"end":17.6,"text":"When an investment helps a customer afford your product, your revenue goes up, your stock goes up, and that higher stock price funds your next investment."},{"start":18.15,"end":25.675,"text":"The same dollar shows up as an investment on one balance sheet, as revenue on another, and as growth on a third."},{"start":26.225,"end":36.675,"text":"It isn't necessarily fraud. But it's the same pattern that haunted the telecom boom, when companies sold capacity to each other and booked it as real demand."},{"start":37.225,"end":54.725,"text":"And there's a twist. By early twenty twenty six, Nvidia's CEO said that hundred billion dollar figure was never a binding commitment. In March he said it was probably not in the cards, and Nvidia's actual stake in OpenAI's latest round was far smaller."},{"start":55.275,"end":59.225,"text":"So that loop loosened. But the other arrows are still there."}];
+function CUE(i){return SENTS[Math.min(i,SENTS.length-1)].start;}
+function ENDT(i){return SENTS[Math.min(i,SENTS.length-1)].end;}
+var AMB=[];
+(function(){var sp=[[0,0,0.01,0],[1,1,0.014499999999999999,0.237],[2,2,0.019,0.474],[3,0,0.0235,0.711],[4,1,0.01,0.948],[5,2,0.014499999999999999,0.18500000000000005],[6,0,0.019,0.42199999999999993],[7,1,0.0235,0.6589999999999998],[8,2,0.01,0.8959999999999999]];
+  sp.forEach(function(a){AMB.push({g:$('amb'+a[0]),path:$('ambp'+a[1]),sp:a[2],ph:a[3]});});})();
+
+  var K=[0,1,2,3,4,5].map(function(i){return CUE(i);});
+  function moodAt(t){return clamp(.2+.55*st(t,K[2],3)-.35*st(t,K[5],2),0,1);}
+  function render(t){
+    // A
+    var a=win(t,K[0]-.05,K[1]-.1,.4); $('A').style.opacity=a;
+    pop($('aCard'),st(t,K[0]+.2,.6),{rot:-5,s0:.4}); $('aIc').style.transform='rotate('+(t*120)+'deg)';
+    pop($('aPill'),st(t,K[0]+2.8,.5),{dy:30});
+    // B cycle
+    var b=win(t,K[1]-.05,K[2]-.15,.45); $('B').style.opacity=b;
+    for(var i=0;i<4;i++){pop($('cy'+i),st(t,K[1]+.3+i*1.9,.55),{dy:0,s0:.55});}
+    var lp=$('loopP'); var u=(st(t,K[1]+.6,9.0)*1.9)%1; coinAt($('loopCoin'),lp,u,st(t,K[1]+.5,.3));
+    var act=Math.floor(clamp((t-(K[1]+.6))/2.2,0,3.99)); for(var j=0;j<4;j++){var s=(j===act&&t>K[1]+.6)?1.06:1;$('cy'+j).style.scale=s;}
+    pop($('bMid'),st(t,K[1]+8.2,.5),{dy:20});
+    // C coin split
+    var c=win(t,K[2]-.05,K[3]-.15,.45); $('C').style.opacity=c;
+    pop($('cCoin'),st(t,K[2]+.1,.45),{s0:.3}); fade($('cCap'),st(t,K[2]+.3,.4));
+    var tx=[60+235-32,615+235-32,1170+235-32], ty=300+40;
+    for(var m=0;m<3;m++){var e=eio(st(t,K[2]+.9+m*.9,.9)); var mc=$('mc'+m);
+      mc.style.opacity=st(t,K[2]+.9+m*.9,.1); mc.style.left=(818+(tx[m]-818)*e)+'px'; mc.style.top=(50+(ty-50+0)*e-80*Math.sin(e*Math.PI))+'px';}
+    for(var q=0;q<3;q++){pop($('L'+q),st(t,K[2]+1.6+q*.9,.55),{dy:50,rot:q-1});}
+    pop($('cX'),st(t,K[2]+5.0,.5),{rot:-6,s0:.4,dy:0});
+    // D telecom swap
+    var d=win(t,K[3]-.05,K[4]-.15,.45); $('D').style.opacity=d;
+    pop($('sA'),st(t,K[3]+.2,.55),{dx:-120,dy:0,s0:.85}); pop($('sB'),st(t,K[3]+.5,.55),{dx:120,dy:0,s0:.85});
+    $('sIc').style.transform='rotate('+(t*90)+'deg)'; fade($('sIc'),st(t,K[3]+.9,.4));
+    pop($('sT'),st(t,K[3]+4.0,.5),{dy:20}); pop($('sP'),st(t,K[3]+.8,.45),{dy:20});
+    // E twist
+    var e5=win(t,K[4]-.05,K[5]-.15,.45); $('E').style.opacity=e5;
+    pop($('eBig'),st(t,K[4]+.1,.5),{s0:.6});
+    $('eStrike').style.width=(840*eoc(st(t,K[4]+3.2,.7)))+'px';
+    $('eBig').style.opacity=1-.6*st(t,K[4]+4.0,.6);
+    pop($('eStamp'),st(t,K[4]+4.2,.5),{rot:-12,s0:.2,dy:0});
+    pop($('e1'),st(t,K[4]+.9,.5),{dx:-120,dy:0,s0:.9}); pop($('e2'),st(t,K[4]+2.8,.5),{dx:-120,dy:0,s0:.9}); pop($('e3'),st(t,K[4]+6.2,.5),{dx:-120,dy:0,s0:.9});
+    // F still there
+    var f=st(t,K[5]-.05,.4); $('F').style.opacity=f;
+    for(var k=1;k<=4;k++){pop($('f'+k),st(t,K[5]+.2+k*.6,.5),{dx:140,dy:0,s0:.92});}
+    $('f1').style.opacity=lerp(1,.55,st(t,K[5]+1.8,.6))*clamp(st(t,K[5]+.5,.4)*3,0,1);
+  }
+
+function core(t){
+  // ----- background (pure function of t) -----
+  var m = (typeof moodAt==='function') ? moodAt(t) : (typeof MOOD!=='undefined'?MOOD:0);
+  $('iso').style.transform='translate('+((t*9)%74)+'px,'+((t*5.2)%64)+'px)';
+  $('glowMint').style.left=(-260+120*Math.sin(t*.17))+'px'; $('glowMint').style.top=(-200+70*Math.cos(t*.13))+'px';
+  $('glowMint').style.opacity=lerp(.5,.1,m);
+  $('glowCoral').style.left=(1180+100*Math.cos(t*.15+1))+'px'; $('glowCoral').style.top=(520+60*Math.sin(t*.12))+'px';
+  $('glowCoral').style.opacity=lerp(.12,.55,m);
+  // ambient coins drifting along three faint pipes
+  for(var i=0;i<AMB.length;i++){var a=AMB[i];coinAt(a.g,a.path,(t*a.sp+a.ph)%1,.55);}
+  // ----- header / brand -----
+  var he=st(t,.8,.5);
+  $('header').style.opacity=he; $('header').style.transform='translateX('+(-40*(1-eoc(he)))+'px)';
+  $('hdrTick').style.background=m>.5?'var(--coral)':'var(--mint)';
+  $('hdrKick').style.color=m>.5?'var(--coral)':'var(--mint)';
+  // ----- progress rail -----
+  for(var s=0;s<12;s++){var f=s<PIDX?1:(s===PIDX?clamp(t/DUR,0,1):0);$('seg'+s).firstChild.style.width=(f*100)+'%';}
+  // ----- caption: show the sentence being spoken -----
+  var cur=-1;for(var j=0;j<SENTS.length;j++){if(t>=SENTS[j].start-.08&&t<=SENTS[j].end+.3){cur=j;}}
+  if(cur>=0){var S=SENTS[cur];var o=Math.min(st(t,S.start-.08,.2),1-st(t,S.end+.1,.2));
+    if($('captxt').getAttribute('data-i')!==String(cur)){$('captxt').textContent=S.text;$('captxt').setAttribute('data-i',String(cur));}
+    $('cap').style.opacity=o;$('cap').style.transform='translateY('+(14*(1-eoc(o)))+'px)';}
+  else{$('cap').style.opacity=0;}
+  // ----- chapter intro wipe (0 .. 1.0s): coral leads in / trails out behind a cream title card -----
+  var intro=$('intro');
+  if(t<1.05){intro.style.display='block';
+    var c1=-100*(1-eio(st(t,0,.28)))+100*eio(st(t,.7,.3));
+    var c2=-100*(1-eio(st(t,.06,.28)))+100*eio(st(t,.62,.28));
+    $('iw1').style.transform='translateX('+c1+'%)';
+    $('iw2').style.transform='translateX('+c2+'%)';
+    $('iText').style.opacity=clamp(st(t,.16,.16)*(1-st(t,.6,.12)),0,1);
+    $('iText').style.transform='translateX('+(-60*(1-eoc(st(t,.14,.3)))+90*st(t,.6,.3))+'px)';
+  } else intro.style.display='none';
+  if(typeof render==='function') render(t);
+}
+
+window.__reelDurationSec = DUR;
+window.__seek = function(t){ core(t); };
+core(0);
+</script></body></html>

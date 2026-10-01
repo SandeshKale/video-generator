@@ -51,10 +51,10 @@ const OUTPUT_MP4 = resolve(outputArg);
 // HD, never 4K (4K capture is dramatically slower in this environment's
 // software-rendered/swiftshader Chromium — a 58s reel took ~3hrs projected
 // at scale 2 vs ~15min at scale 1 — and 1080x1920 is plenty for Reels).
-const CSS_WIDTH = 1080;
-const CSS_HEIGHT = 1920;
+const CSS_WIDTH = Number(process.env.REEL_W || 1080);
+const CSS_HEIGHT = Number(process.env.REEL_H || 1920);
 const SCALE = scaleArg ? Number(scaleArg) : 1;
-const FPS = 60;
+const FPS = Number(process.env.REEL_FPS || 60);
 
 function runFfmpeg(args) {
   return new Promise((resolve, reject) => {
