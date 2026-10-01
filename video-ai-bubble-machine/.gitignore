@@ -1,6 +1,5 @@
 # regenerable intermediates (bun tts.py / bun render-parts.mjs recreate them)
 audio/
-out/part*-video.mp4
-out/part*.mp4
-out/concat.txt
-out/*.png
+# out/ holds large renders (per-chapter files, 270MB master). Only the share-sized encode is
+# committed, explicitly with `git add -f out/share-1080p.mp4` once it is under GitHub's 100MB limit.
+out/
