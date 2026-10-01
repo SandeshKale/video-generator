@@ -25,7 +25,7 @@
  * sources are served over a local http://127.0.0.1 static server instead.
  */
 import { chromium } from 'playwright';
-import { mkdir, mkdtemp, rm, stat } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, stat, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname, resolve } from 'node:path';
@@ -97,6 +97,7 @@ async function main() {
       deviceScaleFactor: SCALE,
     });
 
+    const cdp = SCALE === 1 ? await page.context().newCDPSession(page) : null;
     await page.goto(entryUrl, { waitUntil: 'load' });
     await page.waitForFunction(() => typeof window.__seek === 'function');
 
@@ -113,7 +114,14 @@ async function main() {
       const t = i / FPS;
       await page.evaluate((tt) => window.__seek(tt), t);
       const frameName = `frame-${String(i).padStart(6, '0')}.png`;
-      await page.screenshot({ path: join(frameDir, frameName) });
+      if (cdp) {
+        // Lossless PNG, but Chromium's fast-compression mode: ~2.7x faster than the default
+        // encoder on textured frames (the encoder, not layout, dominated per-frame time).
+        const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', optimizeForSpeed: true });
+        await writeFile(join(frameDir, frameName), Buffer.from(data, 'base64'));
+      } else {
+        await page.screenshot({ path: join(frameDir, frameName) });
+      }
       if (i % (FPS * 2) === 0) {
         console.log(`  frame ${i}/${totalFrames} (t=${t.toFixed(2)}s)`);
       }
