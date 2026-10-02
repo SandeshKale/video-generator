@@ -1,0 +1,170 @@
+[
+ {
+  "id": "dc-aisle",
+  "prompt": "endless rows of server racks in a hyperscale data center aisle, glowing blue and green status LEDs, polished floor reflections, dramatic one-point perspective, cinematic cold lighting",
+  "seed": 100,
+  "steps": 7
+ },
+ {
+  "id": "gpu-macro",
+  "prompt": "extreme macro close-up of a high-end AI accelerator GPU board with gold traces, heat sink fins and copper heat pipes, shallow depth of field, rim lighting, dark background",
+  "seed": 101,
+  "steps": 7
+ },
+ {
+  "id": "trading-floor",
+  "prompt": "wall of glowing financial monitors with red and green charts in a dark trading room, blurred silhouettes of traders from behind, cinematic bokeh",
+  "seed": 102,
+  "steps": 7
+ },
+ {
+  "id": "construction",
+  "prompt": "massive data center construction site at golden hour, steel frame, tower cranes, concrete, dust in the air, wide establishing shot",
+  "seed": 103,
+  "steps": 7
+ },
+ {
+  "id": "cooling-towers",
+  "prompt": "huge industrial cooling towers and a data center building steaming at dusk, orange sky, power infrastructure, wide cinematic shot",
+  "seed": 104,
+  "steps": 7
+ },
+ {
+  "id": "power-lines",
+  "prompt": "high voltage transmission towers and power lines stretching to a glowing horizon at sunset, hazy atmosphere, cinematic",
+  "seed": 105,
+  "steps": 7
+ },
+ {
+  "id": "boardroom",
+  "prompt": "empty executive boardroom with a long glass table and floor-to-ceiling windows overlooking a night city skyline, moody blue light",
+  "seed": 106,
+  "steps": 7
+ },
+ {
+  "id": "gpu-liquid",
+  "prompt": "rows of AI server nodes with liquid cooling pipes and fittings, neon teal reflections, shallow depth of field, close up",
+  "seed": 107,
+  "steps": 7
+ },
+ {
+  "id": "circuit",
+  "prompt": "macro photograph of a dense circuit board with microchips and gold solder traces, orange and teal lighting, shallow depth of field",
+  "seed": 108,
+  "steps": 7
+ },
+ {
+  "id": "cleanroom",
+  "prompt": "semiconductor cleanroom, technician in white bunny suit and face mask holding a silicon wafer up to blue light, no face visible, cinematic",
+  "seed": 109,
+  "steps": 7
+ },
+ {
+  "id": "desk-docs",
+  "prompt": "close-up of financial documents, spreadsheets and a calculator on a dark desk, a pen, warm desk lamp light, shallow depth of field",
+  "seed": 110,
+  "steps": 7
+ },
+ {
+  "id": "lightning",
+  "prompt": "dramatic lightning storm over a dark city skyline at night, long exposure, purple and teal sky",
+  "seed": 111,
+  "steps": 7
+ },
+ {
+  "id": "vault",
+  "prompt": "massive steel bank vault door, polished metal, dramatic low-key lighting, cold blue tones",
+  "seed": 112,
+  "steps": 7
+ },
+ {
+  "id": "bond-screens",
+  "prompt": "close-up of financial data terminal screens showing glowing candlestick charts and numbers, dark room, reflections, bokeh",
+  "seed": 113,
+  "steps": 7
+ },
+ {
+  "id": "campus-aerial",
+  "prompt": "aerial drone view of a giant data center campus with huge rectangular buildings and cooling units at dusk, wide cinematic",
+  "seed": 114,
+  "steps": 7
+ },
+ {
+  "id": "vault2",
+  "prompt": "interior of a bank safe deposit vault, rows of steel boxes, narrow corridor, dramatic perspective, cold light",
+  "seed": 115,
+  "steps": 7
+ },
+ {
+  "id": "scale-desk",
+  "prompt": "brass balance scale on a dark executive desk, dramatic side lighting, shallow depth of field, city lights bokeh behind",
+  "seed": 116,
+  "steps": 7
+ },
+ {
+  "id": "office-laptops",
+  "prompt": "modern open-plan office at night with rows of laptops and charts on screens, nobody in frame, blue ambient light, wide shot",
+  "seed": 117,
+  "steps": 7
+ },
+ {
+  "id": "stock-screens",
+  "prompt": "stock market ticker screens with red falling numbers on a building facade at night, rain on the street, neon reflections",
+  "seed": 118,
+  "steps": 7
+ },
+ {
+  "id": "gauge",
+  "prompt": "close-up of an industrial analog pressure gauge with a needle in the red zone, dramatic lighting, shallow depth of field",
+  "seed": 119,
+  "steps": 7
+ },
+ {
+  "id": "sunrise-dc",
+  "prompt": "modern data center building and solar panel field at sunrise, warm golden light, optimistic mood, wide cinematic shot",
+  "seed": 120,
+  "steps": 7
+ },
+ {
+  "id": "engineer-aisle",
+  "prompt": "lone engineer in a hard hat walking down a bright server aisle seen from behind, glowing racks, wide cinematic shot",
+  "seed": 121,
+  "steps": 7
+ },
+ {
+  "id": "fiber-glow",
+  "prompt": "bundle of glowing fiber optic cables, strands lit in blue and magenta, macro, shallow depth of field, dark background",
+  "seed": 122,
+  "steps": 7
+ },
+ {
+  "id": "abandoned-office",
+  "prompt": "abandoned dusty open-plan office from the early 2000s with old CRT monitors and empty desks, sunbeams through dirty windows, cinematic",
+  "seed": 123,
+  "steps": 7
+ },
+ {
+  "id": "dominoes",
+  "prompt": "long row of dominoes falling in a chain reaction, macro, shallow depth of field, dramatic warm lighting, dark background",
+  "seed": 124,
+  "steps": 7
+ },
+ {
+  "id": "skyline-night",
+  "prompt": "new york style city skyline at night with glowing office towers and fog, wide cinematic aerial view, teal and orange grade",
+  "seed": 125,
+  "steps": 7
+ },
+ {
+  "id": "pressure-gauge",
+  "prompt": "close-up of a glowing digital dial gauge with needle rising, industrial control room, dramatic lighting, shallow depth of field",
+  "seed": 126,
+  "steps": 7
+ },
+ {
+  "id": "sunrise-dc2",
+  "prompt": "vast data center campus at blue hour with lights turning on, long road leading to it, cinematic wide shot, hopeful mood",
+  "seed": 127,
+  "steps": 7
+ }
+]

@@ -55,6 +55,11 @@ const CSS_WIDTH = Number(process.env.REEL_W || 1080);
 const CSS_HEIGHT = Number(process.env.REEL_H || 1920);
 const SCALE = scaleArg ? Number(scaleArg) : 1;
 const FPS = Number(process.env.REEL_FPS || 60);
+// Optional time slice (seconds) for chunked renders of one long timeline, and encoder knobs.
+const T_START = Number(process.env.REEL_START || 0);
+const T_END = process.env.REEL_END ? Number(process.env.REEL_END) : null;
+const ENC_CRF = process.env.REEL_CRF || '18';
+const ENC_PRESET = process.env.REEL_PRESET || 'medium';
 
 function runFfmpeg(args) {
   return new Promise((resolve, reject) => {
@@ -106,14 +111,15 @@ async function main() {
       throw new Error(`window.__reelDurationSec is not a positive number: ${DURATION_SEC}`);
     }
 
-    const totalFrames = Math.round(DURATION_SEC * FPS);
+    const firstFrame = Math.round(T_START * FPS);
+    const totalFrames = Math.round((T_END == null ? DURATION_SEC : Math.min(T_END, DURATION_SEC)) * FPS);
     console.log(`Source: ${SOURCE_PATH}`);
     console.log(`Duration: ${DURATION_SEC}s -> ${totalFrames} frames at ${CSS_WIDTH * SCALE}x${CSS_HEIGHT * SCALE}, ${FPS}fps...`);
 
-    for (let i = 0; i < totalFrames; i++) {
+    for (let i = firstFrame; i < totalFrames; i++) {
       const t = i / FPS;
       await page.evaluate((tt) => window.__seek(tt), t);
-      const frameName = `frame-${String(i).padStart(6, '0')}.png`;
+      const frameName = `frame-${String(i - firstFrame).padStart(6, '0')}.png`;
       if (cdp) {
         // Lossless PNG, but Chromium's fast-compression mode: ~2.7x faster than the default
         // encoder on textured frames (the encoder, not layout, dominated per-frame time).
@@ -135,8 +141,8 @@ async function main() {
       '-i', join(frameDir, 'frame-%06d.png'),
       '-c:v', 'libx264',
       '-pix_fmt', 'yuv420p',
-      '-preset', 'medium',
-      '-crf', '18',
+      '-preset', ENC_PRESET,
+      '-crf', ENC_CRF,
       '-r', String(FPS),
       '-movflags', '+faststart',
       OUTPUT_MP4,
