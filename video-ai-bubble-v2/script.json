@@ -1,0 +1,260 @@
+{
+ "title": "The AI Bubble Machine",
+ "scenes": [
+  {
+   "id": "s01",
+   "shot": "dc-aisle",
+   "beats": [
+    "One point one five trillion dollars.",
+    "That's what OpenAI has reportedly promised to spend on computing power over the next decade.",
+    "Its revenue? About forty billion a year."
+   ]
+  },
+  {
+   "id": "s02",
+   "shot": "gpu-macro",
+   "beats": [
+    "So who's paying for all of this?",
+    "Here's the strange part. The answer is a circle.",
+    "The companies building the AI boom are paying each other. Over and over."
+   ]
+  },
+  {
+   "id": "s03",
+   "shot": "trading-floor",
+   "beats": [
+    "In the next seven minutes, I'll show you every arrow in that circle.",
+    "Why some of the smartest investors alive are betting against it.",
+    "And why the people inside it say you're missing the point."
+   ]
+  },
+  {
+   "id": "s04",
+   "shot": "construction",
+   "beats": [
+    "First, the scale. It's hard to overstate.",
+    "Last year, Amazon, Alphabet, Microsoft and Meta spent four hundred and ten billion dollars on AI infrastructure.",
+    "This year? Seven hundred and twenty five billion. Up seventy seven percent.",
+    "That's bigger than the entire economy of most countries."
+   ]
+  },
+  {
+   "id": "s05",
+   "shot": "cooling-towers",
+   "beats": [
+    "Amazon alone is guiding to about two hundred and twenty billion. Alphabet, around two hundred. Microsoft, north of one seventy five. Meta, up to one forty five.",
+    "The big three clouds will spend about a hundred and two percent of their cloud revenue on capex.",
+    "Every dollar they earn goes straight back into concrete, chips, and power.",
+    "These aren't server rooms anymore. They're gigawatt campuses."
+   ]
+  },
+  {
+   "id": "s06",
+   "shot": "power-lines",
+   "beats": [
+    "And UBS expects it to continue. Four point one trillion dollars of AI infrastructure through twenty twenty eight.",
+    "Where does that kind of money come from? Follow the arrows."
+   ]
+  },
+  {
+   "id": "s07",
+   "shot": "boardroom",
+   "beats": [
+    "You only need seven names.",
+    "OpenAI buys the computing power. Nvidia sells the chips.",
+    "Oracle and CoreWeave build and rent the data centers.",
+    "AMD and Broadcom want a slice. Microsoft backs it all."
+   ]
+  },
+  {
+   "id": "s08",
+   "shot": "gpu-liquid",
+   "beats": [
+    "Now watch the arrows.",
+    "September twenty twenty five. Nvidia announces it intends to invest up to a hundred billion dollars in OpenAI.",
+    "So that OpenAI can buy Nvidia chips.",
+    "Imagine a car dealer lending you the money to buy his own cars."
+   ]
+  },
+  {
+   "id": "s09",
+   "shot": "circuit",
+   "beats": [
+    "Then OpenAI signs a three hundred billion dollar, five year deal with Oracle.",
+    "To deliver it, Oracle has to buy about forty billion dollars of Nvidia chips."
+   ]
+  },
+  {
+   "id": "s10",
+   "shot": "cleanroom",
+   "beats": [
+    "OpenAI gives AMD an order for six gigawatts of chips. AMD gives OpenAI the right to buy about ten percent of AMD.",
+    "And CoreWeave? Nvidia is its investor, its supplier, and its customer.",
+    "Same logos. Every arrow."
+   ]
+  },
+  {
+   "id": "s11",
+   "shot": "desk-docs",
+   "beats": [
+    "Why does that matter?",
+    "Because one dollar can be counted three times.",
+    "Investment on one balance sheet. Revenue on another. Growth on a third.",
+    "It's not necessarily fraud. But it's the exact pattern that haunted the telecom boom."
+   ]
+  },
+  {
+   "id": "s12",
+   "shot": "lightning",
+   "beats": [
+    "And here's the twist.",
+    "That hundred billion from Nvidia? Jensen Huang later said it was never a binding commitment.",
+    "By March, he said it was probably not in the cards.",
+    "So that loop loosened. The others didn't."
+   ]
+  },
+  {
+   "id": "s13",
+   "shot": "vault",
+   "beats": [
+    "So who's actually paying? Increasingly, lenders.",
+    "Amazon, Alphabet, Meta and Oracle issued a hundred and ninety four billion dollars in bonds by late July.",
+    "That's already more than the hundred and eight billion they issued in all of last year."
+   ]
+  },
+  {
+   "id": "s14",
+   "shot": "bond-screens",
+   "beats": [
+    "Goldman Sachs expects around two hundred and fifty billion this year, and four hundred billion next year.",
+    "Spreads on long hyperscaler bonds have widened to about a hundred and eighteen basis points.",
+    "The bond market is getting tired."
+   ]
+  },
+  {
+   "id": "s15",
+   "shot": "campus-aerial",
+   "beats": [
+    "Meta moved thirty billion dollars of data center financing into a joint venture, off its own balance sheet.",
+    "Oracle's free cash flow last fiscal year? Negative twenty three point seven billion dollars.",
+    "And banks reportedly struggled to sell thirty eight billion dollars of debt for one Oracle campus."
+   ]
+  },
+  {
+   "id": "s16",
+   "shot": "vault2",
+   "beats": [
+    "Then there's CoreWeave.",
+    "In February, a lender looked at a CoreWeave data center and said: we saw it. We passed.",
+    "CoreWeave's credit rating? B plus. Junk."
+   ]
+  },
+  {
+   "id": "s17",
+   "shot": "scale-desk",
+   "beats": [
+    "Every lender asks one question. Where does the money come from?",
+    "OpenAI lost over twenty one billion dollars last quarter. Though about twelve billion of that was non-cash.",
+    "It doesn't expect to be cash flow positive until twenty thirty.",
+    "Its commitments are roughly twenty times its annual spending."
+   ]
+  },
+  {
+   "id": "s18",
+   "shot": "office-laptops",
+   "beats": [
+    "And a twenty twenty five MIT report found that ninety five percent of corporate AI pilots showed no measurable profit impact.",
+    "Critics say that headline is misread. But the point stands. Adoption is lagging the buildout."
+   ]
+  },
+  {
+   "id": "s19",
+   "shot": "stock-screens",
+   "beats": [
+    "Michael Burry, the man who shorted the housing market, is betting against Nvidia.",
+    "His argument isn't demand. It's accounting."
+   ]
+  },
+  {
+   "id": "s20",
+   "shot": "gauge",
+   "beats": [
+    "Cloud giants say an AI chip lasts five to six years. Burry says two to three.",
+    "If he's right, profits are overstated by about a hundred and seventy six billion dollars through twenty twenty eight.",
+    "Nvidia's CEO disagrees. And six year old A one hundred chips still resell for around five thousand dollars."
+   ]
+  },
+  {
+   "id": "s21",
+   "shot": "sunrise-dc",
+   "beats": [
+    "But here's why the optimists aren't scared.",
+    "Anthropic's run rate hit sixty five billion dollars in July. Seven times last year.",
+    "Add OpenAI's forty billion. That's about a hundred billion a year. From almost nothing three years ago."
+   ]
+  },
+  {
+   "id": "s22",
+   "shot": "engineer-aisle",
+   "beats": [
+    "And unlike the dot-com bubble, these chips aren't sitting idle.",
+    "Cloud executives keep saying they can't build fast enough.",
+    "Even if one tenant fails, land, power, and buildings don't vanish. Someone else moves in."
+   ]
+  },
+  {
+   "id": "s23",
+   "shot": "fiber-glow",
+   "beats": [
+    "Still, we've seen this movie.",
+    "Nineteen ninety nine. Up to two trillion dollars poured into fiber optic cable.",
+    "By two thousand two, only two point seven percent of it was lit."
+   ]
+  },
+  {
+   "id": "s24",
+   "shot": "abandoned-office",
+   "beats": [
+    "Bandwidth prices collapsed. Global Crossing and WorldCom went bankrupt.",
+    "But that dark fiber later carried Netflix, the cloud, and the modern internet.",
+    "The infrastructure won. The investors who built it mostly didn't."
+   ]
+  },
+  {
+   "id": "s25",
+   "shot": "dominoes",
+   "beats": [
+    "So what if one link snaps?",
+    "CoreWeave can't refinance. Its lenders take losses. Nvidia, as supplier and shareholder, takes a hit.",
+    "OpenAI's growth slows. Oracle is stuck with capacity built for one customer.",
+    "The shockwave runs backward along every arrow."
+   ]
+  },
+  {
+   "id": "s26",
+   "shot": "skyline-night",
+   "beats": [
+    "Lenders, suppliers and shareholders get hit first. Not the person using the chatbot.",
+    "So watch three things."
+   ]
+  },
+  {
+   "id": "s27",
+   "shot": "pressure-gauge",
+   "beats": [
+    "Nvidia's earnings, for any crack in chip demand.",
+    "The ratio of OpenAI and Anthropic revenue to their compute commitments.",
+    "And the credit ratings of the data center borrowers. Starting with CoreWeave and Oracle."
+   ]
+  },
+  {
+   "id": "s28",
+   "shot": "sunrise-dc2",
+   "beats": [
+    "Nobody knows yet if this is nineteen ninety six or nineteen ninety nine.",
+    "Whichever way it breaks, you've now seen the wiring.",
+    "Subscribe, and tell me what to break down next. The custom chip war, or the data center power crisis."
+   ]
+  }
+ ]
+}
