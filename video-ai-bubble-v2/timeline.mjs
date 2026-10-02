@@ -105,10 +105,10 @@ export const SCENES = {
   ] },
   s17: { move: 5, dim: 0.56, layers: [
     K('06', 'THE REVENUE GAP', 'gold'),
-    { type: 'meter', x: 360, y: 150, w: 1200, title: "OPENAI · LAST QUARTER'S LOSS", val: 21, pre: '$', suf: 'B+', fill: 1, c: 'coral', t0: 'b1', fx: 'left' },
-    { type: 'meter', x: 360, y: 340, w: 1200, title: '…OF WHICH NON-CASH', val: 12, pre: '~$', suf: 'B', fill: 0.57, c: 'gold', t0: 'w1.9', fx: 'left' },
+    { type: 'meter', x: 360, y: 110, w: 1200, title: "OPENAI · LAST QUARTER'S LOSS", val: 21, pre: '$', suf: 'B+', fill: 1, c: 'coral', t0: 'b1', fx: 'left' },
+    { type: 'meter', x: 360, y: 350, w: 1200, title: '…OF WHICH NON-CASH', val: 12, pre: '~$', suf: 'B', fill: 0.57, c: 'gold', t0: 'w1.9', fx: 'left' },
     { type: 'num', cx: 960, cy: 680, val: 2030, comma: false, size: 150, color: 'mint', glow: 'w', label: 'OPENAI · EXPECTED CASH-FLOW POSITIVE', t0: 'b2', t1: 'b3', count: 0.6 },
-    { type: 'num', cx: 960, cy: 680, pre: '~', val: 20, suf: '×', size: 170, color: 'coral', glow: 'coral', label: 'COMMITMENTS vs. ANNUAL SPENDING', t0: 'b3', fx: 'slam' },
+    { type: 'num', cx: 960, cy: 715, pre: '~', val: 20, suf: '×', size: 140, color: 'coral', glow: 'coral', label: 'COMMITMENTS vs. ANNUAL SPENDING', t0: 'b3', fx: 'slam' },
   ] },
   s18: { move: 2, dim: 0.55, layers: [
     { type: 'ring', cx: 560, cy: 440, size: 440, val: 95, c: 'coral', fs: 130, label: 'OF CORPORATE AI PILOTS', t0: 'b0+0.2', fx: 'pop' },
