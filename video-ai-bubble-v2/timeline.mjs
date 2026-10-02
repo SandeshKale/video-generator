@@ -1,23 +1,23 @@
 // Per-scene motion-graphics spec. Times: number = seconds from scene start;
 // "bN" beat N start, "eN" beat N end, "bN+x" offset, "wN.K" word K of beat N, "end" scene end.
 const NODES = [
-  { id: 'openai', x: 500, y: 330 }, { id: 'nvidia', x: 130, y: 130 }, { id: 'oracle', x: 870, y: 130 },
-  { id: 'amd', x: 130, y: 540 }, { id: 'coreweave', x: 870, y: 540 }, { id: 'microsoft', x: 500, y: 60 }, { id: 'broadcom', x: 500, y: 610 },
+  { id: 'openai', x: 750, y: 350 }, { id: 'nvidia', x: 150, y: 170 }, { id: 'oracle', x: 1350, y: 170 },
+  { id: 'amd', x: 150, y: 570 }, { id: 'coreweave', x: 1350, y: 570 }, { id: 'microsoft', x: 750, y: 50 }, { id: 'broadcom', x: 750, y: 640 },
 ];
 const old = (n) => NODES.map((x) => ({ ...x, t: -100 }));
 const E = {
-  nvOa: (t, o = {}) => ({ a: 'nvidia', b: 'openai', label: '$100B INVEST', bend: 42, t, ...o }),
-  oaNv: (t, o = {}) => ({ a: 'openai', b: 'nvidia', label: 'BUYS CHIPS', bend: 42, t, ...o }),
-  oaOr: (t, o = {}) => ({ a: 'openai', b: 'oracle', label: '$300B · 5 YRS', bend: 42, t, ...o }),
-  orNv: (t, o = {}) => ({ a: 'oracle', b: 'nvidia', label: '$40B OF CHIPS', bend: 60, t, ...o }),
-  oaAm: (t, o = {}) => ({ a: 'openai', b: 'amd', label: '6 GW ORDER', bend: 42, t, ...o }),
-  amOa: (t, o = {}) => ({ a: 'amd', b: 'openai', label: '10% WARRANTS', bend: 42, t, ...o }),
-  nvCw: (t, o = {}) => ({ a: 'nvidia', b: 'coreweave', label: 'INVESTOR + SUPPLIER', bend: 60, t, ...o }),
-  cwNv: (t, o = {}) => ({ a: 'coreweave', b: 'nvidia', label: 'CUSTOMER', bend: 60, t, ...o }),
-  msOa: (t, o = {}) => ({ a: 'microsoft', b: 'openai', label: 'BACKS', bend: 30, t, ...o }),
+  nvOa: (t, o = {}) => ({ a: 'nvidia', b: 'openai', label: '$100B INVEST', bend: 75, t, ...o }),
+  oaNv: (t, o = {}) => ({ a: 'openai', b: 'nvidia', label: 'BUYS CHIPS', bend: 75, t, ...o }),
+  oaOr: (t, o = {}) => ({ a: 'openai', b: 'oracle', label: '$300B · 5 YRS', bend: 75, t, ...o }),
+  orNv: (t, o = {}) => ({ a: 'oracle', b: 'nvidia', label: '$40B OF CHIPS', bend: 0, lp: 0.3, t, ...o }),
+  oaAm: (t, o = {}) => ({ a: 'openai', b: 'amd', label: '6 GW ORDER', bend: 75, t, ...o }),
+  amOa: (t, o = {}) => ({ a: 'amd', b: 'openai', label: '10% WARRANTS', bend: 75, t, ...o }),
+  nvCw: (t, o = {}) => ({ a: 'nvidia', b: 'coreweave', label: 'INVESTOR + SUPPLIER', bend: 80, lp: 0.35, t, ...o }),
+  cwNv: (t, o = {}) => ({ a: 'coreweave', b: 'nvidia', label: 'CUSTOMER', bend: 80, lp: 0.35, t, ...o }),
+  msOa: (t, o = {}) => ({ a: 'microsoft', b: 'openai', label: 'BACKS', bend: 0, lp: 0.5, t, ...o }),
   oaBr: (t, o = {}) => ({ a: 'openai', b: 'broadcom', label: 'CUSTOM CHIPS', bend: 30, t, ...o }),
 };
-const G = (nodes, edges) => ({ type: 'graph', cx: 960, cy: 440, w: 1000, h: 680, nodes, edges, t0: 0, fx: 'fade' });
+const G = (nodes, edges) => ({ type: 'graph', cx: 960, cy: 425, w: 1500, h: 720, nodes, edges, t0: 0, fx: 'fade' });
 const K = (n, txt, c) => ({ type: 'kicker', x: 90, y: 64, n, txt, c, t0: 0.15, t1: 2.8, fx: 'left' });
 
 export const SCENES = {

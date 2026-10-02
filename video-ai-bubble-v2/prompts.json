@@ -55,7 +55,7 @@
  },
  {
   "id": "cleanroom",
-  "prompt": "semiconductor cleanroom, technician in white bunny suit and face mask holding a silicon wafer up to blue light, no face visible, cinematic",
+  "prompt": "semiconductor fabrication plant interior, glowing amber-lit lithography machines in a long clean corridor, polished floor reflections, no people, cinematic",
   "seed": 109,
   "steps": 7
  },

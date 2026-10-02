@@ -44,7 +44,7 @@ const scenes = T.scenes.map((sc) => {
     else if (typeof L.t1 === 'string' && L.t1 !== 'end') r.t1 += 0;
     return r;
   });
-  return { id: sc.id, shot: sc.shot, start: sc.start, end: sc.end, move: spec.move ?? 0, dim: spec.dim, glitch: !!spec.glitch, beats: sc.beats.map((b) => ({ start: b.start, end: b.end, words: b.words })), layers };
+  return { id: sc.id, shot: sc.shot, start: sc.start, end: sc.end, move: spec.move ?? 0, dim: spec.dim, glitch: !!spec.glitch, beats: sc.beats.map((b, bi) => { const tx = script.scenes.find((x) => x.id === sc.id).beats[bi].split(/\s+/); const ws = b.words.length === tx.length ? b.words.map((w, i) => ({ ...w, w: tx[i] })) : b.words; return { start: b.start, end: b.end, words: ws }; }), layers };
 });
 // scene overlap: the whip transition starts TR before `end`; keep layers ending with the scene.
 const data = { total: T.total, scenes };
