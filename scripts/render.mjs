@@ -116,6 +116,12 @@ async function main() {
     console.log(`Source: ${SOURCE_PATH}`);
     console.log(`Duration: ${DURATION_SEC}s -> ${totalFrames} frames at ${CSS_WIDTH * SCALE}x${CSS_HEIGHT * SCALE}, ${FPS}fps...`);
 
+    // Stream frames straight into ffmpeg (no PNG spool on disk): long timelines otherwise exhaust the disk allowance.
+    const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-i', '-',
+      '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', ENC_PRESET, '-crf', ENC_CRF, '-r', String(FPS), '-movflags', '+faststart', OUTPUT_MP4],
+      { stdio: ['pipe', 'inherit', 'inherit'] });
+    const ffDone = new Promise((res, rej) => { ff.on('error', rej); ff.on('exit', (c) => (c === 0 ? res() : rej(new Error('ffmpeg exited ' + c)))); });
+    const feed = (buf) => new Promise((res) => { if (ff.stdin.write(buf)) res(); else ff.stdin.once('drain', res); });
     for (let i = firstFrame; i < totalFrames; i++) {
       const t = i / FPS;
       await page.evaluate((tt) => window.__seek(tt), t);
@@ -124,29 +130,17 @@ async function main() {
         // Lossless PNG, but Chromium's fast-compression mode: ~2.7x faster than the default
         // encoder on textured frames (the encoder, not layout, dominated per-frame time).
         const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', optimizeForSpeed: true });
-        await writeFile(join(frameDir, frameName), Buffer.from(data, 'base64'));
+        await feed(Buffer.from(data, 'base64'));
       } else {
-        await page.screenshot({ path: join(frameDir, frameName) });
+        await feed(await page.screenshot());
       }
       if (i % (FPS * 2) === 0) {
         console.log(`  frame ${i}/${totalFrames} (t=${t.toFixed(2)}s)`);
       }
     }
 
-    console.log('All frames captured. Encoding with ffmpeg...');
-
-    await runFfmpeg([
-      '-y',
-      '-framerate', String(FPS),
-      '-i', join(frameDir, 'frame-%06d.png'),
-      '-c:v', 'libx264',
-      '-pix_fmt', 'yuv420p',
-      '-preset', ENC_PRESET,
-      '-crf', ENC_CRF,
-      '-r', String(FPS),
-      '-movflags', '+faststart',
-      OUTPUT_MP4,
-    ]);
+    ff.stdin.end();
+    await ffDone;
 
     console.log(`Done: ${OUTPUT_MP4}`);
   } finally {
