@@ -18,8 +18,8 @@ export const SCENES = {
   ] },
   s3: { move: 3, dim: 0.5, layers: [
     hud('CAM 02 · DNS-EGRESS', 'SEP 2026', 22, 9, 31),
-    { type: 'dns', cx: 540, cy: 640, t0: 'b0+0.3', t1: 'b1', fx: 'rise' },
-    { type: 'tapes', cx: 540, cy: 1000, size: 60, items: [{ txt: 'TUNNELED VIA DNS', t: 'w0.7' }], t0: 'b0+1.5', t1: 'b1', fx: 'fade' },
+    { type: 'dns', cx: 540, cy: 690, t0: 'b0+0.3', t1: 'b1', fx: 'rise' },
+    { type: 'tapes', cx: 540, cy: 1060, size: 66, items: [{ txt: 'TUNNELED VIA DNS', t: 'w0.7' }], t0: 'b0+1.5', t1: 'b1', fx: 'fade' },
     { type: 'ring', cx: 540, cy: 690, size: 560, val: 15, unit: 'MIN', dur: 1.1, t0: 'b1', fx: 'slam' },
     { type: 'title', cx: 540, y: 1050, align: 'center', lines: [{ txt: 'Flagged', size: 150, tape: '#ffd400', fg: '#0d0c0b', t: 'b1+1.0' }], t0: 'b1+1.0', fx: 'fade' },
   ] },
@@ -34,12 +34,12 @@ export const SCENES = {
     hud('CAM 05 · LOG-ARCHIVE', 'OCT 2026', 8, 15, 3),
     { type: 'count', x: 150, y: 270, pre: '', val: 100, suf: '+', size: 420, sub: 'organizations notified', subsize: 76, count: 0.9, t0: 'w0.4', fx: 'slam' },
     { type: 'tapes', x: 150, y: 790, size: 28, items: [{ txt: 'NOTIFIED ≠ BREACHED · SOME ONLY TOUCHED', bg: '#ff3b2f', fg: '#fff7ee', t: 'w0.8' }], t0: 'w0.4', fx: 'fade' },
-    { type: 'scanner', x: 150, y: 880, title: 'LOG REVIEW · IN PROGRESS', val: 50, unit: 'PB', dur: 2.6, t0: 'b1', fx: 'rise' },
+    { type: 'scanner', x: 150, y: 860, title: 'LOG REVIEW · IN PROGRESS', val: 50, unit: 'PB', dur: 2.6, t0: 'b1', fx: 'rise' },
   ] },
   s6: { move: 4, dim: 0.5, layers: [
     hud('CAM 03 · STATEMENT', 'OCT 2026', 11, 2, 18),
     { type: 'title', x: 150, y: 460, lines: [{ txt: 'Their<br>explanation?', size: 190, color: '#f2eee3', t: 'b0' }], t0: 'b0', t1: 'b1', fx: 'fade' },
-    { type: 'wordquote', x: 150, y: 420, beat: 1, size: 138, who: 'OPENAI STATEMENT', t0: 'b1', fx: 'fade' },
+    { type: 'wordquote', x: 150, y: 380, beat: 1, size: 124, who: 'OPENAI STATEMENT', t0: 'b1', fx: 'fade' },
   ] },
   s7: { move: 3, dim: 0.5, layers: [
     hud('CAM 07 · REGULATORS', 'OCT 2026', 9, 2, 31),

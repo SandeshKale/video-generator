@@ -125,10 +125,10 @@ T.ring=function(L,P){
 T.scanner=function(L,P){
   var b=el('div','','','width:780px;background:rgba(10,8,7,.8);border:2px solid #4a463d;padding:24px 28px;');
   b.appendChild(el('div','mono',P.title,'font-size:26px;letter-spacing:.14em;color:'+Y+';margin-bottom:14px'));
-  var feed=el('div','mono','','height:300px;overflow:hidden;font-size:24px;line-height:1.5;color:#8a8576;position:relative;white-space:nowrap');b.appendChild(feed);
-  var rows=[];for(var i=0;i<12;i++){var r=el('div','','');feed.appendChild(r);rows.push(r);}
+  var feed=el('div','mono','','height:170px;overflow:hidden;font-size:24px;line-height:1.5;color:#8a8576;position:relative;white-space:nowrap');b.appendChild(feed);
+  var rows=[];for(var i=0;i<7;i++){var r=el('div','','');feed.appendChild(r);rows.push(r);}
   var bar=el('div','','','margin-top:18px;height:34px;background:#2a2723;position:relative');var fill=el('div','','','position:absolute;left:0;top:0;bottom:0;background:repeating-linear-gradient(90deg,'+Y+' 0 22px,#c9a700 22px 26px)');bar.appendChild(fill);b.appendChild(bar);
-  var val=el('div','disp','','font-size:92px;color:'+CR+';margin-top:14px;line-height:1');b.appendChild(val);
+  var val=el('div','disp','','font-size:80px;color:'+CR+';margin-top:10px;line-height:1');b.appendChild(val);
   L.inner.appendChild(b);
   var H='0123456789abcdef';
   function line(k){var s='';var x=k*2654435761>>>0;for(var j=0;j<28;j++){x=(x*1103515245+12345)>>>0;s+=H[(x>>>16)&15];if(j%4===3)s+=' ';}
@@ -138,12 +138,12 @@ T.scanner=function(L,P){
 };
 // quote with per-word reveal; words array [{w,s}] injected by build
 T.wordquote=function(L,P){
-  var b=el('div','','','border-left:12px solid '+R+';padding:6px 0 6px 40px');
+  var tpe=null;var b=el('div','','','border-left:12px solid '+R+';padding:6px 0 6px 40px');
   var q=el('div','disp','','font-size:'+(P.size||132)+'px;line-height:.95;color:'+CR+';text-shadow:0 8px 40px rgba(0,0,0,.85)');b.appendChild(q);
   var ws=P.words.map(function(w){var s=el('span','',w.w+' ','display:inline-block;margin-right:.18em;opacity:0');q.appendChild(s);return {s:s,t:w.s};});
-  if(P.who){var tp=el('div','','','margin-top:30px');tp.appendChild(el('span','tape mono',P.who,'font-size:26px;letter-spacing:.12em;padding:10px 20px 8px'));b.appendChild(tp);}
+  if(P.who){var tp=el('div','','','margin-top:30px;opacity:0');tpe=tp;tp.appendChild(el('span','tape mono',P.who,'font-size:26px;letter-spacing:.12em;padding:10px 20px 8px'));b.appendChild(tp);}
   L.inner.appendChild(b);
-  return function(t){ws.forEach(function(o){var p=eo((t-o.t+.04)/.18);o.s.style.opacity=clamp((t-o.t+.04)/.06,0,1);o.s.style.transform='translateY('+lerp(26,0,p)+'px)';
+  return function(t){if(tpe)tpe.style.opacity=clamp((t-ws[0].t)/.15,0,1);ws.forEach(function(o){var p=eo((t-o.t+.04)/.18);o.s.style.opacity=clamp((t-o.t+.04)/.06,0,1);o.s.style.transform='translateY('+lerp(26,0,p)+'px)';
     o.s.style.color=(t>=o.t&&t<o.t+.35)?Y:CR;});};
 };
 // paper case folder with redaction bars and a stamp
@@ -177,7 +177,7 @@ T.cta=function(L,P){
 var LAY=[];
 window.COMPS={
   build:function(root){window.DATA.scenes.forEach(function(sc){(sc.layers||[]).forEach(function(P){
-    var wrap=el('div','c','','left:'+(P.x||0)+'px;top:'+(P.y||0)+'px;display:none;');var inner=el('div','','','');wrap.appendChild(inner);root.appendChild(wrap);
+    var wrap=el('div','c','','left:'+(P.x||0)+'px;top:'+(P.y||0)+'px;display:none;');var inner=el('div','','','');if(P.zoom)inner.style.zoom=P.zoom;wrap.appendChild(inner);root.appendChild(wrap);
     var L={wrap:wrap,inner:inner,t0:P.t0,t1:P.t1,fx:P.fx,rot:P.rot,rot0:P.rot0,cx:P.cx,cy:P.cy};L.upd=T[P.type](L,P);LAY.push(L);});});},
   update:function(t){for(var i=0;i<LAY.length;i++){var L=LAY[i],on=t>=L.t0-.02&&t<=L.t1;
     if(!on){if(L.on){L.wrap.style.display='none';L.on=false;}continue;}
