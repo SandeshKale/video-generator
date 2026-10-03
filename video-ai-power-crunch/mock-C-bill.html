@@ -1,0 +1,39 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Unb';font-weight:800;src:url('../assets/fonts/unbounded/unbounded-latin-800-normal.woff2');}
+@font-face{font-family:'Unb';font-weight:900;src:url('../assets/fonts/unbounded/unbounded-latin-900-normal.woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2');}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');}
+:root{--bg:#070b12;--org:#ff8a1f;--ice:#e6f1ff;--grn:#3dff9a;--red:#ff3355;--dim:#7f93ad;--line:#2a3a52;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;background:#000;overflow:hidden;font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.08) brightness(.95)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,18,.55),rgba(7,11,18,.12) 35%,rgba(7,11,18,.35) 70%,rgba(7,11,18,.8)),radial-gradient(ellipse at 20% 100%,rgba(255,138,31,.14),transparent 60%)}
+.inset{position:absolute;border:2px solid var(--org);box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 6px rgba(7,11,18,.7);background-size:cover;background-position:center}.inset i{position:absolute;left:0;right:0;bottom:0;padding:8px 14px;font:700 16px JBMono;letter-spacing:.12em;background:rgba(7,11,18,.85);color:var(--org);font-style:normal}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(127,147,173,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,147,173,.07) 1px,transparent 1px);background-size:60px 60px}
+.vg{position:absolute;inset:0;box-shadow:inset 0 0 240px 30px rgba(0,0,0,.7)}
+.top{position:absolute;left:60px;right:60px;top:34px;display:flex;justify-content:space-between;align-items:center;font:700 20px JBMono;letter-spacing:.12em;color:var(--dim)}
+.top b{color:var(--org)} .top .ok{color:var(--grn)}
+.eyebrow{position:absolute;left:60px;top:84px;font:700 24px JBMono;letter-spacing:.16em;color:var(--org);border-left:6px solid var(--org);padding-left:16px}
+.u{font-family:Unb;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+.mono{font-family:JBMono;font-weight:700}
+.panel{position:absolute;background:linear-gradient(180deg,rgba(14,22,36,.92),rgba(8,13,22,.94));border:1.5px solid var(--line);border-top:3px solid var(--org);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.tag{font:700 17px JBMono;letter-spacing:.14em;color:var(--dim)}
+.cap{position:absolute;left:0;right:0;bottom:62px;display:flex;justify-content:center}
+.cap div{background:rgba(5,8,14,.82);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 32px 16px;font:700 44px/1.2 Inter;text-align:center;max-width:1500px;color:#e6f1ff}
+.cap b{color:var(--org);font-weight:700}
+</style><body>
+<div class=bg style="background-image:url(shots/suburb-dusk.png)"></div><div class=tint></div><div class=grid></div><div class=vg></div>
+<div class=top><span><b>●</b> GRID // CONTROL ROOM</span><span>PJM INTERCONNECTION · 13 STATES</span><span class=ok>60.00 Hz · NOMINAL</span></div><div class=eyebrow>// $29 → $329 → $333</div>
+<div class=u style="position:absolute;left:60px;top:150px;font-size:50px;white-space:nowrap">Capacity price: <span style="color:var(--org)">10×</span> in two years</div>
+<div class=panel style="left:60px;top:260px;width:1010px;height:560px"><div style="padding:20px 28px"><div class=tag>PJM CAPACITY AUCTION · $ PER MW-DAY</div>
+<div style="position:absolute;left:28px;right:28px;top:110px;bottom:70px;border-bottom:3px solid #2a3a52">
+ <div style="position:absolute;left:0;right:0;top:0;border-top:2px dashed var(--red)"></div><div class=mono style="position:absolute;right:0;top:-30px;font-size:20px;color:var(--red)">PRICE CAP $333.44</div>
+ <div style="position:absolute;left:60px;bottom:0;width:230px;height:28.621641074856047px;background:linear-gradient(180deg,#3dff9a,#3dff9a55);box-shadow:0 0 36px #3dff9a55"></div><div class=u style="position:absolute;left:60px;bottom:42.62164107485604px;width:230px;text-align:center;font-size:40px">$28.92</div><div class=mono style="position:absolute;left:60px;bottom:-44px;width:230px;text-align:center;font-size:22px;color:var(--dim)">2024/25</div><div style="position:absolute;left:380px;bottom:0;width:230px;height:325.774052303263px;background:linear-gradient(180deg,#ff8a1f,#ff8a1f55);box-shadow:0 0 36px #ff8a1f55"></div><div class=u style="position:absolute;left:380px;bottom:339.774052303263px;width:230px;text-align:center;font-size:40px">$329.17</div><div class=mono style="position:absolute;left:380px;bottom:-44px;width:230px;text-align:center;font-size:22px;color:var(--dim)">2026/27</div><div style="position:absolute;left:700px;bottom:0;width:230px;height:330px;background:linear-gradient(180deg,#ff3355,#ff335555);box-shadow:0 0 36px #ff335555"></div><div class=u style="position:absolute;left:700px;bottom:344px;width:230px;text-align:center;font-size:40px">$333.44</div><div class=mono style="position:absolute;left:700px;bottom:-44px;width:230px;text-align:center;font-size:22px;color:var(--dim)">2027/28 · CAP</div>
+</div></div></div>
+<div class=panel style="left:1110px;top:260px;width:750px;height:560px;border-top-color:var(--red)"><div style="padding:22px 30px"><div class=tag>YOUR UTILITY BILL · ILLUSTRATIVE LAYOUT</div>
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;font:700 26px Inter;color:var(--dim)"><span>Energy supply</span><span style="display:block;height:20px;width:186px;background:#25344b"></span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;font:700 26px Inter;color:var(--dim)"><span>Delivery & wires</span><span style="display:block;height:20px;width:144px;background:#25344b"></span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;font:700 26px Inter;color:var(--dim)"><span>Taxes & fees</span><span style="display:block;height:20px;width:108px;background:#25344b"></span></div>
+ <div style="margin-top:28px;border:3px solid var(--red);background:rgba(255,51,85,.10);padding:20px 24px"><div class=mono style="font-size:20px;color:var(--red);letter-spacing:.12em">CAPACITY CHARGE (PJM)</div>
+ <div class=u style="font-size:72px;margin-top:8px">+$16–18<span style="font-size:30px"> /mo</span></div><div class=tag style="margin-top:6px">ESTIMATED · W. MARYLAND $18 · OHIO $16</div></div>
+ <div class=mono style="margin-top:22px;font-size:22px;color:var(--ice)">63% OF ONE YEAR'S INCREASE → DATA CENTERS ($9.3B)</div></div></div>
+<div class=inset style="right:60px;top:830px;width:0;height:0"></div>
+<div class=cap><div>Three hundred thirty-three dollars. <b>The price cap.</b></div></div></body>

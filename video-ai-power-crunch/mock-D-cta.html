@@ -1,0 +1,35 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Unb';font-weight:800;src:url('../assets/fonts/unbounded/unbounded-latin-800-normal.woff2');}
+@font-face{font-family:'Unb';font-weight:900;src:url('../assets/fonts/unbounded/unbounded-latin-900-normal.woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2');}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');}
+:root{--bg:#070b12;--org:#ff8a1f;--ice:#e6f1ff;--grn:#3dff9a;--red:#ff3355;--dim:#7f93ad;--line:#2a3a52;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;background:#000;overflow:hidden;font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.08) brightness(.95)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,18,.55),rgba(7,11,18,.12) 35%,rgba(7,11,18,.35) 70%,rgba(7,11,18,.8)),radial-gradient(ellipse at 20% 100%,rgba(255,138,31,.14),transparent 60%)}
+.inset{position:absolute;border:2px solid var(--org);box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 6px rgba(7,11,18,.7);background-size:cover;background-position:center}.inset i{position:absolute;left:0;right:0;bottom:0;padding:8px 14px;font:700 16px JBMono;letter-spacing:.12em;background:rgba(7,11,18,.85);color:var(--org);font-style:normal}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(127,147,173,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,147,173,.07) 1px,transparent 1px);background-size:60px 60px}
+.vg{position:absolute;inset:0;box-shadow:inset 0 0 240px 30px rgba(0,0,0,.7)}
+.top{position:absolute;left:60px;right:60px;top:34px;display:flex;justify-content:space-between;align-items:center;font:700 20px JBMono;letter-spacing:.12em;color:var(--dim)}
+.top b{color:var(--org)} .top .ok{color:var(--grn)}
+.eyebrow{position:absolute;left:60px;top:84px;font:700 24px JBMono;letter-spacing:.16em;color:var(--org);border-left:6px solid var(--org);padding-left:16px}
+.u{font-family:Unb;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+.mono{font-family:JBMono;font-weight:700}
+.panel{position:absolute;background:linear-gradient(180deg,rgba(14,22,36,.92),rgba(8,13,22,.94));border:1.5px solid var(--line);border-top:3px solid var(--org);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.tag{font:700 17px JBMono;letter-spacing:.14em;color:var(--dim)}
+.cap{position:absolute;left:0;right:0;bottom:62px;display:flex;justify-content:center}
+.cap div{background:rgba(5,8,14,.82);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 32px 16px;font:700 44px/1.2 Inter;text-align:center;max-width:1500px;color:#e6f1ff}
+.cap b{color:var(--org);font-weight:700}
+</style><body>
+<div class=bg style="background-image:url(shots/home-window-night.png)"></div><div class=tint></div><div class=grid></div><div class=vg></div>
+<div class=top><span><b>●</b> GRID // CONTROL ROOM</span><span>WINDOW · NIGHT</span><span class=ok>60.00 Hz · NOMINAL</span></div><div class=eyebrow>// YOUR BILL IS PART OF THE AI RACE</div>
+<div style="position:absolute;left:100px;top:220px;width:900px">
+ <div style="display:flex;align-items:center;gap:44px"><div style="width:270px;height:270px;border-radius:50%;padding:8px;background:conic-gradient(var(--org),#ffd29a,var(--org));box-shadow:0 0 60px rgba(255,138,31,.55)"><img src="../reel-app/public/profile.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid #070b12"></div>
+ <div><div class=mono style="font-size:26px;color:var(--org);letter-spacing:.16em">LIKED THE BREAKDOWN?</div><div class=u style="font-size:78px;margin-top:10px">@sandesh<br>.explains</div></div></div>
+ <div style="margin-top:50px;display:inline-flex;align-items:center;gap:20px;background:var(--org);color:#1a0d00;border-radius:60px;padding:22px 54px"><span class=u style="font-size:54px">FOLLOW</span><span style="font-size:54px">＋</span></div>
+ <div class=mono style="margin-top:24px;font-size:24px;color:var(--ice)">NEW DEEP-DIVE EVERY WEEK · TECH · AI · MONEY</div></div>
+<div class=panel style="left:1090px;top:230px;width:760px;height:430px"><div style="padding:26px 34px"><div class=tag>UP NEXT · NEW EPISODE</div>
+ <div class=u style="font-size:62px;margin-top:14px">The custom<br>chip war</div>
+ <div class=mono style="margin-top:20px;font-size:24px;line-height:1.9;color:var(--ice)">GOOGLE TPU &nbsp;→&nbsp; BROADCOM<br>AMAZON TRAINIUM &nbsp;→&nbsp; OPENAI × BROADCOM<br><span style="color:var(--org)">VS. NVIDIA'S 90% INFERENCE SHARE?</span></div></div></div>
+<div class=cap><div>Follow for the next breakdown: <b>the custom chip war.</b></div></div></body>

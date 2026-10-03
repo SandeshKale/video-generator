@@ -1,0 +1,43 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Unb';font-weight:800;src:url('../assets/fonts/unbounded/unbounded-latin-800-normal.woff2');}
+@font-face{font-family:'Unb';font-weight:900;src:url('../assets/fonts/unbounded/unbounded-latin-900-normal.woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2');}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');}
+:root{--bg:#070b12;--org:#ff8a1f;--ice:#e6f1ff;--grn:#3dff9a;--red:#ff3355;--dim:#7f93ad;--line:#2a3a52;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;background:#000;overflow:hidden;font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.08) brightness(.95)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,18,.55),rgba(7,11,18,.12) 35%,rgba(7,11,18,.35) 70%,rgba(7,11,18,.8)),radial-gradient(ellipse at 20% 100%,rgba(255,138,31,.14),transparent 60%)}
+.inset{position:absolute;border:2px solid var(--org);box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 6px rgba(7,11,18,.7);background-size:cover;background-position:center}.inset i{position:absolute;left:0;right:0;bottom:0;padding:8px 14px;font:700 16px JBMono;letter-spacing:.12em;background:rgba(7,11,18,.85);color:var(--org);font-style:normal}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(127,147,173,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,147,173,.07) 1px,transparent 1px);background-size:60px 60px}
+.vg{position:absolute;inset:0;box-shadow:inset 0 0 240px 30px rgba(0,0,0,.7)}
+.top{position:absolute;left:60px;right:60px;top:34px;display:flex;justify-content:space-between;align-items:center;font:700 20px JBMono;letter-spacing:.12em;color:var(--dim)}
+.top b{color:var(--org)} .top .ok{color:var(--grn)}
+.eyebrow{position:absolute;left:60px;top:84px;font:700 24px JBMono;letter-spacing:.16em;color:var(--org);border-left:6px solid var(--org);padding-left:16px}
+.u{font-family:Unb;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+.mono{font-family:JBMono;font-weight:700}
+.panel{position:absolute;background:linear-gradient(180deg,rgba(14,22,36,.92),rgba(8,13,22,.94));border:1.5px solid var(--line);border-top:3px solid var(--org);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.tag{font:700 17px JBMono;letter-spacing:.14em;color:var(--dim)}
+.cap{position:absolute;left:0;right:0;bottom:62px;display:flex;justify-content:center}
+.cap div{background:rgba(5,8,14,.82);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 32px 16px;font:700 44px/1.2 Inter;text-align:center;max-width:1500px;color:#e6f1ff}
+.cap b{color:var(--org);font-weight:700}
+</style><body>
+<div class=bg style="background-image:url(shots/nuclear-plant.png)"></div><div class=tint></div><div class=grid></div><div class=vg></div>
+<div class=top><span><b>●</b> GRID // CONTROL ROOM</span><span>CALVERT CLIFFS · LUSBY, MD</span><span class=ok>60.00 Hz · NOMINAL</span></div><div class=eyebrow>// 690 MW · 20 YEARS</div>
+<div class=u style="position:absolute;left:60px;top:150px;font-size:56px;white-space:nowrap">Amazon × Constellation</div>
+<div class=mono style="position:absolute;left:60px;top:228px;font-size:24px;color:var(--ice);letter-spacing:.1em">20-YEAR POWER PURCHASE AGREEMENT · OCT 1 2026</div>
+<div class=panel style="left:60px;top:310px;width:620px;height:430px"><div style="padding:22px 28px"><div class=tag>CALVERT CLIFFS · MD · OUTPUT ALLOCATION</div>
+<svg width="560" height="300" viewBox="0 0 560 300"><path d="M60 250.00000000000003 A220 220 0 0 1 500 249.99999999999994" stroke="#2a3a52" stroke-width="34" fill="none"/>
+<path d="M60 250.00000000000003 A220 220 0 0 1 202.54263342796617 44.08653185445695" stroke="#ff8a1f" stroke-width="34" fill="none" style="filter:drop-shadow(0 0 14px #ff8a1f)"/>
+<text x="280" y="215" text-anchor="middle" fill="#e6f1ff" font-family="Unb" font-weight="900" font-size="84">690</text><text x="280" y="248" text-anchor="middle" fill="#ff8a1f" font-family="JBMono" font-weight="700" font-size="24" letter-spacing="3">MW → AMAZON</text>
+<text x="60" y="290" fill="#7f93ad" font-family="JBMono" font-weight="700" font-size="18">0</text><text x="500" y="290" fill="#7f93ad" font-family="JBMono" font-weight="700" font-size="18">1,790 MW</text></svg>
+<div class=mono style="font-size:22px;color:var(--dim);margin-top:2px">= 39% of the plant · plant ≈ 40% of Maryland's electricity</div></div></div>
+
+<div class=panel style="left:720px;top:310px;width:350px;height:200px;padding:20px 24px"><div class=u style="font-size:70px;color:var(--org)">20</div><div class=mono style="font-size:26px;color:var(--ice)">YEARS</div><div class=tag style="margin-top:8px">contract term</div></div>
+<div class=panel style="left:1100px;top:310px;width:350px;height:200px;padding:20px 24px"><div class=u style="font-size:70px;color:var(--org)">$3B</div><div class=mono style="font-size:26px;color:var(--ice)">INVESTED</div><div class=tag style="margin-top:8px">to expand & relicense</div></div>
+<div class=panel style="left:1480px;top:310px;width:350px;height:200px;padding:20px 24px"><div class=u style="font-size:70px;color:var(--org)">+190</div><div class=mono style="font-size:26px;color:var(--ice)">MW</div><div class=tag style="margin-top:8px">new capacity 2030–32</div></div>
+<div class=panel style="left:720px;top:540px;width:1140px;height:200px;padding:20px 28px"><div class=tag>TIMELINE · WHEN THE POWER ACTUALLY SHOWS UP</div>
+<div style="position:relative;margin-top:44px;height:8px;background:#2a3a52;border-radius:4px"><div style="position:absolute;left:0;width:9%;height:8px;background:var(--org);border-radius:4px"></div>
+<div style="position:absolute;left:0%;top:-30px;transform:translateX(-6px)"><div style="width:16px;height:16px;border-radius:50%;background:#e6f1ff;margin-bottom:22px;box-shadow:0 0 12px transparent"></div><div class=u style="font-size:22px;white-space:nowrap">2026</div><div class=tag style="white-space:nowrap">DEAL SIGNED</div></div><div style="position:absolute;left:25%;top:-30px;transform:translateX(-6px)"><div style="width:16px;height:16px;border-radius:50%;background:var(--org);margin-bottom:22px;box-shadow:0 0 12px #ff8a1f"></div><div class=u style="font-size:22px;white-space:nowrap">2030–32</div><div class=tag style="white-space:nowrap">+190 MW ONLINE</div></div><div style="position:absolute;left:47%;top:-30px;transform:translateX(-6px)"><div style="width:16px;height:16px;border-radius:50%;background:#e6f1ff;margin-bottom:22px;box-shadow:0 0 12px transparent"></div><div class=u style="font-size:22px;white-space:nowrap">2034/36</div><div class=tag style="white-space:nowrap">LICENSES END</div></div><div style="position:absolute;left:98%;top:-30px;transform:translateX(-100%)"><div style="width:16px;height:16px;border-radius:50%;background:#e6f1ff;margin-bottom:22px;box-shadow:0 0 12px transparent"></div><div class=u style="font-size:22px;white-space:nowrap">2046</div><div class=tag style="white-space:nowrap">DEAL ENDS</div></div></div></div>
+<div class=inset style="left:60px;top:770px;width:0;height:0"></div>
+<div class=cap><div>Six hundred ninety megawatts from <b>one plant</b> in Maryland.</div></div></body>

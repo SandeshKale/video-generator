@@ -1,0 +1,48 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Unb';font-weight:800;src:url('../assets/fonts/unbounded/unbounded-latin-800-normal.woff2');}
+@font-face{font-family:'Unb';font-weight:900;src:url('../assets/fonts/unbounded/unbounded-latin-900-normal.woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2');}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');}
+:root{--bg:#070b12;--org:#ff8a1f;--ice:#e6f1ff;--grn:#3dff9a;--red:#ff3355;--dim:#7f93ad;--line:#2a3a52;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1920px;height:1080px;background:#000;overflow:hidden;font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.8) contrast(1.08) brightness(.95)}
+.tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,18,.55),rgba(7,11,18,.12) 35%,rgba(7,11,18,.35) 70%,rgba(7,11,18,.8)),radial-gradient(ellipse at 20% 100%,rgba(255,138,31,.14),transparent 60%)}
+.inset{position:absolute;border:2px solid var(--org);box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 0 6px rgba(7,11,18,.7);background-size:cover;background-position:center}.inset i{position:absolute;left:0;right:0;bottom:0;padding:8px 14px;font:700 16px JBMono;letter-spacing:.12em;background:rgba(7,11,18,.85);color:var(--org);font-style:normal}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(127,147,173,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,147,173,.07) 1px,transparent 1px);background-size:60px 60px}
+.vg{position:absolute;inset:0;box-shadow:inset 0 0 240px 30px rgba(0,0,0,.7)}
+.top{position:absolute;left:60px;right:60px;top:34px;display:flex;justify-content:space-between;align-items:center;font:700 20px JBMono;letter-spacing:.12em;color:var(--dim)}
+.top b{color:var(--org)} .top .ok{color:var(--grn)}
+.eyebrow{position:absolute;left:60px;top:84px;font:700 24px JBMono;letter-spacing:.16em;color:var(--org);border-left:6px solid var(--org);padding-left:16px}
+.u{font-family:Unb;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+.mono{font-family:JBMono;font-weight:700}
+.panel{position:absolute;background:linear-gradient(180deg,rgba(14,22,36,.92),rgba(8,13,22,.94));border:1.5px solid var(--line);border-top:3px solid var(--org);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.tag{font:700 17px JBMono;letter-spacing:.14em;color:var(--dim)}
+.cap{position:absolute;left:0;right:0;bottom:62px;display:flex;justify-content:center}
+.cap div{background:rgba(5,8,14,.82);border:1.5px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 32px 16px;font:700 44px/1.2 Inter;text-align:center;max-width:1500px;color:#e6f1ff}
+.cap b{color:var(--org);font-weight:700}
+</style><body>
+<div class=bg style="background-image:url(shots/substation-night.png)"></div><div class=tint></div><div class=grid></div><div class=vg></div>
+<div class=top><span><b>●</b> GRID // CONTROL ROOM</span><span>SUBSTATION 04 · NIGHT</span><span class=ok>60.00 Hz · NOMINAL</span></div><div class=eyebrow>// THE BOTTLENECK ISN'T SILICON</div>
+<div class="u" style="position:absolute;left:60px;top:150px;font-size:84px;width:1100px;white-space:nowrap">The bottleneck<br>isn't <span style="color:var(--org)">silicon</span></div>
+
+<div class=panel style="left:60px;top:470px;width:400px;height:210px;padding:22px 26px;border-top-color:var(--grn)">
+ <div class=tag>GPU-01</div><div class=u style="font-size:29px;margin-top:8px;white-space:nowrap">GPU CHIPS</div>
+ <div class=mono style="margin-top:16px;font-size:26px;color:var(--grn)">● AVAILABLE</div><div class=tag style="margin-top:10px">LEAD TIME: MONTHS</div></div>
+<div class=panel style="left:490px;top:470px;width:400px;height:210px;padding:22px 26px;border-top-color:var(--red)">
+ <div class=tag>XFMR-03</div><div class=u style="font-size:29px;margin-top:8px;white-space:nowrap">TRANSFORMERS</div>
+ <div class=mono style="margin-top:16px;font-size:26px;color:var(--red)">● BACKORDERED</div><div class=tag style="margin-top:10px">LEAD TIME: 3–5 YEARS</div></div>
+<div class=panel style="left:920px;top:470px;width:400px;height:210px;padding:22px 26px;border-top-color:var(--red)">
+ <div class=tag>GEN-07</div><div class=u style="font-size:29px;margin-top:8px;white-space:nowrap">POWER PLANT</div>
+ <div class=mono style="margin-top:16px;font-size:26px;color:var(--red)">● NOT BUILT YET</div><div class=tag style="margin-top:10px">ONLINE: 2030–2032</div></div>
+<svg style="position:absolute;left:60px;top:730px" width="1200" height="150" viewBox="0 0 1200 150" fill="none" stroke-linecap="round">
+ <g stroke="#7f93ad" stroke-width="4"><path d="M20 75H190"/><path d="M290 75H470"/><path d="M570 75H760"/><path d="M860 75H1180"/></g>
+ <g stroke="#e6f1ff" stroke-width="4"><circle cx="240" cy="75" r="44" fill="#0b1422"/><path d="M215 75h50M240 50v50" /></g>
+ <g stroke="#ff3355" stroke-width="5"><circle cx="520" cy="75" r="46" fill="#1a0b12"/><circle cx="520" cy="75" r="46" stroke-dasharray="10 8"/><path d="M500 55l40 40M540 55l-40 40"/></g>
+ <g stroke="#7f93ad" stroke-width="4"><rect x="800" y="35" width="60" height="80" fill="#0b1422"/><path d="M810 55h40M810 75h40M810 95h40"/></g>
+ <g fill="#ff8a1f"><circle cx="70" cy="75" r="8"/><circle cx="130" cy="75" r="8"/><circle cx="330" cy="75" r="8"/><circle cx="400" cy="75" r="8"/></g>
+ <text x="190" y="140" fill="#7f93ad" font-family="JBMono" font-size="17" letter-spacing="2">GENERATION</text><text x="460" y="140" fill="#ff3355" font-family="JBMono" font-size="17" letter-spacing="2">TRANSFORMER · FAULT</text><text x="770" y="140" fill="#7f93ad" font-family="JBMono" font-size="17" letter-spacing="2">DATA CENTER</text></svg>
+<div style="position:absolute;right:60px;top:150px;width:520px" class=panel><div style="padding:22px 26px"><div class=tag>LIVE BACKLOG TICKER</div>
+ <div class=mono style="margin-top:14px;font-size:24px;line-height:2;color:var(--ice)">H100 WAITLIST <span style="color:var(--grn)">▼ easing</span><br>XFMR LEAD TIME <span style="color:var(--red)">▲ 3–5 YRS</span><br>SWITCHGEAR <span style="color:var(--red)">SOLD OUT → 2028</span><br>GAS TURBINES <span style="color:var(--red)">116 GW BACKLOG</span></div></div></div>
+<div class=inset style="right:60px;top:430px;width:520px;height:300px;background-image:url(shots/nuclear-plant.png)"><i>GEN-07 · NOT BUILT YET</i></div>
+<div class=cap><div>It's a transformer. A wire. A <b>power plant</b> that doesn't exist yet.</div></div></body>
