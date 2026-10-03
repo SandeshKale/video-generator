@@ -1,0 +1,233 @@
+{
+ "title": "The Power Crunch: Who Pays for AI's Electricity?",
+ "scenes": [
+  {
+   "id": "s01",
+   "shot": "substation-night",
+   "beats": [
+    "Everyone talks about AI chips. Nvidia. GPUs. The waiting lists.",
+    "But the real bottleneck isn't silicon.",
+    "It's a transformer. A wire. A power plant that doesn't exist yet."
+   ]
+  },
+  {
+   "id": "s02",
+   "shot": "nuclear-plant",
+   "beats": [
+    "On October first, Amazon signed a twenty-year nuclear power deal.",
+    "Six hundred ninety megawatts, from one plant in Maryland. Calvert Cliffs.",
+    "Three billion dollars, to squeeze out a hundred and ninety more megawatts and keep the plant licensed for another twenty years."
+   ]
+  },
+  {
+   "id": "s03",
+   "shot": "cooling-tower-dusk",
+   "beats": [
+    "That one plant makes about forty percent of Maryland's electricity. Amazon just reserved nearly four-tenths of it.",
+    "And here's the catch. The new power? It doesn't arrive until twenty thirty to twenty thirty-two."
+   ]
+  },
+  {
+   "id": "s04",
+   "shot": "construction-crane",
+   "beats": [
+    "Meanwhile, a data center can go up in roughly eighteen months.",
+    "So who's covering the gap while the power catches up?",
+    "Stay with me. The answer ends up on your electric bill."
+   ]
+  },
+  {
+   "id": "s05",
+   "shot": "outlet-closeup",
+   "beats": [
+    "And unlike chips, you can't stockpile electricity.",
+    "Every watt a data center pulls, a power plant has to make in that very second."
+   ]
+  },
+  {
+   "id": "s06",
+   "shot": "server-hall",
+   "beats": [
+    "First, how big is this?",
+    "In twenty twenty-three, American data centers used about one hundred seventy-six terawatt-hours. Four-point-four percent of all the electricity in the country.",
+    "Berkeley Lab says that could hit between six-point-seven and twelve percent by twenty twenty-eight."
+   ]
+  },
+  {
+   "id": "s07",
+   "shot": "globe-grid",
+   "beats": [
+    "Globally, the International Energy Agency expects data centers to roughly double, to nine hundred forty-five terawatt-hours by twenty thirty.",
+    "The United States alone adds about two hundred forty."
+   ]
+  },
+  {
+   "id": "s08",
+   "shot": "reactor-hall",
+   "beats": [
+    "That's why big tech is suddenly in the nuclear business.",
+    "Microsoft is paying to restart Three Mile Island's unit one. Eight hundred thirty-seven megawatts. Twenty-year contract. Back online in twenty twenty-seven.",
+    "Everybody's shopping for electrons."
+   ]
+  },
+  {
+   "id": "s09",
+   "shot": "transformer-yard",
+   "beats": [
+    "But buying power is the easy part. Delivering it is the problem.",
+    "Industry estimates put big transformer lead times at three to five years. Switchgear is sold out into twenty twenty-eight.",
+    "And the grid connection line? One to two years, minimum."
+   ]
+  },
+  {
+   "id": "s10",
+   "shot": "gas-turbine",
+   "beats": [
+    "So the industry is turning to gas turbines.",
+    "GE Vernova's backlog hit one hundred sixteen gigawatts this summer.",
+    "It's now taking reservations for twenty thirty-one. Twenty thirty-one. For a data center someone wants next year."
+   ]
+  },
+  {
+   "id": "s11",
+   "shot": "gas-plant-night",
+   "beats": [
+    "Some companies are skipping the grid entirely.",
+    "Meta's Louisiana campus is getting two and a half gigawatts of dedicated gas plants, on a fifteen-year contract.",
+    "And xAI ran dozens of mobile gas turbines in Memphis just to get online fast."
+   ]
+  },
+  {
+   "id": "s12",
+   "shot": "suburb-dusk",
+   "beats": [
+    "Now the part that hits your wallet.",
+    "PJM runs the grid across thirteen states, from Virginia to Illinois. Every year, it auctions future power capacity."
+   ]
+  },
+  {
+   "id": "s13",
+   "shot": "auction-floor",
+   "beats": [
+    "For the twenty twenty-four delivery year, capacity cost twenty-nine dollars a megawatt-day.",
+    "For twenty twenty-six? Three hundred twenty-nine.",
+    "The latest auction, for twenty twenty-seven, came in at three thirty-three. The price cap."
+   ]
+  },
+  {
+   "id": "s14",
+   "shot": "meter-closeup",
+   "beats": [
+    "One analysis blames data centers for sixty-three percent of one year's increase. Nine point three billion dollars, spread across everyone's bills.",
+    "In western Maryland, capacity costs alone were estimated to add about eighteen dollars a month to a typical home. About sixteen in Ohio."
+   ]
+  },
+  {
+   "id": "s15",
+   "shot": "grid-control-room",
+   "beats": [
+    "And that cap is hiding something.",
+    "Without it, one estimate says the price would have been closer to five-thirty.",
+    "Worse, PJM came up six thousand six hundred megawatts short of its own reliability target.",
+    "The grid didn't just get expensive. It got thin."
+   ]
+  },
+  {
+   "id": "s16",
+   "shot": "empty-lot-sunrise",
+   "beats": [
+    "Here's the uncomfortable part.",
+    "Of that sixteen-point-four billion dollar auction, about six point two billion was tied to data centers that haven't been built yet.",
+    "Forecasts, not buildings. If some of those projects never happen, the capacity still got paid for.",
+    "Utilities call it phantom load. Ratepayers call it a bill."
+   ]
+  },
+  {
+   "id": "s17",
+   "shot": "power-lines-dawn",
+   "beats": [
+    "Bloomberg checked twenty-five thousand pricing points across the grid.",
+    "Near data centers, wholesale power was up as much as two hundred sixty-seven percent in five years.",
+    "That's wholesale, not your bill. But seventy-three percent of the spots where prices rose sit within fifty miles of major data center activity."
+   ]
+  },
+  {
+   "id": "s18",
+   "shot": "capitol-dusk",
+   "beats": [
+    "Voters noticed.",
+    "September sixteenth, the House passed the Ratepayer Protection Act. Four seventeen to three.",
+    "Twenty-five states now have large-load tariffs. They typically make data centers sign long contracts and pay minimum bills, so the cost doesn't land on your meter. Iowa froze one utility's home rates for five years.",
+    "Companies are responding too. Amazon pledged a billion dollars to the communities that host its data centers, over five years."
+   ]
+  },
+  {
+   "id": "s19",
+   "shot": "wind-solar-field",
+   "beats": [
+    "But here's the twist most people miss.",
+    "A Duke University study found the grid could absorb seventy-six gigawatts of new demand, about ten percent of national peak, if data centers agreed to cut back a quarter of one percent of the time.",
+    "That's roughly twenty-two hours a year. The average pause, under two hours."
+   ]
+  },
+  {
+   "id": "s20",
+   "shot": "server-aisle-blue",
+   "beats": [
+    "The grid has room. It just doesn't have room on the hottest, coldest, worst afternoons.",
+    "So the real fight is this. Will AI learn to blink?"
+   ]
+  },
+  {
+   "id": "s21",
+   "shot": "launch-pad",
+   "beats": [
+    "Then there's the other answer. Look up.",
+    "On October first, the same day as Amazon's deal, Google launched four TPU chips into orbit. Project Suncatcher."
+   ]
+  },
+  {
+   "id": "s22",
+   "shot": "satellite-earth",
+   "beats": [
+    "A fridge-sized satellite, built with Planet, in an orbit where the solar panels almost never see shade.",
+    "The pitch: free sunlight, no grid. The catch: heat. In space, there's no air to carry it away.",
+    "It's a one-year experiment. Not a fix for this decade."
+   ]
+  },
+  {
+   "id": "s23",
+   "shot": "clock-split",
+   "beats": [
+    "Put it all together, and it's a race between two clocks.",
+    "AI demand runs on an eighteen-month clock. Power runs on a five-to-ten-year one.",
+    "Something has to give. Prices. Reliability. Or the pace of AI."
+   ]
+  },
+  {
+   "id": "s24",
+   "shot": "dashboard-night",
+   "beats": [
+    "So what should you watch?",
+    "One. PJM's next auction. Does the price cap hold?",
+    "Two. Whether the Ratepayer Protection Act clears the Senate."
+   ]
+  },
+  {
+   "id": "s25",
+   "shot": "nuclear-night",
+   "beats": [
+    "Three. Crane's restart in twenty twenty-seven. The first real test of nuclear on tech's clock.",
+    "And four. GE Vernova's backlog. It's the best scoreboard we have of how much gas is coming."
+   ]
+  },
+  {
+   "id": "s26",
+   "shot": "home-window-night",
+   "beats": [
+    "Next time your bill creeps up, remember. It's part of the AI race now.",
+    "I'm Sandesh. Follow for the next breakdown: the custom chip war, where Google, Amazon and OpenAI are trying to dethrone Nvidia."
+   ]
+  }
+ ]
+}
