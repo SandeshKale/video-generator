@@ -1,6 +1,158 @@
 [
- {"id":"substation-night","seed":401,"steps":7,"prompt":"high voltage electrical substation at night, large transformers and lattice steel towers, sodium orange floodlights, light fog, no people, cinematic wide shot"},
- {"id":"nuclear-plant","seed":402,"steps":7,"prompt":"nuclear power plant with a containment dome and a tall cooling tower at dusk by a bay, glowing orange sky, calm water reflection, no people, cinematic wide shot"},
- {"id":"suburb-dusk","seed":403,"steps":7,"prompt":"quiet american suburban neighborhood at dusk with warm lit windows and distant power lines against a dark blue sky, no people, cinematic"},
- {"id":"home-window-night","seed":404,"steps":7,"prompt":"dark living room at night seen from the inside, a lit lamp and a glowing window with city lights outside, cozy, no people, cinematic"}
+ {
+  "id": "substation-night",
+  "seed": 401,
+  "steps": 7,
+  "prompt": "high voltage electrical substation at night, large transformers and lattice steel towers, sodium orange floodlights, light fog, no people, cinematic wide shot"
+ },
+ {
+  "id": "nuclear-plant",
+  "seed": 402,
+  "steps": 7,
+  "prompt": "nuclear power plant with a containment dome and a tall cooling tower at dusk by a bay, glowing orange sky, calm water reflection, no people, cinematic wide shot"
+ },
+ {
+  "id": "suburb-dusk",
+  "seed": 403,
+  "steps": 7,
+  "prompt": "quiet american suburban neighborhood at dusk with warm lit windows and distant power lines against a dark blue sky, no people, cinematic"
+ },
+ {
+  "id": "home-window-night",
+  "seed": 404,
+  "steps": 7,
+  "prompt": "dark living room at night seen from the inside, a lit lamp and a glowing window with city lights outside, cozy, no people, cinematic"
+ },
+ {
+  "id": "cooling-tower-dusk",
+  "seed": 500,
+  "steps": 7,
+  "prompt": "large concrete cooling towers releasing steam at dusk, orange sky, power plant silhouette, no people, cinematic wide shot"
+ },
+ {
+  "id": "construction-crane",
+  "seed": 501,
+  "steps": 7,
+  "prompt": "massive data center construction site at sunrise with tower cranes and steel framing, dust in golden light, no people, cinematic wide shot"
+ },
+ {
+  "id": "outlet-closeup",
+  "seed": 502,
+  "steps": 7,
+  "prompt": "extreme macro of a heavy industrial power cable plug and socket with sparks of warm light, dark background, shallow depth of field, no people, cinematic"
+ },
+ {
+  "id": "server-hall",
+  "seed": 503,
+  "steps": 7,
+  "prompt": "vast modern data center hall with endless rows of black server racks and glowing blue-white LEDs, perspective, no people, cinematic"
+ },
+ {
+  "id": "globe-grid",
+  "seed": 504,
+  "steps": 7,
+  "prompt": "earth at night seen from orbit with glowing city lights and bright clusters, dark space, cinematic"
+ },
+ {
+  "id": "reactor-hall",
+  "seed": 505,
+  "steps": 7,
+  "prompt": "interior of a nuclear power plant turbine hall, long polished machinery, industrial lighting, no people, cinematic wide shot"
+ },
+ {
+  "id": "transformer-yard",
+  "seed": 506,
+  "steps": 7,
+  "prompt": "giant electrical power transformers in an industrial yard at twilight, thick bushings and cooling fins, orange sodium lights, no people, cinematic wide shot"
+ },
+ {
+  "id": "gas-turbine",
+  "seed": 507,
+  "steps": 7,
+  "prompt": "huge industrial gas turbine on a factory floor being assembled, steel blades, bright overhead lights, no people, cinematic"
+ },
+ {
+  "id": "gas-plant-night",
+  "seed": 508,
+  "steps": 7,
+  "prompt": "natural gas power plant at night with tall exhaust stacks and glowing orange flare light, industrial lights, no people, cinematic wide shot"
+ },
+ {
+  "id": "auction-floor",
+  "seed": 509,
+  "steps": 7,
+  "prompt": "dark electricity trading control room with wall of screens showing price charts, orange and blue glow, empty chairs, no people, cinematic wide shot"
+ },
+ {
+  "id": "meter-closeup",
+  "seed": 510,
+  "steps": 7,
+  "prompt": "close-up of an analog residential electric meter on a house wall with spinning dial, warm evening light, shallow depth of field, no people, cinematic"
+ },
+ {
+  "id": "grid-control-room",
+  "seed": 511,
+  "steps": 7,
+  "prompt": "power grid control center with huge wall map display of transmission lines, dim room, orange and red indicator lights, no people, cinematic wide shot"
+ },
+ {
+  "id": "empty-lot-sunrise",
+  "seed": 512,
+  "steps": 7,
+  "prompt": "empty flat graded lot with survey stakes and a distant electric transmission tower at sunrise, hazy light, no people, cinematic wide shot"
+ },
+ {
+  "id": "power-lines-dawn",
+  "seed": 513,
+  "steps": 7,
+  "prompt": "high voltage transmission towers marching across hills at dawn, golden mist, cinematic wide shot"
+ },
+ {
+  "id": "capitol-dusk",
+  "seed": 514,
+  "steps": 7,
+  "prompt": "us capitol building dome at dusk with deep blue sky and warm lit windows, cinematic wide shot, no people"
+ },
+ {
+  "id": "wind-solar-field",
+  "seed": 515,
+  "steps": 7,
+  "prompt": "solar panels and wind turbines in a field at golden hour with transmission lines, cinematic wide shot, no people"
+ },
+ {
+  "id": "server-aisle-blue",
+  "seed": 516,
+  "steps": 7,
+  "prompt": "dark data center aisle with cold blue light, a few racks with small amber lights, strong perspective, no people, cinematic"
+ },
+ {
+  "id": "launch-pad",
+  "seed": 517,
+  "steps": 7,
+  "prompt": "rocket on a launch pad at dawn with lights and mist, wide shot, cinematic, no people"
+ },
+ {
+  "id": "satellite-earth",
+  "seed": 518,
+  "steps": 7,
+  "prompt": "small satellite with solar panels orbiting above earth, sun glare on the horizon, space, photorealistic"
+ },
+ {
+  "id": "clock-split",
+  "seed": 519,
+  "steps": 7,
+  "prompt": "two large analog wall clocks side by side in a dark industrial room, one brightly lit and one in shadow, no people, cinematic"
+ },
+ {
+  "id": "dashboard-night",
+  "seed": 520,
+  "steps": 7,
+  "prompt": "dim control room desk with several monitors showing line charts in orange and blue, night, no people, cinematic"
+ },
+ {
+  "id": "nuclear-night",
+  "seed": 521,
+  "steps": 7,
+  "prompt": "nuclear power plant cooling towers at night lit by floodlights with steam plumes, cinematic wide shot, no people"
+ }
 ]

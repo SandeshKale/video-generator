@@ -1,0 +1,5 @@
+audio/
+out/
+work/
+__pycache__/
+mock-*.html
