@@ -983,3 +983,23 @@ or link-lists, not actual files.
   worth factoring in when picking a new reel's background brightness if
   staying under the delivery limit without an extra re-encode pass
   matters.
+
+## Landscape long-form benchmark — `video-ai-bubble-v2/` (16:9, 1920×1080@60, ~7 min)
+
+The user called this "better than the previous one" and set it as the bar the next landscape video must **top in every aspect** (script, visuals, motion, audio, polish). v1 (`video-ai-bubble-machine/`, flat sticker graphics, 12 chapters, ~12 min) was rejected for: slow/low-quality animation, not engaging, too long, no real-world imagery, nothing ultra-realistic. Don't regress to that style.
+
+**Recipe that worked (reuse, then improve):**
+- Script: beat-level (87 beats / 28 scenes, ~1000 words), hook in the first 10 s, open loops, a mid-video twist, "what to watch" close. Every scene anchored to hard numbers; the sourced fact table lives in the v1 `facts.md`.
+- Imagery: local photoreal generation (`imggen.py`, RealVisXL V5 Lightning bf16, 1344×768, ~70–100 s/image on 4 CPUs) → `depthgen.py` (Depth-Anything-V2-Small) → WebGL depth-parallax shader with camera moves, whip-pan transitions, grade/vignette/grain, dust motes (`site/engine.js`). Stock-photo hosts are blocked from this sandbox; Figma Weave (hosted generative models) is an untried route that needs the user to link it and approve credits.
+- Overlay graphics: `site/comps.js` component set (num, bars, cols, ring, gauge, graph with traveling coins, ledger, dominoes, cells, timeline, list, quote, stamp, chips, card), all pure functions of `t`; scenes are declared in `timeline.mjs` with times relative to voice beats/words ("b2", "w1.4"), resolved by `build.mjs` from `timing.json`.
+- Audio: Kokoro `af_heart` voice with word timestamps (`tts2.py`), numpy-synth music + SFX derived from the layer events, sidechain-ducked and loudnormed (`sfx.py`). Captions are word-highlighted from the same timings.
+- Render: `render-slices.sh` — 8 time slices via `REEL_START/REEL_END`, 4 in parallel, ~45 min total, concat + mux. `scripts/render.mjs` now streams frames into ffmpeg (no PNG spool).
+
+**Pitfalls hit (don't repeat):**
+- Spooling PNG frames for 4 parallel long slices exhausted the disk allowance (silent `write` failures) — keep the ffmpeg pipe.
+- `pkill -f`/`pgrep -f` with the pattern in the same command line kills/matches the invoking shell (exit 144). Wait on PIDs instead.
+- Absolute-positioned overlay stacks must be sized from real heights (two meters overlapped; timeline labels sat on the line). Screenshot every distinct layout, not just one frame per scene, before launching a 45-minute render.
+- Generated people can carry artifacts (a bunny-suit shot had rabbit ears) — prefer people-free prompts or check every image.
+- Master at CRF 17 with film grain is ~2 GB; deliver a CRF-28 share encode (~51 MB, fits GitHub) and a ≤30 MiB preview for chat.
+
+**Known headroom to beat next time:** more genuinely real/photographic imagery, higher-fidelity voice than Kokoro (richer prosody), fewer repeated overlay chip/card forms, stronger per-scene bespoke visuals, sharper thumbnail, and a pre-render automated layout-overlap check.
