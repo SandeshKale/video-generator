@@ -1,5 +1,50 @@
 [
- {"id":"aisle","seed":301,"steps":7,"prompt":"long dark data center aisle seen from low angle, rows of server racks with thin red warning lights, one rack door slightly open, cold blue haze, no people, cinematic"},
- {"id":"grid","seed":302,"steps":7,"prompt":"close-up of a dense patch panel with hundreds of network cables, amber and red status LEDs, shallow depth of field, dark, no people, cinematic"},
- {"id":"control","seed":303,"steps":7,"prompt":"empty glass-walled security operations center at night, wall of dark monitors with faint red glow, rows of empty desks, no people, cinematic"}
+ {
+  "id": "aisle",
+  "seed": 301,
+  "steps": 7,
+  "prompt": "long dark data center aisle seen from low angle, rows of server racks with thin red warning lights, one rack door slightly open, cold blue haze, no people, cinematic"
+ },
+ {
+  "id": "grid",
+  "seed": 302,
+  "steps": 7,
+  "prompt": "close-up of a dense patch panel with hundreds of network cables, amber and red status LEDs, shallow depth of field, dark, no people, cinematic"
+ },
+ {
+  "id": "control",
+  "seed": 303,
+  "steps": 7,
+  "prompt": "empty glass-walled security operations center at night, wall of dark monitors with faint red glow, rows of empty desks, no people, cinematic"
+ },
+ {
+  "id": "servers2",
+  "seed": 311,
+  "steps": 7,
+  "prompt": "close view of server rack with a cable bundle spilling out of an open rack door, red indicator light glowing, dark data center, no people, cinematic"
+ },
+ {
+  "id": "terminal",
+  "seed": 312,
+  "steps": 7,
+  "prompt": "dark room, a single monitor glowing with scrolling green and amber terminal text reflected on a keyboard, shallow depth of field, no people, cinematic"
+ },
+ {
+  "id": "storage",
+  "seed": 313,
+  "steps": 7,
+  "prompt": "endless wall of black storage arrays with tiny blinking amber lights receding into darkness, symmetrical, no people, cinematic"
+ },
+ {
+  "id": "gov",
+  "seed": 314,
+  "steps": 7,
+  "prompt": "neoclassical government building with columns at night, lit windows, dramatic low angle, dark sky, no people, cinematic"
+ },
+ {
+  "id": "phone",
+  "seed": 315,
+  "steps": 7,
+  "prompt": "smartphone lying on a dark desk, screen glowing with a blank chat interface, reflections on the desk, moody red ambient light, no people, cinematic"
+ }
 ]

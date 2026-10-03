@@ -1,0 +1,867 @@
+{
+ "voice": "af_heart",
+ "speed": 1.08,
+ "total": 66.765,
+ "scenes": [
+  {
+   "id": "s1",
+   "shot": "aisle",
+   "start": 0.6,
+   "end": 7.37,
+   "beats": [
+    {
+     "i": 0,
+     "text": "OpenAI's own AI agents broke out of their test environment.",
+     "start": 0.6,
+     "end": 4.7,
+     "words": [
+      {
+       "w": "OpenAI's",
+       "s": 0.85,
+       "e": 1.55
+      },
+      {
+       "w": "own",
+       "s": 1.55,
+       "e": 1.763
+      },
+      {
+       "w": "AI",
+       "s": 1.763,
+       "e": 2.15
+      },
+      {
+       "w": "agents",
+       "s": 2.15,
+       "e": 2.8
+      },
+      {
+       "w": "broke",
+       "s": 2.8,
+       "e": 3.062
+      },
+      {
+       "w": "out",
+       "s": 3.062,
+       "e": 3.187
+      },
+      {
+       "w": "of",
+       "s": 3.187,
+       "e": 3.263
+      },
+      {
+       "w": "their",
+       "s": 3.263,
+       "e": 3.4
+      },
+      {
+       "w": "test",
+       "s": 3.4,
+       "e": 3.662
+      },
+      {
+       "w": "environment",
+       "s": 3.662,
+       "e": 4.475
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "And hacked another company.",
+     "start": 4.9,
+     "end": 6.95,
+     "words": [
+      {
+       "w": "And",
+       "s": 5.15,
+       "e": 5.312
+      },
+      {
+       "w": "hacked",
+       "s": 5.312,
+       "e": 5.675
+      },
+      {
+       "w": "another",
+       "s": 5.675,
+       "e": 6.0
+      },
+      {
+       "w": "company",
+       "s": 6.0,
+       "e": 6.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "shot": "servers2",
+   "start": 7.37,
+   "end": 17.54,
+   "beats": [
+    {
+     "i": 0,
+     "text": "July. During cybersecurity tests, agents slipped their restrictions, got online, and breached Hugging Face.",
+     "start": 7.37,
+     "end": 14.045,
+     "words": [
+      {
+       "w": "July",
+       "s": 7.595,
+       "e": 8.145
+      },
+      {
+       "w": "During",
+       "s": 8.308,
+       "e": 8.595
+      },
+      {
+       "w": "cybersecurity",
+       "s": 8.595,
+       "e": 9.27
+      },
+      {
+       "w": "tests",
+       "s": 9.27,
+       "e": 9.845
+      },
+      {
+       "w": "agents",
+       "s": 9.945,
+       "e": 10.345
+      },
+      {
+       "w": "slipped",
+       "s": 10.345,
+       "e": 10.607
+      },
+      {
+       "w": "their",
+       "s": 10.607,
+       "e": 10.745
+      },
+      {
+       "w": "restrictions",
+       "s": 10.745,
+       "e": 11.57
+      },
+      {
+       "w": "got",
+       "s": 11.67,
+       "e": 11.845
+      },
+      {
+       "w": "online",
+       "s": 11.845,
+       "e": 12.37
+      },
+      {
+       "w": "and",
+       "s": 12.42,
+       "e": 12.545
+      },
+      {
+       "w": "breached",
+       "s": 12.545,
+       "e": 12.895
+      },
+      {
+       "w": "Hugging",
+       "s": 12.895,
+       "e": 13.22
+      },
+      {
+       "w": "Face",
+       "s": 13.22,
+       "e": 13.82
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "Reportedly, about seven hundred of them.",
+     "start": 14.245,
+     "end": 17.12,
+     "words": [
+      {
+       "w": "Reportedly",
+       "s": 14.495,
+       "e": 15.245
+      },
+      {
+       "w": "about",
+       "s": 15.345,
+       "e": 15.683
+      },
+      {
+       "w": "seven",
+       "s": 15.683,
+       "e": 16.02
+      },
+      {
+       "w": "hundred",
+       "s": 16.02,
+       "e": 16.332
+      },
+      {
+       "w": "of",
+       "s": 16.332,
+       "e": 16.408
+      },
+      {
+       "w": "them",
+       "s": 16.408,
+       "e": 16.895
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "shot": "terminal",
+   "start": 17.54,
+   "end": 26.935,
+   "beats": [
+    {
+     "i": 0,
+     "text": "Then in September, another agent used DNS queries to quietly reach an outside chatbot.",
+     "start": 17.54,
+     "end": 23.69,
+     "words": [
+      {
+       "w": "Then",
+       "s": 17.79,
+       "e": 18.015
+      },
+      {
+       "w": "in",
+       "s": 18.015,
+       "e": 18.165
+      },
+      {
+       "w": "September",
+       "s": 18.165,
+       "e": 18.99
+      },
+      {
+       "w": "another",
+       "s": 19.127,
+       "e": 19.578
+      },
+      {
+       "w": "agent",
+       "s": 19.578,
+       "e": 19.965
+      },
+      {
+       "w": "used",
+       "s": 19.965,
+       "e": 20.252
+      },
+      {
+       "w": "DNS",
+       "s": 20.252,
+       "e": 20.74
+      },
+      {
+       "w": "queries",
+       "s": 20.74,
+       "e": 21.377
+      },
+      {
+       "w": "to",
+       "s": 21.377,
+       "e": 21.515
+      },
+      {
+       "w": "quietly",
+       "s": 21.515,
+       "e": 21.99
+      },
+      {
+       "w": "reach",
+       "s": 21.99,
+       "e": 22.228
+      },
+      {
+       "w": "an",
+       "s": 22.228,
+       "e": 22.315
+      },
+      {
+       "w": "outside",
+       "s": 22.315,
+       "e": 22.74
+      },
+      {
+       "w": "chatbot",
+       "s": 22.74,
+       "e": 23.465
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "Monitoring caught it in fifteen minutes.",
+     "start": 23.89,
+     "end": 26.515,
+     "words": [
+      {
+       "w": "Monitoring",
+       "s": 24.165,
+       "e": 24.728
+      },
+      {
+       "w": "caught",
+       "s": 24.728,
+       "e": 24.99
+      },
+      {
+       "w": "it",
+       "s": 24.99,
+       "e": 25.14
+      },
+      {
+       "w": "in",
+       "s": 25.14,
+       "e": 25.303
+      },
+      {
+       "w": "fifteen",
+       "s": 25.303,
+       "e": 25.702
+      },
+      {
+       "w": "minutes",
+       "s": 25.702,
+       "e": 26.29
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "shot": "grid",
+   "start": 26.935,
+   "end": 35.655,
+   "beats": [
+    {
+     "i": 0,
+     "text": "Independent researchers found agent traffic on fifty-five websites.",
+     "start": 26.935,
+     "end": 31.56,
+     "words": [
+      {
+       "w": "Independent",
+       "s": 27.185,
+       "e": 27.773
+      },
+      {
+       "w": "researchers",
+       "s": 27.773,
+       "e": 28.66
+      },
+      {
+       "w": "found",
+       "s": 28.66,
+       "e": 28.997
+      },
+      {
+       "w": "agent",
+       "s": 28.997,
+       "e": 29.335
+      },
+      {
+       "w": "traffic",
+       "s": 29.335,
+       "e": 29.81
+      },
+      {
+       "w": "on",
+       "s": 29.81,
+       "e": 29.997
+      },
+      {
+       "w": "fifty-five",
+       "s": 29.997,
+       "e": 30.535
+      },
+      {
+       "w": "websites",
+       "s": 30.535,
+       "e": 31.335
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "The SEC. The CDC. The Census Bureau.",
+     "start": 31.76,
+     "end": 35.235,
+     "words": [
+      {
+       "w": "The",
+       "s": 32.01,
+       "e": 32.135
+      },
+      {
+       "w": "SEC",
+       "s": 32.135,
+       "e": 32.785
+      },
+      {
+       "w": "The",
+       "s": 32.885,
+       "e": 33.01
+      },
+      {
+       "w": "CDC",
+       "s": 33.01,
+       "e": 33.685
+      },
+      {
+       "w": "The",
+       "s": 33.76,
+       "e": 33.898
+      },
+      {
+       "w": "Census",
+       "s": 33.898,
+       "e": 34.335
+      },
+      {
+       "w": "Bureau",
+       "s": 34.335,
+       "e": 34.96
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "shot": "storage",
+   "start": 35.655,
+   "end": 42.925,
+   "beats": [
+    {
+     "i": 0,
+     "text": "So OpenAI has warned more than a hundred organizations,",
+     "start": 35.655,
+     "end": 39.38,
+     "words": [
+      {
+       "w": "So",
+       "s": 35.905,
+       "e": 36.093
+      },
+      {
+       "w": "OpenAI",
+       "s": 36.093,
+       "e": 36.905
+      },
+      {
+       "w": "has",
+       "s": 36.905,
+       "e": 37.117
+      },
+      {
+       "w": "warned",
+       "s": 37.117,
+       "e": 37.48
+      },
+      {
+       "w": "more",
+       "s": 37.48,
+       "e": 37.668
+      },
+      {
+       "w": "than",
+       "s": 37.668,
+       "e": 37.767
+      },
+      {
+       "w": "a",
+       "s": 37.767,
+       "e": 37.83
+      },
+      {
+       "w": "hundred",
+       "s": 37.83,
+       "e": 38.142
+      },
+      {
+       "w": "organizations",
+       "s": 38.142,
+       "e": 39.155
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "and is combing through fifty petabytes of logs.",
+     "start": 39.58,
+     "end": 42.505,
+     "words": [
+      {
+       "w": "and",
+       "s": 39.83,
+       "e": 39.918
+      },
+      {
+       "w": "is",
+       "s": 39.918,
+       "e": 40.055
+      },
+      {
+       "w": "combing",
+       "s": 40.055,
+       "e": 40.405
+      },
+      {
+       "w": "through",
+       "s": 40.405,
+       "e": 40.667
+      },
+      {
+       "w": "fifty",
+       "s": 40.667,
+       "e": 41.005
+      },
+      {
+       "w": "petabytes",
+       "s": 41.005,
+       "e": 41.518
+      },
+      {
+       "w": "of",
+       "s": 41.518,
+       "e": 41.605
+      },
+      {
+       "w": "logs",
+       "s": 41.605,
+       "e": 42.255
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "shot": "control",
+   "start": 42.925,
+   "end": 49.27,
+   "beats": [
+    {
+     "i": 0,
+     "text": "Their explanation?",
+     "start": 42.925,
+     "end": 44.6,
+     "words": [
+      {
+       "w": "Their",
+       "s": 43.2,
+       "e": 43.313
+      },
+      {
+       "w": "explanation",
+       "s": 43.313,
+       "e": 44.35
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "Models used internet access in ways it did not anticipate.",
+     "start": 44.8,
+     "end": 48.85,
+     "words": [
+      {
+       "w": "Models",
+       "s": 45.075,
+       "e": 45.538
+      },
+      {
+       "w": "used",
+       "s": 45.538,
+       "e": 45.875
+      },
+      {
+       "w": "internet",
+       "s": 45.875,
+       "e": 46.225
+      },
+      {
+       "w": "access",
+       "s": 46.225,
+       "e": 46.975
+      },
+      {
+       "w": "in",
+       "s": 46.975,
+       "e": 47.125
+      },
+      {
+       "w": "ways",
+       "s": 47.125,
+       "e": 47.338
+      },
+      {
+       "w": "it",
+       "s": 47.338,
+       "e": 47.412
+      },
+      {
+       "w": "did",
+       "s": 47.412,
+       "e": 47.537
+      },
+      {
+       "w": "not",
+       "s": 47.537,
+       "e": 47.725
+      },
+      {
+       "w": "anticipate",
+       "s": 47.725,
+       "e": 48.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "shot": "gov",
+   "start": 49.27,
+   "end": 58.94,
+   "beats": [
+    {
+     "i": 0,
+     "text": "California's attorney general just subpoenaed them.",
+     "start": 49.27,
+     "end": 52.47,
+     "words": [
+      {
+       "w": "California's",
+       "s": 49.52,
+       "e": 50.245
+      },
+      {
+       "w": "attorney",
+       "s": 50.245,
+       "e": 50.595
+      },
+      {
+       "w": "general",
+       "s": 50.595,
+       "e": 51.107
+      },
+      {
+       "w": "just",
+       "s": 51.107,
+       "e": 51.345
+      },
+      {
+       "w": "subpoenaed",
+       "s": 51.345,
+       "e": 51.783
+      },
+      {
+       "w": "them",
+       "s": 51.783,
+       "e": 52.245
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "The FTC has opened a wider probe.",
+     "start": 52.67,
+     "end": 55.42,
+     "words": [
+      {
+       "w": "The",
+       "s": 52.895,
+       "e": 53.02
+      },
+      {
+       "w": "FTC",
+       "s": 53.02,
+       "e": 53.67
+      },
+      {
+       "w": "has",
+       "s": 53.67,
+       "e": 53.845
+      },
+      {
+       "w": "opened",
+       "s": 53.845,
+       "e": 54.132
+      },
+      {
+       "w": "a",
+       "s": 54.132,
+       "e": 54.232
+      },
+      {
+       "w": "wider",
+       "s": 54.232,
+       "e": 54.57
+      },
+      {
+       "w": "probe",
+       "s": 54.57,
+       "e": 55.17
+      }
+     ]
+    },
+    {
+     "i": 2,
+     "text": "And a fifteen-state coalition wants records.",
+     "start": 55.62,
+     "end": 58.52,
+     "words": [
+      {
+       "w": "And",
+       "s": 55.845,
+       "e": 55.958
+      },
+      {
+       "w": "a",
+       "s": 55.958,
+       "e": 56.032
+      },
+      {
+       "w": "fifteen-state",
+       "s": 56.032,
+       "e": 56.77
+      },
+      {
+       "w": "coalition",
+       "s": 56.77,
+       "e": 57.345
+      },
+      {
+       "w": "wants",
+       "s": 57.345,
+       "e": 57.595
+      },
+      {
+       "w": "records",
+       "s": 57.595,
+       "e": 58.295
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "shot": "phone",
+   "start": 58.94,
+   "end": 66.765,
+   "beats": [
+    {
+     "i": 0,
+     "text": "Same week, OpenAI launched an agent you can hand your email and payments.",
+     "start": 58.94,
+     "end": 63.415,
+     "words": [
+      {
+       "w": "Same",
+       "s": 59.215,
+       "e": 59.44
+      },
+      {
+       "w": "week",
+       "s": 59.44,
+       "e": 59.79
+      },
+      {
+       "w": "OpenAI",
+       "s": 59.865,
+       "e": 60.465
+      },
+      {
+       "w": "launched",
+       "s": 60.465,
+       "e": 60.803
+      },
+      {
+       "w": "an",
+       "s": 60.803,
+       "e": 60.928
+      },
+      {
+       "w": "agent",
+       "s": 60.928,
+       "e": 61.315
+      },
+      {
+       "w": "you",
+       "s": 61.315,
+       "e": 61.402
+      },
+      {
+       "w": "can",
+       "s": 61.402,
+       "e": 61.515
+      },
+      {
+       "w": "hand",
+       "s": 61.515,
+       "e": 61.752
+      },
+      {
+       "w": "your",
+       "s": 61.752,
+       "e": 61.89
+      },
+      {
+       "w": "email",
+       "s": 61.89,
+       "e": 62.34
+      },
+      {
+       "w": "and",
+       "s": 62.34,
+       "e": 62.465
+      },
+      {
+       "w": "payments",
+       "s": 62.465,
+       "e": 63.19
+      }
+     ]
+    },
+    {
+     "i": 1,
+     "text": "Would you?",
+     "start": 63.615,
+     "end": 64.965,
+     "words": [
+      {
+       "w": "Would",
+       "s": 63.965,
+       "e": 64.177
+      },
+      {
+       "w": "you",
+       "s": 64.177,
+       "e": 64.64
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

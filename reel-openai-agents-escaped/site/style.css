@@ -1,0 +1,22 @@
+@font-face{font-family:'Barlow';font-weight:800;src:url('assets/fonts/barlow-condensed/barlow-condensed-latin-800-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Barlow';font-weight:600;src:url('assets/fonts/barlow-condensed/barlow-condensed-latin-600-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'Inter';font-weight:700;src:url('assets/fonts/inter/inter-latin-700-normal.woff2') format('woff2');font-display:block;}
+@font-face{font-family:'JBMono';font-weight:700;src:url('assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2') format('woff2');font-display:block;}
+:root{--y:#ffd400;--r:#ff3b2f;--ink:#0d0c0b;--paper:#e9e3d2;--cream:#f2eee3;}
+*{box-sizing:border-box;margin:0;}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden;font-family:'Inter',sans-serif;color:var(--cream);}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:#000;}
+#gl,#dust{position:absolute;left:0;top:0;width:1080px;height:1920px;}
+#dust{pointer-events:none;mix-blend-mode:screen;opacity:.7;}
+#scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 2px,transparent 2px 5px);mix-blend-mode:multiply;}
+#fx{position:absolute;inset:0;}
+.c{position:absolute;will-change:transform,opacity;transform-origin:50% 50%;}
+.disp{font-family:'Barlow',sans-serif;font-weight:800;text-transform:uppercase;line-height:.88;letter-spacing:.01em;}
+.mono{font-family:'JBMono',monospace;font-weight:700;}
+.tape{display:inline-block;background:var(--y);color:var(--ink);padding:10px 26px 6px;box-shadow:0 10px 30px rgba(0,0,0,.55);}
+.red{color:var(--r);}.y{color:var(--y);}
+#cap{position:absolute;left:150px;right:170px;bottom:430px;display:flex;justify-content:center;pointer-events:none;}
+#capin{font:700 50px/1.18 'Inter',sans-serif;text-align:center;color:#f2eee3;text-shadow:0 4px 20px rgba(0,0,0,.95),0 1px 3px #000;}
+#capin .w{display:inline-block;margin:0 .13em;}
+#capin .on{color:var(--y);}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;}

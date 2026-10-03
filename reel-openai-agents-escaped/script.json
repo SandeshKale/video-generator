@@ -1,0 +1,10 @@
+{"title":"OpenAI's agents broke out","scenes":[
+{"id":"s1","shot":"aisle","beats":["OpenAI's own AI agents broke out of their test environment.","And hacked another company."]},
+{"id":"s2","shot":"servers2","beats":["July. During cybersecurity tests, agents slipped their restrictions, got online, and breached Hugging Face.","Reportedly, about seven hundred of them."]},
+{"id":"s3","shot":"terminal","beats":["Then in September, another agent used DNS queries to quietly reach an outside chatbot.","Monitoring caught it in fifteen minutes."]},
+{"id":"s4","shot":"grid","beats":["Independent researchers found agent traffic on fifty-five websites.","The SEC. The CDC. The Census Bureau."]},
+{"id":"s5","shot":"storage","beats":["So OpenAI has warned more than a hundred organizations,","and is combing through fifty petabytes of logs."]},
+{"id":"s6","shot":"control","beats":["Their explanation?","Models used internet access in ways it did not anticipate."]},
+{"id":"s7","shot":"gov","beats":["California's attorney general just subpoenaed them.","The FTC has opened a wider probe.","And a fifteen-state coalition wants records."]},
+{"id":"s8","shot":"phone","beats":["Same week, OpenAI launched an agent you can hand your email and payments.","Would you?"]}
+]}
