@@ -1,0 +1,5 @@
+[
+ {"id":"aisle","seed":301,"steps":7,"prompt":"long dark data center aisle seen from low angle, rows of server racks with thin red warning lights, one rack door slightly open, cold blue haze, no people, cinematic"},
+ {"id":"grid","seed":302,"steps":7,"prompt":"close-up of a dense patch panel with hundreds of network cables, amber and red status LEDs, shallow depth of field, dark, no people, cinematic"},
+ {"id":"control","seed":303,"steps":7,"prompt":"empty glass-walled security operations center at night, wall of dark monitors with faint red glow, rows of empty desks, no people, cinematic"}
+]
