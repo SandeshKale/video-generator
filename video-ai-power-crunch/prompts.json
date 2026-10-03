@@ -1,0 +1,6 @@
+[
+ {"id":"substation-night","seed":401,"steps":7,"prompt":"high voltage electrical substation at night, large transformers and lattice steel towers, sodium orange floodlights, light fog, no people, cinematic wide shot"},
+ {"id":"nuclear-plant","seed":402,"steps":7,"prompt":"nuclear power plant with a containment dome and a tall cooling tower at dusk by a bay, glowing orange sky, calm water reflection, no people, cinematic wide shot"},
+ {"id":"suburb-dusk","seed":403,"steps":7,"prompt":"quiet american suburban neighborhood at dusk with warm lit windows and distant power lines against a dark blue sky, no people, cinematic"},
+ {"id":"home-window-night","seed":404,"steps":7,"prompt":"dark living room at night seen from the inside, a lit lamp and a glowing window with city lights outside, cozy, no people, cinematic"}
+]
