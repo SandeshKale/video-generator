@@ -43,3 +43,5 @@ Full license text: https://openfontlicense.org
 
 Source packages: https://www.npmjs.com/package/@fontsource/poppins
                   https://www.npmjs.com/package/@fontsource/inter
+
+Barlow Condensed — Copyright The Barlow Project Authors (https://github.com/jpt/barlow), SIL OFL 1.1 (vendored from @fontsource/barlow-condensed).
