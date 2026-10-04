@@ -1,0 +1,5 @@
+[
+ {"id":"atlas-hero","seed":601,"steps":7,"prompt":"full-body humanoid robot with matte graphite and white panels standing upright in a bright modern car factory, soft overhead lighting, clean floor, no logos, no text, no people, studio-quality product photography"},
+ {"id":"robot-factory-line","seed":602,"steps":7,"prompt":"automotive assembly line with rows of white car bodies on conveyors and robotic arms, bright clean factory, depth, no people, no text, photorealistic"},
+ {"id":"robot-silhouette","seed":603,"steps":7,"prompt":"humanoid robot silhouette backlit standing in a dim empty factory hall with light rays through haze, graphite panels, no logos, no text, no people, cinematic"}
+]
