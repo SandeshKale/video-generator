@@ -35,6 +35,30 @@ function mk(sc) {
   return { walk, resolve };
 }
 
+function capChunks(sc) {
+  const out = [];
+  const spec = script.scenes.find((x) => x.id === sc.id);
+  sc.beats.forEach((b, bi) => {
+    const text = spec.beats[bi]; const toks = text.split(/\s+/);
+    const ws = b.words.length === toks.length ? b.words.map((w, i) => ({ ...w, w: toks[i] })) : b.words;
+    // sentence boundaries by token (token ends with . ? !)
+    const units = []; let cur = [];
+    ws.forEach((w, i) => { cur.push(w); if (/[.!?]$/.test(toks[i] || '') || i === ws.length - 1) { units.push(cur); cur = []; } });
+    // split overlong sentences at commas / midpoint
+    const parts = [];
+    for (const u of units) {
+      if (u.length <= 15) { parts.push(u); continue; }
+      let seg = [];
+      for (const w of u) { seg.push(w); if (seg.length >= 7 && /,$/.test(w.w) && u.length - parts.flat().length > 4) { parts.push(seg); seg = []; } }
+      if (seg.length) { if (seg.length > 15) { const m = Math.ceil(seg.length / 2); parts.push(seg.slice(0, m), seg.slice(m)); } else parts.push(seg); }
+    }
+    // merge short neighbours up to 14 words
+    const merged = [];
+    for (const p of parts) { const last = merged[merged.length - 1]; if (last && last.length + p.length <= 14) merged[merged.length - 1] = last.concat(p); else merged.push(p); }
+    for (const p of merged) out.push({ start: p[0].s, end: p[p.length - 1].e, words: p });
+  });
+  return out;
+}
 const scenes = T.scenes.map((sc) => {
   const spec = SCENES[sc.id];
   if (!spec) throw new Error('no spec for ' + sc.id);
@@ -45,7 +69,7 @@ const scenes = T.scenes.map((sc) => {
     else if (typeof L.t1 === 'string' && L.t1 !== 'end') r.t1 += 0;
     return r;
   });
-  return { id: sc.id, shot: sc.shot, start: sc.start, end: sc.end, move: spec.move ?? 0, dim: spec.dim, glitch: !!spec.glitch, beats: sc.beats.map((b, bi) => { const tx = script.scenes.find((x) => x.id === sc.id).beats[bi].split(/\s+/); const ws = b.words.length === tx.length ? b.words.map((w, i) => ({ ...w, w: tx[i] })) : b.words; return { start: b.start, end: b.end, words: ws }; }), layers };
+  return { id: sc.id, shot: sc.shot, start: sc.start, end: sc.end, move: spec.move ?? 0, dim: spec.dim, glitch: !!spec.glitch, beats: sc.beats.map((b, bi) => { const tx = script.scenes.find((x) => x.id === sc.id).beats[bi].split(/\s+/); const ws = b.words.length === tx.length ? b.words.map((w, i) => ({ ...w, w: tx[i] })) : b.words; return { start: b.start, end: b.end, words: ws }; }), caps: capChunks(sc), layers };
 });
 // scene overlap: the whip transition starts TR before `end`; keep layers ending with the scene.
 import { readFileSync as rf, existsSync } from 'node:fs';

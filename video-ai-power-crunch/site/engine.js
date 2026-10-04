@@ -30,7 +30,7 @@ var FS=[
 '  vec3 st=vec3(-.01,.03,.09), ht=vec3(.15,.07,-.03); col+=mix(st,ht,smoothstep(.15,.85,l))*.30;',
 '  col*=uDim*(1.+uPulse*.5);',
 '  float v=smoothstep(1.2,.3,length((uv-.5)*vec2(1.22,1.)));col*=mix(.50,1.,v);',
-'  col*=mix(.50,1.,smoothstep(0.,.36,uv.y));',
+'  col*=mix(.50,1.,smoothstep(0.,.36,uv.y)); col*=mix(.62,1.,smoothstep(0.,.16,1.-uv.y));',
 '  float g=hash(uv*vec2(1920.,1080.)+fract(uTime*7.31)*91.7)-.5; col+=g*.05;',
 '  col+=vec3(uFlash);',
 '  gl_FragColor=vec4(col,1.);}'
@@ -82,7 +82,7 @@ function drawDust(t){dc.clearRect(0,0,W,H);for(var i=0;i<N;i++){var m=MOTES[i];
 var capEl=document.getElementById('capin'), capKey='';
 function drawCaps(t){
   var cur=null;
-  for(var i=0;i<S.length&&!cur;i++){var bs=S[i].beats;for(var j=0;j<bs.length;j++){var b=bs[j];if(t>=b.start-.04&&t<=b.end+.28){cur=b;break;}}}
+  for(var i=0;i<S.length&&!cur;i++){var bs=S[i].caps||S[i].beats;for(var j=0;j<bs.length;j++){var b=bs[j];if(t>=b.start-.04&&t<=b.end+.28){cur=b;break;}}}
   var box=document.getElementById('cap');
   if(!cur){box.style.opacity=0;return;}
   var k=cur.start+'';
