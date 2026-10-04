@@ -22,7 +22,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper);fon
 .dot{position:absolute;width:22px;height:22px;border:3px solid var(--org);border-radius:50%;background:var(--paper);}
 .dot::after{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;background:var(--org);border-radius:50%;}
 #cap{position:absolute;left:150px;right:162px;bottom:455px;display:flex;justify-content:center;pointer-events:none;}
-#capin{background:rgba(16,17,20,.92);color:#f1ede4;border-radius:16px;padding:14px 28px 16px;font:700 46px/1.2 'Inter',sans-serif;text-align:center;}
+#capin{background:rgba(16,17,20,.92);color:#f1ede4;border-radius:16px;padding:14px 28px 16px;font:700 42px/1.2 'Inter',sans-serif;text-align:center;}
 #capin .w{display:inline-block;margin:0 .13em;}
 #capin .on{color:#ffb08f;}
 svg{overflow:visible;}

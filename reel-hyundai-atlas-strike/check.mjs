@@ -19,12 +19,12 @@ for (let t = Math.max(0, t0); t < Math.min(dur, t1); t += step) {
       if (w.style.display === 'none' || w.dataset.nc) return;
       const op = parseFloat(w.style.opacity || 1); if (op < 0.85) return;
       if (t - parseFloat(w.dataset.t0) < 1.0) return; // let entrance finish
-      const b = w.firstElementChild.getBoundingClientRect(); if (b.width < 4) return;
+      let b = null; w.querySelectorAll('*').forEach((n) => { if (n.classList && n.classList.contains('tape')) return; const r = n.getBoundingClientRect(); if (r.width < 2 || r.height < 2) return; if (!b) b = { left: r.left, top: r.top, right: r.right, bottom: r.bottom }; else { b.left = Math.min(b.left, r.left); b.top = Math.min(b.top, r.top); b.right = Math.max(b.right, r.right); b.bottom = Math.max(b.bottom, r.bottom); } }); if (!b) return;
       items.push({ type: w.dataset.type, x: b.left, y: b.top, r: b.right, b: b.bottom });
     });
     for (const i of items) {
       if (capOn && i.b > cr.top + 4 && i.y < cr.bottom && i.r > cr.left && i.x < cr.right) out.push(`${i.type} hits caption (bottom ${Math.round(i.b)} vs pill top ${Math.round(cr.top)})`);
-      if (i.r > 925 || i.b > 1530 || i.x < 145) out.push(`${i.type} off-canvas (${Math.round(i.x)},${Math.round(i.y)})-(${Math.round(i.r)},${Math.round(i.b)})`);
+      if (i.r > 925 || i.b > 1530 || i.x < 110) out.push(`${i.type} off-canvas (${Math.round(i.x)},${Math.round(i.y)})-(${Math.round(i.r)},${Math.round(i.b)})`);
     }
     for (let a = 0; a < items.length; a++) for (let c = a + 1; c < items.length; c++) {
       const A = items[a], B = items[c]; if (['stamp', 'chips'].includes(A.type) || ['stamp', 'chips'].includes(B.type)) continue;

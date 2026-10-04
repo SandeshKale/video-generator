@@ -47,14 +47,14 @@ function capChunks(sc) {
     // split overlong sentences at commas / midpoint
     const parts = [];
     for (const u of units) {
-      if (u.length <= 15) { parts.push(u); continue; }
+      if (u.length <= 12) { parts.push(u); continue; }
       let seg = [];
-      for (const w of u) { seg.push(w); if (seg.length >= 7 && /,$/.test(w.w) && u.length - parts.flat().length > 4) { parts.push(seg); seg = []; } }
-      if (seg.length) { if (seg.length > 15) { const m = Math.ceil(seg.length / 2); parts.push(seg.slice(0, m), seg.slice(m)); } else parts.push(seg); }
+      for (const w of u) { seg.push(w); if (seg.length >= 5 && /,$/.test(w.w) && u.length - parts.flat().length > 4) { parts.push(seg); seg = []; } }
+      if (seg.length) { if (seg.length > 12) { const m = Math.ceil(seg.length / 2); parts.push(seg.slice(0, m), seg.slice(m)); } else parts.push(seg); }
     }
     // merge short neighbours up to 14 words
     const merged = [];
-    for (const p of parts) { const last = merged[merged.length - 1]; if (last && last.length + p.length <= 14) merged[merged.length - 1] = last.concat(p); else merged.push(p); }
+    for (const p of parts) { const last = merged[merged.length - 1]; if (last && last.length + p.length <= 11) merged[merged.length - 1] = last.concat(p); else merged.push(p); }
     for (const p of merged) out.push({ start: p[0].s, end: p[p.length - 1].e, words: p });
   });
   return out;

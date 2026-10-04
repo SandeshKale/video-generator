@@ -44,25 +44,33 @@
  {
   "id": "car-bodies",
   "seed": 704,
-  "steps": 7,
-  "prompt": "rows of unfinished white car bodies hanging on an overhead conveyor in a factory, long perspective, no people, no text, photorealistic"
+  "steps": 5,
+  "prompt": "rows of unfinished white car bodies hanging on an overhead conveyor in a factory, long perspective, no people, no text, photorealistic",
+  "w": 576,
+  "h": 1024
  },
  {
   "id": "robot-hands",
   "seed": 705,
-  "steps": 7,
-  "prompt": "close-up of a robotic hand with five fingers holding a small metal car part, matte graphite finish, bright clean background, shallow depth of field, no logos, no text"
+  "steps": 5,
+  "prompt": "close-up of a robotic hand with five fingers holding a small metal car part, matte graphite finish, bright clean background, shallow depth of field, no logos, no text",
+  "w": 576,
+  "h": 1024
  },
  {
   "id": "handshake-table",
   "seed": 706,
-  "steps": 7,
-  "prompt": "long wooden conference table with stacked documents, pens and two empty chairs, window light, no people, no text, photorealistic"
+  "steps": 5,
+  "prompt": "long wooden conference table with stacked documents, pens and two empty chairs, window light, no people, no text, photorealistic",
+  "w": 576,
+  "h": 1024
  },
  {
   "id": "georgia-plant-night",
   "seed": 707,
-  "steps": 7,
-  "prompt": "large automobile factory complex at night with glowing windows and parking lot lights, blue hour sky, aerial view, no people, no text, photorealistic"
+  "steps": 5,
+  "prompt": "large automobile factory complex at night with glowing windows and parking lot lights, blue hour sky, aerial view, no people, no text, photorealistic",
+  "w": 576,
+  "h": 1024
  }
 ]

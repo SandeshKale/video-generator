@@ -41,7 +41,7 @@ T.head=function(L,P){
 T.count=function(L,P){
   var n=el('div','fr','','font-size:'+(P.size||120)+'px;color:'+C(P.c)+';white-space:nowrap');L.inner.appendChild(n);
   if(P.label)L.inner.appendChild(el('div','mono',P.label,'font-size:'+(P.ls||20)+'px;color:'+MUT+';letter-spacing:.06em;margin-top:6px'));
-  return function(t){var q=eo((t-L.t0-.05)/(P.dur||.9));n.textContent=(P.pre||'')+(P.raw?Math.round(lerp(P.from||0,P.val,q)):fmt(lerp(P.from||0,P.val,q),P.dec))+(P.suf||'');};
+  return function(t){var q=eo((t-L.t0-.05)/(P.dur||.9));n.style.whiteSpace='nowrap';n.textContent=(P.pre||'')+(P.raw?Math.round(lerp(P.from||0,P.val,q)):fmt(lerp(P.from||0,P.val,q),P.dec))+(P.suf||'');};
 };
 // ---- pinned photo print ----
 T.print=function(L,P){
@@ -68,7 +68,7 @@ T.callouts=function(L,P){
   var its=P.items.map(function(it,i){
     var pth=document.createElementNS(ns,'path');var kx=it.to[0]-20;pth.setAttribute('d','M'+it.dot[0]+' '+it.dot[1]+'H'+(kx-20)+'L'+kx+' '+(it.to[1]-30)+'H'+(it.to[0]+it.w));pth.setAttribute('stroke',ORG);pth.setAttribute('stroke-width',3);pth.setAttribute('fill','none');pth.setAttribute('pathLength',1);pth.setAttribute('stroke-dasharray',1);pth.setAttribute('stroke-dashoffset',1);svg.appendChild(pth);
     var d=el('div','dot','','left:'+(it.dot[0]-11)+'px;top:'+(it.dot[1]-11)+'px;opacity:0');L.inner.appendChild(d);
-    var box=el('div','','','position:absolute;left:'+it.to[0]+'px;top:'+(it.to[1]-120)+'px;opacity:0');var n=el('div','fr','','font-size:'+(it.size||104)+'px;color:'+C(it.c));box.appendChild(n);box.appendChild(el('div','mono',it.label,'font-size:19px;color:'+MUT+';letter-spacing:.04em'));L.inner.appendChild(box);
+    var box=el('div','','','position:absolute;left:'+it.to[0]+'px;top:'+(it.to[1]-120)+'px;opacity:0;white-space:nowrap');var n=el('div','fr','','font-size:'+(it.size||104)+'px;color:'+C(it.c));box.appendChild(n);box.appendChild(el('div','mono',it.label,'font-size:19px;color:'+MUT+';letter-spacing:.04em'));L.inner.appendChild(box);
     return {pth:pth,d:d,box:box,n:n,it:it,i:i};});
   return function(t){if(dl)dl.setAttribute('stroke-dashoffset',1-eo((t-L.t0-.1)/.7));
     its.forEach(function(o){var t0=T0(o.it,o.i,L,.5),u=t-t0;o.d.style.opacity=clamp(u/.1,0,1);o.pth.setAttribute('stroke-dashoffset',1-eo((u-.1)/.5));o.box.style.opacity=clamp((u-.3)/.15,0,1);
