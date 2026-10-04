@@ -36,11 +36,11 @@ const hdr = (n, r = 'REV A') => `<div class=top><span>SPEC SHEET Nº <b>${n}</b>
 const A = page(`${hdr('01')}
 <div class=fr style="position:absolute;left:150px;top:250px;font-size:128px;width:800px">They went<br>on strike.</div>
 <div class=fr style="position:absolute;left:150px;top:520px;font-size:128px;color:var(--org);font-style:italic;width:800px">Over a<br>robot.</div>
-<div class=print style="left:420px;top:790px;width:500px;height:640px;transform:rotate(3deg)"><div class=tape style="left:-30px;top:-14px"></div><div class=tape style="right:-30px;top:-10px;transform:rotate(9deg)"></div><div class=ph style="background-image:url(shots/atlas-hero.png)"></div><div class=cap>FIG. 1 · ATLAS (PRODUCTION)</div></div>
-<div class=stamp style="left:150px;top:880px">First of its kind</div>
-<div class="chip mono" style="position:absolute;left:150px;top:1060px">ULSAN · JULY 13–15</div>
-<div class="chip mono" style="position:absolute;left:150px;top:1130px;background:var(--ink);color:var(--paper)">~40,000 MEMBERS</div>
-<div class=dot style="left:735px;top:900px"></div><div style="position:absolute;left:560px;top:911px;width:175px;border-top:3px solid var(--org)"></div><div class=co style="left:420px;top:880px;color:var(--org)">ROBOT</div>
+<div class=print style="left:450px;top:800px;width:470px;height:540px;transform:rotate(3deg)"><div class=tape style="left:-30px;top:-14px"></div><div class=tape style="right:-30px;top:-10px;transform:rotate(9deg)"></div><div class=ph style="background-image:url(shots/atlas-hero.png)"></div><div class=cap>FIG. 1 · ATLAS (PRODUCTION)</div></div>
+<div class=stamp style="left:130px;top:1000px;z-index:5;font-size:40px">First of its kind</div>
+<div class="chip mono" style="position:absolute;left:150px;top:880px">ULSAN · JULY 13–15</div>
+<div class="chip mono" style="position:absolute;left:150px;top:950px;background:var(--ink);color:var(--paper)">~40,000 MEMBERS</div>
+<div class=dot style="left:735px;top:900px"></div><div style="position:absolute;left:555px;top:911px;width:180px;border-top:3px solid var(--org)"></div><div class=co style="left:500px;top:870px;color:var(--org);z-index:5">ROBOT</div>
 <div class=cap-pill><div>Workers at Hyundai just went on <b>strike.</b></div></div>`);
 
 // B: teardown
@@ -58,14 +58,14 @@ const B = page(`${hdr('02')}
 
 // C: price ladder
 const C = page(`${hdr('04')}
-<div class=fr style="position:absolute;left:150px;top:250px;font-size:92px;width:800px">What does one<br>cost? <span style="color:var(--org);font-style:italic">Nobody says.</span></div>
-<div class=mono style="position:absolute;left:150px;top:470px;font-size:21px;color:var(--mut)">NO OFFICIAL PRICE · ANALYST ESTIMATES</div>
-<div style="position:absolute;left:150px;top:540px;width:360px;height:500px;background:var(--cob);box-shadow:8px 8px 0 var(--ink)"><div class=fr style="color:#fff;font-size:76px;padding:24px 22px">$130–<br>140K</div><div class=mono style="color:#cfd8ff;padding:0 22px;font-size:19px;line-height:1.5">EARLY UNITS<br>(ANALYST EST.)</div></div>
+<div class=fr style="position:absolute;left:150px;top:250px;font-size:80px;width:640px">What does one<br>cost? <span style="color:var(--org);font-style:italic">Nobody says.</span></div>
+<div class=mono style="position:absolute;left:150px;top:505px;font-size:21px;color:var(--mut)">NO OFFICIAL PRICE · ANALYST ESTIMATES</div>
+<div style="position:absolute;left:150px;top:560px;width:360px;height:480px;background:var(--cob);box-shadow:8px 8px 0 var(--ink)"><div class=fr style="color:#fff;font-size:76px;padding:24px 22px">$130–<br>140K</div><div class=mono style="color:#cfd8ff;padding:0 22px;font-size:19px;line-height:1.5">EARLY UNITS<br>(ANALYST EST.)</div></div>
 <div style="position:absolute;left:560px;top:880px;width:358px;height:160px;background:var(--org);box-shadow:8px 8px 0 var(--ink)"><div class=fr style="color:#fff;font-size:76px;padding:20px 22px 0">~$30K</div><div class=mono style="color:#ffe2d6;padding:0 22px;font-size:19px">HYUNDAI'S TARGET</div></div>
 <svg style="position:absolute;left:0;top:0" width="1080" height="1920"><path d="M520 600C560 600 540 760 560 900" stroke="#101114" stroke-width="4" fill="none" stroke-dasharray="10 8"/><path d="M552 884l8 22 14-18" stroke="#101114" stroke-width="4" fill="none"/></svg>
 <div style="position:absolute;left:150px;top:1090px;width:768px"><div class=mono style="font-size:20px;margin-bottom:10px">…AFTER 50,000 ROBOTS BUILT</div><div style="height:34px;border:3px solid var(--ink);position:relative;background:#fff"><div style="position:absolute;left:0;top:0;bottom:0;width:6%;background:var(--org)"></div></div><div class=mono style="display:flex;justify-content:space-between;font-size:18px;margin-top:8px"><span>0</span><span>25,000</span><span>50,000</span></div></div>
 <div class=chip style="position:absolute;left:150px;top:1190px;font-size:20px">BOSTON DYNAMICS: PARTS COST −60 TO −80%</div>
-<div class=print style="left:690px;top:300px;width:230px;height:290px;transform:rotate(5deg);padding:8px 8px 30px"><div class=tape style="left:50px;top:-16px;width:90px;height:26px"></div><div class=ph style="background-image:url(shots/robot-factory-line.png)"></div></div>
+<div class=print style="left:640px;top:560px;width:270px;height:300px;transform:rotate(5deg);padding:8px 8px 30px"><div class=tape style="left:50px;top:-16px;width:90px;height:26px"></div><div class=ph style="background-image:url(shots/robot-factory-line.png)"></div></div>
 <div class=cap-pill><div>Analysts say about <b>a hundred and thirty thousand</b> dollars.</div></div>`);
 
 // D: settlement receipt
@@ -82,11 +82,11 @@ const D = page(`${hdr('09')}
 
 // E: CTA
 const E = page(`${hdr('11', 'END')}
-<div class=print style="left:560px;top:260px;width:360px;height:460px;transform:rotate(4deg)"><div class=tape style="left:100px;top:-14px"></div><div class=ph style="background-image:url(shots/robot-silhouette.png)"></div><div class=cap>FIG. 11 · NEXT SHIFT?</div></div>
+<div class=print style="left:560px;top:260px;width:360px;height:460px;transform:rotate(4deg)"><div class=tape style="left:100px;top:-14px"></div><div class=ph style="background-image:url(shots/atlas-hero.png)"></div><div class=cap>FIG. 11 · NEXT SHIFT?</div></div>
 <div class=fr style="position:absolute;left:150px;top:260px;font-size:84px;width:420px">Would you work next to one?</div>
-<div style="position:absolute;left:150px;top:560px;display:flex;gap:14px"><span class=chip style="background:var(--cob);color:#fff;border-color:var(--cob)">YES</span><span class=chip style="background:var(--org);color:#fff;border-color:var(--org)">NO</span></div>
-<div style="position:absolute;left:150px;top:800px;display:flex;align-items:center;gap:30px"><div style="width:230px;height:230px;border-radius:50%;padding:7px;background:conic-gradient(var(--cob),#9fb5ff,var(--org),var(--cob))"><img src="../reel-app/public/profile.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid var(--paper)"></div><div><div class=mono style="font-size:20px;color:var(--mut);letter-spacing:.14em">NEW BREAKDOWN EVERY WEEK</div><div class=fr style="font-size:62px;margin-top:8px">@sandesh<br>.explains</div></div></div>
-<div style="position:absolute;left:150px;top:1120px;display:inline-flex;align-items:center;gap:18px;background:var(--ink);color:var(--paper);padding:22px 52px;box-shadow:8px 8px 0 var(--cob)"><span class=fr style="font-size:52px;color:var(--paper)">FOLLOW</span><span style="font-size:48px">＋</span></div>
+<div style="position:absolute;left:150px;top:690px;display:flex;gap:14px"><span class=chip style="background:var(--cob);color:#fff;border-color:var(--cob)">YES</span><span class=chip style="background:var(--org);color:#fff;border-color:var(--org)">NO</span></div>
+<div style="position:absolute;left:150px;top:830px;display:flex;align-items:center;gap:30px"><div style="width:230px;height:230px;border-radius:50%;padding:7px;background:conic-gradient(var(--cob),#9fb5ff,var(--org),var(--cob))"><img src="../reel-app/public/profile.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid var(--paper)"></div><div><div class=mono style="font-size:20px;color:var(--mut);letter-spacing:.14em">NEW BREAKDOWN EVERY WEEK</div><div class=fr style="font-size:62px;margin-top:8px">@sandesh<br>.explains</div></div></div>
+<div style="position:absolute;left:150px;top:1130px;display:inline-flex;align-items:center;gap:18px;background:var(--ink);color:var(--paper);padding:22px 52px;box-shadow:8px 8px 0 var(--cob)"><span class=fr style="font-size:52px;color:var(--paper)">FOLLOW</span><span style="font-size:48px">＋</span></div>
 <div class=cap-pill><div>Follow for <b>what happens next.</b></div></div>`);
 
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });

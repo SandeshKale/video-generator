@@ -1,0 +1,37 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Fr';font-weight:900;src:url('../assets/fonts/fraunces/fraunces-latin-900-normal.woff2');}
+@font-face{font-family:'Fr';font-weight:900;font-style:italic;src:url('../assets/fonts/fraunces/fraunces-latin-900-italic.woff2');}
+@font-face{font-family:'Inter';font-weight:700;src:url('../assets/fonts/inter/inter-latin-700-normal.woff2');}
+@font-face{font-family:'JBMono';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');}
+:root{--paper:#f1ede4;--ink:#101114;--cob:#2f5cff;--org:#ff5a1f;--mut:#8a857a;}
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:Inter;color:var(--ink)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(16,17,20,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(16,17,20,.07) 1px,transparent 1px);background-size:54px 54px}
+.grid2{position:absolute;inset:0;background-image:linear-gradient(rgba(16,17,20,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(16,17,20,.05) 1px,transparent 1px);background-size:270px 270px;background-position:27px 27px;mix-blend-mode:multiply}
+.top{position:absolute;left:150px;right:162px;top:150px;display:flex;justify-content:space-between;font:700 22px JBMono;letter-spacing:.1em;color:var(--ink)}
+.top b{color:var(--cob)}
+.rule{position:absolute;left:150px;right:162px;top:192px;border-top:3px solid var(--ink)}
+.fr{font-family:Fr;font-weight:900;letter-spacing:-.03em;line-height:.94}
+.mono{font-family:JBMono;font-weight:700}
+.print{position:absolute;background:#fff;padding:14px 14px 46px;box-shadow:0 22px 40px rgba(16,17,20,.28),0 2px 0 rgba(16,17,20,.1)}
+.print .ph{width:100%;height:100%;background-size:cover;background-position:center;filter:contrast(1.05) saturate(.95)}
+.print .cap{position:absolute;left:14px;right:14px;bottom:12px;font:700 15px JBMono;letter-spacing:.1em;color:var(--mut)}
+.tape{position:absolute;width:120px;height:34px;background:rgba(255,220,120,.72);transform:rotate(-8deg);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.stamp{position:absolute;border:6px solid var(--org);color:var(--org);font:900 44px/1 Fr;letter-spacing:-.01em;padding:8px 20px;text-transform:uppercase;transform:rotate(-8deg);background:rgba(241,237,228,.6)}
+.chip{display:inline-block;font:700 22px JBMono;letter-spacing:.08em;padding:10px 18px;border:2.5px solid var(--ink);background:var(--paper)}
+.cap-pill{position:absolute;left:150px;right:162px;bottom:455px;display:flex;justify-content:center}
+.cap-pill div{background:rgba(16,17,20,.9);color:#f1ede4;border-radius:16px;padding:14px 28px 16px;font:700 46px/1.2 Inter;text-align:center}
+.cap-pill b{color:#ffb08f;font-weight:700}
+.co{position:absolute;font:700 20px JBMono;letter-spacing:.08em}
+.dot{position:absolute;width:22px;height:22px;border:3px solid var(--org);border-radius:50%;background:var(--paper)}
+.dot::after{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;background:var(--org);border-radius:50%}
+</style><body><div class=grid></div><div class=grid2></div><div class=top><span>SPEC SHEET Nº <b>04</b> · ATLAS × HYUNDAI</span><span>REV A</span></div><div class=rule></div>
+<div class=fr style="position:absolute;left:150px;top:250px;font-size:80px;width:640px">What does one<br>cost? <span style="color:var(--org);font-style:italic">Nobody says.</span></div>
+<div class=mono style="position:absolute;left:150px;top:505px;font-size:21px;color:var(--mut)">NO OFFICIAL PRICE · ANALYST ESTIMATES</div>
+<div style="position:absolute;left:150px;top:560px;width:360px;height:480px;background:var(--cob);box-shadow:8px 8px 0 var(--ink)"><div class=fr style="color:#fff;font-size:76px;padding:24px 22px">$130–<br>140K</div><div class=mono style="color:#cfd8ff;padding:0 22px;font-size:19px;line-height:1.5">EARLY UNITS<br>(ANALYST EST.)</div></div>
+<div style="position:absolute;left:560px;top:880px;width:358px;height:160px;background:var(--org);box-shadow:8px 8px 0 var(--ink)"><div class=fr style="color:#fff;font-size:76px;padding:20px 22px 0">~$30K</div><div class=mono style="color:#ffe2d6;padding:0 22px;font-size:19px">HYUNDAI'S TARGET</div></div>
+<svg style="position:absolute;left:0;top:0" width="1080" height="1920"><path d="M520 600C560 600 540 760 560 900" stroke="#101114" stroke-width="4" fill="none" stroke-dasharray="10 8"/><path d="M552 884l8 22 14-18" stroke="#101114" stroke-width="4" fill="none"/></svg>
+<div style="position:absolute;left:150px;top:1090px;width:768px"><div class=mono style="font-size:20px;margin-bottom:10px">…AFTER 50,000 ROBOTS BUILT</div><div style="height:34px;border:3px solid var(--ink);position:relative;background:#fff"><div style="position:absolute;left:0;top:0;bottom:0;width:6%;background:var(--org)"></div></div><div class=mono style="display:flex;justify-content:space-between;font-size:18px;margin-top:8px"><span>0</span><span>25,000</span><span>50,000</span></div></div>
+<div class=chip style="position:absolute;left:150px;top:1190px;font-size:20px">BOSTON DYNAMICS: PARTS COST −60 TO −80%</div>
+<div class=print style="left:640px;top:560px;width:270px;height:300px;transform:rotate(5deg);padding:8px 8px 30px"><div class=tape style="left:50px;top:-16px;width:90px;height:26px"></div><div class=ph style="background-image:url(shots/robot-factory-line.png)"></div></div>
+<div class=cap-pill><div>Analysts say about <b>a hundred and thirty thousand</b> dollars.</div></div></body>
