@@ -9,7 +9,7 @@ from kokoro import KPipeline
 ap = argparse.ArgumentParser(); ap.add_argument('--voice', default='am_michael'); ap.add_argument('--base', type=float, default=1.0)
 a = ap.parse_args()
 HERE = os.path.dirname(os.path.abspath(__file__)); SR = 24000
-LEAD, GAP_SCENE, TAIL = 0.5, 0.38, 3.2
+LEAD, GAP_SCENE, TAIL = 0.4, 0.3, 3.2
 script = json.load(open(os.path.join(HERE, 'script.json')))
 pipe = KPipeline(lang_code='a'); os.makedirs(os.path.join(HERE, 'audio', 'cache'), exist_ok=True)
 PUNCT = set('.,!?;:—-"\'')
