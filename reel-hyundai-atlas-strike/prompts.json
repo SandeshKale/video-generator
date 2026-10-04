@@ -1,5 +1,68 @@
 [
- {"id":"atlas-hero","seed":601,"steps":7,"prompt":"full-body humanoid robot with matte graphite and white panels standing upright in a bright modern car factory, soft overhead lighting, clean floor, no logos, no text, no people, studio-quality product photography"},
- {"id":"robot-factory-line","seed":602,"steps":7,"prompt":"automotive assembly line with rows of white car bodies on conveyors and robotic arms, bright clean factory, depth, no people, no text, photorealistic"},
- {"id":"robot-silhouette","seed":603,"steps":7,"prompt":"humanoid robot silhouette backlit standing in a dim empty factory hall with light rays through haze, graphite panels, no logos, no text, no people, cinematic"}
+ {
+  "id": "atlas-hero",
+  "seed": 601,
+  "steps": 7,
+  "prompt": "full-body humanoid robot with matte graphite and white panels standing upright in a bright modern car factory, soft overhead lighting, clean floor, no logos, no text, no people, studio-quality product photography"
+ },
+ {
+  "id": "robot-factory-line",
+  "seed": 602,
+  "steps": 7,
+  "prompt": "automotive assembly line with rows of white car bodies on conveyors and robotic arms, bright clean factory, depth, no people, no text, photorealistic"
+ },
+ {
+  "id": "robot-silhouette",
+  "seed": 603,
+  "steps": 7,
+  "prompt": "humanoid robot silhouette backlit standing in a dim empty factory hall with light rays through haze, graphite panels, no logos, no text, no people, cinematic"
+ },
+ {
+  "id": "atlas-closeup",
+  "seed": 700,
+  "steps": 7,
+  "prompt": "upper body close-up of a humanoid robot with matte graphite and white panels, visible joints and cables, bright studio lighting, shallow depth of field, no logos, no text, no people"
+ },
+ {
+  "id": "georgia-plant",
+  "seed": 701,
+  "steps": 7,
+  "prompt": "large modern automobile factory complex exterior with wide parking lots and green landscaping on a clear day, aerial three-quarter view, no people, no text, photorealistic"
+ },
+ {
+  "id": "factory-gate",
+  "seed": 702,
+  "steps": 7,
+  "prompt": "factory entrance gate with a security booth and flagpoles at dawn, soft haze, long shadows, empty, no people, no text, photorealistic"
+ },
+ {
+  "id": "empty-line",
+  "seed": 703,
+  "steps": 7,
+  "prompt": "empty automotive assembly line with idle workstations, tools hanging on racks and hard hats on a bench, bright overhead lights, no people, no text"
+ },
+ {
+  "id": "car-bodies",
+  "seed": 704,
+  "steps": 7,
+  "prompt": "rows of unfinished white car bodies hanging on an overhead conveyor in a factory, long perspective, no people, no text, photorealistic"
+ },
+ {
+  "id": "robot-hands",
+  "seed": 705,
+  "steps": 7,
+  "prompt": "close-up of a robotic hand with five fingers holding a small metal car part, matte graphite finish, bright clean background, shallow depth of field, no logos, no text"
+ },
+ {
+  "id": "handshake-table",
+  "seed": 706,
+  "steps": 7,
+  "prompt": "long wooden conference table with stacked documents, pens and two empty chairs, window light, no people, no text, photorealistic"
+ },
+ {
+  "id": "georgia-plant-night",
+  "seed": 707,
+  "steps": 7,
+  "prompt": "large automobile factory complex at night with glowing windows and parking lot lights, blue hour sky, aerial view, no people, no text, photorealistic"
+ }
 ]
