@@ -46,7 +46,7 @@ export const SCENES = {
   s06: { layers: [
     hud('06', 'DRAFT'),
     { type: 'doc', x: 150, y: 245, w: 768, title: 'BARGAINING DEMAND · DRAFT', clause: 'No humanoid robot enters a Korean factory without union approval.', size: 44, mh: 220, th: 'b1', dur: 2.6, t0: 'b0', fx: 'rise' },
-    { type: 'stamp', x: 700, y: 200, text: 'DEMAND', size: 46, c: 'org', rot: 8, t0: 'b1+2.8', fx: 'fade' },
+    { type: 'stamp', x: 640, y: 200, text: 'DEMAND', size: 46, c: 'org', rot: 8, t0: 'b1+2.8', fx: 'fade' },
     { type: 'quote', x: 150, y: 860, w: 768, size: 36, text: '…safeguards are in place before a single robot crosses the factory threshold.', who: 'BYUN JUN-HWAN · UNION LEADER', th: 'b1+1.0', dur: 2.2, t0: 'b1+0.8', fx: 'rise' },
     { type: 'chips', x: 150, y: 1180, items: [{ txt: 'REPORTEDLY A FIRST: CONSENT OVER HUMANOIDS', c: 'cob' }], size: 19, t0: 'b1+3.0', fx: 'fade' },
   ] },
@@ -68,15 +68,15 @@ export const SCENES = {
   s09: { layers: [
     hud('09', 'FINAL'),
     { type: 'receipt', x: 150, y: 240, w: 768, title: 'RECEIPT · HYUNDAI MOTOR × UNION · AUG 2026', rows: [{ k: 'BASE PAY', v: '+₩100,000 /mo', t: 'w1.0' }, { k: 'BONUS', v: '> 400% of monthly pay', t: 'w1.1' }, { k: 'RETIREMENT AGE', v: '60 → 65*', t: 'w1.2' }, { k: 'NEW TECHNICAL JOBS', v: '+500 in 2 yrs', hl: 1, t: 'w1.5' }, { k: 'ROBOT PLANS', v: 'shared with union', t: 'w1.14' }], foot: '*DEPENDS ON LEGAL CHANGES', vote: { label: 'UNION VOTE · AUG 31 · 31,166 BALLOTS', pct: 61.55, yes: '61.55% YES', no: '38.23% NO', t: 'e1-0.8' }, t0: 'b0', fx: 'rise' },
-    { type: 'stamp', x: 640, y: 205, text: 'Settled', size: 52, c: 'cob', rot: 10, t0: 'b0+0.8', fx: 'fade' },
+    { type: 'stamp', x: 600, y: 205, text: 'Settled', size: 52, c: 'cob', rot: 10, t0: 'b0+0.8', fx: 'fade' },
     { type: 'print', x: 150, y: 960, w: 400, h: 330, img: 'handshake-table', cap: 'AUG 25 · TENTATIVE DEAL', rot: -2, t0: 'b1+0.2', fx: 'drop' },
-    { type: 'chips', x: 600, y: 1000, col: 1, items: [{ txt: 'AUG 25 · TENTATIVE DEAL', t: 'b1+0.5' }, { txt: 'AUG 31 · RATIFIED', inv: 1, t: 'e1-0.6' }], size: 19, t0: 'b1+0.5', fx: 'fade' },
+    { type: 'chips', x: 580, y: 1000, col: 1, items: [{ txt: 'AUG 25 · TENTATIVE DEAL', t: 'b1+0.5' }, { txt: 'AUG 31 · RATIFIED', inv: 1, t: 'e1-0.6' }], size: 19, t0: 'b1+0.5', fx: 'fade' },
   ] },
   s10: { layers: [
     hud('10'),
     { type: 'split', x: 150, y: 245, w: 768, left: { icon: 'lock', h: 'KOREA', sub: 'NO ROBOT DEPLOYMENT\nANNOUNCED', c: 'org', t: 'b0+0.6' }, right: { icon: 'map-pin', h: 'GEORGIA', sub: 'NON-UNION PLANT\nFIRST IN LINE · 2028', c: 'cob', t: 'b1+0.3' }, t0: 'b0', fx: 'fade' },
     { type: 'print', x: 150, y: 740, w: 480, h: 540, img: 'georgia-plant-night', cap: 'SAVANNAH, GA · METAPLANT', rot: -2, t0: 'b1+0.5', fx: 'drop' },
-    { type: 'chips', x: 670, y: 780, col: 1, items: [{ txt: 'PARTS SEQUENCING', t: 'b1+1.2' }, { txt: 'THEN ASSEMBLY', inv: 1, t: 'b1+1.7' }, { txt: 'BY ~2030', c: 'org', t: 'b1+2.2' }], size: 20, t0: 'b1+1.2', fx: 'fade' },
+    { type: 'chips', x: 650, y: 780, col: 1, items: [{ txt: 'PARTS SEQUENCING', t: 'b1+1.2' }, { txt: 'THEN ASSEMBLY', inv: 1, t: 'b1+1.7' }, { txt: 'BY ~2030', c: 'org', t: 'b1+2.2' }], size: 20, t0: 'b1+1.2', fx: 'fade' },
   ] },
   s11: { layers: [
     hud('11', 'END'),
