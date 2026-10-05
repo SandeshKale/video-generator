@@ -37,7 +37,7 @@ T.hud=function(L,P){
   return function(t){var m=Math.floor(t/60),sec=Math.floor(t%60);clk.textContent='T+'+(m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;var x=150+768*clamp(t/window.DATA.total,0,1);prog.setAttribute('x2',x);dot.setAttribute('cx',x);};
 };
 T.head=function(L,P){
-  var ls=P.lines.map(function(ln){var d=el('div','sy',ln.txt,'font-size:'+(ln.size||90)+'px;color:'+C(ln.c||'ice')+';white-space:nowrap;'+(ln.mt?'margin-top:'+ln.mt+'px;':''));L.inner.appendChild(d);return {d:d,ln:ln};});
+  var ls=P.lines.map(function(ln){var d=el('div','sy',ln.txt,'font-size:'+Math.round((ln.size||90)*.82)+'px;color:'+C(ln.c||'ice')+';white-space:nowrap;'+(ln.mt?'margin-top:'+ln.mt+'px;':''));L.inner.appendChild(d);return {d:d,ln:ln};});
   return function(t){ls.forEach(function(o){var t0=o.ln.t!=null?o.ln.t:L.t0,u=t-t0,p=eo(u/.35);o.d.style.opacity=clamp(u/.08,0,1);o.d.style.transform='translateY('+lerp(46,0,p)+'px)';});};
 };
 T.eyebrow=function(L,P){var d=el('div','mono',P.txt,'font-size:24px;color:'+MAG+';white-space:nowrap');L.inner.appendChild(d);return function(t){var n=Math.floor(clamp((t-L.t0)/.6,0,1)*P.txt.length);d.textContent=P.txt.slice(0,n)+((t*2%1)<.5?'▌':'');};};
@@ -89,7 +89,7 @@ T.rail=function(L,P){
 };
 // ---- satellite schematic: 4 TPUs light up, 1 kW counter ----
 T.sat=function(L,P){
-  var s=sv(768,430);L.inner.appendChild(s);var g=se(s,'g',{transform:'rotate(-5 384 215)'});
+  var s=sv(768,430);s.style.transform='scale(.9)';L.inner.appendChild(s);var g=se(s,'g',{transform:'rotate(-5 384 215)'});
   [[0],[598]].forEach(function(a){var x=a[0];var r=se(g,'rect',{x:x,y:105,width:170,height:230,fill:'#16269a',stroke:'#9ab0ff','stroke-width':2});for(var i=1;i<6;i++)se(g,'line',{x1:x+i*28.3,y1:105,x2:x+i*28.3,y2:335,stroke:'#5b76ff','stroke-width':1.5});for(var j=1;j<4;j++)se(g,'line',{x1:x,y1:105+j*57.5,x2:x+170,y2:105+j*57.5,stroke:'#5b76ff','stroke-width':1.5});});
   se(g,'line',{x1:170,y1:220,x2:210,y2:220,stroke:'#9ab0ff','stroke-width':4});se(g,'line',{x1:558,y1:220,x2:598,y2:220,stroke:'#9ab0ff','stroke-width':4});
   se(g,'rect',{x:210,y:60,width:348,height:320,fill:'#140f45',stroke:MINT,'stroke-width':3});
@@ -101,8 +101,8 @@ T.sat=function(L,P){
 // ---- dawn-dusk sunlight diagram ----
 T.sundiag=function(L,P){
   var s=sv(768,520);L.inner.appendChild(s);var cx=384,cy=270;
-  var rays=[];for(var i=0;i<7;i++){rays.push(se(s,'line',{x1:0,y1:70+i*63,x2:300,y2:cy-150+i*50,stroke:'#ffd36e','stroke-width':3,'stroke-opacity':.7}));}
-  se(s,'circle',{cx:-20,cy:cy,r:70,fill:'#ffd36e'});
+  var rays=[];for(var i=0;i<7;i++){rays.push(se(s,'line',{x1:60,y1:70+i*63,x2:300,y2:cy-150+i*50,stroke:'#ffd36e','stroke-width':3,'stroke-opacity':.7}));}
+  se(s,'circle',{cx:40,cy:cy,r:56,fill:'#ffd36e'});
   se(s,'circle',{cx:cx+30,cy:cy,r:150,fill:'#0d1642',stroke:'#3a55c8','stroke-width':3});
   se(s,'path',{d:'M'+(cx+30)+' '+(cy-150)+'A150 150 0 0 1 '+(cx+30)+' '+(cy+150),fill:'#070b24'});
   se(s,'ellipse',{cx:cx+30,cy:cy,rx:40,ry:230,fill:'none',stroke:MINT,'stroke-width':2,'stroke-dasharray':'6 8'});
@@ -144,22 +144,22 @@ T.lattice=function(L,P){
   var cell=P.cell||60,N=9,s=sv(N*cell+80,N*cell+80);L.inner.appendChild(s);var dots=[];
   for(var r=0;r<N;r++)for(var c=0;c<N;c++){var d=se(s,'circle',{cx:40+c*cell,cy:40+r*cell,r:6,fill:(r*N+c)%7===0?MAG:MINT,opacity:0});dots.push(d);}
   var ring=se(s,'circle',{cx:40+4*cell,cy:40+4*cell,r:0,fill:'none',stroke:MAG,'stroke-width':2,'stroke-dasharray':'4 8'});
-  var cnt=el('div','sy','','position:absolute;right:0;top:-6px;font-size:70px;color:'+MINT);L.inner.appendChild(cnt);
+  var cnt=el('div','sy','','position:absolute;left:300px;top:-6px;font-size:60px;color:'+MINT);L.inner.appendChild(cnt);
   return function(t){var u=t-L.t0,p=eo((u-.1)/(P.dur||1.8)),n=Math.floor(p*81);cnt.textContent=n;dots.forEach(function(d,i){var on=i<n;d.setAttribute('opacity',on?(.75+.25*Math.sin(u*4+i)):0);d.setAttribute('r',on?6+1.2*Math.sin(u*5+i):6);});
-    ring.setAttribute('r',4.9*cell*eo((u-1.2)/.8));ring.setAttribute('transform','rotate('+(u*8)+' '+(40+4*cell)+' '+(40+4*cell)+')');};
+    ring.setAttribute('r',4.1*cell*eo((u-1.2)/.8));ring.setAttribute('stroke-dashoffset',-u*20);};
 };
 // ---- balance: launch cost vs Earth power bill ----
 T.balance=function(L,P){
   var s=sv(768,420);L.inner.appendChild(s);
   se(s,'polygon',{points:'384,380 344,400 424,400',fill:MINT});se(s,'line',{x1:384,y1:130,x2:384,y2:380,stroke:MINT,'stroke-width':6});
-  var beam=se(s,'g',{});se(beam,'line',{x1:90,y1:130,x2:678,y2:130,stroke:ICE,'stroke-width':8});
+  var beam=se(s,'g',{});se(beam,'line',{x1:120,y1:130,x2:648,y2:130,stroke:ICE,'stroke-width':8});
   function pan(x,col){var g=se(beam,'g',{});se(g,'line',{x1:x,y1:130,x2:x-60,y2:230,stroke:col,'stroke-width':3});se(g,'line',{x1:x,y1:130,x2:x+60,y2:230,stroke:col,'stroke-width':3});se(g,'rect',{x:x-84,y:230,width:168,height:16,fill:col});return g;}
-  var pl=pan(90,MAG),pr=pan(678,MINT);
-  var a=el('div','','','position:absolute;left:0;top:262px;width:200px;text-align:center');a.appendChild(el('div','sy','$200/kg','font-size:34px;color:'+MAG));a.appendChild(el('div','mono','LAUNCH COST','font-size:14px;color:'+DIM+';margin-top:6px'));L.inner.appendChild(a);
-  var b=el('div','','','position:absolute;left:578px;top:262px;width:200px;text-align:center');var bn=el('div','sy','','font-size:34px;color:'+MINT);b.appendChild(bn);b.appendChild(el('div','mono','PER kW-YEAR IN ORBIT','font-size:14px;color:'+DIM+';margin-top:6px'));L.inner.appendChild(b);
+  var pl=pan(120,MAG),pr=pan(648,MINT);
+  var a=el('div','','','position:absolute;left:20px;top:262px;width:200px;text-align:center');a.appendChild(el('div','sy','$200/kg','font-size:34px;color:'+MAG));a.appendChild(el('div','mono','LAUNCH COST','font-size:14px;color:'+DIM+';margin-top:6px'));L.inner.appendChild(a);
+  var b=el('div','','','position:absolute;left:548px;top:262px;width:200px;text-align:center');var bn=el('div','sy','','font-size:34px;color:'+MINT);b.appendChild(bn);b.appendChild(el('div','mono','PER kW-YEAR IN ORBIT','font-size:14px;color:'+DIM+';margin-top:6px'));L.inner.appendChild(b);
   var ce=el('div','mono','≈ WHAT US DATA CENTERS PAY FOR POWER','position:absolute;left:0;top:0;width:768px;text-align:center;font-size:19px;color:'+ICE+';opacity:0');L.inner.appendChild(ce);
-  return function(t){var u=t-L.t0,tilt=lerp(14,0,eo((u-.5)/1.3));beam.setAttribute('transform','rotate('+tilt+' 384 130)');
-    [pl,pr].forEach(function(g,i){g.setAttribute('transform','rotate('+(-tilt)+' '+(i?678:90)+' 130)');});
+  return function(t){var u=t-L.t0,tilt=lerp(9,0,eo((u-.5)/1.3));beam.setAttribute('transform','rotate('+tilt+' 384 130)');
+    [pl,pr].forEach(function(g,i){g.setAttribute('transform','rotate('+(-tilt)+' '+(i?648:120)+' 130)');});
     bn.textContent='~$'+fmt(810*eo((u-.6)/1.2));ce.style.opacity=clamp((u-1.9)/.3,0,1);};
 };
 // ---- heat radiates, fans useless ----
@@ -171,7 +171,7 @@ T.heat=function(L,P){
   var fan=el('div','',ICON('x',56,MAG),'position:absolute;left:40px;top:30px');L.inner.appendChild(fan);
   L.inner.appendChild(el('div','mono','NO AIR · NO FANS','position:absolute;left:112px;top:46px;font-size:24px;color:'+MAG));
   L.inner.appendChild(el('div','mono','HEAT ESCAPES ONLY AS GLOW','position:absolute;left:0;width:768px;text-align:center;top:392px;font-size:20px;color:'+ICE));
-  return function(t){var u=t-L.t0;rings.forEach(function(r,i){var q=((u*.55+i/4)%1);r.setAttribute('r',80+q*280);r.setAttribute('opacity',(1-q)*.7);});var g=.5+.5*Math.sin(u*4);chip.setAttribute('fill','rgb(255,'+Math.round(61+60*g)+','+Math.round(139-40*g)+')');};
+  return function(t){var u=t-L.t0;rings.forEach(function(r,i){var q=((u*.55+i/4)%1);r.setAttribute('r',80+q*125);r.setAttribute('opacity',(1-q)*.7);});var g=.5+.5*Math.sin(u*4);chip.setAttribute('fill','rgb(255,'+Math.round(61+60*g)+','+Math.round(139-40*g)+')');};
 };
 // ---- telemetry panel: pending readouts ----
 T.telem=function(L,P){
