@@ -97,7 +97,7 @@ export const SCENES = {
   s11: { layers: [
     hud('11'),
     { type: 'orbit', x: 0, y: 0, cx: 540, cy: 1000, rx: 470, ry: 190, rot: 14, sp: 0.8, t0: 'b0', fx: 'fade', nocheck: true },
-    H([{ txt: 'WOULD YOU', size: 62, t: 'b0' }, { txt: 'TRUST YOUR AI', size: 62, c: 'mint', t: 'b0+0.2' }, { txt: 'TO A SATELLITE?', size: 62, c: 'mag', t: 'b0+0.4' }], 255),
-    { type: 'cta', x: 150, y: 560, handle: '@sandesh.explains', t0: 'b1', fx: 'rise' },
+    H([{ txt: 'WOULD YOU', size: 74, t: 'b0' }, { txt: 'TRUST YOUR AI', size: 74, c: 'mint', t: 'b0+0.2' }, { txt: 'TO A SATELLITE?', size: 74, c: 'mag', t: 'b0+0.4' }], 255),
+    { type: 'cta', x: 150, y: 580, handle: '@sandesh.explains', t0: 'b0+1.4', fx: 'rise' },
   ] },
 };
