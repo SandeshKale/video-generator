@@ -1013,3 +1013,13 @@ Benchmark order of precedence: **each new reel must beat the previous reel in ev
 3. **Use far more foreground imagery, animation and components.** Every scene should layer: photoreal cut-outs/inset photos or screenshots-style panels, brand logos (`assets/logos`, nominative use), icons (tabler), characters/hands/devices where useful, animated charts/maps/flows, particles, and kinetic type — not one panel over a dim background. Target ≥4 distinct foreground elements per scene, with continuous motion (parallax inset photos, travelling lines, counters, tickers). Backgrounds must stay secondary.
 4. **Voice-over must be more nuanced and natural.** Kokoro `af_heart` reads flat/uniform. Next reel: (a) write the script for the ear (contractions, rhythm, emphasis, short punchy sentences, questions), (b) add SSML-like control via per-phrase speed/pauses and varied sentence splitting in `tts.py`, (c) evaluate better engines available offline (OmniVoice is cached in the HF hub dir; try its expressive/emotion controls, plus other Kokoro voices) with A/B takes of the hook line, and pick by listening to spectral/prosody variation, (d) add breaths/micro-pauses and slight pitch/speed variation on key numbers, (e) consider mixing in room tone. Don't ship the default flat read.
 5. **Always top the previous reel's benchmark** — see the log above; this list is cumulative.
+
+
+## Reel benchmark — `reel-google-suncatcher` ("Orbital Mission Plot")
+
+Latest vertical benchmark (96 s, 1080×1920@60, indigo/magenta/mint, Syne + Space Mono). What to keep and what to beat:
+- **Kept**: timeline DSL (`timeline.mjs` + `build.mjs`), sentence-level Kokoro `am_michael` voice, `check.mjs` layout lint (0 issues), 5 time slices via `render-slices.sh`, purpose-built `cover-build.mjs` cover, CTA with profile photo + @sandesh.explains + FOLLOW held ≥3 s.
+- **Photos are AI-generated** (RealVisXL) — every `photo` component carries a visible "AI IMAGE" tag and the caption says so. Never caption a generated image as if it were real footage.
+- **Image-gen speed**: ~11–15 min/img at 640×1152 on a cold host, ~3–4 min at ≤576 px with 5 steps. Generate small prints at small sizes from the start; kill+restart the generator to change sizes (it skips existing files).
+- **Pitfall**: Syne 800 is very wide — size headlines for ≤768 px (the lint catches overflows); a bad Python patch once wiped `mockup.mjs` (patch a copy / use git before scripted rewrites).
+- **Known headroom**: runtime 96 s (aim ≤80 by cutting script to ~170 words), mid-scene frames still sparse before layers enter (bring key layers in within ~1 s of scene start), no real footage/screens.
