@@ -1,0 +1,29 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Syne';font-weight:800;src:url('assets/fonts/syne/syne-latin-800-normal.woff2')}
+@font-face{font-family:'Syne';font-weight:700;src:url('assets/fonts/syne/syne-latin-700-normal.woff2')}
+@font-face{font-family:'SM';font-weight:700;src:url('assets/fonts/space-mono/space-mono-latin-700-normal.woff2')}
+@font-face{font-family:'SM';font-weight:400;src:url('assets/fonts/space-mono/space-mono-latin-400-normal.woff2')}
+@font-face{font-family:'Inter';font-weight:700;src:url('assets/fonts/inter/inter-latin-700-normal.woff2')}
+:root{--void:#0a0720;--mag:#ff3d8b;--mint:#5dffc8;--ice:#e9e4ff;--dim:#8d86c4;}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;overflow:hidden;background:var(--void);color:var(--ice);font-family:'Inter';position:relative}
+.sc{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 70% at 50% 100%,#2a0f4d 0%,#120a33 45%,#0a0720 80%)}
+.stars{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 140px,#cfc8ff,transparent),radial-gradient(2px 2px at 170px 70px,#fff,transparent),radial-gradient(1px 1px at 240px 200px,#ffd0e6,transparent);background-size:260px 230px;opacity:.7}
+.earth{position:absolute;left:-700px;width:2480px;height:2480px;border-radius:50%;top:1500px;background:radial-gradient(circle at 50% 0%,#1b2d6b 0%,#0d1642 35%,#070b24 70%);box-shadow:0 -6px 0 2px #ffb3d6,0 -18px 60px 10px rgba(255,61,139,.75),0 -60px 160px 40px rgba(93,255,200,.25)}
+.mono{font-family:'SM',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.syne{font-family:'Syne';font-weight:800;letter-spacing:-.035em;line-height:.95}
+.abs{position:absolute}
+.panel{position:absolute;border:2px solid rgba(93,255,200,.55);background:rgba(15,10,45,.72);}
+.panel::before,.panel::after{content:'';position:absolute;width:26px;height:26px;border:5px solid var(--mint)}
+.panel::before{left:-5px;top:-5px;border-right:0;border-bottom:0}.panel::after{right:-5px;bottom:-5px;border-left:0;border-top:0}
+.hud{position:absolute;left:150px;right:162px;top:150px;display:flex;justify-content:space-between;font-size:22px;color:var(--mint)}
+.cap{position:absolute;left:150px;right:162px;bottom:455px;display:flex;justify-content:center}
+.cap div{background:rgba(6,4,22,.92);border:1.5px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 28px 16px;font:700 42px/1.2 'Inter';text-align:center}
+.cap b{color:var(--mag)}
+.eye{font-size:24px;color:var(--mag)}
+.patch{position:absolute;width:150px;height:150px;border-radius:50%;border:4px dashed var(--mint);display:flex;align-items:center;justify-content:center;text-align:center;font-size:17px;line-height:1.3;color:var(--mint);background:rgba(10,7,32,.8)}
+</style><div class="sc"><div class="stars"></div><div class="earth"></div><div class="hud mono"><span>T+00:61</span><span>SUNCATCHER · 05/11</span></div>
+<div class="abs mono eye" style="left:150px;top:230px">// MVP SATELLITE · FRIDGE-SIZED</div>
+<div class="abs" style="left:300px;top:380px;width:480px;height:420px;border:2px solid var(--mint);background:linear-gradient(135deg,#1a1450,#0c0830);transform:rotate(-6deg)"><div class="abs" style="left:-160px;top:90px;width:150px;height:240px;background:repeating-linear-gradient(90deg,#2b4cff 0 18px,#0b1a66 18px 20px);border:2px solid #9ab0ff"></div><div class="abs" style="right:-160px;top:90px;width:150px;height:240px;background:repeating-linear-gradient(90deg,#2b4cff 0 18px,#0b1a66 18px 20px);border:2px solid #9ab0ff"></div><div class="abs mono" style="left:50px;top:60px;width:180px;height:140px;border:2px solid var(--mag);display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--mag);background:rgba(255,61,139,.1)">TPU 1</div><div class="abs mono" style="left:250px;top:60px;width:180px;height:140px;border:2px solid var(--mag);display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--mag);background:rgba(255,61,139,.1)">TPU 2</div><div class="abs mono" style="left:50px;top:230px;width:180px;height:140px;border:2px solid var(--mag);display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--mag);background:rgba(255,61,139,.1)">TPU 3</div><div class="abs mono" style="left:250px;top:230px;width:180px;height:140px;border:2px solid var(--mag);display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--mag);background:rgba(255,61,139,.1)">TPU 4</div></div>
+<div class="panel" style="left:150px;top:900px;width:420px;height:230px;padding:24px 30px"><div class="mono" style="font-size:20px;color:var(--dim)">POWER DRAW · SOLAR</div><div class="syne" style="font-size:60px;color:var(--mint)">≈1 kW</div></div>
+<div class="panel" style="left:590px;top:900px;width:328px;height:105px;padding:14px 20px"><div class="mono" style="font-size:16px;color:var(--dim)">ORBIT</div><div class="syne" style="font-size:22px">DAWN-DUSK LEO</div></div><div class="panel" style="left:590px;top:1025px;width:328px;height:105px;padding:14px 20px"><div class="mono" style="font-size:16px;color:var(--dim)">GOAL</div><div class="syne" style="font-size:20px;color:var(--mag)">SURVIVE LAUNCH + RADIATION</div></div><div class="abs mono" style="left:150px;width:768px;top:1190px;height:44px;border-top:2px solid var(--mag);border-bottom:2px solid var(--mag);overflow:hidden;white-space:nowrap;font-size:20px;line-height:40px;color:var(--ice)">◆ TRANSPORTER-18 ◆ 4 TPUs ◆ ~1 kW ◆ 650 km ◆ 81 SATS ◆ $200/KG ◆ TRANSPORTER-18 ◆ 4 TPUs</div><div class="cap"><div>Small on purpose. <b>It’s a test.</b></div></div></div>

@@ -1,0 +1,31 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:'Syne';font-weight:800;src:url('assets/fonts/syne/syne-latin-800-normal.woff2')}
+@font-face{font-family:'Syne';font-weight:700;src:url('assets/fonts/syne/syne-latin-700-normal.woff2')}
+@font-face{font-family:'SM';font-weight:700;src:url('assets/fonts/space-mono/space-mono-latin-700-normal.woff2')}
+@font-face{font-family:'SM';font-weight:400;src:url('assets/fonts/space-mono/space-mono-latin-400-normal.woff2')}
+@font-face{font-family:'Inter';font-weight:700;src:url('assets/fonts/inter/inter-latin-700-normal.woff2')}
+:root{--void:#0a0720;--mag:#ff3d8b;--mint:#5dffc8;--ice:#e9e4ff;--dim:#8d86c4;}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;overflow:hidden;background:var(--void);color:var(--ice);font-family:'Inter';position:relative}
+.sc{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 70% at 50% 100%,#2a0f4d 0%,#120a33 45%,#0a0720 80%)}
+.stars{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 140px,#cfc8ff,transparent),radial-gradient(2px 2px at 170px 70px,#fff,transparent),radial-gradient(1px 1px at 240px 200px,#ffd0e6,transparent);background-size:260px 230px;opacity:.7}
+.earth{position:absolute;left:-700px;width:2480px;height:2480px;border-radius:50%;top:1500px;background:radial-gradient(circle at 50% 0%,#1b2d6b 0%,#0d1642 35%,#070b24 70%);box-shadow:0 -6px 0 2px #ffb3d6,0 -18px 60px 10px rgba(255,61,139,.75),0 -60px 160px 40px rgba(93,255,200,.25)}
+.mono{font-family:'SM',monospace;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.syne{font-family:'Syne';font-weight:800;letter-spacing:-.035em;line-height:.95}
+.abs{position:absolute}
+.panel{position:absolute;border:2px solid rgba(93,255,200,.55);background:rgba(15,10,45,.72);}
+.panel::before,.panel::after{content:'';position:absolute;width:26px;height:26px;border:5px solid var(--mint)}
+.panel::before{left:-5px;top:-5px;border-right:0;border-bottom:0}.panel::after{right:-5px;bottom:-5px;border-left:0;border-top:0}
+.hud{position:absolute;left:150px;right:162px;top:150px;display:flex;justify-content:space-between;font-size:22px;color:var(--mint)}
+.cap{position:absolute;left:150px;right:162px;bottom:455px;display:flex;justify-content:center}
+.cap div{background:rgba(6,4,22,.92);border:1.5px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 28px 16px;font:700 42px/1.2 'Inter';text-align:center}
+.cap b{color:var(--mag)}
+.eye{font-size:24px;color:var(--mag)}
+.patch{position:absolute;width:150px;height:150px;border-radius:50%;border:4px dashed var(--mint);display:flex;align-items:center;justify-content:center;text-align:center;font-size:17px;line-height:1.3;color:var(--mint);background:rgba(10,7,32,.8)}
+</style><div class="sc"><div class="stars"></div><div class="earth"></div><div class="hud mono"><span>T+00:00</span><span>SUNCATCHER · 01/11</span></div><svg class="abs" style="left:0;top:0" width="1080" height="1920"><ellipse cx="540" cy="720" rx="420" ry="150" fill="none" stroke="#5dffc8" stroke-opacity=".5" stroke-width="2" stroke-dasharray="6 10" transform="rotate(-18 540 720)"/><ellipse cx="540" cy="720" rx="330" ry="110" fill="none" stroke="#ff3d8b" stroke-opacity=".5" stroke-width="2" transform="rotate(-18 540 720)"/><circle cx="858" cy="640" r="13" fill="#5dffc8"/><circle cx="858" cy="640" r="30" fill="none" stroke="#5dffc8" stroke-width="2"/></svg>
+<div class="abs mono eye" style="left:150px;top:230px">// 4 CHIPS · 1 ORBIT · LIVE</div>
+<div class="abs syne" style="left:150px;top:290px;width:780px;font-size:92px">GOOGLE<br>PUT AI<br><span style="color:var(--mag)">IN ORBIT.</span></div>
+<div class="panel" style="left:150px;top:900px;width:360px;height:170px;padding:22px 26px"><div class="mono" style="font-size:20px;color:var(--dim)">TPUs ABOARD</div><div class="syne" style="font-size:80px;color:var(--mint)">4</div></div>
+<div class="panel" style="left:540px;top:900px;width:378px;height:170px;padding:22px 26px"><div class="mono" style="font-size:20px;color:var(--dim)">LAUNCHED</div><div class="syne" style="font-size:56px;white-space:nowrap">OCT 1</div></div>
+<div class="patch" style="left:748px;top:790px;transform:rotate(8deg)">SPACEX<br>TRANSPORTER<br>-18</div>
+<div class="abs mono" style="left:150px;width:768px;top:1190px;height:44px;border-top:2px solid var(--mag);border-bottom:2px solid var(--mag);overflow:hidden;white-space:nowrap;font-size:20px;line-height:40px;color:var(--ice)">◆ TRANSPORTER-18 ◆ 4 TPUs ◆ ~1 kW ◆ 650 km ◆ 81 SATS ◆ $200/KG ◆ TRANSPORTER-18 ◆ 4 TPUs</div><div class="abs" style="left:150px;top:1170px;width:260px;height:140px;background:#e9e4ff;padding:10px 10px 36px;transform:rotate(-3deg);box-shadow:0 18px 40px rgba(0,0,0,.6)"><div style="width:100%;height:100%;background:linear-gradient(160deg,#3b2a7a,#ff3d8b 60%,#ffd0e6);display:flex;align-items:center;justify-content:center;font:700 16px SM,monospace;color:#0a0720">[ PHOTO ]</div><div class="mono" style="position:absolute;left:12px;bottom:8px;font-size:14px;color:#0a0720">VANDENBERG · OCT 1</div></div><div class="abs" style="left:450px;top:1180px;width:280px;height:130px;background:#e9e4ff;padding:10px 10px 36px;transform:rotate(2.5deg);box-shadow:0 18px 40px rgba(0,0,0,.6)"><div style="width:100%;height:100%;background:linear-gradient(160deg,#3b2a7a,#ff3d8b 60%,#ffd0e6);display:flex;align-items:center;justify-content:center;font:700 16px SM,monospace;color:#0a0720">[ PHOTO ]</div><div class="mono" style="position:absolute;left:12px;bottom:8px;font-size:14px;color:#0a0720">T-18 RIDESHARE</div></div><div class="abs" style="left:760px;top:1170px;width:158px;height:140px;background:#e9e4ff;padding:10px 10px 36px;transform:rotate(-2deg);box-shadow:0 18px 40px rgba(0,0,0,.6)"><div style="width:100%;height:100%;background:linear-gradient(160deg,#3b2a7a,#ff3d8b 60%,#ffd0e6);display:flex;align-items:center;justify-content:center;font:700 16px SM,monospace;color:#0a0720">[ PHOTO ]</div><div class="mono" style="position:absolute;left:12px;bottom:8px;font-size:14px;color:#0a0720">PLANET</div></div><div class="cap"><div>Real hardware. <b>Circling Earth</b> right now.</div></div></div>
