@@ -47,7 +47,7 @@ export const SCENES = {
     { type: 'photo', x: 150, y: 730, w: 380, h: 330, img: 'small-satellite', cap: 'THE SIZE OF A REFRIGERATOR', rot: -2, t0: 'b0+0.3', fx: 'drop' },
     { type: 'stat', x: 560, y: 730, w: 358, h: 150, label: 'TPUs', val: 4, raw: 1, size: 66, t0: 'b1+0.5', fx: 'rise' },
     { type: 'stat', x: 560, y: 905, w: 358, h: 150, label: 'ORBIT', val: 0, raw: 1, size: 28, t0: 'b1+1.0', fx: 'rise', _txt: 'DAWN-DUSK LEO' },
-    { type: 'tags', x: 150, y: 1100, items: [{ txt: 'GOAL: SURVIVE LAUNCH + SPACE', k: 'm', t: 'b2' }, { txt: 'NOT A DATA CENTER', t: 'b2+0.6' }], size: 19, t0: 'b2', fx: 'fade' },
+    { type: 'tags', x: 150, y: 1100, items: [{ txt: 'GOAL: SURVIVE LAUNCH + SPACE', k: 'm', t: 'b1+1.4' }, { txt: 'NOT A DATA CENTER', t: 'b1+2.0' }], size: 19, t0: 'b1+1.4', fx: 'fade' },
   ] },
   s06: { layers: [
     hud('06'),
@@ -82,8 +82,8 @@ export const SCENES = {
     eb('// THE HEAT PROBLEM'),
     H([{ txt: 'NO AIR.', size: 78, t: 'b0' }, { txt: 'NO FANS.', size: 78, c: 'mag', t: 'b1' }], 275),
     { type: 'heat', x: 150, y: 480, t0: 'b0+0.8', fx: 'fade' },
-    { type: 'tags', x: 150, y: 930, items: [{ txt: 'NOT A DATA CENTER YET', k: 'fm', t: 'b2+0.4' }], size: 22, t0: 'b2+0.4', fx: 'fade' },
-    { type: 'photo', x: 150, y: 1000, w: 768, h: 210, img: 'earth-limb', cap: 'A TEST OF WHETHER CHIPS SURVIVE', pos: '50% 45%', t0: 'b2', fx: 'iris' },
+    { type: 'tags', x: 150, y: 930, items: [{ txt: 'NOT A DATA CENTER YET', k: 'fm', t: 'b1+0.9' }], size: 22, t0: 'b1+0.9', fx: 'fade' },
+    { type: 'photo', x: 150, y: 1000, w: 768, h: 210, img: 'earth-limb', cap: 'A TEST OF WHETHER CHIPS SURVIVE', pos: '50% 45%', t0: 'b1', fx: 'iris' },
   ] },
   s10: { layers: [
     hud('10'),
