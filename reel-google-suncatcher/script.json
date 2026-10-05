@@ -1,0 +1,13 @@
+{"title":"Google put AI chips in orbit","scenes":[
+{"id":"s01","shot":"rocket-pad","beats":["Google just launched four AI chips into orbit.","Real hardware. Circling Earth right now."]},
+{"id":"s02","shot":"rocket-ascent","beats":["October first. A SpaceX rocket, out of California.","Sixty-one minutes after liftoff, the satellite was loose in orbit.","Google says it called home, and everything works."]},
+{"id":"s03","shot":"datacenter-aisle","beats":["Why bother? Because AI is running out of power.","The same week, Amazon locked up six hundred ninety megawatts of nuclear power. For twenty years."]},
+{"id":"s04","shot":"solar-array","beats":["Space has a trick.","In the right orbit, the sun almost never sets. So solar panels can run nearly nonstop."]},
+{"id":"s05","shot":"small-satellite","beats":["The satellite is the size of a refrigerator.","Four chips. About one kilowatt of solar power.","It's small on purpose. This is a test."]},
+{"id":"s06","shot":"beamline-lab","beats":["Before launch, Google blasted the chips with a proton beam, while they ran AI.","They survived more radiation than a five-year mission would deliver."]},
+{"id":"s07","shot":"sat-cluster","beats":["The real plan is bigger. Eighty-one satellites, in a one-kilometer cluster, six hundred fifty kilometers up.","Each just a hundred to two hundred meters apart. Working like one computer."]},
+{"id":"s08","shot":"launch-tower","beats":["Here's the math. Launch has to fall to about two hundred dollars a kilo.","Then a kilowatt in orbit costs roughly eight hundred ten dollars a year. About what Earth's data centers pay for power.","Google's guess: twenty thirty-five."]},
+{"id":"s09","shot":"earth-limb","beats":["The catch? There's no air in space.","Heat can only radiate away.","So this isn't a data center yet. It's a test of whether the chips even survive."]},
+{"id":"s10","shot":"tpu-board","beats":["Over the next weeks, Google collects data on radiation, heat and speed.","That decides if the other eighty go up."]},
+{"id":"s11","shot":"earth-limb","beats":["Would you trust your AI to a satellite?","Follow for what the data says."]}
+]}

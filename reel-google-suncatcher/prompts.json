@@ -1,0 +1,82 @@
+[
+ {
+  "id": "rocket-pad",
+  "seed": 801,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "white two-stage orbital rocket standing on a coastal launch pad at dawn, pink and orange sky, mist, floodlights, wide low angle, no text, no logos, no people"
+ },
+ {
+  "id": "rocket-ascent",
+  "seed": 802,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "orbital rocket climbing into a deep blue twilight sky with a bright exhaust plume and a long glowing trail, coastline below, no text, no logos, no people"
+ },
+ {
+  "id": "earth-limb",
+  "seed": 803,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "Earth horizon seen from low orbit at sunrise, thin glowing blue atmosphere, golden sun flare, black space with stars, no text, no logos, no people"
+ },
+ {
+  "id": "small-satellite",
+  "seed": 804,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "small boxy satellite with two dark blue solar panel wings floating in orbit above Earth, gold foil panels, sun glint, no text, no logos, no people"
+ },
+ {
+  "id": "tpu-board",
+  "seed": 805,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "macro close-up of an AI accelerator chip on a dark circuit board with heat spreader and glowing teal indicator lights, shallow depth of field, no text, no logos, no people"
+ },
+ {
+  "id": "datacenter-aisle",
+  "seed": 806,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "endless aisle of server racks in a data center with cool blue and magenta lights, perspective, reflective floor, no text, no logos, no people"
+ },
+ {
+  "id": "solar-array",
+  "seed": 807,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "giant solar panel array in orbit catching bright sunlight, lens flare, Earth curve below, black space, no text, no logos, no people"
+ },
+ {
+  "id": "sat-cluster",
+  "seed": 808,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "dozens of small satellites flying in a loose grid formation above Earth at sunrise, long perspective, glowing sun, no text, no logos, no people"
+ },
+ {
+  "id": "beamline-lab",
+  "seed": 809,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "particle accelerator beamline in a physics laboratory, metal pipes and shielding, a computer chip on a test mount, cool teal light, no text, no logos, no people"
+ },
+ {
+  "id": "launch-tower",
+  "seed": 810,
+  "steps": 6,
+  "w": 640,
+  "h": 1152,
+  "prompt": "giant stainless steel super heavy rocket on a launch tower at sunset, orange sky, wide shot, dramatic, no text, no logos, no people"
+ }
+]
