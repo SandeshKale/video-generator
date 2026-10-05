@@ -1,0 +1,6 @@
+audio/
+out/
+work/
+__pycache__/
+*.log
+shots/*.png
