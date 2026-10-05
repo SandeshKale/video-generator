@@ -52,7 +52,7 @@ T.stat=function(L,P){
 T.photo=function(L,P){
   var f=el('div','photo','','left:0;top:0;width:'+P.w+'px;height:'+P.h+'px;');
   var ph=el('div','ph','','background-image:url(shots/'+P.img+'.jpg);'+(P.pos?'background-position:'+P.pos+';':''));f.appendChild(ph);brackets(f);
-  if(P.cap)f.appendChild(el('div','cap mono',P.cap));L.inner.appendChild(f);
+  if(P.cap)f.appendChild(el('div','cap mono',P.cap));f.appendChild(el('div','mono','AI IMAGE','position:absolute;right:8px;top:8px;font-size:11px;letter-spacing:.1em;background:rgba(10,7,32,.82);color:#ffd0e6;padding:3px 7px;z-index:3'));L.inner.appendChild(f);
   return function(t){var u=t-L.t0;f.style.transform='rotate('+((P.rot||0)+.4*Math.sin(u*.9))+'deg)';ph.style.backgroundSize=(116+5*Math.min(u/6,1.2))+'%';ph.style.backgroundPosition=(P.pos||'50% 50%');};
 };
 T.tags=function(L,P){
