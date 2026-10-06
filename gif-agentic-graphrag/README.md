@@ -1,8 +1,8 @@
 # Agentic GraphRAG architecture GIF
 
-`agentic-graphrag.gif` — 1280×720, 22 s seamless loop, 12 fps (~11 MB). Pure function of `t` (`app.js`), rendered with
-`REEL_W=1280 REEL_H=720 REEL_FPS=12 node ../scripts/render.mjs . out/arch.mp4` then palette-optimised to GIF:
-`ffmpeg -i out/arch.mp4 -vf "fps=12,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle" arch.gif`
+`agentic-graphrag.gif` — 1600×900, 8 s seamless loop, 10 fps (~6 MB), fully-populated diagram with ambient flow + numbered connectors. Pure function of `t` (`app.js`), rendered with
+`REEL_W=1600 REEL_H=900 REEL_FPS=10 node ../scripts/render.mjs . out/arch.mp4` then palette-optimised to GIF:
+`ffmpeg -i out/arch.mp4 -vf "fps=10,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle" arch.gif`
 
 Gotcha: soft radial-gradient backgrounds band badly in GIF palettes — keep the background flat.
 
