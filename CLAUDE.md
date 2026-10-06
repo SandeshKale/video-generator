@@ -1033,3 +1033,11 @@ Built from the user's pointers: lower the 3-second skip rate, more natural voice
 - **Music**: `sfx.py` now composes five cues that switch by scene (urgent chip alert → briefing groove → suspense → reflective bells → bright outro) with 0.9 s crossfades, plus ~15 event-driven SFX (stamp+glitch, typing, download climb, swap, hop, buzz, rewind, jump, alarm, 1UP). Verified distinct tempo/brightness per cue with librosa. Reuse the cue system, change the genres per reel.
 - **Pitfalls**: `note(kind, m, dur, ...)` — don't name a duration `d` (collides with the ADSR decay kwarg). `ln -sfn` onto an existing dir makes a nested link. A scripted rewrite once wiped a file — commit first.
 - **Headroom**: only ~20 s of the scene content moves independently of the voice; consider more ambient motion (blinking cursor, idle sprites already) in sparse beats, and real footage if ever available.
+
+
+## Standing feedback (Oct 2026) — voice pace, fillers, GIF variety
+
+- **Voice pace**: the 52 s StarCraft reel (Kokoro base speed 1.3) was "too fast to understand". Use **base ≈ 1.05–1.12** (slightly slower, not slow); keep the hook sentence only a touch faster than the rest. Re-check word timestamps so the hook payoff still lands near 3 s by shortening the hook text, not by speeding it up.
+- **Fillers**: separate "um"/"uh" clips sounded unnatural. Don't insert synthetic fillers as separate clips; prefer natural phrasing, commas and short pauses (or at most one inline hesitation as part of the same take with an ellipsis). Don't regenerate shipped reels for this; apply it to new ones.
+- **Every new reel must top the benchmark set by previous reels** (see the benchmark sections above).
+- **GIFs**: every new GIF must differ from the previous GIF in **orientation (alternate horizontal/vertical), visual style, format/layout and palette**. Previous GIFs: `gif-agentic-graphrag` (horizontal 1600x900, dark forest-green + lime/sky/coral/amber, SVG blueprint flow diagram with numbered connectors).
