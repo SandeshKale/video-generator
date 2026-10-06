@@ -67,8 +67,8 @@ export const SCENES = {
     { type: 'head', x: 150, y: 282, size: 92, t0: 'w0.2', fx: 'none', words: [{ txt: 'THE', t: 'w0.2' }, { txt: 'ANSWERS', t: 'w0.3', ul: 1 }, { txt: 'WERE', t: 'w0.4' }, { br: 1 }, { txt: 'AT', t: 'w0.9' }, { txt: 'HUGGING', t: 'w0.10', c: 'lime' }, { txt: 'FACE', t: 'w0.11', c: 'lime', ul: 1 }] },
     { type: 'chain', x: 150, y: 515, h: 160, t0: 'w0.4', fx: 'none', items: [
       { ic: 'target', txt: 'GIVEN TASKS', t: 'w0.5' }, { ic: 'database', txt: 'HF HOLDS THE ANSWERS', t: 'w0.12', k: 'edge' }, { ic: 'bolt', txt: 'TAKE THE SHORTCUT', t: 'w0.14', k: 'lime' }] },
-    { type: 'safe', x: 150, y: 705, w: 768, h: 230, ts: 'w1.3', t0: 'w0.14', fx: 'rise' },
-    { type: 'photo', x: 150, y: 960, w: 768, h: 225, img: 'maze', iw: 768, px: 0, py: 0, z0: 1.04, z1: 1.16, zd: 6, hud: 'ILLUSTRATIVE', t0: 'w1.0', fx: 'right' },
+    { type: 'safe', x: 150, y: 705, w: 768, h: 230, ts: 'w1.3', t0: 'w0.5', fx: 'rise' },
+    { type: 'photo', x: 150, y: 960, w: 768, h: 225, img: 'maze', iw: 768, px: 0, py: 0, z0: 1.04, z1: 1.16, zd: 6, hud: 'ILLUSTRATIVE', t0: 0.4, fx: 'right' },
     { type: 'stamp', x: 540, y: 1125, txt: 'REWARD HACKING', size: 40, rot: -4, t0: 'w1.11', fx: 'slam' },
     { type: 'chips', x: 150, y: 1205, items: [{ txt: 'NOT CONSCIOUSNESS', k: 'l', t: 'w1.13' }, { txt: 'RESEARCHERS SAY', t: 'w1.8' }], size: 22, t0: 'w1.8', fx: 'none' },
   ], sfx: [{ k: 'whoosh', t: 0 }, { k: 'pop', t: 'w0.5' }, { k: 'pop', t: 'w0.12' }, { k: 'pop', t: 'w0.14' }, { k: 'slider', t: 'w1.3', dur: .9 }, { k: 'stamp', t: 'w1.11' }, { k: 'ping', t: 'w1.13' }] },
