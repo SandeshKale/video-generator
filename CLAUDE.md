@@ -1023,3 +1023,13 @@ Latest vertical benchmark (96 s, 1080×1920@60, indigo/magenta/mint, Syne + Spac
 - **Image-gen speed**: ~11–15 min/img at 640×1152 on a cold host, ~3–4 min at ≤576 px with 5 steps. Generate small prints at small sizes from the start; kill+restart the generator to change sizes (it skips existing files).
 - **Pitfall**: Syne 800 is very wide — size headlines for ≤768 px (the lint catches overflows); a bad Python patch once wiped `mockup.mjs` (patch a copy / use git before scripted rewrites).
 - **Known headroom**: runtime 96 s (aim ≤80 by cutting script to ~170 words), mid-scene frames still sparse before layers enter (bring key layers in within ~1 s of scene start), no real footage/screens.
+
+
+## Reel benchmark — `reel-ai-cheats-starcraft` ("Retro RTS Console", 52 s)
+
+Built from the user's pointers: lower the 3-second skip rate, more natural voice, varied music, proper SFX.
+- **3-second hook**: voice starts at 0.00 s (`LEAD=0`, leading silence trimmed in `tts.py`), frame 0 is already fully composed (stamp, arena, a terminal line typed), captions visible at t=0, no scene transition before 3 s, payoff (download bar fills, slot swap) lands by ~3.5 s.
+- **Voice**: sentence-level Kokoro `am_michael`, spoken fillers (`um,` / `uh,`) get their own slower/softer clips with small breaths (`synth_s` in `tts.py`); keep fillers out of the hook. `5.5` is spoken "5 5" — `build.mjs` `fixW` merges it back for captions.
+- **Music**: `sfx.py` now composes five cues that switch by scene (urgent chip alert → briefing groove → suspense → reflective bells → bright outro) with 0.9 s crossfades, plus ~15 event-driven SFX (stamp+glitch, typing, download climb, swap, hop, buzz, rewind, jump, alarm, 1UP). Verified distinct tempo/brightness per cue with librosa. Reuse the cue system, change the genres per reel.
+- **Pitfalls**: `note(kind, m, dur, ...)` — don't name a duration `d` (collides with the ADSR decay kwarg). `ln -sfn` onto an existing dir makes a nested link. A scripted rewrite once wiped a file — commit first.
+- **Headroom**: only ~20 s of the scene content moves independently of the voice; consider more ambient motion (blinking cursor, idle sprites already) in sparse beats, and real footage if ever available.
