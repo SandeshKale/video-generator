@@ -1,0 +1,7 @@
+[
+ {"id":"dc-aisle","seed":901,"steps":5,"w":576,"h":704,"prompt":"long aisle of server racks in a data center, cold blue light, blinking LEDs, symmetrical perspective, no people, no text"},
+ {"id":"cage-lock","seed":902,"steps":5,"w":576,"h":704,"prompt":"steel mesh server cage with a heavy padlocked door inside a dim data center, dramatic side light, no people, no text"},
+ {"id":"cables","seed":903,"steps":5,"w":576,"h":704,"prompt":"macro photo of tangled fiber optic and ethernet cables with glowing blue and green lights, shallow depth of field, no people, no text"},
+ {"id":"laptop-dark","seed":904,"steps":5,"w":576,"h":704,"prompt":"open laptop on a desk in a dark room, screen glow lighting the keyboard, blurred lines of code, shallow depth of field, no people, no text"},
+ {"id":"chip","seed":905,"steps":5,"w":576,"h":704,"prompt":"macro photo of a computer processor chip on a circuit board, metallic reflections, shallow depth of field, no people, no text"}
+]
