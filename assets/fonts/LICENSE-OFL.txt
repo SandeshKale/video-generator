@@ -47,3 +47,5 @@ Source packages: https://www.npmjs.com/package/@fontsource/poppins
 Barlow Condensed — Copyright The Barlow Project Authors (https://github.com/jpt/barlow), SIL OFL 1.1 (vendored from @fontsource/barlow-condensed).
 
 Syne (700, 800) and Space Mono (400, 700) — SIL Open Font License 1.1, via @fontsource.
+
+Press Start 2P (400) and VT323 (400) — SIL Open Font License 1.1, via @fontsource.
