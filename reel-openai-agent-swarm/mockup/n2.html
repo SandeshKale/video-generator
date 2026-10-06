@@ -1,0 +1,35 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:Anton;src:url(../../assets/fonts/anton/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../assets/fonts/inter/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(../../assets/fonts/inter/inter-latin-600-normal.woff2)}
+@font-face{font-family:JB;font-weight:700;src:url(../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2)}
+:root{--bl:#2338ff;--bl2:#1a2bd0;--navy:#0a1050;--lime:#c8ff2e;--ice:#eef1ff}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--bl);font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background:radial-gradient(circle,rgba(238,241,255,.22) 2.2px,transparent 2.8px) 0 0/36px 36px;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 55%,#000 100%)}
+.bg2{position:absolute;left:0;right:0;top:0;height:1920px;background:linear-gradient(90deg,transparent 0 149px,rgba(200,255,46,.35) 149px 151px,transparent 151px 917px,rgba(200,255,46,.35) 917px 919px,transparent 919px)}
+.ticker{position:absolute;left:0;right:0;top:140px;height:54px;background:var(--lime);color:var(--navy);font:700 24px JB;letter-spacing:.12em;white-space:nowrap;overflow:hidden;display:flex;align-items:center}
+.ticker span{padding-left:30px}
+.d{font-family:Anton;text-transform:uppercase;line-height:.92;letter-spacing:.005em;color:var(--ice)}
+.d i{font-style:normal;color:var(--lime)}
+.abs{position:absolute}
+.lab{font:700 22px JB;letter-spacing:.16em;text-transform:uppercase}
+.grid{position:absolute;overflow:hidden}.grid b{position:absolute;border:2px solid rgba(238,241,255,.55)}.grid b.on{background:var(--lime);border-color:var(--lime)}
+.panel{position:absolute;border:4px solid var(--ice)}
+.panel.fill{background:var(--navy);border-color:var(--navy)}
+.panel.lime{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.cap{position:absolute;left:150px;right:162px;top:1340px;height:150px;background:var(--navy);border:4px solid var(--lime);color:var(--ice);font:700 50px Inter;display:block;text-align:center;padding:26px 24px;line-height:1.2}
+.cap b{color:var(--lime)}
+.circ{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center}
+.q{font:700 30px JB;line-height:1.4}
+</style><body><div class="bg"></div><div class="bg2"></div><div class="ticker"><span>● JUL 11 ● 1,200 AGENTS ● 700 TOOK PART ● 17,600 ACTIONS ● &lt;13 HOURS ● PAUSED 2 WEEKS ● 100+ ORGS NOTIFIED ● JUL 11 ● 1,200 AGENTS ● 700 TOOK PART</span></div>
+<div class="abs lab" style="left:150px;top:230px;color:var(--lime)">02 / THE WEAK POINT</div>
+<div class="abs d" style="left:150px;top:276px;font-size:136px;width:780px">A <i>zero-day</i><br>in the package<br>proxy</div>
+<div class="circ" style="left:150px;top:830px;width:250px;height:250px;border:4px solid var(--ice);flex-direction:column"><div style="width:84px;color:var(--ice)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" /><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" /></svg></div><div class="lab" style="margin-top:8px;font-size:20px">SANDBOX</div></div>
+<div class="panel lime" style="left:430px;top:850px;width:210px;height:210px;transform:rotate(45deg)"></div>
+<div class="abs" style="left:430px;top:850px;width:210px;height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--navy)"><div style="width:76px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg></div><div class="lab" style="font-size:20px;margin-top:6px">PROXY</div></div>
+<div class="circ" style="left:668px;top:830px;width:250px;height:250px;background:var(--lime);color:var(--navy);flex-direction:column"><div style="width:84px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg></div><div class="lab" style="margin-top:8px;font-size:20px">OPEN WEB</div></div>
+<div class="abs" style="left:400px;top:952px;width:30px;height:6px;background:var(--ice)"></div>
+<div class="abs" style="left:640px;top:952px;width:28px;height:6px;background:var(--lime)"></div>
+<div class="panel fill" style="left:150px;top:1130px;width:768px;padding:24px 28px"><div class="q" style="color:var(--ice)">&gt; filtered connection</div><div class="q" style="color:var(--lime)">&gt; became open internet_</div></div>
+<div class="cap">They found a <b>zero-day</b> in it.</div></body>

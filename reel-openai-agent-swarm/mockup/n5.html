@@ -1,0 +1,32 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:Anton;src:url(../../assets/fonts/anton/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../assets/fonts/inter/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(../../assets/fonts/inter/inter-latin-600-normal.woff2)}
+@font-face{font-family:JB;font-weight:700;src:url(../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2)}
+:root{--bl:#2338ff;--bl2:#1a2bd0;--navy:#0a1050;--lime:#c8ff2e;--ice:#eef1ff}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--bl);font-family:Inter;color:var(--ice)}
+.bg{position:absolute;inset:0;background:radial-gradient(circle,rgba(238,241,255,.22) 2.2px,transparent 2.8px) 0 0/36px 36px;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 55%,#000 100%)}
+.bg2{position:absolute;left:0;right:0;top:0;height:1920px;background:linear-gradient(90deg,transparent 0 149px,rgba(200,255,46,.35) 149px 151px,transparent 151px 917px,rgba(200,255,46,.35) 917px 919px,transparent 919px)}
+.ticker{position:absolute;left:0;right:0;top:140px;height:54px;background:var(--lime);color:var(--navy);font:700 24px JB;letter-spacing:.12em;white-space:nowrap;overflow:hidden;display:flex;align-items:center}
+.ticker span{padding-left:30px}
+.d{font-family:Anton;text-transform:uppercase;line-height:.92;letter-spacing:.005em;color:var(--ice)}
+.d i{font-style:normal;color:var(--lime)}
+.abs{position:absolute}
+.lab{font:700 22px JB;letter-spacing:.16em;text-transform:uppercase}
+.grid{position:absolute;overflow:hidden}.grid b{position:absolute;border:2px solid rgba(238,241,255,.55)}.grid b.on{background:var(--lime);border-color:var(--lime)}
+.panel{position:absolute;border:4px solid var(--ice)}
+.panel.fill{background:var(--navy);border-color:var(--navy)}
+.panel.lime{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.cap{position:absolute;left:150px;right:162px;top:1340px;height:150px;background:var(--navy);border:4px solid var(--lime);color:var(--ice);font:700 50px Inter;display:block;text-align:center;padding:26px 24px;line-height:1.2}
+.cap b{color:var(--lime)}
+.circ{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center}
+.q{font:700 30px JB;line-height:1.4}
+</style><body><div class="bg"></div><div class="bg2"></div><div class="ticker"><span>● JUL 11 ● 1,200 AGENTS ● 700 TOOK PART ● 17,600 ACTIONS ● &lt;13 HOURS ● PAUSED 2 WEEKS ● 100+ ORGS NOTIFIED ● JUL 11 ● 1,200 AGENTS ● 700 TOOK PART</span></div>
+<div class="abs lab" style="left:150px;top:230px;color:var(--lime)">09 / WHO'S WATCHING</div>
+<div class="abs d" style="left:150px;top:276px;font-size:112px;width:780px">If agents can <i>organize</i> to break a rule, who's watching them?</div>
+<div class="panel fill" style="left:150px;top:900px;width:768px;height:330px;display:flex;align-items:center;gap:36px;padding:0 36px">
+ <img src="../../reel-app/public/profile.jpg" style="width:220px;height:220px;border-radius:50%;border:8px solid var(--lime);object-fit:cover">
+ <div><div class="d" style="font-size:64px">@sandesh<br>.explains</div><div style="margin-top:20px;display:inline-block;background:var(--lime);color:var(--navy);font:900 36px Inter;padding:10px 28px">FOLLOW →</div></div></div>
+<div class="abs lab" style="left:150px;top:1262px;font-size:19px;color:var(--lime)">THE NEXT AI STORY · DROPS SOON</div>
+<div class="cap"><b>Follow</b> for the next AI story.</div></body>
