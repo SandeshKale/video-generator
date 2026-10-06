@@ -1,7 +1,90 @@
 [
- {"id":"dc-aisle","seed":901,"steps":5,"w":576,"h":704,"prompt":"long aisle of server racks in a data center, cold blue light, blinking LEDs, symmetrical perspective, no people, no text"},
- {"id":"cage-lock","seed":902,"steps":5,"w":576,"h":704,"prompt":"steel mesh server cage with a heavy padlocked door inside a dim data center, dramatic side light, no people, no text"},
- {"id":"cables","seed":903,"steps":5,"w":576,"h":704,"prompt":"macro photo of tangled fiber optic and ethernet cables with glowing blue and green lights, shallow depth of field, no people, no text"},
- {"id":"laptop-dark","seed":904,"steps":5,"w":576,"h":704,"prompt":"open laptop on a desk in a dark room, screen glow lighting the keyboard, blurred lines of code, shallow depth of field, no people, no text"},
- {"id":"chip","seed":905,"steps":5,"w":576,"h":704,"prompt":"macro photo of a computer processor chip on a circuit board, metallic reflections, shallow depth of field, no people, no text"}
+ {
+  "id": "dc-aisle",
+  "seed": 901,
+  "steps": 5,
+  "w": 576,
+  "h": 704,
+  "prompt": "long aisle of server racks in a data center, cold blue light, blinking LEDs, symmetrical perspective, no people, no text"
+ },
+ {
+  "id": "cage-lock",
+  "seed": 902,
+  "steps": 5,
+  "w": 576,
+  "h": 704,
+  "prompt": "steel mesh server cage with a heavy padlocked door inside a dim data center, dramatic side light, no people, no text"
+ },
+ {
+  "id": "cables",
+  "seed": 903,
+  "steps": 5,
+  "w": 576,
+  "h": 704,
+  "prompt": "macro photo of tangled fiber optic and ethernet cables with glowing blue and green lights, shallow depth of field, no people, no text"
+ },
+ {
+  "id": "laptop-dark",
+  "seed": 904,
+  "steps": 5,
+  "w": 576,
+  "h": 704,
+  "prompt": "open laptop on a desk in a dark room, screen glow lighting the keyboard, blurred lines of code, shallow depth of field, no people, no text"
+ },
+ {
+  "id": "chip",
+  "seed": 905,
+  "steps": 5,
+  "w": 576,
+  "h": 704,
+  "prompt": "macro photo of a computer processor chip on a circuit board, metallic reflections, shallow depth of field, no people, no text"
+ },
+ {
+  "id": "cage-bright",
+  "seed": 950,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "server cage with a closed padlocked mesh door inside a bright cold-lit data center, white and blue light, sharp focus, no people, no text"
+ },
+ {
+  "id": "alarm-room",
+  "seed": 951,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "data center aisle lit by red emergency alarm lights, server racks, moody, dramatic perspective, no people, no text"
+ },
+ {
+  "id": "control-room",
+  "seed": 952,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "dark monitoring control room with a wall of screens showing dashboards and graphs, blue glow, empty chairs, no people, no text"
+ },
+ {
+  "id": "maze",
+  "seed": 953,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "overhead view of a stone maze with one glowing lime-green path leading out through a gap in the wall, no people, no text"
+ },
+ {
+  "id": "stop-button",
+  "seed": 954,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "close-up of a large red emergency stop button on an industrial control panel, shallow depth of field, no people, no text"
+ },
+ {
+  "id": "sandbox-glass",
+  "seed": 955,
+  "steps": 5,
+  "w": 704,
+  "h": 384,
+  "prompt": "glass-walled server cube in a dark lab, cables running out of it, cold light, no people, no text"
+ }
 ]

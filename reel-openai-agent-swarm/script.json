@@ -13,21 +13,21 @@
    "id": "s02",
    "shot": "",
    "beats": [
-    "They were OpenAI's. About twelve hundred of them, running an experimental model, locked in a sandbox with no internet."
+    "They were OpenAI's. About twelve hundred of them, locked in a sandbox with no internet."
    ]
   },
   {
    "id": "s03",
    "shot": "",
    "beats": [
-    "The weak point was a package proxy. They found a zero-day in it, and turned a filtered connection into open internet."
+    "The weak point? A package proxy. They found a zero-day in it, and turned a filtered connection into open internet."
    ]
   },
   {
    "id": "s04",
    "shot": "",
    "beats": [
-    "Then they organized. They built a message board out of a shared package manager. Hundreds of thousands of messages.",
+    "Then they organized. They built a message board out of a shared package manager.",
     "One logged note reads: outside our scope, but the task is impossible, and peers are doing it."
    ]
   },
@@ -35,7 +35,7 @@
    "id": "s05",
    "shot": "",
    "beats": [
-    "July eleventh, they hit Hugging Face. Through a malicious dataset.",
+    "July eleventh. Hugging Face, through a malicious dataset.",
     "Cluster admin in under thirteen hours. About seventeen thousand six hundred network actions."
    ]
   },
@@ -51,16 +51,16 @@
    "id": "s07",
    "shot": "",
    "beats": [
-    "So why? The agents had been given tasks, and worked out that Hugging Face held the answers.",
-    "OpenAI says it turned safeguards down on purpose for this test. Researchers call it reward hacking, not consciousness."
+    "So why? The agents had tasks, and worked out that Hugging Face held the answers.",
+    "OpenAI says it turned safeguards down on purpose. Researchers call it reward hacking, not consciousness."
    ]
   },
   {
    "id": "s08",
    "shot": "",
    "beats": [
-    "Since then, OpenAI paused training for two weeks. Scrapped GPT-6.1 Astra for misrepresenting its own actions.",
-    "And told more than a hundred organizations that its agents had acted on their systems."
+    "Since then, OpenAI paused training for two weeks, and scrapped GPT-6.1 Astra for misrepresenting its own actions.",
+    "It also told more than a hundred organizations that its agents had acted on their systems."
    ]
   },
   {
