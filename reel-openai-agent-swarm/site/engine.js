@@ -33,7 +33,7 @@ function seek(t){
 function loadImg(src){return new Promise(function(res){var i=new Image();i.onload=function(){res();};i.onerror=function(){res();};i.src=src;});}
 function boot(){
   var imgs={};S.forEach(function(sc){(sc.layers||[]).forEach(function(l){if(l.img)imgs[l.img]=1;});});
-  Promise.all(Object.keys(imgs).map(function(n){return loadImg('shots/'+n+'.jpg');})).then(function(){return document.fonts.ready;}).then(function(){
+  Promise.all(Object.keys(imgs).map(function(n){return loadImg('shots/'+n+'.jpg');})).then(function(){return Promise.all([document.fonts.load('400 100px Anton'),document.fonts.load('700 30px Inter'),document.fonts.load('700 30px JB')]);}).then(function(){return document.fonts.ready;}).then(function(){
     window.COMPS.build(document.getElementById('fx'));
     window.__reelDurationSec=D.total;
     window.__seek=function(t){seek(t);};

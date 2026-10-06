@@ -77,7 +77,7 @@ for (const n of ['lock','world','package','target','database','bolt']) {
 const missing = new Set();
 for (const sc of scenes) for (const l of sc.layers) if (l.img && !existsSync(new URL(`./shots/${l.img}.png`, import.meta.url))) missing.add(l.img);
 if (missing.size) console.log('MISSING IMAGES:', [...missing].join(', '));
-const oai = rf(new URL('../assets/logos/gilbarbara/openai-icon.svg', import.meta.url), 'utf8').replace(/<\?xml[^>]*>/, '').replace(/<svg [^>]*>/, '<svg viewBox="0 0 256 260" fill="currentColor" width="34">').replace(/<title>.*?<\/title>/, '');
+const oai = rf(new URL('../assets/logos/gilbarbara/openai-icon.svg', import.meta.url), 'utf8').replace(/<\?xml[^>]*>/, '').replace(/<svg [^>]*>/, '<svg viewBox="0 0 256 260" fill="currentColor" width="34">').replace(/<title>.*?<\/title>/, '').replace(/ fill="[^"]*"/g, '').replace(/<svg /, '<svg fill="currentColor" ');
 const data = { total: T.total, scenes, icons, oai };
 writeFileSync(new URL('./site/data.js', import.meta.url), 'window.DATA=' + JSON.stringify(data) + ';\n');
 writeFileSync(new URL('./events.json', import.meta.url), JSON.stringify(scenes.map((s) => ({ id: s.id, start: s.start, end: s.end, layers: s.layers.map((l) => ({ type: l.type, t0: l.t0, t1: l.t1 })), sfx: s.sfx }))));
