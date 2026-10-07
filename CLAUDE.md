@@ -620,7 +620,7 @@ the story is about, not the narrative move the scene makes).
 pattern** (asset reuse, hero-graphic composition ideas, house-style
 carryover rules, rendering snippet, and a pre-ship checklist) — invoke it
 whenever a reel needs a cover. The summary below is kept for context but
-the skill is the authoritative, up-to-date version.
+the skill is the authoritative, up-to-date version. **Grid-first rules (3:4 crop, view-count badge, ≤5 words, series layer) now override the older lockup — read them before designing any cover.**
 
 A reel's Instagram cover/thumbnail should be a **purpose-built design**,
 not a screenshot pulled from the middle of the reel. A frame grab was

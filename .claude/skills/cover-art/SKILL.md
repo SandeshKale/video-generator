@@ -12,6 +12,53 @@ the video. This was explicit, repeated feedback in this repo's history
 cover should follow. Produce the cover only once the reel's design and
 script are finalized (it reuses the reel's finished palette/fonts/assets).
 
+> **READ FIRST — grid-first rules below supersede the "standard content lockup" further down.**
+> Learned from a real profile-grid screenshot (Oct 2026): the lockup below put the title near y≈1100–1500,
+> a subtitle + mono tags under it, and the profile/handle footer at y≈1640–1770. On the live grid all of that
+> was cropped, covered by the view-count badge, or too small to read, and nine covers in nine unrelated
+> palettes read as noise, not a channel. See "Grid-first cover rules".
+
+## Grid-first cover rules (added after the profile-grid review)
+
+**The viewer meets the cover as a ~308×410 px tile (≈110×146 px on smaller phones), not a 1080×1920 poster.**
+
+1. **Design inside the 3:4 grid crop first.** Since Jan 2025 the grid shows a centered **1080×1440** window
+   (`y 240 → 1680` of the 1080×1920 cover; 240 px lost top and bottom). Anything outside it (the profile/handle
+   footer, eyebrow lines, top HUD) is invisible on the grid. Check the full 9:16 afterwards for the reel/feed view.
+2. **Keep key content in `y 420–1500`, `x 90–990`.** On top of the crop the grid draws a play icon (top-right,
+   ≈x>900, y<380 in cover coords) and a **view-count badge bottom-left (≈x<520, y>1530)**; the screenshot showed
+   it sitting directly on the subtitles of several covers. Put nothing readable in those two corners.
+   (Some guides say the grid has no overlays or is still square; the screenshot is the ground truth.)
+3. **One focal object + a 2–4 word title, nothing else.** ≤5 words total on the cover. Drop subtitles, mono
+   tags, step summaries and eyebrows — at tile scale they are 5–8 px smears. If it needs a second sentence, it
+   belongs in the caption.
+4. **Title size is set by the tile, not the canvas.** Minimum ≈ 160 px cap height on the 1080 canvas (≈45 px on a
+   308 px tile); weight 700+; condensed heavy faces (Anton-class) beat wide ones. Put a solid block or strong scrim
+   behind it. Squint test: downscale to 110×146 and it must still read.
+5. **Curiosity gap with a number or a tension, not a label.** "700 AI AGENTS ESCAPED" beats "AI AGENT SECURITY".
+   Name the stake/result; leave the "how" for the video.
+6. **Series layer + episode layer (resolves "every reel has its own identity" vs. a coherent grid).** The *reel*
+   keeps its own palette/background/components. The *cover* shares a constant series layer across every cover:
+   (a) the same title typeface, size band and position; (b) one fixed brand accent used only for the key word and a
+   small badge (e.g. acid-lime `#c8ff2e`); (c) the same corner badge (episode no. or logo) in the same safe spot;
+   (d) the same creator mark (face chip, inside the crop, bottom-right, clear of the view badge). The hero art and
+   background tint come from the reel.
+7. **Luminance contrast against the app.** Most covers so far were near-black on a dark-mode grid and merged into
+   the UI. Prefer mid/bright backgrounds or a bright hero against dark; check the 3×3 grid mock for a tile that
+   "pops" rather than recedes.
+8. **Face or object, never a diagram.** The strongest covers use one large concrete subject (a face, a product, a
+   rocket, a padlock). Fine-line diagrams, orbits and charts disappear at tile size.
+
+**Tooling to build (not built yet):** `grid-preview.mjs` — composite the last 9 `cover.png`s into a 3-column phone
+grid at 308×410 with the play icon + view-count badge drawn, plus a DOM lint over `cover.html`: min text height at
+tile scale, bounding boxes outside the safe window, overlap with the two corner exclusion boxes, and a
+contrast-ratio check for title vs. its backing. Run it before shipping any cover; the cover cannot be changed
+after posting.
+
+Sources: Hopper HQ "Instagram Reel Size in 2026" (3:4 grid, 240 px crop), Krumzi and Edgar Reels-cover guides
+(≤5 words, bold, contrast, consistent templates, face-forward), Oktopost grid-size guide, plus the user's own
+profile-grid screenshot.
+
 ## The pattern
 
 Write a small standalone `cover-build.mjs` next to that reel's `build.mjs`.
