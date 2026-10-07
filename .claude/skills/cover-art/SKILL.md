@@ -51,8 +51,9 @@ script are finalized (it reuses the reel's finished palette/fonts/assets).
 8. **Face or object, never a diagram.** The strongest covers use one large concrete subject (a face, a product, a
    rocket, a padlock). Fine-line diagrams, orbits and charts disappear at tile size.
 
-**Tooling to build (not built yet):** `grid-preview.mjs` — composite the last 9 `cover.png`s into a 3-column phone
-grid at 308×410 with the play icon + view-count badge drawn, plus a DOM lint over `cover.html`: min text height at
+**Tooling:** `bun scripts/grid-preview.mjs out.png cover1.png cover2.png …` is built — it composites covers into a
+3-column phone-grid mock at 308×410 (plus `out-small.png` at 110×146) with the play icon + view-count badge drawn;
+**run it with the neighbouring covers before shipping**. Still to build: a DOM lint over `cover.html`: min text height at
 tile scale, bounding boxes outside the safe window, overlap with the two corner exclusion boxes, and a
 contrast-ratio check for title vs. its backing. Run it before shipping any cover; the cover cannot be changed
 after posting.
@@ -199,6 +200,7 @@ is simpler for a new reel.)
       and legible at a glance — this image has to work as a scroll-stopping
       thumbnail, not just as a nice full-size render.
 
-Reference implementation: `reel-openai-loop-method/cover-build.mjs` (and
+Grid-first reference implementation: `reel-openai-agent-swarm/cover-build.mjs` (cobalt/lime, giant "700", 2 title words,
+face chip bottom-right). Older reference (pre-grid-rules, don't copy its lockup): `reel-openai-loop-method/cover-build.mjs` (and
 its output `reel-openai-loop-method/cover.png`) — read it end to end
 before writing a new reel's cover script.
