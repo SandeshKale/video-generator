@@ -1,10 +1,4 @@
-// Cover v2 — grid-first rules (.claude/skills/cover-art/SKILL.md). Accent = this reel's own paper/ink/orange/cobalt spec-sheet system.
-// Designed inside the 1080x1440 grid window (y 240-1680); key content y 420-1500; top-right + bottom-left corners clear.
-import { readFileSync } from 'node:fs';
-import { writeFile } from 'node:fs/promises';
-import { chromium } from 'playwright';
-const robot = (() => { const s = readFileSync('../assets/icons/tabler/robot.svg', 'utf8'); return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${[...s.matchAll(/<(path|circle|rect|line)[^>]*>/g)].map((m) => m[0]).filter((p) => !/M0 0h24v24H0z/.test(p)).join('')}</svg>`; })();
-const html = `<!doctype html><meta charset=utf8><style>
+<!doctype html><meta charset=utf8><style>
 @font-face{font-family:'Fr';font-weight:900;src:url('../assets/fonts/fraunces/fraunces-latin-900-normal.woff2');font-display:block}
 @font-face{font-family:'JB';font-weight:700;src:url('../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');font-display:block}
 @font-face{font-family:'Fr';font-weight:900;font-style:italic;src:url('../assets/fonts/fraunces/fraunces-latin-900-italic.woff2');font-display:block}
@@ -21,13 +15,8 @@ const html = `<!doctype html><meta charset=utf8><style>
 .t2{position:absolute;left:90px;top:1390px;font:900 112px/1 Fr;color:var(--paper);letter-spacing:-.035em;white-space:nowrap}
 .face{position:absolute;left:775px;top:1462px;width:210px;height:210px;border-radius:50%;object-fit:cover;border:10px solid var(--org);box-shadow:0 0 0 8px var(--ink)}
 </style><body><div class=g></div>
-<div class=badge>${robot}</div>
+<div class=badge><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" /><path d="M12 2v2" /><path d="M9 12v9" /><path d="M15 12v9" /><path d="M5 16l4 -2" /><path d="M15 14l4 2" /><path d="M9 18h6" /><path d="M10 8v.01" /><path d="M14 8v.01" /></svg></div>
 <div class=print><div class=tape style="left:-40px;top:-18px;transform:rotate(-10deg)"></div><div class=tape style="right:-40px;top:-14px;transform:rotate(9deg)"></div><div class=ph></div><div class=cap>AI-GENERATED IMAGE</div></div>
 <div class=tb></div><div class=t1>Strike</div><div class=t2>over a robot</div>
 <img class=face src="../reel-app/public/profile.jpg">
-</body>`;
-await writeFile('cover.html', html);
-const b = await chromium.launch();
-const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
-await p.goto('file://' + process.cwd() + '/cover.html'); await p.waitForTimeout(600);
-await p.screenshot({ path: 'cover.png' }); await b.close(); console.log('cover.png');
+</body>
