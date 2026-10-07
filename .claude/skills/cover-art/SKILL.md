@@ -37,12 +37,14 @@ script are finalized (it reuses the reel's finished palette/fonts/assets).
    behind it. Squint test: downscale to 110×146 and it must still read.
 5. **Curiosity gap with a number or a tension, not a label.** "700 AI AGENTS ESCAPED" beats "AI AGENT SECURITY".
    Name the stake/result; leave the "how" for the video.
-6. **Series layer + episode layer (resolves "every reel has its own identity" vs. a coherent grid).** The *reel*
-   keeps its own palette/background/components. The *cover* shares a constant series layer across every cover:
-   (a) the same title typeface, size band and position; (b) one fixed brand accent used only for the key word and a
-   small badge (e.g. acid-lime `#c8ff2e`); (c) the same corner badge (episode no. or logo) in the same safe spot;
-   (d) the same creator mark (face chip, inside the crop, bottom-right, clear of the view badge). The hero art and
-   background tint come from the reel.
+6. **Constant structure, variable accent (user decision: NO fixed brand accent).** The cover's accent colour,
+   background and hero art always come from *that reel's own* visual system — a cover must look cut from its reel,
+   and the grid gets its variety from that. What stays constant across covers is structure only, so the grid still
+   scans as one channel: (a) the title block's position and size band (one or two lines, same left/centre
+   alignment, same vertical zone), (b) a heavy, condensed, high-legibility title face (the reel's own display font
+   is fine if it is bold and narrow; swap it if not), (c) the same small corner badge slot (episode no. or mark) in
+   the same safe spot, (d) the creator face chip, inside the crop, bottom-right, clear of the view badge. Do not
+   reuse a previous cover's accent just for "consistency".
 7. **Luminance contrast against the app.** Most covers so far were near-black on a dark-mode grid and merged into
    the UI. Prefer mid/bright backgrounds or a bright hero against dark; check the 3×3 grid mock for a tile that
    "pops" rather than recedes.
