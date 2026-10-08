@@ -1066,3 +1066,12 @@ email text, a chips row past the safe zone) even though `check.mjs` printed "0 i
    scale transforms must not make neighbours collide). Re-run 1–3 after **every** fix and after any re-render of a slice.
 5. State in the delivery message what was validated and the result; if anything was knowingly left, say so explicitly.
 Reminder: when a lint is "clean" but a human sees overlap, fix the lint first (add the missing check), then the reel.
+
+## Reel benchmark — `reel-ai-chat-not-diary` ("Glass Diary by Lamplight", 75 s)
+
+Latest vertical benchmark (Oct 2026): umber night + amber lamplight + ice-glass panels + wax-seal crimson; Sora 800 + Fraunces italic (diary ink) + Inter + JetBrains Mono. Sensitive-news handling is part of the benchmark:
+- **Unnamed private individual, "alleged / charged, not convicted" language throughout, redaction bars instead of the threat text, balanced closing question.** The script discloses that the story involves the model's own maker and stays strictly on attributed reporting; every figure has a tier (A multi-outlet / B single outlet / C not to say) in `script.md`.
+- **Mid-scene density fix:** key layers arrive in the first 0.3–0.7 s of each scene (heads/shells independent of the voice), so no frame is blank while waiting for a word; voice-synced items (stamps, rows) land on their words.
+- **Pitfalls hit:** `el(tag,cls,html,st)` argument order silently dropped icons (extra arg ignored); layer `t1` is the layer's *end* time (don't reuse it as a component param); `hl` can't be both a head-word flag and a time key; `text-shadow` on the head swallowed the gradient accent (set `text-shadow:none` on `.hl`); transforms applied before an entrance starts inflate bounding boxes in the validators (apply only when `u>=0`); `pkill -f render` kills your own shell — kill PIDs.
+- **Validated:** `visual-validate.mjs` 0 findings, `check.mjs` 0 issues, contact sheets at full size and ~360 px, 25 final-video frames incl. all transitions.
+- **Headroom:** no photography or real footage (abstract glass/diary objects only), still ~6 distinct component families; next reel should try a bright/light palette (the dark lamp look is now used here and in earlier covers).
