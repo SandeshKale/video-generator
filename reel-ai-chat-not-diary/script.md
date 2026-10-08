@@ -1,6 +1,6 @@
 # Reel script — "Your AI chat isn't a diary" (draft v1, 2026-10-08)
 
-Format 9:16, 1080×1920@60, ~72 s, Kokoro `am_adam` base ≈1.1, no filler clips, hook payoff by ~3 s.
+Format 9:16, 1080×1920@60, ~70 s, Kokoro `am_adam` base ≈1.1, no filler clips, hook payoff by ~3 s.
 **Disclosure for the user:** the story involves Anthropic (the maker of Claude, the model that wrote this script). The script therefore sticks to reported facts, attributes every claim, never defends or attacks either side, and does not name the private individual.
 
 ## Why this topic
@@ -10,17 +10,17 @@ Format 9:16, 1080×1920@60, ~72 s, Kokoro `am_adam` base ≈1.1, no filler clips
 - **Share trigger:** "send this to anyone who vents to a chatbot."
 - Handled sensitively: it is about *what the policy and process are*, with the individual unnamed, "charged, not convicted", and a balanced closing question.
 
-## Voice-over (≈195 words)
+## Voice-over (≈190 words)
 1. She used an AI chatbot like a diary. Then deputies showed up at her door.
-2. Here's what's reported. On September twenty-sixth, a Florida woman allegedly wrote that she'd "shoot up" a sheriff's office. The next day, a message allegedly mentioned a new gun.
-3. Anthropic says it monitors chats for threatening content. Serious flags can go to a human reviewer. Here, the team decided to report it to police.
-4. September thirtieth: a felony charge, for a written threat of a mass shooting under Florida law. Arraignment is set for November second. It's an allegation, not a conviction.
-5. Is this the first time? No. Reports say at least two other chats reached police since August. San Antonio, a man arrested. San Francisco, no charges.
-6. And it's not just one company. OpenAI has said chats about harming others can go to human reviewers, and imminent threats may go to police.
+2. Here's what's reported. September twenty-sixth, a Florida woman allegedly wrote she'd "shoot up" a sheriff's office. The next day, a message allegedly mentioned a new gun.
+3. Anthropic says it monitors chats for threatening content. Serious flags can reach a human reviewer. Here, the team reported it to police.
+4. September thirtieth: a felony charge for a written mass-shooting threat. Arraignment is November second. An allegation, not a conviction.
+5. First time? No. Reports say at least two other chats reached police since August. San Antonio, a man arrested. San Francisco, no charges.
+6. Not just one company. OpenAI has said chats about harming others can go to human reviewers, and imminent threats may go to police.
 7. Anthropic's privacy policy, effective September tenth, allows disclosure when it believes that's reasonably necessary to prevent serious harm.
-8. Look closer at its transparency report: zero emergency requests from police in late twenty twenty-five. But it doesn't count reports the company makes on its own.
-9. The sheriff's line: what you share with AI is "never truly anonymous." What we don't know: how often chats get flagged, or the exact messages.
-10. So: a chatbot isn't a diary. Does that make you safer, or watched? Tell me below. Follow for the next AI story.
+8. Its transparency report shows zero emergency requests from police in late twenty twenty-five. But it doesn't count reports the company makes on its own.
+9. The sheriff says what you share with AI is "never truly anonymous." What we don't know: how often chats get flagged.
+10. So, a chatbot isn't a diary. Safer, or watched? Tell me below. Follow for the next AI story.
 
 ## Fact table (confidence tiers)
 **A — reported by several outlets (Tom's Hardware, Slashdot citing court records, Yahoo, Futurism citing WINK News, Business Today)**
