@@ -96,7 +96,7 @@ T.score=function(L,P){
     if(r[1]==null){b.appendChild(el('div','bc','NOT IN SOURCE','position:absolute;left:150px;top:'+r[5]+'px;font-size:36px;opacity:.5'));objs.push(null);return;}
     var bar=el('div','','','position:absolute;left:150px;top:'+r[5]+'px;height:40px;background:'+(P.hi?CO:INK));var num=el('div','bc','','position:absolute;top:'+(r[5]-4)+'px;font-size:44px;line-height:1.1;white-space:nowrap');b.appendChild(bar);b.appendChild(num);objs.push({bar:bar,num:num,r:r});});
   L.inner.appendChild(b);
-  return function(t){objs.forEach(function(o,i){if(!o)return;var p=eo((t-(i&&P.tsIns!=null?P.tsIns:P.ts+i*.15))/.5);var wd=o.r[1]*o.r[2]*p;o.bar.style.width=wd+'px';o.num.style.left=(150+wd+12)+'px';o.num.textContent=o.r[3]+Math.round(o.r[1]*p)+o.r[4];});};
+  return function(t){objs.forEach(function(o,i){if(!o)return;var p=eo((t-(i&&P.tsIns!=null?P.tsIns:P.ts+i*.15))/.5);var wd=o.r[1]*o.r[2]*p;o.bar.style.width=wd+'px';o.num.style.left=(150+wd+12)+'px';o.num.textContent=p>.001?o.r[3]+Math.round(o.r[1]*p)+o.r[4]:'';});};
 };
 // ---- "find the cheapest" before/after ----
 T.cheap=function(L,P){
