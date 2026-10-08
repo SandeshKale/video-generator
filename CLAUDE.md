@@ -1047,3 +1047,22 @@ Built from the user's pointers: lower the 3-second skip rate, more natural voice
 ## External reference — `MOTION-DESIGNER-NOTES.md`
 
 Distilled lessons from `kaventro/motion-designer` (MIT): beat-grid timing and holds, the reading-time rule (0.5 s + ⅓ s/word), sub-agent reviewers with a 7-axis scoring rubric, determinism checks (seek-order, loop closure, banned APIs), a pure-`t` effects list, motion-blur/deband render knobs, mix-balance targets (voice 16–20 dB over music), and a sound-brief method. Skim it before planning a reel's timing, QA or audio; items are *not* implemented unless the note says DONE.
+
+## STANDING RULE — strict visual validation before shipping any reel (user instruction, Oct 2026)
+
+`reel-ai-rich-upsell` shipped with several components overlapping (chips colliding with each other, a tag on top of
+email text, a chips row past the safe zone) even though `check.mjs` printed "0 issues". The lint was too lenient. From now on
+**a reel is not shipped, and no MP4 is sent to the user, until all of this has been done and passes**:
+
+1. `bun scripts/visual-validate.mjs <reel>/site 0.25` → **0 unexplained findings**. It has no type exemptions, checks
+   collisions *inside* layers (chip×chip, tag×text), text overflow/clipping, the 150–918 safe zone and caption hits, and starts
+   0.6 s after each layer's entrance. Every remaining finding must be a deliberate overlay (e.g. a stamp on a ticket) and be
+   named as such in the reel's notes; anything else gets fixed and re-validated.
+2. Also run the reel's own `check.mjs` (keep both; neither replaces the other).
+3. **Look at the pixels, not just the numbers:** contact sheets of every scene at ≥3 times (entrance +0.7 s, mid, just before
+   exit) plus every scene transition, viewed at full size, then at ~360 px wide (phone feed). Better: spawn reviewer sub-agents
+   with the 7-axis rubric from `MOTION-DESIGNER-NOTES.md` and ship only when every score ≥ 8 and every report says `clean`.
+4. Layouts must be sized from real measured heights/widths (flex-wrap rows of chips need their widths checked; animated
+   scale transforms must not make neighbours collide). Re-run 1–3 after **every** fix and after any re-render of a slice.
+5. State in the delivery message what was validated and the result; if anything was knowingly left, say so explicitly.
+Reminder: when a lint is "clean" but a human sees overlap, fix the lint first (add the missing check), then the reel.
