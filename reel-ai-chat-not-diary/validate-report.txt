@@ -1,0 +1,1 @@
+visual-validate: 0 distinct findings over 75.1 s (step 0.25)
