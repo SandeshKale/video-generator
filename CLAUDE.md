@@ -1048,6 +1048,10 @@ Built from the user's pointers: lower the 3-second skip rate, more natural voice
 
 Distilled lessons from `kaventro/motion-designer` (MIT): beat-grid timing and holds, the reading-time rule (0.5 s + ⅓ s/word), sub-agent reviewers with a 7-axis scoring rubric, determinism checks (seek-order, loop closure, banned APIs), a pure-`t` effects list, motion-blur/deband render knobs, mix-balance targets (voice 16–20 dB over music), and a sound-brief method. Skim it before planning a reel's timing, QA or audio; items are *not* implemented unless the note says DONE.
 
+## External reference — `ANIMATION-RESOURCES-NOTES.md`
+
+Verified evaluation of a user-supplied character-animation/mocap repo list (CMU BVH, Bandai Namco, Ready Player Me, FreeMoCap, EasyMocap, AI4Animation, CC0 lists): which are **licence-safe for this monetised channel** (CMU, CC0 packs), which are **non-commercial/RPM-only traps** (Bandai Namco, AI4Animation, Ready Player Me), and a plan for driving 2D/2.5D rigs from BVH as a pure function of `t`. Read it before pulling in any third-party motion data. Not implemented yet.
+
 ## STANDING RULE — strict visual validation before shipping any reel (user instruction, Oct 2026)
 
 `reel-ai-rich-upsell` shipped with several components overlapping (chips colliding with each other, a tag on top of
