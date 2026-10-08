@@ -6,3 +6,5 @@ Duration: 75.081s -> 3420 frames at 1080x1920, 60fps...
   frame 2520/3420 (t=42.00s)
   frame 2640/3420 (t=44.00s)
   frame 2760/3420 (t=46.00s)
+  frame 2880/3420 (t=48.00s)
+  frame 3000/3420 (t=50.00s)
