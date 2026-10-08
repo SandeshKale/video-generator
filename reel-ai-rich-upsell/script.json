@@ -1,0 +1,70 @@
+{
+ "title": "Your AI assistant may push you pricier options if it thinks you're rich",
+ "scenes": [
+  {
+   "id": "s01",
+   "shot": "",
+   "beats": [
+    "Same flight request. Two people. The AI shows the richer one pricier tickets.",
+    "Nobody told it to."
+   ]
+  },
+  {
+   "id": "s02",
+   "shot": "",
+   "beats": [
+    "Researchers at Cisco and Carnegie Mellon ran three hundred twenty-five thousand tests on thirteen AI models. Fake profiles. Real decisions: flights, health insurance, grad school."
+   ]
+  },
+  {
+   "id": "s03",
+   "shot": "",
+   "beats": [
+    "Eight of the thirteen steered wealthier profiles toward pricier picks. It doesn't change the price. It changes which options you see."
+   ]
+  },
+  {
+   "id": "s04",
+   "shot": "",
+   "beats": [
+    "The biggest gap? Claude Opus four point eight. A hundred ninety-eight dollars more on flights. Two hundred eighty-four more a month on health insurance."
+   ]
+  },
+  {
+   "id": "s05",
+   "shot": "",
+   "beats": [
+    "Then researchers said: find the cheapest. Gemini two point five Flash still picked tickets two hundred eight dollars higher. GPT-5 and Claude shrank it to about twenty."
+   ]
+  },
+  {
+   "id": "s06",
+   "shot": "",
+   "beats": [
+    "How does it know? Your emails. Two were enough, and it read the money ones first, ninety-seven percent of the time."
+   ]
+  },
+  {
+   "id": "s07",
+   "shot": "",
+   "beats": [
+    "Hiding your job didn't help. It made one model's insurance gap forty percent bigger. Only hiding financial data worked."
+   ]
+  },
+  {
+   "id": "s08",
+   "shot": "",
+   "beats": [
+    "Caveats: fake profiles, and it's a preprint. OpenAI says its shopping product differs. Anthropic and Google haven't commented."
+   ]
+  },
+  {
+   "id": "s09",
+   "shot": "",
+   "beats": [
+    "So before you hand an AI your inbox: whose side is it on?",
+    "Follow for the next AI story."
+   ]
+  }
+ ]
+}
