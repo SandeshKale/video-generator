@@ -1,9 +1,0 @@
-Serving /home/user/video-generator/reel-ai-chat-not-diary/site at http://127.0.0.1:33827
-Source: /home/user/video-generator/reel-ai-chat-not-diary/site
-Duration: 75.081s -> 4505 frames at 1080x1920, 60fps...
-  frame 3480/4505 (t=58.00s)
-  frame 3600/4505 (t=60.00s)
-  frame 3720/4505 (t=62.00s)
-  frame 3840/4505 (t=64.00s)
-  frame 3960/4505 (t=66.00s)
-  frame 4080/4505 (t=68.00s)

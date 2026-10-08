@@ -1,2 +1,5 @@
 node_modules/
 *.log
+
+reel-*/out/slices/
+reel-*/audio/cache/
