@@ -1,0 +1,6 @@
+[
+ {"id":"airport-gate","seed":1101,"steps":5,"w":704,"h":384,"prompt":"empty airport gate area with rows of seats and tall windows at sunrise, planes visible outside, bright warm light, no people, no text"},
+ {"id":"phone-inbox","seed":1102,"steps":5,"w":704,"h":384,"prompt":"smartphone lying on a wooden desk showing a blurred email inbox list, shallow depth of field, soft window light, no readable text, no people"},
+ {"id":"pass-table","seed":1103,"steps":5,"w":704,"h":384,"prompt":"paper boarding pass lying on a table next to a passport and a coffee cup, top-down view, shallow depth of field, no readable text, no people"},
+ {"id":"laptop-flights","seed":1104,"steps":5,"w":704,"h":384,"prompt":"open laptop on a cafe table showing a blurred travel booking website, coffee cup beside it, warm light, shallow depth of field, no readable text, no people"}
+]

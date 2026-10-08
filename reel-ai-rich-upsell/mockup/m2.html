@@ -1,0 +1,48 @@
+<!doctype html><meta charset=utf8><style>
+@font-face{font-family:BC;font-weight:800;src:url(../../assets/fonts/barlow-condensed/barlow-condensed-latin-800-normal.woff2)}
+@font-face{font-family:BC;font-weight:600;src:url(../../assets/fonts/barlow-condensed/barlow-condensed-latin-600-normal.woff2)}
+@font-face{font-family:SM;font-weight:700;src:url(../../assets/fonts/space-mono/space-mono-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../assets/fonts/inter/inter-latin-700-normal.woff2)}
+:root{--tq:#00b3a3;--tq2:#009a8c;--iv:#fbf6ea;--ink:#0d1f1e;--co:#ff4f4a}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--tq);font-family:Inter;color:var(--ink)}
+.arcs{position:absolute;inset:0;background:
+ radial-gradient(circle at 20% 110%,transparent 0 520px,rgba(251,246,234,.16) 520px 524px,transparent 524px 700px,rgba(251,246,234,.12) 700px 703px,transparent 703px),
+ radial-gradient(circle at 95% -5%,transparent 0 380px,rgba(251,246,234,.14) 380px 383px,transparent 383px 560px,rgba(251,246,234,.10) 560px 563px,transparent 563px)}
+.air{position:absolute;left:0;right:0;top:140px;height:30px;background:repeating-linear-gradient(115deg,var(--co) 0 26px,var(--iv) 26px 52px,var(--ink) 52px 78px,var(--iv) 78px 104px)}
+.ml{position:absolute;top:0;bottom:0;width:2px;background:rgba(251,246,234,.3)}
+.eb{position:absolute;left:150px;font:700 26px SM;letter-spacing:.08em;color:var(--iv);text-transform:uppercase;white-space:nowrap}
+.h{position:absolute;left:150px;font-family:BC;font-weight:800;text-transform:uppercase;line-height:1.02;color:var(--iv);white-space:nowrap;text-shadow:0 5px 0 rgba(13,31,30,.35)}
+.h i{font-style:normal;display:inline-block;line-height:.95;background:var(--co);padding:0 14px;color:var(--iv);text-shadow:none}
+.ph{position:absolute;overflow:hidden;border:5px solid var(--iv);background:var(--tq2)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,179,163,.25),rgba(13,31,30,.35))}
+.tag{position:absolute;left:10px;top:10px;z-index:3;background:var(--iv);color:var(--ink);font:700 15px SM;letter-spacing:.1em;padding:4px 9px}
+.tk{position:absolute;background:var(--iv);border-radius:22px;filter:drop-shadow(0 10px 0 rgba(13,31,30,.35))}
+.tk:before,.tk:after{content:"";position:absolute;width:44px;height:44px;border-radius:50%;background:var(--tq);top:50%;margin-top:-22px}
+.tk:before{left:-22px}.tk:after{right:-22px}
+.perf{position:absolute;top:22px;bottom:22px;width:0;border-left:4px dashed rgba(13,31,30,.35)}
+.lab{font:700 17px SM;letter-spacing:.14em;text-transform:uppercase;color:rgba(13,31,30,.6)}
+.code{font:800 118px/0.9 BC;color:var(--ink)}
+.flaps{display:flex;gap:6px}
+.fl{width:38px;height:74px;background:var(--ink);color:var(--iv);font:800 58px/74px BC;text-align:center;border-radius:8px;position:relative}
+.fl:after{content:"";position:absolute;left:0;right:0;top:36px;height:3px;background:rgba(251,246,234,.25)}
+.fl.co{background:var(--co)}
+.stamp{position:absolute;border:7px solid var(--co);color:var(--co);background:rgba(251,246,234,.92);font:800 74px BC;padding:2px 22px;transform:rotate(-8deg);text-transform:uppercase;white-space:nowrap}
+.chip{display:inline-block;font:700 22px SM;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border:3px solid var(--iv);color:var(--iv);background:rgba(13,31,30,.55);white-space:nowrap}
+.chip.c{background:var(--co);border-color:var(--co)}
+.chip.i{background:var(--iv);color:var(--ink);border-color:var(--iv)}
+.cap{position:absolute;left:150px;right:162px;top:1340px;height:150px;background:var(--ink);border:4px solid var(--iv);color:var(--iv);font:700 46px Inter;text-align:center;padding:26px 24px;line-height:1.2}
+.cap b{color:#ffb4b1}
+.bar{position:absolute;height:44px;background:var(--ink)}
+</style><body><div class="arcs"></div><div class="ml" style="left:149px"></div><div class="ml" style="left:917px"></div><div class="air"></div>
+<div class="eb" style="top:198px">// 325,000 TESTS · 13 MODELS</div>
+<div class="h" style="top:238px;font-size:300px;letter-spacing:-.01em">325,000</div>
+<div class="h" style="top:500px;font-size:96px">tests on <i>13</i> AI models</div>
+<div class="ph" style="left:150px;top:640px;width:768px;height:230px"><div class="tag">AI IMAGE</div><img src="../shots/laptop-flights.png"></div>
+<div style="position:absolute;left:150px;top:900px;width:768px;display:flex;gap:14px">
+ <div style="flex:1;background:var(--iv);border-radius:18px;padding:20px 14px;text-align:center;filter:drop-shadow(0 8px 0 rgba(13,31,30,.35))"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3l4 7" /></svg><div class="lab" style="margin-top:10px;color:var(--ink);font-size:16px">FLIGHTS</div></div><div style="flex:1;background:var(--iv);border-radius:18px;padding:20px 14px;text-align:center;filter:drop-shadow(0 8px 0 rgba(13,31,30,.35))"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" /><path d="M15 19l2 2l4 -4" /></svg><div class="lab" style="margin-top:10px;color:var(--ink);font-size:16px">HEALTH INSURANCE</div></div><div style="flex:1;background:var(--iv);border-radius:18px;padding:20px 14px;text-align:center;filter:drop-shadow(0 8px 0 rgba(13,31,30,.35))"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg><div class="lab" style="margin-top:10px;color:var(--ink);font-size:16px">GRAD SCHOOL</div></div>
+</div>
+<div style="position:absolute;left:150px;top:1085px;width:768px;display:flex;flex-wrap:wrap;gap:8px"><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:var(--co);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:rgba(13,31,30,.55);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:rgba(13,31,30,.55);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:rgba(13,31,30,.55);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:rgba(13,31,30,.55);border:3px solid var(--iv)"></div><div style="width:54px;height:54px;border-radius:50%;background:rgba(13,31,30,.55);border:3px solid var(--iv)"></div><div class="lab" style="color:var(--iv);align-self:center;margin-left:8px;font-size:20px">13 AGENTS · 4 FAMILIES</div></div>
+<div style="position:absolute;left:150px;top:1235px"><span class="chip c">FICTIONAL PROFILES</span> <span class="chip">PREPRINT</span></div>
+<div class="cap">Fake profiles. <b>Real decisions.</b></div></body>
