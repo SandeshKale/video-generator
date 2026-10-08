@@ -12,49 +12,49 @@
    "id": "s02",
    "shot": "",
    "beats": [
-    "Researchers at Berkeley and Stanford gave a Unitree G1 humanoid about two and a half hours of human motion capture. Walking, running, dancing, martial arts, cartwheels."
+    "Researchers at Berkeley and Stanford suited people up and recorded them moving: walking, running, dancing, martial arts, cartwheels. About two and a half hours in all."
    ]
   },
   {
    "id": "s03",
    "shot": "",
    "beats": [
-    "It doesn't copy frame by frame. A reward system scores how closely it tracks the move, and punishes jerky motion, unsafe joints, and bumping into itself."
+    "Then a Unitree G1 humanoid had to follow along. It earns points for matching the move, and loses them for jerky motion, bad joint angles, or bumping into itself."
    ]
   },
   {
    "id": "s04",
    "shot": "",
    "beats": [
-    "Two AI models compress those moves into a compact code, then plan new sequences from it. Sprints. Spin kicks. Aerial cartwheels."
+    "The moves get squeezed into a compact code, and an AI plans new sequences from it. Sprints. Spin kicks. Flips. Cartwheels."
    ]
   },
   {
    "id": "s05",
    "shot": "",
    "beats": [
-    "Thirty clips ran on the real robot. Joystick control and obstacle avoidance worked without retraining."
+    "On the real robot, joystick steering and dodging obstacles worked without retraining."
    ]
   },
   {
    "id": "s06",
    "shot": "",
    "beats": [
-    "Does it look human? Seventy-seven people compared its walking and running with Unitree's standard controller. In seventy point eight percent of comparisons, the new one looked more natural."
+    "Does it look human? People compared its walk with Unitree's standard controller. More than two thirds of the time, they picked the new one as more natural."
    ]
   },
   {
    "id": "s07",
    "shot": "",
    "beats": [
-    "Boston Dynamics and the RAI Institute built a similar system, ZEST. It learns from mocap, video, or animator keyframes. About ten hours of training, one GPU."
+    "Boston Dynamics and the RAI Institute built a similar system, ZEST. It learns from mocap, ordinary video, or an animator's keyframes. Even a four-legged robot learned a backflip."
    ]
   },
   {
    "id": "s08",
    "shot": "",
    "beats": [
-    "The catch, per ZEST's authors: flat, non-slippery floors only, and no moves it hasn't seen."
+    "The catch, per ZEST's authors: flat, non-slippery floors only, and nothing it hasn't seen."
    ]
   },
   {

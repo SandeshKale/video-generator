@@ -1,6 +1,6 @@
 # Reel script — "The robot's cartwheel was a human's first" (draft v1, 2026-10-08)
 
-Format 9:16, 1080×1920@60, ~67 s, Kokoro `am_adam` base ≈1.1, no filler clips, hook payoff by ~3 s.
+Format 9:16, 1080×1920@60, ~65 s, Kokoro `am_adam` base ≈1.1, no filler clips, hook payoff by ~3 s.
 **Purpose:** a showcase for the new BVH→2D-rig character system (`ANIMATION-RESOURCES-NOTES.md`): one rig, two skins (human mocap suit / robot), driven by clips that are pure functions of `t`. The story is *about* motion capture, so the character is the content, not decoration.
 
 ## Why this story
@@ -9,15 +9,15 @@ Format 9:16, 1080×1920@60, ~67 s, Kokoro `am_adam` base ≈1.1, no filler clips
 - **Hard numbers in most scenes:** 2.5 h, 30 clips, 77 people, 70.8 %, 10 h, 7,000 iterations, 1 GPU.
 - **Fits the benchmark asks:** bright palette (next-reel headroom note), new character system, no chat-privacy/agent-misbehaviour repeat.
 
-## Voice-over (≈190 words, ~67 s)
+## Voice-over (≈185 words, ~65 s) — revised: fewer numbers, more motion
 1. This robot just did a cartwheel. A human did it first.
-2. Researchers at Berkeley and Stanford gave a Unitree G1 humanoid about two and a half hours of human motion capture. Walking, running, dancing, martial arts, cartwheels.
-3. It doesn't copy frame by frame. A reward system scores how closely it tracks the move, and punishes jerky motion, unsafe joints, and bumping into itself.
-4. Two AI models compress those moves into a compact code, then plan new sequences from it. Sprints. Spin kicks. Aerial cartwheels.
-5. Thirty clips ran on the real robot. Joystick control and obstacle avoidance worked without retraining.
-6. Does it look human? Seventy-seven people compared its walking and running with Unitree's standard controller. In seventy point eight percent of comparisons, the new one looked more natural.
-7. Boston Dynamics and the RAI Institute built a similar system, ZEST. It learns from mocap, video, or animator keyframes. About ten hours of training, one GPU.
-8. The catch, per ZEST's authors: flat, non-slippery floors only, and no moves it hasn't seen.
+2. Researchers at Berkeley and Stanford suited people up and recorded them moving: walking, running, dancing, martial arts, cartwheels. About two and a half hours in all.
+3. Then a Unitree G1 humanoid had to follow along. It earns points for matching the move, and loses them for jerky motion, bad joint angles, or bumping into itself.
+4. The moves get squeezed into a compact code, and an AI plans new sequences from it. Sprints. Spin kicks. Flips. Cartwheels.
+5. On the real robot, joystick steering and dodging obstacles worked without retraining.
+6. Does it look human? People compared its walk with Unitree's standard controller. More than two thirds of the time, they picked the new one as more natural.
+7. Boston Dynamics and the RAI Institute built a similar system, ZEST. It learns from mocap, ordinary video, or an animator's keyframes. Even a four-legged robot learned a backflip.
+8. The catch, per ZEST's authors: flat, non-slippery floors only, and nothing it hasn't seen.
 9. Every robot flip starts as someone's dance. Whose motion is it? Tell me below. Follow for the next AI story.
 
 ## Fact table (confidence tiers)
@@ -45,22 +45,24 @@ Format 9:16, 1080×1920@60, ~67 s, Kokoro `am_adam` base ≈1.1, no filler clips
 
 ## Retention plan (3-second skip rate)
 - 0.0 s: stage already composed; the human figure mid-cartwheel on the left, the robot figure mirroring on the right; caption visible; voice at once.
-- ≤3 s: **"2.5 HRS OF MOCAP"** stamp slams between them (payoff before the first scene change).
+- ≤3 s: the human lands the cartwheel, dust puff + camera shake, and the robot lands the SAME move half a second later (payoff before the first scene change; no number needed).
 - A visible change every ~0.5 s early; no wipe before 3 s; the figure is ALWAYS moving (clip loops), so every scene has motion independent of the voice.
 - Mid-video turn: s06 "Does it look human?" → the 70.8 % ring; s08 "The catch" → robot slips on a wet-floor sign.
 - End on a question + CTA (profile, @sandesh.explains, FOLLOW) held ≥ 3 s; the figures take a bow.
 
-## Visual centerpiece per scene (to be built with the BVH→rig system; mockups cover s01, s04, s06)
-1. **Twin stage:** human (black suit, white markers) and robot (same rig, metal skin) on a studio floor; cartwheel clip; timeline scrubber with keyframe diamonds; `2.5 HRS` stamp.
-2. **Clip shelf:** 5 clip cards (WALK · RUN · DANCE · MARTIAL ARTS · CARTWHEEL) as film slates, each with a tiny looping figure; counter 0→2.5 h.
-3. **Reward meter:** one figure tracking a ghost target; "TRACKING ✓" green; penalties as three red tags that flash when the figure jerks / bends a joint wrong / clips itself.
-4. **Latent grid:** 12 tiny pose thumbnails in a grid, a glowing path connects 4 of them (sprint → spin kick → flip kick → cartwheel); the big figure plays the path.
-5. **30 clips:** 30 dots filling in; joystick + obstacle icons; "NO RETRAINING" stamp.
-6. **70.8 % ring** with two walkers (stiff vs natural) and 77 tiny people icons.
-7. **ZEST card:** three inputs (mocap / video / keyframes) → Atlas, G1, Spot silhouettes; counters 10 h · 7,000 · 1 GPU.
-8. **Flat floor only:** the robot slides on a wet-floor sign; "FLAT · NON-SLIPPERY" and "NO UNSEEN MOVES" tags.
-9. **CTA** with both figures bowing.
-Eyebrows (content-specific): `// 2.5 HOURS OF HUMAN MOTION` · `// THE SCORECARD` · `// A VOCABULARY OF MOVES` · `// 30 CLIPS · NO RETRAINING` · `// 70.8% MORE HUMAN-LIKE` · `// ZEST · ATLAS · SPOT` · `// FLAT FLOORS ONLY` · `// SOMEONE'S DANCE FIRST`.
+## Animation spec per scene (feedback: "less numbers, more motion components with real animations")
+Everything on screen is the **BVH→2D rig** moving, plus small physical animations (cameras, beams, markers, tapes, sliders, sparks); numbers appear only as small tags.
+1. **Cartwheel twin stage:** a human mocap-suit figure cartwheels across a studio floor (CMU acrobatics clip, looped); 0.5 s later a robot skin follows the SAME clip; onion-skin ghost trail + dust puffs at each hand-plant; camera shake on landing.
+2. **The capture volume:** four cameras with sweeping beams around a suited figure doing clip after clip (walk → run → dance → kick → cartwheel, cross-faded); marker dots pulse as they are "seen"; a skeleton in sky-blue builds over the body; a BVH data tape scrolls beside it; small tag `~2.5 HRS`.
+3. **Follow the ghost (reward):** a translucent target ghost plays the clip; the robot figure chases it; when it jerks, bends a joint wrong, or clips its own limb, a red flash + tag (JERKY / BAD JOINT / SELF-HIT) pops and a score meter dips; when it tracks well the meter climbs.
+4. **Moves as code:** the figure morphs continuously between poses (pose blending) while a point travels across a 2-D map of dots; the path lights up as sprint → spin kick → flip → cartwheel play back in sequence.
+5. **Joystick + hurdles:** a joystick UI tilts, the robot walks, hops a barrier and sidesteps a rolling box on cue (clip blend), no retraining stamp.
+6. **Natural vs stiff:** two robots walk side by side (a stiff gait vs a mocap-driven gait); a "more natural" pointer swings toward the mocap one; confetti-less verdict stamp.
+7. **ZEST inputs:** three source panels (mocap suit / a video clip with pose dots tracking a person / animator keyframe diamonds) pour into a robot; then a four-legged robot does a backflip (hand-keyframed quadruped rig).
+8. **The catch:** a robot steps onto a wet-floor sign and slips, flails and falls (physical slip animation with onion-skin), tags FLAT · NON-SLIPPERY ONLY and NOTHING UNSEEN.
+9. **CTA:** both figures bow, then wave; handle and profile card.
+Numbers kept (as small tags only): `~2.5 HRS`, `>⅔ PICKED NEW`; dropped from the voice-over: 77 people, 30 clips, 10 hours, 7,000 iterations, 1 GPU (still in `script.md` fact table).
+Eyebrows (content-specific): `// SUITED UP FOR 2.5 HOURS` · `// FOLLOW THE GHOST` · `// A VOCABULARY OF MOVES` · `// JOYSTICK, NO RETRAINING` · `// WHICH WALK IS HUMAN?` · `// ZEST · MOCAP · VIDEO · KEYFRAMES` · `// FLAT FLOORS ONLY` · `// SOMEONE'S DANCE FIRST`.
 
 ## Style proposal (NEW system, bright): "Studio Slate"
 Light studio-grey set with a calibrated floor grid, ink-black suit figure with retro-reflective marker dots, hard-edged white slate cards with 4 px ink borders and offset shadows, hot-pink + sunshine-yellow accents, sky-blue skeleton overlays. Outfit 800 + Inter + Space Mono. (First bright reel since the dark-palette run.)

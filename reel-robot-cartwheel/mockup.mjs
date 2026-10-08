@@ -7,6 +7,7 @@ const P = {
   cartwheel: { head: [140, 338], neck: [140, 302], hip: [140, 190], sL: [116, 300], sR: [164, 300], eL: [108, 332], eR: [172, 332], hL: [100, 366], hR: [180, 366], kL: [92, 128], kR: [188, 128], fL: [58, 58], fR: [222, 58] },
   kick: { head: [128, 70], neck: [128, 104], hip: [124, 214], sL: [104, 112], sR: [152, 112], eL: [66, 138], eR: [196, 100], hL: [34, 118], hR: [236, 82], kL: [118, 292], kR: [206, 196], fL: [112, 380], fR: [284, 176] },
   walk: { head: [150, 60], neck: [150, 96], hip: [146, 214], sL: [130, 104], sR: [170, 104], eL: [112, 160], eR: [190, 156], hL: [100, 214], hR: [204, 206], kL: [120, 296], kR: [182, 290], fL: [96, 378], fR: [216, 372] },
+  star: { head: [150, 60], neck: [150, 96], hip: [150, 214], sL: [128, 104], sR: [172, 104], eL: [102, 66], eR: [198, 66], hL: [70, 26], hR: [230, 26], kL: [112, 300], kR: [188, 300], fL: [78, 396], fR: [222, 396] },
   run: { head: [168, 64], neck: [160, 98], hip: [140, 210], sL: [144, 104], sR: [178, 108], eL: [96, 138], eR: [214, 150], hL: [64, 100], hR: [250, 130], kL: [196, 262], kR: [92, 290], fL: [176, 352], fR: [30, 330] },
 };
 const INK = '#101426', PINK = '#ff3d7f', YEL = '#ffd23f', SKY = '#3aa8ff';
@@ -45,46 +46,50 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-f
 .cap div{background:var(--ink);border:3px solid #fff;border-radius:22px;padding:20px 26px;font:700 46px/1.18 'IN';text-align:center;color:#f5f7fa;box-shadow:6px 6px 0 rgba(16,20,38,.35)}
 .cap b{color:var(--yel)}
 `;
+
+const rot = (pose, skin, s, deg, op = 1, extra = '') => `<div style="position:absolute;${extra};transform:rotate(${deg}deg);transform-origin:50% 50%;opacity:${op}">${figure(pose, skin, s, 1)}</div>`;
 const eb = (t) => `<div class="eb"><i></i>${t}</div>`, cap = (h) => `<div class="cap"><div>${h}</div></div>`;
-// scene 1
-const s1 = `<div class="pg on" id="p1">${eb('2.5 hours of human motion')}
+const FL = `<div class="floor"></div>`;
+// scene 1: cartwheel twin lanes with onion skin
+const frames = (skin, y, label, delay) => [0, 1, 2, 3, 4].map((i) => rot('star', skin, .40, i * 72, .25 + i * .19, `left:${24 + i * 146 + delay}px;top:${y + 10}px`)).join('') + `<div class="lab" style="position:absolute;left:20px;top:${y - 26}px;font-size:18px">${label}</div>`;
+const trail = (y) => `<svg style="position:absolute;left:0;top:${y}px" width="768" height="120"><path d="M70 100 Q 220 -20 360 100 T 690 100" fill="none" stroke="#ff3d7f" stroke-width="5" stroke-dasharray="3 12" stroke-linecap="round"/></svg>`;
+const dust = (x, y) => [0, 1, 2].map((k) => `<i style="position:absolute;left:${x + k * 16}px;top:${y - k * 6}px;width:${26 - k * 6}px;height:${26 - k * 6}px;border-radius:50%;background:#cfd5db;opacity:${.8 - k * .2}"></i>`).join('');
+const s1 = `<div class="pg on" id="p1">${eb('A human did it first')}
 <div class="h">It learned<br>a <em>cartwheel</em><br>from a human</div>
-<div class="card" style="left:150px;top:560px;width:768px;height:560px"><div class="floor"></div>
- <div style="position:absolute;left:-6px;top:80px">${figure('cartwheel', 'human', .92)}</div>
- <div style="position:absolute;left:500px;top:80px">${figure('cartwheel', 'robot', .92)}</div>
- <div class="lab" style="position:absolute;left:26px;top:20px">Human · mocap suit</div><div class="lab" style="position:absolute;right:24px;top:20px">Robot · same moves</div>
+<div class="card" style="left:150px;top:560px;width:768px;height:600px">${FL}
+ ${frames('human', 80, 'human · mocap suit', 0)}${trail(120)}${dust(40, 292)}${dust(600, 292)}
+ ${frames('robot', 330, 'robot · same clip, half a second later', 0)}${trail(370)}${dust(40, 542)}
+ <div style="position:absolute;right:16px;top:20px;display:flex;gap:6px">${[0, 1, 2].map(() => '<i style="width:30px;height:5px;background:#101426;display:block;margin-top:9px"></i>').join('')}</div>
  </div>
-<div class="stamp" style="left:372px;top:700px;font-size:44px;text-align:center;line-height:1.05">2.5 HRS<br>OF MOCAP</div>
-<div class="card" style="left:150px;top:1150px;width:768px;height:104px;border-radius:18px;box-shadow:8px 8px 0 var(--ink)">
- <div class="lab" style="position:absolute;left:22px;top:16px">BVH · clip 04 · cartwheel</div>
- <div style="position:absolute;left:22px;top:60px;width:724px;height:10px;background:#dfe4e9;border-radius:5px"></div><div style="position:absolute;left:22px;top:60px;width:420px;height:10px;background:var(--pink);border-radius:5px"></div>
- ${[0, 90, 180, 270, 360, 450, 540, 630, 720].map((x) => `<i style="position:absolute;left:${x + 18}px;top:52px;width:14px;height:14px;background:var(--yel);border:3px solid var(--ink);transform:rotate(45deg)"></i>`).join('')}
- <div style="position:absolute;left:432px;top:44px;width:6px;height:44px;background:var(--ink)"></div></div>
+<div class="chip y" style="left:150px;top:1190px">Same clip · two bodies</div>
 ${cap('This robot just did a <b>cartwheel.</b>')}</div>`;
-// scene 4 : latent grid
-const cells = ['walk', 'run', 'kick', 'cartwheel', 'run', 'walk', 'kick', 'cartwheel', 'kick', 'cartwheel', 'walk', 'run'];
-const pickIdx = [1, 6, 7, 9];
-const grid = cells.map((p, i) => { const x = 22 + (i % 4) * 180, y = 56 + Math.floor(i / 4) * 186; const on = pickIdx.includes(i); return `<div style="position:absolute;left:${x}px;top:${y}px;width:166px;height:170px;border:3px solid ${on ? '#ff3d7f' : '#101426'};border-radius:14px;background:${on ? '#fff0f5' : '#f4f6f8'};overflow:hidden"><div style="position:absolute;left:34px;top:6px">${figure(p, 'human', .36)}</div></div>`; }).join('');
-const pts = pickIdx.map((i) => [22 + (i % 4) * 180 + 83, 56 + Math.floor(i / 4) * 186 + 85]);
-const s4 = `<div class="pg" id="p4">${eb('A vocabulary of moves')}
-<div class="h">Moves<br>become a <em>code</em></div>
-<div class="card" style="left:150px;top:480px;width:768px;height:664px"><div class="lab" style="position:absolute;left:22px;top:16px">latent space · 12 of ∞ moves</div>${grid}
- <svg style="position:absolute;left:0;top:0" width="768" height="640"><polyline points="${pts.map((p) => p.join(',')).join(' ')}" fill="none" stroke="#ff3d7f" stroke-width="7" stroke-dasharray="4 14" stroke-linecap="round"/>${pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="11" fill="#ffd23f" stroke="#101426" stroke-width="4"/>`).join('')}</svg>
- <div style="position:absolute;left:22px;top:612px" class="lab">path planned by a diffusion model →</div></div>
-<div class="chip y" style="left:150px;top:1184px">VAE · compact code</div><div class="chip" style="left:470px;top:1184px">Diffusion · plans moves</div>
-${cap('Sprints. Spin kicks. Aerial <b>cartwheels.</b>')}</div>`;
-// scene 6 : ring
-const ring = `<svg width="330" height="330" viewBox="0 0 330 330"><circle cx="165" cy="165" r="140" fill="none" stroke="#dfe4e9" stroke-width="34"/><circle cx="165" cy="165" r="140" fill="none" stroke="#ff3d7f" stroke-width="34" stroke-linecap="round" stroke-dasharray="${(0.708 * 2 * Math.PI * 140).toFixed(1)} 2000" transform="rotate(-90 165 165)"/></svg>`;
-const ppl = Array.from({ length: 77 }, (_, i) => `<i style="display:inline-block;width:16px;height:16px;border-radius:50%;background:#101426;margin:3px"></i>`).join('');
-const s6 = `<div class="pg" id="p6">${eb('70.8% more human-like')}
-<div class="h">Does it look<br><em>human?</em></div>
-<div class="card" style="left:150px;top:480px;width:768px;height:600px">
- <div style="position:absolute;left:219px;top:30px">${ring}<div style="position:absolute;left:0;right:0;top:100px;text-align:center;font:800 100px/1 'OU';letter-spacing:-.04em">70.8%</div><div class="lab" style="position:absolute;left:0;right:0;top:204px;text-align:center;font-size:17px">of comparisons</div></div>
- <div style="position:absolute;left:12px;top:100px">${figure('walk', 'robot', .55)}</div><div class="lab" style="position:absolute;left:14px;top:350px;font-size:16px">standard controller</div>
- <div style="position:absolute;left:556px;top:100px">${figure('run', 'robot', .55)}</div><div class="lab" style="position:absolute;left:560px;top:350px;font-size:16px;color:#ff3d7f">beyondmimic</div>
- <div class="lab" style="position:absolute;left:24px;top:392px">77 people · walking + running</div>
- <div style="position:absolute;left:20px;top:432px;width:728px;line-height:0">${ppl}</div></div>
-<div class="chip y" style="left:150px;top:1130px">Walking + running vs Unitree’s standard controller</div>
-${cap('In 70.8% of comparisons, it looked <b>more natural.</b>')}</div>`;
-writeFileSync(new URL('./mockup.html', import.meta.url), `<!doctype html><html><head><meta charset="utf8"><style>${css}</style></head><body><div id="w">${s1}${s4}${s6}</div><script>var q=new URLSearchParams(location.search).get('s')||'1';document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id==='p'+q);});</script></body></html>`);
+// scene 2 capture volume
+const cam = (x, y, flip) => `<div style="position:absolute;left:${x}px;top:${y}px;color:#101426">${ic('camera', 64, '#101426', 1.7)}</div>`;
+const beam = (x1, y1) => `<polygon points="${x1},${y1} 330,300 440,330" fill="rgba(58,168,255,.13)"/>`;
+const skel = (pose, s, ox, oy) => { const p = P[pose]; const L = (a, b) => `<line x1="${(p[a][0] * s + ox).toFixed(0)}" y1="${(p[a][1] * s + oy).toFixed(0)}" x2="${(p[b][0] * s + ox).toFixed(0)}" y2="${(p[b][1] * s + oy).toFixed(0)}" stroke="#3aa8ff" stroke-width="4" stroke-linecap="round"/>`; return [['neck', 'hip'], ['sL', 'sR'], ['sL', 'eL'], ['eL', 'hL'], ['sR', 'eR'], ['eR', 'hR'], ['hip', 'kL'], ['kL', 'fL'], ['hip', 'kR'], ['kR', 'fR']].map(([a, b]) => L(a, b)).join(''); };
+const tape = ['Hips   0.00  91.4  0.00', 'Chest  3.1  12.0  -4.2', 'LArm  -41.2  8.8  2.0', 'RArm   38.7 -9.1  1.1', 'LLeg  12.4  0.0  -3.3', 'RLeg -18.2  0.0   2.8', 'Head   2.2  -1.0  0.4'].map((r, i) => `<div style="font:700 17px 'SM';color:${i === 3 ? '#ff3d7f' : '#101426'};opacity:${1 - i * .1};white-space:nowrap">${r}</div>`).join('');
+const s2 = `<div class="pg" id="p2">${eb('Suited up for 2.5 hours')}
+<div class="h">Every move,<br><em>recorded</em></div>
+<div class="card" style="left:150px;top:480px;width:768px;height:680px">${FL}
+ <svg style="position:absolute;left:0;top:0" width="768" height="680">${beam(70, 70)}${beam(70, 70).replace('330,300 440,330', '330,300 440,330')}<polygon points="690,70 420,330 330,300" fill="rgba(58,168,255,.12)"/><polygon points="70,610 330,420 440,470" fill="rgba(58,168,255,.10)"/><polygon points="690,610 440,420 330,470" fill="rgba(58,168,255,.10)"/>${skel('walk', 1.0, 235, 130)}</svg>
+ ${cam(20, 20)}${cam(684, 20)}${cam(20, 590)}${cam(684, 590)}
+ <div style="position:absolute;left:235px;top:130px;opacity:.96">${figure('walk', 'human', 1.0)}</div>
+ <div style="position:absolute;left:16px;top:300px;padding:10px 12px;background:rgba(255,255,255,.92);border:3px solid #101426;border-radius:12px;line-height:1.35">${tape}</div>
+ <div class="chip y" style="left:540px;top:300px;font-size:18px">≈ 2.5 HRS</div>
+ </div>
+<div class="chip" style="left:150px;top:1190px;font-size:19px">walk</div><div class="chip" style="left:260px;top:1190px;font-size:19px">run</div><div class="chip" style="left:355px;top:1190px;font-size:19px">dance</div><div class="chip y" style="left:480px;top:1190px;font-size:19px">martial arts</div><div class="chip p" style="left:690px;top:1190px;font-size:19px">cartwheel</div>
+${cap('Walking, running, dancing, martial arts, <b>cartwheels.</b>')}</div>`;
+// scene 8 slip
+const sx = [20, 150, 290, 450, 600];
+const slip = [[0, 1], [-14, .9], [-38, .8], [-70, .6], [-96, .45]].map(([deg, op], i) => rot('walk', 'robot', .46, deg, op, `left:${sx[i]}px;top:${150 + i * 20}px`)).join('');
+const wet = `<svg style="position:absolute;left:285px;top:330px" width="150" height="150" viewBox="0 0 150 150"><polygon points="75,12 140,136 10,136" fill="#ffd23f" stroke="#101426" stroke-width="7" stroke-linejoin="round"/><circle cx="75" cy="52" r="9" fill="#101426"/><path d="M52 92 q12 -22 23 0 q12 22 23 0" fill="none" stroke="#101426" stroke-width="7" stroke-linecap="round"/></svg>`;
+const streak = [0, 1, 2].map((k) => `<i style="position:absolute;left:${60 + k * 30}px;top:${400 + k * 14}px;width:${180 - k * 40}px;height:5px;background:#101426;opacity:${.5 - k * .12};display:block"></i>`).join('');
+const s8 = `<div class="pg" id="p8">${eb('Flat floors only')}
+<div class="h">The catch:<br><em>flat</em> floors</div>
+<div class="card" style="left:150px;top:480px;width:768px;height:620px">${FL}<div class="lab" style="position:absolute;left:20px;top:18px;font-size:18px">robot meets wet floor</div>
+ ${slip}${wet}${streak}
+ <svg style="position:absolute;left:0;top:300px" width="768" height="300"><path d="M40 190 Q 300 170 700 230" fill="none" stroke="#ff3d7f" stroke-width="5" stroke-dasharray="3 12" stroke-linecap="round"/></svg></div>
+<div class="chip p" style="left:150px;top:1140px">non-slippery only</div><div class="chip" style="left:470px;top:1140px">nothing unseen</div>
+${cap('Flat, non-slippery floors only, and <b>nothing it hasn’t seen.</b>')}</div>`;
+writeFileSync(new URL('./mockup.html', import.meta.url), `<!doctype html><html><head><meta charset="utf8"><style>${css}</style></head><body><div id="w">${s1}${s2}${s8}</div><script>var q=new URLSearchParams(location.search).get('s')||'1';document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id==='p'+q);});</script></body></html>`);
 console.log('mockup.html');
