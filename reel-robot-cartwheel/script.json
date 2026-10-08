@@ -1,0 +1,68 @@
+{
+ "title": "The robot's cartwheel was a human's first",
+ "scenes": [
+  {
+   "id": "s01",
+   "shot": "",
+   "beats": [
+    "This robot just did a cartwheel. A human did it first."
+   ]
+  },
+  {
+   "id": "s02",
+   "shot": "",
+   "beats": [
+    "Researchers at Berkeley and Stanford gave a Unitree G1 humanoid about two and a half hours of human motion capture. Walking, running, dancing, martial arts, cartwheels."
+   ]
+  },
+  {
+   "id": "s03",
+   "shot": "",
+   "beats": [
+    "It doesn't copy frame by frame. A reward system scores how closely it tracks the move, and punishes jerky motion, unsafe joints, and bumping into itself."
+   ]
+  },
+  {
+   "id": "s04",
+   "shot": "",
+   "beats": [
+    "Two AI models compress those moves into a compact code, then plan new sequences from it. Sprints. Spin kicks. Aerial cartwheels."
+   ]
+  },
+  {
+   "id": "s05",
+   "shot": "",
+   "beats": [
+    "Thirty clips ran on the real robot. Joystick control and obstacle avoidance worked without retraining."
+   ]
+  },
+  {
+   "id": "s06",
+   "shot": "",
+   "beats": [
+    "Does it look human? Seventy-seven people compared its walking and running with Unitree's standard controller. In seventy point eight percent of comparisons, the new one looked more natural."
+   ]
+  },
+  {
+   "id": "s07",
+   "shot": "",
+   "beats": [
+    "Boston Dynamics and the RAI Institute built a similar system, ZEST. It learns from mocap, video, or animator keyframes. About ten hours of training, one GPU."
+   ]
+  },
+  {
+   "id": "s08",
+   "shot": "",
+   "beats": [
+    "The catch, per ZEST's authors: flat, non-slippery floors only, and no moves it hasn't seen."
+   ]
+  },
+  {
+   "id": "s09",
+   "shot": "",
+   "beats": [
+    "Every robot flip starts as someone's dance. Whose motion is it? Tell me below. Follow for the next AI story."
+   ]
+  }
+ ]
+}
