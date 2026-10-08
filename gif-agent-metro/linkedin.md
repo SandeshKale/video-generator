@@ -1,0 +1,30 @@
+# LinkedIn caption (final) — for the "front door" GIF
+
+**AI agents are about to knock on your company's front door. Do you know which door you want them to use?**
+
+This week Sierra and Meta announced the Personal Agent Protocol (PAP): an open, OAuth-based standard for how a customer's personal AI agent signs in and interacts with a business. Walmart, Shopify, Stripe, Genesys and a few others are on board.
+
+What I like about the design (as announced):
+→ The customer decides what access their agent gets: guest, signed-in read-only, or signed-in write.
+→ The company decides what that agent may do, and which door it comes through: the website, an API (MCP / OpenAPI), or the company's own agent.
+→ Sessions carry across channels, so "check my order" doesn't start from zero each time.
+
+What's still missing, and worth saying out loud:
+→ There's no published spec yet. v0.1 is due later this month. Payments, push notifications and finer-grained permissions are listed as future extensions.
+→ No licence or governing body has been announced, and OpenAI, Anthropic, Amazon and Google aren't named partners.
+→ It sits next to other efforts (Google/Shopify's UCP, OpenAI/Stripe's ACP, Visa's Trusted Agent Protocol), so the question for builders is less "which one wins" and more "what's our agent posture meanwhile".
+
+My takeaway: whatever protocol wins, treat agent access like any other access. Start with guest-read, add signed-in read, allow reversible writes with logs, and keep irreversible actions (purchases, transfers) behind a human confirmation until the rails exist.
+
+Where does your business stand today: welcome agents, tolerate them, or block them?
+
+Source notes: announcement coverage (Techzine, Forkast, CMSWire) and one independent analysis (Beri.net) for the protocol comparison and permission-tier suggestion. Details may change once v0.1 is published.
+
+#AIAgents #AgenticAI #APIs #MCP #Ecommerce #DigitalTransformation #Security
+
+---
+Validation (strict, GIF): frames inspected at 11 loop phases at full size and at 360 px wide; scripted check of all text boxes every 0.25 s over the loop (bounds, ≥22 px, overlaps) → 0 real findings (only the two-line headline's line boxes touch, glyphs do not); agents confined to their own bay, no component collisions; loop seamless (periodic in 8 s).
+
+---
+GIF note: "Agent Metro" (1600×900, 8 s loop). Lines = the three entrances; ticket colour = keycard tier; trains that nudge past their last station get a red ✕ (access denied); payments is the boarded-up station. The four example capabilities on the map are illustrative, not from the spec.
+Validation: scripted check of every text box each 0.25 s over the loop (bounds, ≥18 px, text overlaps, trains over text) → 0 findings; 46 elements change between any two sampled moments; frames reviewed at full size and 640 px wide.
