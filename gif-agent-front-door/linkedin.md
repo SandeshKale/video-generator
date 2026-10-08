@@ -1,4 +1,4 @@
-# LinkedIn caption (draft v1) — for the "front door" GIF
+# LinkedIn caption (final) — for the "front door" GIF
 
 **AI agents are about to knock on your company's front door. Do you know which door you want them to use?**
 
@@ -21,3 +21,6 @@ Where does your business stand today: welcome agents, tolerate them, or block th
 Source notes: announcement coverage (Techzine, Forkast, CMSWire) and one independent analysis (Beri.net) for the protocol comparison and permission-tier suggestion. Details may change once v0.1 is published.
 
 #AIAgents #AgenticAI #APIs #MCP #Ecommerce #DigitalTransformation #Security
+
+---
+Validation (strict, GIF): frames inspected at 11 loop phases at full size and at 360 px wide; scripted check of all text boxes every 0.25 s over the loop (bounds, ≥22 px, overlaps) → 0 real findings (only the two-line headline's line boxes touch, glyphs do not); agents confined to their own bay, no component collisions; loop seamless (periodic in 8 s).
