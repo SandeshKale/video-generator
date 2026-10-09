@@ -33,3 +33,23 @@ Source: a user-supplied list of "premium character animation" GitHub repos. Each
 
 ## Suggested next step (if you want it)
 A small feasibility demo: vendor 3–4 CMU clips (walk, idle, point/gesture, wave), write `bvh2json.mjs` + a 12-joint SVG rig that is a pure function of `t`, render a 6-second test GIF in one reel palette, and check the loop and foot-sliding. If it looks good, it becomes a new character system for future reels/GIFs.
+
+## Round 2 (Oct 9, 2026) — facial/AI-motion/world-building list, licences checked
+
+Checked LICENSE files directly where reachable (raw.githubusercontent) and by search otherwise. Verdict for *this monetised channel*:
+
+| Repo | Licence found | Verdict |
+|---|---|---|
+| DanielSWolf/rhubarb-lip-sync | MIT (deps MIT/BSD) | **USE** — audio → mouth-shape (viseme) timings; maps onto 2D mouth sprites as a pure function of `t`. Best immediate win (gives a talking host character). Not yet integrated. |
+| princeton-vl/infinigen | BSD-3 | Licence fine, but Blender/GPU-heavy 3D; not practical on this CPU sandbox for 2D reels. Parked. |
+| VAST-AI-Research/UniRig | MIT (code) | Fine licence; irrelevant to the 2D rig and needs a GPU. Parked. |
+| NVIDIA/Audio2Face-3D | SDK reportedly MIT; models NVIDIA Open Model License (commercial OK per model cards); NIM container + Audio2Emotion stricter | Needs a 3D face rig + GPU; not a fit for the 2D pipeline. Parked; re-read licence before any use. |
+| Tencent-Hunyuan/HY-Motion-1.0 | Tencent community licence (proprietary; reports say territory excludes EU/UK/South Korea; large-platform MAU cap) | **Avoid** unless legal sign-off — territory terms unresolved. Also GPU-sized. |
+| ubisoft/ubisoft-laforge-animation-dataset (LAFAN1) | CC BY-NC-ND 4.0 | **DO NOT USE** (non-commercial, no derivatives). |
+| facebookresearch/ai4animationpy | CC BY-NC 4.0 | **DO NOT USE** (non-commercial). |
+| readyplayerme/animation-library | RPM licence: only with Ready Player Me avatars; no redistribution of (modified) animations | **DO NOT USE** with our own rigs. |
+| madjin/awesome-cc0 | CC0 (the list itself) | Pointer list only — each linked asset has its own licence; verify per asset. |
+| una-dinosauria/cmu-mocap, HF gbionics/cmu-fbx | CMU terms (free incl. commercial; acknowledgment requested) | Already used (see `assets/mocap/cmu/`). |
+| Poly Haven (via Blender add-ons) | CC0 | Usable for backgrounds/textures/HDRI stills; no Blender needed to download from the site. |
+
+Plan from this: (1) integrate Rhubarb viseme JSON → mouth shapes for a talking character; (2) keep expanding with CMU clips + hand-authored keyframes (the approach that shipped `reel-robot-cartwheel`); (3) never pull LAFAN1 / AI4Animation / RPM clips.
