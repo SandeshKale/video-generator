@@ -25,7 +25,7 @@ for (let t = a0; t < Math.min(dur, a1); t += step) {
       if (r.bottom > 1274 && kind !== 'other') res.push(`SAFE-Y ${kind} "${(n.textContent || '').trim().slice(0, 18)}" bottom ${Math.round(r.bottom)}`);
       n.querySelectorAll('*').forEach((c) => { if ([...c.childNodes].some((x) => x.nodeType === 3 && x.textContent.trim()) && c.scrollWidth > c.clientWidth + 3 && getComputedStyle(c).display !== 'inline' && !(c instanceof SVGElement)) res.push(`TEXT-OVERFLOW ${kind} "${(c.textContent || '').trim().slice(0, 20)}"`); });
       // rig figures clipped by their stage
-      n.querySelectorAll('div').forEach((st) => { const sv = st.querySelector(':scope > svg'); if (!sv || st.dataset.noclip) return; const g = sv.firstChild.lastChild; if (!g || g.nodeName !== 'g') return; const gr = R(g), sr = R(st); if (gr.width < 2) return;
+      n.querySelectorAll('div').forEach((st) => { const sv = st.querySelector(':scope > svg'); if (!sv || st.dataset.noclip) return; const g = sv.firstChild && sv.firstChild.lastChild; if (!g || g.nodeName !== 'g') return; const gr = R(g), sr = R(st); if (gr.width < 2) return;
         if (gr.left < sr.left - 6 || gr.right > sr.right + 6 || gr.top < sr.top - 6 || gr.bottom > sr.bottom + 6) res.push(`FIGURE-CLIPPED in ${kind} "${(n.textContent || '').trim().slice(0, 14)}" (${Math.round(gr.left - sr.left)},${Math.round(gr.top - sr.top)})-(${Math.round(gr.right - sr.right)},${Math.round(gr.bottom - sr.bottom)})`); });
     });
     const pad = pg.querySelector('.pad'); if (pad) { const pr = pad.getBoundingClientRect(); const ns = [...pad.querySelectorAll('.note')].filter((n) => parseFloat(n.style.opacity || 0) > 0.9 && t - parseFloat(n.dataset.at || 0) > 0.6).map((n) => ({ n, r: n.getBoundingClientRect() }));
