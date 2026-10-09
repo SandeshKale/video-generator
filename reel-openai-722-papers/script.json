@@ -1,0 +1,14 @@
+{
+ "title": "722 math papers, one prompt, three withdrawn",
+ "scenes": [
+  {"id": "s01", "shot": "", "beats": ["OpenAI dropped 722 math papers. One day later, three vanished."]},
+  {"id": "s02", "shot": "", "beats": ["On October sixth, they landed on GitHub, written by a model OpenAI hasn't released. About four thousand problems went in. Seven hundred twenty-two manuscripts came out."]},
+  {"id": "s03", "shot": "", "beats": ["OpenAI says almost every one came from a single prompt, handed to a single AI agent. About three hours of thinking each."]},
+  {"id": "s04", "shot": "", "beats": ["The claims are huge. Progress on the Hodge conjecture. A zero-free region for the Riemann zeta function. Problems mathematicians have chased for decades."]},
+  {"id": "s05", "shot": "", "beats": ["But checking is the bottleneck. Only some come with computer-verified proofs, and an OpenAI spokesperson said roughly half were released unconfirmed."]},
+  {"id": "s06", "shot": "", "beats": ["Then came a sign error. A plus that should've been a minus. One argument collapsed, and two papers built on it fell too. Three withdrawn. Fourteen more revised."]},
+  {"id": "s07", "shot": "", "beats": ["Cornell's Alex Townsend expects more errors. MIT's Andrew Sutherland called the fast fix responsible, but says single-agent claims stay unverified until others can replicate them."]},
+  {"id": "s08", "shot": "", "beats": ["And the model is still locked away. An advisory group at the Institute for Advanced Study asked labs to publish prompts and compute. OpenAI told Scientific American it isn't bound by that."]},
+  {"id": "s09", "shot": "", "beats": ["So is this the start of AI doing real math, or a very fast way to make mistakes? Tell me below. Follow for the next AI story."]}
+ ]
+}
