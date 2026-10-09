@@ -50,3 +50,16 @@ function svg(P,skin,o){
 }
 window.RIG={sample:sample,svg:svg,dur:dur};
 })();
+(function(){
+var M=window.MOCAP;
+window.RIG.speed=function(clip){var c=M[clip],ix=window.RIG._ix(clip);return (c.f[c.n-1][ix.hip*3]-c.f[0][ix.hip*3])/((c.n-1)/c.fps);};
+window.RIG._ix=function(clip){var c=M[clip];if(!c.ix){c.ix={};c.joints.forEach(function(k,i){c.ix[k]=i;});}return c.ix;};
+// mean in-place pose of a clip (for the "stiff controller" look: damp motion toward the mean)
+var means={};
+window.RIG.mean=function(clip){if(means[clip])return means[clip];var c=M[clip],ix=window.RIG._ix(clip),m={};c.joints.forEach(function(k,j){var sx=0,sy=0,sz=0;for(var i=0;i<c.n;i++){sx+=c.f[i][j*3]-c.f[i][ix.hip*3];sy+=c.f[i][j*3+1];sz+=c.f[i][j*3+2];}m[k]=[sx/c.n,sy/c.n,sz/c.n];});return means[clip]=m;};
+window.RIG.damp=function(P,clip,a){var m=window.RIG.mean(clip),hx=P.hip[0],o={};for(var k in P)o[k]=[m[k][0]+(P[k][0]-hx-m[k][0])*a+hx,m[k][1]+(P[k][1]-m[k][1])*a,P[k][2]];return o;};
+window.RIG.lerpP=function(A,B,u){var o={};for(var k in A)o[k]=[A[k][0]+(B[k][0]-A[k][0])*u,A[k][1]+(B[k][1]-A[k][1])*u,A[k][2]+(B[k][2]-A[k][2])*u];return o;};
+window.RIG.shift=function(P,dx,dy){var o={};for(var k in P)o[k]=[P[k][0]+dx,P[k][1]+dy,P[k][2]];return o;};
+// rotate whole pose about a point (world coords, y up) by deg (counter-clockwise)
+window.RIG.rotate=function(P,cx,cy,deg){var a=deg*Math.PI/180,c=Math.cos(a),s=Math.sin(a),o={};for(var k in P){var x=P[k][0]-cx,y=P[k][1]-cy;o[k]=[cx+x*c-y*s,cy+x*s+y*c,P[k][2]];}return o;};
+})();

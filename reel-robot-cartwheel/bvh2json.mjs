@@ -76,7 +76,15 @@ for (const [name, [file, s0, s1, face]] of Object.entries(CLIPS)) {
     for (const k of ['tL', 'tR']) { const p = P[idx(J[k])]; row.push(Math.round((p[0] * fx + p[2] * fz - x0) * sc * 10) / 10, Math.round((p[1] - minY) * sc * 10) / 10, Math.round((-p[0] * fz + p[2] * fx) * sc * 10) / 10); }
     return row;
   });
-  out[name] = { fps: 60, n: frames.length, joints: keys.filter((k) => k !== 'tL' && k !== 'tR').concat(['tL', 'tR']), f: frames };
+  let fr = frames;
+  if (name === 'walk' || name === 'run') { // crop to the best seamless cycle (pose + velocity match between first and last frame)
+    const rel = (f) => { const o = []; for (let k = 0; k < f.length; k += 3) { o.push(f[k] - f[0], f[k + 1], f[k + 2]); } return o; };
+    const R = frames.map(rel); const dist = (a, b) => a.reduce((s, v, k) => s + (v - b[k]) ** 2, 0);
+    const minLen = name === 'walk' ? 40 : 28; let best = [1e18, 0, 0];
+    for (let i = 0; i < frames.length - minLen - 3; i++) for (let j = i + minLen; j < frames.length - 1; j++) { const d = dist(R[i], R[j]) + dist(R[i + 1], R[j + 1]); if (d < best[0]) best = [d, i, j]; }
+    fr = frames.slice(best[1], best[2] + 1); console.log('  loop', best[1], best[2], 'err', best[0].toFixed(0));
+  }
+  out[name] = { fps: 60, n: fr.length, joints: keys.filter((k) => k !== 'tL' && k !== 'tR').concat(['tL', 'tR']), f: fr };
   console.log(name, file, 'frames', frames.length, 'travel', Math.round(tr * sc), 'minY', minY.toFixed(1));
 }
 writeFileSync(new URL('./site/mocap.js', import.meta.url), 'window.MOCAP=' + JSON.stringify(out) + ';\n');
