@@ -271,3 +271,6 @@ a reel, not for redistribution as a standalone asset."
 ## Using these in a reel template
 
 Icons/illustrations are plain SVG files — inline them directly into a reel's HTML (`<svg>...</svg>` content) or reference via `<img src="...">` / a `data:` URI, same as the profile picture substitution pattern already used in `reel-anthropic-opus-5-5*/reel.html.tmpl`. Photos are standard JPEGs, usable as background images or `<img>` sources.
+
+## Motion capture — `assets/mocap/cmu/` (CMU Graphics Lab Motion Capture Database)
+BVH clips 02_01 (walk), 02_03 (run), 49_06 (cartwheel), 55_01 (dance/whirl), 88_06 (jump + spin kick), 135_04 (front kick), from the una-dinosauria/cmu-mocap mirror of mocap.cs.cmu.edu. Terms (READMEFIRST.txt, copied alongside): free for research and commercial use worldwide; acknowledgment requested: "The data used in this project was obtained from mocap.cs.cmu.edu. The database was created with funding from NSF EIA-0196217." — include it in any caption/credits of a reel that uses these clips (see `reel-robot-cartwheel/bvh2json.mjs`).
