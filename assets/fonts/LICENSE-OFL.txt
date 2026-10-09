@@ -49,3 +49,5 @@ Barlow Condensed — Copyright The Barlow Project Authors (https://github.com/jp
 Syne (700, 800) and Space Mono (400, 700) — SIL Open Font License 1.1, via @fontsource.
 
 Press Start 2P (400) and VT323 (400) — SIL Open Font License 1.1, via @fontsource.
+
+Fredoka (600, 700) and DM Mono (500) — SIL Open Font License 1.1, via @fontsource.
