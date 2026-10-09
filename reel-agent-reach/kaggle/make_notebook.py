@@ -102,7 +102,7 @@ SRC = f'{BASE}/work/real.mp4'
 if not (os.path.exists(SRC) and os.path.getsize(SRC) > 10_000_000):
     s = requests.Session()
     u = f"https://drive.google.com/uc?export=download&id={CFG['drive_id']}"
-    r = s.get(u)
+    r = s.get(u, stream=True)
     if 'text/html' in r.headers.get('content-type',''):
         act = re.search(r'action="([^"]+)"', r.text).group(1)
         f = dict(re.findall(r'name="([^"]+)" value="([^"]*)"', r.text))
