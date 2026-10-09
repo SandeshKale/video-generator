@@ -24,7 +24,7 @@ function S1(t){
   var bg='<rect width="768" height="470" fill="'+WALL+'"/><rect y="400" width="768" height="70" fill="#e9cfa6"/><rect x="590" y="70" width="110" height="150" rx="10" fill="#bfe3ef"/><rect x="598" y="78" width="94" height="134" rx="6" fill="#dff3f8"/><path d="M0 400 H768" stroke="#d6b88a" stroke-width="4"/>'+'<rect x="40" y="330" width="150" height="10" rx="5" fill="#c9a26b"/>';
   bg+=camera(110,255,.95,Math.floor(t*2)%2===0)+'<ellipse cx="115" cy="402" rx="40" ry="8" fill="rgba(42,36,56,.16)"/>'+sofa(440,402);
   var P=R.sample('walk',t*1.05,{loop:true,inplace:true});var wx=lerp(-60,250,eo5(clamp(t/2.4,0,1)));
-  var fig='<g>'+PUP.svg(P,PUP.chars.maya,{blink:K.blink(t)})+'</g>';
+  var fig='<g>'+PUP.svg(P,PUP.chars.maya,{blink:K.blink(t),sec:PUP.secondary(P,R.sample('walk',t*1.05-.05,{loop:true,inplace:true}))})+'</g>';
   // film reel with a red ban over it
   var u=clamp((t-W(0,5))/.4,0,1),reel='<g transform="translate(650 300)" opacity="'+clamp((t-W(0,5)+.15)/.15,0,1)+'"><circle r="46" fill="#fff" stroke="'+INK+'" stroke-width="6"/><circle r="9" fill="'+INK+'"/>'+[0,60,120,180,240,300].map(function(a){return '<circle cx="'+(24*Math.cos(a*Math.PI/180)).toFixed(1)+'" cy="'+(24*Math.sin(a*Math.PI/180)).toFixed(1)+'" r="8" fill="'+INK+'"/>';}).join('')+'</g><g transform="translate(650 300) scale('+eb(u).toFixed(3)+')" opacity="'+(u>0?1:0)+'"><circle r="62" fill="none" stroke="'+TERRA+'" stroke-width="12"/><path d="M-44 -44 L44 44" stroke="'+TERRA+'" stroke-width="12" stroke-linecap="round"/></g>';
   s1.draw(fig,wx+90,402,.8,bg+reel);
@@ -50,7 +50,7 @@ var q1=sticky(pad6,'A person entered the kitchen',20,20,-2),q2=el('div','stampp'
 function S6(t){
   var bg='<rect width="768" height="470" fill="#f7e8cc"/><rect y="400" width="768" height="70" fill="#e1c595"/><rect x="40" y="90" width="300" height="130" rx="12" fill="#dfe9d9"/><rect x="60" y="250" width="260" height="150" rx="10" fill="#c9d6c5"/>'+camera(400,130,.95,Math.floor(t*2)%2===0);
   var Pb=R.sample('stealth',t*.9,{loop:true,inplace:true}),Pc=R.sample('shrug',clamp(t*.8,0,1.9),{inplace:true});
-  var burglar='<g transform="translate(500 0)">'+PUP.svg(Pb,PUP.chars.burglar,{blink:K.blink(t)})+'</g>';
+  var burglar='<g transform="translate(500 0)">'+PUP.svg(Pb,PUP.chars.burglar,{blink:K.blink(t),sec:PUP.secondary(Pb,R.sample('stealth',t*.9-.05,{loop:true,inplace:true}))})+'</g>';
   var cop='<g transform="translate(-30 0)">'+PUP.svg(Pc,PUP.chars.officer,{blink:K.blink(t),face:-1})+'</g>';
   s6.draw(cop+burglar,190,405,.8,bg);
   var g=document.createElementNS('http://www.w3.org/2000/svg','g');
