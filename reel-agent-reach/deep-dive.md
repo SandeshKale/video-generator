@@ -18,6 +18,9 @@ Everything below maps one reference trait to one concrete piece of our stack.
 
 ## 2. Avatar — what is possible and the plan
 
+**DECIDED (Oct 2026): feed LatentSync the user's own real gesture-bank footage (see `recording-guide.md`), MoDA only as fallback.** Sections below are the options considered.
+
+
 User confirmed the Kaggle route works. We do not know which model it runs → **open question**. Plan by capability:
 
 1. **Baseline (works today):** MoDA head motion → LatentSync lips (the approved pipeline). Gives face + head, no hands.
