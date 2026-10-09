@@ -53,3 +53,22 @@ Checked LICENSE files directly where reachable (raw.githubusercontent) and by se
 | Poly Haven (via Blender add-ons) | CC0 | Usable for backgrounds/textures/HDRI stills; no Blender needed to download from the site. |
 
 Plan from this: (1) integrate Rhubarb viseme JSON → mouth shapes for a talking character; (2) keep expanding with CMU clips + hand-authored keyframes (the approach that shipped `reel-robot-cartwheel`); (3) never pull LAFAN1 / AI4Animation / RPM clips.
+
+## Round 3 (Oct 9, 2026) — photoreal / Pixar-style 3D character sources, and a real feasibility test
+
+**Sandbox facts measured:** no GPU, 4 CPUs, ~5 GB free disk. `pip install bpy` (Blender 5.0.1 as a Python module, 374 MB wheel) **works** in a venv; `apt install libegl1 libgl1 libgl1-mesa-dri` makes Workbench render work via Mesa. Sketchfab/BlendSwap/OpenGameArt/Hugging Face/Reallusion landing pages are reachable (downloads from Sketchfab need an account/token; not tested).
+
+**Render-cost test (KayKit Knight, 1080×1920, one frame):** Cycles CPU ~23 s est. (5.7 s at 540×960, 16 spp) · Eevee (llvmpipe) ~40 s · Workbench ~7.6 s incl. first-frame init (flat, no real shading). A 69 s reel is ~4,100 frames → 3D at final resolution is **not practical** (Eevee/Cycles ≈ 30–45 CPU-hours). Viable only as **pre-rendered sprite sequences** (low frame count, ~480×720, transparent PNG, played back by frame index = pure function of `t`), plus a BVH→glTF retarget step that does not exist yet.
+
+| Source | Licence / terms | Verdict |
+|---|---|---|
+| KayKit Adventurers (git clone works) | **CC0** (LICENSE.txt in repo) — rigged glTF/FBX, 41-bone rig, ships animations | Usable; stylised chibi **fantasy** (knight/mage/rogue…) — wrong setting for modern-home stories. Proves the 3D path works. |
+| MB-Lab (Blender add-on) | Default **AGPL-3** for generated models; CC BY-4.0 option for closed-source *if official release + credit*; **renders** of the models are not derivatives (author may license 2D renders freely); code/data licence statements conflict | Renders are the safe output. Needs a Blender GUI-less workflow; not tested. Check licence in the exact release before shipping. |
+| AccuRIG (Reallusion) | Tool free incl. commercial (forum statement); outputs inherit the *source model's* licence; Reallusion content has no-public-redistribution terms | Web/desktop app; can't run here. Fine for rigging our own meshes. |
+| Meshy (hosted) | Free plan = CC BY-4.0 (credit Meshy); no-attribution/private + **API need a paid plan** | Needs user's account/credits; not run. |
+| Sketchfab / BlendSwap / OpenGameArt | **Per-model licences** (CC0, CC-BY, NC variants); Sketchfab download needs login | Only filter to CC0/CC-BY; log each model in ATTRIBUTION.md. |
+| agmmnn/awesome-blender | CC0 (the list) | Pointer list only. |
+| CharacterGen, LHM | Apache-2.0 (code) | GPU only; can't run here. |
+| LAFAN1, AI4Animation, RPM animations, HY-Motion | see Round 2 — **not usable** | — |
+
+**Recommendation recorded:** keep **layered 2D puppets** (`reel-apple-camera-no-video/site/puppet.js`) as the production path; add CC0 3D (KayKit-style, or Quaternius/Polygonal Mind modern humans once a licence-checked download is confirmed) only as **pre-rendered sprite sequences** for hero shots, after building a BVH→glTF retarget. Not implemented.
