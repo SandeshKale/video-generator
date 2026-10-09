@@ -246,7 +246,7 @@ os.makedirs(f'{BASE}/out/vo', exist_ok=True)
 for f in glob.glob(f'{BASE}/vo/*.wav'): shutil.copy(f, f'{BASE}/out/vo/')
 shutil.copytree(f'{BASE}/host', f'{BASE}/out/host', dirs_exist_ok=True)
 shutil.copy(f'{BASE}/work/config.json', f'{BASE}/out/config.json')
-sh(f'cd {BASE} && rm -f agentreach-out.zip && zip -qr agentreach-out.zip out -x \'out/lat_g*\'')
+sh(f'cd {BASE} && rm -f agentreach-out.zip && zip -qr agentreach-out.zip out -x "out/lat_g*"')
 print(sh(f'ls -l {BASE}/agentreach-out.zip').stdout)
 try:
     from IPython.display import Video
