@@ -276,3 +276,6 @@ Icons/illustrations are plain SVG files — inline them directly into a reel's H
 BVH clips 02_01 (walk), 02_03 (run), 49_06 (cartwheel), 55_01 (dance/whirl), 88_06 (jump + spin kick), 135_04 (front kick), from the una-dinosauria/cmu-mocap mirror of mocap.cs.cmu.edu. Terms (READMEFIRST.txt, copied alongside): free for research and commercial use worldwide; acknowledgment requested: "The data used in this project was obtained from mocap.cs.cmu.edu. The database was created with funding from NSF EIA-0196217." — include it in any caption/credits of a reel that uses these clips (see `reel-robot-cartwheel/bvh2json.mjs`).
 
 Added for `reel-apple-camera-no-video`: 18_08 (conversation, explain with hand gestures), 17_03 (walk stealthily), 111_25 (shrug), 13_27 (direct traffic, wave, point), 13_01 (sit on high stool, stand up) — same CMU terms/acknowledgment as above.
+
+## Rhubarb Lip Sync (tool, MIT) — used by `reel-apple-camera-no-video`
+DanielSWolf/rhubarb-lip-sync v1.13.0 (MIT; deps MIT/BSD) was run offline on the voice-over to produce mouth-shape cues (`site/mouth.js`). The binary is not vendored (download from the project's GitHub releases); only its output is committed.
