@@ -17,6 +17,8 @@ const MIME = {
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
   '.woff2': 'font/woff2',
+  '.webm': 'video/webm',
+  '.mp4': 'video/mp4',
 };
 
 export function serveDir(rootDir) {
@@ -38,7 +40,22 @@ export function serveDir(rootDir) {
           return;
         }
         const body = await readFile(filePath);
-        res.writeHead(200, { 'Content-Type': MIME[extname(filePath)] || 'application/octet-stream' });
+        const type = MIME[extname(filePath)] || 'application/octet-stream';
+        // <video> seeking over HTTP needs byte-range support; without it currentTime changes never show new frames.
+        const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+        if (m && (m[1] || m[2])) {
+          const start = m[1] ? Number(m[1]) : Math.max(0, body.length - Number(m[2]));
+          const end = m[1] && m[2] ? Math.min(Number(m[2]), body.length - 1) : body.length - 1;
+          if (start > end || start >= body.length) {
+            res.writeHead(416, { 'Content-Range': `bytes */${body.length}` });
+            res.end();
+            return;
+          }
+          res.writeHead(206, { 'Content-Type': type, 'Accept-Ranges': 'bytes', 'Content-Range': `bytes ${start}-${end}/${body.length}`, 'Content-Length': end - start + 1 });
+          res.end(body.subarray(start, end + 1));
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': type, 'Accept-Ranges': 'bytes', 'Content-Length': body.length });
         res.end(body);
       } catch (err) {
         res.writeHead(500);

@@ -5,12 +5,17 @@
 var FPS=25,N=1718;
 function build(win){
   var v=document.createElement('video');v.muted=true;v.preload='auto';v.playsInline=true;v.src='host.webm';
-  v.style.cssText='position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.12);transform-origin:50% 40%';
-  win.insertBefore(v,win.firstChild);return v;
+  // The <video> itself is kept hidden: a screenshot can capture a stale compositor frame. Each seeked frame is copied
+  // into a canvas (drawImage reads the decoded frame synchronously), so the pixels are exactly the seeked frame.
+  v.style.cssText='position:absolute;width:2px;height:2px;opacity:0;pointer-events:none';
+  var c=document.createElement('canvas');c.width=c.height=512;
+  c.style.cssText='position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.12);transform-origin:50% 40%';
+  win.insertBefore(c,win.firstChild);win.insertBefore(v,win.firstChild);v.__c=c;return v;
 }
+function paint(v){try{v.__c.getContext('2d').drawImage(v,0,0,512,512);}catch(e){}}
 function seekTo(v,tt){return new Promise(function(res){
-  if(Math.abs(v.currentTime-tt)<1e-4&&v.readyState>=2){res();return;}
-  var done=false;function fin(){if(done)return;done=true;v.removeEventListener('seeked',fin);res();}
+  if(Math.abs(v.currentTime-tt)<1e-4&&v.readyState>=2){paint(v);res();return;}
+  var done=false;function fin(){if(done)return;done=true;v.removeEventListener('seeked',fin);paint(v);res();}
   v.addEventListener('seeked',fin);v.currentTime=tt;setTimeout(fin,4000);});}
 function draw(win,t){
   var v=win.__hv||(win.__hv=build(win));
