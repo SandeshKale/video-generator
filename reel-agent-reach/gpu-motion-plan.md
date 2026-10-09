@@ -5,7 +5,7 @@ Honest finding first: cel-shaded 3D is cheap. The Reach glove renders at ~0.15 s
 | # | Task | Where it runs | Used in (beat) | Status |
 |---|---|---|---|---|
 | 1 | **3D Reach glove**, procedural, cel-shaded, pure-function-of-t clips (wave, peek, count 1-4, point down/left, thumbs-up) → alpha WebM | CPU here (Blender `bpy`) | hook peek (s01), counting platforms (s07), point at tiles (s08), CTA point-down (s19-21) | **Done**: `blender/glove.py`, `blender/clips.json`, `site/mascot/*.webm`; alpha + seeking verified in Chromium over the Range server |
-| 2 | **Host cut-out (video matting)** so graphics sit behind/around the host, sticker outline, text behind head | CPU is enough (RVM / rembg per slice); GPU optional | layouts A/B | Next, after the lip-synced clips arrive |
+| 2 | **Host cut-out (video matting)** (Robust Video Matting) so graphics sit behind/around the host | CPU is enough (tested here: 50 frames in 9 s); also in the ALL notebook | layouts A/B | **Done** in `kaggle/AgentReach_GPU_ALL.ipynb` (Part 2); logic verified on the real face crop |
 | 3 | **Generated object photos** (eye, switchboard, cables, magnifier, newspapers, radar dish, rotary phone) → cut-outs → torn-edge collage on bone paper, cover hero | **Kaggle GPU** (RealVisXL Lightning, OpenRAIL++ commercial OK) | s02 (eyes), s12 (switchboard), cover, montage tiles | Notebook `AgentReach_GPU_extras.ipynb` in Drive |
 | 4 | **AI video inserts** (eye opening, server-room dolly, hands on switchboard), 24 fps by interpolation | **Kaggle GPU** (CogVideoX-2b, Apache-2.0; 720×480 → used as ≤600 px inset windows) | s02 hook insert, s14-17 montage backdrop | same notebook; always tagged "AI VIDEO" |
 | 5 | **3D patch-cord switchboard** scene (cords with physics, sparks) for "It's a switchboard over tools" | CPU toon first; Cycles GPU if we want real materials | s12 | planned (Blender) |
@@ -16,3 +16,6 @@ Honest finding first: cel-shaded 3D is cheap. The Reach glove renders at ~0.15 s
 Held back (licence or fit): EchoMimicV2, LivePortrait, GFPGAN (see `gpu-options.md`); MusicGen (non-commercial); text/UI generation by video models (they garble text, so UI panels stay as real HTML).
 
 Labels: every generated still/clip carries an on-screen "AI IMAGE" / "AI VIDEO" tag and the caption says so.
+
+## Drive kit (final)
+`AgentReach_GPU_ALL.ipynb` (Part 1 voice + lip-sync, Part 2 host cut-out, Part 3 generated stills/cut-outs/depth/AI video) + `steps-ALL.md`. The two earlier notebooks stay as subsets. Built by `kaggle/make_all_notebook.py`.
