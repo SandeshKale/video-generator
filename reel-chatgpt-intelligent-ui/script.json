@@ -1,0 +1,129 @@
+{
+ "title": "ChatGPT ab sirf chat box nahin raha",
+ "note": "Token syntax: spoken=shown. The left side (Devanagari) goes to the TTS, the right side is what captions display. Words without '=' are shown as spoken.",
+ "scenes": [
+  {
+   "id": "s01",
+   "beats": [
+    "चैटजीपीटी=ChatGPT अब सिर्फ़ चैट बॉक्स नहीं रहा।"
+   ],
+   "en": [
+    [
+     "ChatGPT just stopped being a chat box."
+    ]
+   ]
+  },
+  {
+   "id": "s02",
+   "beats": [
+    "पूछिए, प्लेन का पंख लिफ़्ट कैसे बनाता है? जवाब में पैराग्राफ़ नहीं मिलेगा। मिलेगा एक डायग्राम, जिसे आप छू सकते हैं।"
+   ],
+   "en": [
+    [
+     "Ask how a plane's wing makes lift?",
+     "You won't get a paragraph.",
+     "You'll get a diagram you can touch."
+    ]
+   ]
+  },
+  {
+   "id": "s03",
+   "beats": [
+    "इसका नाम है इंटेलिजेंट=Intelligent यूआई=UI, और ये बुधवार को जीपीटी-सिक्स=GPT-6 के साथ आया है।"
+   ],
+   "en": [
+    [
+     "It's called Intelligent UI, and it arrived Wednesday with GPT-6."
+    ]
+   ]
+  },
+  {
+   "id": "s04",
+   "beats": [
+    "मॉडल खुद तय करता है कि कब शब्द काफ़ी नहीं हैं। फिर वो जवाब लिखते-लिखते ही इंटरफ़ेस बना देता है। बटन। फ़ॉर्म। चार्ट। यहाँ तक कि कैलकुलेटर।"
+   ],
+   "en": [
+    [
+     "The model decides when words aren't enough.",
+     "Then it builds the interface while it's still writing.",
+     "Buttons.",
+     "Forms.",
+     "Charts.",
+     "Even a calculator."
+    ]
+   ]
+  },
+  {
+   "id": "s05",
+   "beats": [
+    "डिनर प्लान कर रहे हैं? मेहमान बदलिए, रेसिपी अपने आप बदल जाएगी। बिल बाँटना है? स्प्लिटर तैयार। ट्रेक पर जाना है? ये रहा नक्शा।"
+   ],
+   "en": [
+    [
+     "Planning dinner?",
+     "Change the guests, and the recipe rescales itself.",
+     "Splitting a bill?",
+     "Splitter's ready.",
+     "Going on a trek?",
+     "Here's the map."
+    ]
+   ]
+  },
+  {
+   "id": "s06",
+   "beats": [
+    "अंदर से ये तैयार पुर्ज़ों की एक लाइब्रेरी है, और एक कंपाइलर, जो जवाब आते-आते उन्हें जोड़ता जाता है।"
+   ],
+   "en": [
+    [
+     "Under the hood: a library of ready-made parts, and a compiler that snaps them together as the answer streams in."
+    ]
+   ]
+  },
+  {
+   "id": "s07",
+   "beats": [
+    "पेड प्लान वालों को बुधवार को मिला। फ़्री यूज़र्स को, गुरुवार को।"
+   ],
+   "en": [
+    [
+     "Paid plans got it Wednesday.",
+     "Free users, Thursday."
+    ]
+   ]
+  },
+  {
+   "id": "s08",
+   "beats": [
+    "पर एक पेच है। चमकीला चार्ट, जाँचा हुआ चार्ट नहीं होता। आलोचक कहते हैं, सुंदर विजेट ग़लत जवाब छुपा भी सकता है। सेटिंग्स में विज़ुअल्स कम कर सकते हैं।"
+   ],
+   "en": [
+    [
+     "But there's a catch.",
+     "A shiny chart isn't a checked chart.",
+     "Critics say a pretty widget can hide a wrong answer.",
+     "You can turn the visuals down in settings."
+    ]
+   ]
+  },
+  {
+   "id": "s09",
+   "beats": [
+    "असली बदलाव यही है। जवाब अब पढ़ने की चीज़ नहीं रहा। इस्तेमाल करने की चीज़ है।",
+    "तो आप क्या चुनेंगे? जवाब पढ़ना, या जवाब को छूना? अगली स्टोरी के लिए फ़ॉलो कीजिए।"
+   ],
+   "en": [
+    [
+     "That's the real shift.",
+     "An answer isn't something you read anymore.",
+     "It's something you use."
+    ],
+    [
+     "So what will you choose?",
+     "Reading an answer, or touching one?",
+     "Follow for the next story."
+    ]
+   ]
+  }
+ ]
+}
