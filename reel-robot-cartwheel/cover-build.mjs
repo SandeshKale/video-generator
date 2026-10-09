@@ -1,0 +1,29 @@
+// Grid-first cover: one giant mid-flip robot (solid) chasing the human's pink outline, 4-word title, face chip bottom-right (clear of the view badge).
+import { writeFileSync } from 'node:fs';
+import { chromium } from 'playwright';
+const html = `<!doctype html><meta charset="utf-8"><style>
+@font-face{font-family:'AN';src:url('site/assets/fonts/anton/anton-latin-400-normal.woff2');font-display:block}
+@font-face{font-family:'SM';font-weight:700;src:url('site/assets/fonts/space-mono/space-mono-latin-700-normal.woff2');font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#ffd23f;position:relative;font-family:'AN',sans-serif}
+.dots{position:absolute;inset:0;background:radial-gradient(circle,rgba(16,20,38,.22) 3px,transparent 3.2px) 0 0/54px 54px}
+.band{position:absolute;left:0;right:0;top:1010px;height:560px;background:#101426}
+.hero{position:absolute;left:0;top:330px}
+.t{position:absolute;left:80px;top:1060px;font-size:200px;line-height:.92;color:#f5f7fa;text-transform:uppercase;letter-spacing:.005em;text-shadow:0 8px 0 rgba(0,0,0,.35)}
+.t b{font-weight:400;color:#ff3d7f}
+.face{position:absolute;right:90px;top:1320px;width:190px;height:190px;border-radius:50%;border:10px solid #f5f7fa;box-shadow:10px 10px 0 #ff3d7f;background:url(site/profile.jpg) center/cover}
+.fl{position:absolute;left:90px;top:1500px;font:700 40px SM;color:#ffd23f;letter-spacing:.06em}
+</style><div class="dots"></div><div class="band"></div><svg class="hero" width="1080" height="700" viewBox="0 0 1080 700" id="hero"></svg>
+<div class="t">Human did<br>it <b>first</b></div><div class="face"></div>
+<script src="site/mocap.js"></script><script src="site/rig.js"></script><script>
+var s='<line x1="40" y1="670" x2="1040" y2="670" stroke="#101426" stroke-width="10"/>';
+[[1.2,170],[1.55,330],[1.9,490]].forEach(function(q,i){var P=RIG.sample('cart',q[0],{inplace:true});s+='<g transform="translate('+q[1]+' 670) scale(.95)" opacity="'+(.45+i*.2)+'">'+RIG.svg(P,'ghost',{stroke:'#ff3d7f',sw:11})+'</g>';});
+var big=RIG.sample('cart',2.15,{inplace:true});
+s+='<g transform="translate(790 670) scale(1.35)">'+RIG.svg(big,'robot')+'</g>';
+document.getElementById('hero').innerHTML=s;
+</script>`;
+writeFileSync(new URL('./cover.html', import.meta.url), html);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--allow-file-access-from-files'] });
+const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto(new URL('./cover.html', import.meta.url).href); await p.waitForTimeout(600);
+await p.screenshot({ path: new URL('./cover.png', import.meta.url).pathname }); await b.close();
