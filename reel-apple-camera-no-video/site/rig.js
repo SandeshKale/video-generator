@@ -66,7 +66,7 @@ function svg(P,skin,o){
   else s+='<g transform="rotate('+ang+' '+hx+' '+hy+')"><rect x="'+(h[0]-34).toFixed(1)+'" y="'+(-h[1]-28).toFixed(1)+'" width="68" height="56" rx="20" fill="#e3e8ec" stroke="'+edge+'" stroke-width="4"/><rect x="'+(h[0]-24+6).toFixed(1)+'" y="'+(-h[1]-10).toFixed(1)+'" width="48" height="18" rx="9" fill="'+INK+'"/><rect x="'+(h[0]-12+10).toFixed(1)+'" y="'+(-h[1]-5).toFixed(1)+'" width="22" height="8" rx="4" fill="'+SKY+'"/></g>';
   return s;
 }
-window.RIG={sample:sample,svg:svg,dur:dur};
+window.RIG={sample:sample,svg:svg,dur:dur,mouth:mouth};
 })();
 (function(){
 var M=window.MOCAP;
