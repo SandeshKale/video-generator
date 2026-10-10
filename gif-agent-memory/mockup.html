@@ -29,9 +29,7 @@ h1{position:absolute;left:60px;top:34px;font:800 58px/1 Sora;letter-spacing:-.03
 .gauge{position:absolute;left:1250px;top:716px;width:310px;height:34px;border:2.5px solid #1d2530;border-radius:10px;background:#fff;overflow:hidden}.gauge div{height:100%;width:72%;background:#f0a500}
 .note{position:absolute;font:600 20px/1.25 Inter;color:#3a4552}
 </style><body>
-<h1>Agent memory is <em>not</em> RAG</h1><div class=sub>Retain → Recall → Reflect: how a memory layer turns chat history into context that learns.</div>
-<div class=chips><div class=chip>MIT</div><div class=chip>47.7k ★</div><div class="chip l">4 retrievers · parallel</div></div>
-
+<div id=dg style="position:absolute;inset:0;transform:translateY(-122px)">
 <!-- 1 RETAIN -->
 <div class=step style="left:60px;top:168px"><b>1</b>RETAIN</div>
 <div class=msg style="left:60px;top:212px;width:270px" ><span class=tag style="background:#35557a">user</span><br>I moved to Pune in March and I'm allergic to peanuts.</div>
@@ -192,5 +190,12 @@ unicode: "f6d7"
  <path d="M692 200 V212 M692 200 H692" stroke="#1d2530"/></svg>
 <div class=step style="left:680px;top:818px;color:#c2185b"><b style="background:#c2185b">5</b>REFLECT · new facts rewrite the mental models</div>
 <div class=note style="left:60px;top:696px;width:270px"><b>Why it is not RAG:</b> RAG fetches text. This layer extracts, links, ranks and keeps learning.</div>
-<div class=note style="left:60px;top:834px;width:520px;font-size:18px;color:#4a5563">Based on the open-source Hindsight project (github.com/vectorize-io/hindsight)</div>
+</div>
+<div style="position:absolute;left:0;right:0;top:752px;height:148px;background:#1d2530;color:#f5efe6;border-top:6px solid #c2185b">
+ <div style="position:absolute;left:60px;top:22px;font:800 62px/1 Sora;letter-spacing:-.03em">Agent memory is <span style="color:#ff5c93">not</span> RAG</div>
+ <div style="position:absolute;left:62px;top:96px;font:600 22px Inter;color:#d6cfc3">Retain → Recall → Reflect · open-source Hindsight project</div>
+ <div style="position:absolute;right:60px;top:24px;display:grid;grid-template-columns:auto auto;gap:10px 12px;justify-items:stretch">
+  <div class=chip style="background:#f5efe6;color:#1d2530;text-align:center">MIT</div><div class=chip style="background:#f5efe6;color:#1d2530;text-align:center">47.7k ★</div>
+  <div class=chip style="grid-column:span 2;background:transparent;color:#f5efe6;border:2px solid #f5efe6;text-align:center">4 retrievers · in parallel</div></div>
+</div>
 </body>
