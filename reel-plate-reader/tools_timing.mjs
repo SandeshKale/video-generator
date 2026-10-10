@@ -2,7 +2,8 @@
 import fs from 'node:fs';
 const T = JSON.parse(fs.readFileSync(new URL('./timing.json', import.meta.url)));
 const BEATS = T.scenes.map((s, i) => [s.start, i === T.scenes.length - 1 ? T.total : T.scenes[i + 1].start]);
-const WORDS = T.scenes.map(s => s.beats.flatMap(b => b.words.map(w => [w.s, w.e, w.w.replace(/[.,!?]+$/, '')])));
+const script = JSON.parse(fs.readFileSync(new URL('./script.json', import.meta.url)));
+const WORDS = T.scenes.map((s, si) => s.beats.flatMap((b, bi) => { const toks = script.scenes[si].beats[bi].split(/\s+/); const ok = toks.length === b.words.length; if (!ok) console.log('token mismatch scene', si + 1, toks.length, b.words.length); return b.words.map((w, i) => [w.s, w.e, ok ? toks[i] : w.w]); }));
 fs.writeFileSync(new URL('./site/timing.js', import.meta.url), `window.BEATS=${JSON.stringify(BEATS)};window.WORDS=${JSON.stringify(WORDS)};\n`);
 console.log(BEATS.map(b => b[0].toFixed(1)).join(' '), T.total);
 // ---- SFX events (absolute seconds), keyed to spoken words ----

@@ -1,0 +1,28 @@
+// Cover on the approved cartwheel-cover template: full-bleed colour, hero scene on top, hazard-stripe edge, dark title block (2 lines, accent word), face chip bottom-right.
+// Accent = this reel's highway green / reflective amber. Hero = the pole camera still (a photo used full-bleed in the reel, here recomposed as a sign-framed close-up).
+import { writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { chromium } from 'playwright';
+const __dirname = dirname(fileURLToPath(import.meta.url)); const A = '../assets/fonts/';
+const html = `<!doctype html><meta charset=utf8><style>
+@font-face{font-family:AB;src:url(${A}archivo-black/archivo-black-latin-400-normal.woff2);font-display:block}
+:root{--gr:#0a6b43;--am:#ffb400;--as:#15181c;--wh:#f4f6f2}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--gr)}
+.tex{position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 3px,transparent 3px 16px)}
+.road{position:absolute;left:0;top:0;bottom:0;width:0}
+.ph{position:absolute;left:90px;top:300px;width:900px;height:700px;border:14px solid var(--wh);border-radius:30px;box-shadow:0 0 0 8px var(--gr),0 30px 60px rgba(0,0,0,.45);background:url(shots/pole_cam.jpg) 50% 28%/165% auto;overflow:hidden}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(21,24,28,.5))}
+.tag{position:absolute;left:112px;top:316px;font:500 24px/1 monospace;letter-spacing:.14em;color:#fff;background:rgba(21,24,28,.85);padding:8px 12px;border-radius:6px}
+.dia{position:absolute;left:740px;top:230px;width:190px;height:190px;background:var(--am);border:10px solid var(--as);transform:rotate(45deg);box-shadow:0 12px 26px rgba(0,0,0,.5)}
+.diat{position:absolute;left:740px;top:230px;width:190px;height:190px;display:flex;align-items:center;justify-content:center;font:400 30px/1 AB;color:var(--as);letter-spacing:.04em;text-align:center}
+.hz{position:absolute;left:0;right:0;top:1040px;height:44px;background:repeating-linear-gradient(135deg,var(--am) 0 28px,var(--as) 28px 56px)}
+.tb{position:absolute;left:0;right:0;top:1084px;height:480px;background:var(--as)}
+.t{position:absolute;left:70px;font-family:AB;text-transform:uppercase;line-height:.92;white-space:nowrap;color:var(--wh)}
+.t1{top:1130px;font-size:148px}.t2{top:1290px;font-size:148px;color:var(--am)}
+.face{position:absolute;left:896px;top:1385px;width:140px;height:140px;border-radius:50%;object-fit:cover;border:10px solid var(--wh);box-shadow:0 0 0 8px var(--am)}
+</style><body><div class="tex"></div><div class="ph"></div><div class="tag">AI IMAGE</div><div class="dia"></div><div class="diat">CAM<br>ERA</div>
+<div class="hz"></div><div class="tb"></div><div class="t t1">NOTES ON</div><div class="t t2">YOUR CAR</div><img class="face" src="../reel-app/public/profile.jpg"></body>`;
+writeFileSync(join(__dirname, 'cover.html'), html);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] }); const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto('file://' + join(__dirname, 'cover.html')); await p.waitForTimeout(600); await p.screenshot({ path: join(__dirname, 'cover.png') }); await b.close(); console.log('cover.png');
