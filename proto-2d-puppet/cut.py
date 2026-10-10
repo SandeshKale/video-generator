@@ -16,12 +16,13 @@ fg = ~keep; fg = ndi.binary_opening(fg, iterations=1)
 alpha = Image.fromarray((fg * 255).astype('uint8')).filter(ImageFilter.GaussianBlur(0.8))
 rgba = im.convert('RGBA'); rgba.putalpha(alpha); rgba.save(H + '/e22_cut.png')
 M = lambda pts: [(1200 - x, y) for x, y in pts]
-L_up = [(488, 245), (545, 255), (520, 430), (415, 440), (430, 330)]
-L_fo = [(405, 415), (522, 415), (505, 515), (492, 535), (492, 620), (420, 620), (415, 525)]
-L_leg_u = [(512, 500), (602, 500), (600, 765), (516, 765)]; L_leg_l = [(516, 700), (602, 700), (600, 885), (578, 915), (466, 950), (476, 892), (516, 880)]
+L_up = [(492, 252), (528, 262), (514, 470), (410, 472), (436, 330)]
+L_fo = [(402, 392), (528, 392), (505, 515), (492, 535), (492, 622), (420, 622), (415, 525)]
+L_leg_u = [(512, 492), (602, 492), (600, 790), (516, 790)]; L_leg_l = [(516, 690), (602, 690), (600, 885), (578, 915), (466, 950), (476, 892), (516, 880)]
 P = {
  'torso': ([(500, 205), (700, 205), (692, 300), (690, 508), (510, 508), (508, 300)], (600, 495), (600, 215)),
  'head': ([(528, 42), (672, 42), (672, 210), (528, 210)], (600, 200), (600, 125)),
+ 'pelvis': ([(512, 440), (688, 440), (694, 575), (506, 575)], (600, 495), (600, 215)),
  'upL': (L_up, (505, 265), (445, 425)), 'foL': (L_fo, (445, 425), (452, 608)),
  'upR': (M(L_up), (695, 265), (755, 425)), 'foR': (M(L_fo), (755, 425), (748, 608)),
  'thL': (L_leg_u, (550, 500), (548, 745)), 'shL': (L_leg_l, (548, 745), (535, 885)),
@@ -31,8 +32,22 @@ meta = {}
 for k, (poly, A, B) in P.items():
     m = Image.new('L', (w, h), 0); ImageDraw.Draw(m).polygon(poly, fill=255)
     arr = np.asarray(rgba).copy(); arr[..., 3] = (np.asarray(m) / 255 * arr[..., 3]).astype('uint8')
+    lab2, n2 = ndi.label(arr[..., 3] > 8)
+    if n2 > 1:
+        areas = ndi.sum(np.ones_like(lab2), lab2, range(1, n2 + 1)); big = areas.max(); keepc = set()
+        for ci in range(1, n2 + 1):
+            ys_, xs_ = np.where(lab2 == ci); near = lambda p: np.any((np.abs(xs_ - p[0]) < 14) & (np.abs(ys_ - p[1]) < 14))
+            if areas[ci - 1] >= 0.08 * big or near(A) or near(B): keepc.add(ci)
+        arr[..., 3] = np.where(np.isin(lab2, list(keepc)), arr[..., 3], 0).astype('uint8')
+    arr[..., 3] = np.asarray(Image.fromarray(arr[..., 3]).filter(ImageFilter.GaussianBlur(1.4)))
     ys, xs = np.where(arr[..., 3] > 8); x0, x1, y0, y1 = xs.min() - 2, xs.max() + 3, ys.min() - 2, ys.max() + 3
-    Image.fromarray(arr[y0:y1, x0:x1]).save(f'{H}/parts/{k}.png'); meta[k] = {'x': int(x0), 'y': int(y0), 'w': int(x1 - x0), 'h': int(y1 - y0), 'a': [A[0] - int(x0), A[1] - int(y0)], 'b': [B[0] - int(x0), B[1] - int(y0)]}
+    Image.fromarray(arr[y0:y1, x0:x1]).save(f'{H}/parts/{k}.png'); sole = []
+    if k.startswith('sh'):
+        al = arr[y0:y1, x0:x1, 3]
+        for cx in range(0, al.shape[1], 6):
+            col = np.where(al[:, cx] > 90)[0]
+            if len(col): sole.append([cx, int(col.max())])
+    meta[k] = {'sole': sole, 'x': int(x0), 'y': int(y0), 'w': int(x1 - x0), 'h': int(y1 - y0), 'a': [A[0] - int(x0), A[1] - int(y0)], 'b': [B[0] - int(x0), B[1] - int(y0)]}
 json.dump(meta, open(H + '/parts.json', 'w'), indent=1); print({k: (v['w'], v['h']) for k, v in meta.items()})
 # contact sheet of parts
 sheet = Image.new('RGB', (1500, 560), (235, 228, 214)); x = 10
