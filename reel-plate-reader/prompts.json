@@ -1,0 +1,54 @@
+[
+ {
+  "id": "road_dawn",
+  "prompt": "view through a car windshield at dawn on a rain-wet two-lane country road, taillights of a car ahead far down the road, golden sun breaking over a ridge, dashboard edge in the foreground, no people",
+  "steps": 6
+ },
+ {
+  "id": "pole_cam",
+  "prompt": "low-angle close photograph of a small gray rectangular camera box mounted high on a weathered wooden utility pole above a suburban road, pale morning sky, shallow depth of field, no people",
+  "steps": 6
+ },
+ {
+  "id": "pass_pan",
+  "prompt": "motion-blurred panning shot of a gray sedan driving under a utility pole carrying a small gray camera box, quiet suburban street in the early morning, no people",
+  "steps": 6
+ },
+ {
+  "id": "night_city",
+  "prompt": "aerial top-down view of a city street grid at night, warm sodium streetlights, long exposure light trails, no people",
+  "steps": 6
+ },
+ {
+  "id": "lone_sedan",
+  "prompt": "a single sedan parked alone in an empty parking lot at night under a sodium streetlight, faint blue and red light wash on the car roof from out of frame, wet asphalt, no people",
+  "steps": 6
+ },
+ {
+  "id": "desk_glow",
+  "prompt": "dark room, a laptop keyboard softly lit by the glow of its screen, a coffee mug beside it, shallow depth of field, no people",
+  "steps": 6
+ },
+ {
+  "id": "audit_sheet",
+  "prompt": "printed spreadsheet pages on a wooden table, neat rows of tiny printed text, overhead light, shallow depth of field, no people",
+  "steps": 6
+ },
+ {
+  "id": "town_hall",
+  "prompt": "small-town city hall building with white columns at dusk, a notice board on the lawn, warm lit windows, no people",
+  "steps": 6
+ },
+ {
+  "id": "cul_cam",
+  "prompt": "quiet suburban cul-de-sac at dusk, houses with porch lights, a utility pole with a small gray camera box, no people",
+  "steps": 6,
+  "seed": 7
+ },
+ {
+  "id": "cul_nocam",
+  "prompt": "quiet suburban cul-de-sac at dusk, houses with porch lights, an empty utility pole, no camera, same composition, no people",
+  "steps": 6,
+  "seed": 7
+ }
+]
