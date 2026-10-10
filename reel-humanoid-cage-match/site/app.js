@@ -94,8 +94,8 @@ s5.sig = D('left:480px;top:1215px;font:800 34px BC;color:' + IK + ';letter-spaci
 // ---------------- scene 6: balance dial ----------------
 var S6 = scene(), s6 = {};
 s6.eb = eyebrow(S6, "// THE AI'S ONLY JOB"); s6.cage = cage(S6, 700, 1150); s6.fg = layer(S6);
-s6.dial = D('left:190px;top:130px;width:700px;height:420px', '<svg viewBox="0 0 700 420" width="700" height="420"><path d="M40 370 A310 310 0 0 1 660 370" fill="none" stroke="' + IK + '" stroke-width="22"/><path d="M230 370 A120 120 0 0 1 470 370" fill="none" stroke="' + CO + '" stroke-width="22"/><g id="nd"><path d="M350 370 L350 90" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="350" cy="370" r="24" fill="' + BL + '"/></g></svg>', S6);
-s6.lab = D('left:0;right:0;top:478px;text-align:center;font:800 54px BC;color:' + IK + ';letter-spacing:.08em', 'AI = BALANCE ONLY', S6);
+s6.dial = D('left:190px;top:165px;width:700px;height:420px', '<svg viewBox="0 0 700 420" width="700" height="420"><path d="M40 370 A310 310 0 0 1 660 370" fill="none" stroke="' + IK + '" stroke-width="22"/><path d="M230 370 A120 120 0 0 1 470 370" fill="none" stroke="' + CO + '" stroke-width="22"/><g id="nd"><path d="M350 370 L350 90" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="350" cy="370" r="24" fill="' + BL + '"/></g></svg>', S6);
+s6.lab = D('left:0;right:0;top:508px;text-align:center;font:800 54px BC;color:' + IK + ';letter-spacing:.08em', 'AI = BALANCE ONLY', S6);
 // ---------------- scene 7: gamepad = body ----------------
 var S7 = scene(), s7 = {};
 s7.eb = eyebrow(S7, '// BALANCE IS THE HARD PART'); s7.fg = layer(S7);
