@@ -1,0 +1,24 @@
+// Cover — grid-first (3:4 window y240-1680), accent = this reel's riso cream/ultramarine/coral/yellow. Hero: thumbs-up robot (not used in the reel).
+import { writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { chromium } from 'playwright';
+const __dirname = dirname(fileURLToPath(import.meta.url)); const A = '../assets/fonts/';
+const html = `<!doctype html><meta charset=utf8><style>
+@font-face{font-family:Anton;src:url(${A}anton/anton-latin-400-normal.woff2);font-display:block}
+:root{--bl:#2b3bff;--co:#ff5a36;--yel:#ffd23f;--ink:#14123a;--cr:#f6efe2}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--cr)}
+.h1{position:absolute;inset:-20px;background:radial-gradient(#2b3bff40 3px,transparent 3.6px) 0 0/26px 26px}
+.h2{position:absolute;inset:-20px;background:radial-gradient(#ff5a3640 3px,transparent 3.6px) 13px 13px/26px 26px}
+.burst{position:absolute;left:120px;top:430px;width:840px;height:840px;background:var(--yel);clip-path:polygon(50% 0,58% 14%,74% 4%,76% 22%,94% 20%,86% 36%,100% 46%,86% 58%,96% 76%,78% 76%,72% 94%,58% 84%,46% 100%,40% 84%,22% 94%,22% 76%,4% 74%,14% 58%,0 44%,14% 34%,6% 18%,26% 22%,30% 4%,44% 14%);border:0}
+.rob{position:absolute;left:150px;top:420px;width:780px;height:780px;filter:drop-shadow(14px 14px 0 #14123a)}
+.tb{position:absolute;left:0;right:0;top:1150px;height:410px;background:var(--ink);border-top:12px solid var(--co)}
+.t{position:absolute;left:80px;font-family:Anton;text-transform:uppercase;line-height:.9;white-space:nowrap}
+.t1{top:1185px;font-size:200px;color:var(--cr)}.t2{top:1365px;font-size:200px;color:var(--yel)}
+.face{position:absolute;left:790px;top:1200px;width:200px;height:200px;border-radius:50%;object-fit:cover;border:10px solid var(--cr);box-shadow:0 0 0 8px var(--co);display:none}
+</style><body><div class="h1"></div><div class="h2"></div><div class="burst"></div><img class="rob" src="site/cover-robot.png">
+<div class="tb"></div><div class="t t1">THE ROBOT</div><div class="t t2">DIDN'T FIGHT</div>
+</body>`;
+writeFileSync(join(__dirname, 'cover.html'), html);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] }); const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto('file://' + join(__dirname, 'cover.html')); await p.waitForTimeout(500); await p.screenshot({ path: join(__dirname, 'cover.png') }); await b.close(); console.log('cover.png');

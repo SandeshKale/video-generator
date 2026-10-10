@@ -18,6 +18,7 @@ var CAPS = window.CAPS || [
   ['Every robot had a human pilot,', 'driving it live with VR gear', 'or a gamepad,', 'its partner says.'], ['The AI?', 'It only keeps the robot', 'upright.'],
   ['Balance is the hard part.', 'The fighting?', 'A video game with a body.'], ['Its pilots even qualified', 'in a simulator.', '3,670 matches.'],
   ['8 million views later,', 'California stepped in.', 'A cease-and-desist,', '12 days after the fight.'], ['So is it a robot fight,', 'or a video game', 'with a body?', 'Tell me below.']];
+CAPS = CAPS.map(function (ls) { var out = [], cur = ''; ls.join(' ').split(' ').forEach(function (w) { if ((cur + ' ' + w).trim().length > 34) { out.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); }); out.push(cur); return out; });
 var DUR = BEATS[BEATS.length - 1][1];
 window.__reelDurationSec = DUR;
 
@@ -46,23 +47,23 @@ s1.l1 = D('left:130px;top:250px;color:' + BL, 'No AI was', S1); s1.l1.className 
 s1.rope = ropes(S1, 1160);
 s1.hu = V(S1, 'human_idle', 760, 'left:-70px;top:470px'); s1.ro = V(S1, 'robotb_idle', 760, 'left:390px;top:480px;transform:scaleX(-1)');
 s1.burst = burst(S1, 'left:300px;top:740px;width:480px;height:480px'); s1.vs = D('left:430px;top:910px;font:800 110px/1 BC;color:' + IK + ';border:10px solid ' + IK + ';padding:4px 22px;', 'VS', S1);
-s1.st1 = stub(S1, 'SF · SEPT 18', 'left:150px;top:1230px'); s1.st2 = stub(S1, 'ILLUSTRATION · NOT FOOTAGE', 'left:150px;top:1290px;font-size:24px');
+s1.st1 = stub(S1, 'SF · SEPT 18', 'left:150px;top:1150px'); s1.st2 = stub(S1, 'ILLUSTRATION · NOT FOOTAGE', 'left:150px;top:1215px;font-size:24px');
 
 // ---------------- scene 2: three robots ----------------
 var S2 = scene(), s2 = {};
 s2.eb = eyebrow(S2, '// THREE ROBOTS, ONE CAGE'); s2.rope = ropes(S2, 1180);
 s2.h = V(S2, 'human_punch', 700, 'left:-80px;top:500px'); s2.r1 = V(S2, 'robot_idle', 560, 'left:300px;top:600px;transform:scaleX(-1)'); s2.r2 = V(S2, 'robotb_idle', 520, 'left:480px;top:630px;transform:scaleX(-1)'); s2.r3 = V(S2, 'robot_idle', 480, 'left:640px;top:660px;transform:scaleX(-1)');
 s2.n = D('left:130px;top:250px;font:400 400px/.9 An;color:' + BL, '0', S2); s2.nl = D('left:420px;top:380px;font:800 62px/1 BC;color:' + CO + ';letter-spacing:.06em', 'ROBOTS', S2); s2.nl2 = D('left:420px;top:450px;font:800 62px/1 BC;color:' + BL + ';letter-spacing:.06em', 'VS 1 HUMAN', S2);
-s2.stub = stub(S2, 'SAN FRANCISCO · SEPT 18', 'left:150px;top:1260px;transform:rotate(-2deg)');
+s2.stub = stub(S2, 'SAN FRANCISCO · SEPT 18', 'left:150px;top:1200px;transform:rotate(-2deg)');
 
 // ---------------- scene 3: 850 lb ----------------
 var S3 = scene(), s3 = {};
 s3.eb = eyebrow(S3, '// A KICK, ON PAPER'); s3.rope = ropes(S3, 1180);
 s3.g1 = V(S3, 'robotb_idle', 340, 'left:30px;top:850px'); s3.t1 = V(S3, 'robot_punch', 640, 'left:230px;top:560px;transform:scaleX(-1)'); s3.t2 = V(S3, 'robot_idle', 640, 'left:520px;top:560px;transform:scaleX(-1)');
-s3.lab1 = D('left:70px;top:1190px;font:800 36px BC;color:' + IK, 'UNITREE G1', S3); s3.lab2 = D('left:430px;top:1215px;font:800 36px BC;color:' + IK, 'T800 · MODIFIED', S3);
+s3.lab1 = D('left:100px;top:1150px;font:800 36px BC;color:' + IK, 'UNITREE G1', S3); s3.lab2 = D('left:430px;top:1170px;font:800 36px BC;color:' + IK, 'T800 · MODIFIED', S3);
 s3.gauge = D('left:140px;top:200px;width:800px;height:480px', '', S3);
 s3.gauge.innerHTML = '<svg viewBox="0 0 800 480" width="800" height="480"><path d="M60 420 A340 340 0 0 1 740 420" fill="none" stroke="' + IK + '" stroke-width="20"/><path d="M200 420 A200 200 0 0 1 600 420" fill="none" stroke="' + CO + '" stroke-width="20" opacity=".5"/><g id="g3n"><path d="M400 420 L400 110" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="400" cy="420" r="26" fill="' + BL + '"/></g></svg>';
-s3.n = D('left:200px;top:330px;font:400 200px/1 An;color:' + BL, '0', S3); s3.u = D('left:560px;top:410px;font:800 66px BC;color:' + CO + ';letter-spacing:.06em', 'LB', S3); s3.cl = stamp(S3, 'COMPANY CLAIM', 'left:560px;top:520px;font-size:50px;transform:rotate(-6deg)');
+s3.n = D('left:200px;top:330px;font:400 200px/1 An;color:' + BL, '0', S3); s3.u = D('left:560px;top:410px;font:800 66px BC;color:' + CO + ';letter-spacing:.06em', 'LB', S3); s3.cl = stamp(S3, 'COMPANY CLAIM', 'left:520px;top:590px;font-size:46px;transform:rotate(-6deg)');
 
 // ---------------- scene 4: the twist (poster tear) ----------------
 var S4 = scene(), s4 = {};
@@ -103,8 +104,8 @@ s7.t1 = D('left:120px;top:900px;font:400 100px/1 An;color:' + BL, 'THE FIGHTING:
 var S8 = scene(), s8 = {};
 s8.eb = eyebrow(S8, '// QUALIFIED IN A SIMULATOR');
 s8.cv = D('left:90px;top:540px;width:900px;height:640px;background:' + CR + ';border:6px solid ' + IK + ';border-radius:16px;box-shadow:10px 10px 0 ' + BL, '', S8); var cvEl = document.createElement('canvas'); cvEl.width = 840; cvEl.height = 580; cvEl.style.cssText = 'position:absolute;left:30px;top:30px'; s8.cv.appendChild(cvEl); s8.c2 = cvEl.getContext('2d');
-s8.n = D('left:100px;top:230px;font:400 240px/1 An;color:' + BL, '0', S8); s8.nl = D('left:100px;top:450px;font:800 52px BC;color:' + CO + ';letter-spacing:.08em', 'SIMULATOR MATCHES', S8);
-s8.tk = stub(S8, 'WINNERS → REAL ROBOTS · REK2 · AUGUST', 'left:150px;top:1230px;font-size:30px;transform:rotate(-2deg)');
+s8.n = D('left:100px;top:230px;font:400 240px/1 An;color:' + BL, '0', S8); s8.nl = D('left:100px;top:478px;font:800 52px BC;color:' + CO + ';letter-spacing:.08em', 'SIMULATOR MATCHES', S8);
+s8.tk = stub(S8, 'WINNERS → REAL ROBOTS · REK2 · AUGUST', 'left:150px;top:1190px;font-size:30px;transform:rotate(-2deg)');
 
 // ---------------- scene 9: letter + views ----------------
 var S9 = scene(), s9 = {};
@@ -119,8 +120,8 @@ var LTXT = 'Re: unsanctioned human vs. humanoid cage match. Barred from "holding
 var S10 = scene(), s10 = {};
 s10.rope = ropes(S10, 1160); s10.rd = V(S10, 'robot_death', 760, 'left:300px;top:500px;transform:scaleX(-1)'); s10.hu = V(S10, 'human_idle', 720, 'left:-70px;top:500px');
 s10.q = D('left:110px;top:230px;font:400 124px/.92 An;color:' + BL, 'ROBOT FIGHT<br><span style="color:' + CO + '">OR A VIDEO GAME</span><br>WITH A BODY?', S10);
-s10.ring = D('left:130px;top:1010px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:10px solid ' + CR + ';box-shadow:0 0 0 6px ' + IK + ',10px 10px 0 6px ' + BL, '', S10);
-s10.hd = D('left:380px;top:1030px;font:800 56px BC;color:' + IK + ';letter-spacing:.04em', '@sandesh.explains', S10); s10.fo = D('left:380px;top:1110px;font:800 70px/1 BC;color:' + CR + ';background:' + CO + ';padding:6px 26px;box-shadow:8px 8px 0 ' + IK, 'FOLLOW', S10);
+s10.ring = D('z-index:6;left:130px;top:1040px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:10px solid ' + CR + ';box-shadow:0 0 0 6px ' + IK + ',10px 10px 0 6px ' + BL, '', S10);
+s10.hd = D('z-index:6;left:380px;top:1050px;font:800 56px BC;color:' + IK + ';background:' + CR + ';padding:2px 14px;border:4px solid ' + IK + ';letter-spacing:.04em', '@sandesh.explains', S10); s10.fo = D('z-index:6;left:380px;top:1140px;font:800 70px/1 BC;color:' + CR + ';background:' + CO + ';padding:6px 26px;box-shadow:8px 8px 0 ' + IK, 'FOLLOW', S10);
 // ---------------- avatar corner + captions + wipe ----------------
 var av = D('position:absolute;width:250px;height:250px;border-radius:44% 56% 52% 48%;background:url(avatar.jpg) 50% 14%/190% auto;border:10px solid ' + CR + ';box-shadow:0 0 0 6px ' + IK + ',12px 12px 0 6px ' + BL, '', st);
 var avh = stub(st, '@sandesh.explains', 'font-size:28px;transform:none'); 
@@ -151,7 +152,8 @@ function u9(t, T) { var k = Math.floor(seg(t, 0.4, 3.0) * LTXT.length); s9.lt.te
 function u10(t, T) { var dead = seg(t, 1.5, 2.2); s10.rd.el.style.opacity = 1; var f = T < 0.9 ? 0 : 0; set(s10.fo, 0, 0, -2, 1 + 0.06 * Math.sin(t * 6)); s10.ring.style.transform = 'rotate(' + (-3 + Math.sin(t * 3) * 1.5) + 'deg)';
   return Promise.all([seekV(s10.hu, T, true), seekV(s10.rd, Math.min(T, 0.95), false)]); }
 // avatar visibility per beat: [beat index, x, y, size, rot]
-var AVB = { 0: [690, 1010, 250, 3], 3: [690, 960, 300, -3], 6: [700, 1000, 250, 3], 9: [700, 960, 260, -3] };
+var AVB = { 0: [650, 930, 240, 3], 3: [620, 900, 270, -3], 6: [700, 985, 200, 3] };
+var OLD = [4.6, 5, 6.4, 4.5, 7.5, 6, 7, 7, 10, 10];
 
 window.__seek = function (t) {
   t = clamp(t, 0, DUR - 0.001);
@@ -162,15 +164,17 @@ window.__seek = function (t) {
   ht1.style.transform = 'translate(' + (Math.sin(t * 1.3) * 3) + 'px,' + (Math.cos(t * 1.1) * 3 + (t * 6) % 22) + 'px)'; ht2.style.transform = 'translate(' + (11 + Math.cos(t * 1.2) * 3) + 'px,' + (11 + Math.sin(t * 1.4) * 3 + (t * 4) % 22) + 'px)';
   // eyebrow slam-in
   var eb = scenes[bi].querySelector('.eb'); if (eb) { var q = bounce(seg(lt, 0, 0.35)); eb.style.transform = 'rotate(-1.5deg) translateX(' + ((1 - q) * -120) + 'px)'; eb.style.opacity = seg(lt, 0, 0.1); }
-  ps.push(UPD[bi](lt, lt));
+  var K = Math.max(1, OLD[bi] / len), ls = lt * K; ps.push(UPD[bi](ls, ls));
   // wipe between scenes (first 0.3 s of a beat, not the first beat)
   var w = bi > 0 ? 1 - seg(lt, 0, 0.32) : 0; wipe.style.display = wipe2.style.display = w > 0.01 ? 'block' : 'none'; wipe.style.opacity = w * 0.9; wipe.style.transform = 'translateX(' + ((1 - w) * 110) + '%)'; wipe2.style.opacity = w * 0.7; wipe2.style.transform = 'translateX(' + ((1 - w) * 140) + '%)';
   // avatar corner
-  var A = AVB[bi]; if (A) { var ap = bounce(seg(lt, 0.25, 0.75)) * (1 - seg(lt, len - 0.25, len)); av.style.display = 'block'; avh.style.display = 'block'; av.style.left = A[0] + 'px'; av.style.top = A[1] + 'px'; av.style.width = av.style.height = A[2] + 'px'; av.style.transform = 'scale(' + ap + ') rotate(' + A[3] + 'deg)'; avh.style.left = (A[0] - 20) + 'px'; avh.style.top = (A[1] + A[2] + 12) + 'px'; avh.style.opacity = ap > 0.6 ? 1 : 0; } else { av.style.display = 'none'; avh.style.display = 'none'; }
+  var A = AVB[bi]; if (A) { var ap = bounce(seg(lt, 0.25, 0.75)) * (1 - seg(lt, len - 0.25, len)); av.style.display = 'block'; avh.style.display = 'block'; av.style.left = A[0] + 'px'; av.style.top = A[1] + 'px'; av.style.width = av.style.height = A[2] + 'px'; var nod = 0; (window.WORDS && window.WORDS[bi] || []).forEach(function (w) { nod += Math.exp(-Math.pow((t - w[0] - 0.05) / 0.07, 2)); }); av.style.transform = 'translateY(' + (nod * 6) + 'px) scale(' + ap + ') rotate(' + (A[3] + Math.sin(t * 2.2) * 1.2 + nod * 1.5) + 'deg)'; avh.style.left = (A[0] - 20) + 'px'; avh.style.top = (A[1] + A[2] + 12) + 'px'; avh.style.opacity = ap > 0.6 ? 1 : 0; } else { av.style.display = 'none'; avh.style.display = 'none'; }
   // captions: word-by-word within the beat
-  var lines = CAPS[bi], words = lines.join(' ').split(' '), prog = clamp((lt - 0.15) / Math.max(0.5, len - 0.6), 0, 1), n = Math.max(1, Math.ceil(prog * words.length)), out = '', c = 0;
+  var lines = CAPS[bi], dw = lines.join(' ').split(' '), sw = (window.WORDS && window.WORDS[bi]) || [], out = '', c = 0, n;
+  if (sw.length) { var s0 = sw[0][0], s1 = sw[sw.length - 1][1], pr = clamp((t - s0 + 0.04) / Math.max(0.3, s1 - s0), 0, 1); n = t < s0 ? 0 : Math.max(1, Math.min(dw.length, Math.ceil(pr * dw.length))); }
+  else n = Math.max(1, Math.ceil(clamp((lt - 0.15) / Math.max(0.5, len - 0.6), 0, 1) * dw.length));
   lines.forEach(function (ln, li) { var ws = ln.split(' '), seg_ = []; ws.forEach(function (wd, wi) { c++; if (c <= n) seg_.push(c === n ? '<b>' + wd + '</b>' : wd); }); if (seg_.length) out += (out ? '<br>' : '') + seg_.join(' '); });
-  cap.innerHTML = out; var nl = (out.match(/<br>/g) || []).length + 1; cap.style.top = (1340 + (nl > 2 ? -30 : 0)) + 'px';
+  cap.innerHTML = out; var nl = (out.match(/<br>/g) || []).length + 1; cap.style.top = '1310px';
   return Promise.all(ps);
 };
 window.__seek(0);
