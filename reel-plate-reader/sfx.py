@@ -1,0 +1,229 @@
+# Score for 'The robot didn't fight. A gamer did.': five gym-tempo cues (hook, groove, pursuit arp, pluck, resolve) + bell/thwack/servo/tear/crowd + event SFX, sidechain-ducked under the voice.
+import json, subprocess, numpy as np
+from scipy.io import wavfile
+from scipy.signal import butter, lfilter
+SR = 44100
+ev = json.load(open('events.json')); tim = json.load(open('timing.json'))
+total = tim['total'] + 0.5
+N = int(total * SR); rng = np.random.default_rng(11)
+def lp(x, f): b, a = butter(2, min(.99, f / (SR / 2)), 'low'); return lfilter(b, a, x)
+def hp(x, f): b, a = butter(2, f / (SR / 2), 'high'); return lfilter(b, a, x)
+def put(buf, x, t, g=1.0):
+    i = int(t * SR)
+    if i < 0 or i >= len(buf): return
+    x = x[: len(buf) - i]; buf[i:i + len(x)] += x * g
+fr = lambda m: 440 * 2 ** ((m - 69) / 12)
+def tt(d): return np.arange(int(d * SR)) / SR
+def pulse(f, d, duty=.5):
+    t = tt(d); return ((f * t) % 1 < duty) * 2.0 - 1
+def tri(f, d): t = tt(d); return 2 * np.abs(2 * ((f * t) % 1) - 1) - 1
+def saw(f, d): t = tt(d); return 2 * ((f * t) % 1) - 1
+def adsr(n, a=.005, d=.15, s=.5, r=.05):
+    e = np.ones(n); na, nd, nr = int(a * SR), int(d * SR), int(r * SR)
+    e[:na] = np.linspace(0, 1, max(na, 1)); 
+    if nd > 0: e[na:na + nd] = np.linspace(1, s, min(nd, max(n - na, 0)))[: max(0, min(nd, n - na))]
+    e[na + nd:] = s; 
+    if nr > 0 and n > nr: e[-nr:] *= np.linspace(1, 0, nr)
+    return e
+def note(kind, m, dur, g=.2, duty=.5, **k):
+    f = fr(m)
+    w = pulse(f, dur, duty) if kind == 'p' else tri(f, dur) if kind == 't' else saw(f, dur) if kind == 's' else np.sin(2 * np.pi * f * tt(dur))
+    return w * adsr(len(w), **k) * g
+def kick(g=.5):
+    t = tt(.3); return np.sin(2 * np.pi * (46 + 100 * np.exp(-t * 32)) * t) * np.exp(-t * 11) * g
+def snare(g=.3):
+    t = tt(.2); return (hp(rng.standard_normal(len(t)), 1800) * .8 + np.sin(2 * np.pi * 190 * t) * .4) * np.exp(-t * 20) * g
+def hat(g=.1, d=.05): t = tt(d); return hp(rng.standard_normal(len(t)), 7500) * np.exp(-t * 80) * g
+def tick(g=.15): t = tt(.04); return np.sin(2 * np.pi * 2200 * t) * np.exp(-t * 90) * g
+
+# ---------- scene windows ----------
+S = {s['id']: s for s in ev['scenes']}
+def win(a, b): return S[a]['start'], S[b]['end']
+CUES = [('A', 'dawn', *win('s01', 's02')), ('B', 'groove', *win('s03', 's04')), ('C', 'arp', *win('s05', 's07')),
+        ('D', 'pluck', *win('s08', 's08')), ('E', 'resolve', *win('s09', 's10'))]
+music = np.zeros(N)
+def clap(g=.3):
+    t = tt(.18); return hp(rng.standard_normal(len(t)), 1200) * (np.exp(-t * 28) + .6 * np.exp(-((t - .02) ** 2) * 9e4)) * g
+def pluck(m, dur=.35, g=.15):
+    x = tt(dur); f = fr(m); return (np.sin(2 * np.pi * f * x) + .4 * np.sin(2 * np.pi * 2 * f * x) * np.exp(-x * 14)) * np.exp(-x * 9) * g
+def pad(ms, dur, g=.05, cut=1500):
+    out = np.zeros(int(dur * SR))
+    for m in ms: w = saw(fr(m), dur) + saw(fr(m) * 1.004, dur); out += w * adsr(len(w), a=.5, d=.5, s=.7, r=.6)
+    return lp(out, cut) * g
+def rhodes(m, dur=1.2, g=.07):
+    x = tt(dur); f = fr(m); vib = 1 + .003 * np.sin(2 * np.pi * 5 * x)
+    return (np.sin(2 * np.pi * f * vib * x) + .35 * np.sin(2 * np.pi * 2 * f * x) * np.exp(-x * 6) + .12 * np.sin(2 * np.pi * 6 * f * x) * np.exp(-x * 14)) * np.exp(-x * 2.2) * g
+def rim(g=.12):
+    x = tt(.06); return np.sin(2 * np.pi * 1700 * x) * np.exp(-x * 90) * g + hp(rng.standard_normal(len(x)), 3000) * np.exp(-x * 120) * g * .6
+def cue(name, t0, t1):
+    buf = np.zeros(N); X = 0.9; dur = (t1 - t0) + X
+    if name == 'A':   # hook: 124 bpm four-on-the-floor, square bass, clap, rising sweep
+        bpm = 100; b = 60 / bpm
+        for k in range(int(dur / (b / 2)) + 1):
+            t = t0 + k * b / 2
+            if k % 2 == 0: put(buf, kick(.5), t)
+            if k % 4 == 2: put(buf, clap(.28), t)
+            put(buf, hat(.05, .03), t + (b / 4 if k % 2 else 0))
+            put(buf, lp(note('p', [45, 45, 52, 48][k // 2 % 4], .2, .2, .3, a=.002, d=.05, s=.4, r=.04), 1200), t)
+        for i, m in enumerate([81, 85, 88, 93]): put(buf, pluck(m, .7, .07), t0 + .1 + i * .24)
+        put(buf, hp(rng.standard_normal(int(dur * SR)), 900) * np.linspace(0, 1, int(dur * SR)) ** 2.4 * .05, t0)
+    elif name == 'B':   # mocap groove: 100 bpm marimba/shaker, round bass, soft clap — studio focus
+        bpm = 96; b = 60 / bpm; prog = [48, 43, 45, 41]
+        for k in range(int(dur / (b / 2)) + 1):
+            t = t0 + k * b / 2; r = prog[int(k / 8) % 4]
+            if k % 4 == 0: put(buf, kick(.3), t)
+            if k % 8 == 4: put(buf, clap(.2), t)
+            put(buf, hat(.035, .04), t + (b * .06 if k % 2 else 0))
+            put(buf, pluck(r + 24 + [0, 7, 12, 7, 3, 10, 7, 0][k % 8], .28, .1), t)
+            if k % 2 == 0: put(buf, lp(note('t', r - 12, .3, .24, a=.004, d=.1, s=.5, r=.06), 900), t)
+        for k in range(int(dur / (b * 4)) + 1): put(buf, pad([prog[k % 4] + 12, prog[k % 4] + 16, prog[k % 4] + 19], b * 4, .035, 1600), t0 + k * b * 4)
+    elif name == 'C':   # synth arp: 112 bpm, saw arpeggio, driving bass, building
+        bpm = 112; b = 60 / bpm; prog = [45, 41, 48, 43]
+        for k in range(int(dur / (b / 4)) + 1):
+            t = t0 + k * b / 4; r = prog[int(k / 16) % 4]
+            put(buf, lp(note('s', r + 24 + [0, 7, 12, 7][k % 4] + (3 if k % 16 > 7 else 0), .12, .09, a=.002, d=.05, s=.4, r=.03), 2800), t)
+            if k % 4 == 0: put(buf, lp(note('p', r - 12, .22, .2, .3, a=.003, d=.06, s=.5, r=.04), 800), t)
+            if k % 8 == 0: put(buf, kick(.36), t)
+            if k % 8 == 4: put(buf, snare(.16), t)
+            if k % 2 == 0: put(buf, hat(.03, .03), t)
+        put(buf, hp(rng.standard_normal(int(dur * SR)), 900) * np.linspace(0, 1, int(dur * SR)) ** 2.2 * .04, t0)
+    elif name == 'D':   # glass pluck: 96 bpm airy, bell plucks over soft pad, light kick
+        bpm = 96; b = 60 / bpm; roots = [50, 45, 47, 43]
+        for k in range(int(dur / b) + 1):
+            t = t0 + k * b
+            if k % 2 == 0: put(buf, kick(.24), t)
+            if k % 4 == 3: put(buf, rim(.1), t + b / 2)
+        for k in range(int(dur / (b * 2)) + 1):
+            r = roots[k % 4]; put(buf, pad([r + 12, r + 16, r + 19], b * 2.4, .045, 2000), t0 + k * b * 2)
+            for i, m in enumerate([r + 36, r + 43, r + 40, r + 48]): put(buf, pluck(m, 1.0, .07), t0 + k * b * 2 + i * b / 2)
+    elif name == 'E':   # warm resolve, 90 bpm: gentle melody, soft bass, opens up for the follow ask
+        bpm = 90; b = 60 / bpm; roots = [41, 36, 38, 43]
+        mel = [72, 74, 76, 74, 72, 69, 71, 72, 76, 79, 77, 76, 74, 72, 74, 71]
+        for k in range(int(dur / (b / 2)) + 1):
+            t = t0 + k * b / 2; r = roots[int(k / 8) % 4]
+            put(buf, pluck(mel[k % 16], .6, .11), t)
+            if k % 2 == 0: put(buf, lp(note('t', r, .3, .22, a=.004, d=.08, s=.6, r=.05), 900), t)
+            if k % 4 == 0: put(buf, kick(.26), t)
+            if k % 8 == 4: put(buf, clap(.14), t)
+            if k % 2 == 1: put(buf, hat(.025), t)
+        for k in range(int(dur / (b * 4)) + 1):
+            r = roots[k % 4]; put(buf, pad([r + 12, r + 16, r + 19], b * 4, .055, 2200), t0 + k * b * 4)
+    w = np.ones(N)
+    a0, a1 = max(0, int((t0 - X / 2) * SR)), int(t0 * SR + X * SR / 2); ramp = np.linspace(0, 1, max(a1 - a0, 1))
+    w[:a0] = 0; w[a0:a1] = ramp[: a1 - a0] if a1 <= N else ramp[: N - a0]
+    if name == 'A': w[:a1] = 1
+    b0 = int((t1 - X / 2) * SR); b1 = int((t1 + X / 2) * SR)
+    if name != 'E' and b0 < N:
+        n = min(b1, N) - b0; w[b0:b0 + n] = np.linspace(1, 0, b1 - b0)[:n]; w[min(b1, N):] = 0
+    return buf * w
+for nm, desc, a, b in CUES: music += cue(nm, a, b)
+music = lp(music, 10000)
+music *= np.minimum((N - np.arange(N)) / (SR * 2.5), 1)
+
+# ---------- sfx ----------
+sfx = np.zeros(N)
+def whoosh(t, dur=.4, g=.3, up=False):
+    n = int(dur * SR); x = rng.standard_normal(n); out = np.zeros(n)
+    for k in range(8):
+        a, b2 = int(k * n / 8), int((k + 1) * n / 8); f = 500 + 5500 * ((k / 7) if up else (1 - k / 7)) ** 1.6
+        bb, aa = butter(2, [f / (SR / 2) * .6, min(.95, f / (SR / 2) * 1.4)], 'band'); out[a:b2] = lfilter(bb, aa, x[a:b2])
+    put(sfx, out * np.sin(np.linspace(0, np.pi, n)) ** 2, t, g)
+def impact(t, g=.8):
+    x = tt(1.0); put(sfx, np.sin(2 * np.pi * (36 + 80 * np.exp(-x * 18)) * x) * np.exp(-x * 4) + hp(rng.standard_normal(len(x)), 1500) * np.exp(-x * 40) * .4, t, g)
+def blip(t, m=84, dur=.09, g=.18, kind='p'): put(sfx, note(kind, m, dur, g, .25, a=.002, d=.04, s=.5, r=.02), t)
+def glitch(t, g=.25):
+    for k in range(6):
+        n = int(.03 * SR); put(sfx, (rng.standard_normal(n) > 0) * 2. - 1 * np.exp(-np.arange(n) / SR * 30), t + k * .035, g * (1 - k / 7))
+def typing(t, dur, g=.1):
+    for k in range(int(dur * 28)): put(sfx, hp(rng.standard_normal(int(.012 * SR)), 2500) * np.exp(-np.arange(int(.012 * SR)) / SR * 300), t + k / 28, g)
+def climb(t, dur, g=.1):
+    n = max(2, int(dur * 14))
+    for k in range(n): blip(t + k * dur / n, 70 + 24 * k / n, .05, g, 't')
+def ping(t, g=.2): blip(t, 88, .35, g, 'n')
+def chime(t, g=.22):
+    for k, m in enumerate([79, 83, 86, 91]): put(sfx, pluck(m, .9, g), t + k * .1)
+def clunk(t, g=.5):
+    x = tt(.35); put(sfx, (np.sin(2 * np.pi * 90 * x) + .5 * hp(rng.standard_normal(len(x)), 800)) * np.exp(-x * 16), t, g)
+def unlockfx(t, g=.35):
+    clunk(t, g * .8); whoosh(t + .05, .5, .22, True)
+def stampfx(t, g=.85): impact(t + .02, g); glitch(t + .05, .25)
+def pop(t, g=.2): blip(t, 84, .06, g, 'n'); blip(t + .05, 91, .08, g * .8, 'n')
+def blocked(t, dur, g=.12):
+    for k in range(int(dur / .3)): put(sfx, saw(100, .09) * np.exp(-tt(.09) * 25) * g, t + k * .3)
+def slider(t, dur, g=.2):
+    n = int(dur * SR); x = tt(dur); f = 900 * 2 ** (-x / dur * 2); put(sfx, np.sin(2 * np.pi * np.cumsum(f) / SR) * np.linspace(1, .2, n), t, g)
+def alarmfx(t, dur, g=.1):
+    for k in range(int(dur / .35)): blip(t + k * .35, 81, .15, g, 'p'); blip(t + k * .35 + .17, 74, .15, g * .9, 'p')
+def flapfx(t, dur, g=.1):
+    for k in range(int(dur * 18)): put(sfx, hp(rng.standard_normal(int(.01 * SR)), 2200) * np.exp(-np.arange(int(.01 * SR)) / SR * 350) * (1 - k / (dur * 18) * .5), t + k / 18, g)
+def wipefx(t, g=.28): whoosh(t, .38, g, True); blip(t + .02, 96, .05, g * .5)
+
+def footsteps(t, dur, g=.14):
+    for k in range(int(dur / .3)):
+        x = tt(.07); put(sfx, lp(rng.standard_normal(len(x)), 900) * np.exp(-x * 55) * g * (1 if k % 2 else .7), t + k * .3)
+def slipfx(t, g=.4):
+    n = int(.6 * SR); x = tt(.6); put(sfx, np.sin(2 * np.pi * np.cumsum(1200 * 2 ** (-x * 3)) / SR) * np.linspace(1, 0, n) * .25, t, g)
+    impact(t + .55, .7)
+def rewardfx(t, g=.2):
+    for k, m in enumerate([72, 76, 79, 84]): blip(t + k * .07, m, .09, g, 't')
+def penaltyfx(t, g=.22):
+    for k, m in enumerate([67, 62]): blip(t + k * .1, m, .14, g, 'p')
+def bellfx(t, g=.35, n=3):
+    for k in range(n):
+        x = tt(1.4); put(sfx, (np.sin(2*np.pi*1180*x)+.6*np.sin(2*np.pi*1770*x)+.4*np.sin(2*np.pi*2950*x))*np.exp(-x*3.2)*g, t + k*.28)
+def thwack(t, g=.5):
+    x = tt(.16); put(sfx, (lp(rng.standard_normal(len(x)), 2500)*.8 + np.sin(2*np.pi*(140*np.exp(-x*20)+60)*x))*np.exp(-x*28)*g, t)
+def servo(t, dur, g=.1):
+    x = tt(dur); f = 220 + 60*np.sin(2*np.pi*3*x); put(sfx, lp(saw(1,dur)*0 + np.sin(2*np.pi*np.cumsum(f)/SR) + .3*np.sin(2*np.pi*np.cumsum(f*2.01)/SR), 1800)*np.sin(np.linspace(0,np.pi,len(x)))*g, t)
+def tearfx(t, g=.35):
+    x = tt(.5); put(sfx, hp(rng.standard_normal(len(x)), 1500)*(np.abs(np.sin(x*120))*.7+.3)*np.exp(-x*5)*g, t)
+def crowdfx(t, dur, g=.12):
+    x = tt(dur); n = lp(rng.standard_normal(len(x)), 1400); put(sfx, n*np.sin(np.linspace(0, np.pi, len(x)))**1.5*g, t)
+def tickfx(t, g=.5):
+    x = tt(.05); put(sfx, (np.sin(2*np.pi*3100*x) + .6*np.sin(2*np.pi*5200*x))*np.exp(-x*160)*g + hp(rng.standard_normal(len(x)), 4000)*np.exp(-x*220)*g*.4, t)
+def raspfx(t, g=.3):
+    x = tt(.35); put(sfx, hp(rng.standard_normal(len(x)), 1800)*(np.abs(np.sin(x*90))*.6+.4)*np.exp(-x*7)*g, t)
+def flipfx(t, g=.3):
+    whoosh(t, .7, g, True); impact(t + .72, .55)
+def buzzfx(t, g=.16): put(sfx, saw(110, .4) * np.exp(-tt(.4) * 5) * g, t)
+for e in ev['sfx']:
+    k, t = e['k'], e['t']
+    if k == 'thump': impact(t, .9)
+    elif k == 'pop': pop(t)
+    elif k == 'stamp': stampfx(t)
+    elif k == 'step': footsteps(t, e.get('dur', 1.0))
+    elif k == 'whoosh': wipefx(t) if t > 0.5 else None
+    elif k == 'beep': blip(t, 91, .07, .13, 'p')
+    elif k == 'count': climb(t, e.get('dur', 1.0))
+    elif k == 'reward': rewardfx(t)
+    elif k == 'penalty': penaltyfx(t)
+    elif k == 'crash': impact(t, .6); glitch(t, .3)
+    elif k == 'code': typing(t, e.get('dur', 1.0), .08)
+    elif k == 'flip': flipfx(t)
+    elif k == 'blip': blip(t, 88, .08, .15, 'p')
+    elif k == 'ok': ping(t)
+    elif k == 'slip': slipfx(t)
+    elif k == 'buzz': buzzfx(t)
+    elif k == 'chime': chime(t, .2)
+    elif k == 'tick': tickfx(t)
+    elif k == 'rasp': raspfx(t)
+    elif k == 'bell': bellfx(t, .3, e.get('n', 1))
+    elif k == 'thwack': thwack(t)
+    elif k == 'servo': servo(t, e.get('dur', 1.0))
+    elif k == 'tear': tearfx(t)
+    elif k == 'crowd': crowdfx(t, e.get('dur', 2.0))
+sfx = hp(lp(sfx, 14000), 30)
+
+pk = lambda x: x / max(1e-6, np.abs(x).max())
+voice_sr, v = wavfile.read('audio/voice.wav'); v = v.astype('float32'); v = v / (32768 if v.dtype != 'float32' and np.abs(v).max() > 2 else 1)
+if voice_sr != SR:
+    import scipy.signal as ss; v = ss.resample_poly(v, SR, voice_sr)
+vo = np.zeros(N); vo[: min(N, len(v))] = v[:N]
+wavfile.write('audio/music.wav', SR, (pk(music) * .9 * 32767).astype('int16'))
+wavfile.write('audio/sfx.wav', SR, (pk(sfx) * .9 * 32767).astype('int16'))
+wavfile.write('audio/voice44.wav', SR, (pk(vo) * .95 * 32767).astype('int16'))
+subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/voice44.wav', '-i', 'audio/music.wav', '-i', 'audio/sfx.wav', '-filter_complex',
+ '[0:a]asplit=2[v][vs];[1:a]volume=0.5[m];[m][vs]sidechaincompress=threshold=0.02:ratio=8:attack=15:release=300[md];'
+ '[2:a]volume=0.7[s];[v]volume=1.0[vv];[vv][md][s]amix=inputs=3:normalize=0:duration=first,loudnorm=I=-15:TP=-1.5:LRA=9[o]',
+ '-map', '[o]', '-ar', '44100', '-ac', '1', 'audio/final.wav'])
+print('mixed audio/final.wav', total)

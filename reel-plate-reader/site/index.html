@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf8"><title>Somebody keeps notes on your car</title><style>
+@font-face{font-family:AB;src:url('fonts/archivo-black-latin-400-normal.woff2');font-display:block}
+@font-face{font-family:DM;font-weight:500;src:url('fonts/dm-mono-latin-500-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:700;src:url('fonts/inter-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:IN6;font-weight:600;src:url('fonts/inter-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:IS;font-style:italic;src:url('fonts/instrument-serif-latin-400-italic.woff2');font-display:block}
+:root{--as:#15181c;--wh:#f4f6f2;--gr:#0a6b43;--am:#ffb400;--rd:#e5322d}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#st{position:absolute;inset:0;overflow:hidden;font-family:IN}
+.a{position:absolute}.sc{position:absolute;inset:0}
+#scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,24,28,.72) 0%,rgba(21,24,28,.22) 26%,rgba(21,24,28,.30) 62%,rgba(21,24,28,.88) 100%)}
+#road{position:absolute;left:150px;top:0;bottom:0;width:6px;background:repeating-linear-gradient(180deg,var(--am) 0 46px,transparent 46px 92px);opacity:.85}
+.sign{position:absolute;background:var(--gr);color:var(--wh);border:8px solid var(--wh);border-radius:22px;box-shadow:0 0 0 6px var(--gr),0 18px 40px rgba(0,0,0,.45);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 3px,transparent 3px 14px)}
+.sign:after{content:"";position:absolute;inset:6px;border:2px solid rgba(255,255,255,.55);border-radius:14px;pointer-events:none}
+.tab{font:500 30px/1 DM;letter-spacing:.14em;padding:12px 24px;border-width:6px;border-radius:16px;white-space:nowrap}
+.h{font:400 80px/1 AB;letter-spacing:-.01em;padding:30px 38px;text-transform:uppercase}
+.h em{font-style:normal;color:var(--am)}
+.tag{position:absolute;font:500 22px/1 DM;letter-spacing:.14em;color:#fff;background:rgba(21,24,28,.85);padding:8px 12px;border-radius:6px;left:190px;top:1252px}
+#cap{position:absolute;left:90px;right:90px;top:1310px;text-align:center;font:700 52px/1.1 IN;color:var(--wh);background:var(--as);padding:18px 26px;border-radius:14px;border-bottom:6px solid var(--am)}
+#cap b{color:var(--am);font-weight:700}
+.plate{position:absolute;background:var(--wh);border:6px solid #1c1f24;border-radius:20px;box-shadow:0 14px 30px rgba(0,0,0,.5);text-align:center;color:#14171b;background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.035) 0 2px,transparent 2px 9px)}
+.plate .st{font:700 20px/1 IN;letter-spacing:.3em;color:var(--gr);margin-top:12px}
+.plate .nm{font:500 120px/1.05 DM;letter-spacing:0;white-space:nowrap}
+.paper{position:absolute;background:#f3ecdc;color:#2a2418;border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.stamp{position:absolute;font:400 70px/1 AB;letter-spacing:.06em;padding:8px 22px;border:8px solid;border-radius:10px;text-transform:uppercase;transform-origin:center}
+.card{position:absolute;background:var(--wh);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.5);color:var(--as)}
+</style></head><body><canvas id="gl" width="1080" height="1920"></canvas><div id="st"></div>
+<script src="timing.js"></script><script src="gl.js"></script><script src="app.js"></script></body></html>
