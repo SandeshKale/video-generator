@@ -1,31 +1,31 @@
 #!/usr/bin/env python3
-"""Cut a T-pose character sheet (c1.png) into rig parts. Writes parts/<name>.png (RGBA, cropped) + parts.json
-(for each part: offset in sheet, anchor a (joint start) and b (joint end) in sheet px). Polygons are hand-fitted to c1.png."""
+"""Cut a T-pose character sheet (e_22.png) into rig parts. Writes parts/<name>.png (RGBA, cropped) + parts.json
+(for each part: offset in sheet, anchor a (joint start) and b (joint end) in sheet px). Polygons are hand-fitted to e_22.png."""
 import json, os, numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from scipy import ndimage as ndi
 H = os.path.dirname(os.path.abspath(__file__)); os.makedirs(H + '/parts', exist_ok=True)
-im = Image.open(H + '/c1.png').convert('RGB'); a = np.asarray(im).astype(int); h, w = a.shape[:2]
+im = Image.open(H + '/e_22.png').convert('RGB'); a = np.asarray(im).astype(int); h, w = a.shape[:2]
 # background: flood from the borders on colour distance to the border median
 border = np.concatenate([a[0], a[-1], a[:, 0], a[:, -1]]); bg = np.median(border, axis=0)
-dist = np.abs(a - bg).sum(2); cand = dist < 38
+dist = np.abs(a - bg).sum(2); mx = a.max(2); mn = a.min(2); cand = ((mx - mn) < 24) & (mn > 135)
 lab, n = ndi.label(cand); keep = np.zeros_like(cand)
 for l in set(lab[0]) | set(lab[-1]) | set(lab[:, 0]) | set(lab[:, -1]):
     if l: keep |= lab == l
-fg = ~keep & ~(dist < 24); fg = ndi.binary_opening(fg, iterations=1)
+fg = ~keep; fg = ndi.binary_opening(fg, iterations=1)
 alpha = Image.fromarray((fg * 255).astype('uint8')).filter(ImageFilter.GaussianBlur(0.8))
-rgba = im.convert('RGBA'); rgba.putalpha(alpha); rgba.save(H + '/c1_cut.png')
-M = lambda pts: [(2 * 416 - x, y) for x, y in pts]
-L_up = [(185, 290), (360, 258), (372, 330), (335, 388), (190, 405)]
-L_fo = [(60, 210), (215, 210), (290, 285), (285, 345), (195, 335), (150, 332), (70, 270)]
-L_leg_u = [(330, 525), (420, 525), (418, 775), (335, 775)]; L_leg_l = [(335, 715), (420, 715), (420, 960), (385, 985), (275, 985), (280, 925), (330, 925)]
+rgba = im.convert('RGBA'); rgba.putalpha(alpha); rgba.save(H + '/e22_cut.png')
+M = lambda pts: [(1200 - x, y) for x, y in pts]
+L_up = [(488, 245), (545, 255), (520, 430), (415, 440), (430, 330)]
+L_fo = [(405, 415), (522, 415), (505, 515), (492, 535), (492, 620), (420, 620), (415, 525)]
+L_leg_u = [(512, 500), (602, 500), (600, 765), (516, 765)]; L_leg_l = [(516, 700), (602, 700), (600, 885), (578, 915), (466, 950), (476, 892), (516, 880)]
 P = {
- 'torso': ([(338, 215), (498, 215), (522, 330), (522, 548), (330, 548), (322, 330)], (415, 535), (415, 235)),
- 'head': ([(335, 30), (497, 30), (497, 238), (335, 238)], (415, 225), (415, 110)),
- 'upL': (L_up, (355, 295), (255, 315)), 'foL': (L_fo, (255, 310), (100, 245)),
- 'upR': (M(L_up), (477, 295), (577, 315)), 'foR': (M(L_fo), (577, 310), (732, 245)),
- 'thL': (L_leg_u, (385, 530), (378, 745)), 'shL': (L_leg_l, (378, 745), (340, 950)),
- 'thR': (M(L_leg_u), (447, 530), (454, 745)), 'shR': (M(L_leg_l), (454, 745), (492, 950)),
+ 'torso': ([(500, 205), (700, 205), (692, 300), (690, 508), (510, 508), (508, 300)], (600, 495), (600, 215)),
+ 'head': ([(528, 42), (672, 42), (672, 210), (528, 210)], (600, 200), (600, 125)),
+ 'upL': (L_up, (505, 265), (445, 425)), 'foL': (L_fo, (445, 425), (452, 608)),
+ 'upR': (M(L_up), (695, 265), (755, 425)), 'foR': (M(L_fo), (755, 425), (748, 608)),
+ 'thL': (L_leg_u, (550, 500), (548, 745)), 'shL': (L_leg_l, (548, 745), (535, 885)),
+ 'thR': (M(L_leg_u), (650, 500), (652, 745)), 'shR': (M(L_leg_l), (652, 745), (665, 885)),
 }
 meta = {}
 for k, (poly, A, B) in P.items():

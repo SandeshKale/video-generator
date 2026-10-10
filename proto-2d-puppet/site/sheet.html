@@ -1,7 +1,7 @@
-<!doctype html><meta charset=utf8><body style="margin:0;background:#efe6d2"><canvas id=c width=1920 height=700></canvas>
+<!doctype html><meta charset=utf8><body style="margin:0;background:#efe6d2"><canvas id=c width=1920 height=1400></canvas>
 <script src="mocap.js"></script><script src="rig.js"></script><script src="puppet.js"></script><script>
 var c=document.getElementById('c'),x=c.getContext('2d');
-window.go=function(){ x.clearRect(0,0,1920,700); var ts=[0.0,0.5,1.0,1.5,2.0,2.5];
- ts.forEach(function(t,i){ var P=RIG.sample('boxA',t,{inplace:true}); x.fillStyle='#14123a22'; x.fillRect(i*320+10,640,300,6); PUPPET.draw(x,P,{x:i*320+160,y:640,scale:0.62}); }); window.done=1; };
+window.go=function(){ x.clearRect(0,0,1920,700); var ts=[];for(var q=0;q<12;q++)ts.push(1.0+q*0.1);
+ ts.forEach(function(t,i){ var P=RIG.sample('boxA',t,{inplace:true}); x.fillStyle='#14123a22'; var oy=(i<6?0:700); x.fillRect((i%6)*320+10,640+oy,300,6); PUPPET.draw(x,P,{x:(i%6)*320+160,y:640+oy,scale:0.5,yaw:0.35}); }); window.done=1; };
 PUPPET.load(window.go);
 </script>
