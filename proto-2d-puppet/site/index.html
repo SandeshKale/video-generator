@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf8><style>html,body{margin:0;background:#f6efe2}canvas{display:block}</style><canvas id=c width=1080 height=1920></canvas>
+<script src="mocap.js"></script><script src="rig.js"></script><script src="puppet.js"></script><script>
+var c=document.getElementById('c'),x=c.getContext('2d'),ready=false;window.__reelDurationSec=4;
+function tri(t,d){var m=t%(2*d);return m<d?m:2*d-m;}
+window.__seek=function(t){ if(!ready)return; x.fillStyle='#f6efe2';x.fillRect(0,0,1080,1920);
+ x.fillStyle='#2b3bff18';for(var i=0;i<1080;i+=34)for(var j=0;j<1920;j+=34){x.beginPath();x.arc(i+((j/34)%2)*17,j,3,0,7);x.fill();}
+ var g=1450;x.fillStyle='#14123a';x.fillRect(0,g,1080,10);x.fillStyle='#ff5a3633';x.fillRect(0,g+10,1080,120);
+ var P=RIG.sample('boxA',tri(t*1.1,RIG.dur('boxA')-0.05),{inplace:true});
+ x.fillStyle='#14123a30';x.beginPath();x.ellipse(540,g+22,250,26,0,0,7);x.fill();
+ PUPPET.draw(x,P,{x:540,y:g,scale:1.25}); };
+PUPPET.load(function(){ready=true;window.__seek(0);});
+</script>
