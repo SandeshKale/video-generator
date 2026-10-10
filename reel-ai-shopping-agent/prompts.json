@@ -1,0 +1,12 @@
+[
+ {
+  "id": "aisle_dawn",
+  "prompt": "empty supermarket aisle in the early morning, symmetrical one-point perspective, tall shelves stocked with colorful products on both sides, shiny polished floor with reflections, cool white fluorescent light, no people",
+  "steps": 6
+ },
+ {
+  "id": "store_exit",
+  "prompt": "view from inside a supermarket toward automatic glass exit doors at dusk, checkout lanes on the side, cool white store light against a warm orange sky outside, polished floor reflections, no people",
+  "steps": 6
+ }
+]
