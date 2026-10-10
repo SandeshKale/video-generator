@@ -1,0 +1,6 @@
+[
+ {"id":"living_dusk","prompt":"cozy modern living room at dusk, empty sofa with warm lamp glow, window with blue evening light, shallow depth, no people","steps":6},
+ {"id":"doorstep","prompt":"front doorstep of a suburban house at dawn, front door and welcome mat, soft golden morning light, empty, no people, no boxes","steps":6},
+ {"id":"storm_lot","prompt":"empty supermarket parking lot at stormy dusk, wet asphalt reflecting lights, dark dramatic clouds, store sign glow in the distance, no people","steps":6},
+ {"id":"checkout_lane","prompt":"empty supermarket self-checkout lane close view, conveyor belt and card reader, cool white store light, no people, shallow depth of field","steps":6}
+]

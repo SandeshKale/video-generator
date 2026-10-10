@@ -69,3 +69,10 @@ Avatar clips supply the voice (Indian-accent, warm). Music from the cue system w
 ## Next steps (awaiting your go on topic + script)
 1. You run the four avatar prompts and send back the clips (and tell me if the voice pace is slower/faster than ~2.5 words/s so I can retime).
 2. Meanwhile I mock up **3 scenes from 3 different families** (scene 1: 3D cart + parallax; scene 5: logos + hall-pass UI; scene 9: mocap crowd) for approval, and start generating the stills.
+
+
+## Delivered build notes (Oct 2026)
+- Scene starts (s): 0, 3.1, 6.4, 10.5, 14.5, 19.4, 28.85, 33.85, 43.35, 49.45; total 59.33 s.
+- Meta and Walmart appear as text name-chips (no logos in `assets/logos`); Stripe uses the real mark; Shopify was dropped because the voice-over never names it.
+- On-screen numbers: "6 IN 10" (UK survey) and the quoted "$100" in the user's own chat message.
+- Families used: 11 (A photoreal+parallax, B Blender, C mocap, D humaaans, E logos/illustration, F bespoke SVG/DOM objects, G kinetic type, H real-footage overlays, I real photo, J avatar-in-kiosk, K audio).
