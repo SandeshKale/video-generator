@@ -40,73 +40,76 @@ function stub(par, txt, css) { var e = D(css, txt, par); e.className = 'stub'; r
 function burst(par, css, col) { return D(css, '<svg viewBox="0 0 100 100" width="100%" height="100%"><polygon fill="' + (col || YE) + '" points="50,2 58,30 86,14 70,40 98,50 70,60 86,86 58,70 50,98 42,70 14,86 30,60 2,50 30,40 14,14 42,30"/></svg>', par); }
 function wobble(t, k) { return Math.sin(t * 7 + k) * 1.6; }
 
+// ---------------- mocap rig helpers ----------------
+var PAL = { t800: { body: CO, back: '#c23a1c', edge: IK, inner: '#ffb199', joint: YE }, g1: { body: YE, back: '#d9a900', edge: IK, inner: '#fff0b0', joint: IK } };
+var NS = 'http://www.w3.org/2000/svg';
+function layer(par, w, h) { var s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '0 0 ' + (w || 1080) + ' ' + (h || 1920)); s.style.cssText = 'position:absolute;left:0;top:0;width:' + (w || 1080) + 'px;height:' + (h || 1920) + 'px;overflow:visible'; par.appendChild(s); return s; }
+function tri(x, d) { var m = x % (2 * d); if (m < 0) m += 2 * d; return m < d ? m : 2 * d - m; }
+function pose(clip, t, o) { o = o || {}; var P = clip === 'walk' ? RIG.sample('walk', t, { loop: true, inplace: true }) : RIG.sample(clip, tri(t, RIG.dur(clip) - 0.05), { inplace: true }); if (o.damp != null) P = RIG.damp(P, clip, o.damp); if (o.rot) P = RIG.rotate(P, 0, 0, o.rot); return P; }
+var SK = 1.5;
+function fig(P, x, gy, sc, flip, kind, extra) { sc *= SK; var human = kind === 'human'; var g = RIG.svg(P, human ? 'human' : 'robot', { pal: human ? null : PAL[kind] }); return '<g transform="translate(' + x + ',' + gy + ') scale(' + (flip * sc) + ',' + sc + ')">' + g + (extra ? extra(P) : '') + '</g>'; }
+function hmd(P) { var h = P.head; return '<rect x="' + (h[0] - 8) + '" y="' + (-h[1] - 14) + '" width="46" height="28" rx="9" fill="' + IK + '" stroke="' + CO + '" stroke-width="4"/><path d="M' + (h[0] - 8) + ' ' + (-h[1]) + ' H' + (h[0] - 34) + '" stroke="' + IK + '" stroke-width="6"/>'; }
+function hp(P, k, x, gy, sc, flip) { sc *= SK; return [x + flip * sc * P[k][0], gy - sc * P[k][1]]; }
+var WSPD = null; function wspd() { return WSPD || (WSPD = RIG.speed('walk')); }
+function cage(par, y0, y1) { var g = D('left:0;top:0;width:1080px;height:1920px', '', par), h = y1 - y0;
+  g.innerHTML = '<svg width="1080" height="1920" viewBox="0 0 1080 1920"><defs><pattern id="lat' + y0 + '" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0H46M0 0V46" stroke="' + IK + '" stroke-width="3.5"/></pattern></defs>'
+    + '<polygon points="30,' + (y0 + 40) + ' 150,' + y0 + ' 150,' + y1 + ' 30,' + (y1 + 50) + '" fill="url(#lat' + y0 + ')" opacity=".28"/><polygon points="1050,' + (y0 + 40) + ' 930,' + y0 + ' 930,' + y1 + ' 1050,' + (y1 + 50) + '" fill="url(#lat' + y0 + ')" opacity=".28"/>'
+    + '<rect x="150" y="' + y0 + '" width="780" height="' + h + '" fill="url(#lat' + y0 + ')" opacity=".18"/>'
+    + '<g stroke="' + IK + '" stroke-width="14" stroke-linecap="round"><line x1="150" y1="' + y0 + '" x2="930" y2="' + y0 + '"/><line x1="30" y1="' + (y0 + 40) + '" x2="150" y2="' + y0 + '"/><line x1="930" y1="' + y0 + '" x2="1050" y2="' + (y0 + 40) + '"/><line x1="150" y1="' + y0 + '" x2="150" y2="' + y1 + '"/><line x1="930" y1="' + y0 + '" x2="930" y2="' + y1 + '"/></g>'
+    + '<rect x="0" y="' + (y1 + 10) + '" width="1080" height="150" fill="' + CO + '" opacity=".2"/><rect x="0" y="' + (y1 + 10) + '" width="1080" height="12" fill="' + IK + '"/><rect x="0" y="' + (y1 + 62) + '" width="1080" height="8" fill="' + BL + '"/></svg>'; return g; }
+var GY = 1150;
 // ---------------- scene 1: hook ----------------
 var S1 = scene(), s1 = {};
-s1.eb = eyebrow(S1, '// 1 HUMAN, 3 ROBOTS');
+s1.eb = eyebrow(S1, '// 1 HUMAN, 3 ROBOTS'); s1.cage = cage(S1, 560, 1150); s1.fg = layer(S1);
 s1.l1 = D('left:130px;top:250px;color:' + BL, 'No AI was', S1); s1.l1.className = 'big'; s1.l2 = D('left:130px;top:392px;color:' + CO, 'fighting.', S1); s1.l2.className = 'big';
-s1.rope = ropes(S1, 1160);
-s1.hu = V(S1, 'human_idle', 760, 'left:-70px;top:470px'); s1.ro = V(S1, 'robotb_idle', 760, 'left:390px;top:480px;transform:scaleX(-1)');
-s1.burst = burst(S1, 'left:300px;top:740px;width:480px;height:480px'); s1.vs = D('left:430px;top:910px;font:800 110px/1 BC;color:' + IK + ';border:10px solid ' + IK + ';padding:4px 22px;', 'VS', S1);
 s1.h0 = D('left:130px;top:250px;color:' + IK, 'ROBOT CAGE FIGHT<br><span style="color:' + CO + '">WENT VIRAL.</span>', S1); s1.h0.className = 'big'; s1.h0.style.fontSize = '110px'; s1.h0.style.lineHeight = '1.0';
+s1.burst = burst(S1, 'left:300px;top:700px;width:480px;height:480px'); s1.vs = D('left:430px;top:870px;font:800 110px/1 BC;color:' + IK + ';border:10px solid ' + IK + ';padding:4px 22px;', 'VS', S1);
 s1.st1 = stub(S1, 'SF · SEPT 18', 'left:150px;top:1150px'); s1.st2 = stub(S1, 'ILLUSTRATION · NOT FOOTAGE', 'left:150px;top:1215px;font-size:24px');
-
 // ---------------- scene 2: three robots ----------------
 var S2 = scene(), s2 = {};
-s2.eb = eyebrow(S2, '// THREE ROBOTS, ONE CAGE'); s2.rope = ropes(S2, 1180);
-s2.h = V(S2, 'human_punch', 700, 'left:-80px;top:500px'); s2.r1 = V(S2, 'robot_idle', 560, 'left:300px;top:600px;transform:scaleX(-1)'); s2.r2 = V(S2, 'robotb_idle', 520, 'left:480px;top:630px;transform:scaleX(-1)'); s2.r3 = V(S2, 'robot_idle', 480, 'left:640px;top:660px;transform:scaleX(-1)');
-s2.n = D('left:130px;top:250px;font:400 400px/.9 An;color:' + BL, '0', S2); s2.nl = D('left:420px;top:380px;font:800 62px/1 BC;color:' + CO + ';letter-spacing:.06em', 'ROBOTS', S2); s2.nl2 = D('left:420px;top:450px;font:800 62px/1 BC;color:' + BL + ';letter-spacing:.06em', 'VS 1 HUMAN', S2);
-s2.stub = stub(S2, 'SAN FRANCISCO · SEPT 18', 'left:150px;top:1200px;transform:rotate(-2deg)');
-
+s2.eb = eyebrow(S2, '// THREE ROBOTS, ONE CAGE'); s2.cage = cage(S2, 560, 1150); s2.fg = layer(S2);
+s2.n = D('left:130px;top:250px;font:400 400px/.9 An;color:' + BL, '1', S2); s2.nl = D('left:420px;top:380px;font:800 62px/1 BC;color:' + CO + ';letter-spacing:.06em', 'HUMAN', S2); s2.nl2 = D('left:420px;top:450px;font:800 40px/1 BC;color:' + BL + ';letter-spacing:.06em', 'CONTENT CREATOR', S2);
+s2.stub = stub(S2, 'SAN FRANCISCO · SEPT 18', 'left:150px;top:1195px;transform:rotate(-2deg)');
 // ---------------- scene 3: 850 lb ----------------
 var S3 = scene(), s3 = {};
-s3.eb = eyebrow(S3, '// A KICK, ON PAPER'); s3.rope = ropes(S3, 1180);
-s3.g1 = V(S3, 'robotb_idle', 340, 'left:30px;top:850px'); s3.t1 = V(S3, 'robot_punch', 640, 'left:230px;top:560px;transform:scaleX(-1)'); s3.t2 = V(S3, 'robot_idle', 640, 'left:520px;top:560px;transform:scaleX(-1)');
-s3.lab1 = D('left:100px;top:1150px;font:800 36px BC;color:' + IK, 'UNITREE G1', S3); s3.lab2 = D('left:430px;top:1170px;font:800 36px BC;color:' + IK, 'T800 · MODIFIED', S3);
+s3.eb = eyebrow(S3, '// A KICK, ON PAPER'); s3.cage = cage(S3, 700, 1150); s3.fg = layer(S3);
+s3.lab1 = D('left:110px;top:1235px;font:800 36px BC;color:' + IK, 'UNITREE G1 · 1.3 M', S3); s3.lab2 = D('left:470px;top:1235px;font:800 36px BC;color:' + IK, 'T800 · MODIFIED', S3);
 s3.gauge = D('left:140px;top:200px;width:800px;height:480px', '', S3);
 s3.gauge.innerHTML = '<svg viewBox="0 0 800 480" width="800" height="480"><path d="M60 420 A340 340 0 0 1 740 420" fill="none" stroke="' + IK + '" stroke-width="20"/><path d="M200 420 A200 200 0 0 1 600 420" fill="none" stroke="' + CO + '" stroke-width="20" opacity=".5"/><g id="g3n"><path d="M400 420 L400 110" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="400" cy="420" r="26" fill="' + BL + '"/></g></svg>';
-s3.n = D('left:200px;top:330px;font:400 200px/1 An;color:' + BL, '0', S3); s3.u = D('left:560px;top:410px;font:800 66px BC;color:' + CO + ';letter-spacing:.06em', 'LB', S3); s3.cl = stamp(S3, 'COMPANY CLAIM', 'left:520px;top:590px;font-size:46px;transform:rotate(-6deg)');
-
+s3.n = D('left:200px;top:330px;font:400 200px/1 An;color:' + BL, '0', S3); s3.u = D('left:560px;top:410px;font:800 66px BC;color:' + CO + ';letter-spacing:.06em', 'LB', S3); s3.cl = stamp(S3, 'COMPANY CLAIM', 'left:520px;top:620px;font-size:46px;transform:rotate(-6deg)');
 // ---------------- scene 4: the twist (poster tear) ----------------
 var S4 = scene(), s4 = {};
 s4.eb = eyebrow(S4, '// WHO IS REALLY FIGHTING');
 s4.back = D('left:90px;top:300px;width:900px;height:900px;background:' + IK + ';border-radius:20px', '', S4);
 s4.bk = D('left:90px;top:300px;width:900px;height:900px;overflow:hidden;border-radius:20px', '', S4);
-s4.hu = V(s4.bk, 'human_work', 760, 'left:-60px;top:190px'); s4.ro = V(s4.bk, 'robot_idle', 760, 'left:230px;top:200px;transform:scaleX(-1)');
+s4.fg = layer(s4.bk, 900, 900); s4.cap = D('left:40px;top:40px;font:800 40px BC;letter-spacing:.1em;color:' + YE, 'PILOT BOOTH', s4.bk);
 s4.txt = D('left:110px;top:330px;font:400 120px/.95 An;color:' + CR, 'HERE\'S THE<br><span style="color:' + YE + '">TWIST.</span>', S4);
 s4.pa = D('left:90px;top:300px;width:900px;height:900px;background:' + CR + ';border:6px solid ' + IK + ';border-radius:20px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)', '<div style="position:absolute;left:60px;top:70px;font:400 170px/.95 An;color:' + BL + '">ROBOTS<br><span style="color:' + CO + '">vs</span> HUMANS</div><div style="position:absolute;left:60px;right:60px;bottom:50px;height:14px;background:' + CO + '"></div><div style="position:absolute;left:60px;right:60px;bottom:90px;height:14px;background:' + BL + '"></div><div style="position:absolute;left:60px;bottom:140px;font:800 54px BC;color:' + IK + ';letter-spacing:.08em">THE FIRST CAGE FIGHT*</div>', S4);
-
 // ---------------- scene 5: pilot mirror ----------------
 var S5 = scene(), s5 = {};
-s5.eb = eyebrow(S5, '// PILOTED, NOT AUTONOMOUS');
-s5.pil = V(S5, 'human_punch', 640, 'left:20px;top:200px'); s5.hmd = D('left:312px;top:262px;width:120px;height:56px;background:' + IK + ';border-radius:16px;border:5px solid ' + BL, '', S5);
-s5.rob = V(S5, 'robot_punch', 720, 'left:340px;top:640px;transform:scaleX(-1)');
-s5.str = D('left:0;top:0;width:1080px;height:1920px;pointer-events:none', '', S5);
-s5.str.innerHTML = '<svg width=1080 height=1920 fill=none stroke="' + IK + '" stroke-width=5 stroke-dasharray="4 14" stroke-linecap=round><path id="st1"/><path id="st2"/><path id="st3"/></svg>';
-s5.pl = stub(S5, 'PILOT · VR + GAMEPAD', 'left:560px;top:330px;transform:rotate(3deg)'); s5.bt = [];
+s5.eb = eyebrow(S5, '// PILOTED, NOT AUTONOMOUS'); s5.fg = layer(S5);
+s5.pl = stub(S5, 'HUMAN PILOT', 'left:560px;top:330px;transform:rotate(3deg)'); s5.rl = stub(S5, 'HUMANOID', 'left:130px;top:1110px;transform:rotate(-3deg)'); s5.bt = [];
 ['A', 'B', 'X', 'Y'].forEach(function (b, i) { var e = D('left:' + (100 + i * 100) + 'px;top:1210px;width:84px;height:84px;border-radius:50%;border:6px solid ' + BL + ';font:800 46px/72px BC;text-align:center;color:' + BL, b, S5); s5.bt.push(e); });
 s5.sig = D('left:480px;top:1215px;font:800 34px BC;color:' + IK + ';letter-spacing:.06em', 'SOURCE: ITS PARTNER', S5);
-
 // ---------------- scene 6: balance dial ----------------
 var S6 = scene(), s6 = {};
-s6.eb = eyebrow(S6, "// THE AI'S ONLY JOB"); s6.rope = ropes(S6, 1190);
-s6.h = V(S6, 'human_punch', 640, 'left:-90px;top:600px'); s6.r = V(S6, 'robot_idle', 700, 'left:300px;top:560px;transform:scaleX(-1)');
-s6.dial = D('left:190px;top:200px;width:700px;height:420px', '<svg viewBox="0 0 700 420" width="700" height="420"><path d="M40 370 A310 310 0 0 1 660 370" fill="none" stroke="' + IK + '" stroke-width="22"/><path d="M230 370 A120 120 0 0 1 470 370" fill="none" stroke="' + CO + '" stroke-width="22"/><g id="nd"><path d="M350 370 L350 90" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="350" cy="370" r="24" fill="' + BL + '"/></g></svg>', S6);
-s6.lab = D('left:0;right:0;top:548px;text-align:center;font:800 54px BC;color:' + IK + ';letter-spacing:.08em', 'AI = BALANCE ONLY', S6);
-
+s6.eb = eyebrow(S6, "// THE AI'S ONLY JOB"); s6.cage = cage(S6, 700, 1150); s6.fg = layer(S6);
+s6.dial = D('left:190px;top:130px;width:700px;height:420px', '<svg viewBox="0 0 700 420" width="700" height="420"><path d="M40 370 A310 310 0 0 1 660 370" fill="none" stroke="' + IK + '" stroke-width="22"/><path d="M230 370 A120 120 0 0 1 470 370" fill="none" stroke="' + CO + '" stroke-width="22"/><g id="nd"><path d="M350 370 L350 90" stroke="' + BL + '" stroke-width="16" stroke-linecap="round"/><circle cx="350" cy="370" r="24" fill="' + BL + '"/></g></svg>', S6);
+s6.lab = D('left:0;right:0;top:478px;text-align:center;font:800 54px BC;color:' + IK + ';letter-spacing:.08em', 'AI = BALANCE ONLY', S6);
 // ---------------- scene 7: gamepad = body ----------------
 var S7 = scene(), s7 = {};
-s7.eb = eyebrow(S7, '// BALANCE IS THE HARD PART');
+s7.eb = eyebrow(S7, '// BALANCE IS THE HARD PART'); s7.fg = layer(S7);
+s7.bh = D('left:100px;top:330px;font:400 150px/.95 An;color:' + BL, 'BALANCE<br><span style="color:' + CO + '">IS THE<br>HARD PART</span>', S7);
 s7.pad = D('left:80px;top:330px;width:420px;height:300px', '<svg viewBox="0 0 420 300" width="420" height="300"><g fill="none" stroke="' + BL + '" stroke-width="12" stroke-linejoin="round"><path d="M70 90 Q60 250 120 250 Q160 250 180 200 H240 Q260 250 300 250 Q360 250 350 90 Q330 60 290 70 H130 Q90 60 70 90Z" fill="' + CR + '"/><circle cx="130" cy="130" r="26"/><circle cx="270" cy="170" r="22"/><circle cx="310" cy="120" r="14" fill="' + CO + '" stroke="' + CO + '"/><circle cx="280" cy="100" r="14" fill="' + YE + '"/></g></svg>', S7);
-s7.bh = D('left:100px;top:330px;font:400 150px/.95 An;color:' + BL, 'BALANCE<br><span style="color:' + CO + '">IS THE<br>HARD PART</span>', S7); s7.eq = D('left:470px;top:380px;font:400 200px/1 An;color:' + CO, '=', S7);
-s7.bd = V(S7, 'robot_dance', 640, 'left:440px;top:200px'); s7.cbl = D('left:300px;top:740px;width:520px;height:120px', '<svg viewBox="0 0 520 120" width=520 height=120 fill=none stroke="' + IK + '" stroke-width=8 stroke-dasharray="3 14" stroke-linecap=round><path d="M10 20 C150 120 300 120 330 40"/></svg>', S7);
+s7.eq = D('left:470px;top:380px;font:400 200px/1 An;color:' + CO, '=', S7);
+s7.cbl = D('left:300px;top:740px;width:520px;height:120px', '<svg viewBox="0 0 520 120" width=520 height=120 fill=none stroke="' + IK + '" stroke-width=8 stroke-dasharray="3 14" stroke-linecap=round><path d="M10 20 C150 120 300 120 330 40"/></svg>', S7);
 s7.t1 = D('left:120px;top:900px;font:400 100px/1 An;color:' + BL, '<span id="l1">THE FIGHTING:</span><br><span id="l2" style="color:' + CO + '">A VIDEO GAME</span><br><span id="l3">WITH A BODY.</span>', S7);
-
 // ---------------- scene 8: 3,670 simulator matches ----------------
 var S8 = scene(), s8 = {};
 s8.eb = eyebrow(S8, '// QUALIFIED IN A SIMULATOR');
 s8.cv = D('left:90px;top:540px;width:900px;height:640px;background:' + CR + ';border:6px solid ' + IK + ';border-radius:16px;box-shadow:10px 10px 0 ' + BL, '', S8); var cvEl = document.createElement('canvas'); cvEl.width = 840; cvEl.height = 580; cvEl.style.cssText = 'position:absolute;left:30px;top:30px'; s8.cv.appendChild(cvEl); s8.c2 = cvEl.getContext('2d');
 s8.n = D('left:100px;top:230px;font:400 240px/1 An;color:' + BL, '0', S8); s8.nl = D('left:100px;top:478px;font:800 52px BC;color:' + CO + ';letter-spacing:.08em', 'SIMULATOR MATCHES', S8);
-s8.tk = stub(S8, 'WINNERS → REAL ROBOTS · REK2 · AUGUST', 'left:150px;top:1190px;font-size:30px;transform:rotate(-2deg)');
+s8.fg = layer(S8); s8.tk = stub(S8, 'WINNERS → REAL ROBOTS · REK2 · AUGUST', 'left:150px;top:1190px;font-size:30px;transform:rotate(-2deg)');
 
 // ---------------- scene 9: letter + views ----------------
 var S9 = scene(), s9 = {};
@@ -120,7 +123,7 @@ var LTXT = 'Re: unsanctioned human vs. humanoid cage match. Barred from "holding
 
 // ---------------- scene 10: CTA ----------------
 var S10 = scene(), s10 = {};
-s10.rope = ropes(S10, 1160); s10.rd = V(S10, 'robot_death', 760, 'left:300px;top:500px;transform:scaleX(-1)'); s10.hu = V(S10, 'human_idle', 720, 'left:-70px;top:500px');
+s10.cage = cage(S10, 700, 1150); s10.fg = layer(S10);
 s10.q = D('left:110px;top:230px;font:400 124px/.92 An;color:' + BL, 'ROBOT FIGHT<br><span style="color:' + CO + '">OR A VIDEO GAME</span><br>WITH A BODY?', S10);
 s10.ring = D('z-index:6;left:130px;top:1040px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:10px solid ' + CR + ';box-shadow:0 0 0 6px ' + IK + ',10px 10px 0 6px ' + BL, '', S10);
 s10.hd = D('z-index:6;left:380px;top:1050px;font:800 56px BC;color:' + IK + ';background:' + CR + ';padding:2px 14px;border:4px solid ' + IK + ';letter-spacing:.04em', '@sandesh.explains', S10); s10.fo = D('z-index:6;left:380px;top:1140px;font:800 70px/1 BC;color:' + CR + ';background:' + CO + ';padding:6px 26px;box-shadow:8px 8px 0 ' + IK, 'FOLLOW', S10);
@@ -134,42 +137,52 @@ var UPD = [u1, u2, u3, u4, u5, u6, u7, u8, u9, u10];
 function W(bi, i) { return window.WORDS[bi][Math.min(i, window.WORDS[bi].length - 1)][0] - BEATS[bi][0]; }
 function pin(el, t, at, o) { o = o || {}; var p = bounce(seg(t, at, at + (o.d || 0.35))); el.style.opacity = t < at ? 0 : 1; set(el, (o.x || 0) * (1 - p), (o.y || 0) * (1 - p), (o.r || 0) * (1 - p) + (o.rot || 0), (o.s0 == null ? 0.6 : o.s0) + (1 - (o.s0 == null ? 0.6 : o.s0)) * p); }
 function pinV(o, t, at, x) { o.el.style.opacity = t < at ? 0 : 1; var p = bounce(seg(t, at, at + 0.45)); o.el.style.marginLeft = ((1 - p) * (x || 0)) + 'px'; }
-function u1(t, T) { var n = W(0, 7), e = bounce(seg(t, 0, 0.3));
+var EXT = {}; function maxExt(clip, a, b) { var k = clip + a; if (EXT[k]) return EXT[k]; var m = 1; for (var i = 0; i < 90; i++) { var P = RIG.sample(clip, i / 90 * (RIG.dur(clip) - 0.05), { inplace: true }); m = Math.max(m, Math.hypot(P[a][0] - P[b][0], P[a][1] - P[b][1])); } return EXT[k] = m; }
+function u1(t, T) { var n = W(0, 7);
   set(s1.burst, 0, 0, t * 12, 0.9 + 0.1 * bounce(seg(t, 0, 0.5)), 1); set(s1.vs, 0, 0, -6, 0.9 + 0.1 * bounce(seg(t, 0, 0.5)), 1); s1.h0.style.opacity = t < n ? 1 : 0; set(s1.h0, 0, 0, -1, 1 + 0.05 * Math.sin(t * 6));
   var a1 = bounce(seg(t, n, n + 0.25)); s1.l1.style.opacity = t < n ? 0 : 1; set(s1.l1, 0, 0, -1.5, 1 + 0.25 * (1 - a1)); var a2 = bounce(seg(t, W(0, 10), W(0, 10) + 0.25)); s1.l2.style.opacity = t < W(0, 10) ? 0 : 1; set(s1.l2, 0, 0, 1, 1 + 0.25 * (1 - a2));
-  var hit = Math.max(0, t - W(0, 3)); s1.hu.el.style.transform = 'translateX(' + (Math.sin(hit * 30) * 6 * Math.exp(-hit * 4)) + 'px)';
-  return Promise.all([seekV(s1.hu, T, true), seekV(s1.ro, T, true)]); }
+  s1.fg.innerHTML = fig(pose('boxA', t * 1.15), 330, GY, 1.0, 1, 'human') + fig(pose('boxB', t * 1.15 + 0.3, { damp: 0.85 }), 770, GY, 1.1, -1, 't800'); return Promise.resolve(); }
 function u2(t, T) { var c = [W(1, 11), W(1, 12), W(1, 13)], k = (t >= c[0]) + (t >= c[1]) + (t >= c[2]); s2.n.textContent = String(k || 1); s2.nl.textContent = k ? 'ROBOTS' : 'HUMAN'; s2.nl2.textContent = k ? 'VS 1 HUMAN' : 'CONTENT CREATOR'; s2.nl2.style.fontSize = k ? '62px' : '40px';
-  s2.rope.style.opacity = t < W(1, 6) ? 0 : 1; set(s2.stub, 0, 0, -2, 1, null); s2.stub.style.opacity = t < W(1, 9) ? 0 : 1; pin(s2.h.el, t, 0.05, { x: -500 }); s2.h.el.style.opacity = 1;
-  [s2.r1, s2.r2, s2.r3].forEach(function (r, i) { var at = c[i], p = bounce(seg(t, at, at + 0.4)); r.el.style.opacity = t < at ? 0 : 1; r.el.style.marginLeft = ((1 - p) * 700) + 'px'; });
-  s2.nl.style.opacity = s2.nl2.style.opacity = t < 0.3 ? 0 : 1;
-  return Promise.all([seekV(s2.h, T, true), seekV(s2.r1, T, true), seekV(s2.r2, T + 0.3, true), seekV(s2.r3, T + 0.6, true)]); }
+  s2.cage.style.opacity = t < W(1, 6) ? 0 : 1; s2.stub.style.opacity = t < W(1, 9) ? 0 : 1; s2.nl.style.opacity = s2.nl2.style.opacity = t < 0.3 ? 0 : 1;
+  var arrive = 1.7, hx = -150 + 470 * seg(t, 0, arrive), g = '';
+  g += t < arrive ? fig(pose('walk', t * 1.0), hx, GY, 1.0, 1, 'human') : fig(pose('boxA', (t - arrive) * 1.1), hx, GY, 1.0, 1, 'human');
+  var slots = [600, 760, 920], kinds = ['g1', 't800', 't800'], scs = [0.72, 1.0, 1.0];
+  for (var i = 0; i < 3; i++) { var at = c[i]; if (t < at) continue; var wl = 0.9, p = seg(t, at, at + wl), x = 1350 + (slots[i] - 1350) * p; g += p < 1 ? fig(pose('walk', (t - at) * 1.0), x, GY, scs[i], -1, kinds[i]) : fig(pose('boxB', t + i * 0.4, { damp: 0.8 }), x, GY, scs[i], -1, kinds[i]); }
+  s2.fg.innerHTML = g; return Promise.resolve(); }
 function u3(t, T) { var a = W(2, 13), b = W(2, 16) + 0.3, p = seg(t, a, b), v = Math.round(850 * p); s3.n.textContent = t < a ? '?' : String(v);
   var ang = -88 + 176 * ((t < a ? 0 : v) / 1000) + (t < a ? Math.sin(t * 5) * 2 : (p < 1 ? 0 : Math.sin((t - b) * 18) * 3 * Math.exp(-(t - b) * 2))); s3.gauge.querySelector('#g3n').setAttribute('transform', 'rotate(' + ang + ' 400 420)');
   pin(s3.gauge, t, 0.1, { y: -80 }); pin(s3.n, t, 0.2, { y: -60 }); pin(s3.u, t, 0.3, { y: -60 }); set(s3.cl, 0, 0, -6, 0.6 + 0.4 * bounce(seg(t, W(2, 18), W(2, 18) + 0.4)), seg(t, W(2, 18), W(2, 18) + 0.1));
-  pinV(s3.g1, t, W(2, 2), -500); s3.lab1.style.opacity = t < W(2, 3) ? 0 : 1; pinV(s3.t1, t, W(2, 6), 700); pinV(s3.t2, t, W(2, 8) - 0.5, 700); s3.lab2.style.opacity = t < W(2, 8) ? 0 : 1;
-  var kick = Math.max(0, t - W(2, 10)); return Promise.all([seekV(s3.g1, T, true), seekV(s3.t1, t < W(2, 10) ? T : kick, t < W(2, 10)), seekV(s3.t2, T + 0.4, true)]); }
+  s3.lab1.style.opacity = t < W(2, 3) ? 0 : 1; s3.lab2.style.opacity = t < W(2, 8) ? 0 : 1; var g = '';
+  var tg = W(2, 2), pg = seg(t, tg, tg + 0.9); g += pg <= 0 ? '' : (pg < 1 ? fig(pose('walk', t - tg), -100 + 350 * pg, GY, 0.72, 1, 'g1') : fig(pose('boxB', t, { damp: 0.8 }), 250, GY, 0.72, 1, 'g1'));
+  var tt1 = W(2, 6), p1 = seg(t, tt1, tt1 + 0.9); var k0 = W(2, 10), kt = t - k0;
+  if (p1 > 0) g += p1 < 1 ? fig(pose('walk', t - tt1), 1350 + (640 - 1350) * p1, GY, 1.0, -1, 't800') : (t < k0 ? fig(pose('boxB', t + 1, { damp: 0.8 }), 640, GY, 1.0, -1, 't800') : fig(RIG.sample('kick', Math.min(kt * 0.9, RIG.dur('kick') - 0.1), { inplace: true }), 640, GY, 1.0, -1, 't800'));
+  var tt2 = W(2, 8) - 0.3, p2 = seg(t, tt2, tt2 + 0.9); if (p2 > 0) g += p2 < 1 ? fig(pose('walk', t - tt2), 1450 + (880 - 1450) * p2, GY, 1.0, -1, 't800') : fig(pose('boxA', t + 2, { damp: 0.8 }), 880, GY, 1.0, -1, 't800');
+  s3.fg.innerHTML = g; return Promise.resolve(); }
 function u4(t, T) { var a = W(3, 4), p = seg(t, a, a + 0.6); s4.pa.style.clipPath = 'polygon(0 0,' + (100 - 60 * p) + '% 0,' + (100 - 100 * p) + '% 100%,0 100%)'; s4.pa.style.transform = 'translate(' + (-90 * p) + 'px,' + (30 * p) + 'px) rotate(' + (-4 * p) + 'deg)'; s4.pa.style.opacity = 1 - 0.2 * p; s4.txt.style.opacity = seg(t, W(3, 5), W(3, 5) + 0.3); set(s4.txt, 0, 0, -2, 1 + 0.2 * (1 - bounce(seg(t, W(3, 5), W(3, 5) + 0.3))));
-  return Promise.all([seekV(s4.hu, T, true), seekV(s4.ro, T, true)]); }
-function u5(t, T) { var tc = T, rt = Math.max(0, tc - 0.3), live = W(4, 6), pa = W(4, 4);
-  pinV(s5.rob, t, W(4, 1) - 0.2, 600); pinV(s5.pil, t, pa, -600); s5.hmd.style.opacity = t < W(4, 10) ? 0 : 1; set(s5.hmd, 0, 0, 0, 0.5 + 0.5 * bounce(seg(t, W(4, 10), W(4, 10) + 0.3)));
-  s5.pl.style.opacity = t < W(4, 5) ? 0 : 1; s5.pl.textContent = t < W(4, 10) ? 'HUMAN PILOT' : 'PILOT · VR + GAMEPAD';
-  s5.str.style.opacity = seg(t, live, live + 0.3);
-  [['st1', 350, 600, 300, 860, 360, 940], ['st2', 640, 600, 760, 860, 720, 940], ['st3', 540, 420, 540, 700, 540, 900]].forEach(function (q) { var d = s5.str.querySelector('#' + q[0]); d.setAttribute('d', 'M' + q[1] + ' ' + q[2] + ' C ' + (q[1] - 90 + 20 * Math.sin(t * 5)) + ' ' + (q[2] + 120) + ' ' + (q[3] - 60) + ' ' + (q[4] - 60) + ' ' + q[5] + ' ' + q[6]); });
-  var g0 = W(4, 14), cyc = ((t - g0) * 1.7) % 1, btn = Math.floor(cyc * 4); s5.bt.forEach(function (b, i) { var on = t >= g0 && i === btn && cyc < 0.6; b.style.opacity = t < g0 ? 0 : 1; b.style.background = on ? CO : 'transparent'; b.style.color = on ? CR : BL; b.style.borderColor = on ? CO : BL; });
-  s5.sig.style.opacity = t < W(4, 16) ? 0 : 1;
-  return Promise.all([seekV(s5.pil, tc, true), seekV(s5.rob, t < live ? 0 : rt, t >= live)]); }
+  var P = pose('boxA', t * 1.2), R = pose('boxA', Math.max(0, t * 1.2 - 0.3), { damp: 0.75 });
+  s4.fg.innerHTML = '<rect x="0" y="810" width="900" height="8" fill="' + CO + '"/>' + fig(P, 280, 800, 0.72, 1, 'human', hmd) + fig(R, 640, 800, 0.72, 1, 't800'); return Promise.resolve(); }
+function u5(t, T) { var live = W(4, 6), pa = W(4, 4), rb = W(4, 1) - 0.2, g = '';
+  var psc = 0.6, px = 280, pgy = 800, rsc = 0.72, rx = 700, rgy = 1190;
+  var P = pose('boxA', t * 1.1), R = pose('boxA', Math.max(0, t * 1.1 - 0.28), { damp: 0.8 });
+  if (t >= rb) g += fig(R, rx, rgy, rsc, 1, 't800');
+  if (t >= pa) g += fig(P, px, pgy, psc, 1, 'human', t >= W(4, 10) ? hmd : null);
+  if (t >= live) { var la = seg(t, live, live + 0.3);
+    [['hL'], ['hR']].forEach(function (q, i) { var A = hp(P, q[0], px, pgy, psc, 1), B = hp(R, q[0], rx, rgy, rsc, 1), mx = (A[0] + B[0]) / 2 + (i ? 60 : -60) + 20 * Math.sin(t * 4 + i), my = Math.max(A[1], B[1]) - 120; g += '<path d="M' + A[0].toFixed(1) + ' ' + A[1].toFixed(1) + ' Q' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' ' + B[0].toFixed(1) + ' ' + B[1].toFixed(1) + '" fill="none" stroke="' + IK + '" stroke-width="6" stroke-dasharray="4 16" stroke-dashoffset="' + (-t * 90).toFixed(1) + '" stroke-linecap="round" opacity="' + la + '"/>'; }); }
+  s5.fg.innerHTML = g;
+  s5.pl.style.opacity = t < W(4, 5) ? 0 : 1; s5.pl.textContent = t < W(4, 10) ? 'HUMAN PILOT' : 'PILOT · VR + GAMEPAD'; s5.rl.style.opacity = t < rb ? 0 : 1;
+  var g0 = W(4, 14), eR = Math.hypot(P.hR[0] - P.sR[0], P.hR[1] - P.sR[1]) / maxExt('boxA', 'hR', 'sR'), eL = Math.hypot(P.hL[0] - P.sL[0], P.hL[1] - P.sL[1]) / maxExt('boxA', 'hL', 'sL'), cyc = (t * 0.9) % 1;
+  var lit = [eR > 0.82, eL > 0.82, cyc < 0.15, cyc > 0.5 && cyc < 0.65];
+  s5.bt.forEach(function (b, i) { var on = t >= g0 && lit[i]; b.style.opacity = t < g0 ? 0 : 1; b.style.background = on ? CO : 'transparent'; b.style.color = on ? CR : BL; b.style.borderColor = on ? CO : BL; });
+  s5.sig.style.opacity = t < W(4, 16) ? 0 : 1; return Promise.resolve(); }
 function u6(t, T) { var hit = Math.max(0, t - 0.75), up = W(5, 7) - 0.1, wob = t < 0.75 ? 0 : Math.sin(hit * 14) * 34 * Math.exp(-hit * 1.6) * (t < up ? 1 : Math.max(0, 1 - (t - up) * 8));
   s6.dial.querySelector('#nd').setAttribute('transform', 'rotate(' + wob + ' 350 370)'); pin(s6.dial, t, 0.05, { y: -80 });
-  s6.lab.textContent = t < W(5, 3) ? 'AI = ?' : 'AI = BALANCE ONLY'; s6.lab.style.color = t >= up + 0.3 ? BL : IK; s6.r.el.style.transform = 'scaleX(-1) rotate(' + (-wob * 0.12) + 'deg)';
-  return Promise.all([seekV(s6.h, Math.max(0, (t - 0.6)) * 0.9, false), seekV(s6.r, T, true)]); }
-function u7(t, T) { var f = W(6, 5), e = W(6, 8), b = W(6, 12) - 0.3; var shake = t < f ? Math.sin(t * 9) * 6 * (1 - seg(t, f - 0.3, f)) : 0;
-  s7.bd.el.style.transform = 'rotate(' + shake + 'deg)'; s7.bd.el.style.transformOrigin = '50% 90%';
+  s6.lab.textContent = t < W(5, 3) ? 'AI = ?' : 'AI = BALANCE ONLY'; s6.lab.style.color = t >= up + 0.3 ? BL : IK;
+  s6.fg.innerHTML = fig(pose('boxA', t * 1.2), 300, GY, 1.0, 1, 'human') + fig(pose('boxB', t, { damp: 0.8, rot: wob * 0.28 }), 780, GY, 1.05, -1, 't800'); return Promise.resolve(); }
+function u7(t, T) { var f = W(6, 5), e = W(6, 8); var shake = t < f ? Math.sin(t * 9) * 7 * (1 - seg(t, f - 0.3, f)) : 0;
   s7.bh.style.opacity = t < f - 0.1 ? 1 : 0; s7.pad.style.opacity = t < f ? 0 : 1; s7.pad.style.marginLeft = ((1 - bounce(seg(t, f, f + 0.4))) * -500) + 'px'; s7.pad.style.transform = 'rotate(' + (Math.sin(t * 2.4) * 4) + 'deg)';
-  s7.eq.style.opacity = t < e ? 0 : 1; set(s7.eq, 0, 0, Math.sin(t * 3) * 4, (0.5 + 0.5 * bounce(seg(t, e, e + 0.3))) * (1 + 0.06 * Math.sin(t * 5)));
-  s7.cbl.style.opacity = seg(t, e, e + 0.3);
-  var l1 = s7.t1.querySelector('#l1'), l2 = s7.t1.querySelector('#l2'), l3 = s7.t1.querySelector('#l3'); l1.style.opacity = t < W(6, 5) ? 0 : 1; l2.style.opacity = t < W(6, 8) ? 0 : 1; l3.style.opacity = t < W(6, 11) ? 0 : 1; s7.t1.style.opacity = 1;
-  return seekV(s7.bd, T, true); }
+  s7.eq.style.opacity = t < e ? 0 : 1; set(s7.eq, 0, 0, Math.sin(t * 3) * 4, (0.5 + 0.5 * bounce(seg(t, e, e + 0.3))) * (1 + 0.06 * Math.sin(t * 5))); s7.cbl.style.opacity = seg(t, e, e + 0.3);
+  var l1 = s7.t1.querySelector('#l1'), l2 = s7.t1.querySelector('#l2'), l3 = s7.t1.querySelector('#l3'); l1.style.opacity = t < W(6, 5) ? 0 : 1; l2.style.opacity = t < W(6, 8) ? 0 : 1; l3.style.opacity = t < W(6, 11) ? 0 : 1;
+  s7.fg.innerHTML = fig(t < f ? pose('boxB', t, { damp: 0.5, rot: shake }) : pose('boxB', t * 1.2 + 1, { damp: 0.9 }), 770, 880, 0.8, -1, 't800'); return Promise.resolve(); }
 function u8(t, T) { var a = W(7, 7), b = W(7, 12) + 0.3, p = seg(t, a, b), n = t < a ? 0 : Math.round(3670 * p); s8.n.textContent = n.toLocaleString('en-US'); pin(s8.cv, t, 0.15, { y: 80 }); pin(s8.nl, t, W(7, 3), { x: -300, s0: 1 }); s8.tk.style.opacity = t < W(7, 12) + 0.3 ? 0 : 1;
   var c = s8.c2; c.clearRect(0, 0, 840, 580); var cols = 70, sz = 12; for (var i = 0; i < 3670; i++) { var x = (i % cols) * sz, y = Math.floor(i / cols) * 11; var on = i < n; c.fillStyle = on ? (i % 7 === 0 ? CO : BL) : '#2b3bff22'; c.fillRect(x, y, sz - 2, 9); }
   return Promise.resolve(); }
@@ -177,12 +190,12 @@ function u9(t, T) { var vp = seg(t, W(8, 0), W(8, 2) + 0.4); s9.vn.textContent =
   var ls = W(8, 4); s9.yt.style.opacity = t < ls ? 1 : 0; set(s9.yt, 0, 0, Math.sin(t * 3) * 1.5, 1 + 0.03 * Math.sin(t * 8)); s9.let.style.opacity = t < ls ? 0 : 1; s9.let.style.marginLeft = ((1 - bounce(seg(t, ls, ls + 0.45))) * 800) + 'px';
   var k = Math.floor(seg(t, ls + 0.4, W(8, 8)) * LTXT.length); s9.lt.textContent = LTXT.slice(0, k);
   var sa = W(8, 8); set(s9.stp, 0, 0, -8, 0.5 + 0.5 * bounce(seg(t, sa, sa + 0.4)), seg(t, sa, sa + 0.1)); var d = W(8, 9); set(s9.d12, 0, 0, 5, 0.5 + 0.5 * bounce(seg(t, d, d + 0.4)), seg(t, d, d + 0.1)); return Promise.resolve(); }
-function u10(t, T) { var q = s10.q; q.style.opacity = t < 0.1 ? 0 : 1; var r = W(9, 4), o = W(9, 6);
+function u10(t, T) { var q = s10.q; q.style.opacity = t < 0.1 ? 0 : 1; var o = W(9, 6);
   q.innerHTML = 'ROBOT FIGHT' + (t >= o ? '<br><span style="color:' + CO + '">OR A VIDEO GAME</span><br>WITH A BODY?' : ''); set(q, 0, 0, 0, 1 + 0.04 * (1 - bounce(seg(t, 0.1, 0.4))));
-  var rp = W(9, 13) - 0.1; pin(s10.ring, t, rp, { y: 120 }); s10.ring.style.transform += ' rotate(' + (-3 + Math.sin(t * 3) * 1.5) + 'deg)'; pin(s10.hd, t, W(9, 16) - 0.1, { x: 200 }); set(s10.fo, 0, 0, -2, (t < W(9, 16) ? 0 : 1) * (1 + 0.06 * Math.sin(t * 6))); s10.fo.style.opacity = t < W(9, 16) ? 0 : 1;
-  var dead = Math.max(0, t - W(9, 8)); return Promise.all([seekV(s10.hu, T, true), seekV(s10.rd, Math.min(dead, 0.95), false)]); }
+  var rp = W(9, 13) - 0.1; pin(s10.ring, t, rp, { y: 120 }); s10.ring.style.transform += ' rotate(' + (-3 + Math.sin(t * 3) * 1.5) + 'deg)'; pin(s10.hd, t, W(9, 16) - 0.1, { x: 200 }); s10.fo.style.opacity = t < W(9, 16) ? 0 : 1; set(s10.fo, 0, 0, -2, (t < W(9, 16) ? 0.5 : 1) * (1 + 0.06 * Math.sin(t * 6)));
+  s10.fg.innerHTML = fig(pose('boxB', t * 0.6, { damp: 0.55 }), 300, GY, 1.0, 1, 'human') + fig(pose('boxA', t * 0.6 + 0.5, { damp: 0.55 }), 790, GY, 1.05, -1, 't800'); return Promise.resolve(); }
 // avatar visibility per beat: [beat index, x, y, size, rot]
-var AVB = { 0: [650, 930, 240, 3], 3: [730, 1000, 210, -3], 6: [700, 985, 200, 3] };
+var AVB = { 0: [650, 930, 240, 3], 3: [660, 1000, 210, -3], 6: [660, 985, 200, 3] };
 var OLD = [4.6, 5, 6.4, 4.5, 7.5, 6, 7, 7, 10, 10];
 
 window.__seek = function (t) {
