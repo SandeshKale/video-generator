@@ -1,9 +1,14 @@
 {
- "floorResidualMax": 4.547473508864641e-13,
- "headToTorsoTilt": 0.35000000000000037,
- "maxTorsoDeg": 11.459999999999997,
- "maxHeadDeg": 4.011000000000004,
- "maxAngleStepDegPerFrame": 39.25016158795209,
- "otherFootLiftMaxPx": 83.61482580567554,
- "hipXRangePx": 70.1779310751673
+ "floorResidualMax": 2.2737367544323206e-13,
+ "headToTorsoTilt": 0.36289327571586166,
+ "maxTorsoDeg": 9.473859754546375,
+ "maxHeadDeg": 3.438000000000003,
+ "maxAngleStepDegPerFrame": 15.001104920891347,
+ "otherFootLiftMaxPx": 151.41830073071355,
+ "stanceWidthPx": {
+  "min": 189.03084887734468,
+  "max": 454.11277411701633,
+  "std": 83.29385655749975
+ },
+ "hipXRangePx": 49.08227669051706
 }

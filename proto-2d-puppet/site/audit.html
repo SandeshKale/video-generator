@@ -1,0 +1,21 @@
+<!doctype html><meta charset=utf8><body style="margin:0;background:#fff"><canvas id=c width=1800 height=900></canvas>
+<script src="mocap.js"></script><script src="rig.js"></script><script src="puppet.js"></script><script src="motion.js"></script><script>
+// Part audit: every part raw (zero rotation), its alpha mask, anchor a (red) -> b (blue) with the bone line.
+window.audit=function(meta){var c=document.getElementById('c'),x=c.getContext('2d');x.fillStyle='#ddd';x.fillRect(0,0,1800,900);var keys=Object.keys(meta),n=0,loaded=0;
+ keys.forEach(function(k,i){var im=new Image();im.onload=function(){var m=meta[k],col=i%6,row=Math.floor(i/6),ox=col*300+10,oy=row*440+30,s=Math.min(1,380/m.h,130/m.w*1.2);
+  x.fillStyle='#f6efe2';x.fillRect(ox,oy,140,400);x.drawImage(im,ox,oy,m.w*s,m.h*s);
+  var t=document.createElement('canvas');t.width=im.width;t.height=im.height;var tx=t.getContext('2d');tx.drawImage(im,0,0);var d=tx.getImageData(0,0,t.width,t.height);for(var q=0;q<d.data.length;q+=4){var a=d.data[q+3];d.data[q]=d.data[q+1]=d.data[q+2]=a;d.data[q+3]=255;}tx.putImageData(d,0,0);
+  x.fillStyle='#000';x.fillRect(ox+150,oy,140,400);x.drawImage(t,ox+150,oy,m.w*s,m.h*s);
+  [ox,ox+150].forEach(function(bx){x.strokeStyle='#08f';x.lineWidth=2;x.beginPath();x.moveTo(bx+m.a[0]*s,oy+m.a[1]*s);x.lineTo(bx+m.b[0]*s,oy+m.b[1]*s);x.stroke();x.fillStyle='#f00';x.beginPath();x.arc(bx+m.a[0]*s,oy+m.a[1]*s,5,0,7);x.fill();x.fillStyle='#00f';x.beginPath();x.arc(bx+m.b[0]*s,oy+m.b[1]*s,5,0,7);x.fill();});
+  x.fillStyle='#000';x.font='13px monospace';x.fillText(k+'  comps '+m.comps_pre+'->'+m.comps_post+'  px '+m.px,ox,oy-10);if(++loaded===keys.length)window.audited=1;};im.src='parts/'+k+'.png';});};
+window.compositeMetrics=function(t0,n,fps){var res=[],cv=document.createElement('canvas');cv.width=1000;cv.height=1100;var x=cv.getContext('2d');
+ var pose=function(t){return MOTION.pose(t);};
+ for(var f=0;f<n;f++){var t=t0+f/fps;x.clearRect(0,0,1000,1100);var info=PUPPET.draw(x,pose(t),{x:500,y:1050,scale:1.1,guardSpread:1.0,fa:MOTION.fa()});var d=x.getImageData(0,0,1000,1100).data,W=1000,H=1100,lab=new Int32Array(W*H),comp=[],cur=0;
+  for(var i=0;i<W*H;i++){if(d[i*4+3]>40&&!lab[i]){cur++;var st=[i],area=0;lab[i]=cur;while(st.length){var p=st.pop();area++;var px=p%W,py=(p/W)|0;if(px>0&&d[(p-1)*4+3]>40&&!lab[p-1]){lab[p-1]=cur;st.push(p-1);}if(px<W-1&&d[(p+1)*4+3]>40&&!lab[p+1]){lab[p+1]=cur;st.push(p+1);}if(py>0&&d[(p-W)*4+3]>40&&!lab[p-W]){lab[p-W]=cur;st.push(p-W);}if(py<H-1&&d[(p+W)*4+3]>40&&!lab[p+W]){lab[p+W]=cur;st.push(p+W);}}comp.push(area);}}
+  // stray: puppet pixels farther than the capsule radius from every bone segment
+  var stray=0,tot=0;for(var yy=0;yy<H;yy+=3)for(var xx=0;xx<W;xx+=3){if(d[(yy*W+xx)*4+3]<=40)continue;tot++;var near=false;for(var s=0;s<info.segs.length;s++){var g=info.segs[s],vx=g[2]-g[0],vy=g[3]-g[1],l2=vx*vx+vy*vy||1,u=Math.max(0,Math.min(1,((xx-g[0])*vx+(yy-g[1])*vy)/l2)),dx=xx-(g[0]+vx*u),dy=yy-(g[1]+vy*u);if(dx*dx+dy*dy<g[5]*g[5]*4.2){near=true;break;}}if(!near)stray++;}
+  res.push({f:f,t:t,comps:comp.filter(function(a){return a>50;}).length,small:comp.filter(function(a){return a>5&&a<=50;}).length,biggest:Math.max.apply(null,comp),heads:info.calls.head||0,drawn:Object.keys(info.calls).length,strayFrac:+(stray/Math.max(1,tot)).toFixed(4),hip:info.hip[0],soleL:info.soles.L,soleR:info.soles.R,floor:info.floor});}
+ return res;};
+window.loadAudit=function(){PUPPET.load(function(){fetch('parts.json').then(function(r){return r.json();}).then(function(m){window.audit(m);window.ready=1;});});};
+loadAudit();
+</script>

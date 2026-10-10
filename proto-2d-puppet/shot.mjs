@@ -15,5 +15,6 @@ m.headToTorsoTilt = (() => { const a = infos.map(r => Math.abs(r.head)), c = inf
 m.maxTorsoDeg = Math.max(...infos.map(r => Math.abs(r.torso))) * 57.3; m.maxHeadDeg = Math.max(...infos.map(r => Math.abs(r.head))) * 57.3;
 let sp = 0; for (let i = 1; i < infos.length; i++) infos[i].ang.forEach((a, j) => { let d = Math.abs(a - infos[i - 1].ang[j]); if (d > Math.PI) d = 2 * Math.PI - d; sp = Math.max(sp, d); }); m.maxAngleStepDegPerFrame = sp * 57.3;
 m.otherFootLiftMaxPx = Math.max(...infos.map(r => Math.abs(r.soles.L[1] - r.soles.R[1])));
+const sw = infos.map(r => Math.abs(r.soles.L[0] - r.soles.R[0])); m.stanceWidthPx = { min: Math.min(...sw), max: Math.max(...sw), std: Math.sqrt(sw.reduce((a, v) => a + (v - sw.reduce((x, y) => x + y, 0) / sw.length) ** 2, 0) / sw.length) };
 const mean = a => a.reduce((x, y) => x + y, 0) / a.length; m.hipXRangePx = Math.max(...infos.map(r => r.hip[0])) - Math.min(...infos.map(r => r.hip[0]));
 console.log(JSON.stringify(m, null, 1)); await b.close(); await srv.close();

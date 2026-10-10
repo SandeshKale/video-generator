@@ -32,7 +32,11 @@ meta = {}
 for k, (poly, A, B) in P.items():
     m = Image.new('L', (w, h), 0); ImageDraw.Draw(m).polygon(poly, fill=255)
     arr = np.asarray(rgba).copy(); arr[..., 3] = (np.asarray(m) / 255 * arr[..., 3]).astype('uint8')
-    lab2, n2 = ndi.label(arr[..., 3] > 8)
+    if k[:2] in ('up', 'fo'):
+        core = ndi.binary_opening(arr[..., 3] > 40, structure=np.ones((3, 3)), iterations=5)
+        core = ndi.binary_dilation(core, structure=np.ones((3, 3)), iterations=5) & (arr[..., 3] > 40)
+        arr[..., 3] = np.where(core, arr[..., 3], 0).astype('uint8')
+    lab2, n2 = ndi.label(arr[..., 3] > 8); comps_pre = int(n2); px_pre = int((arr[..., 3] > 40).sum())
     if n2 > 1:
         areas = ndi.sum(np.ones_like(lab2), lab2, range(1, n2 + 1)); big = areas.max(); keepc = set()
         for ci in range(1, n2 + 1):
@@ -47,7 +51,8 @@ for k, (poly, A, B) in P.items():
         for cx in range(0, al.shape[1], 6):
             col = np.where(al[:, cx] > 90)[0]
             if len(col): sole.append([cx, int(col.max())])
-    meta[k] = {'sole': sole, 'x': int(x0), 'y': int(y0), 'w': int(x1 - x0), 'h': int(y1 - y0), 'a': [A[0] - int(x0), A[1] - int(y0)], 'b': [B[0] - int(x0), B[1] - int(y0)]}
+    lab3, n3 = ndi.label(arr[y0:y1, x0:x1, 3] > 40)
+    meta[k] = {'comps_pre': comps_pre, 'comps_post': int(n3), 'px_pre': px_pre, 'px': int((arr[..., 3] > 40).sum()), 'sole': sole, 'x': int(x0), 'y': int(y0), 'w': int(x1 - x0), 'h': int(y1 - y0), 'a': [A[0] - int(x0), A[1] - int(y0)], 'b': [B[0] - int(x0), B[1] - int(y0)]}
 json.dump(meta, open(H + '/parts.json', 'w'), indent=1); print({k: (v['w'], v['h']) for k, v in meta.items()})
 # contact sheet of parts
 sheet = Image.new('RGB', (1500, 560), (235, 228, 214)); x = 10
