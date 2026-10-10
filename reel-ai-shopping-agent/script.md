@@ -20,6 +20,8 @@ This reel does what none did before:
 - **Open loop:** scene 4 "until it buys the wrong thing" → paid off by scenes 7–9 ("who pays?").
 - **Balance:** the store terms and the merchants each get a beat; the closing question is neutral.
 
+**Avatar-tool constraint (user, Oct 2026): every avatar prompt must be ≤ 4000 characters** — measured per block in `avatar-prompts.md` (all four ≈ 3.6k). Keep this for every future avatar prompt set.
+
 ## Voice-over in four avatar parts (each ≤ 15 s; ≈2.5 words/s; every part ends on a full stop so the cuts land in pauses)
 **Part 1 (33 words)** — *scenes 1–4*
 "Soon you won't shop. Your AI will. You'll say, running shoes, under a hundred bucks, and it'll browse, compare, and check out while you sleep. Sounds amazing. Until it buys the wrong thing."
