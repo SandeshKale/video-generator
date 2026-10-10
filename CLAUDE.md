@@ -1127,3 +1127,23 @@ Practical plan: write a per-sentence *performance track* next to the script (emo
 ## STANDING RULE — every post deliverable ships ALL its text in one `linkedin.md` (user instruction, Oct 2026)
 
 For every GIF, reel or image post, the folder's `linkedin.md` must contain, together: (1) the post body (recommended + a shorter version), (2) hashtags, (3) the first comment (sources/how-to-read/caveats), (4) alt text for the visual (LinkedIn limit: **max 1000 characters** — count it and keep ≤ ~900). Never leave alt text or the first comment only in chat or in a separate/missing file, and send `linkedin.md` with the media. Older folders (`gif-agent-front-door`, `gif-mcp-stateless`, etc.) that lack any of the four should be completed when next touched.
+
+## STANDING RULE — asset-family variety per reel (user feedback on `reel-plate-reader`, Oct 2026; applies to every future reel)
+
+`reel-plate-reader` ("Somebody keeps notes on your car", Highway Signage) was judged "not so good" even though it was clean and in sync: **it used only ~2 asset families** — AI photoreal stills with depth parallax, plus DOM sign panels/text — out of the many this repo holds. The user's instruction: *"so many asset types for you to choose from but you picked just 1–2. Remember for the next reel."* The reel is kept as shipped; the rule below governs everything after it.
+
+**Hard requirement:** every new reel must use **at least 5–6 distinct asset families**, chosen deliberately from the library, and the script's asset table must show *which scene uses which family*. Families available here (use real mixes, not decoration):
+1. Photoreal AI stills + depth-parallax WebGL (RealVisXL + Depth-Anything; `reel-plate-reader/site/gl.js` is the reusable 9:16 layer)
+2. Blender `bpy` 3D renders — Quaternius rigs/clips, toon/riso shader, objects built procedurally (`reel-humanoid-cage-match/blender/`)
+3. CMU mocap 2D rig (`rig.js`, `bvh2json.mjs`) driving human/robot skins
+4. Cut-out puppet from a generated character sheet (`proto-2d-puppet/`) — still rough; use only if its known artifacts are acceptable
+5. humaaans characters (`assets/illustrations/humaaans-react/`, 24 poses)
+6. Flowbite / other illustrations and brand logos (`assets/illustrations`, `assets/logos`, nominative use only)
+7. tabler icons + SVG components (rings, ladders, receipts, dials, maps, ledgers) built per scene's data
+8. GSAP-scrubbed entrances (`dropIn`/`tumbleIn`/`runIn`) and Lottie exports where a real `.json` exists
+9. Real-footage texture overlays (`assets/animations/video-overlay/` grain, leaks, dust)
+10. Real Unsplash photos (`assets/photos/servicestack/`, 147 images) — as backgrounds, insets, collages
+11. Kinetic type / ticker marquees / counters and the audio family (cue-switching score, event SFX, voice)
+
+**Process change:** (a) in the screenplay table add an **"Asset families" column per scene** and a bottom line "families used: N (≥5)"; (b) no scene may be *photo + panel + text* only — each scene needs a different primary visual family from its neighbours (e.g. 3D render → photo+parallax → mocap figures → illustration → data component → real-footage texture); (c) run an **asset-mix audit before the full build** (list families per scene, flag any family used in more than 4 scenes or any scene with <2 families) and fix the plan first; (d) the mockup step must show **at least 3 scenes from 3 different families**, not 3 scenes in one system; (e) report the final family count in the delivery message.
+**Compatibility notes learned:** mixing families needs one unifying grade/frame (shared palette tokens, grain pass, consistent outline weight) so the mix reads designed, not collaged; photoreal + flat vector scenes should be separated by wipes/whip cuts, not blended in one frame.
