@@ -1122,3 +1122,8 @@ After approving the LatentSync-synced host in `reel-apple-camera-no-video` ("Thi
 2. **Head movement must match the script** — nods on emphasis, a small lean-in on the hook and the CTA, stillness on dry facts; not generic sway.
 3. **The host must keep looking at the camera** — no drifting gaze "here and there". Check every chunk's frames (eye/iris position relative to the lens) and regenerate or gaze-correct any chunk that wanders; the CTA and hook must be dead-on camera.
 Practical plan: write a per-sentence *performance track* next to the script (emotion, brow, blink beats, nod beats, gaze=camera) and use it to (a) pick the MoDA `emotion_name`/chunk boundaries per sentence instead of fixed ~10 s chunks, (b) choose/keep the source frame frontal with eyes on lens, (c) verify with a frame review (gaze + brow + head per sentence) before the LatentSync pass, and (d) re-run only chunks that fail. Judge by eye on frames at several points per sentence — the numeric proxies (dark-pixel mouth ratio, frame diff) cannot see gaze or brows.
+
+
+## STANDING RULE — every post deliverable ships ALL its text in one `linkedin.md` (user instruction, Oct 2026)
+
+For every GIF, reel or image post, the folder's `linkedin.md` must contain, together: (1) the post body (recommended + a shorter version), (2) hashtags, (3) the first comment (sources/how-to-read/caveats), (4) alt text for the visual. Never leave alt text or the first comment only in chat or in a separate/missing file, and send `linkedin.md` with the media. Older folders (`gif-agent-front-door`, `gif-mcp-stateless`, etc.) that lack any of the four should be completed when next touched.
