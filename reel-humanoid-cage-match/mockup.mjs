@@ -1,16 +1,16 @@
 // Throwaway mockup (delete once the full build supersedes it): 3 scenes of the "Fight Poster Riso" system, 1080x1920.
 import fs from 'node:fs'; import { chromium } from 'playwright';
-const KR = '#d8c4a3', BL = '#2338ff', RD = '#ff4326', INK = '#1b1630';
+const KR = '#f6efe2', BL = '#2b3bff', RD = '#ff5a36', YL = '#ffd23f', INK = '#14123a';
 const fighter = (c = BL, g = RD) => `<svg viewBox="0 0 400 600"><g stroke="${c}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
  <path d="M150 330 L128 560 H182 L205 400 L228 560 H284 L262 330Z" fill="${c}"/><path d="M135 330h135v36h-135z" fill="${g}" stroke="${g}"/>
- <path d="M140 160 L260 160 L275 335 H128Z" fill="none"/><rect x="140" y="150" width="120" height="190" rx="30" fill="${KR}"/>
- <circle cx="200" cy="95" r="46" fill="${KR}"/><path d="M155 80 h92" stroke="${g}" stroke-width="16"/>
+ <path d="M140 160 L260 160 L275 335 H128Z" fill="none"/><rect x="140" y="150" width="120" height="190" rx="30" fill="${YL}"/>
+ <circle cx="200" cy="95" r="46" fill="${YL}"/><path d="M155 80 h92" stroke="${g}" stroke-width="16"/>
  <path d="M146 190 L96 250 L128 120" fill="none"/><path d="M254 190 L300 262 L282 140" fill="none"/>
  <circle cx="128" cy="116" r="38" fill="${g}" stroke="${g}"/><circle cx="284" cy="136" r="38" fill="${g}" stroke="${g}"/>
  <path d="M180 112 q20 14 40 0" fill="none" stroke-width="8"/></g></svg>`;
 const robot = (c = RD, g = BL) => `<svg viewBox="0 0 400 600"><g stroke="${c}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
- <rect x="150" y="30" width="100" height="84" rx="14" fill="${KR}"/><rect x="164" y="62" width="72" height="20" rx="6" fill="${g}" stroke="${g}"/><path d="M200 30 V6" /><circle cx="200" cy="6" r="8" fill="${c}"/>
- <rect x="110" y="132" width="180" height="200" rx="18" fill="${KR}"/><rect x="146" y="170" width="108" height="64" rx="8" fill="none"/><circle cx="200" cy="270" r="14" fill="${g}" stroke="${g}"/>
+ <rect x="150" y="30" width="100" height="84" rx="14" fill="${YL}"/><rect x="164" y="62" width="72" height="20" rx="6" fill="${g}" stroke="${g}"/><path d="M200 30 V6" /><circle cx="200" cy="6" r="8" fill="${c}"/>
+ <rect x="110" y="132" width="180" height="200" rx="18" fill="${YL}"/><rect x="146" y="170" width="108" height="64" rx="8" fill="none"/><circle cx="200" cy="270" r="14" fill="${g}" stroke="${g}"/>
  <circle cx="110" cy="160" r="22" fill="${c}"/><circle cx="290" cy="160" r="22" fill="${c}"/>
  <path d="M96 170 L66 262 L130 130" fill="none" stroke-width="22"/><path d="M304 170 L338 258 L274 136" fill="none" stroke-width="22"/>
  <rect x="96" y="96" width="62" height="54" rx="10" fill="${g}" stroke="${g}"/><rect x="246" y="116" width="62" height="54" rx="10" fill="${g}" stroke="${g}"/>
@@ -28,12 +28,12 @@ const css = `
 @font-face{font-family:IN;font-weight:600;src:url('../assets/inter-latin-600-normal.woff2')}
 *{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;overflow:hidden}
 body{background:${KR};position:relative;font-family:IN;color:${BL}}
-.ht{position:absolute;inset:0;background-image:radial-gradient(${BL}33 2.2px,transparent 2.6px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000 0,transparent 55%)}
+.ht{position:absolute;inset:0;background-image:radial-gradient(${BL}33 2.2px,transparent 2.6px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000 0,transparent 70%)}
 .ht2{position:absolute;inset:0;background-image:radial-gradient(${RD}33 2.2px,transparent 2.6px);background-size:22px 22px;background-position:11px 11px;mask-image:linear-gradient(0deg,#000 0,transparent 50%)}
 .a{position:absolute}.mx{mix-blend-mode:multiply}
 .eb{position:absolute;left:150px;top:160px;font:800 34px BC;letter-spacing:.14em;color:${BL};border:4px solid ${BL};padding:6px 16px;transform:rotate(-1.5deg)}
-.cap{position:absolute;left:120px;right:120px;top:1340px;text-align:center;font:800 70px/1 BC;color:#fff;background:${INK};padding:16px 28px;border-radius:14px}
-.stub{position:absolute;background:#f3e9d4;border:4px solid ${INK};color:${INK};font:800 34px BC;letter-spacing:.06em;padding:12px 24px}
+.cap{position:absolute;left:120px;right:120px;top:1340px;text-align:center;font:800 70px/1 BC;color:${KR};background:${INK};padding:16px 28px;border-radius:14px;box-shadow:8px 8px 0 ${BL}}
+.stub{position:absolute;background:${YL};border:4px solid ${INK};color:${INK};font:800 34px BC;letter-spacing:.06em;padding:12px 24px}
 .stamp{position:absolute;border:10px solid ${RD};color:${RD};font:800 74px/1 BC;padding:6px 26px;transform:rotate(-8deg);mix-blend-mode:multiply;letter-spacing:.04em}
 .big{position:absolute;font:400 150px/.92 An;text-transform:uppercase}
 `;
@@ -44,8 +44,10 @@ const S = {
  <div class="a mx" style="left:90px;top:640px;width:430px">${fighter(BL, RD)}</div>
  <div class="a mx" style="left:560px;top:640px;width:430px;transform:scaleX(-1)">${robot(RD, BL)}</div>
  <div class="a" style="left:0;right:0;top:1160px;height:14px;background:${INK}"></div><div class="a" style="left:0;right:0;top:1110px;height:10px;background:${RD}"></div><div class="a" style="left:0;right:0;top:1060px;height:10px;background:${BL}"></div>
- <div class="stamp" style="left:430px;top:900px;font-size:110px;transform:rotate(-6deg);background:${KR}">VS</div>
- <div class="stub" style="left:150px;top:1200px;transform:rotate(-2deg)">SF · SEPT 18</div><div class="stub" style="left:560px;top:1214px;transform:rotate(2deg)">ILLUSTRATION · NOT FOOTAGE</div>
+ <svg class=a style="left:300px;top:760px" width=480 height=480 viewBox="0 0 100 100"><polygon fill="${YL}" points="50,2 58,30 86,14 70,40 98,50 70,60 86,86 58,70 50,98 42,70 14,86 30,60 2,50 30,40 14,14 42,30"/></svg><div class="stamp" style="left:430px;top:930px;font-size:110px;transform:rotate(-6deg);background:transparent;color:${INK};border-color:${INK}">VS</div>
+ <div class="stub" style="left:150px;top:1200px;transform:rotate(-2deg)">SF · SEPT 18</div><div class="stub" style="left:150px;top:1272px;transform:rotate(2deg);font-size:26px">ILLUSTRATION · NOT FOOTAGE</div>
+ <div class="a" style="left:690px;top:1010px;width:250px;height:250px;border-radius:44% 56% 52% 48%;background:url(../../reel-agent-reach/avatars/black_hoodie.jpg) 50% 14%/190% auto;border:10px solid ${KR};box-shadow:0 0 0 6px ${INK},12px 12px 0 6px ${BL};transform:rotate(3deg)"></div>
+ <div class="stub" style="left:600px;top:1272px;font-size:30px;transform:rotate(3deg)">@sandesh.explains</div>
  <div class=cap>This robot cage fight went viral.</div>`,
  s5: `<div class=ht></div><div class=ht2></div><div class=eb>// PILOTED, NOT AUTONOMOUS</div>
  <div class="a mx" style="left:290px;top:230px;width:500px">${pilot(BL)}</div>
