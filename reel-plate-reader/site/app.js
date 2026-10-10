@@ -47,7 +47,7 @@ s4.lines = ['Mon: home, work, gym, home.', 'Tue: home, work, the usual café.', 
 // ---------------- scene 5 ----------------
 var S5 = scene(), s5 = {};
 s5.tab = tab(S5, 'WHY POLICE WANT THE DIARY'); s5.h = sign(S5, 'POLICE SAY', 'left:190px;top:300px;width:700px');
-s5.c1 = D('left:190px;top:520px;width:700px;height:200px;padding:36px 44px', '<div style="font:500 26px/1 DM;letter-spacing:.2em;color:#6a6f76">VEHICLE REPORT</div><div style="font:400 64px/1.15 AB;margin-top:14px">STOLEN CAR</div>', S5, 'card'); s5.st1 = D('left:640px;top:600px;font-size:46px;color:#0a6b43;border-color:#0a6b43;background:rgba(244,246,242,.92)', 'FOUND', S5, 'stamp');
+s5.c1 = D('left:190px;top:520px;width:700px;height:200px;padding:36px 44px', '<div style="font:500 26px/1 DM;letter-spacing:.2em;color:#6a6f76">VEHICLE REPORT</div><div style="font:400 64px/1.15 AB;margin-top:14px">STOLEN CAR</div>', S5, 'card'); s5.st1 = D('left:700px;top:628px;font-size:40px;color:#0a6b43;border-color:#0a6b43;background:rgba(244,246,242,.92)', 'FOUND', S5, 'stamp');
 s5.c2 = D('left:190px;top:790px;width:700px;height:200px;padding:36px 44px', '<div style="font:500 26px/1 DM;letter-spacing:.2em;color:#6a6f76">MISSING PERSON</div><div style="font:400 56px/1.15 AB;margin-top:14px">STILL MISSING</div>', S5, 'card'); s5.st2 = D('left:680px;top:860px;color:#0a6b43;border-color:#0a6b43;background:rgba(244,246,242,.92);font-size:46px', 'HOME', S5, 'stamp');
 s5.h2 = sign(S5, 'THEY\'RE<br>NOT <em>WRONG</em>', 'left:190px;top:1030px;width:700px;font-size:72px'); s5.tag = aitag(S5);
 // ---------------- scene 6 ----------------
