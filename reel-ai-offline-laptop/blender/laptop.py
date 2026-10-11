@@ -4,7 +4,7 @@ from common import *
 out = sys.argv[1]; lid = float(sys.argv[2]) if len(sys.argv) > 2 else 108
 sc = setup((900, 800), 32)
 alu = mat('alu', (0.78, 0.8, 0.82, 1), 1.0, 0.28); dark = mat('dark', (0.05, 0.055, 0.06, 1), 0.0, 0.5); key = mat('key', (0.1, 0.11, 0.12, 1), 0.0, 0.45)
-scr = mat('scr', (0.04, 0.5, 0.46, 1), 0.0, 0.4); b = scr.node_tree.nodes['Principled BSDF']; b.inputs['Emission Color'].default_value = (0.1, 0.8, 0.7, 1); b.inputs['Emission Strength'].default_value = 0.65
+scr = mat('scr', (0.04, 0.5, 0.46, 1), 0.0, 0.4); b = scr.node_tree.nodes['Principled BSDF']; b.inputs['Emission Color'].default_value = (0.1, 0.8, 0.7, 1); b.inputs['Emission Strength'].default_value = 0.35
 ui = mat('ui', (0.95, 0.93, 0.85, 1), 0.0, 0.5); b2 = ui.node_tree.nodes['Principled BSDF']; b2.inputs['Emission Color'].default_value = (0.95, 0.93, 0.85, 1); b2.inputs['Emission Strength'].default_value = 0.9
 coral = mat('coral', (1.0, 0.35, 0.27, 1), 0.0, 0.4)
 def box(sz, loc, m, bw=0.02, rot=(0, 0, 0)):
@@ -23,6 +23,11 @@ for i, (y, w) in enumerate([(1.55, 1.6), (1.2, 2.2), (0.9, 1.1), (0.6, 1.8)]):  
 bx = box((0.16, 0.02, 0.16), (1.25, -0.07, 0.3), coral, 0.01); bx.parent = hinge
 hinge.rotation_euler = (math.radians(lid - 90), 0, 0)                          # 90 = vertical; >90 leans back
 shadow_floor()
-area((2.5, -3.5, 4), (math.radians(55), 0, math.radians(25)), 3.5, 200); area((-3, -2, 2.5), (math.radians(65), 0, math.radians(-40)), 3.0, 80, (0.8, 1.0, 0.95)); area((0, 3, 3), (math.radians(110), 0, 0), 3.0, 90, (1.0, 0.9, 0.9))
+area((2.5, -3.5, 4), (math.radians(55), 0, math.radians(25)), 3.5, 140); area((-3, -2, 2.5), (math.radians(65), 0, math.radians(-40)), 3.0, 80, (0.8, 1.0, 0.95)); area((0, 3, 3), (math.radians(110), 0, 0), 3.0, 90, (1.0, 0.9, 0.9))
 cam_persp(sc, (3.6, -5.2, 2.6), (0, 0, 1.0), 45)
-sc.render.filepath = out; bpy.ops.render.render(write_still=True)
+if len(sys.argv) > 3 and sys.argv[3] == 'seq':
+    for i in range(12):
+        hinge.rotation_euler = (math.radians(lid * i / 11 - 90 + 0.0) if False else math.radians(lid * (i / 11) - 90), 0, 0)
+        sc.render.filepath = f'{out}/lap_{i:02d}.png'; bpy.ops.render.render(write_still=True)
+else:
+    sc.render.filepath = out; bpy.ops.render.render(write_still=True)
