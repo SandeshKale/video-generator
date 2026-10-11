@@ -25,3 +25,8 @@ AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic sk
 - Always: eyes on the lens, blinks every 3-5 s (none in the first second), ≤ 2 nods, no hand gestures, no on-screen text.
 - Voice: conversational pace, ≤ 1 stressed word per sentence, no pitch-rise/drop rules.
 - Generate Part 1 first and review before running the rest.
+
+**Pronunciation (added Oct 2026, after the avatar's "tokenizer" came out as "Transiter"):**
+- Add a `PRONUNCIATION:` line to each part, listing only that part's hard words with a respelling (e.g. 'Claude' = 'klawd', 'SEBI' = 'SAY-bee').
+- Write abbreviations and symbols in the SCRIPT line the way they should be spoken: "F and O", "F Y twenty-five", "static I-P", "Co-work", "web-hook". The captions get the proper forms back in the edit.
+- Put a pronunciation table at the top of `avatar-prompts.md`, so the creator can listen for those words in each clip before generating the next one.
