@@ -8,6 +8,7 @@ TOTAL = round(OFF[5] + cuts[4] + TAIL, 3)
 W = []
 for p, w, s, e in D['words']:
     k = re.sub(r'[.,?!:…]', '', w).lower()
+    if not W or W[-1]['p'] != p: w = w[0].upper() + w[1:]
     W.append({'p': p, 'w': w, 'k': k, 's': round(s, 3), 'e': round(e, 3)})
 def wtp(p, k, n=0):
     c = 0

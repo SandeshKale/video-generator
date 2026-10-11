@@ -137,3 +137,35 @@ Family codes: A photoreal AI still + depth parallax · B Blender 3D · C mocap r
 - **Strawberry:** we say AI *famously miscounted* (past tense), not that it still does.
 - **Probability bars:** no real logits are available offline, so the bars are labelled ILLUSTRATION with no numbers.
 - **Disclosure:** the rhyme result is Anthropic research about Claude, and this script was drafted with Claude; the caption says so.
+
+## Delivered build — notes (11 Oct 2026)
+- **Avatar clips:**
+  - Order: P1 d1222696 → P2 950dac1c → P3 6d5bf8a5 → P4 fcfea71b → P5 5832162b.
+  - No burned-in subtitles, so the full frame is used (crop 760² at x92 y30 → 720²).
+  - The take's "Sand… esh" gap was only ~0.1 s. `avatar/stitch.py` inserts an 8-frame (0.333 s) freeze plus silence at frame 215 of P1, so the split reads as deliberate.
+  - Total 74.04 s, including a 1.5 s CTA hold.
+- **Whisper corrections:**
+  - "A's"/"hours" → "R's";
+  - "Transiter" → "tokenizer". **Flag:** both base and small models hear "Transiter" even with a prompt hint, so the avatar may have mispronounced it. The phone search box spells "OpenAI tokenizer" on screen regardless.
+  - "too/2" → "two";
+  - "24" → "twenty-four".
+- **Applied from `OPUS-VIDEOS-NOTES.md`:**
+  1. **Beat-locked score:** every scene cut restarts the cue's bar, so each cut lands on a downbeat, with a soft accent (kick + light crash).
+  2. **SFX by measured peak:** every effect is placed with its argmax(|x|) on the event time. The events come from the page itself (`tools/events.mjs` dumps `window.EV`), so sound and picture share one timeline.
+  3. **Numeric mix report:** `audio/mix-report.json`, below.
+  4. **Content-specific labels only:** no decorative corner HUD; every tag carries a source, a measurement or a label.
+  5. **Frame probes before the full render:** preview sheets plus `check.mjs`.
+- **Mix:**
+  - **Voice:** HPF 80 Hz, 2.5:1 compression, then −16 LUFS.
+  - **Music:** −6 dB carve at 1.5–4 kHz. It sits 11 dB under the voice in gaps and ducks a further 9 dB while he speaks (attack 40 ms, release 300 ms).
+  - **SFX:** −8 dB carve in the same band, ducked 6 dB under speech.
+  - **Master:** limiter, then two-pass loudnorm to −14 LUFS / −1 dBTP.
+- **Mix results:**
+  - **Voice over (music + SFX), per spoken word:** median 19.7 dB, p10 14.0 dB, min 11.1 dB, over 141 words.
+  - **Loudness:** −14.0 LUFS integrated, −0.9 dBTP true peak.
+- **Cues:**
+  - **A**, playful pizzicato/typewriter, 104 BPM: S1–S2, with stop-time on the name hold and a hit on "esh".
+  - **B**, curious minor plucks, 92 BPM: S3–S5.
+  - **C**, bright marimba race, 120 BPM: S6–S7.
+  - **D**, wonder pad and bells, 84 BPM: S8–S9, with a 0.35 s break before "Not quite" and a shimmer swell when the "rabbit" lamp lights.
+  - **E**, warm resolve, 100 BPM: S10–S11, ending on a tonic chord under the CTA hold.

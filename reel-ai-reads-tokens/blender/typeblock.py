@@ -23,19 +23,26 @@ def block(word, x0, padL, padR):
     root = bpy.data.objects.new(word + '_root', None); sc.collection.objects.link(root)
     for o in (b, n, tx): o.parent = root
     return root, bw
-rS, wS = block('SAND', 0, 0.18, 0.05); rE, wE = block('ESH', 0, 0.07, 0.18)
+MODE = os.environ.get('MODE', 'sand')
+if MODE == 'straw':
+    inks['\u2423strawberry'] = mat('lilac', srgb('#a493ff'), rough=0.6)
+    rS, wS = block('\u2423strawberry', 0, 0.18, 0.18); rE, wE = None, 0
+else:
+    rS, wS = block('SAND', 0, 0.18, 0.05); rE, wE = block('ESH', 0, 0.07, 0.18)
 total = wS + wE
 # place both at origin-centred layout (children were built at x0=0, so offset roots)
-rS.location = (-total / 2, 0, 0); rE.location = (-total / 2 + wS, 0, 0)
+rS.location = (-total / 2, 0, 0)
+if rE: rE.location = (-total / 2 + wS, 0, 0)
 bpy.ops.mesh.primitive_plane_add(size=80, location=(0, 0, 0)); bpy.context.object.is_shadow_catcher = True
 area((-2.5, -4, 6), (math.radians(40), 0, math.radians(-25)), 5, 650)
 area((4, -2, 3), (math.radians(60), 0, math.radians(60)), 3, 300, (0.9, 0.95, 1))
 area((0, 4, 3), (math.radians(-60), 0, 0), 4, 250)
-cam_persp(sc, (0, -6.6, 4.6), (0, 0, 0.35), lens=50)
+cam_persp(sc, (0, -6.6, 4.6) if MODE != 'straw' else (0, -8.6, 5.6), (0, 0, 0.35), lens=50)
 def ease(u): return 1 - (1 - u) ** 3
 for f in range(N):
     u = ease(f / max(1, N - 1))
     rS.location = (-total / 2 - 0.42 * u, -0.05 * u, 0.0); rS.rotation_euler = (0, 0, math.radians(5 * u))
-    rE.location = (-total / 2 + wS + 0.42 * u, 0.12 * u, 0.0); rE.rotation_euler = (0, 0, math.radians(-7 * u))
-    sc.render.filepath = os.path.join(OUT, 'sand_%02d.png' % f); bpy.ops.render.render(write_still=True)
+    if rE: rE.location = (-total / 2 + wS + 0.42 * u, 0.12 * u, 0.0); rE.rotation_euler = (0, 0, math.radians(-7 * u))
+    if MODE == 'straw': rS.location = (-total / 2, 0, 0); rS.rotation_euler = (0, 0, math.radians(-4))
+    sc.render.filepath = os.path.join(OUT, ('straw_%02d.png' if MODE == 'straw' else 'sand_%02d.png') % f); bpy.ops.render.render(write_still=True)
 print('done', N)
