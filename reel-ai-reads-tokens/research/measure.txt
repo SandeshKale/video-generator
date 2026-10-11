@@ -1,0 +1,20 @@
+== o200k_base
+'Sandesh'                            2  ['Sand', 'esh']  ids=[54311, 8382]
+'strawberry'                         3  ['st', 'raw', 'berry']  ids=[302, 1618, 19772]
+' strawberry'                        1  [' strawberry']  ids=[101830]
+"How many r's in strawberry?"        7  ['How', ' many', ' r', "'s", ' in', ' strawberry', '?']  ids=[5299, 1991, 428, 885, 306, 101830, 30]
+'ChatGPT'                            2  ['Chat', 'GPT']  ids=[14065, 162016]
+'unbelievable'                       3  ['un', 'bel', 'ievable']  ids=[373, 9880, 45794]
+'I love you'                         3  ['I', ' love', ' you']  ids=[40, 3047, 481]
+'मैं तुमसे प्यार करता हूँ'           6  ['मैं', ' तुम', 'से', ' प्यार', ' करता', ' हूँ']  ids=[94117, 53094, 8945, 102664, 36000, 83835]
+EN sentence 16 tokens | HI sentence 30 tokens
+== cl100k_base
+'Sandesh'                            2  ['Sand', 'esh']  ids=[48144, 4385]
+'strawberry'                         3  ['str', 'aw', 'berry']  ids=[496, 675, 15717]
+' strawberry'                        1  [' strawberry']  ids=[73700]
+"How many r's in strawberry?"        7  ['How', ' many', ' r', "'s", ' in', ' strawberry', '?']  ids=[4438, 1690, 436, 596, 304, 73700, 30]
+'ChatGPT'                            3  ['Chat', 'G', 'PT']  ids=[16047, 38, 2898]
+'unbelievable'                       3  ['un', 'belie', 'vable']  ids=[359, 32898, 24694]
+'I love you'                         3  ['I', ' love', ' you']  ids=[40, 3021, 499]
+'मैं तुमसे प्यार करता हूँ'          24  ['म', '�', '�', 'ं', ' �', '�', 'ु', 'म', 'स', 'े', ' प', '्�', '�', 'ा�', '�', ' क', 'र', 'त', 'ा', ' ह', '�', '�', '�', '�']  ids=[88344, 12906, 230, 73414, 15272, 97, 73753, 88344, 79468, 35470, 84736, 31584, 107, 32511, 108, 48909, 45279, 80338, 24810, 85410, 12906, 224, 5619, 223]
+EN sentence 17 tokens | HI sentence 91 tokens
