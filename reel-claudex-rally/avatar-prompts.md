@@ -7,7 +7,7 @@
 - **no on-screen text or subtitles**;
 - the same photo, framing, light and attire across all five parts.
 
-**The hook (0–3 s):** Part 1 opens with a curious question ("Would you let a student grade their own exam?"), only slightly warmer than the rest: no extra speed, no big smile. The words carry the hook, not the face.
+**The hook (0–3 s):** Part 1 opens enthusiastic and engaging, as you asked for every hook: the question "Would you let a student grade their own exam?" is bright, a little quicker, with a confident open smile and a light brow lift, still natural (no shouting, no wide eyes, no head bobbing). After 3 s it settles into the usual calm. This is the exact wording approved in the tokens and trading reels.
 
 ## Pronunciation
 Risky words are written in the SCRIPT line the way they should be spoken: "Klaw-dex", "G P T six", "A-I", "builder equals Codex". The captions get the proper forms back in the edit (Claudex, GPT-6, AI, `builder=codex`).
@@ -22,12 +22,12 @@ Risky words are written in the SCRIPT line the way they should be spoken: "Klaw-
 | builder=codex | "builder equals Codex" | P4 |
 
 **How to run:** use the same photo for all five parts. **Generate Part 1 first and check:**
-- Does the question sound curious but understated (no performed energy)?
+- Does the 0–3 s question feel energetic and engaging, but still natural?
 - Does the clip finish by ~14.2 s?
 
 Then run Part 2 and check that "Claudex" comes out as "KLAW-dex" (not "clau-DEX" or "clouds") and "GPT-6" as letters. If a word is off, regenerate that part with the respelling adjusted in the SCRIPT line. I check every clip with Whisper on arrival.
 
-## Part 1 of 5 — hook  (2496 characters, 33 words)
+## Part 1 of 5 — hook  (2812 characters, 33 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you a clever trick over coffee. Not an announcer, not a presenter, not acting.
@@ -35,19 +35,19 @@ IDENTITY: match the photo exactly in every frame (face shape, eyes, nose, mouth,
 FRAMING: vertical head-and-shoulders, eyes in the upper third, camera locked on a tripod (no zoom, pan or shake). Soft cinematic key light with gentle fill on a plain black background with depth. Attire: exactly as in the photo, static. Keep framing, light and attire identical across all parts.
 PERFORMANCE (keep it subtle):
 - Gaze: soft, steady eye contact with the lens; tiny natural eye movements that always return to the lens. Never stare, never look away.
-- Face: neutral-warm with a faint natural smile that comes and goes (a touch warmer in the 0-3s question). Eyebrows move only slightly and only with meaning. No wide smiles, no raised-brow acting, no cheek bunching.
+- Face: neutral-warm with a faint natural smile that comes and goes (brighter and more open only in the 0-3s hook). Eyebrows move only slightly and only with meaning. No wide smiles, no raised-brow acting, no cheek bunching.
 - Head and body: nearly still, with natural breathing and micro-movement. At most two small nods in the whole clip, on key words. No hand gestures.
 - Blinks: natural, roughly every 3-5 seconds, none in the first second.
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
-VOICE: warm, calm, conversational Indian-English accent at an everyday pace (only slightly brighter in the 0-3s question), with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
-PRONUNCIATION: 'AI' = 'A-I' (two letters).
-MOOD BY SECTION: 0-3s curious and lightly playful, a real question asked to a friend, only slightly brighter than the rest; 3-9s dry and knowing; 9-14s warm and quietly confident.
+VOICE: warm, calm, conversational Indian-English accent at an everyday pace (a touch brighter and quicker only in the 0-3s hook), with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
+PRONUNCIATION: 'A-I' = spell the two letters. No other unusual words.
+MOOD BY SECTION: 0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic delivery with a confident open smile, a little more vocal energy and a slightly quicker pace, like excitedly asking a friend a fun riddle, a light brow lift on the question; eyes locked on the lens; still natural (no shouting, no wide-eyed acting, no head bobbing); 3-9s settle into a dry, knowing tone on 'grades itself'; 9-14s warm and confident, one small nod on 'two rival models'.
 SCRIPT: "Would you let a student grade their own exam? Because that's how most of us use A-I. One model plans, builds, and grades itself. This free skill fixes that, with two rival models."
 TIMING: begin speaking at 0.0 s, no lead-in (this is the opening hook). Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-## Part 2 of 5 — the rally  (2457 characters, 33 words)
+## Part 2 of 5 — the rally  (2511 characters, 33 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you a clever trick over coffee. Not an announcer, not a presenter, not acting.
@@ -61,13 +61,13 @@ PERFORMANCE (keep it subtle):
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: warm, calm, conversational Indian-English accent at an everyday pace, with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
 PRONUNCIATION: 'Claudex' = 'KLAW-dex' (rhymes with 'clawed' + 'ex'). 'Claude' = 'klawd' (one syllable). 'GPT-6' = 'G P T six' (spell the letters). 'Astra' = 'AS-truh'. 'Codex' = 'KOH-dex'.
-MOOD BY SECTION: 0-5s clear and practical, introducing a name; 5-10s quietly intrigued; 10-14s calm and satisfied.
+MOOD BY SECTION: 0-5s clear and practical, like naming a tool; 5-10s steady and informative, nearly still; 10-14s calm and satisfied, one small nod on 'approved'.
 SCRIPT: "It's called Klaw-dex Loop. Claude writes the plan. Then G P T six Astra, inside Codex, attacks it with evidence. They go back and forth, up to five rounds, until the plan's approved."
-TIMING: begin speaking at 0.2 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
+TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-## Part 3 of 5 — the swap  (2342 characters, 30 words)
+## Part 3 of 5 — the swap  (2457 characters, 30 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you a clever trick over coffee. Not an announcer, not a presenter, not acting.
@@ -80,14 +80,14 @@ PERFORMANCE (keep it subtle):
 - Blinks: natural, roughly every 3-5 seconds, none in the first second.
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: warm, calm, conversational Indian-English accent at an everyday pace, with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
-PRONUNCIATION: No unusual words. Say 'void' clearly, with a short pause before it.
-MOOD BY SECTION: 0-4s lightly playful; 4-9s firm and clear, the key idea of the video; 9-14s quietly wry.
+PRONUNCIATION: no unusual words; say 'void' clearly, after a short pause.
+MOOD BY SECTION: 0-4s lightly playful; 4-9s firm and clear, the key idea of the video, one small nod on 'never grades it'; 9-14s quietly wry, a slight brow lift on the question 'Change the plan after approval?', head still.
 SCRIPT: "Then they switch sides. One builds, and the other inspects the finished code, in a fresh session. Whoever builds never grades it. Change the plan after approval? The approval's void."
-TIMING: begin speaking at 0.2 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
+TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-## Part 4 of 5 — setup  (2450 characters, 29 words)
+## Part 4 of 5 — setup  (2505 characters, 29 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you a clever trick over coffee. Not an announcer, not a presenter, not acting.
@@ -101,13 +101,13 @@ PERFORMANCE (keep it subtle):
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: warm, calm, conversational Indian-English accent at an everyday pace, with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
 PRONUNCIATION: 'Claude Code' = 'klawd code'. 'claudex' = 'KLAW-dex'. 'Codex' = 'KOH-dex'. 'Astra' = 'AS-truh'. Read 'builder equals codex' as three plain words.
-MOOD BY SECTION: 0-6s calm and helpful, a touch slower, like dictating something worth writing down; 6-10s light and easy; 10-14s friendly.
+MOOD BY SECTION: 0-6s calm and helpful, a touch slower, like dictating something worth writing down; 6-10s light and easy; 10-14s friendly, a faint smile on 'Want Astra to build instead?'.
 SCRIPT: "Setup is two commands in Claude Code. Add the marketplace, then install the plugin. Then just type: Klaw-dex this feature. Want Astra to build instead? Add, builder equals Codex."
-TIMING: begin speaking at 0.2 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
+TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-## Part 5 of 5 — the catch + CTA  (2341 characters, 32 words)
+## Part 5 of 5 — the catch + CTA  (2454 characters, 32 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you a clever trick over coffee. Not an announcer, not a presenter, not acting.
@@ -121,8 +121,8 @@ PERFORMANCE (keep it subtle):
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: warm, calm, conversational Indian-English accent at an everyday pace, with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
 PRONUNCIATION: 'Claude Code' = 'klawd code'. 'Codex' = 'KOH-dex'.
-MOOD BY SECTION: 0-8s honest and sincere, no smile; 8-11s a small warm turn; 11-14s warm and friendly, eyes dead-on the lens.
+MOOD BY SECTION: 0-8s honest and sincere, no smile, slight inner-brow raise on 'The catch?', head still; 8-11s a small warm turn; 11-14s warm and friendly for the ask, a small lean toward the lens on 'follow', eyes dead-on the lens.
 SCRIPT: "The catch? You need Claude Code and Codex, both logged in, and it's slower. A clean review isn't proof, either. Still beats marking your own exam. Save this, and follow for more."
-TIMING: begin speaking at 0.2 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
+TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```

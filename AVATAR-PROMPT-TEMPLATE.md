@@ -30,3 +30,29 @@ AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic sk
 - Add a `PRONUNCIATION:` line to each part, listing only that part's hard words with a respelling (e.g. 'Claude' = 'klawd', 'SEBI' = 'SAY-bee').
 - Write abbreviations and symbols in the SCRIPT line the way they should be spoken: "F and O", "F Y twenty-five", "static I-P", "Co-work", "web-hook". The captions get the proper forms back in the edit.
 - Put a pronunciation table at the top of `avatar-prompts.md`, so the creator can listen for those words in each clip before generating the next one.
+
+## Rules log: every avatar instruction so far, in one place (Oct 2026)
+
+Before delivering prompts, **run `python3 scripts/check-avatar-prompts.py <reel>/avatar-prompts.md` and get 0 FAIL**. It checks R1–R13 below. The template above is the starting point; this log wins where they differ.
+
+| # | Rule | Source |
+|---|---|---|
+| R1 | Identity lock: match the photo exactly in every frame; no beautifying. | Shopping-agent reel (distortion: "pathetic. everything is distorted") |
+| R2 | Camera on a tripod, black background with depth; **framing, light and attire identical across all parts** (same photo). | Shopping / tokens reels |
+| R3 | **≤ 4000 characters per prompt** (hard limit). Aim for ~2.2–2.9k, because every extra directive gets over-performed. | Creator: "avatar prompts need to be max 4000 characters long" |
+| R4 | **Part 1, 0–3 s: ENTHUSIASTIC AND ENGAGING.** Bright, energetic, a confident open smile, a little quicker, still natural (no shouting, no wide eyes, no head bobbing). After 3 s it settles. Only Part 1 gets this. | Creator: "make the avatar say something interesting from 0s to 3s in an enthusiastic and engaging manner" (tokens reel) |
+| R5 | **MOOD BY SECTION:** 2–3 time sections per part, with at most one light word-anchored cue per section (a nod, a brow lift, a faint smile or a lean on a key word). Never cues per word. | Creator: "improve and tighten the avatar prompts for more natural and subtle feel" (offline-laptop template) |
+| R6 | **Eyes always on the lens.** Tiny eye movements always return to the lens; the hook and CTA are dead-on camera. | Creator: "the host needs to keep on looking at the camera instead of here and there" |
+| R7 | Blinks every 3–5 s and none in the first second; ideally on clause boundaries. | Same message: "eye, blinking and eyebrow expressions match the script" |
+| R8 | **Restraint:** ≤ 2 small nods per clip, no hand gestures, faint smile only, no raised-brow acting, no cheek bunching. | Subtle template |
+| R9 | **Voice:** warm, conversational Indian-English, everyday pace (slightly slow, not fast), small pauses, ≤ 1 stressed word per sentence, tonal change carried by the mood sections. **No synthetic um/uh.** | Creator: "voiceover should be expressive enough with tonal changes" and "uh and ums are not natural enough. Person is speaking too fast" |
+| R10 | **Expressions and head movement follow the script:** a brow lift on questions, an inner-brow raise on a "catch", a nod on the key line, a lean-in on the hook and CTA, stillness on dry facts. Only a light cue per section in the prompt (R5); the full per-sentence table lives in `script.md` for checking the clips. | Creator: "head movement should match the script" |
+| R11 | **PRONUNCIATION line in every part** for that part's hard words. Write the SCRIPT in spoken form: no digits or symbols ("G P T six", "builder equals Codex", "A-I"). | Creator: "clearly mention the pronunciation for complex words to avoid tokenizer like issues" |
+| R12 | ≤ ~34 words per 15 s part. Part 1 begins speaking at 0.0 s and the others at about 0.3 s. Finish by ~14.2 s, then a silent closed mouth. | Pacing feedback; stitch needs the tail |
+| R13 | **No on-screen text or subtitles** (the avatar tool burned subtitles into the adobe clips). | Adobe-clones reel |
+
+**What went wrong on the Claudex reel, and why this log exists:** the first draft passed the template but packed in extra word cues. The "fix" then overcorrected. It stripped every cue (against R10) and toned down the 0–3 s hook (against R4), because R4 lived only in past prompts and chat, not in the template. Both are now written down here and enforced by the checker.
+
+**Known gaps in older shipped sets** (left as shipped; they don't need regenerating):
+- The tokens reel predates R11 and has no PRONUNCIATION lines; "tokenizer" came out as "Transiter".
+- Trading-reel Part 3 says "Claude" without a respelling.
