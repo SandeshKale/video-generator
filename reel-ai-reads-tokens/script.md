@@ -1,6 +1,6 @@
 # "AI can't read." — script + screenplay (explainer/hack reel, ~66 s, 5 avatar parts)
 
-**Logline:** "Hi, I'm Sand… esh." That's how AI reads the host's name. AI has never seen a single word you've typed: it sees **tokens**. That one idea explains:
+**Logline:** "ChatGPT has never read a single word you've typed!" (said with real energy in the first 3 s), then "To AI, my name isn't Sandesh. It's Sand… esh." AI has never seen a single word you've typed: it sees **tokens**. That one idea explains:
 - the strawberry failure;
 - why "I love you" costs more in Hindi;
 - why AI is priced and "remembers" in tokens;
@@ -10,7 +10,8 @@ It ends with a hack anyone can do in 10 seconds: type your name into OpenAI's fr
 
 **Format:** *mind-blowing explainer with a hands-on hack.* Universal and evergreen. The numbers are **measured first-hand** (`research/measure.py`), so anyone can reproduce them.
 **Viral mechanics:**
-- the name hook in the first second;
+- an enthusiastic, surprising claim in the first 3 seconds ("ChatGPT has never read a single word you've typed!"), paid off on screen by the typed words shattering into tokens;
+- the name split right after it;
 - a personal, comparable result ("I'm two, what are you?") that people post in the comments;
 - an India-first romantic stat ("I love you" 3 vs 6 vs 24);
 - a share-worthy "wait, it plans ahead?" twist;
@@ -29,7 +30,7 @@ Previous ceiling: `reel-ai-offline-laptop` ("Wi-Fi off. AI on.", 73 s, 11 famili
 This reel does what none did before:
 1. **Real tokenized captions (new technique).** Every caption is split at its *actual* `o200k` token boundaries (computed offline from the voice transcript with tiktoken). Each token gets a pastel highlight, like a tokenizer view. The whole reel is quietly demonstrating its own thesis.
 2. **One SFX per token.** A soft letterpress "clack" fires on each token boundary in the hero captions and tokenizer panels. It's driven from the same token list, so sound and picture can't drift.
-3. **The host is the gag.** His own name is split by the avatar's delivery ("Sand… esh"), by a Blender letterpress block that cracks into SAND | ESH, and by the tokenizer panel. The CTA closes the loop with "I'm two".
+3. **The host is the gag.** It opens with an energetic claim, "ChatGPT has never read a single word you've typed!", paid off on screen as the viewer's own typed message shatters into tokens and then numbers. His name is then split by the avatar's delivery ("Sand… esh") and by a Blender letterpress block that cracks into SAND | ESH. The CTA closes the loop with "I'm two".
 4. **A token race (mocap):** two CMU-mocap runners cross the same sentence on stepping stones, one stone per token. The English runner takes 16 steps, the Hindi runner 30, and a faint ghost runner on the old tokenizer takes 91. The same figures then feed a "memory jar" (context window) that fills faster.
 5. **An "X-ray" of a model writing a couplet:** line 1 types out; a feature lamp labelled "rabbit" lights up *before* line 2 starts; line 2 then lands on "rabbit". A small toggle shows the paper's interventions (suppress → "habit", inject → "green").
 6. **Blender letterpress objects:** a SANDESH type block that splits, an opaque " strawberry" metal sort whose letters are hidden inside (an X-ray shows them blurred), and a probability roulette of next-token sorts whose spin follows `t`.
@@ -42,8 +43,8 @@ This reel does what none did before:
    - a **caption-token check** (the captions' token splits must equal tiktoken's output for each line).
 
 ## Voice-over in five avatar parts (≤ 15 s each; 144 words in total)
-**Part 1 (29 words)** — *scenes 1–3*
-"Hi, I'm Sand… esh. That's how AI reads my name. Two pieces. In fact, it has never read a single word you've typed. Here's what it actually sees."
+**Part 1 (28 words; the first ~3 s are the enthusiastic hook line)** — *scenes 1–3*
+"ChatGPT has never read a single word you've typed! Not one. To AI, my name isn't Sandesh. It's Sand… esh. Two pieces. Here's what it actually sees."
 **Part 2 (28 words)** — *scenes 4–5*
 "Tokens. Little chunks of text, turned into numbers. In a sentence, 'strawberry' is one single token. That's why AI famously miscounted its R's. It never saw the letters."
 **Part 3 (29 words)** — *scenes 6–7*
@@ -56,9 +57,9 @@ This reel does what none did before:
 ## Performance track (standing host rule; gaze always on the lens)
 | Part · sentence | Emotion | Brow | Head | Blink | Notes |
 |---|---|---|---|---|---|
-| P1 "Hi, I'm Sand… esh." | friendly, with a playful deadpan split | tiny lift on "esh" | still | none (first second) | ~0.4 s gap between "Sand" and "esh"; a faint smile after. |
-| P1 "That's how AI reads my name. Two pieces." | amused, matter-of-fact | — | one small nod on "Two pieces" | after "pieces." | |
-| P1 "…never read a single word you've typed." | a little more serious, intriguing | slight lift on "never" | slight lean-in | — | |
+| P1 "ChatGPT has never read a single word you've typed! Not one." (0–3 s) | **enthusiastic and engaging**: bright, a confident open smile, a bit more vocal energy and pace, like sharing an amazing discovery | lively but natural lift on "never" | small lean-in | none (first second) | Energy without shouting or wide-eyed acting; eyes locked on the lens. |
+| P1 "To AI, my name isn't Sandesh. It's Sand… esh." | settles into a playful deadpan | tiny lift on "esh" | still | after "Not one." | ~0.4 s closed-mouth gap between "Sand" and "esh"; a faint smile after. |
+| P1 "Two pieces. Here's what it actually sees." | amused, intriguing | — | one small nod on "Two pieces" | — | |
 | P2 "Tokens. Little chunks of text…" | clear, explaining | neutral | still | sentence break | Dry facts mean stillness. |
 | P2 "…miscounted its R's. It never saw the letters." | light, a touch wry | slight lift on "never saw" | one small nod | after "R's." | |
 | P3 "Now the wild part." | leaning into a surprise | slight lift | slight lean-in | — | |
@@ -76,9 +77,9 @@ Family codes: A photoreal AI still + depth parallax · B Blender 3D · C mocap r
 
 | # | Part · time | Primary visual | Layers (all pure functions of `t`, keyed to words/tokens) | SFX | On-screen words | Eyebrow | Families |
 |---|---|---|---|---|---|---|---|
-| 1 | P1 0–3.0 | **The host big**, frame 0 fully composed (captions at t = 0) | On "Sand… esh" a **Blender letterpress block SANDESH cracks into two inked blocks, SAND (peach) and ESH (mint)**; a counter clacks to "2 TOKENS". Token-coloured captions from frame 0. | 2 clacks, a press thunk | HI, I'M SAND · ESH | — (hook frame) | J B F G |
-| 2 | P1 3.0–6.4 | **Tokenizer panel** (bespoke; "measured with OpenAI's tokenizer, o200k") listing real splits: Sandesh → Sand·esh, ChatGPT → Chat·GPT, unbelievable → un·bel·ievable, each with its real token IDs | The host shrinks to a corner "type case" frame; OpenAI wordmark small on the measurement chip (nominative) | clack per token | 2 PIECES · TOKEN IDS | // SAND + ESH = ME | F E G J |
-| 3 | P1 6.4–14 | **Photoreal letterpress type case** (AI image, no people, labelled) with a depth-parallax push into the drawers | "You typed" words fall into the drawers and come out the other side as **numbers** (the real IDs from `measure.txt`); halftone grain overlay | type rattle, cash-drawer ding | IT HAS NEVER READ A WORD YOU TYPED | // WHAT IT ACTUALLY SEES | A F G H |
+| 1 | P1 0–3.0 | **The host big and energetic**, frame 0 fully composed (captions at t = 0) | A chat box below the host already holds a typed message ("explain my phone bill"). On "never read" it **cracks into pastel token chips**, and on "Not one" each chip flips to its **number** (real token IDs). Token-coloured captions from frame 0. | key taps, a glass-crack clack, number ticks | NEVER READ A WORD YOU TYPED | — (hook frame) | J F G K |
+| 2 | P1 3.0–7.2 | **Blender letterpress block SANDESH** cracks into two inked blocks, SAND (peach) and ESH (mint), exactly on the avatar's split | A counter clacks to "2 TOKENS"; the host moves to a corner "type case" frame; "measured with OpenAI's tokenizer, o200k" chip | 2 clacks, a press thunk | SAND · ESH = 2 TOKENS | // SAND + ESH = ME | B J F E |
+| 3 | P1 7.2–14 | **Photoreal letterpress type case** (AI image, no people, labelled) with a depth-parallax push into the drawers, plus a **tokenizer strip** of real splits (ChatGPT → Chat·GPT, unbelievable → un·bel·ievable) | "You typed" words drop into the drawers and come out the other side as their real token IDs; halftone grain overlay | type rattle, a drawer ding | HERE'S WHAT IT ACTUALLY SEES | // WHAT IT ACTUALLY SEES | A F G H |
 | 4 | P2 0–7.4 | **Blender opaque metal sort " strawberry"** (one block), its letters hidden inside; an X-ray sweep shows them blurred | The question "How many r's in strawberry?" as 7 colour tokens; "1 TOKEN" stamp | clack ×7, x-ray hum | TOKENS = CHUNKS → NUMBERS · STRAWBERRY = 1 TOKEN | // ONE CHUNK, NOT TEN LETTERS | B F G |
 | 5 | P2 7.4–14 | **humaaans reader with a magnifier** that can't see inside the block; a "famous answer" bubble 2 vs truth 3 (TechCrunch 2024 chip) | Letters s-t-r-a-w-b-e-r-r-y appear only as *we* see them, with the R's circled | buzzer, chime | IT NEVER SAW THE LETTERS | // WHY IT MISCOUNTED THE R'S | D F G E |
 | 6 | P3 0–8 | **Token race (mocap):** stepping stones, one per token. "I love you" runner: 3 hops. Hindi runner: 6 hops. Ghost runner on the older tokenizer: 24 hops. | Stones are the actual tokens (Devanagari pieces on the Hindi stones); lap counters; "own measurement" chip | step clacks at each hop | 3 · 6 · 24 TOKENS | // "I LOVE YOU" IN TOKENS | C F G |
@@ -90,8 +91,8 @@ Family codes: A photoreal AI still + depth parallax · B Blender 3D · C mocap r
 
 **Asset-mix audit:**
 - **Families used: 11/11.**
-- **Primary visual by scene (no two neighbours match):** J · F · A · B · D · C · F · B · F · I · F.
-- **Primary counts:** F 4, B 2, J 1, A 1, D 1, C 1, I 1. All ≤ 4.
+- **Primary visual by scene (no two neighbours match):** J · B · A · B · D · C · F · B · F · I · F.
+- **Primary counts:** F 3, B 3, J 1, A 1, D 1, C 1, I 1. All ≤ 4.
 - **Families per scene:** every scene carries ≥ 3 families.
 - **Separation:** the photoreal scene (3) and the photo scenes (7, 10) are separated from flat-vector scenes by a "press-plate" wipe: a slab of ink rolls across and the next scene is printed on.
 
@@ -130,6 +131,7 @@ Family codes: A photoreal AI still + depth parallax · B Blender 3D · C mocap r
 - **Mix:** voice 16–20 dB over music, −14 LUFS, plus the spectral voice/music check.
 
 ## Risks and fallbacks
+- **The 0–3 s energy** is the one place the prompt asks for more than "subtle": if it tips into over-acting (wide eyes, head bobbing), regenerate Part 1 only.
 - **"Sand… esh"** might come out as a glitch rather than a deliberate pause. If so, I'll take the clean "Sandesh" and build the split in the edit (a 0.4 s freeze-hold on a closed-mouth frame). The prompt asks for a natural pause.
 - **Tokenizer model:** what's measured is the public `o200k_base` (GPT-4o family / gpt-oss) and `cl100k_base` (GPT-4 era). Newer, unpublished tokenizers may split differently, so the screen always names the tokenizer and the voice says "AI", not "ChatGPT", for the measured facts.
 - **Strawberry:** we say AI *famously miscounted* (past tense), not that it still does.

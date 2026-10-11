@@ -10,9 +10,12 @@
 - each prompt ~2.4k characters (limit 4000);
 - plain black background and the same framing, light and attire across all parts.
 
-**The creative beat:** Part 1 splits the name, **"Sand… esh"**: about 0.4 s of closed-mouth pause, then a faint smile. Part 5 calls back to it with a dry "I'm two." Everything else stays subtle. If the split comes out glitchy, that's fine: tell me and I'll use a clean "Sandesh" take and build the split in the edit.
+**The hook (0–3 s):** Part 1 opens with an energetic, surprising line, "ChatGPT has never read a single word you've typed! Not one.", delivered with real enthusiasm (bright, a confident smile, a bit more pace and vocal energy) but still natural: no shouting, no wide eyes. It's the only part of any prompt that asks for more than "subtle". After 3 s it settles back into the usual calm.
+
+**The creative beat:** Part 1 then splits the name, **"Sand… esh"**: about 0.4 s of closed-mouth pause, then a faint smile. Part 5 calls back to it with a dry "I'm two." Everything else stays subtle. If the split comes out glitchy, that's fine: tell me and I'll use a clean "Sandesh" take and build the split in the edit.
 
 **How to run:** use the same photo for all five parts (attire as in the photo). **Generate Part 1 first and check:**
+- Do the first 3 seconds feel genuinely energetic and hooky without over-acting?
 - Does "Sand… esh" read as a deliberate, playful pause and not a glitch?
 - Is the gaze on the lens throughout?
 
@@ -20,7 +23,7 @@ If yes, run the rest.
 
 **Pronunciation to check:** tokenizer (TOH-kuh-nai-zer), Anthropic (an-THROP-ik), Claude (klawd), "R's" (arz).
 
-## Part 1 of 5  (2521 characters, 28 words)
+## Part 1 of 5  (2790 characters, 27 words)
 
 ```
 Create a photorealistic vertical 15-second talking-head video from the attached photo. The delivery is natural, relaxed and understated, like a friend showing you something surprising over coffee. Not an announcer, not a presenter, not acting.
@@ -28,18 +31,18 @@ IDENTITY: match the photo exactly in every frame (face shape, eyes, nose, mouth,
 FRAMING: vertical head-and-shoulders, eyes in the upper third, camera locked on a tripod (no zoom, pan or shake). Soft cinematic key light with gentle fill on a plain black background with depth. Attire: exactly as in the photo, static. Keep framing, light and attire identical across all parts.
 PERFORMANCE (keep it subtle):
 - Gaze: soft, steady eye contact with the lens; tiny natural eye movements that always return to the lens. Never stare, never look away.
-- Face: neutral-warm with a faint natural smile that comes and goes. Eyebrows move only slightly and only with meaning. No wide smiles, no raised-brow acting, no cheek bunching.
+- Face: neutral-warm with a faint natural smile that comes and goes (brighter and more open only in the 0-3s hook). Eyebrows move only slightly and only with meaning. No wide smiles, no raised-brow acting, no cheek bunching.
 - Head and body: nearly still, with natural breathing and micro-movement. At most two small nods in the whole clip, on key words. No hand gestures.
 - Blinks: natural, roughly every 3-5 seconds, none in the first second.
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
-VOICE: warm, calm, conversational Indian-English accent at an everyday pace, with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
-MOOD BY SECTION: 0-2s friendly and ordinary, then a playful deadpan split of the name: say 'Sand', pause about 0.4 seconds with the mouth gently closed, then 'esh', with a faint smile after; 2-6s amused and matter-of-fact, one small nod on 'Two pieces'; 6-14s a little more serious and intriguing, a slight lean toward the lens on 'never read a single word'.
-SCRIPT: "Hi, I'm Sand... esh. That's how AI reads my name. Two pieces. In fact, it has never read a single word you've typed. Here's what it actually sees."
+VOICE: warm, calm, conversational Indian-English accent at an everyday pace (a touch brighter and quicker only in the 0-3s hook), with small human pauses at commas and between sentences. Gentle intonation; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness.
+MOOD BY SECTION: 0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic delivery with a confident open smile, a little more vocal energy and a slightly quicker pace, like excitedly sharing an amazing discovery with a friend; eyes locked on the lens; still natural (no shouting, no wide-eyed acting, no head bobbing); 3-8s settle into a playful deadpan for the name: say 'Sand', pause about 0.4 seconds with the mouth gently closed, then 'esh', with a faint smile after; 8-14s amused and intriguing, one small nod on 'Two pieces'.
+SCRIPT: "ChatGPT has never read a single word you've typed! Not one. To AI, my name isn't Sandesh. It's Sand... esh. Two pieces. Here's what it actually sees."
 TIMING: begin speaking at 0.0 s, no lead-in (this is the opening hook). Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-*Shortened line if it overruns 15 s:* "Hi, I'm Sand... esh. That's how AI reads my name. In fact, it's never read a single word you've typed. Here's what it sees."
+*Shortened line if it overruns 15 s:* "ChatGPT has never read a single word you've typed! Not one. To AI, I'm not Sandesh. I'm Sand... esh. Here's what it sees."
 
 ## Part 2 of 5  (2320 characters, 28 words)
 
