@@ -1178,3 +1178,19 @@ Ink / safety-orange (the trap) / electric-lime (the open alternative) / bone; Ba
 
 ## STANDING RULE — avatar prompts must be subtle and natural (user instruction, Oct 2026)
 Use `AVATAR-PROMPT-TEMPLATE.md` (≈2.2–2.6k characters): tone-first ("friend over coffee, not an announcer"), one mood note per ~5 s section, explicit expression limits (faint smile, ≤ 2 nods, blinks every 3–5 s none in the first second, no hand gestures), conversational voice with ≤ 1 stressed word per sentence, and **no on-screen text**. The user generates Part 1 first and reviews before the rest.
+
+## External reference — `OPUS-VIDEOS-NOTES.md`
+
+An index of `yihui-dev/awesome-opus5-5-videos` (513 code-rendered viral videos and their prompts). It has:
+- techniques mapped to this repo and marked DONE / ADOPT / TRY:
+  - beat-locked cuts and a shared beat file for music and visuals;
+  - SFX aligned by measured peak;
+  - subframe motion blur via `tmix`;
+  - the "high-end minimal" banned-effects list;
+  - no decorative corner text;
+  - the preserve-3d opacity gotcha;
+  - 2-reviewer + 1-fixer review rounds with backup and rollback;
+  - a numeric mix report;
+- a list of the entries worth re-reading.
+
+Read it when planning a reel's motion grammar, score or QA. The prompts belong to their creators: learn from them, never copy them.
