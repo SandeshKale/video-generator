@@ -1211,3 +1211,22 @@ An evergreen mind-blowing explainer with a hack: AI reads tokens, not words. The
   - `pgrep -f` in a watcher matched itself again.
 - **Validated:** `check.mjs` (only deliberate overlays remain); contact sheets of 38 frames at full size and phone size; host-crop frame diff on the final MP4 (moving in every scene sampled).
 - **Not validated:** the mix was measured, not auditioned. Whisper heard "Transiter" for "tokenizer" in Part 5 (flagged to the creator).
+
+## Reel benchmark — `reel-ai-trading-pipeline` ("A bot that can't panic.", 70 s, Patch Bay)
+A tutorial reel: build a disciplined Claude + TradingView pipeline in four blocks (brain, signal, hands, supervisor).
+- **Look:** graphite + brushed aluminium, with meaning-coded cables (data blue, alert amber, order red, approval lime). Fonts: Chakra Petch 700, Martian Mono and Inter; the cover is in Anton on data-blue.
+- **New techniques:**
+  1. **Cable match cuts.** Every scene's cable leaves the right edge at the height where the next scene's cable enters. Each cut is a 0.28 s camera push (both scenes on screen), so the cable reads as one unbroken signal path.
+  2. **A Blender tool wall revealed key by key.** `blender/tiles.py` renders the same 35-key wall in two states (off and lit) and exports the projected key centres (`site/3d/tiles.js`). The page lights keys on their words with CSS radial-gradient masks.
+  3. **A rack that changes state.** The page cross-fades between Blender renders of the rack as each block is plugged in.
+  4. **A mocap doorman** switches from a patrol (walk in place) to a kick that bounces the oversized order.
+  5. **A modular-synth score that gains a voice per block:** bass pulse, then counter-arp, drums, pad. A drone plays under the honest part.
+- **Creator rules from this reel:**
+  - Keep content market- and broker-neutral (no India/SEBI/static-IP lines; the loss stat is ESMA's 74–89%).
+  - The CTA is "follow for more".
+  - Unwanted spoken lines are removed in `avatar/stitch.py` (`DROP` spans, `END` trim at a measured energy dip, `GAP` for a longer beat), not by regenerating clips.
+- **Pitfalls:**
+  - Word-drop indices must be applied to the raw Whisper list before `fix()` merges words. Apply `END` before `DROP`.
+  - Typed panes that start on a late word leave 2–3 s of empty frame; start typing near the scene start.
+  - Don't emit lines that haven't started typing yet (the cursor otherwise lands on blank lines).
+- **Mix:** voice over music + SFX median 20.2 dB, min 11.0 dB; −14.0 LUFS, −1.0 dBTP.
