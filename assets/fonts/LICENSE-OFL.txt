@@ -55,3 +55,5 @@ Fredoka (600, 700) and DM Mono (500) — SIL Open Font License 1.1, via @fontsou
 Instrument Serif (400 normal + italic) and Archivo Black (400) — SIL Open Font License 1.1, via @fontsource.
 
 Alfa Slab One (400), IBM Plex Mono (500, 600, 700) and Noto Sans Devanagari (600, 700) — SIL Open Font License 1.1, via @fontsource.
+
+Chakra Petch (600, 700) and Martian Mono (500, 600, 700) — SIL Open Font License 1.1, via @fontsource.

@@ -1,0 +1,106 @@
+// THROWAWAY mockup (delete once the full build supersedes it): 4 scenes, 4 families, "Patch Bay" identity.
+// s1 hook (avatar + cable plugging into CLAUDE jack + live candles) · s4 one command (terminal + Blender rack inset) ·
+// s7 alert JSON over a real keyboard photo · s9 mocap doorman at the risk gate + static-IP card
+import fs from 'node:fs';
+import { chromium } from 'playwright';
+import { serveDir } from '../../scripts/static-server.mjs';
+const html = `<!doctype html><meta charset="utf8"><style>
+@font-face{font-family:CP;font-weight:700;src:url('../site/fonts/chakra-petch-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:CP;font-weight:600;src:url('../site/fonts/chakra-petch-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:MM;font-weight:600;src:url('../site/fonts/martian-mono-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:MM;font-weight:500;src:url('../site/fonts/martian-mono-latin-500-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:700;src:url('../site/fonts/inter-latin-700-normal.woff2');font-display:block}
+:root{--gr:#141619;--alu:#c9ced4;--off:#eef1f4;--blue:#2f7bff;--amb:#ff8a00;--red:#ff3b3b;--grn:#22c55e;--lime:#7ee02a;--dim:#8a929a}
+*{box-sizing:border-box;margin:0}body{background:#555}
+.f{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--gr);font-family:IN;color:var(--off);margin-bottom:20px}
+.brush{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),radial-gradient(ellipse at 50% 30%,#1d2126 0,#141619 70%)}
+.ticks{position:absolute;left:150px;right:162px;top:150px;bottom:400px;background:linear-gradient(90deg,rgba(201,206,212,.12) 1px,transparent 1px) 0 0/48px 100%;-webkit-mask:linear-gradient(180deg,#000 0,transparent 8%,transparent 92%,#000 100%)}
+.eb{position:absolute;left:150px;top:166px;font:600 18px/1 MM;letter-spacing:.08em;color:var(--alu);padding:12px 16px 12px 40px;border:2px solid #3a4048;border-radius:6px;background:#1b1e22;white-space:nowrap}
+.eb:before{content:"";position:absolute;left:14px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.h{position:absolute;left:150px;font:700 86px/1 CP;letter-spacing:-.01em;text-transform:uppercase;color:var(--off);white-space:nowrap;text-shadow:0 6px 20px rgba(0,0,0,.6)}
+.h .k{color:var(--gr);background:var(--alu);padding:0 12px;text-shadow:none}
+.trk{position:absolute;right:162px;top:162px;display:flex;gap:6px}
+.trk i{display:block;width:48px;height:50px;border-radius:6px;background:#22262b;border:2px solid #3a4048;font:700 22px/46px CP;font-style:normal;text-align:center;color:#59616a;position:relative}
+.trk i:after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:#3a2a2a}
+.trk i.on{color:var(--off);border-color:currentColor}.trk i.on:after{background:currentColor;box-shadow:0 0 8px currentColor}
+.cap{position:absolute;left:96px;right:96px;top:1300px;background:#0d0f11;border:2px solid #2c3137;border-radius:14px;padding:20px 26px 18px;text-align:center;font:700 48px/1.2 IN;color:var(--off);box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.cap:before{content:"";position:absolute;left:24px;right:24px;top:-2px;height:4px;background:repeating-linear-gradient(90deg,var(--lime) 0 18px,transparent 18px 26px);opacity:.8}
+.cap b{color:var(--lime)}
+.tag{position:absolute;font:500 16px/1 MM;letter-spacing:.08em;color:var(--alu);background:#1b1e22;border:1px solid #3a4048;padding:7px 10px;border-radius:4px;white-space:nowrap}
+.pane{position:absolute;background:#0b0d0f;border:2px solid #3a4048;border-radius:12px;box-shadow:0 22px 50px rgba(0,0,0,.6);overflow:hidden}
+.pane .tb{height:42px;background:#1b1e22;border-bottom:2px solid #2c3137;font:600 16px/42px MM;color:var(--dim);padding:0 16px;letter-spacing:.06em;display:flex;gap:10px;align-items:center}
+.pane .tb s{display:inline-block;width:10px;height:10px;border-radius:50%;background:#3a4048;text-decoration:none}
+.mono{font-family:MM;font-weight:600}
+.chip{position:absolute;font:600 18px/1 MM;letter-spacing:.06em;padding:10px 12px;border-radius:6px;border:2px solid currentColor;background:rgba(20,22,25,.92);white-space:nowrap}
+.host{position:absolute;border:8px solid #3a4048;border-radius:20px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.6);background:url(host1.jpg) center/cover}
+.host .lb{position:absolute;left:0;right:0;bottom:0;height:44px;background:#0d0f11;font:600 16px/44px MM;letter-spacing:.1em;color:var(--alu);padding:0 14px;display:flex;justify-content:space-between}
+.jack{position:absolute;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#050506 0 34%,#b9bec4 36% 58%,#6a7179 60% 100%);box-shadow:0 0 0 4px #1b1e22}
+</style><body><div class="f" id="s1"></div><div class="f" id="s4"></div><div class="f" id="s7"></div><div class="f" id="s9"></div>
+<script src="../site/mocap.js"></script><script src="../site/rig.js"></script><script src="../site/hum.js"></script><script>
+function el(p,css,h,c){var d=document.createElement('div');d.style.cssText='position:absolute;'+(css||'');if(c)d.className=c;if(h!=null)d.innerHTML=h;p.appendChild(d);return d}
+function base(f){el(f,'','','brush');el(f,'','','ticks')}
+function trk(f,n){var d=el(f,'','','trk');for(var i=1;i<=4;i++){var x=document.createElement('i');x.textContent=i;if(i<=n){x.className='on';x.style.color=['#2f7bff','#ff8a00','#ff3b3b','#7ee02a'][i-1]}d.appendChild(x)}}
+// deterministic candles
+function rnd(s){return function(){s=(s*16807)%2147483647;return s/2147483647}}
+function candles(w,h,n,seed,marks){var r=rnd(seed),p=100,o='<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">',bars=[];for(var i=0;i<n;i++){var op=p,cl=p+(r()-.48)*4,hi=Math.max(op,cl)+r()*2,lo=Math.min(op,cl)-r()*2;bars.push([op,hi,lo,cl]);p=cl}
+ var mx=Math.max.apply(0,bars.map(function(b){return b[1]})),mn=Math.min.apply(0,bars.map(function(b){return b[2]})),Y=function(v){return h-10-(v-mn)/(mx-mn)*(h-20)},bw=w/n;
+ var ema=[],e=bars[0][3];bars.forEach(function(b){e=e+(b[3]-e)*.15;ema.push(e)});
+ bars.forEach(function(b,i){var up=b[3]>=b[0],c=up?'#22c55e':'#ff3b3b',x=i*bw+bw/2;o+='<line x1="'+x+'" y1="'+Y(b[1])+'" x2="'+x+'" y2="'+Y(b[2])+'" stroke="'+c+'" stroke-width="2"/><rect x="'+(x-bw*.32)+'" y="'+Math.min(Y(b[0]),Y(b[3]))+'" width="'+bw*.64+'" height="'+Math.max(2,Math.abs(Y(b[0])-Y(b[3])))+'" fill="'+c+'"/>'});
+ o+='<polyline fill="none" stroke="#2f7bff" stroke-width="3" points="'+ema.map(function(v,i){return (i*bw+bw/2)+','+Y(v)}).join(' ')+'"/>';
+ (marks||[]).forEach(function(m){var x=m[0]*bw+bw/2,b=bars[m[0]],buy=m[1]==='B';o+='<path d="M'+(x-10)+' '+(buy?Y(b[2])+26:Y(b[1])-26)+' L'+x+' '+(buy?Y(b[2])+8:Y(b[1])-8)+' L'+(x+10)+' '+(buy?Y(b[2])+26:Y(b[1])-26)+' Z" fill="'+(buy?'#22c55e':'#ff3b3b')+'"/><text x="'+x+'" y="'+(buy?Y(b[2])+48:Y(b[1])-34)+'" text-anchor="middle" font-family="MM" font-size="16" fill="#eef1f4">'+(buy?'BUY':'SELL')+'</text>'});
+ return o+'</svg>'}
+// ===== S1 hook =====
+(function(){var f=document.getElementById('s1');base(f);
+ el(f,'left:110px;top:640px;width:860px;height:420px;opacity:.55',candles(860,420,46,7));
+ var h=el(f,'left:150px;top:180px;width:768px;height:800px','<div class="lb"><span>HOST</span><span>AI AVATAR</span></div>','host');
+ el(f,'left:822px;top:600px','','jack');el(f,'left:760px;top:675px;font:700 18px/1 CP;letter-spacing:.12em;color:#eef1f4;background:#0d0f11;padding:6px 10px;border-radius:4px','CLAUDE');
+ el(f,'left:0;top:0;width:1080px;height:1920px','<svg width="1080" height="1920"><path d="M820 150 C 1010 260, 1000 520, 854 632" fill="none" stroke="#2f7bff" stroke-width="16" stroke-linecap="round" style="filter:drop-shadow(0 0 14px #2f7bff)"/><circle cx="854" cy="632" r="14" fill="#1b1e22" stroke="#9aa1a8" stroke-width="4"/><circle cx="930" cy="330" r="10" fill="#cfe2ff" style="filter:drop-shadow(0 0 12px #2f7bff)"/></svg>');
+ el(f,'left:150px;top:1010px;color:#2f7bff','TRADINGVIEW MCP · BETA · 16 SEP 2026','chip');
+ el(f,'left:150px;top:1070px;font:700 72px/1 CP;text-transform:uppercase;color:#eef1f4;text-shadow:0 6px 20px rgba(0,0,0,.6)','TradingView <span style="color:#2f7bff">→</span> Claude');
+ el(f,'left:150px;top:1160px;width:768px;height:90px;opacity:.95',candles(768,90,40,3));
+ el(f,'','','cap').innerHTML='TradingView just plugged <b>straight into Claude!</b>';
+})();
+// ===== S4 one command =====
+(function(){var f=document.getElementById('s4');base(f);el(f,'','// BLOCK 1 · ONE COMMAND','eb');trk(f,1);
+ el(f,'top:236px','<span>The brain.</span>','h');
+ var p=el(f,'left:150px;top:350px;width:768px;height:330px','<div class="tb"><s></s><s></s><s></s>terminal — claude code</div><div class="mono" style="padding:20px 22px;font-size:30px;line-height:1.45;color:#eef1f4;white-space:nowrap"><span style="color:#7ee02a">$</span> claude mcp add \\\\<br>&nbsp;&nbsp;--transport http \\\\<br>&nbsp;&nbsp;mcp-tradingview \\\\<br>&nbsp;&nbsp;<span style="color:#2f7bff">https://mcp.tradingview.com/mcp</span><span style="color:#7ee02a">▌</span></div>','pane');
+ el(f,'left:150px;top:700px;color:#8a929a','THEN: /mcp  →  AUTHORIZE IN BROWSER (OAUTH)','chip');
+ el(f,'left:90px;top:770px;width:900px;height:470px;background:url(../site/3d/rack_1.png) center/contain no-repeat');
+ el(f,'left:150px;top:1252px','SOURCE · tradingview.com/mcp/docs · ESSENTIAL PLAN+','tag');
+ el(f,'','','cap').innerHTML='Add TradingView\\'s official connector. <b>One command.</b>';
+})();
+// ===== S7 alert JSON over a real keyboard photo =====
+(function(){var f=document.getElementById('s7');base(f);el(f,'','// BLOCK 2 · THE ALERT IS YOURS','eb');trk(f,2);
+ el(f,'top:236px;font-size:76px','You create', 'h');el(f,'top:316px;font-size:76px','<span class="k" style="background:#ff8a00">the web-hook.</span>','h');
+ el(f,'left:150px;top:430px;width:768px;height:520px;border-radius:14px;background:url(../site/photos/keys.jpg) 40% 50%/170% auto;border:2px solid #3a4048;box-shadow:0 22px 50px rgba(0,0,0,.6)');
+ el(f,'left:150px;top:430px;width:768px;height:520px;border-radius:14px;background:linear-gradient(180deg,rgba(20,22,25,.25),rgba(20,22,25,.75))');
+ el(f,'left:170px;top:446px','REAL PHOTO · UNSPLASH','tag');
+ el(f,'left:200px;top:520px;width:668px','<div class="tb"><s></s><s></s><s></s>alert message · json</div><div class="mono" style="padding:18px 22px;font-size:21px;line-height:1.6;color:#eef1f4;white-space:nowrap">{<br>&nbsp;"secret": <span style="color:#8a929a">"•••••"</span>,<br>&nbsp;"symbol": <span style="color:#ff8a00">"{{ticker}}"</span>,<br>&nbsp;"side": <span style="color:#ff8a00">"{{strategy.order.action}}"</span>,<br>&nbsp;"qty": <span style="color:#ff8a00">"{{strategy.order.contracts}}"</span><br>}</div>','pane');
+ [['2FA REQUIRED','#7ee02a'],['PAID PLAN','#ff8a00'],['PORTS 80 / 443','#2f7bff'],['3 S TIMEOUT','#ff3b3b']].forEach(function(c,i){el(f,'left:'+(150+(i%2)*390)+'px;top:'+(985+Math.floor(i/2)*64)+'px;color:'+c[1],c[0],'chip')});
+ el(f,'left:150px;top:1120px;width:768px;font:600 22px/1.4 MM;color:#c9ced4','MCP can\\'t create web-hook alerts (needs verified 2FA) — you set this one up yourself in TradingView.');
+ el(f,'left:150px;top:1252px','ILLUSTRATIVE · PLACEHOLDERS FROM TRADINGVIEW HELP CENTER','tag');
+ el(f,'','','cap').innerHTML='The webhook alert, <b>you create yourself.</b>';
+})();
+// ===== S9 mocap doorman at the risk gate =====
+(function(){var f=document.getElementById('s9');base(f);el(f,'','// BLOCK 3 · INDIA\\'S NEW RULE','eb');trk(f,3);
+ el(f,'top:236px;font-size:76px','Static IP,','h');el(f,'top:316px;font-size:76px','<span class="k" style="background:#ff3b3b;color:#eef1f4">now mandatory.</span>','h');
+ el(f,'left:150px;top:430px;width:768px;height:300px;border-radius:14px;background:url(../site/photos/city.jpg) center 60%/cover;border:2px solid #3a4048');
+ el(f,'left:170px;top:446px','REAL PHOTO · UNSPLASH','tag');
+ el(f,'left:420px;top:470px;width:470px;padding:18px 20px;background:rgba(13,15,17,.9);border:2px solid #ff3b3b;border-radius:12px','<div class="mono" style="font-size:16px;color:#ff3b3b;letter-spacing:.1em">FROM 1 APR 2026 · INDIA</div><div style="margin-top:8px;font:700 34px/1.15 CP;text-transform:uppercase">API orders need a static IP</div><div class="mono" style="margin-top:10px;font-size:16px;color:#c9ced4">≤ 10 orders/sec · no strategy registration</div>');
+ // gate + checks
+ el(f,'left:520px;top:770px;width:16px;height:420px;background:#9aa1a8;border-radius:6px');el(f,'left:520px;top:770px;width:398px;height:16px;background:#9aa1a8;border-radius:6px');
+ el(f,'left:560px;top:810px;width:340px;padding:14px 16px;background:#0d0f11;border:2px solid #3a4048;border-radius:10px','<div class="mono" style="font-size:16px;color:#8a929a;letter-spacing:.1em">RISK GATE</div>'+[['SECRET','✓','#7ee02a'],['MAX SIZE · 2','✓','#7ee02a'],['DAILY LOSS · OK','✓','#7ee02a'],['KILL SWITCH · OFF','✓','#7ee02a'],['QTY 500','✗ BOUNCED','#ff3b3b']].map(function(r){return '<div style="display:flex;justify-content:space-between;margin-top:10px;font:600 22px/1 MM"><span>'+r[0]+'</span><span style="color:'+r[2]+'">'+r[1]+'</span></div>'}).join(''));
+ var P=RIG.sample('walk',.6,{loop:true,inplace:true}),sc=.95,g=el(f,'left:'+(330-260*sc)+'px;top:'+(1200-430*sc)+'px;width:'+(520*sc)+'px;height:'+(480*sc)+'px');
+ g.innerHTML='<svg width="'+(520*sc)+'" height="'+(480*sc)+'" viewBox="-260 -430 520 480">'+RIG.svg(P,'robot',{pal:{body:'#c9ced4',back:'#7b838c',edge:'#141619',joint:'#ff8a00',inner:'#2f7bff'}})+'</svg>';
+ [[170,'#22c55e','BUY 1'],[430,'#ff3b3b','QTY 500']].forEach(function(o,i){el(f,'left:'+o[0]+'px;top:'+(1100-i*120)+'px;font:600 20px/1 MM;padding:12px 14px;border-radius:8px;background:#0d0f11;border:2px solid '+o[1]+';color:'+o[1]+';box-shadow:0 0 18px '+o[1]+'55'+(i?';transform:rotate(-14deg)':''),o[2])});
+ el(f,'left:150px;top:1252px','SOURCE · ZERODHA SUPPORT + NSE/SEBI FRAMEWORK','tag');
+ el(f,'','','cap').innerHTML='In India, that needs <b>a static IP now.</b>';
+})();
+</script>`;
+fs.writeFileSync(new URL('./mock.html', import.meta.url), html);
+const srv = await serveDir(new URL('../', import.meta.url).pathname);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] });
+const p = await b.newPage({ viewport: { width: 1080, height: 1920 } }); p.on('pageerror', e => console.log('PAGEERROR', e.message));
+await p.goto(srv.url + '/mock/mock.html'); await p.waitForTimeout(1500);
+for (const id of ['s1', 's4', 's7', 's9']) await (await p.$('#' + id)).screenshot({ path: new URL(`./${id}.png`, import.meta.url).pathname });
+await b.close(); await srv.close(); console.log('ok');
