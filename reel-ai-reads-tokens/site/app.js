@@ -72,7 +72,7 @@ A[2] = (function (P) { var s = {}; eb(P, '// WHAT IT ACTUALLY SEES');
 // ================= S4 · strawberry = 1 token (Blender opaque sort + x-ray) =================
 A[3] = (function (P) { var s = {}; eb(P, '// ONE CHUNK, NOT TEN LETTERS');
   s.l1 = D('left:150px;top:236px', 'STRAWBERRY', P, 'h'); s.l2 = D('left:150px;top:328px', '<span class="k" style="background:#c4b5ff">= 1 TOKEN.</span>', P, 'h');
-  s.q = D('left:150px;top:438px;width:800px', chipHtml(TOK.q, 34, { keepSpace: 1 }), P); s.qs = s.q.querySelectorAll('.tk');
+  s.q = D('left:150px;top:438px;width:760px', chipHtml(TOK.q, 34, { keepSpace: 1 }), P); s.qs = s.q.querySelectorAll('.tk');
   s.blk = D('left:40px;top:470px;width:1000px;height:640px;background:url(3d/straw_00.png) center/contain no-repeat;-webkit-mask:radial-gradient(ellipse 52% 50% at 50% 50%,#000 70%,transparent 100%)', '', P);
   s.xr = D('left:150px;top:640px;width:150px;height:200px;background:rgba(23,23,26,.82);border:3px solid #9fd6ff;border-radius:10px;overflow:hidden;box-shadow:0 0 30px rgba(159,214,255,.5)', '<div class="mono" style="position:absolute;left:0;top:10px;width:768px;font-size:20px;color:#9fd6ff;letter-spacing:.14em;padding-left:12px">X-RAY</div><div class="lt" style="position:absolute;left:0;top:70px;width:768px;text-align:center;font:400 84px/1 AS;color:#fbf8f0;letter-spacing:.22em;filter:blur(2.5px)">strawberry</div>', P);
   s.stp = D('left:560px;top:600px;transform-origin:50% 50%', '1 TOKEN', P, 'stamp');

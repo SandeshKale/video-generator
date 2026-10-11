@@ -12,15 +12,15 @@ inks = [mat('i%d' % i, srgb(c), rough=0.6) for i, c in enumerate(['#ffad73', '#5
 font = bpy.data.fonts.load(FONT)
 R = 1.25; L = 3.4; root = bpy.data.objects.new('drum', None); sc.collection.objects.link(root)
 bpy.ops.mesh.primitive_cylinder_add(vertices=12, radius=R, depth=L, rotation=(0, math.pi / 2, 0)); cyl = bpy.context.object; cyl.data.materials.append(lead); bev(cyl, 0.03, 2); cyl.parent = root
-cyl.rotation_euler = (math.radians(15), math.pi / 2, 0)  # flat face toward -Y at angle 0
+cyl.rotation_mode = 'ZYX'; cyl.rotation_euler = (0, math.pi / 2, math.radians(15))  # spin about its own axis first: a flat face looks at -Y
 for side in (-1, 1):
     bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=0.22, depth=0.5, location=(side * (L / 2 + 0.2), 0, 0), rotation=(0, math.pi / 2, 0)); a = bpy.context.object; a.data.materials.append(axle); a.parent = root
 apo = R * math.cos(math.pi / 12)
 for i, tk in enumerate(TOK):
-    cu = bpy.data.curves.new('t%d' % i, 'FONT'); cu.body = tk.replace(' ', '␣') if tk.startswith(' ') else tk; cu.font = font; cu.size = 0.42; cu.extrude = 0.05; cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
+    cu = bpy.data.curves.new('t%d' % i, 'FONT'); cu.body = tk.strip(); cu.font = font; cu.size = 0.42; cu.extrude = 0.05; cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     ob = bpy.data.objects.new('t%d' % i, cu); sc.collection.objects.link(ob); ob.data.materials.append(inks[i % 4])
-    ang = -i * 2 * math.pi / 12   # face i at angle; drum turns +ang to bring it front
-    ob.location = (0, -(apo + 0.05) * math.cos(ang), -(apo + 0.05) * math.sin(ang))
+    ang = i * 2 * math.pi / 12   # face i sits at +ang; a drum rotation of +ang about X brings it to the front
+    ob.location = (0, -(apo + 0.05) * math.cos(ang), (apo + 0.05) * math.sin(ang))
     ob.rotation_euler = (math.pi / 2 - ang, 0, 0); ob.parent = root
     bpy.context.view_layer.update()
     if ob.dimensions.x > L * 0.86: s = L * 0.86 / ob.dimensions.x; ob.scale = (s, s, s)

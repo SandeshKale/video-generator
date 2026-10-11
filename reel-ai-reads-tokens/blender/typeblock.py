@@ -25,8 +25,8 @@ def block(word, x0, padL, padR):
     return root, bw
 MODE = os.environ.get('MODE', 'sand')
 if MODE == 'straw':
-    inks['\u2423strawberry'] = mat('lilac', srgb('#a493ff'), rough=0.6)
-    rS, wS = block('\u2423strawberry', 0, 0.18, 0.18); rE, wE = None, 0
+    inks['strawberry'] = mat('lilac', srgb('#a493ff'), rough=0.6)
+    rS, wS = block('strawberry', 0, 0.18, 0.18); rE, wE = None, 0
 else:
     rS, wS = block('SAND', 0, 0.18, 0.05); rE, wE = block('ESH', 0, 0.07, 0.18)
 total = wS + wE
