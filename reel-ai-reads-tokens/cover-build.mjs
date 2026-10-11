@@ -13,7 +13,7 @@ body{background:#f3efe4;position:relative;font-family:'AN',sans-serif}
 .ch{position:absolute;font:700 40px/1 PM;padding:12px 18px;border:4px solid #17171a;box-shadow:7px 7px 0 #17171a}
 .t2{position:absolute;left:400px;top:400px;transform:rotate(-5deg);background:#fbf8f0;font:400 66px/1 AN;padding:10px 22px;border:5px solid #17171a;box-shadow:9px 9px 0 #17171a}
 .blk2{position:absolute;left:60px;right:60px;top:1080px;height:440px;background:#17171a;padding:28px 46px;box-shadow:16px 16px 0 #c4b5ff}
-.t{font-size:200px;line-height:.98;color:#f3efe4;text-transform:uppercase}.t b{font-weight:400;background:#ffc79a;color:#17171a;padding:0 16px}
+.t{font-size:172px;line-height:1.02;color:#f3efe4;text-transform:uppercase}.t b{font-weight:400;background:#ffc79a;color:#17171a;padding:0 16px;display:inline-block;line-height:1.05;margin-top:8px}
 .face{position:absolute;right:84px;top:1330px;width:170px;height:170px;border-radius:50%;border:10px solid #f3efe4;box-shadow:10px 10px 0 #9be8cf;background:url(site/profile.jpg) center/cover;z-index:3}
 </style><div class="ht"></div><div class="glow"></div><div class="blk"></div>
 <div class="t2">2 TOKENS</div>

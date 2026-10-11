@@ -1194,3 +1194,20 @@ An index of `yihui-dev/awesome-opus5-5-videos` (513 code-rendered viral videos a
 - a list of the entries worth re-reading.
 
 Read it when planning a reel's motion grammar, score or QA. The prompts belong to their creators: learn from them, never copy them.
+
+## Reel benchmark — `reel-ai-reads-tokens` ("AI can't read.", 74 s, Letterpress Tokenizer)
+An evergreen mind-blowing explainer with a hack: AI reads tokens, not words. The creator's name "Sandesh" splits as Sand + esh; "I love you" is 3 tokens in English vs 6 in Hindi (24 on the older tokenizer); it writes one token at a time and plans its rhymes ahead (Anthropic interpretability).
+- **Look:** newsprint + pastel token highlighters; Alfa Slab One + IBM Plex Mono + Inter + Noto Sans Devanagari.
+- **New techniques:**
+  1. **Captions set at the real o200k token boundaries** (tiktoken at build time). Every number on screen is a first-hand measurement (`research/measure.py`).
+  2. **Beat-locked score:** each scene cut restarts the cue's bar, so cuts land on downbeats.
+  3. **Peak-aligned SFX** taken from the page's own event list (`tools/events.mjs` dumps `window.EV`).
+  4. **A numeric mix report** (`audio/mix-report.json`): voice over music + SFX median 19.7 dB, min 11.1 dB; −14.0 LUFS, −0.9 dBTP.
+  5. **An edit-inserted pause** (8-frame freeze + silence) to land the "Sand… esh" beat the avatar take underplayed.
+- **Pitfalls:**
+  - Blender Euler order: rotate about the object's own axis with `rotation_mode='ZYX'`, or a prism's axis tilts toward the camera.
+  - Alfa Slab has no "␣" glyph (it renders as tofu in 3D text).
+  - Editing a running bash queue script has no effect (bash keeps the old inode); restart the queue instead.
+  - `pgrep -f` in a watcher matched itself again.
+- **Validated:** `check.mjs` (only deliberate overlays remain); contact sheets of 38 frames at full size and phone size; host-crop frame diff on the final MP4 (moving in every scene sampled).
+- **Not validated:** the mix was measured, not auditioned. Whisper heard "Transiter" for "tokenizer" in Part 5 (flagged to the creator).
