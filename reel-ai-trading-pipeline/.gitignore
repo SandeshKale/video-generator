@@ -2,3 +2,5 @@ avatar/raw/*.mp4
 audio/*.wav
 site/host.webm
 __pycache__/
+out/
+imggen.log

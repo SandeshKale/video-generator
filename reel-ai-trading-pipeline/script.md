@@ -173,3 +173,11 @@ Family codes: A photoreal AI still + depth parallax · B Blender 3D · C mocap r
 1. **"Follow for the build":** do you want to commit to a follow-up reel that actually builds the server? If not, Part 6 ends "follow for more".
 2. **Broker named on screen:** use Zerodha Kite Connect as the example (its Personal API plan is free and can place orders; it needs a static IP), or keep it generic ("your broker's API")?
 3. **Avatar prompts:** they follow the same subtle template, with the energetic 0–3 s hook in Part 1. I'll write them once you approve this script.
+
+## Delivered-build decisions (creator, 11 Oct 2026)
+1. **CTA = "follow for more".** The clip said "follow for the build"; the words "for the build" were cut at the energy dip after "follow" (13.92 s in part 6), so the voice ends "Save this and follow." The end card reads FOLLOW FOR MORE.
+2. **Not India- or broker-specific.** Cut from the voice: P4 "In India, that needs a static IP now." and P6 "SEBI found 91% of F&O traders lost money in FY25." No broker, SEBI or static-IP screen anywhere.
+   - Scene 9 is now "the risk gate": secret ✓, max size ✓, daily loss ✓, kill switch ✓, an oversized order bounced, and an order sent to "your broker's API" (generic).
+   - Scene 12's stat is now regulator-measured and market-neutral: **ESMA (27 Mar 2018): 74–89% of retail CFD accounts lose money** (tier A, esma.europa.eu press release). On screen as "MOST TRADERS LOSE MONEY", with ESMA as the source line. The longer pause after "the honest part" (0.8 s) lets the stat land.
+3. **Tokens reel "Transiter":** accepted as is.
+Voice runs 70.1 s after the cuts (was 78.9 s).

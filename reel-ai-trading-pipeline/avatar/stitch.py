@@ -3,6 +3,9 @@
 import json, subprocess, os, re
 H = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(H, '..')
 PARTS = ['f3e9cf77', '7632ed00', 'cfe01a7b', '850efbfb', '06d47667', 'db6f3f14']
+# user decision: no India/broker-specific lines, CTA "follow for more" -> drop P4 'In India, that needs a static IP now.',
+# P6 'SEBI found 91% of F&O traders lost money in FY25.' and P6 'for the build' (cut in the energy dip at 13.92 s)
+DROP = {3: (26, 33), 5: (4, 14)}; END = {5: (27, 13.92)}; GAP = {5: ('part.', 0.4)}   # longer beat (pad each side) where the stat lands
 FPS = 24; TAIL = 1.6; MAXG = 0.6; PAD = 0.22   # pauses longer than 0.6 s are cut down to ~0.44 s
 # sequences of whisper words -> one display word (merged span) ; single-word replacements
 MERGE = [(('Trading', 'view'), 'TradingView'), (('Trading', 'Views'), "TradingView's"), (('two', 'factor'), 'two-factor'), (('web', 'hook'), 'webhook'),
@@ -28,12 +31,16 @@ def run(*a): subprocess.check_call(list(a))
 tmp = '/tmp/bf/st2'; os.makedirs(tmp, exist_ok=True)
 words, cuts, segs, off = [], [], [], 0.0
 for pi, k in enumerate(PARTS):
-    src = os.path.join(H, 'raw', k + '.mp4'); W = fix(json.load(open(os.path.join(H, 'raw', k + '.json'))))
-    cut = round(min(15.0, W[-1][2] + 0.38) * FPS) / FPS; hold = TAIL if pi == len(PARTS) - 1 else 0
+    src = os.path.join(H, 'raw', k + '.mp4'); RW = json.load(open(os.path.join(H, 'raw', k + '.json')))
+    if pi in END: n0, te = END[pi]; RW = RW[:n0]; RW[-1] = [RW[-1][0].rstrip(',') + '.', RW[-1][1], min(RW[-1][2], te)]
+    if pi in DROP: a0, b0 = DROP[pi]; RW = RW[:a0] + RW[b0 + 1:]
+    W = fix(RW)
+    cut = round((END[pi][1] if pi in END else min(15.0, W[-1][2] + 0.38)) * FPS) / FPS; hold = TAIL if pi == len(PARTS) - 1 else 0
     keep = [[0.0, None]]
     for a, b in zip(W, W[1:]):
         if b[1] - a[2] > MAXG:
-            e = round((a[2] + PAD) * FPS) / FPS; s2 = round((b[1] - PAD) * FPS) / FPS
+            pd = GAP[pi][1] if (pi in GAP and a[0] == GAP[pi][0]) else PAD
+            e = round((a[2] + pd) * FPS) / FPS; s2 = round((b[1] - pd) * FPS) / FPS
             keep[-1][1] = e; keep.append([s2, None])
     keep[-1][1] = cut
     def remap(t):

@@ -1,0 +1,50 @@
+<!doctype html><html><head><meta charset="utf8"><title>A bot that can't panic</title><style>
+@font-face{font-family:CP;font-weight:700;src:url('fonts/chakra-petch-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:CP;font-weight:600;src:url('fonts/chakra-petch-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:MM;font-weight:700;src:url('fonts/martian-mono-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:MM;font-weight:600;src:url('fonts/martian-mono-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:MM;font-weight:500;src:url('fonts/martian-mono-latin-500-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:700;src:url('fonts/inter-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:600;src:url('fonts/inter-latin-600-normal.woff2');font-display:block}
+:root{--gr:#141619;--alu:#c9ced4;--off:#eef1f4;--blue:#2f7bff;--amb:#ff8a00;--red:#ff3b3b;--grn:#22c55e;--lime:#7ee02a;--dim:#8a929a}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;overflow:hidden;background:var(--gr)}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#1d2126 0,#141619 70%)}
+#bg .br{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+#bg .tk{position:absolute;left:150px;right:162px;top:150px;bottom:400px;background:linear-gradient(90deg,rgba(201,206,212,.10) 1px,transparent 1px) 0 0/48px 100%;-webkit-mask:linear-gradient(180deg,#000 0,transparent 8%,transparent 92%,#000 100%)}
+#bg .sw{position:absolute;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#5d646c,#23272c 70%);box-shadow:inset 0 0 0 2px #2c3137}
+#bg .sw:after{content:"";position:absolute;left:4px;right:4px;top:10px;height:2px;background:#15181b;transform:rotate(30deg)}
+#st{position:absolute;inset:0;overflow:hidden;font-family:IN;color:var(--off)}
+.sc{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.eb{position:absolute;left:150px;top:166px;font:600 18px/1 MM;letter-spacing:.08em;color:var(--alu);padding:12px 16px 12px 40px;border:2px solid #3a4048;border-radius:6px;background:#1b1e22;white-space:nowrap}
+.eb:before{content:"";position:absolute;left:14px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.h{position:absolute;left:150px;font:700 86px/1 CP;letter-spacing:-.01em;text-transform:uppercase;color:var(--off);white-space:nowrap;text-shadow:0 6px 20px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.8)}
+.h .k{color:var(--gr);background:var(--alu);padding:0 12px;text-shadow:none}
+.trk{position:absolute;right:162px;top:162px;display:flex;gap:6px;z-index:4}
+.trk i{display:block;width:48px;height:50px;border-radius:6px;background:#22262b;border:2px solid #3a4048;font:700 22px/46px CP;font-style:normal;text-align:center;color:#59616a;position:relative}
+.trk i:after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:#3a2a2a}
+.trk i.on{color:var(--off);border-color:currentColor}.trk i.on:after{background:currentColor;box-shadow:0 0 8px currentColor}
+.tag{position:absolute;font:500 16px/1 MM;letter-spacing:.08em;color:var(--alu);background:#1b1e22;border:1px solid #3a4048;padding:7px 10px;border-radius:4px;white-space:nowrap}
+.pane{position:absolute;background:#0b0d0f;border:2px solid #3a4048;border-radius:12px;box-shadow:0 22px 50px rgba(0,0,0,.6);overflow:hidden}
+.pane .tb{height:42px;background:#1b1e22;border-bottom:2px solid #2c3137;font:600 16px/42px MM;color:var(--dim);padding:0 16px;letter-spacing:.06em;display:flex;gap:10px;align-items:center;white-space:nowrap}
+.pane .tb s{display:inline-block;width:10px;height:10px;border-radius:50%;background:#3a4048;text-decoration:none}
+.mono{font-family:MM;font-weight:600}
+.chip{position:absolute;font:600 18px/1 MM;letter-spacing:.06em;padding:10px 12px;border-radius:6px;border:2px solid currentColor;background:rgba(20,22,25,.92);white-space:nowrap}
+.card{position:absolute;background:#0d0f11;border:2px solid #3a4048;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.lab{font:600 15px/1 MM;letter-spacing:.12em;color:var(--dim)}
+.stamp{position:absolute;font:700 54px/1 CP;text-transform:uppercase;color:var(--red);border:6px solid var(--red);padding:8px 18px;border-radius:8px;white-space:nowrap;background:rgba(13,15,17,.82)}
+.jack{position:absolute;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,#050506 0 34%,#b9bec4 36% 58%,#6a7179 60% 100%);box-shadow:0 0 0 4px #1b1e22}
+#cab{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+#cap{position:absolute;left:96px;right:96px;top:1300px;background:#0d0f11;border:2px solid #2c3137;border-radius:14px;padding:20px 26px 18px;text-align:center;font:700 46px/1.24 IN;color:#7c848c;box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:8;min-height:150px}
+#cap:before{content:"";position:absolute;left:24px;right:24px;top:-2px;height:4px;background:repeating-linear-gradient(90deg,var(--c,#7ee02a) 0 18px,transparent 18px 26px);opacity:.85}
+#cap .w{color:var(--off)}#cap .cur{color:var(--c,#7ee02a)}
+#host{position:absolute;left:0;top:0;width:720px;height:766px;z-index:6}
+#host .fr{position:absolute;inset:0;background:#0d0f11;border:8px solid #3a4048;border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,.6);overflow:hidden}
+#host canvas{position:absolute;left:0;top:0;width:700px;height:700px}
+#host .lb{position:absolute;left:0;right:0;bottom:0;height:44px;background:#0d0f11;font:600 16px/44px MM;letter-spacing:.1em;color:var(--alu);padding:0 14px;display:flex;justify-content:space-between;white-space:nowrap}
+#host .led{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--lime);box-shadow:0 0 8px var(--lime);vertical-align:1px}
+.vid{position:absolute;left:-1165px;top:0;height:1920px;width:3411px;pointer-events:none;display:none;z-index:7}
+.ph{position:absolute;background-size:cover;background-position:center;border:2px solid #3a4048;border-radius:14px}
+.lg svg{width:100%;height:100%;display:block}
+</style></head><body><canvas id="gl" width="1080" height="1920"></canvas><div id="bg"><div class="br"></div><div class="tk"></div></div><div id="st"></div>
+<script src="timing.js"></script><script src="ic.js"></script><script src="hum.js"></script><script src="mocap.js"></script><script src="rig.js"></script><script src="3d/tiles.js"></script><script src="gl.js"></script><script src="app.js"></script></body></html>

@@ -1,0 +1,39 @@
+{
+ "integrated_LUFS": -14.0,
+ "true_peak_dBTP": -1.0,
+ "voice_over_music+sfx_dB_per_word": {
+  "median": 20.2,
+  "p10": 15.7,
+  "min": 11.0,
+  "words": 156
+ },
+ "music_gap_level_vs_voice_dB": -11.0,
+ "music_duck_during_speech_dB": -9.0,
+ "music_eq": "-6 dB band carve 1.5-4 kHz",
+ "sfx": "peak-aligned, -8 dB carve 1.5-4 kHz, ducked 6 dB (accents 6 dB) under speech",
+ "cue_per_scene": [
+  "H",
+  "H",
+  "H",
+  "B1",
+  "B1",
+  "B2",
+  "B2",
+  "B3",
+  "B3",
+  "B4",
+  "B4",
+  "X",
+  "E"
+ ],
+ "bpm": {
+  "H": 116,
+  "B1": 108,
+  "B2": 108,
+  "B3": 108,
+  "B4": 108,
+  "X": 60,
+  "E": 100
+ },
+ "scene_cuts_on_downbeat": true
+}
