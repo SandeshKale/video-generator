@@ -15,3 +15,7 @@ grant select on public.post_runway to anon, authenticated;
 grant update (ig, tt, yt, li, cmt, rep, updated_at) on public.post_runway to anon, authenticated;
 create policy "tracker can read" on public.post_runway for select to anon, authenticated using (true);
 create policy "tracker can tick" on public.post_runway for update to anon, authenticated using (true) with check (true);
+
+-- Migration post_runway_archive_published_and_repack (11 Oct): posts the creator had already published
+-- were flagged archived (id prefixed 'pub-', week 0) and the remaining 21 were re-packed from Mon 12 Oct.
+alter table public.post_runway add column archived boolean not null default false;
