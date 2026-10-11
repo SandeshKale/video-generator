@@ -74,3 +74,9 @@ Avatar clips = voice. Score: **dark-pattern muzak** (soft jazz-pop parody that d
 ## Next steps (awaiting your go on topic + script)
 1. You run the 5 avatar prompts and send the clips back (MP4 with audio).
 2. Meanwhile I mock up **3 scenes from 3 different families** — scene 2 (B layer stack), scene 3 (A+C robot crew), scene 10 (F parity gauge) — in the Fine Print system for approval, and start the stills/Blender renders.
+
+
+## Delivered build notes (11 Oct 2026)
+- Final scene starts (s): 0, 3.35, 6.3, 10.3, 14.35, 21.7, 28.75, 37.6, 43.35, 51.3, 57.55, 64.2; total 73.0 s. Voice = the five avatar clips (cut at 14.35 / 14.4 / 14.6 / 14.2 / 14.45 s + 1 s freeze tail on the CTA).
+- **The avatar tool burns subtitles into the video** (bottom of the frame): the host canvas crops the source to its top 600×600 px (x 60..660), so they never show. Part 1's "Is it?" was missed by Whisper (energy at 13.5–14.0 s) and was added to the word list by hand; "Adobe" was heard as "Adabi" in part 4 and corrected.
+- Families used: 11/11 (A photoreal workshop + lobby, B Blender glass slabs + turnstile spritesheet, C three depth-occluded mocap robots, D humaaans ×2, E Rust/GitHub/Anthropic marks, F IDE / odometer / fee calendar / $150M split bar / parity gauge, G kinetic type, H dust/leak/grain overlays, I real laptop + towers photos, J avatar host choreography, K audio).

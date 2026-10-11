@@ -1,0 +1,29 @@
+// Grid-first cover: giant exploded layer stack (Blender glass slabs) on electric lime, ink title block, orange cancel-dialog sticker, face chip bottom-right.
+import { writeFileSync } from 'node:fs';
+import { chromium } from 'playwright';
+const html = `<!doctype html><meta charset="utf-8"><style>
+@font-face{font-family:'AN';src:url('site/fonts/anton-latin-400-normal.woff2');font-display:block}
+@font-face{font-family:'JM';font-weight:700;src:url('site/fonts/jetbrains-mono-latin-700-normal.woff2')}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:#c6f135;position:relative;font-family:'AN',sans-serif}
+.dots{position:absolute;inset:0;background:radial-gradient(circle,rgba(18,17,15,.16) 3px,transparent 3.2px) 0 0/54px 54px}
+.rays{position:absolute;left:-300px;top:200px;width:1680px;height:1100px;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(18,17,15,.07) 0 7.5deg,transparent 7.5deg 15deg)}
+.st{position:absolute;left:520px;top:700px;width:0;height:0;perspective:1700px}.cn{transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-30deg)}
+.sl{position:absolute;width:760px;height:760px;left:-380px;top:-380px;background-size:contain;background-repeat:no-repeat;filter:drop-shadow(0 40px 30px rgba(18,17,15,.5))}
+.blk{position:absolute;left:60px;right:60px;top:1090px;height:430px;background:#12110f;padding:26px 46px;box-shadow:16px 16px 0 #ff6a13}
+.t{font-size:178px;line-height:.98;color:#efe9dc;text-transform:uppercase}.t b{font-weight:400;color:#c6f135}
+.mod{position:absolute;left:70px;top:330px;width:420px;background:#1d1b18;border:4px solid #12110f;border-radius:16px;box-shadow:12px 12px 0 #12110f;transform:rotate(-5deg);overflow:hidden}
+.mod .tb{height:46px;background:#ff6a13;display:flex;align-items:center;padding:0 16px;font:700 20px/1 JM;color:#12110f;letter-spacing:.06em}
+.mod .bd{padding:18px 22px;font:400 46px/1.05 AN;color:#efe9dc;text-transform:uppercase}
+.mod .kp{margin-top:12px;background:#ff6a13;color:#12110f;font-size:40px;text-align:center;padding:8px 0}
+.face{position:absolute;right:84px;top:1330px;width:170px;height:170px;border-radius:50%;border:10px solid #efe9dc;box-shadow:10px 10px 0 #ff6a13;background:url(site/profile.jpg) center/cover;z-index:3}
+</style><div class="dots"></div><div class="rays"></div>
+<div class="st"><div class="cn" id="cn"></div></div>
+<div class="mod"><div class="tb">CANCEL PLAN?</div><div class="bd">Early termination fee applies<div class="kp">KEEP MY PLAN</div></div></div>
+<div class="blk"><div class="t">Software<br><b>is over?</b></div></div><div class="face"></div>
+<script>var cn=document.getElementById('cn');['bg','shapes','text','mask','adj'].forEach(function(n,i){var d=document.createElement('div');d.className='sl';d.style.backgroundImage='url(site/3d/slab_'+n+'.png)';d.style.transform='translateZ('+((i-2)*130)+'px)';cn.appendChild(d)});</script>`;
+writeFileSync(new URL('./cover.html', import.meta.url), html);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--allow-file-access-from-files'] });
+const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto(new URL('./cover.html', import.meta.url).href); await p.waitForTimeout(800);
+await p.screenshot({ path: new URL('./cover.png', import.meta.url).pathname }); await b.close();

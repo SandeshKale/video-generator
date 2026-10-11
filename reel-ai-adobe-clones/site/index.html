@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf8"><title>Software is over?</title><style>
+@font-face{font-family:BC;font-weight:800;src:url('fonts/barlow-condensed-latin-800-normal.woff2');font-display:block}
+@font-face{font-family:BC;font-weight:600;src:url('fonts/barlow-condensed-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:JM;font-weight:500;src:url('fonts/jetbrains-mono-latin-500-normal.woff2');font-display:block}
+@font-face{font-family:JM;font-weight:700;src:url('fonts/jetbrains-mono-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:700;src:url('fonts/inter-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:IN;font-weight:600;src:url('fonts/inter-latin-600-normal.woff2');font-display:block}
+:root{--ink:#12110f;--or:#ff6a13;--li:#c6f135;--bn:#efe9dc;--gr:#8a867c}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#flat{position:absolute;inset:0;background:var(--ink)}
+.wall{position:absolute;left:0;top:-240px;width:1080px;font:500 10px/12px JM;color:rgba(255,106,19,.34);white-space:pre;letter-spacing:.02em}
+.rain{position:absolute;left:0;top:-220px;width:1080px;font:700 22px/22px JM;color:rgba(198,241,53,.5);white-space:pre}
+#fx{position:absolute;inset:0;overflow:hidden}
+#st{position:absolute;inset:0;overflow:hidden;font-family:IN;color:var(--bn)}
+#scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,17,15,.7) 0%,rgba(18,17,15,.12) 26%,rgba(18,17,15,.14) 60%,rgba(18,17,15,.82) 100%)}
+.sc{position:absolute;inset:0}
+.eb{position:absolute;left:150px;top:168px;background:var(--bn);color:var(--ink);font:700 26px/1 JM;letter-spacing:.06em;padding:12px 20px;transform:rotate(-1.5deg);white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.eb:before{content:"";position:absolute;left:-14px;top:-10px;width:56px;height:20px;background:rgba(255,106,19,.9);transform:rotate(-24deg)}
+.h{position:absolute;font:800 168px/.88 BC;letter-spacing:-.01em;text-transform:uppercase;color:var(--bn);text-shadow:0 8px 24px rgba(0,0,0,.6);white-space:nowrap}
+.h em{font-style:normal;color:var(--li)}.h b{font-weight:800;color:var(--or)}
+.win{position:absolute;background:#1d1b18;border:3px solid #3a362f;border-radius:16px;box-shadow:0 24px 50px rgba(0,0,0,.6);overflow:hidden}
+.win .tb{height:40px;background:#2a2723;display:flex;align-items:center;gap:8px;padding:0 14px;font:500 18px/1 JM;color:var(--gr);white-space:nowrap}
+.win .tb i{width:13px;height:13px;border-radius:50%;display:block;flex:none}
+.tag{position:absolute;font:500 20px/1 JM;letter-spacing:.1em;background:rgba(18,17,15,.88);color:var(--bn);padding:8px 12px;border-radius:5px;white-space:nowrap}
+.chip{position:absolute;font:700 26px/1 JM;letter-spacing:.08em;padding:10px 16px;border-radius:6px;white-space:nowrap}
+.lab{font:700 20px/1 JM;letter-spacing:.12em;color:var(--gr)}
+#rail{position:absolute;left:150px;right:162px;top:1292px;height:8px;background:#2a2723;border-radius:4px}
+#rail b{position:absolute;left:0;top:0;bottom:0;background:var(--li);border-radius:4px}
+#rail i{position:absolute;top:-4px;width:3px;height:16px;background:var(--bn);opacity:.7}
+#cap{position:absolute;left:90px;right:90px;top:1316px;text-align:center;font:700 52px/1.12 IN;color:#eef3f6;background:var(--ink);padding:18px 26px;border-radius:12px;border:3px solid rgba(239,233,220,.25);border-bottom:8px solid var(--li);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+#cap b{color:var(--li);font-weight:700}
+#host{position:absolute;left:0;top:0;width:700px;height:740px;transform-origin:0 0;z-index:4}
+#host .in{position:absolute;inset:0;background:#1d1b18;border:6px solid var(--or);border-radius:26px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.65)}
+#host .tb{height:40px;background:#2a2723;display:flex;align-items:center;gap:9px;padding:0 16px;font:500 20px/1 JM;color:var(--gr)}
+#host .tb i{width:14px;height:14px;border-radius:50%;display:block}
+#host canvas{position:absolute;left:0;top:40px;width:700px;height:700px}
+.lg svg{width:100%;height:100%;display:block}
+.vid{position:absolute;left:-1165px;top:0;height:1920px;width:3411px;pointer-events:none;display:none}
+</style></head><body><canvas id="gl" width="1080" height="1920"></canvas><div id="flat"></div><div id="fx"></div><div id="st"></div>
+<script src="timing.js"></script><script src="ic.js"></script><script src="hum.js"></script><script src="mocap.js"></script><script src="rig.js"></script><script src="gl.js"></script><script src="app.js"></script></body></html>

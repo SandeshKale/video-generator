@@ -1,0 +1,25 @@
+// avatar/words.json (faster-whisper word times per clip) -> site/timing.js (absolute times) + events.json for sfx.py
+import fs from 'node:fs';
+const words = JSON.parse(fs.readFileSync(new URL('./avatar/words.json', import.meta.url)));
+const OFF = { 1: 0, 2: 14.35, 3: 28.75, 4: 43.35, 5: 57.55 }, TOTAL = 73.0;
+const W = []; for (const p of [1, 2, 3, 4, 5]) words[p].forEach(([w, s, e], i) => { const core = w.replace(/[.,?!]/g, '').toLowerCase(); let d = w; if (i === 0) d = d[0].toUpperCase() + d.slice(1); W.push({ p, w: d, k: core, s: +(s + OFF[p]).toFixed(3), e: +(e + OFF[p]).toFixed(3) }); });
+const SC = [0, 3.35, 6.3, 10.3, 14.35, 21.7, 28.75, 37.6, 43.35, 51.3, 57.55, 64.2];
+fs.writeFileSync(new URL('./site/timing.js', import.meta.url), `window.SC=${JSON.stringify(SC)};window.WD=${JSON.stringify(W)};window.TOTAL=${TOTAL};\n`);
+console.log(W.length, 'words');
+const wt = (k, n = 0) => { let c = 0; for (const w of W) if (w.k === k) { if (c === n) return w.s; c++; } return 0; };
+const wtp = (p, k, n = 0) => { let c = 0; for (const w of W) if (w.p === p && w.k === k) { if (c === n) return w.s; c++; } return 0; };
+const ev = []; const E = (k, t, o = {}) => ev.push({ k, t: +t.toFixed(3), ...o });
+SC.slice(1).forEach((s) => E('whoosh', s - 0.12));
+E('pop', 0.15); E('rasp', wt('fee') + 0.05); E('tick', 1.0); E('tick', 2.6);
+for (let i = 0; i < 5; i++) E('pop', 3.5 + i * 0.2); E('ok', wt('photoshop') + 0.1);
+E('step', SC[2] + 0.1, { dur: 4 }); E('thump', wt('five')); E('pop', wt('weekend')); E('chime', wt('free'));
+E('stamp', wt('over')); E('chime', wt('it'));
+E('code', SC[4] + 1.6, { dur: 4 }); for (let i = 0; i < 4; i++) E('tick', wt('rust') + i * 0.12); E('ok', wt('opus') + 0.5);
+E('count', wt('14,000') - 1.0, { dur: 1.1 }); E('ok', wt('14,000') + 0.3); ['free', 'local', 'account'].forEach((k) => E('pop', wt(k)));
+['cancel', 'monthly', 'annual'].forEach((k) => E('tick', wt(k))); E('thump', wt('half')); E('rasp', wt('left') + 0.1);
+E('stamp', wt('$150')); E('tick', wt('million')); E('pop', wtp(3, 'settlement'));
+E('tick', wt('denies')); E('stamp', wt('alpha')); E('tick', wt('wrongdoing'));
+['promised', 'month', 'months'].forEach((k) => E('tick', wt(k))); E('tear', wt('now'));
+E('thump', wt('yet')); E('chime', wt('rival')); E('stamp', wt('rival') + 0.5);
+E('pop', wt('swap')); E('pop', wt('tell')); E('beep', wt('alpha', 1)); E('chime', wt('follow'));
+fs.writeFileSync(new URL('./events.json', import.meta.url), JSON.stringify({ sfx: ev }));
