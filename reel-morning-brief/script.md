@@ -81,7 +81,7 @@
 5. **Cuts:** a sunrise wipe. A soft horizontal band of warm light sweeps up the frame, and the next scene is revealed under it. No dark dip and no double exposure.
 6. **Hook frame 0 is composed and calm:** the dark bedroom, a clock at 6:59 and the brief card already half typed. The payoff (7:00, card complete) lands by 2.6 s.
 
-## Voice-over (the creator's cloned voice, same OmniVoice refs as `reel-teach-a-skill`; 11 lines; ~151 words, ~60 s)
+## Voice-over (the creator's cloned voice, same OmniVoice refs as `reel-teach-a-skill`; 11 lines; 157 words, ~62 s)
 1. (hook, a touch faster) "I was asleep when Claude wrote this."
 2. "It read my inbox and calendar, and it runs every weekday at seven. Here's the setup."
 3. "Step one. Connect Gmail and Google Calendar. In Claude, that's Customize, then Connectors."
