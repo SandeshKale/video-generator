@@ -67,7 +67,7 @@ The data covers 21 reels and 6 followers, so it gives hints, not proof.
 5. **Open Peeps (first use in a reel):** one hand-drawn colleague for the "ask it like a colleague" beat.
 6. **Grid-snap cuts (new transition grammar).** The outgoing scene breaks into 6×10 cell tiles that flip away in a diagonal wave, revealing the next scene under them. Both scenes are opaque, so nothing overprints. Each cut takes 0.30 s.
 
-## Voice-over (the creator's cloned voice: Qwen3-TTS ICL, morning-brief setup; 10 lines, 106 words, ~38 s at ~2.8 words/s)
+## Voice-over (the creator's cloned voice: Qwen3-TTS ICL, morning-brief setup; 10 lines, 110 words, ~39 s at ~2.8 words/s)
 1. (hook, a touch faster, said like a discovery) "Claude just moved into your Google Sheets."
 2. "Messy data in. Clean table, pivot, and a chart out."
 3. "Step one. Get Claude from the Google Workspace Marketplace."
