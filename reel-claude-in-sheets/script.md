@@ -77,7 +77,7 @@ The data covers 21 reels and 6 followers, so it gives hints, not proof.
 7. "By default, it asks before every edit, so nothing changes behind your back."
 8. "It works in Docs and Slides too."
 9. (slower) "The catch: it's a beta, it needs a paid plan, and work accounts may need your admin's okay."
-10. (warm) "Save this, and follow for more."
+10. (warm, direct to camera-voice) "Comment Sheets, and I'll send you the prompt."
 
 **Claim check per line:**
 - 1: facts 1–3 (once it's installed; the steps follow immediately).
@@ -89,7 +89,7 @@ The data covers 21 reels and 6 followers, so it gives hints, not proof.
 - 7: fact 8 ("by default").
 - 8: facts 6–7.
 - 9: facts 1 and 10.
-- 10: standing CTA rule.
+- 10: creator decision (12 Oct): comment-keyword CTA; every commenter gets the prompt by DM (`dm-prompt.md`).
 
 **Spoken forms:**
 - "Python" as written.
@@ -134,7 +134,7 @@ Times are estimates; everything is retimed from the voice.
 | 7 | 24.4–28.6 | **The approval card, big:** a card "3 changes: fix dates · remove 1 duplicate · add SUM row" with **Approve / Dismiss**; nothing changes until the tap, then the cells update | A small "ASK BEFORE EDITS · DEFAULT" switch label; a padlock opens on the tap | NOTHING CHANGES UNTIL YOU TAP | // YOUR OKAY FIRST | F E G |
 | 8 | 28.6–30.6 | **Three app cards fan out** (Sheets, Docs, Slides marks) with one fact each: DOCS: edits in place · SLIDES: matches your theme · SHEETS: formulas, pivots, charts | Cards flip in on "Docs" and "Slides" | DOCS AND SLIDES TOO | // SAME PANE, THREE APPS | E F G |
 | 9 | 30.6–35.6 | **The catch, as three red-flagged cells** in a mini sheet: BETA · PAID PLANS ONLY · WORK ACCOUNT: ASK YOUR ADMIN; film-grain texture under a dimmed backdrop | Each cell flags on its word; the score drops to a drone | THE CATCH | // BEFORE YOU INSTALL | F G H |
-| 10 | 35.6–end (≥ 3 s) | **Recap card, save-worthy (≥ 2.5 s):** the 3 steps + the prompt in one cell block, laid out like a pinned sheet; then **CTA:** profile ring + @sandesh.explains + SAVE + FOLLOW | Light leak on the CTA | SAVE THIS · FOLLOW FOR MORE | (none: CTA) | F G H K |
+| 10 | 35.6–end (≥ 3 s) | **Recap card, save-worthy (≥ 2.5 s):** the 3 steps + the prompt in one cell block, laid out like a pinned sheet; then **CTA:** profile ring + @sandesh.explains + a comment bubble typing "SHEETS" + "I'll DM you the prompt" | Light leak on the CTA | COMMENT "SHEETS" → GET THE PROMPT | (none: CTA) | F G H K |
 
 **Asset-mix audit:**
 - Families used: **8** (B, D, E, F, G, H, I, K).
@@ -205,11 +205,14 @@ Times are estimates; everything is retimed from the voice.
   - approval is the default, not the only mode;
   - Team and Enterprise owners enable the connectors.
 
-## Open decisions for the creator
-1. **CTA.** The standing rule is **"Save this, and follow for more"**, and that's what's scripted. The data-backed alternative (the mavgpt pattern) is **"Comment SHEETS and I'll send you the prompt."** Use it only if every commenter will actually get the DM, sent by hand or through ManyChat (Meta's official messaging API). If you want it, line 10 becomes: "Comment Sheets, and I'll send you the prompt."
-2. **Menu check:** confirm Extensions → Claude → Open Claude in your own account.
-3. **Mockup:** next I'll build 3 scenes in 3 families for approval:
+## Decisions (answered 12 Oct)
+1. **CTA:** switched to **"Comment Sheets, and I'll send you the prompt."**
+   - This overrides "follow for more" for this reel only.
+   - The promise must be kept: every commenter gets the prompt in `dm-prompt.md`, sent by hand or through ManyChat (Meta's official API). Never use InstaPy-style automation.
+   - The caption repeats the ask on its first line: "Comment SHEETS and I'll DM you the prompt 👇".
+2. **Menu path confirmed** by the creator in their own account: Extensions → Claude → Open Claude.
+3. **Mockup:** 3 scenes in 3 families:
    - 1: the hook sheet with the cells-to-chart morph (F);
    - 2: the Blender board (B);
    - 5: Open Peeps over the Unsplash desk (D + I).
-   I'll also generate a voice sample of lines 1–2 for you to hear.
+   Plus a voice sample of lines 1–2.
