@@ -293,7 +293,7 @@ DanielSWolf/rhubarb-lip-sync v1.13.0 (MIT; deps MIT/BSD) was run offline on the 
 
 ## SFX, brand marks and palettes added Oct 2026 (second batch)
 Licences were read from each repo's own LICENSE files before vendoring.
-- `assets/sfx/uisfx/` — UI SFX by Romain Simon / Yuki Capital: 12 sound packs × 39 cues, **MP3 only** (468 files, 5.3 MB; Ogg dropped), plus `manifest.json` (cue names and categories). **Audio is CC0** (`LICENSE-AUDIO`), the code licence is MIT (`LICENSE`). Decode with ffmpeg; place on measured word/beat peaks like the synthesized SFX in `audio.py`.
+- `assets/sfx/uisfx/` — UI SFX by Romain Simon / Yuki Capital: 12 sound packs × 78 cues, **MP3 only** (936 files, 5.3 MB; Ogg dropped), plus `manifest.json` (cue names and categories). **Audio is CC0** (`LICENSE-AUDIO`), the code licence is MIT (`LICENSE`). Decode with ffmpeg; place on measured word/beat peaks like the synthesized SFX in `audio.py`.
 - `assets/icons/simple-icons/` — ~3,466 monochrome brand SVGs plus `simple-icons.json` (official hex colours). **CC0-1.0**. The repo's `DISCLAIMER.md` applies: marks remain trademarks of their owners, use nominatively only.
 - `assets/logos/gilbarbara/` — ~1,990 multi-colour dev/tool SVG logos plus `logos.json`. **CC0-1.0** on the compilation; the marks themselves remain trademarks, nominative use only. Prefer this and simple-icons over the older `assets/logos/svg-logos/` (which has no licence grant).
 - `assets/palettes/` — `webgradients.json` (180 gradients, MIT, itmeo/webgradients) and `catppuccin.json` (MIT, Catppuccin palette).
