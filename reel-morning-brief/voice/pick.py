@@ -29,8 +29,12 @@ for sid, text in lines:
         tk = os.path.basename(f)[len(sid) + 1:-4]
         rep.setdefault(sid, []).append(dict(take=tk, wer=round(wer, 3), sim=round(sim, 3), floor_db=round(fl, 1), dur=round(len(y) / sr, 2), score=round(score, 3), heard=hyp.strip()))
         if (sid in FORCE and tk == FORCE[sid]) or (sid not in FORCE and (best is None or score < best[0])): best = (score if sid not in FORCE else -1, f)
-    y, sr = librosa.load(best[1], sr=24000); idx = librosa.effects.split(y, top_db=38)
-    y = y[max(0, idx[0][0] - int(.04 * sr)):min(len(y), idx[-1][1] + int(.12 * sr))]
+    y, sr = librosa.load(best[1], sr=24000)
+    from scipy.signal import butter, sosfilt
+    yb = sosfilt(butter(4, 150, 'high', fs=sr, output='sos'), y)          # trim on speech-band energy, so low rumble doesn't count
+    hop = int(.01 * sr); d = 20 * np.log10(librosa.feature.rms(y=yb, frame_length=hop * 2, hop_length=hop)[0] + 1e-7); pk = d.max()
+    on = np.argmax(d > pk - 20); off = len(d) - 1 - np.argmax(d[::-1] > pk - 28)   # first/last frame of real speech
+    y = y[max(0, on * hop - int(.06 * sr)):min(len(y), off * hop + int(.18 * sr))]
     raw = f'{OUT}/{sid}_raw.wav'; sf.write(raw, y.astype(np.float32), sr)
     subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', FIN, '-ar', '24000', '-ac', '1', f'{OUT}/{sid}.wav']); os.remove(raw)
     print(sid, os.path.basename(best[1]), [(r['take'], r['wer'], r['sim'], r['floor_db']) for r in rep[sid]], flush=True)

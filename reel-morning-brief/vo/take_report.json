@@ -1,0 +1,420 @@
+{
+ "l01": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.863,
+   "floor_db": -40.2,
+   "dur": 3.12,
+   "score": 1.822,
+   "heard": "I was asleep when Claude wrote this."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.863,
+   "floor_db": -34.5,
+   "dur": 3.04,
+   "score": 2.667,
+   "heard": "I was asleep when Claude wrote this"
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.85,
+   "floor_db": -27.3,
+   "dur": 3.52,
+   "score": 3.849,
+   "heard": "I was asleep when Claude wrote this."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.885,
+   "floor_db": -27.4,
+   "dur": 2.64,
+   "score": 3.558,
+   "heard": "I was asleep when Claude wrote this."
+  }
+ ],
+ "l02": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.92,
+   "floor_db": -39.8,
+   "dur": 7.2,
+   "score": 1.418,
+   "heard": "it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.94,
+   "floor_db": -39.9,
+   "dur": 6.64,
+   "score": 1.238,
+   "heard": "it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.921,
+   "floor_db": -54.1,
+   "dur": 6.56,
+   "score": 0.629,
+   "heard": "It read my inbox and calendar and it runs every weekday at seven. Here's the setup"
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.062,
+   "sim": 0.933,
+   "floor_db": -53.9,
+   "dur": 7.2,
+   "score": 1.164,
+   "heard": "It reads my inbox and calendar and it runs every weekday at 7.  Here's the setup."
+  }
+ ],
+ "l03": [
+  {
+   "take": "icl1",
+   "wer": 0.154,
+   "sim": 0.9,
+   "floor_db": -34.0,
+   "dur": 6.08,
+   "score": 3.984,
+   "heard": "Step 1. Connect Gmail and Google Calendar in Clod that's customized then connectors"
+  },
+  {
+   "take": "icl2",
+   "wer": 0.077,
+   "sim": 0.918,
+   "floor_db": -44.3,
+   "dur": 8.24,
+   "score": 1.539,
+   "heard": "Step one, connect Gmail and Google Calendar in Claude that's customized then connectors"
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.154,
+   "sim": 0.929,
+   "floor_db": -39.0,
+   "dur": 6.88,
+   "score": 2.999,
+   "heard": "Step one, connect Gmail and Google Calendar in Claude that's customized and connectors."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.077,
+   "sim": 0.94,
+   "floor_db": -44.9,
+   "dur": 7.2,
+   "score": 1.261,
+   "heard": "Step 1. Connect Gmail and Google Calendar in Claude that's customized then connectors."
+  }
+ ],
+ "l04": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.917,
+   "floor_db": -47.8,
+   "dur": 8.96,
+   "score": 0.662,
+   "heard": "Step 2. Write the brief like you'd brief a person today's meetings, emails that need  me and anything I promised someone."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.048,
+   "sim": 0.897,
+   "floor_db": -39.2,
+   "dur": 7.92,
+   "score": 2.171,
+   "heard": "Step two, write the brief like you'd brief a person today's meetings, emails  that need me and anything I promise someone."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.048,
+   "sim": 0.921,
+   "floor_db": -56.6,
+   "dur": 10.16,
+   "score": 1.106,
+   "heard": "Step 2. Write the brief like you'd brief a person.  Today's meetings, emails that need me, and anything I promise someone."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.895,
+   "floor_db": -44.2,
+   "dur": 8.8,
+   "score": 0.958,
+   "heard": "Step 2. Write the brief like you'd brief a person, today's meetings, emails that need me and anything I promised someone."
+  }
+ ],
+ "l05": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.911,
+   "floor_db": -28.5,
+   "dur": 4.64,
+   "score": 3.183,
+   "heard": "3 sections, 5 lines each and skip the newsletters."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.891,
+   "floor_db": -50.1,
+   "dur": 6.0,
+   "score": 0.869,
+   "heard": "3 sections, 5 lines each and skip the newsletters."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.921,
+   "floor_db": -50.2,
+   "dur": 4.8,
+   "score": 0.631,
+   "heard": "3 sections, 5 lines each, and skip the newsletters."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.913,
+   "floor_db": -41.3,
+   "dur": 4.08,
+   "score": 1.246,
+   "heard": "Three sections, five lines each, and skip the newsletters."
+  }
+ ],
+ "l06": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.893,
+   "floor_db": -28.6,
+   "dur": 8.96,
+   "score": 3.31,
+   "heard": "Step 3. Tell Claude every weekday at 7. Run this, answer its questions, then hit Schedule."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.911,
+   "floor_db": -50.1,
+   "dur": 8.4,
+   "score": 0.715,
+   "heard": "Step three, tell Claude every weekday at seven, run this, answer its questions, then hit schedule."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.907,
+   "floor_db": -55.7,
+   "dur": 8.64,
+   "score": 0.742,
+   "heard": "Step 3. Tell Claude every weekday at 7 run this. Answer its questions then hit  schedule."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.922,
+   "floor_db": -54.7,
+   "dur": 7.52,
+   "score": 0.628,
+   "heard": "Step 3. Tell Claude, every weekday at 7 run this. Answer its questions then hit schedule."
+  }
+ ],
+ "l07": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -28.8,
+   "dur": 3.92,
+   "score": 3.451,
+   "heard": "It runs in the cloud so your laptop can sleep too."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.869,
+   "floor_db": -33.8,
+   "dur": 3.84,
+   "score": 2.722,
+   "heard": "It runs in the cloud so your laptop can sleep too."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.87,
+   "floor_db": -32.1,
+   "dur": 3.84,
+   "score": 2.969,
+   "heard": "It runs in the cloud, so your laptop can sleep too."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.917,
+   "floor_db": -33.5,
+   "dur": 3.6,
+   "score": 2.389,
+   "heard": "It runs in the cloud, so your laptop can sleep too."
+  }
+ ],
+ "l08": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.889,
+   "floor_db": -49.2,
+   "dur": 6.8,
+   "score": 0.886,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.9,
+   "floor_db": -56.9,
+   "dur": 6.88,
+   "score": 0.798,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.905,
+   "floor_db": -58.7,
+   "dur": 6.64,
+   "score": 0.758,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.877,
+   "floor_db": -41.9,
+   "dur": 5.76,
+   "score": 1.453,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  }
+ ],
+ "l09": [
+  {
+   "take": "icl1",
+   "wer": 0.133,
+   "sim": 0.898,
+   "floor_db": -45.5,
+   "dur": 6.56,
+   "score": 2.152,
+   "heard": "The clever part, ask it to draft your reply, sending still waits for your OK."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.067,
+   "sim": 0.923,
+   "floor_db": -55.8,
+   "dur": 7.36,
+   "score": 1.279,
+   "heard": "The clever part, ask it to draft your replies, sending still waits for your OK."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.067,
+   "sim": 0.886,
+   "floor_db": -50.3,
+   "dur": 5.2,
+   "score": 1.575,
+   "heard": "The clever part, ask it to draft your replies, sending still waits for your OK."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.897,
+   "floor_db": -47.3,
+   "dur": 6.4,
+   "score": 0.822,
+   "heard": "The clever part? Ask it to draft your replies. Sending still waits for your okay."
+  }
+ ],
+ "l10": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.921,
+   "floor_db": -32.7,
+   "dur": 9.6,
+   "score": 2.483,
+   "heard": "The catch scheduling needs a paid plan, it sees one Google account, it can't open attachments  and on work accounts your admin has to switch it on."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.0,
+   "sim": 0.946,
+   "floor_db": -41.9,
+   "dur": 10.88,
+   "score": 0.899,
+   "heard": "the catch, scheduling needs a paid plan, it sees one Google account, it can't open  attachments and on work accounts your admin has to switch it on."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.921,
+   "floor_db": -47.3,
+   "dur": 10.4,
+   "score": 0.629,
+   "heard": "The catch, scheduling needs a paid plan.  It sees one Google account, it can't open attachments, and on work accounts your admin  has to switch it on."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.894,
+   "floor_db": -49.3,
+   "dur": 11.6,
+   "score": 0.845,
+   "heard": "The catch, scheduling needs a paid plan, it sees one Google account, it can't open attachments  and on work accounts your admin has to switch it on."
+  }
+ ],
+ "l11": [
+  {
+   "take": "icl1",
+   "wer": 0.0,
+   "sim": 0.88,
+   "floor_db": -27.9,
+   "dur": 3.12,
+   "score": 3.528,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "icl2",
+   "wer": 0.167,
+   "sim": 0.877,
+   "floor_db": -53.3,
+   "dur": 3.52,
+   "score": 2.649,
+   "heard": "in, save this and follow for more."
+  },
+  {
+   "take": "xvec1",
+   "wer": 0.0,
+   "sim": 0.849,
+   "floor_db": -26.2,
+   "dur": 2.4,
+   "score": 4.033,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "xvec2",
+   "wer": 0.0,
+   "sim": 0.896,
+   "floor_db": -53.5,
+   "dur": 3.04,
+   "score": 0.829,
+   "heard": "Save this and follow for more."
+  }
+ ]
+}
