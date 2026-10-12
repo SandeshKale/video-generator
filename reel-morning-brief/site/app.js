@@ -16,7 +16,10 @@ function W(p, k, n) { k = key(k); var c = 0; for (var i = 0; i < WD.length; i++)
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 var st = document.getElementById('st');
 function D(css, html, par, cls) { var e = document.createElement('div'); e.style.cssText = 'position:absolute;' + (css || ''); if (html != null) e.innerHTML = html; if (cls) e.className = cls; (par || st).appendChild(e); return e; }
-function OV(e) { e.dataset.ov = 1; return e; }   // deliberate overlay / full-frame figure layer (the lint skips these)
+function OV(e) { e.dataset.ov = 1; return e; }
+// dashed placeholder where content is about to land (keeps the frame from looking empty before the word arrives)
+function skel(P, x, y, w, h, lab, ink) { var c = ink ? '29,29,36' : '255,250,241'; return D('left:' + x + 'px;top:' + y + 'px;width:' + w + 'px;height:' + h + 'px;border:3px dashed rgba(' + c + ',.4);border-radius:12px;background:rgba(' + c + ',' + (ink ? .05 : .12) + ');display:flex;align-items:center;justify-content:center;font:700 16px RM;letter-spacing:.14em;color:rgba(' + c + ',.6)', lab, P); }
+function skelAt(e, t, a, b) { e.style.opacity = t < a ? 0 : t < b ? .75 * clamp((t - a) / .2, 0, 1) : 0; }   // deliberate overlay / full-frame figure layer (the lint skips these)
 function ic(n, sz, col, sw) { return '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" fill="none" stroke="' + (col || 'currentColor') + '" stroke-width="' + (sw || 2) + '" stroke-linecap="round" stroke-linejoin="round" style="flex:none;vertical-align:middle">' + window.IC[n] + '</svg>'; }
 function logo(n, sz, col) { return '<span class="lg" style="display:inline-block;width:' + sz + 'px;height:' + sz + 'px;color:' + col + ';flex:none;vertical-align:middle">' + window.LOGO[n] + '</span>'; }
 function settle(el, t, at, o) { o = o || {}; var u = ec((t - at) / (o.d || .35)); el.style.opacity = t < at ? 0 : clamp((t - at) / .1, 0, 1); el.style.transform = 'translate(' + ((o.x || 0) * (1 - u)).toFixed(1) + 'px,' + ((o.y == null ? 26 : o.y) * (1 - u)).toFixed(1) + 'px) rotate(' + ((o.r || 0) + (o.r0 || 0) * (1 - u)).toFixed(2) + 'deg) scale(' + (1 + (o.s == null ? .03 : o.s) * (1 - u)).toFixed(4) + ')'; }
@@ -210,6 +213,7 @@ A[4] = (function (P) { var s = {}, L = 6;
   s.ask = D('left:150px;top:640px;display:flex;gap:12px;align-items:center', '<span style="font:700 18px RM;letter-spacing:.12em;color:#fff1e6">CLAUDE MAY ASK</span><span class="mono" style="font-size:22px;padding:10px 16px;border-radius:999px;background:rgba(255,250,241,.9);color:#1d1d24">Which time zone?</span><span class="mono" style="font-size:22px;padding:10px 16px;border-radius:999px;background:rgba(255,250,241,.9);color:#1d1d24">Weekends too?</span>', P);
   s.ans = D('left:150px;top:706px;font:500 20px IN;color:#fff1e6', '→ answer, then check the card', P);
   s.conf = D('left:150px;top:756px;width:520px;padding:20px 24px', '<div style="display:flex;align-items:center;gap:10px;font:700 18px RM;letter-spacing:.14em;color:#8b8172">' + logo('anthropic', 24, '#c9663f') + 'CLAUDE CONFIRMS · ILLUSTRATIVE</div><div style="margin-top:14px;font:500 22px RM;color:#8b8172">NAME</div><div style="font:700 32px IN">Morning brief</div><div style="margin-top:10px;font:500 22px RM;color:#8b8172">SCHEDULE</div><div style="font:700 32px IN;color:' + CORAL + '">On weekdays · 7:00 AM</div><div style="margin-top:10px;font:500 22px RM;color:#8b8172">INSTRUCTIONS</div><div style="font:500 24px/1.3 IN">Meetings · emails that need me · promises</div>', P, 'do');
+  s.sk = skel(P, 150, 756, 520, 325, 'CLAUDE CONFIRMS HERE');
   s.btn = D('left:150px;top:1180px', 'Schedule ' + ic('check', 28, '#fff', 3), P, 'btn');
   s.ring = OV(D('left:330px;top:1214px;width:36px;height:36px;border-radius:50%;border:4px solid #fff', '', P));
   s.fq = D('left:420px;top:1196px;background:rgba(255,250,241,.85);color:#6c6457;font-size:17px', 'hourly · daily · weekly ·<br><b style="color:' + CORAL + '">on weekdays ✓</b> · manually', P, 'chip');
@@ -220,7 +224,7 @@ A[4] = (function (P) { var s = {}, L = 6;
   var msg = 'Every weekday at 7 a.m., run my morning brief.';
   s.u = function (t) { settle(s.msg, t, t0 + .05, { y: 30 });
     var ty = typedAt(msg, t, [[t0 + .2, 0], [tSev + .25, 23], [tAns - .2, msg.length]]); s.tx.innerHTML = esc(ty) + cursor(ty.length < msg.length || Math.floor(t * 2.2) % 2 === 0, CORAL, 40);
-    settle(s.ask, t, tAns - .15, { x: -20, y: 0 }); settle(s.ans, t, tAns + .4, { y: 0 }); settle(s.conf, t, tAns + .55, { y: 30 });
+    settle(s.ask, t, tAns - .15, { x: -20, y: 0 }); settle(s.ans, t, tAns + .4, { y: 0 }); settle(s.conf, t, tAns + .55, { y: 30 }); skelAt(s.sk, t, t0 + .2, tAns + .6);
     settle(s.btn, t, t0 + .6, { y: 0, s: .06 }); s.btn.style.transform += ' scale(' + (1 - .08 * pop(t, tSch, .25)) + ')'; s.btn.style.background = t > tSch ? LEAF : CORAL;
     s.ring.style.opacity = t > tSch - .3 && t < tSch + .5 ? 1 : 0; s.ring.style.transform = 'scale(' + (1 + 1.2 * clamp((t - tSch) / .4, 0, 1)) + ')';
     settle(s.fq, t, t0 + .8, { x: 20, y: 0 });
@@ -241,7 +245,7 @@ A[5] = (function (P) { var s = {}, L = 7;
   var LOG = [['7:00:00', 'run starts'], ['7:00:04', 'reads Gmail'], ['7:00:07', 'reads Calendar'], ['7:00:12', 'brief written ✓']];
   s.log = D('left:592px;top:520px;width:326px;padding:16px 18px;border-radius:14px;background:rgba(16,20,44,.82);box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff1e6', '<div style="font:700 15px RM;letter-spacing:.14em;color:#ffb38a">RUN LOG · ILLUSTRATIVE</div>' + LOG.map(function (r) { return '<div class="lg" style="display:flex;gap:10px;margin-top:9px;font:700 19px RM;white-space:nowrap"><span style="color:#8f95b8">' + r[0] + '</span><span>' + r[1] + '</span></div>'; }).join(''), P);
   s.lg = s.log.querySelectorAll('.lg');
-  s.lap = D('left:150px;top:1150px;background:rgba(255,250,241,.92);color:#1d1d24;display:flex;align-items:center;gap:10px', ic('moon', 22, '#4a4fa0', 2.2) + 'LAPTOP · LID CLOSED', P, 'chip');
+  s.lap = D('left:150px;top:1150px;background:rgba(255,250,241,.92);color:#1d1d24;display:flex;align-items:center;gap:10px', ic('moon', 22, '#4a4fa0', 2.2) + 'LAPTOP · ASLEEP', P, 'chip');
   var t0 = VS[5], tC = W(L, 'cloud'), tS = W(L, 'sleep');
   s.u = function (t) { settle(s.badge, t, t0 + .1, { y: 30 }); s.rg.setAttribute('stroke-dashoffset', (239 * (1 - sm((t - t0 - .2) / (VS[6] - t0 - .5)))).toFixed(1)); s.badge.style.transform += ' scale(' + (1 + .04 * pop(t, tC, .35)) + ')';
     settle(s.fact, t, tS - .1, { y: 16 }); s.tag.style.opacity = 1; settle(s.log, t, t0 + .25, { x: 30, y: 0 }); settle(s.lap, t, t0 + .4, { y: 14 });
@@ -272,6 +276,7 @@ A[7] = (function (P) { var s = {}, L = 9;
   s.add = D('left:150px;top:430px;width:768px', '<div class="lab">ADD THIS LINE TO YOUR BRIEF</div><div class="tx mono" style="margin-top:12px;font-size:34px;line-height:1.32;color:#1d1d24;min-height:90px"></div>', P, 'do');
   s.tx = s.add.querySelector('.tx');
   s.d = [['Re: Invoice question', 'Thanks! The invoice was sent on the 3rd…'], ['Re: Contract edits', 'Looks good. One change on clause 4…']].map(function (x, i) { return D('left:150px;top:' + (690 + i * 150) + 'px;width:480px;padding:16px 20px;border-radius:12px', '<div style="display:flex;align-items:center;gap:10px;font:700 16px RM;letter-spacing:.14em;color:#8b8172">' + ic('mail', 22, SKY) + 'DRAFT</div><div style="font:700 26px IN;margin-top:6px">' + x[0] + '</div><div style="font:500 20px IN;color:#6c6457;margin-top:4px">' + x[1] + '</div>', P, 'paper'); });
+  s.sk = [0, 1].map(function (i) { return skel(P, 150, 690 + i * 150, 480, 124, i ? '' : 'DRAFTS LAND HERE', 1); });
   s.cnt = D('left:150px;top:1000px;background:rgba(255,250,241,.9);color:#1d1d24;box-shadow:0 8px 16px rgba(0,0,0,.18)', '', P, 'chip');
   s.send = D('left:150px;top:1090px;width:480px;height:110px;border-radius:14px;background:#d9d2c6;display:flex;align-items:center;gap:16px;padding:0 22px;font:700 30px IN;color:#6c6457;box-shadow:0 10px 20px rgba(0,0,0,.2)', '<span class="lk">' + ic('lock', 40, INK, 2.2) + '</span><span>Send <small style="display:block;font:700 15px RM;letter-spacing:.12em;color:' + CORAL + '">WAITS FOR YOUR OK</small></span>', P);
   s.lk = s.send.querySelector('.lk');
@@ -280,6 +285,7 @@ A[7] = (function (P) { var s = {}, L = 9;
   var line = '+ Draft replies for anything that needs me. Don\'t send.';
   s.u = function (t) { settle(s.add, t, t0 + .05, { y: 30 });
     var ty = typedAt(line, t, [[t0 + .2, 0], [tDr, 8], [tRe + .4, line.length]]); s.tx.innerHTML = esc(ty) + cursor(ty.length < line.length || Math.floor(t * 2.2) % 2 === 0, CORAL, 34);
+    s.sk.forEach(function (e, i) { skelAt(e, t, t0 + .15, tDr + .2 + i * .3); });
     s.d.forEach(function (e, i) { drop(e, t, tDr + .15 + i * .3, { y: -50, r: [-1, .8][i], r0: [-4, 3][i] }); });
     var n = (t > tDr + .3 ? 1 : 0) + (t > tDr + .6 ? 1 : 0); s.cnt.innerHTML = ic('mail', 20, SKY) + ' GMAIL · DRAFTS <b style="color:' + CORAL + '">' + n + '</b>'; settle(s.cnt, t, t0 + .4, { y: 0 });
     settle(s.send, t, t0 + .6, { y: 20 }); s.lk.style.transform = 'scale(' + (1 + .3 * pop(t, tOk, .35)) + ') rotate(' + (12 * pop(t, tOk, .35)) + 'deg)'; s.send.style.boxShadow = t > tOk ? '0 0 0 4px ' + CORAL + ',0 10px 20px rgba(0,0,0,.2)' : '0 10px 20px rgba(0,0,0,.2)';
