@@ -1230,3 +1230,19 @@ A tutorial reel: build a disciplined Claude + TradingView pipeline in four block
   - Typed panes that start on a late word leave 2–3 s of empty frame; start typing near the scene start.
   - Don't emit lines that haven't started typing yet (the cursor otherwise lands on blank lines).
 - **Mix:** voice over music + SFX median 20.2 dB, min 11.0 dB; −14.0 LUFS, −1.0 dBTP.
+
+## Reel benchmark — `reel-teach-a-skill` ("Teach your AI once.", 61 s, Card Catalogue, cloned voice)
+A tutorial reel (no avatar): teach Claude a skill in 4 steps (pick, ask with format/tone/example, save and switch on, test in a new chat), plus why dozens cost almost nothing (~100 tokens each until needed) and the catches.
+- **Look:** walnut + brass + card stock + typewriter navy, with stamp red and library green. Fonts: DM Serif Display, Courier Prime and Inter; the cover is in Anton on brass.
+- **New techniques:**
+  1. **The creator's own voice, cloned offline.** OmniVoice zero-shot on CPU from their 15 s recording (`voice/gen.py`). It needs the scipy resample shim for torchaudio (`voice/torchaudio_shim_functional.py`, put on `PYTHONPATH`). The same shim fixes `diffusers` imports.
+  2. **Picking takes.** `voice/pick.py` scores each take by Whisper WER plus closeness to the creator's pitch (~101 Hz). Listen and override with `FORCE=lNN:XN`: one take added a stray word that WER missed.
+  3. **Word timing.** `timing.py` aligns the script's display words to Whisper's words by text (difflib). Numbers are mapped first ("100" → hundred), so captions show the written words and SFX land on the right ones.
+  4. **A Blender frame sequence scrubbed by `t`.** 12 drawer-out frames plus 5 card-lift frames, cross-faded on one canvas. The page sets the label-plate names in DOM type, at plate positions Blender projects for each frame.
+  5. **Card flip-through cuts.** The outgoing scene tips back about its top edge and the next rises. The fades barely overlap, because a 50/50 overlap reads as double-exposed text.
+- **Pitfalls:**
+  - CPU jobs contend: voice cloning, Blender, image generation and the render all fight for 4 cores. OmniVoice took ~1–20 min per take while Blender ran, and Blender finished in minutes once alone.
+  - `film-grain.webm` (multiply) washes out any scene that isn't fully opaque. Give every grain scene an opaque backdrop, and gate the grain off during cuts.
+  - Courier Prime has no "×" glyph (it falls back); write "3X".
+  - A scratchpad folder reused from an earlier session showed stale screenshots; use unique folder names.
+- **Mix:** voice over music + SFX median 20.1 dB, min 11.0 dB; −14.6 LUFS, −1.5 dBTP.

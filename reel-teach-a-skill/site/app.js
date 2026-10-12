@@ -128,15 +128,15 @@ A[1] = (function (P) { var s = {}, L = 2;
 // ================= S3 · step 1: the task you repeat (photoreal desk + depth parallax) =================
 A[2] = (function (P) { var s = {}, L = 3;
   eyebrow(P, '// STEP 1 · THE TASK YOU REPEAT'); head(P, 'Pick a task <em>you repeat.</em>');
-  s.cd = D('left:150px;top:520px;width:768px;height:520px;padding:22px 30px 0 92px', '<div style="font:700 20px CP;letter-spacing:.16em;color:#8a6a2c;height:46px">MY CHATS · ILLUSTRATIVE</div>', P, 'card');
-  var rows = [['MON 28 SEP', 'Write my weekly update. Wins, blockers…'], ['MON 5 OCT', 'Weekly update again: wins, blockers…'], ['MON 12 OCT', 'Same as last week. Wins, blockers…']];
-  s.r = rows.map(function (r, i) { return D('left:92px;top:' + (86 + i * 120) + 'px;width:640px', '<div style="font:700 19px CP;letter-spacing:.12em;color:#8a6a2c">' + r[0] + '</div><div class="tx" style="font:500 29px/1.3 IN;color:#1d2230;margin-top:6px;border-radius:6px;padding:4px 8px;margin-left:-8px">' + esc(r[1]) + '</div>', s.cd); });
-  s.stp = OV(D('left:470px;top:880px', 'REPEATED ×3', P, 'stamp'));
+  s.cd = D('left:150px;top:500px;width:610px;height:520px;padding:22px 24px 0 88px', '<div style="font:700 20px CP;letter-spacing:.16em;color:#8a6a2c;height:46px">MY CHATS · ILLUSTRATIVE</div>', P, 'card');
+  var rows = [['MON 28 SEP', 'Write my weekly update. Wins…'], ['MON 5 OCT', 'Weekly update again: wins…'], ['MON 12 OCT', 'Same as last week. Wins…']];
+  s.r = rows.map(function (r, i) { return D('left:88px;top:' + (86 + i * 120) + 'px;width:500px', '<div style="font:700 19px CP;letter-spacing:.12em;color:#8a6a2c">' + r[0] + '</div><div class="tx" style="font:500 25px/1.3 IN;color:#1d2230;margin-top:6px;border-radius:6px;padding:4px 8px;margin-left:-8px">' + esc(r[1]) + '</div>', s.cd); });
+  s.stp = OV(D('left:380px;top:900px', 'REPEATED 3X', P, 'stamp'));
   s.ch = D('left:150px;top:1080px;background:' + GREEN + ';color:#f3ead6;box-shadow:0 8px 16px rgba(0,0,0,.45)', '→ YOUR FIRST SKILL', P, 'chip');
   s.lab = D('left:150px;top:1240px', 'AI-GENERATED PHOTO', P, 'illus');
   var tS = SC[2], tTw = W(L, 'twice'), tWk = W(L, 'weekly');
   E('card', tS + .3); E('card', tS + .5); E('card', tS + .7); E('stamp', tTw + .05); E('tick', tWk);
-  s.u = function (t) { settle(s.cd, t, tS + .15, { y: 40, r: -.8, r0: 1.5 }); s.r.forEach(function (r, i) { settle(r, t, tS + .3 + i * .2, { x: -20, y: 0, s: 0 }); });
+  s.u = function (t) { settle(s.cd, t, tS + .15, { y: 40, r: -1.6, r0: 1.5 }); s.r.forEach(function (r, i) { settle(r, t, tS + .3 + i * .2, { x: -20, y: 0, s: 0 }); });
     stampIn(s.stp, t, tTw + .05, -9); var hi = t >= tWk; s.r[2].querySelector('.tx').style.background = hi ? 'rgba(255,214,90,.6)' : 'transparent'; settle(s.ch, t, tWk + .1, { x: -20, y: 0 }); s.lab.style.opacity = 1;
     return pop(t, tTw + .05, .2) * .4; };
   return s; })(S[2]);
@@ -355,8 +355,8 @@ window.__seek = function (t) {
   var outI = prev >= 0 ? prev : (nxt >= 0 ? si : -1), inI = prev >= 0 ? si : (nxt >= 0 ? nxt : -1);
   scenes.forEach(function (s, i) { var show = i === si || i === outI || i === inI; s.style.display = show ? 'block' : 'none';
     if (!show) return;
-    if (i === outI) { s.style.transform = 'rotateX(' + (58 * u).toFixed(2) + 'deg) translateY(' + (-80 * u).toFixed(1) + 'px)'; s.style.opacity = (1 - u).toFixed(3); s.style.zIndex = 2; }
-    else if (i === inI) { s.style.transform = 'translateY(' + (180 * (1 - u)).toFixed(1) + 'px) rotateX(' + (-14 * (1 - u)).toFixed(2) + 'deg)'; s.style.opacity = Math.min(1, u * 1.6).toFixed(3); s.style.zIndex = 1; }
+    if (i === outI) { s.style.transform = 'rotateX(' + (58 * u).toFixed(2) + 'deg) translateY(' + (-80 * u).toFixed(1) + 'px)'; s.style.opacity = clamp(1 - u / .5, 0, 1).toFixed(3); s.style.zIndex = 2; }
+    else if (i === inI) { s.style.transform = 'translateY(' + (180 * (1 - u)).toFixed(1) + 'px) rotateX(' + (-14 * (1 - u)).toFixed(2) + 'deg)'; s.style.opacity = clamp((u - .42) / .5, 0, 1).toFixed(3); s.style.zIndex = 1; }   // barely overlaps the outgoing card: no double-exposed text
     else { s.style.transform = ''; s.style.opacity = 1; s.style.zIndex = 1; } });
   var jolt = 0; [outI, inI, si].forEach(function (k, j, arr) { if (k < 0 || arr.indexOf(k) !== j) return; var jj = A[k].u(t) || 0; if (k === si) jolt = jj; });
   st.style.transform = jolt ? 'translate(' + (Math.sin(t * 90) * 5 * jolt).toFixed(1) + 'px,' + (Math.cos(t * 77) * 4 * jolt).toFixed(1) + 'px)' : '';
@@ -370,6 +370,6 @@ window.__seek = function (t) {
   if (glOn) { var sEl = scenes[gs]; glc.style.transform = sEl.style.transform; glc.style.opacity = sEl.style.opacity; glc.style.transformOrigin = '50% 0'; var uu = clamp((t - SC[gs] + .3) / (SC[gs + 1] - SC[gs] + .3), 0, 1); window.GLP.draw({ a: 'desk', camA: [lerp(-.25, .2, uu), .03, lerp(1.04, 1.2, uu)], par: .08, dim: .5, t: t }); }
   bg.style.opacity = glOn && si === gs && outI < 0 && inI < 0 ? 0 : 1;
   motesAt(t); drawCap(t);
-  return Promise.all([ovAt('dust', si === 2, t, 25), ovAt('grain', si === 8 || si === 9, t, 30)]);
+  return Promise.all([ovAt('dust', si === 2, t, 25), ovAt('grain', (si === 8 || si === 9) && outI < 0 && inI < 0, t, 30)]);
 };
 })();

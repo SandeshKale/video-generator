@@ -91,7 +91,7 @@ bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, 0)); bpy.context.objec
 area((-1.6, -1.8, 3.2), (math.radians(40), math.radians(-25), 0), 1.2, 520, (1.0, 0.78, 0.5))
 area((2.4, -2.0, 1.4), (math.radians(80), 0, math.radians(50)), 2.5, 120, (0.75, 0.82, 1.0))
 area((0, 2.5, 3), (math.radians(-40), 0, 0), 3, 160, (1.0, 0.85, 0.6))
-VIEWS = {'hero': ((1.0, -2.45, 1.75), (0.0, 0.25, 1.0), 40), 'front': ((0.0, -3.6, 1.15), (0.0, 0.2, 1.05), 42), 'close': ((0.55, -1.35, 1.55), (-0.02, 0.0, 1.12), 40)}
+VIEWS = {'hero': ((1.0, -2.45, 1.75), (0.0, 0.25, 1.0), 40), 'front': ((0.0, -3.6, 1.15), (0.0, 0.2, 1.05), 42), 'close': ((0.55, -1.35, 1.55), (-0.02, 0.0, 1.12), 40), 'cover': ((1.0, -2.45, 1.95), (-0.19, -0.25, 1.72), 95)}
 loc, tgt, lens = VIEWS[VIEW]
 cam_persp(sc, loc, tgt, lens)
 bpy.context.view_layer.update()

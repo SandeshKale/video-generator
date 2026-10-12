@@ -207,3 +207,8 @@ Times are estimates (≈ 2.55 words/s) and will be retimed from the TTS word tim
 1. **Voice:** the creator's own voice, cloned with OmniVoice (offline, CPU) from their 15 s reference recording. Takes are picked by Whisper word accuracy and closeness to their pitch; output in `vo/`.
 2. **App path:** "Skills settings" on screen.
 3. **Mockup:** yes. Scenes 2, 5, 7 and 8 (cabinet, typewriter card, mocap librarian, context jar), so the mockup shows 3+ asset families.
+
+## Status (12 Oct 2026): built
+- Voice: the creator's cloned voice (OmniVoice zero-shot, CPU, `voice/gen.py`; best take per line via `voice/pick.py`, line 6 forced to take A0 because take B0 added a stray "In"). The creator listened to `vo/sample.mp3`.
+- Built per the screenplay, with 10 scenes. Changes from the plan: the hook figure sits at a laptop (humaaans sitting-2); the catch scene uses the Unsplash typewriter photo; scene 10's cabinet is a faint backdrop behind the recap card.
+- Families used: Blender 3D (cabinet frame sequence + cover close-up), photoreal AI still + depth parallax (desk), CMU mocap rig (librarian), humaaans, Anthropic mark + tabler icons, bespoke DOM/SVG objects (typewriter card, jar, toggle, warning cards, recap card), kinetic type + typed text, real-footage overlays (dust, film grain), a real Unsplash photo, score + SFX = **10**.

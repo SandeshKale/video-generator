@@ -1,0 +1,35 @@
+// Grid-first cover: bright brass ground (pops on a dark grid), a Blender close-up of the walnut drawer with the
+// "weekly-team-update" card lifted out (a telephoto framing the reel never uses; the card itself is set in DOM type), walnut title block "TEACH YOUR AI ONCE."
+// (4 words, Anton), a "4 STEPS" corner badge and the face chip bottom-right. Run: bun cover-build.mjs
+import { writeFileSync, readFileSync } from 'node:fs';
+import { chromium } from 'playwright';
+const J = JSON.parse(readFileSync(new URL('./site/3d/cover_drawer.json', import.meta.url)));
+const card = J.plates.find((p) => p.card), K = 1, X0 = 0, Y0 = 280;
+const pl = J.plates.find((p) => p.c === 1 && p.r === 0);
+const cx = X0 + card.x * K, px = X0 + pl.x * K, py = Y0 + pl.y * K, pw = pl.w * K;
+const html = `<!doctype html><meta charset="utf-8"><style>
+@font-face{font-family:'AN';src:url('site/fonts/anton-latin-400-normal.woff2');font-display:block}
+@font-face{font-family:'CP';font-weight:700;src:url('site/fonts/courier-prime-latin-700-normal.woff2');font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden}
+body{position:relative;background:radial-gradient(900px 800px at 50% 40%,#f3d58a 0,#d9b866 40%,#a8822f 100%);font-family:'AN',sans-serif}
+.gr{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(90,60,10,.06) 0 2px,transparent 2px 7px)}
+.hero{position:absolute;left:${X0}px;top:${Y0}px;width:1080px;height:1240px;background:url(site/3d/cover_drawer.png) center/contain no-repeat;filter:drop-shadow(0 30px 40px rgba(40,20,5,.5));-webkit-mask:linear-gradient(180deg,#000 88%,transparent 99%)}
+.pl{position:absolute;left:${(px - pw / 2).toFixed(0)}px;top:${(py - 16).toFixed(0)}px;width:${pw.toFixed(0)}px;text-align:center;font:700 26px/32px CP;color:#20396b}
+.glow{position:absolute;left:385px;top:330px;width:600px;height:460px;border-radius:50%;background:radial-gradient(rgba(255,250,220,.8),transparent 68%)}
+.cd{position:absolute;left:420px;top:448px;width:530px;height:262px;transform:rotate(-4deg);border-radius:6px;padding:62px 24px 0 74px;
+ background:repeating-linear-gradient(180deg,transparent 0 45px,rgba(70,110,170,.3) 45px 47px),linear-gradient(90deg,transparent 0 56px,rgba(209,68,47,.6) 56px 58px,transparent 58px),#f5eedb;
+ box-shadow:0 18px 34px rgba(40,20,5,.45);font:700 34px/46px CP;color:#20396b}
+.cd small{display:block;font:400 25px/46px CP;color:#4a4a52}
+.tab{position:absolute;right:26px;top:-34px;width:140px;height:38px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#d9b866,#b48a3c);font:700 21px/38px CP;letter-spacing:.14em;text-align:center;color:#2a1a08}
+.bd{position:absolute;left:90px;top:440px;transform:rotate(-4deg);background:#20396b;color:#f5eedb;font:700 50px/1 CP;letter-spacing:.06em;padding:14px 22px;border-radius:8px;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+.blk{position:absolute;left:60px;right:60px;top:1060px;height:440px;background:linear-gradient(180deg,#3a2318,#24150e);border-radius:14px;padding:40px 46px;box-shadow:0 22px 50px rgba(40,20,5,.5)}
+.blk:before{content:"";position:absolute;left:30px;right:30px;top:-3px;height:7px;background:repeating-linear-gradient(90deg,#f5eedb 0 34px,transparent 34px 48px)}
+.t{font-size:150px;line-height:1.08;color:#f3ead6;text-transform:uppercase}.t b{font-weight:400;color:#24150e;background:#f5eedb;padding:0 16px;display:inline-block;line-height:1.06;margin-top:8px}
+.face{position:absolute;right:84px;top:1330px;width:170px;height:170px;border-radius:50%;border:10px solid #f5eedb;box-shadow:0 0 0 6px #c9a04f,0 14px 30px rgba(0,0,0,.4);background:url(site/profile.jpg) center/cover;z-index:3}
+</style><div class="gr"></div><div class="glow"></div><div class="hero"></div><div class="pl">weekly</div><div class="cd"><div class="tab">SKILL</div>weekly-team-update<small>wins · blockers · priorities</small></div><div class="bd">4 STEPS</div>
+<div class="blk"><div class="t">Teach your AI<br><b>once.</b></div></div><div class="face"></div>`;
+writeFileSync(new URL('./cover.html', import.meta.url), html);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox', '--allow-file-access-from-files'] });
+const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto(new URL('./cover.html', import.meta.url).href); await p.waitForTimeout(900);
+await p.screenshot({ path: new URL('./cover.png', import.meta.url).pathname }); await b.close();
