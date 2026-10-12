@@ -258,3 +258,6 @@ Times are estimates (≈ 2.4 words/s) and will be retimed from the clips.
 1. **CTA:** "Save this, and follow for more" (house rule), or the reference's comment-keyword DM ("comment LOOP and I'll send it")? Only choose the keyword if you have DM automation set up.
 2. **The primary-family rule:** keep the continuous table as the spine (B in 6 scenes), or swap scene 6 for a data cut?
 3. **Avatar prompts** are in `avatar-prompts.md` (5 parts). Generate Part 1 first and check the hook energy and the pronunciation of "Claudex", "Codex" and "Astra".
+
+## Status (12 Oct 2026)
+ON HOLD: avatar video creation has hit its limits. Script and prompts are ready; resume when avatar clips can be generated (or rework it for a TTS voice-over).
