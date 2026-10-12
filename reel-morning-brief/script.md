@@ -119,6 +119,16 @@
   - slow 2:1 compression.
   No artificial reverb.
 - The creator hears a sample before the build.
+- **Round 2 (creator, 12 Oct): "a bit slow… now it has western accent. Keep my Indian/original accent."**
+  - **Cause:** x-vector takes copy only timbre, so they fall back to the model's default accent. An accent-ID model (SpeechBrain ECAPA, CommonAccent) confirms this:
+    - the real recording is classified Indian (margin +0.17);
+    - the old OmniVoice clone is too (+0.47);
+    - ICL takes mostly land around +0.3;
+    - x-vector takes are inconsistent: the line 8 pick scored −0.35 and was classified "australia".
+  - **Fix:**
+    - ICL only, with a longer reference: both clips joined, 12.7 s, 3 seeds per line;
+    - the picker penalises any take with an Indian margin below +0.15;
+    - each line is nudged to ~2.75 words/s with a pitch-preserving atempo (≤ 1.12×).
 
 **Claim check per line:**
 - 2: facts 2, 3 (weekdays is a listed frequency), 6.

@@ -1,10 +1,15 @@
 # Pick the best Qwen3-TTS take per line and finish it. Score = Whisper WER (x10) + (1 - speaker similarity to the real
-# recording) x 8 + dryness penalty (gap floor above -45 dB re speech). Then trim silence and apply a gentle, soothing finish:
+# recording) x 8 + dryness penalty (gap floor above -45 dB re speech) + accent penalty: the creator's Indian accent must be
+# kept (creator feedback, 12 Oct), so takes whose accent-ID margin for "indian" is below +0.15 are penalised hard (accent.py).
+# Only ICL takes are considered (PICK_MODES, default "icl,iclAB"): x-vector takes drift to a western accent.
+# Each line is nudged to ~2.75 words/s with a pitch-preserving atempo (1.00-1.12x; creator: "a bit slow"). Then trim silence and apply a gentle, soothing finish:
 # high-pass 70 Hz, de-ess, +1.5 dB at 180 Hz (warmth), -1.5 dB shelf above 8 kHz, slow 2:1 compression. No added reverb.
 # Writes ../vo/lNN.wav, ../vo/take_report.json and ../vo/sample.mp3. Run with /tmp/qwenenv/bin/python pick.py <takes> <real.wav>
 import os, sys, re, json, glob, subprocess, numpy as np, soundfile as sf, librosa, jiwer
 from faster_whisper import WhisperModel
 from resemblyzer import VoiceEncoder, preprocess_wav
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from accent import margin as accent_margin
+MODES = os.environ.get('PICK_MODES', 'icl,iclAB').split(',')
 T, REAL = sys.argv[1], sys.argv[2]; HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, '..', 'vo'); os.makedirs(OUT, exist_ok=True)
 FORCE = dict(x.split(':') for x in os.environ.get('FORCE', '').split(',') if x)
 lines = json.load(open(os.path.join(HERE, 'lines.json')))
@@ -21,13 +26,15 @@ rep = {}
 for sid, text in lines:
     best = None
     for f in sorted(glob.glob(f'{T}/{sid}_*.wav')):
+        if os.path.basename(f)[len(sid) + 1:-5] not in MODES: continue
         y, sr = librosa.load(f, sr=24000)
         segs, _ = asr.transcribe(f, language='en', beam_size=5); hyp = ' '.join(s.text for s in segs)
         wer = jiwer.wer(' '.join(norm(text)), ' '.join(norm(hyp))) if norm(hyp) else 1.0
         sim = float(np.dot(eref, enc.embed_utterance(preprocess_wav(f)))); fl = floor_db(y, sr)
-        score = wer * 10 + (1 - sim) * 8 + max(0, fl + 45) * 0.15
+        acc, top = accent_margin(f)
+        score = wer * 10 + (1 - sim) * 8 + max(0, fl + 45) * 0.15 + max(0, 0.15 - acc) * 25
         tk = os.path.basename(f)[len(sid) + 1:-4]
-        rep.setdefault(sid, []).append(dict(take=tk, wer=round(wer, 3), sim=round(sim, 3), floor_db=round(fl, 1), dur=round(len(y) / sr, 2), score=round(score, 3), heard=hyp.strip()))
+        rep.setdefault(sid, []).append(dict(take=tk, wer=round(wer, 3), sim=round(sim, 3), floor_db=round(fl, 1), dur=round(len(y) / sr, 2), accent=round(acc, 3), accent_top=top, score=round(score, 3), heard=hyp.strip()))
         if (sid in FORCE and tk == FORCE[sid]) or (sid not in FORCE and (best is None or score < best[0])): best = (score if sid not in FORCE else -1, f)
     y, sr = librosa.load(best[1], sr=24000)
     from scipy.signal import butter, sosfilt
@@ -36,8 +43,9 @@ for sid, text in lines:
     on = np.argmax(d > pk - 20); off = len(d) - 1 - np.argmax(d[::-1] > pk - 28)   # first/last frame of real speech
     y = y[max(0, on * hop - int(.06 * sr)):min(len(y), off * hop + int(.18 * sr))]
     raw = f'{OUT}/{sid}_raw.wav'; sf.write(raw, y.astype(np.float32), sr)
-    subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', FIN, '-ar', '24000', '-ac', '1', f'{OUT}/{sid}.wav']); os.remove(raw)
-    print(sid, os.path.basename(best[1]), [(r['take'], r['wer'], r['sim'], r['floor_db']) for r in rep[sid]], flush=True)
+    tempo = float(np.clip(2.75 / (len(text.split()) / (len(y) / sr)), 1.0, 1.12))
+    subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', 'atempo=%.3f,' % tempo + FIN, '-ar', '24000', '-ac', '1', f'{OUT}/{sid}.wav']); os.remove(raw)
+    print(sid, os.path.basename(best[1]), 'tempo %.3f' % tempo, [(r['take'], r['wer'], r['sim'], r['accent']) for r in rep[sid]], flush=True)
 json.dump(rep, open(f'{OUT}/take_report.json', 'w'), indent=1)
 gap = lambda s: np.zeros(int(s * 24000), np.float32); parts = []
 for sid, text in lines:
