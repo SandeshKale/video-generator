@@ -34,3 +34,9 @@ insert into public.post_runway (id,kind,n,format,title,folder,media,copy,flag,da
 ('2026-10-27-1100-reel','reel',23,null,'Amazon blocked it. Five giants joined it.','reel-meta-muse-takeover','reel-meta-muse-takeover/reel-fullhd60.mp4','reel-meta-muse-takeover/caption.md','September news. Check the facts are still current, or post it as a recap.','2026-10-27','11:00',3,'60s'),
 ('2026-10-27-2030-reel','reel',24,null,'310,000 people asked AI to roast their feed','reel-ai-roast-me','reel-ai-roast-me/reel-fullhd60.mp4','reel-ai-roast-me/caption.md','September news. Check the facts are still current, or post it as a recap.','2026-10-27','20:30',3,'60s')
 on conflict (id) do nothing;
+
+-- Migration add_wed_21_oct_new_reels (12 Oct): the two open Wed 21 Oct reel slots filled with the newest reels.
+insert into public.post_runway (id,kind,n,format,title,folder,media,copy,flag,date,slot,week,len) values
+('2026-10-21-1100-reel','reel',25,null,'Teach your AI once.','reel-teach-a-skill','reel-teach-a-skill/reel.mp4','reel-teach-a-skill/caption.md',null,'2026-10-21','11:00',2,'61s'),
+('2026-10-21-2030-reel','reel',26,null,'I was asleep when Claude wrote this.','reel-morning-brief','reel-morning-brief/reel.mp4','reel-morning-brief/caption.md',null,'2026-10-21','20:30',2,'63s')
+on conflict (id) do nothing;
