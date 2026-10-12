@@ -1,0 +1,86 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Claude in Sheets</title>
+<style>
+@font-face{font-family:Rubik;font-weight:700;src:url(fonts/rubik-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Rubik;font-weight:800;src:url(fonts/rubik-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Azeret;font-weight:500;src:url(fonts/azeret-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Azeret;font-weight:700;src:url(fonts/azeret-mono-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:500;src:url(fonts/inter-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
+:root{--mint:#e8f4ee;--mint2:#d9ece2;--ink:#23142d;--ink2:#4a3a55;--vio:#7a3cff;--vio2:#e6dbff;--tom:#ff5233;--tom2:#ffe0d8;--sun:#ffc31a;--sun2:#fff1c2;--teal:#11a08f;--paper:#fbfdfc;--line:#d5e3db}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--mint)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;display:none;background-color:var(--mint);
+  background-image:linear-gradient(rgba(35,20,45,.055) 2px,transparent 2px),linear-gradient(90deg,rgba(35,20,45,.055) 2px,transparent 2px);
+  background-size:180px 180px;background-position:-30px -20px}
+.fl{position:absolute;width:178px;height:178px;background:var(--sun);opacity:0;border-radius:4px}
+.abs{position:absolute}
+.eyebrow{font-family:Azeret;font-weight:700;font-size:28px;letter-spacing:.14em;color:var(--vio)}
+.h1{font-family:Rubik;font-weight:800;font-size:88px;line-height:1.04;letter-spacing:-.03em;color:var(--ink)}
+.h1 .hl{color:var(--vio)}
+.tag{font-family:Azeret;font-weight:700;font-size:17px;letter-spacing:.12em;color:var(--ink2);background:rgba(255,255,255,.85);border:2px solid var(--ink);padding:4px 10px;border-radius:6px}
+/* sheet */
+.sheet{background:var(--paper);border:3px solid var(--ink);border-radius:22px;box-shadow:0 18px 0 -6px rgba(35,20,45,.14),0 30px 60px rgba(35,20,45,.12);overflow:hidden}
+.fx{height:58px;border-bottom:2px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 18px;font-family:Azeret;font-weight:500;font-size:26px}
+.fx b{font-family:Azeret;font-weight:700;color:var(--vio);font-style:italic}
+.row{display:flex;height:56px;border-bottom:2px solid var(--line);position:relative}
+.row.hd{background:#f1ebff;height:52px}
+.c{border-right:2px solid var(--line);display:flex;align-items:center;padding:0 14px;font-size:27px;font-weight:600;white-space:nowrap;overflow:hidden;position:relative}
+.c.n{width:48px;justify-content:center;color:#8c7f96;font-size:20px;font-weight:600;padding:0;background:#f4f8f6}
+.hd .c{font-family:Azeret;font-weight:700;font-size:20px;letter-spacing:.1em;color:var(--ink2)}
+.c .bad{position:absolute;inset:4px;border-radius:6px;background:var(--tom2);border:2px dashed var(--tom)}
+.c span{position:relative}
+.c.num{justify-content:flex-end;font-family:Azeret;font-weight:500;font-size:26px}
+.sel{position:absolute;border:4px solid var(--vio);border-radius:4px;box-shadow:0 0 0 4px rgba(122,60,255,.18);pointer-events:none}
+.tabs{height:50px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#f4f8f6;border-top:2px solid var(--line)}
+.tab{font-family:Azeret;font-weight:700;font-size:19px;padding:6px 14px;border-radius:8px 8px 0 0;border:2px solid var(--line);background:#fff}
+.tab.on{border-color:var(--ink);}
+.tab.new{background:var(--sun);border-color:var(--ink)}
+/* claude pane */
+.pane{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:18px 22px;box-shadow:0 14px 0 -5px rgba(122,60,255,.25)}
+.pane .who{display:flex;align-items:center;gap:12px;font-family:Rubik;font-weight:700;font-size:28px}
+.pane .who svg{width:36px;height:36px}
+.pane .mode{margin-left:auto;font-family:Azeret;font-weight:700;font-size:16px;letter-spacing:.1em;color:var(--teal);border:2px solid var(--teal);border-radius:20px;padding:3px 10px}
+.bub{background:var(--vio2);border-radius:20px 20px 6px 20px;padding:12px 18px;font-size:27px;font-weight:600;margin:12px 0 12px 120px}
+.card{border:2px solid var(--ink);border-radius:16px;padding:12px 16px;display:flex;align-items:center;gap:14px;background:#fffdf5}
+.card .t{font-size:24px;font-weight:600;line-height:1.3}
+.card .t b{font-family:Rubik;font-weight:800;font-size:28px}
+.btn{margin-left:auto;font-family:Rubik;font-weight:800;font-size:27px;color:#fff;background:var(--teal);border:3px solid var(--ink);border-radius:14px;padding:10px 20px;position:relative}
+.pill{font-family:Azeret;font-weight:700;font-size:22px;letter-spacing:.06em;color:#fff;background:var(--teal);border:3px solid var(--ink);border-radius:30px;padding:8px 20px;display:inline-flex;gap:10px;align-items:center}
+.cursor{width:64px;height:64px;color:var(--ink);filter:drop-shadow(0 4px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)}
+.ring{position:absolute;border:4px solid var(--vio);border-radius:50%}
+/* chart */
+.bar{position:absolute;bottom:0;background:var(--sun);border:3px solid var(--ink);border-bottom:none;border-radius:10px 10px 0 0}
+.bar i{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:Azeret;font-weight:700;font-style:normal;font-size:22px;letter-spacing:.1em}
+.tot{position:absolute;height:52px;background:var(--sun);border:3px solid var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:Azeret;font-weight:700;font-size:26px}
+/* scene 2 */
+.stamp{font-family:Rubik;font-weight:800;font-size:34px;letter-spacing:.02em;padding:10px 20px;background:#fff;border:4px solid var(--vio);border-radius:10px;box-shadow:0 0 0 5px rgba(122,60,255,.15),0 10px 0 -2px rgba(35,20,45,.18);color:var(--ink)}
+.track{display:flex;gap:12px}
+.track div{font-family:Azeret;font-weight:700;font-size:22px;letter-spacing:.08em;padding:10px 16px;border:3px solid var(--ink);border-radius:10px;background:#fff;color:var(--ink2)}
+.track div.on{background:var(--vio);color:#fff}
+.track div.done{background:var(--teal);color:#fff}
+/* scene 5 */
+.photo{border:6px solid #fff;border-radius:28px;overflow:hidden;box-shadow:0 0 0 3px var(--ink),0 26px 50px rgba(35,20,45,.25)}
+.photo img{position:absolute;width:100%;height:100%;object-fit:cover}
+.chat{background:#fff;border:3px solid var(--ink);border-left:14px solid var(--vio);border-radius:20px;padding:18px 24px;box-shadow:0 18px 40px rgba(35,20,45,.22)}
+.chat .lb{font-family:Azeret;font-weight:700;font-size:19px;letter-spacing:.12em;color:var(--vio);margin-bottom:6px}
+.chat .tx{font-size:42px;font-weight:700;line-height:1.28;letter-spacing:-.01em}
+.chat .tx u{text-decoration:none;background-image:linear-gradient(var(--sun),var(--sun));background-repeat:no-repeat;background-position:0 88%;background-size:0% 30%}
+.chip{font-family:Azeret;font-weight:700;font-size:23px;letter-spacing:.06em;background:#fff;border:3px solid var(--ink);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:10px}
+.chip svg{width:26px;height:26px;color:var(--teal)}
+/* cut tiles */
+#cutc{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;z-index:50}
+/* captions */
+#cap{position:absolute;left:150px;width:768px;top:1338px;display:flex;justify-content:center;z-index:60}
+#cap div{background:rgba(35,20,45,.92);color:#f3eefa;border-radius:22px;padding:14px 26px;font-family:Inter;font-weight:700;font-size:46px;line-height:1.25;text-align:center;max-width:768px;box-shadow:0 10px 30px rgba(35,20,45,.3)}
+#cap span{opacity:.55}
+#cap span.on{opacity:1;color:var(--sun)}
+#cap span.past{opacity:1}
+</style></head>
+<body><div id="stage"></div>
+<canvas id="cutc" width="1080" height="1920"></canvas>
+<script src="marks.js"></script>
+<script src="app.js"></script>
+</body></html>

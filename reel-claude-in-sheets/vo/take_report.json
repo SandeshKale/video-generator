@@ -1,0 +1,107 @@
+{
+ "l01": [
+  {
+   "take": "iclAB1",
+   "wer": 0.143,
+   "sim": 0.782,
+   "floor_db": -119.0,
+   "dur": 3.52,
+   "accent": -0.15,
+   "accent_top": "us",
+   "score": 10.678,
+   "heard": "Cloud just moved into your Google Sheets."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.847,
+   "floor_db": -43.4,
+   "dur": 3.36,
+   "accent": 0.208,
+   "accent_top": "indian",
+   "score": 1.457,
+   "heard": "Claude just moved into your Google Sheets."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.823,
+   "floor_db": -36.2,
+   "dur": 2.88,
+   "accent": 0.008,
+   "accent_top": "indian",
+   "score": 6.279,
+   "heard": "Claude just moved into your Google Sheets."
+  }
+ ],
+ "l02": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.902,
+   "floor_db": -59.9,
+   "dur": 5.2,
+   "accent": 0.35,
+   "accent_top": "indian",
+   "score": 0.784,
+   "heard": "messy data in clean table, pivot and a chart out."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.925,
+   "floor_db": -63.3,
+   "dur": 6.0,
+   "accent": -0.124,
+   "accent_top": "australia",
+   "score": 7.464,
+   "heard": "messy data in clean table pivot and a chart out."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.934,
+   "floor_db": -52.8,
+   "dur": 4.96,
+   "accent": 0.278,
+   "accent_top": "indian",
+   "score": 0.526,
+   "heard": "messy data in clean table pivot and a chart out."
+  }
+ ],
+ "l05": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -56.0,
+   "dur": 7.12,
+   "accent": 0.389,
+   "accent_top": "indian",
+   "score": 0.652,
+   "heard": "Step 3. Ask it like a colleague. Clean this up. Total sales by month and chart it."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.916,
+   "floor_db": -53.4,
+   "dur": 7.36,
+   "accent": 0.317,
+   "accent_top": "indian",
+   "score": 0.668,
+   "heard": "Step 3. Ask it like a colleague. Clean this up, total sales by month and chart it."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.904,
+   "floor_db": -47.5,
+   "dur": 6.88,
+   "accent": 0.344,
+   "accent_top": "indian",
+   "score": 0.764,
+   "heard": "Step 3, ask it like a colleague, clean this up, total sales by month and chart it."
+  }
+ ]
+}

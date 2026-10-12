@@ -1,0 +1,12 @@
+[
+ ["l01", "Claude just moved into your Google Sheets."],
+ ["l02", "Messy data in. Clean table, pivot, and a chart out."],
+ ["l03", "Step one. Get Claude from the Google Workspace Marketplace."],
+ ["l04", "Step two. Open a sheet, then Extensions, Claude, Open Claude."],
+ ["l05", "Step three. Ask it like a colleague: clean this up, total sales by month, and chart it."],
+ ["l06", "Messy joins? It pulls the range into Python and writes the result back."],
+ ["l07", "By default, it asks before every edit, so nothing changes behind your back."],
+ ["l08", "It works in Docs and Slides too."],
+ ["l09", "The catch: it's a beta, it needs a paid plan, and work accounts may need your admin's okay."],
+ ["l10", "Comment Sheets, and I'll send you the prompt."]
+]
