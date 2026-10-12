@@ -2,7 +2,8 @@
 # recording) x 8 + dryness penalty (gap floor above -45 dB re speech) + accent penalty: the creator's Indian accent must be
 # kept (creator feedback, 12 Oct), so takes whose accent-ID margin for "indian" is below +0.15 are penalised hard (accent.py).
 # Only ICL takes are considered (PICK_MODES, default "icl,iclAB"): x-vector takes drift to a western accent.
-# Each line is nudged to ~2.75 words/s with a pitch-preserving atempo (1.00-1.12x; creator: "a bit slow"). Then trim silence and apply a gentle, soothing finish:
+# Pauses inside a line longer than 0.4 s are shortened to 0.28 s, then each line is nudged to ~2.85 words/s with a
+# pitch-preserving atempo (1.00-1.12x; creator: "a bit slow"). Then trim silence and apply a gentle, soothing finish:
 # high-pass 70 Hz, de-ess, +1.5 dB at 180 Hz (warmth), -1.5 dB shelf above 8 kHz, slow 2:1 compression. No added reverb.
 # Writes ../vo/lNN.wav, ../vo/take_report.json and ../vo/sample.mp3. Run with /tmp/qwenenv/bin/python pick.py <takes> <real.wav>
 import os, sys, re, json, glob, subprocess, numpy as np, soundfile as sf, librosa, jiwer
@@ -42,8 +43,20 @@ for sid, text in lines:
     hop = int(.01 * sr); d = 20 * np.log10(librosa.feature.rms(y=yb, frame_length=hop * 2, hop_length=hop)[0] + 1e-7); pk = d.max()
     on = np.argmax(d > pk - 20); off = len(d) - 1 - np.argmax(d[::-1] > pk - 28)   # first/last frame of real speech
     y = y[max(0, on * hop - int(.06 * sr)):min(len(y), off * hop + int(.18 * sr))]
+    # tighten long pauses inside the line (creator: "a bit slow"): any silence > 0.40 s becomes 0.28 s, cut from its middle
+    yb2 = sosfilt(butter(4, 150, 'high', fs=sr, output='sos'), y); d2 = 20 * np.log10(librosa.feature.rms(y=yb2, frame_length=hop * 2, hop_length=hop)[0] + 1e-7)
+    quiet = d2 < d2.max() - 35; keep = np.ones(len(y), bool); i = 0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]: j += 1
+            if (j - i) * hop > .40 * sr and i > 0 and j < len(quiet):
+                mid = (i + j) // 2 * hop; cut = (j - i) * hop - int(.28 * sr); keep[mid - cut // 2: mid + cut - cut // 2] = False
+            i = j
+        else: i += 1
+    y = y[keep]
     raw = f'{OUT}/{sid}_raw.wav'; sf.write(raw, y.astype(np.float32), sr)
-    tempo = float(np.clip(2.75 / (len(text.split()) / (len(y) / sr)), 1.0, 1.12))
+    tempo = float(np.clip(2.85 / (len(text.split()) / (len(y) / sr)), 1.0, 1.12))
     subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', raw, '-af', 'atempo=%.3f,' % tempo + FIN, '-ar', '24000', '-ac', '1', f'{OUT}/{sid}.wav']); os.remove(raw)
     print(sid, os.path.basename(best[1]), 'tempo %.3f' % tempo, [(r['take'], r['wer'], r['sim'], r['accent']) for r in rep[sid]], flush=True)
 json.dump(rep, open(f'{OUT}/take_report.json', 'w'), indent=1)

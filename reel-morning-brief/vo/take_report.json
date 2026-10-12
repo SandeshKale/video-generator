@@ -6,6 +6,8 @@
    "sim": 0.863,
    "floor_db": -40.2,
    "dur": 3.12,
+   "accent": 0.303,
+   "accent_top": "indian",
    "score": 1.822,
    "heard": "I was asleep when Claude wrote this."
   },
@@ -15,25 +17,42 @@
    "sim": 0.863,
    "floor_db": -34.5,
    "dur": 3.04,
+   "accent": 0.262,
+   "accent_top": "indian",
    "score": 2.667,
    "heard": "I was asleep when Claude wrote this"
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.85,
-   "floor_db": -27.3,
-   "dur": 3.52,
-   "score": 3.849,
+   "sim": 0.835,
+   "floor_db": -36.9,
+   "dur": 2.64,
+   "accent": 0.086,
+   "accent_top": "indian",
+   "score": 4.138,
    "heard": "I was asleep when Claude wrote this."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.885,
-   "floor_db": -27.4,
-   "dur": 2.64,
-   "score": 3.558,
+   "sim": 0.855,
+   "floor_db": -64.0,
+   "dur": 2.88,
+   "accent": 0.006,
+   "accent_top": "indian",
+   "score": 4.75,
+   "heard": "I was asleep when Claude wrote this."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.843,
+   "floor_db": -23.3,
+   "dur": 2.72,
+   "accent": 0.058,
+   "accent_top": "indian",
+   "score": 6.806,
    "heard": "I was asleep when Claude wrote this."
   }
  ],
@@ -44,6 +63,8 @@
    "sim": 0.92,
    "floor_db": -39.8,
    "dur": 7.2,
+   "accent": 0.32,
+   "accent_top": "indian",
    "score": 1.418,
    "heard": "it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
   },
@@ -53,26 +74,43 @@
    "sim": 0.94,
    "floor_db": -39.9,
    "dur": 6.64,
+   "accent": 0.309,
+   "accent_top": "indian",
    "score": 1.238,
    "heard": "it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.921,
-   "floor_db": -54.1,
-   "dur": 6.56,
-   "score": 0.629,
-   "heard": "It read my inbox and calendar and it runs every weekday at seven. Here's the setup"
+   "sim": 0.938,
+   "floor_db": -46.0,
+   "dur": 6.8,
+   "accent": 0.347,
+   "accent_top": "indian",
+   "score": 0.5,
+   "heard": "it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.062,
-   "sim": 0.933,
-   "floor_db": -53.9,
-   "dur": 7.2,
-   "score": 1.164,
-   "heard": "It reads my inbox and calendar and it runs every weekday at 7.  Here's the setup."
+   "sim": 0.937,
+   "floor_db": -56.1,
+   "dur": 6.96,
+   "accent": 0.341,
+   "accent_top": "indian",
+   "score": 1.125,
+   "heard": "9, it read my inbox and calendar and it runs every weekday at 7. Here's the setup."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.932,
+   "floor_db": -46.2,
+   "dur": 6.0,
+   "accent": 0.39,
+   "accent_top": "indian",
+   "score": 0.546,
+   "heard": "It read my inbox and calendar and it runs every weekday at 7.  Here's the setup."
   }
  ],
  "l03": [
@@ -82,6 +120,8 @@
    "sim": 0.9,
    "floor_db": -34.0,
    "dur": 6.08,
+   "accent": 0.385,
+   "accent_top": "indian",
    "score": 3.984,
    "heard": "Step 1. Connect Gmail and Google Calendar in Clod that's customized then connectors"
   },
@@ -91,26 +131,43 @@
    "sim": 0.918,
    "floor_db": -44.3,
    "dur": 8.24,
+   "accent": 0.296,
+   "accent_top": "indian",
    "score": 1.539,
    "heard": "Step one, connect Gmail and Google Calendar in Claude that's customized then connectors"
   },
   {
-   "take": "xvec1",
-   "wer": 0.154,
-   "sim": 0.929,
-   "floor_db": -39.0,
-   "dur": 6.88,
-   "score": 2.999,
-   "heard": "Step one, connect Gmail and Google Calendar in Claude that's customized and connectors."
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.94,
+   "floor_db": -47.7,
+   "dur": 7.92,
+   "accent": 0.249,
+   "accent_top": "indian",
+   "score": 0.478,
+   "heard": "Step one, connect Gmail and Google Calendar.  In Claude, that's customize, then connectors."
   },
   {
-   "take": "xvec2",
-   "wer": 0.077,
-   "sim": 0.94,
-   "floor_db": -44.9,
-   "dur": 7.2,
-   "score": 1.261,
-   "heard": "Step 1. Connect Gmail and Google Calendar in Claude that's customized then connectors."
+   "take": "iclAB2",
+   "wer": 0.154,
+   "sim": 0.944,
+   "floor_db": -54.8,
+   "dur": 7.28,
+   "accent": 0.361,
+   "accent_top": "indian",
+   "score": 1.985,
+   "heard": "Step 1. Connect Gmail and Google Calendar in Claude that's customized and connectors."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.928,
+   "floor_db": -50.7,
+   "dur": 7.44,
+   "accent": 0.42,
+   "accent_top": "indian",
+   "score": 0.58,
+   "heard": "Step 1. Connect Gmail and Google Calendar. In Claude, that's customize, then connectors."
   }
  ],
  "l04": [
@@ -120,6 +177,8 @@
    "sim": 0.917,
    "floor_db": -47.8,
    "dur": 8.96,
+   "accent": 0.322,
+   "accent_top": "indian",
    "score": 0.662,
    "heard": "Step 2. Write the brief like you'd brief a person today's meetings, emails that need  me and anything I promised someone."
   },
@@ -129,26 +188,43 @@
    "sim": 0.897,
    "floor_db": -39.2,
    "dur": 7.92,
+   "accent": 0.366,
+   "accent_top": "indian",
    "score": 2.171,
    "heard": "Step two, write the brief like you'd brief a person today's meetings, emails  that need me and anything I promise someone."
   },
   {
-   "take": "xvec1",
-   "wer": 0.048,
-   "sim": 0.921,
-   "floor_db": -56.6,
-   "dur": 10.16,
-   "score": 1.106,
-   "heard": "Step 2. Write the brief like you'd brief a person.  Today's meetings, emails that need me, and anything I promise someone."
+   "take": "iclAB1",
+   "wer": 0.143,
+   "sim": 0.913,
+   "floor_db": -48.8,
+   "dur": 8.0,
+   "accent": 0.458,
+   "accent_top": "indian",
+   "score": 2.125,
+   "heard": "Step 2. Write the brief like you would brief a person. Today's meetings, emails that need  me and anything I promise someone."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
+   "wer": 0.048,
+   "sim": 0.922,
+   "floor_db": -35.1,
+   "dur": 8.72,
+   "accent": 0.402,
+   "accent_top": "indian",
+   "score": 2.592,
+   "heard": "Step 2, write the brief like you'd brief a person, today's meetings, emails that need  me and anything I promise someone."
+  },
+  {
+   "take": "iclAB3",
    "wer": 0.0,
-   "sim": 0.895,
+   "sim": 0.921,
    "floor_db": -44.2,
-   "dur": 8.8,
-   "score": 0.958,
-   "heard": "Step 2. Write the brief like you'd brief a person, today's meetings, emails that need me and anything I promised someone."
+   "dur": 9.2,
+   "accent": 0.423,
+   "accent_top": "indian",
+   "score": 0.762,
+   "heard": "Step 2. Write the brief like you'd brief a person. Today's meetings, emails that need  me and anything I promised someone."
   }
  ],
  "l05": [
@@ -158,6 +234,8 @@
    "sim": 0.911,
    "floor_db": -28.5,
    "dur": 4.64,
+   "accent": 0.419,
+   "accent_top": "indian",
    "score": 3.183,
    "heard": "3 sections, 5 lines each and skip the newsletters."
   },
@@ -167,26 +245,43 @@
    "sim": 0.891,
    "floor_db": -50.1,
    "dur": 6.0,
-   "score": 0.869,
+   "accent": 0.039,
+   "accent_top": "indian",
+   "score": 3.648,
    "heard": "3 sections, 5 lines each and skip the newsletters."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.921,
-   "floor_db": -50.2,
-   "dur": 4.8,
-   "score": 0.631,
-   "heard": "3 sections, 5 lines each, and skip the newsletters."
+   "sim": 0.893,
+   "floor_db": -58.6,
+   "dur": 5.04,
+   "accent": 0.521,
+   "accent_top": "indian",
+   "score": 0.856,
+   "heard": "3 sections, 5 lines each and skip the newsletters."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.913,
-   "floor_db": -41.3,
+   "sim": 0.893,
+   "floor_db": -94.0,
    "dur": 4.08,
-   "score": 1.246,
-   "heard": "Three sections, five lines each, and skip the newsletters."
+   "accent": 0.509,
+   "accent_top": "indian",
+   "score": 0.853,
+   "heard": "3 sections, 5 lines each and skip the newsletters."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.909,
+   "floor_db": -44.4,
+   "dur": 4.56,
+   "accent": 0.386,
+   "accent_top": "indian",
+   "score": 0.823,
+   "heard": "3 sections, 5 lines each and skip the newsletters."
   }
  ],
  "l06": [
@@ -196,6 +291,8 @@
    "sim": 0.893,
    "floor_db": -28.6,
    "dur": 8.96,
+   "accent": 0.243,
+   "accent_top": "indian",
    "score": 3.31,
    "heard": "Step 3. Tell Claude every weekday at 7. Run this, answer its questions, then hit Schedule."
   },
@@ -205,26 +302,43 @@
    "sim": 0.911,
    "floor_db": -50.1,
    "dur": 8.4,
+   "accent": 0.296,
+   "accent_top": "indian",
    "score": 0.715,
    "heard": "Step three, tell Claude every weekday at seven, run this, answer its questions, then hit schedule."
   },
   {
-   "take": "xvec1",
-   "wer": 0.0,
-   "sim": 0.907,
-   "floor_db": -55.7,
-   "dur": 8.64,
-   "score": 0.742,
-   "heard": "Step 3. Tell Claude every weekday at 7 run this. Answer its questions then hit  schedule."
+   "take": "iclAB1",
+   "wer": 0.062,
+   "sim": 0.913,
+   "floor_db": -49.3,
+   "dur": 8.16,
+   "accent": 0.313,
+   "accent_top": "indian",
+   "score": 1.322,
+   "heard": "Step 3, tell clot every weekday at 7, run this, answer its questions, then hit schedule."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
+   "wer": 0.062,
+   "sim": 0.936,
+   "floor_db": -49.1,
+   "dur": 8.24,
+   "accent": 0.323,
+   "accent_top": "indian",
+   "score": 1.139,
+   "heard": "Step 3, tell Claude every weekday at 7, run this, answer his questions then hit schedule."
+  },
+  {
+   "take": "iclAB3",
    "wer": 0.0,
-   "sim": 0.922,
-   "floor_db": -54.7,
-   "dur": 7.52,
-   "score": 0.628,
-   "heard": "Step 3. Tell Claude, every weekday at 7 run this. Answer its questions then hit schedule."
+   "sim": 0.91,
+   "floor_db": -48.2,
+   "dur": 8.08,
+   "accent": 0.347,
+   "accent_top": "indian",
+   "score": 0.723,
+   "heard": "Step 3. Tell Claude every weekday at 7. Run this, answer its questions, then hit schedule."
   }
  ],
  "l07": [
@@ -234,7 +348,9 @@
    "sim": 0.873,
    "floor_db": -28.8,
    "dur": 3.92,
-   "score": 3.451,
+   "accent": -0.144,
+   "accent_top": "us",
+   "score": 10.807,
    "heard": "It runs in the cloud so your laptop can sleep too."
   },
   {
@@ -243,25 +359,42 @@
    "sim": 0.869,
    "floor_db": -33.8,
    "dur": 3.84,
-   "score": 2.722,
+   "accent": 0.007,
+   "accent_top": "indian",
+   "score": 6.308,
    "heard": "It runs in the cloud so your laptop can sleep too."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.87,
-   "floor_db": -32.1,
-   "dur": 3.84,
-   "score": 2.969,
+   "sim": 0.849,
+   "floor_db": -48.8,
+   "dur": 3.68,
+   "accent": 0.323,
+   "accent_top": "indian",
+   "score": 1.205,
    "heard": "It runs in the cloud, so your laptop can sleep too."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.917,
-   "floor_db": -33.5,
-   "dur": 3.6,
-   "score": 2.389,
+   "sim": 0.848,
+   "floor_db": -52.6,
+   "dur": 4.32,
+   "accent": 0.183,
+   "accent_top": "indian",
+   "score": 1.215,
+   "heard": "it runs in the cloud so your laptop can sleep too"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -39.3,
+   "dur": 4.24,
+   "accent": 0.007,
+   "accent_top": "indian",
+   "score": 5.441,
    "heard": "It runs in the cloud, so your laptop can sleep too."
   }
  ],
@@ -272,7 +405,9 @@
    "sim": 0.889,
    "floor_db": -49.2,
    "dur": 6.8,
-   "score": 0.886,
+   "accent": -0.113,
+   "accent_top": "australia",
+   "score": 7.451,
    "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
   },
   {
@@ -281,25 +416,86 @@
    "sim": 0.9,
    "floor_db": -56.9,
    "dur": 6.88,
-   "score": 0.798,
+   "accent": 0.019,
+   "accent_top": "indian",
+   "score": 4.081,
    "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
+   "wer": 0.062,
+   "sim": 0.889,
+   "floor_db": -58.2,
+   "dur": 6.4,
+   "accent": 0.17,
+   "accent_top": "indian",
+   "score": 1.509,
+   "heard": "Step 4. Read it with your coffee. Every run, wait for you as its own session."
+  },
+  {
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.905,
-   "floor_db": -58.7,
+   "sim": 0.906,
+   "floor_db": -39.6,
+   "dur": 6.88,
+   "accent": -0.091,
+   "accent_top": "us",
+   "score": 7.593,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.898,
+   "floor_db": -49.3,
    "dur": 6.64,
-   "score": 0.758,
+   "accent": -0.053,
+   "accent_top": "us",
+   "score": 5.891,
    "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB4",
+   "wer": 0.062,
+   "sim": 0.901,
+   "floor_db": -49.0,
+   "dur": 6.72,
+   "accent": -0.005,
+   "accent_top": "australia",
+   "score": 5.3,
+   "heard": "Step 4. Read it with your coffee. Every run wait for you as its own session."
+  },
+  {
+   "take": "iclAB5",
+   "wer": 0.062,
+   "sim": 0.908,
+   "floor_db": -51.7,
+   "dur": 7.04,
+   "accent": 0.046,
+   "accent_top": "indian",
+   "score": 3.952,
+   "heard": "Step 4. Read it with your coffee. Every run wait for you as its own session."
+  },
+  {
+   "take": "iclAB6",
    "wer": 0.0,
-   "sim": 0.877,
-   "floor_db": -41.9,
-   "dur": 5.76,
-   "score": 1.453,
+   "sim": 0.855,
+   "floor_db": -49.2,
+   "dur": 6.24,
+   "accent": 0.251,
+   "accent_top": "indian",
+   "score": 1.158,
+   "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
+  },
+  {
+   "take": "iclAB7",
+   "wer": 0.0,
+   "sim": 0.918,
+   "floor_db": -51.5,
+   "dur": 7.12,
+   "accent": 0.271,
+   "accent_top": "indian",
+   "score": 0.659,
    "heard": "Step 4. Read it with your coffee. Every run waits for you as its own session."
   }
  ],
@@ -310,7 +506,9 @@
    "sim": 0.898,
    "floor_db": -45.5,
    "dur": 6.56,
-   "score": 2.152,
+   "accent": 0.138,
+   "accent_top": "indian",
+   "score": 2.443,
    "heard": "The clever part, ask it to draft your reply, sending still waits for your OK."
   },
   {
@@ -319,26 +517,43 @@
    "sim": 0.923,
    "floor_db": -55.8,
    "dur": 7.36,
-   "score": 1.279,
+   "accent": -0.016,
+   "accent_top": "us",
+   "score": 5.42,
    "heard": "The clever part, ask it to draft your replies, sending still waits for your OK."
   },
   {
-   "take": "xvec1",
-   "wer": 0.067,
-   "sim": 0.886,
-   "floor_db": -50.3,
-   "dur": 5.2,
-   "score": 1.575,
-   "heard": "The clever part, ask it to draft your replies, sending still waits for your OK."
+   "take": "iclAB1",
+   "wer": 0.133,
+   "sim": 0.908,
+   "floor_db": -52.6,
+   "dur": 5.92,
+   "accent": 0.365,
+   "accent_top": "indian",
+   "score": 2.072,
+   "heard": "The clever part, ask you to draft your replies.  Sending still waits for your OK."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
+   "wer": 0.133,
+   "sim": 0.887,
+   "floor_db": -53.2,
+   "dur": 7.28,
+   "accent": 0.095,
+   "accent_top": "indian",
+   "score": 3.615,
+   "heard": "Again, the clever part, ask it to draft your replies, sending still waits for your OK."
+  },
+  {
+   "take": "iclAB3",
    "wer": 0.0,
-   "sim": 0.897,
-   "floor_db": -47.3,
-   "dur": 6.4,
-   "score": 0.822,
-   "heard": "The clever part? Ask it to draft your replies. Sending still waits for your okay."
+   "sim": 0.916,
+   "floor_db": -48.9,
+   "dur": 6.64,
+   "accent": 0.264,
+   "accent_top": "indian",
+   "score": 0.674,
+   "heard": "the clever part, ask it to draft your replies, sending still waits for your... okay."
   }
  ],
  "l10": [
@@ -348,6 +563,8 @@
    "sim": 0.921,
    "floor_db": -32.7,
    "dur": 9.6,
+   "accent": 0.305,
+   "accent_top": "indian",
    "score": 2.483,
    "heard": "The catch scheduling needs a paid plan, it sees one Google account, it can't open attachments  and on work accounts your admin has to switch it on."
   },
@@ -357,26 +574,43 @@
    "sim": 0.946,
    "floor_db": -41.9,
    "dur": 10.88,
+   "accent": 0.335,
+   "accent_top": "indian",
    "score": 0.899,
    "heard": "the catch, scheduling needs a paid plan, it sees one Google account, it can't open  attachments and on work accounts your admin has to switch it on."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.921,
-   "floor_db": -47.3,
-   "dur": 10.4,
-   "score": 0.629,
-   "heard": "The catch, scheduling needs a paid plan.  It sees one Google account, it can't open attachments, and on work accounts your admin  has to switch it on."
+   "sim": 0.943,
+   "floor_db": -53.8,
+   "dur": 10.64,
+   "accent": 0.37,
+   "accent_top": "indian",
+   "score": 0.46,
+   "heard": "The catch, scheduling needs a paid plan.  It sees one Google account, it can't open attachments, and on work accounts, your admin  has to switch it on."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.894,
-   "floor_db": -49.3,
-   "dur": 11.6,
-   "score": 0.845,
-   "heard": "The catch, scheduling needs a paid plan, it sees one Google account, it can't open attachments  and on work accounts your admin has to switch it on."
+   "sim": 0.93,
+   "floor_db": -45.1,
+   "dur": 10.56,
+   "accent": 0.298,
+   "accent_top": "indian",
+   "score": 0.558,
+   "heard": "the catch. Scheduling needs a paid plan. It sees one Google account, it can't open  attachments and on work accounts your admin has to switch it on."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.94,
+   "floor_db": -40.5,
+   "dur": 10.96,
+   "accent": 0.248,
+   "accent_top": "indian",
+   "score": 1.146,
+   "heard": "the catch. Scheduling needs a paid plan. It sees one Google account. It can't open attachments  and on work accounts your admin has to switch it on."
   }
  ],
  "l11": [
@@ -386,7 +620,9 @@
    "sim": 0.88,
    "floor_db": -27.9,
    "dur": 3.12,
-   "score": 3.528,
+   "accent": -0.197,
+   "accent_top": "england",
+   "score": 12.195,
    "heard": "Save this and follow for more."
   },
   {
@@ -395,25 +631,86 @@
    "sim": 0.877,
    "floor_db": -53.3,
    "dur": 3.52,
-   "score": 2.649,
+   "accent": -0.062,
+   "accent_top": "ireland",
+   "score": 7.95,
    "heard": "in, save this and follow for more."
   },
   {
-   "take": "xvec1",
+   "take": "iclAB1",
    "wer": 0.0,
-   "sim": 0.849,
-   "floor_db": -26.2,
-   "dur": 2.4,
-   "score": 4.033,
+   "sim": 0.833,
+   "floor_db": -61.6,
+   "dur": 3.04,
+   "accent": 0.076,
+   "accent_top": "indian",
+   "score": 3.196,
    "heard": "Save this and follow for more."
   },
   {
-   "take": "xvec2",
+   "take": "iclAB2",
    "wer": 0.0,
-   "sim": 0.896,
-   "floor_db": -53.5,
+   "sim": 0.882,
+   "floor_db": -43.4,
+   "dur": 2.96,
+   "accent": -0.174,
+   "accent_top": "us",
+   "score": 9.28,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.83,
+   "floor_db": -55.2,
+   "dur": 2.96,
+   "accent": -0.299,
+   "accent_top": "england",
+   "score": 12.575,
+   "heard": "save this and follow for more."
+  },
+  {
+   "take": "iclAB4",
+   "wer": 0.0,
+   "sim": 0.872,
+   "floor_db": -47.2,
    "dur": 3.04,
-   "score": 0.829,
+   "accent": -0.125,
+   "accent_top": "england",
+   "score": 7.892,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "iclAB5",
+   "wer": 0.0,
+   "sim": 0.855,
+   "floor_db": -118.0,
+   "dur": 3.36,
+   "accent": -0.067,
+   "accent_top": "us",
+   "score": 6.575,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "iclAB6",
+   "wer": 0.0,
+   "sim": 0.858,
+   "floor_db": -44.7,
+   "dur": 2.56,
+   "accent": 0.148,
+   "accent_top": "indian",
+   "score": 1.226,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "iclAB7",
+   "wer": 0.0,
+   "sim": 0.905,
+   "floor_db": -48.0,
+   "dur": 3.36,
+   "accent": -0.251,
+   "accent_top": "us",
+   "score": 10.777,
    "heard": "Save this and follow for more."
   }
  ]

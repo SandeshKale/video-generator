@@ -5,7 +5,7 @@
 import sys, os, json, time, torch, numpy as np, soundfile as sf
 from qwen_tts import Qwen3TTSModel
 out, ref, rtext = sys.argv[1:4]; os.makedirs(out, exist_ok=True)
-lines = json.load(open(os.path.join(os.path.dirname(__file__), 'lines.json')))
+lines = json.load(open(os.environ.get('LINES', os.path.join(os.path.dirname(__file__), 'lines.json'))))
 torch.set_num_threads(4)
 m = Qwen3TTSModel.from_pretrained('Qwen/Qwen3-TTS-12Hz-0.6B-Base', device_map='cpu', dtype=torch.float32)
 MODES = os.environ.get('MODES', 'xvec,icl').split(','); SEEDS = [int(x) for x in os.environ.get('SEEDS', '1,2').split(',')]
