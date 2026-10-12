@@ -1,0 +1,192 @@
+{
+ "_note": "Hand-maintained tags per reel folder for scripts/ig_insights.py. Add every new reel when it ships. voice: none = music + on-screen text only; avatar = creator AI-avatar clips; clone = creator cloned voice; kokoro = stock TTS.",
+ "reel-ai-adobe-clones": {
+  "genre": "news",
+  "company": "adobe",
+  "voice": "avatar",
+  "host": "yes",
+  "length": "61-75s"
+ },
+ "reel-ai-chat-not-diary": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-ai-cheats-starcraft": {
+  "genre": "news",
+  "company": "google",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-ai-jagged-frontier": {
+  "genre": "explainer",
+  "company": "general",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-ai-offline-laptop": {
+  "genre": "tutorial",
+  "company": "general",
+  "voice": "avatar",
+  "host": "yes",
+  "length": "61-75s"
+ },
+ "reel-ai-reads-tokens": {
+  "genre": "explainer",
+  "company": "general",
+  "voice": "avatar",
+  "host": "yes",
+  "length": "61-75s"
+ },
+ "reel-ai-rich-upsell": {
+  "genre": "news",
+  "company": "general",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-ai-roast-me": {
+  "genre": "trend",
+  "company": "general",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-ai-shopping-agent": {
+  "genre": "news",
+  "company": "general",
+  "voice": "avatar",
+  "host": "yes",
+  "length": "<=60s"
+ },
+ "reel-ai-trading-pipeline": {
+  "genre": "tutorial",
+  "company": "anthropic",
+  "voice": "avatar",
+  "host": "yes",
+  "length": "61-75s"
+ },
+ "reel-anthropic-bio-lab": {
+  "genre": "news",
+  "company": "anthropic",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-apple-camera-no-video": {
+  "genre": "news",
+  "company": "apple",
+  "voice": "kokoro",
+  "host": "yes",
+  "length": "61-75s"
+ },
+ "reel-chatgpt-intelligent-ui": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "kokoro-hindi",
+  "host": "no",
+  "length": ">75s"
+ },
+ "reel-claude-price-war": {
+  "genre": "news",
+  "company": "anthropic",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-google-suncatcher": {
+  "genre": "news",
+  "company": "google",
+  "voice": "kokoro",
+  "host": "no",
+  "length": ">75s"
+ },
+ "reel-humanoid-cage-match": {
+  "genre": "news",
+  "company": "robotics",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-hyundai-atlas-strike": {
+  "genre": "news",
+  "company": "robotics",
+  "voice": "kokoro",
+  "host": "no",
+  "length": ">75s"
+ },
+ "reel-meta-muse-takeover": {
+  "genre": "news",
+  "company": "meta",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-morning-brief": {
+  "genre": "tutorial",
+  "company": "anthropic",
+  "voice": "clone",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-openai-agent-swarm": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-openai-agents-escaped": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-openai-dots-vs-grok": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-openai-loop-method": {
+  "genre": "tutorial",
+  "company": "openai",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-openai-pro-max": {
+  "genre": "news",
+  "company": "openai",
+  "voice": "none",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-plate-reader": {
+  "genre": "news",
+  "company": "general",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "<=60s"
+ },
+ "reel-robot-cartwheel": {
+  "genre": "news",
+  "company": "robotics",
+  "voice": "kokoro",
+  "host": "no",
+  "length": "61-75s"
+ },
+ "reel-teach-a-skill": {
+  "genre": "tutorial",
+  "company": "anthropic",
+  "voice": "clone",
+  "host": "no",
+  "length": "<=60s"
+ }
+}
