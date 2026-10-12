@@ -144,7 +144,7 @@ def flipfx(): x = tt(.18); return bp(rng.standard_normal(len(x)), 1500, 6000) * 
 def lidfx(): x = tt(.3); return lp(rng.standard_normal(len(x)), 500) * np.exp(-x * 25) + np.sin(2 * np.pi * 95 * x) * np.exp(-x * 20) * .6
 def drawerfx(d=.55):   # wooden drawer on runners: filtered noise rumble + a soft end knock
     x = tt(d); y = bp(rng.standard_normal(len(x)), 180, 1400) * (np.sin(np.linspace(0, np.pi, len(x))) ** 1.5) * (.7 + .3 * np.sin(2 * np.pi * 23 * x))
-    k = thunkfx() * .35; return np.concatenate([y, np.zeros(len(k))]) + np.pad(k, (len(x) - int(.05 * SR), 0))[:len(x) + len(k)]
+    k = thunkfx() * .35; out = np.zeros(len(x) + len(k)); out[:len(x)] += y; o = len(x) - int(.05 * SR); out[o:o + len(k)] += k; return out
 def cardfx(): x = tt(.12); return bp(rng.standard_normal(len(x)), 1200, 7000) * np.exp(-x * 35) * .8
 def bellfx(): return bell(96, .9, 1.0)
 def pourfx(): x = tt(1.2); return bp(rng.standard_normal(len(x)), 2500, 8000) * (.4 + .6 * (np.sin(2 * np.pi * 9 * x) > .7)) * np.sin(np.linspace(0, np.pi, len(x))) * .5
@@ -156,21 +156,21 @@ for e in ev['sfx']:
     if k == 'flick': S(cardfx(), t, .2)
     elif k == 'paste': S(clackfx(), t, .22); S(popfx(), t + .03, .1)
     elif k == 'clink': S(bell(88, .6, 1.0), t, .08)
-    elif k == 'drawer': S(drawerfx(), t + .3, .34, True)
+    elif k == 'drawer': put(sfx, drawerfx(.8), t, .24 * g)   # starts with the slide, knock lands at the end (not peak-aligned)
     elif k == 'lower': S(cardfx(), t, .14)
     elif k == 'lift': S(cardfx(), t, .16)
     elif k == 'tick': S(tickfx(), t, .13 * g)
     elif k == 'card': S(cardfx(), t, .16 * g)
-    elif k == 'stamp': S(stampfx(), t, .28 * g, True)
-    elif k == 'type': S(typefx() + keyclick(1.0)[:len(typefx())], t, .14 * g)
+    elif k == 'stamp': S(stampfx(), t, .22 * g, True)
+    elif k == 'type': S(tkey(1.0), t, .16 * g)
     elif k == 'clip': S(clipfx(), t, .2)
     elif k == 'send': S(popfx(), t, .16)
     elif k == 'bell': S(bellfx(), t, .1)
     elif k == 'hl': S(bp(rng.standard_normal(int(.25 * SR)), 2000, 6000) * np.hanning(int(.25 * SR)), t, .08)
-    elif k == 'thunk': S(thunkfx(), t, .34, True)
-    elif k == 'toggle': S(togglefx(), t, .2)
+    elif k == 'thunk': S(thunkfx(), t, .2)
+    elif k == 'toggle': S(togglefx(), t, .12)
     elif k == 'step': S(stepfx(), t, .2 * g)
-    elif k == 'ding': S(dingfx(), t, .12)
+    elif k == 'ding': S(dingfx(), t, .06)
     elif k == 'pour': put(sfx, pourfx(), t, .12)
     elif k == 'pop': S(popfx(), t, .16)
     elif k == 'thud': S(thunkfx(), t, .3, True); S(cardfx(), t, .12)
@@ -209,10 +209,13 @@ seps = np.array(seps)
 wavfile.write('audio/premaster.wav', SR, (np.clip(mix / max(1, np.abs(mix).max() / .9), -1, 1) * 32767).astype('int16'))
 wavfile.write('audio/music_stem.wav', SR, (np.clip(music_m / max(1e-9, np.abs(mix).max() / .9), -1, 1) * 32767).astype('int16'))
 # ---------- master: limiter + two-pass loudnorm to -14 LUFS / -1 dBTP ----------
-m1 = subprocess.run(['ffmpeg', '-hide_banner', '-i', 'audio/premaster.wav', '-af', 'alimiter=limit=0.89:attack=5:release=60,loudnorm=I=-14:TP=-1:LRA=9:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
+m1 = subprocess.run(['ffmpeg', '-hide_banner', '-i', 'audio/premaster.wav', '-af', 'acompressor=threshold=-20dB:ratio=2:attack=10:release=150:makeup=1,alimiter=limit=0.7:attack=5:release=60,loudnorm=I=-14:TP=-1:LRA=9:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
 J = json.loads(m1[m1.rindex('{'):m1.rindex('}') + 1])
-af = ('alimiter=limit=0.89:attack=5:release=60,loudnorm=I=-14:TP=-1:LRA=9:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true' % (J['input_i'], J['input_tp'], J['input_lra'], J['input_thresh'], J['target_offset']))
-subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/premaster.wav', '-af', af, '-ar', '48000', '-ac', '1', 'audio/final.wav'])
+af = ('acompressor=threshold=-20dB:ratio=2:attack=10:release=150:makeup=1,alimiter=limit=0.7:attack=5:release=60,loudnorm=I=-14:TP=-1:LRA=9:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true' % (J['input_i'], J['input_tp'], J['input_lra'], J['input_thresh'], J['target_offset']))
+subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/premaster.wav', '-af', af, '-ar', '48000', '-ac', '1', 'audio/final_ln.wav'])
+I0 = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', subprocess.run(['ffmpeg', '-hide_banner', '-i', 'audio/final_ln.wav', '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr)[-1])
+# linear loudnorm stops short when the true-peak ceiling binds: make up the rest with gain into an oversampled peak limiter
+subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/final_ln.wav', '-af', 'aresample=192000,volume=%.2fdB,alimiter=limit=0.84:attack=2:release=50:level=false,aresample=48000' % (-14.0 - I0), '-ac', '1', 'audio/final.wav'])
 def ebur(p):
     o = subprocess.run(['ffmpeg', '-hide_banner', '-i', p, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
     I = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', o)[-1]); TP = float(re.findall(r'Peak:\s+(-?[\d.]+) dBFS', o)[-1]); return I, TP

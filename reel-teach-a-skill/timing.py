@@ -1,7 +1,7 @@
 # Join the chosen voice lines (vo/lNN.wav) into audio/voice.wav with breathing gaps, and write site/timing.js:
 #   SC = scene start times, WD = words {p: line, w: display word, k: key, s, e}, PG = caption pages (word indices), TOTAL.
 # Display words come from the script (so "A I" shows as "AI"); times come from Whisper on the chosen take.
-import json, re, numpy as np, soundfile as sf
+import json, re, difflib, numpy as np, soundfile as sf
 SR = 24000
 DISPLAY = [
  "You keep explaining the same thing to AI. Teach it once instead.",
@@ -27,18 +27,32 @@ for i, txt in enumerate(DISPLAY):
     pcm.append(np.zeros(int(GAP[i] * SR), np.float32)); t += GAP[i]
     if SCENE_OF_LINE[i] == len(SC): SC.append(0.0 if i == 0 else round(t - LEAD, 3))
     disp, wh = txt.split(), tm[sid]['words']
-    if len(wh) == len(disp): times = [(w['s'], w['e']) for w in wh]
-    else:  # proportional by characters across the spoken span
-        s0, s1 = wh[0]['s'], wh[-1]['e']; L = [len(w) + 1 for w in disp]; c = np.cumsum([0] + L) / sum(L)
-        times = [(s0 + (s1 - s0) * c[j], s0 + (s1 - s0) * c[j + 1]) for j in range(len(disp))]
-        print('proportional', sid, len(wh), len(disp))
+    # align display words to Whisper words by text (numbers mapped to words); unmatched words share their neighbours' spans
+    NUM = {'1': 'one', '2': 'two', '3': 'three', '4': 'four', '100': 'hundred'}
+    hk = [NUM.get(key(w['w']).strip("'"), key(w['w'])) for w in wh]; dk = [key(w) for w in disp]
+    times = [None] * len(disp)
+    for blk in difflib.SequenceMatcher(None, dk, hk, autojunk=False).get_matching_blocks():
+        for q in range(blk.size): times[blk.a + q] = (wh[blk.b + q]['s'], wh[blk.b + q]['e'])
+    for j in range(len(disp)):
+        if times[j] is None:   # take the start of the next matched word's span (e.g. "a" in "a hundred" -> "100")
+            nx = next((times[q] for q in range(j + 1, len(disp)) if times[q]), None); pv = times[j - 1] if j else None
+            if nx: s_, e_ = (pv[1] if pv else nx[0]), nx[0] + .3 * (nx[1] - nx[0]); times[j] = (min(s_, nx[0]), max(min(s_, nx[0]) + .05, e_))
+            else: times[j] = (pv[1], pv[1] + .2)
+            print('filled', sid, disp[j])
     base = len(WD)
     for w, (s, e) in zip(disp, times): WD.append(dict(p=i + 1, w=w, k=key(w), s=round(t + s, 3), e=round(t + e, 3)))
-    # caption pages: break after sentence punctuation or at 6 words
-    page = []
-    for j in range(len(disp)):
-        page.append(base + j)
-        if j == len(disp) - 1 or len(page) >= 6 or (disp[j][-1] in '.?:' and len(page) >= 2): PG.append(page); page = []
+    # caption pages: split at clause punctuation, merge short clauses up to 7 words, split long ones evenly
+    cl, cur = [], []
+    for j, w in enumerate(disp):
+        cur.append(base + j)
+        if w[-1] in '.?:,' or j == len(disp) - 1: cl.append(cur); cur = []
+    merged = []
+    for c in cl:
+        if merged and len(merged[-1]) + len(c) <= 7 and WD[merged[-1][-1]]['w'][-1] not in '.?:': merged[-1] += c
+        else: merged.append(c)
+    for c in merged:
+        k = -(-len(c) // 7); n = -(-len(c) // k)
+        for q in range(0, len(c), n): PG.append(c[q:q + n])
     pcm.append(a.astype(np.float32)); t += len(a) / SR
 pcm.append(np.zeros(int(TAIL * SR), np.float32)); t += TAIL
 x = np.concatenate(pcm); sf.write('audio/voice.wav', x, SR)

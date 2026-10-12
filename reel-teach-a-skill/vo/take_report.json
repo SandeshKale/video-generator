@@ -1,0 +1,200 @@
+{
+ "l01": [
+  {
+   "take": "l01_A0.wav",
+   "wer": 0.0,
+   "f0": 96.7,
+   "dur": 3.72,
+   "score": 0.2,
+   "heard": "You keep explaining the same thing to AI, teach it once instead."
+  },
+  {
+   "take": "l01_B0.wav",
+   "wer": 0.0,
+   "f0": 92.9,
+   "dur": 4.43,
+   "score": 0.391,
+   "heard": "You keep explaining the same thing to AI. Teach it once instead."
+  }
+ ],
+ "l02": [
+  {
+   "take": "l02_A0.wav",
+   "wer": 0.133,
+   "f0": 96.7,
+   "dur": 4.91,
+   "score": 1.533,
+   "heard": "A skill is a small instruction file, plot pulls out only when needed.  4 steps."
+  },
+  {
+   "take": "l02_B0.wav",
+   "wer": 0.067,
+   "f0": 94.5,
+   "dur": 5.94,
+   "score": 0.977,
+   "heard": "The skill is a small instruction file Claude pulls out only when needed four steps"
+  }
+ ],
+ "l03": [
+  {
+   "take": "l03_A0.wav",
+   "wer": 0.071,
+   "f0": 100.7,
+   "dur": 4.8,
+   "score": 0.714,
+   "heard": "Step 1. Pick a task you've explained more than twice like your weekly update."
+  },
+  {
+   "take": "l03_B0.wav",
+   "wer": 0.071,
+   "f0": 93.2,
+   "dur": 5.8,
+   "score": 1.092,
+   "heard": "Step 1. Pick a task you've explained more than twice, like your weekly update."
+  }
+ ],
+ "l04": [
+  {
+   "take": "l04_A0.wav",
+   "wer": 0.045,
+   "f0": 97.9,
+   "dur": 6.76,
+   "score": 0.598,
+   "heard": "Step 2. Ask Claude. Create a skill for my weekly team update. Add the format, the tone  and one example you liked."
+  },
+  {
+   "take": "l04_B0.wav",
+   "wer": 0.091,
+   "f0": 94.5,
+   "dur": 8.16,
+   "score": 1.219,
+   "heard": "Step 2. Ask Claude, create a skill for my weekly team update. Add the format, the tone and one example you like."
+  }
+ ],
+ "l05": [
+  {
+   "take": "l05_A0.wav",
+   "wer": 0.0,
+   "f0": 96.2,
+   "dur": 5.19,
+   "score": 0.227,
+   "heard": "Claude writes the skill file, a short name and a description of what it does and when."
+  },
+  {
+   "take": "l05_B0.wav",
+   "wer": 0.059,
+   "f0": 92.9,
+   "dur": 6.28,
+   "score": 0.979,
+   "heard": "In, Claude writes the skill file, a short name and a description of what it does and when."
+  }
+ ],
+ "l06": [
+  {
+   "take": "l06_A0.wav",
+   "wer": 0.167,
+   "f0": 108.6,
+   "dur": 5.4,
+   "score": 2.059,
+   "heard": "Step 3, save it and switch it on in skill settings.  In cloud code, it's just a folder."
+  },
+  {
+   "take": "l06_B0.wav",
+   "wer": 0.167,
+   "f0": 96.7,
+   "dur": 6.43,
+   "score": 1.866,
+   "heard": "In step 3, save it and switch it on in skill settings.  In Claude code, it's just a folder."
+  }
+ ],
+ "l07": [
+  {
+   "take": "l07_A0.wav",
+   "wer": 0.059,
+   "f0": 100.7,
+   "dur": 5.1,
+   "score": 0.588,
+   "heard": "Step 4. Test it in a new chat. If Claude doesn't pick it up, sharpen the description."
+  },
+  {
+   "take": "l07_B0.wav",
+   "wer": 0.118,
+   "f0": 95.1,
+   "dur": 6.2,
+   "score": 1.459,
+   "heard": "Step 4. Test it in a new chat. If cloud doesn't pick it up, sharpen the description."
+  }
+ ],
+ "l08": [
+  {
+   "take": "l08_A0.wav",
+   "wer": 0.125,
+   "f0": 104.3,
+   "dur": 5.28,
+   "score": 1.428,
+   "heard": "The clever part, until it's needed, a skill costs about 100 tokens, so keep dozens."
+  },
+  {
+   "take": "l08_B0.wav",
+   "wer": 0.188,
+   "f0": 100.1,
+   "dur": 6.27,
+   "score": 1.904,
+   "heard": "In the clever part, until it's needed, a skill costs about 100 tokens. So keep dozens."
+  }
+ ],
+ "l09": [
+  {
+   "take": "l09_A0.wav",
+   "wer": 0.0,
+   "f0": 98.4,
+   "dur": 7.56,
+   "score": 0.115,
+   "heard": "The catch, code execution must be on, skills don't sync between apps and only install  ones you trust, they can run code."
+  },
+  {
+   "take": "l09_B0.wav",
+   "wer": 0.045,
+   "f0": 97.9,
+   "dur": 8.94,
+   "score": 0.598,
+   "heard": "In the catch, code execution must be on. Skills don't sync between apps  and only install ones you trust. They can run code."
+  }
+ ],
+ "l10": [
+  {
+   "take": "l10_A0.wav",
+   "wer": 0.0,
+   "f0": 96.2,
+   "dur": 2.08,
+   "score": 0.227,
+   "heard": "Never put passwords in one."
+  },
+  {
+   "take": "l10_B0.wav",
+   "wer": 0.0,
+   "f0": 99.6,
+   "dur": 2.2,
+   "score": 0.058,
+   "heard": "Never put passwords in one."
+  }
+ ],
+ "l11": [
+  {
+   "take": "l11_A0.wav",
+   "wer": 0.0,
+   "f0": 94.8,
+   "dur": 2.16,
+   "score": 0.296,
+   "heard": "Save this and follow for more."
+  },
+  {
+   "take": "l11_B0.wav",
+   "wer": 0.0,
+   "f0": 92.9,
+   "dur": 2.3,
+   "score": 0.391,
+   "heard": "save this and follow for more."
+  }
+ ]
+}
