@@ -15,6 +15,7 @@ for sid, text in lines:
             f = f'{out}/{sid}_{mode}{seed}.wav'
             if os.path.exists(f): continue
             torch.manual_seed(seed); t1 = time.time()
-            w, sr = m.generate_voice_clone(text=text, language='English', voice_clone_prompt=P[mode], do_sample=True, temperature=0.8)
+            cap = int((len(text.split()) / 1.8 + 2.5) * 12 * 1.4)   # 12 Hz codec frames; caps a run that misses its end token
+            w, sr = m.generate_voice_clone(text=text, language='English', voice_clone_prompt=P[mode], do_sample=True, temperature=0.8, max_new_tokens=cap)
             sf.write(f, np.asarray(w[0], dtype=np.float32), sr); print(sid, mode, seed, f'{time.time()-t1:.0f}s', flush=True)
 print('ALLDONE', flush=True)
