@@ -290,3 +290,11 @@ DanielSWolf/rhubarb-lip-sync v1.13.0 (MIT; deps MIT/BSD) was run offline on the 
 - `assets/icons/phosphor/` (regular, bold, fill, duotone; MIT, Phosphor Icons), `assets/icons/heroicons/` (24px outline + solid; MIT, Tailwind Labs), `assets/icons/developer-icons/` (336 tech logos/marks; MIT, xandemon/developer-icons). Each folder keeps its LICENSE. The MIT licence covers the SVG files only: the company logos in `developer-icons` remain trademarks of their owners, so use them nominatively (to identify a product), as with the other logo sets.
 - `assets/hdri/` — 8 Poly Haven 1k HDRIs, CC0 (see its README).
 - Not vendored: Rokoko free animations (download needs an account/sign-up), Mixamo and Mixkit (no redistribution of the raw files), Storyset (free tier needs attribution), paid libraries.
+
+## SFX, brand marks and palettes added Oct 2026 (second batch)
+Licences were read from each repo's own LICENSE files before vendoring.
+- `assets/sfx/uisfx/` — UI SFX by Romain Simon / Yuki Capital: 12 sound packs × 39 cues, **MP3 only** (468 files, 5.3 MB; Ogg dropped), plus `manifest.json` (cue names and categories). **Audio is CC0** (`LICENSE-AUDIO`), the code licence is MIT (`LICENSE`). Decode with ffmpeg; place on measured word/beat peaks like the synthesized SFX in `audio.py`.
+- `assets/icons/simple-icons/` — ~3,466 monochrome brand SVGs plus `simple-icons.json` (official hex colours). **CC0-1.0**. The repo's `DISCLAIMER.md` applies: marks remain trademarks of their owners, use nominatively only.
+- `assets/logos/gilbarbara/` — ~1,990 multi-colour dev/tool SVG logos plus `logos.json`. **CC0-1.0** on the compilation; the marks themselves remain trademarks, nominative use only. Prefer this and simple-icons over the older `assets/logos/svg-logos/` (which has no licence grant).
+- `assets/palettes/` — `webgradients.json` (180 gradients, MIT, itmeo/webgradients) and `catppuccin.json` (MIT, Catppuccin palette).
+- Deliberately not vendored: engines/libraries (mermaid, shiki, excalidraw, three.js, vanta, particles.js, vivus, frappe-charts, animate.css, NES.css) — this repo vendors asset files, not runtimes, and most cannot be driven as a pure function of `t`; GPL-3.0 trianglify; CC-BY-SA OpenMoji and CC-BY Twemoji (attribution/share-alike terms); museum datasets (metadata-heavy, large); NASA/Khronos 3D (per-asset licences, large).
