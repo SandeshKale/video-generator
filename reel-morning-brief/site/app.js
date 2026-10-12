@@ -29,6 +29,7 @@ window.EV = [];   // events live in events.json (written by audio.py from the sa
 
 // ---------- wall clock: minutes after 6:00 ----------
 var VS = SC.slice(); VS[1] = SC[1] + .95;   // the hook holds through the music drop at SC[1]; the first cut lands ~1 s later
+window.VS = VS;
 function clockMin(t) { return t < SC[1] ? lerp(58.8, 60, t / SC[1]) : lerp(60, 100, (t - SC[1]) / (DUR - SC[1])); }
 var SKYS = [[58, ['#0f1530', '#1e2552', '#3b3f7a']], [60, ['#1e2552', '#4b4a8c', '#c98a8a']], [70, ['#5a5aa0', '#ff9f80', '#ffd2a8']], [86, ['#a9cff5', '#ffdcc0', '#fff1e2']], [100, ['#bfe0ff', '#ffe6cc', '#fff4e6']]];
 function hex(c) { return [1, 3, 5].map(function (k) { return parseInt(c.substr(k, 2), 16); }); }
@@ -63,7 +64,7 @@ A[0] = (function (P) { var s = {}, L = 1;
   s.img = s.room.querySelectorAll('img'); s.hs = s.room.querySelector('.hd2');
   var F = PR.bedroom.face, fc = [F.c[0], F.c[1] + 300];
   s.glow = D('left:' + (fc[0] - 160) + 'px;top:' + (fc[1] - 160) + 'px;width:320px;height:320px;border-radius:50%;background:radial-gradient(rgba(255,190,120,.35),transparent 70%)', '', P);
-  s.card = D('left:330px;top:440px;width:588px;padding:20px 26px 18px;border-radius:6px', '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double #1d1d24;padding-bottom:8px"><span style="font:800 34px NR;letter-spacing:-.02em">The 7 a.m. Edition</span><span class="mono" style="font-size:15px;color:#8b8172">MON 13 OCT</span></div><div class="r1" style="font:700 30px/1.35 IN;margin-top:12px"></div><div class="r2" style="font:700 30px/1.35 IN"></div><div class="r3" style="font:700 30px/1.35 IN"></div><div class="by" style="margin-top:12px;display:flex;align-items:center;gap:10px;font:700 15px RM;letter-spacing:.12em;color:#8b8172">' + logo('anthropic', 22, '#c9663f') + '<span>WRITTEN BY CLAUDE · 6:59 AM · ILLUSTRATIVE</span></div>', P, 'paper');
+  s.card = D('left:300px;top:440px;width:590px;padding:20px 26px 18px;border-radius:6px', '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double #1d1d24;padding-bottom:8px"><span style="font:800 34px NR;letter-spacing:-.02em">The 7 a.m. Edition</span><span class="mono" style="font-size:15px;color:#8b8172">MON 13 OCT</span></div><div class="r1" style="font:700 30px/1.35 IN;margin-top:12px"></div><div class="r2" style="font:700 30px/1.35 IN"></div><div class="r3" style="font:700 30px/1.35 IN"></div><div class="by" style="margin-top:12px;display:flex;align-items:center;gap:10px;font:700 15px RM;letter-spacing:.12em;color:#8b8172">' + logo('anthropic', 22, '#c9663f') + '<span>WRITTEN BY CLAUDE · 6:59 AM · ILLUSTRATIVE</span></div>', P, 'paper');
   s.r = [s.card.querySelector('.r1'), s.card.querySelector('.r2'), s.card.querySelector('.r3')]; s.by = s.card.querySelector('.by');
   s.lead = OV(D('left:0;top:0;width:1080px;height:1920px', '<svg width="1080" height="1920"><path d="M 560 740 C 560 820, ' + (fc[0] + 40) + ' ' + (fc[1] - 90) + ', ' + (fc[0] + 12) + ' ' + (fc[1] - 40) + '" fill="none" stroke="#ffb38a" stroke-width="3" stroke-dasharray="4 8"/></svg>', P));
   var rows = [['3', ' meetings today'], ['2', ' emails need a reply'], ['1', ' thing you promised']];
@@ -160,7 +161,7 @@ A[2] = (function (P) { var s = {}, L = 3;
   s.pc = D('left:150px;top:1214px;height:70px;font-size:24px;box-shadow:none;background:rgba(255,250,241,.92)', logo('gcal', 34, '#4285f4') + 'Calendar<span class="led" style="top:28px"></span>', P, 'plug');
   s.sock = D('left:434px;top:1080px;width:96px;height:204px;border-radius:14px;background:#2a2e48;box-shadow:inset 0 0 0 4px #474c70,0 12px 24px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#ffd3c7;font:700 15px RM;letter-spacing:.12em', logo('anthropic', 40, '#ff9b7a') + 'CLAUDE', P);
   s.c1 = D('left:556px;top:1092px;background:#fffaf1;color:#1d1d24;box-shadow:0 8px 18px rgba(0,0,0,.25)', 'REPEAT FOR GOOGLE CALENDAR', P, 'chip');
-  s.c2 = D('left:556px;top:1160px;background:rgba(16,20,44,.75);color:#ffd3c7', 'IN A CHAT: + → CONNECTORS → ON', P, 'chip');
+  s.c2 = D('left:562px;top:1160px;font-size:16px;background:rgba(16,20,44,.75);color:#ffd3c7', 'IN CHAT: + → CONNECTORS', P, 'chip');
   s.c3 = D('left:556px;top:1236px;font-size:13px;background:rgba(16,20,44,.6);color:#c8c3e0', 'MENU NAMES: CLAUDE DOCS · OCT 2026', P, 'illus');
   var t0 = VS[2], tG = W(L, 'gmail'), tC = W(L, 'calendar'), tCu = W(L, 'customize'), tCo = W(L, 'connectors');
   // rows advance through the scene; the two spoken menu names pulse when said
@@ -170,8 +171,8 @@ A[2] = (function (P) { var s = {}, L = 3;
     Array.prototype.forEach.call(s.rows, function (r, i) { r.className = 'row ' + (i < cur - 1 || (i === 5 && cur === 6) ? 'done' : (i === cur - 1 ? 'cur' : '')); r.querySelector('.n').textContent = (i < cur - 1 || (i === 5 && cur === 6)) ? '✓' : (i < 5 ? i + 1 : '✓');
       var pz = i === 0 ? pop(t, tCu, .4) : (i === 1 ? pop(t, tCo, .4) : 0); r.style.transform = 'scale(' + (1 + .04 * pz) + ')'; r.style.transformOrigin = '0 50%'; });
     var g = ec((t - tG) / .35), c = ec((t - tC) / .35);
-    s.pg.style.opacity = t < tG - .3 ? .25 : 1; s.pg.style.transform = 'translateX(' + (-60 * (1 - g)).toFixed(1) + 'px)'; s.pg.querySelector('.led').style.background = t > tG + .35 ? LEAF : '#c9c2b4'; s.pg.querySelector('.led').style.boxShadow = t > tG + .35 ? '0 0 12px ' + LEAF : 'none';
-    s.pc.style.opacity = t < tC - .3 ? .25 : 1; s.pc.style.transform = 'translateX(' + (-60 * (1 - c)).toFixed(1) + 'px)'; s.pc.querySelector('.led').style.background = t > tC + .35 ? LEAF : '#c9c2b4';
+    s.pg.style.opacity = t < tG - .3 ? .25 : 1; s.pg.style.transform = 'scale(' + (1 + .05 * pop(t, tG + .3, .3)).toFixed(4) + ')'; s.pg.querySelector('.pin').style.right = (-34 + 30 * (1 - g)).toFixed(1) + 'px'; s.pg.querySelector('.led').style.background = t > tG + .35 ? LEAF : '#c9c2b4'; s.pg.querySelector('.led').style.boxShadow = t > tG + .35 ? '0 0 12px ' + LEAF : 'none';
+    s.pc.style.opacity = t < tC - .3 ? .25 : 1; s.pc.style.transform = 'translateX(' + (8 * c).toFixed(1) + 'px) scale(' + (1 + .05 * pop(t, tC + .3, .3)).toFixed(4) + ')'; s.pc.querySelector('.led').style.background = t > tC + .35 ? LEAF : '#c9c2b4';
     settle(s.sock, t, t0 + .2, { y: 0, x: 0, s: .1 }); settle(s.c1, t, tC + .2, { x: 20, y: 0 }); settle(s.c2, t, tCo, { x: 20, y: 0 }); settle(s.c3, t, tCo + .3, { y: 0 });
     return 0; };
   return s; })(S[2]);
@@ -235,26 +236,31 @@ A[5] = (function (P) { var s = {}, L = 7;
   eyebrow(P, '// RUNS IN THE CLOUD', '#ffd3c7'); head(P, 'Your laptop<br><i>can sleep.</i>');
   s.badge = D('left:150px;top:520px;width:420px;padding:20px 24px;border-radius:18px;background:rgba(255,250,241,.95);box-shadow:0 18px 36px rgba(0,0,0,.35);display:flex;gap:18px;align-items:center', '<svg width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="38" fill="none" stroke="#e6ddcd" stroke-width="9"/><circle class="rg" cx="46" cy="46" r="38" fill="none" stroke="' + LEAF + '" stroke-width="9" stroke-linecap="round" stroke-dasharray="239" stroke-dashoffset="239" transform="rotate(-90 46 46)"/><g transform="translate(26 26)">' + ic('cloud', 40, SKY, 2.2) + '</g></svg><div><div style="font:700 17px RM;letter-spacing:.14em;color:#8b8172">RUNNING REMOTELY</div><div style="font:800 40px NR;letter-spacing:-.02em">7:00 AM</div><div style="font:500 20px IN;color:#4a4a52">Morning brief · weekdays</div></div>', P);
   s.rg = s.badge.querySelector('.rg');
-  s.fact = D('left:150px;top:690px;width:620px;background:rgba(16,20,44,.78);color:#fff1e6;white-space:normal;line-height:1.4;border-radius:14px;padding:12px 16px', 'Runs on schedule even when your computer is asleep or the app is closed.', P, 'chip');
+  s.fact = D('left:150px;top:745px;width:620px;background:rgba(16,20,44,.78);color:#fff1e6;white-space:normal;line-height:1.4;border-radius:14px;padding:12px 16px', 'Runs on schedule even when your computer is asleep or the app is closed.', P, 'chip');
   s.tag = D('left:150px;top:1250px;background:rgba(16,20,44,.7);color:#c8c3e0', 'AI-GENERATED IMAGE', P, 'illus');
+  var LOG = [['7:00:00', 'run starts'], ['7:00:04', 'reads Gmail'], ['7:00:07', 'reads Calendar'], ['7:00:12', 'brief written ✓']];
+  s.log = D('left:592px;top:520px;width:326px;padding:16px 18px;border-radius:14px;background:rgba(16,20,44,.82);box-shadow:0 18px 36px rgba(0,0,0,.35);color:#fff1e6', '<div style="font:700 15px RM;letter-spacing:.14em;color:#ffb38a">RUN LOG · ILLUSTRATIVE</div>' + LOG.map(function (r) { return '<div class="lg" style="display:flex;gap:10px;margin-top:9px;font:700 19px RM;white-space:nowrap"><span style="color:#8f95b8">' + r[0] + '</span><span>' + r[1] + '</span></div>'; }).join(''), P);
+  s.lg = s.log.querySelectorAll('.lg');
+  s.lap = D('left:150px;top:1150px;background:rgba(255,250,241,.92);color:#1d1d24;display:flex;align-items:center;gap:10px', ic('moon', 22, '#4a4fa0', 2.2) + 'LAPTOP · LID CLOSED', P, 'chip');
   var t0 = VS[5], tC = W(L, 'cloud'), tS = W(L, 'sleep');
   s.u = function (t) { settle(s.badge, t, t0 + .1, { y: 30 }); s.rg.setAttribute('stroke-dashoffset', (239 * (1 - sm((t - t0 - .2) / (VS[6] - t0 - .5)))).toFixed(1)); s.badge.style.transform += ' scale(' + (1 + .04 * pop(t, tC, .35)) + ')';
-    settle(s.fact, t, tS - .1, { y: 16 }); s.tag.style.opacity = 1; return 0; };
+    settle(s.fact, t, tS - .1, { y: 16 }); s.tag.style.opacity = 1; settle(s.log, t, t0 + .25, { x: 30, y: 0 }); settle(s.lap, t, t0 + .4, { y: 14 });
+    s.lg.forEach(function (e, i) { var a = t0 + .45 + i * .55; e.style.opacity = t < a ? .12 : 1; e.style.color = i === 3 && t > a ? '#7fe0b0' : ''; }); return 0; };
   return s; })(S[5]);
 
 // ================= S7 · step 4: open it with coffee (real Unsplash latte) + where to find it =================
 A[6] = (function (P) { var s = {}, L = 8;
   s.ph = D('left:0;top:0;width:1080px;height:1000px;background:url(photos/latte.jpg) center/cover;-webkit-mask:linear-gradient(180deg,#000 70%,transparent 100%)', '', P);
-  s.sun = D('left:0;top:0;width:1080px;height:1920px;background:radial-gradient(700px 500px at 85% 10%,rgba(255,230,190,.55),transparent 70%)', '', P);
-  s.ul = D('left:760px;top:262px;background:rgba(255,250,241,.85);color:#6c6457', 'PHOTO · UNSPLASH', P, 'illus');
+  s.sun = D('left:0;top:0;width:1080px;height:1000px;background:linear-gradient(180deg,rgba(38,22,12,.78) 0,rgba(38,22,12,.55) 32%,rgba(38,22,12,0) 54%)', '', P);
+  s.ul = D('left:728px;top:262px;background:rgba(255,250,241,.85);color:#6c6457', 'PHOTO · UNSPLASH', P, 'illus');
   s.eb = D('color:' + CORAL + ';top:282px;background:rgba(255,250,241,.88);padding:6px 12px;border-radius:6px', '// STEP 4 · YOUR 7 A.M. EDITION', P, 'eb');
-  s.hd = D('top:330px;color:' + INK + ';width:600px;text-shadow:0 2px 14px rgba(255,250,241,.9)', 'Open it with <i style="color:' + CORAL + '">coffee.</i>', P, 'hd');
+  s.hd = D('top:330px;color:#fff4e8;width:640px;text-shadow:0 4px 12px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.8)', 'Open it with <i style="color:#ff8a6a">coffee.</i>', P, 'hd');
   s.ed = D('left:150px;top:560px;width:768px;padding:22px 28px 20px;border-radius:4px', '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:4px double #1d1d24;padding-bottom:8px"><span style="font:800 46px NR;letter-spacing:-.025em">The 7 a.m. Edition</span><span class="mono" style="font-size:16px;color:#8b8172">MON · ILLUSTRATIVE</span></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:14px"><div class="col"><h4>MEETINGS</h4><p><b>9:30</b> Design review</p><p><b>12:00</b> 1:1 with manager</p><p><b>4:00</b> Client call</p></div><div class="col"><h4>NEEDS A REPLY</h4><p><b>Invoice</b> question from accounting</p><p><b>Contract</b> edits due Wed</p></div><div class="col"><h4>YOU PROMISED</h4><p>Send the Q3 deck to the team <b>by Friday</b></p></div></div>', P, 'paper');
   s.find = D('left:150px;top:1010px;width:768px;padding:18px 26px', '<div class="lab">FIND IT · EVERY WEEKDAY</div><div style="display:flex;align-items:center;gap:10px;margin-top:10px;font:700 31px IN;color:#1d1d24;white-space:nowrap">Scheduled ' + ic('chevron-right', 34, CORAL, 3) + ' Morning brief ' + ic('chevron-right', 34, CORAL, 3) + ' <span style="color:' + CORAL + '">latest run</span></div><div class="ses" style="display:flex;gap:10px;margin-top:14px"></div>', P, 'do');
   s.ses = s.find.querySelector('.ses');
   var t0 = VS[6], tCo = W(L, 'coffee'), tEv = W(L, 'every'), tSe = W(L, 'session');
   s.u = function (t) { var g = sm((t - t0) / (VS[7] - t0)); s.ph.style.transform = 'scale(' + lerp(1.1, 1.02, g).toFixed(4) + ') rotate(' + lerp(-2, 1, g).toFixed(2) + 'deg)';
-    settle(s.ed, t, t0 + .1, { y: 50, r: -1, r0: 3 }); settle(s.find, t, t0 + .5, { y: 30 }); settle(s.hd, t, t0 + .05, { y: 16 }); s.ed.style.transform += ' scale(' + (1 + .03 * pop(t, tCo, .4)) + ')';
+    settle(s.ed, t, t0 + .1, { y: 50, r: -1, r0: 1.5 }); settle(s.find, t, t0 + .5, { y: 30 }); settle(s.hd, t, t0 + .05, { y: 16 }); s.ed.style.transform += ' scale(' + (1 + .012 * pop(t, tCo, .4)) + ')';
     var days = ['MON 7:00 ✓', 'TUE 7:00', 'WED 7:00'], n = 1 + (t > tEv ? 1 : 0) + (t > tEv + .45 ? 1 : 0);
     s.ses.innerHTML = days.slice(0, n).map(function (d, i) { return '<span class="mono" style="font-size:18px;padding:6px 12px;border-radius:999px;background:' + (i === 0 ? LEAF : '#e9e1d3') + ';color:' + (i === 0 ? '#fff' : '#8b8172') + '">' + d + '</span>'; }).join('') + (t > tSe - .1 ? '<span class="mono" style="font-size:18px;color:#8b8172;padding:6px 0">each run = its own session</span>' : '');
     return 0; };
@@ -283,13 +289,14 @@ A[7] = (function (P) { var s = {}, L = 9;
 
 // ================= S9 · the catch: four torn calendar pages pinned to a cork board =================
 A[8] = (function (P) { var s = {}, L = 10;
-  eyebrow(P, '// BEFORE YOU SET IT UP', '#ffe1cf'); s.h = head(P, 'The <i>catch.</i>', '#fffaf5', 300); P.querySelector('.eb').style.top = '240px';
+  eyebrow(P, '// BEFORE YOU SET IT UP', CORAL); s.h = head(P, 'The <i>catch.</i>', INK, 300); P.querySelector('.eb').style.top = '240px';
   s.cork = D('', '', P, 'cork');
+  s.slot = [0, 1, 2, 3].map(function (i) { return OV(D('left:' + (150 + (i % 2) * 400) + 'px;top:' + (450 + Math.floor(i / 2) * 400) + 'px;width:360px;height:360px;border:4px dashed rgba(255,240,220,.45);border-radius:6px;display:flex;align-items:center;justify-content:center;font:800 120px NR;color:rgba(255,240,220,.28)', String(i + 1), P)); });
   var pages = [['Paid plans', 'Scheduling: Pro · Max · Team · Enterprise', 'paid'], ['One Google account', 'Only the account you connect', 'account'], ['Attachments', 'It sees the file name, not what’s inside', 'attachments'], ['Work accounts', 'An admin has to switch it on first', 'admin']];
   s.p = pages.map(function (x, i) { return D('left:' + (150 + (i % 2) * 400) + 'px;top:' + (450 + Math.floor(i / 2) * 400) + 'px', '<span class="pin"></span><b>' + x[0] + '</b><span>' + x[1] + '</span>', P, 'pg'); });
   var t0 = VS[8], T = pages.map(function (x) { return W(L, x[2]); });
-  s.u = function (t) { settle(s.cork, t, t0 + .05, { y: 30, s: .02 });
-    s.p.forEach(function (e, i) { drop(e, t, T[i] - .15, { y: -70, r: [-2.5, 1.8, 2.2, -1.6][i], r0: [-8, 7, 6, -7][i] }); });
+  s.u = function (t) { settle(s.cork, t, t0 + .05, { y: 30, s: .02 }); s.slot.forEach(function (e, i) { settle(e, t, t0 + .15 + i * .08, { y: 10 }); if (t > T[i] + .1) e.style.opacity = 0; });
+    s.p.forEach(function (e, i) { drop(e, t, T[i] - .15, { y: -70, r: [-2.5, 1.8, 2.2, -1.6][i], r0: [-4, 3, 3, -3][i] }); });
     return pop(t, T[0] - .05, .15) * .25 + pop(t, T[1] - .05, .15) * .25 + pop(t, T[2] - .05, .15) * .25 + pop(t, T[3] - .05, .15) * .25; };
   return s; })(S[8]);
 
@@ -348,7 +355,7 @@ window.__seek = function (t) {
   if (glOn) { glc.style.clipPath = inI === gs ? scenes[gs].style.clipPath : ''; glc.style.zIndex = 0; var uu = clamp((t - VS[gs]) / (VS[gs + 1] - VS[gs]), 0, 1); window.GLP.draw({ a: 'nightstand', camA: [lerp(.2, -.2, uu), .02, lerp(1.05, 1.16, uu)], par: .07, dim: .78, t: t }); }
   skyEl.style.display = glOn && si === gs && inI < 0 ? 'none' : 'block';
   drawCap(t);
-  var leakOn = (t > SC[1] - .1 && t < VS[1] + .2) || si === 6 || si === 9, leakOp = si === 0 ? .7 * pop(t, SC[1] - .1, 1.2) + .1 : .45;
+  var leakOn = (t > SC[1] - .1 && t < VS[1] + .2) || si === 6 || si === 9, leakOp = si === 0 ? .7 * pop(t, SC[1] - .1, 1.2) + .1 : .16;
   return Promise.all([ovAt('leak', leakOn, t, 25, leakOp), ovAt('dust', si === 5 && inI < 0, t, 25, .4)]);
 };
 })();

@@ -2,7 +2,7 @@
 // Also copies fonts, overlays, the profile photo, the CMU mocap tracks/rig and a humaaans pose into site/. Run: bun assets-build.mjs
 import fs from 'node:fs';
 import { humaaansFull } from '../gif-ai-work-treadmill/hum.mjs';
-const names = ['mail', 'mail-opened', 'plug', 'clock', 'settings', 'search', 'check', 'circle-check', 'calendar', 'cloud', 'lock', 'lock-open', 'send', 'toggle-right', 'toggle-left', 'sparkles', 'list-check', 'chevron-right', 'arrow-right', 'device-laptop', 'alert-triangle', 'user'];
+const names = ['mail', 'mail-opened', 'plug', 'clock', 'settings', 'search', 'check', 'circle-check', 'calendar', 'cloud', 'lock', 'lock-open', 'send', 'toggle-right', 'toggle-left', 'sparkles', 'list-check', 'chevron-right', 'arrow-right', 'device-laptop', 'alert-triangle', 'user', 'moon'];
 const o = {}; const inner = (s) => [...s.matchAll(/<(path|circle|rect|line|polyline|ellipse)\b[^>]*\/>/g)].map((m) => m[0]).filter((x) => !/stroke="none"/.test(x)).join('');
 for (const n of names) { const p = `../assets/icons/tabler/${n}.svg`; if (!fs.existsSync(p)) { console.log('missing', n); continue; } o[n] = inner(fs.readFileSync(p, 'utf8')); }
 const brand = (n) => fs.readFileSync(`../assets/icons/simple-icons/${n}.svg`, 'utf8').replace(/<title>.*?<\/title>/s, '').replace('<svg ', '<svg fill="currentColor" ');
