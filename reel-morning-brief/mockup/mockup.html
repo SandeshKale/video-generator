@@ -1,0 +1,162 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Dawn Edition mockup</title>
+<style>
+@font-face{font-family:NR;src:url('../site/fonts/newsreader-latin-800-normal.woff2');font-weight:800;font-display:block}
+@font-face{font-family:NR;src:url('../site/fonts/newsreader-latin-700-normal.woff2');font-weight:700;font-display:block}
+@font-face{font-family:NR;src:url('../site/fonts/newsreader-latin-600-italic.woff2');font-weight:600;font-style:italic;font-display:block}
+@font-face{font-family:RM;src:url('../site/fonts/red-hat-mono-latin-700-normal.woff2');font-weight:700;font-display:block}
+@font-face{font-family:RM;src:url('../site/fonts/red-hat-mono-latin-500-normal.woff2');font-weight:500;font-display:block}
+@font-face{font-family:IN;src:url('../site/fonts/inter-latin-700-normal.woff2');font-weight:700;font-display:block}
+@font-face{font-family:IN;src:url('../site/fonts/inter-latin-500-normal.woff2');font-weight:500;font-display:block}
+:root{--coral:#ff5a3c;--sky:#4a9dff;--leaf:#2fae7a;--ink:#1d1d24;--paper:#fffaf1;--cream:#fff4e6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:IN}
+.sky{position:absolute;inset:0}
+.mast{position:absolute;left:150px;top:150px;width:768px;height:96px;background:var(--paper);border-radius:4px;box-shadow:0 12px 28px rgba(20,20,40,.28);
+  display:flex;align-items:center;padding:0 16px;gap:8px;border-top:4px double var(--ink);border-bottom:4px double var(--ink)}
+.mast .t{font:800 23px/1 NR;letter-spacing:-.01em;color:var(--ink);width:138px;line-height:1.02}
+.mast .s{flex:1;height:60px;border-left:1px solid #cfc6b6;display:flex;flex-direction:column;justify-content:center;padding-left:12px;font:700 15px RM;letter-spacing:.12em;color:#8b8172}
+.mast .s b{font:800 25px/1 NR;letter-spacing:-.01em;color:#b5ab9a;margin-top:4px}
+.mast .s.on{background:var(--ink);border-radius:3px;color:#ffd3c7}.mast .s.on b{color:var(--paper)}
+.mast .s.done b{color:var(--leaf)}
+.mast .tm{font:700 26px RM;color:var(--coral);padding-left:10px;border-left:1px solid #cfc6b6;height:60px;display:flex;align-items:center}
+.eb{position:absolute;left:150px;top:282px;font:700 24px RM;letter-spacing:.12em;white-space:nowrap}
+.hd{position:absolute;left:150px;width:768px;top:320px;font:800 78px/1.0 NR;letter-spacing:-.025em}
+.hd i{font-family:NR;font-style:italic;font-weight:600}
+.cap{position:absolute;left:150px;width:768px;top:1338px;padding:18px 26px;border-radius:16px;background:rgba(16,20,44,.86);box-shadow:0 8px 24px rgba(0,0,0,.35);font:700 40px/1.28 IN;color:#9aa0bf;text-align:center}
+.cap b{color:#fff1e2}.cap .c{color:#ffb38a}
+/* the instruction card: the hero of every step scene */
+.do{position:absolute;background:var(--paper);border-radius:14px;box-shadow:0 22px 50px rgba(20,20,40,.35);color:var(--ink);padding:22px 28px}
+.do .lab{font:700 18px RM;letter-spacing:.16em;color:var(--coral);display:flex;align-items:center;gap:10px}
+.do .lab:before{content:'';width:12px;height:12px;border-radius:50%;background:var(--coral)}
+.row{display:flex;align-items:center;gap:16px;padding:12px 14px;border-radius:10px;margin-top:8px;font:700 34px/1.15 IN;color:#9c9488}
+.row .n{flex:none;width:44px;height:44px;border-radius:50%;border:3px solid #d8cfc0;font:700 22px/38px RM;text-align:center;color:#b5ab9a}
+.row.done{color:var(--ink)}.row.done .n{border-color:var(--leaf);background:var(--leaf);color:#fff}
+.row.cur{background:#ffe4d8;color:var(--ink);box-shadow:inset 6px 0 0 var(--coral)}.row.cur .n{border-color:var(--coral);color:var(--coral)}
+.row small{font:500 24px IN;color:#7b7366;margin-left:6px}
+.mono{font-family:RM;font-weight:700}
+.chip{position:absolute;font:700 21px RM;letter-spacing:.06em;padding:10px 16px;border-radius:999px;white-space:nowrap}
+.illus{position:absolute;font:700 15px RM;letter-spacing:.16em;padding:5px 10px;border-radius:4px;white-space:nowrap}
+.plug{position:absolute;width:250px;height:120px;border-radius:16px;background:#fff;box-shadow:0 14px 30px rgba(20,20,40,.3);display:flex;align-items:center;gap:14px;padding:0 18px;font:700 28px IN;color:var(--ink)}
+.plug .led{position:absolute;right:14px;top:14px;width:14px;height:14px;border-radius:50%;background:var(--leaf);box-shadow:0 0 12px var(--leaf)}
+.plug .pin{position:absolute;right:-34px;top:38px;width:34px;height:14px;border-radius:3px;background:#b9bec6;box-shadow:0 30px 0 #b9bec6}
+.lg svg{width:100%;height:100%;display:block}
+.paper{position:absolute;background:var(--paper);box-shadow:0 22px 46px rgba(40,30,20,.35);color:var(--ink)}
+.col h4{font:700 16px RM;letter-spacing:.14em;color:var(--coral);border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px}
+.col p{font:500 21px/1.3 IN;margin-bottom:8px;color:#2d2d36}
+.col p b{font-weight:700}
+.btn{position:absolute;font:700 30px IN;padding:16px 34px;border-radius:12px;color:#fff;background:var(--coral);box-shadow:0 10px 22px rgba(255,90,60,.45)}
+</style></head>
+<body><div id="stage"><div class="sky" id="sky"></div><div id="scene"></div></div>
+<script src="../site/ic.js"></script>
+<script>
+var S = +(location.hash.slice(1) || 1), root = document.getElementById('scene');
+function h(x){root.insertAdjacentHTML('beforeend', x);}
+function ic(n, sz, col, sw){return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="'+(col||'currentColor')+'" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" style="flex:none;vertical-align:middle">'+IC[n]+'</svg>';}
+function logo(n, sz, col){return '<span class="lg" style="display:inline-block;width:'+sz+'px;height:'+sz+'px;color:'+col+';flex:none">'+LOGO[n]+'</span>';}
+// the wall clock: minutes after 6:00 -> sky. 6:58 deep indigo, 7:00 first light, 7:20 dawn peach, 7:45 morning cream
+function sky(min){var st=[[58,['#0f1530','#1e2552','#3b3f7a']],[60,['#1e2552','#4b4a8c','#c98a8a']],[72,['#5a5aa0','#ff9f80','#ffd2a8']],[100,['#bfe0ff','#ffe6cc','#fff4e6']]];
+  var a=st[0],b=st[st.length-1];for(var i=0;i<st.length-1;i++)if(min>=st[i][0]&&min<=st[i+1][0]){a=st[i];b=st[i+1];}
+  var u=b[0]===a[0]?0:(min-a[0])/(b[0]-a[0]);function mix(c1,c2){var p=function(c){return[1,3,5].map(function(k){return parseInt(c.substr(k,2),16);});},x=p(c1),y=p(c2);return 'rgb('+x.map(function(v,i){return Math.round(v+(y[i]-v)*u);}).join(',')+')';}
+  document.getElementById('sky').style.background='linear-gradient(180deg,'+mix(a[1][0],b[1][0])+' 0%,'+mix(a[1][1],b[1][1])+' 55%,'+mix(a[1][2],b[1][2])+' 100%)';}
+function mast(cur, time){var n=['CONNECT','BRIEF','SCHEDULE','READ'],s='<div class="mast"><div class="t">The 7&nbsp;a.m.<br>Edition</div>';
+  n.forEach(function(x,i){s+='<div class="s '+(i+1===cur?'on':(i+1<cur?'done':''))+'"><span>STEP '+(i+1)+(i+1<cur?' <span style="color:#2fae7a">✓</span>':'')+'</span><b>'+x.charAt(0)+x.slice(1).toLowerCase()+'</b></div>';});
+  h(s+'<div class="tm">'+time+'</div></div>');}
+function cap(words, hi){h('<div class="cap">'+words.split(' ').map(function(w,i){return i<hi?'<b>'+w+'</b>':(i===hi?'<span class="c">'+w+'</span>':w);}).join(' ')+'</div>');}
+// clock hands over a projected dial: angle clockwise from 12
+function hands(J, ox, oy, k, hh, mm, col){var c=J.c,x=J.x,y=J.y;function at(a,r){return [ox+(c[0]+(y[0]-c[0])*Math.cos(a)*r+(x[0]-c[0])*Math.sin(a)*r)*k, oy+(c[1]+(y[1]-c[1])*Math.cos(a)*r+(x[1]-c[1])*Math.sin(a)*r)*k];}
+  var am=mm/60*2*Math.PI, ah=((hh%12)+mm/60)/12*2*Math.PI, C=[ox+c[0]*k,oy+c[1]*k], M=at(am,.78), H=at(ah,.5), w=Math.hypot(x[0]-c[0],x[1]-c[1])*k;
+  return '<svg style="position:absolute;left:0;top:0;overflow:visible" width="1080" height="1920"><line x1="'+C[0]+'" y1="'+C[1]+'" x2="'+H[0]+'" y2="'+H[1]+'" stroke="'+col+'" stroke-width="'+(w*.09)+'" stroke-linecap="round"/><line x1="'+C[0]+'" y1="'+C[1]+'" x2="'+M[0]+'" y2="'+M[1]+'" stroke="'+col+'" stroke-width="'+(w*.06)+'" stroke-linecap="round"/><circle cx="'+C[0]+'" cy="'+C[1]+'" r="'+(w*.07)+'" fill="#ff5a3c"/></svg>';}
+
+if (S === 1) { // hook: night bedroom, the brief already half written
+  sky(58.8);
+  h('<div style="position:absolute;left:150px;top:160px;width:768px;font:800 84px/1 NR;letter-spacing:-.03em;color:#f3eefc;text-shadow:0 6px 24px rgba(0,0,0,.5)">Written while<br><i style="font-family:NR;font-style:italic;font-weight:600;color:#ffb38a">I slept.</i></div>');
+  h('<div style="position:absolute;left:760px;top:190px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#fff9ec,#e9e2ff 60%,#c9c2ea);box-shadow:0 0 60px 20px rgba(220,215,255,.25)"></div>');
+  h('<img src="../site/3d/bed_night.png" style="position:absolute;left:0;top:300px;width:1080px">');
+  fetch('../site/3d/bedroom.json').then(function(r){return r.json();}).then(function(J){
+    h(hands(J.face,0,300,1,6,59,'#1d1d24'));
+    var fc=[J.face.c[0], J.face.c[1]+300];
+    // glow from the nightstand + the brief card floating above it
+    h('<div style="position:absolute;left:'+(fc[0]-160)+'px;top:'+(fc[1]-160)+'px;width:320px;height:320px;border-radius:50%;background:radial-gradient(rgba(255,190,120,.35),transparent 70%)"></div>');
+    h('<div class="paper" style="left:330px;top:440px;width:588px;padding:20px 26px 18px;border-radius:6px;transform:rotate(-1.5deg)">'
+      +'<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px double #1d1d24;padding-bottom:8px"><span style="font:800 34px NR;letter-spacing:-.02em">The 7 a.m. Edition</span><span class="mono" style="font-size:15px;color:#8b8172">MON 13 OCT</span></div>'
+      +'<div style="font:700 30px/1.35 IN;margin-top:12px"><span style="color:#ff5a3c">3</span> meetings today</div>'
+      +'<div style="font:700 30px/1.35 IN"><span style="color:#ff5a3c">2</span> emails need a reply<span style="display:inline-block;width:14px;height:30px;background:#1d1d24;vertical-align:-4px;margin-left:4px"></span></div>'
+      +'<div style="font:700 30px/1.35 IN;color:#d6cec0">1 thing you promised</div>'
+      +'<div style="margin-top:12px;display:flex;align-items:center;gap:10px;font:700 15px RM;letter-spacing:.12em;color:#8b8172">'+logo('anthropic',22,'#c9663f')+'WRITTEN BY CLAUDE · 6:59 AM · ILLUSTRATIVE</div></div>');
+    // dotted leader from the card to the clock
+    h('<svg style="position:absolute;left:0;top:0" width="1080" height="1920"><path d="M 560 740 C 560 820, '+(fc[0]+40)+' '+(fc[1]-90)+', '+(fc[0]+12)+' '+(fc[1]-40)+'" fill="none" stroke="#ffb38a" stroke-width="3" stroke-dasharray="4 8"/></svg>');
+  });
+  cap('I was asleep when Claude wrote this.', 4);
+}
+
+if (S === 3) { // step 1: the click path is the hero
+  sky(62);
+  mast(1,'7:02');
+  h('<div class="eb" style="color:#ffb38a">// STEP 1 · CUSTOMIZE → CONNECTORS</div>');
+  h('<div class="hd" style="color:#fbf4ff;text-shadow:0 4px 16px rgba(0,0,0,.45)">Connect Gmail<br><i>+ Calendar.</i></div>');
+  h('<div class="do" style="left:150px;top:500px;width:768px">'
+    +'<div class="lab">DO THIS · IN CLAUDE</div>'
+    +'<div class="row done"><span class="n">✓</span>Customize</div>'
+    +'<div class="row done"><span class="n">✓</span>Connectors</div>'
+    +'<div class="row done"><span class="n">✓</span>Discover <small>search “Gmail”</small></div>'
+    +'<div class="row cur"><span class="n">4</span>Connect to Claude</div>'
+    +'<div class="row"><span class="n">5</span>Sign in with Google <small>· approve</small></div>'
+    +'<div class="row" style="color:#9c9488"><span class="n">✓</span>Shows “Connected”</div></div>');
+  // the plugs: Gmail + Google Calendar into one socket
+  h('<div class="plug" style="left:150px;top:1080px">'+ic('mail',44,'#4a9dff')+'Gmail<span class="led"></span><span class="pin"></span></div>');
+  h('<div class="plug" style="left:150px;top:1214px;height:70px;font-size:24px;box-shadow:none;background:rgba(255,250,241,.92)">'+logo('gcal',34,'#4285f4')+'Calendar<span class="led" style="top:28px"></span></div>');
+  h('<div style="position:absolute;left:434px;top:1080px;width:96px;height:204px;border-radius:14px;background:#2a2e48;box-shadow:inset 0 0 0 4px #474c70,0 12px 24px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#ffd3c7;font:700 15px RM;letter-spacing:.12em">'+logo('anthropic',40,'#ff9b7a')+'CLAUDE</div>');
+  h('<div class="chip" style="left:556px;top:1092px;font-size:18px;background:#fffaf1;color:#1d1d24;box-shadow:0 8px 18px rgba(0,0,0,.25)">REPEAT FOR GOOGLE CALENDAR</div>');
+  h('<div class="chip" style="left:556px;top:1160px;font-size:18px;background:rgba(16,20,44,.75);color:#ffd3c7">IN A CHAT: + → CONNECTORS → ON</div>');
+  h('<div class="illus" style="left:556px;top:1236px;font-size:13px;background:rgba(16,20,44,.6);color:#c8c3e0">MENU NAMES: CLAUDE DOCS · OCT 2026</div>');
+  cap('Step one. Connect Gmail and Google Calendar.', 5);
+}
+
+if (S === 5) { // step 3: the exact message + Claude's confirm card + Blender clock
+  sky(70);
+  mast(3,'7:10');
+  h('<div class="eb" style="color:#ffe1cf">// STEP 3 · WEEKDAYS AT 7:00</div>');
+  h('<div class="hd" style="color:#fffaf5;text-shadow:0 4px 16px rgba(60,20,40,.4)">Tell it <i>when.</i></div>');
+  h('<div class="do" style="left:150px;top:430px;width:768px;padding-bottom:26px"><div class="lab">TYPE THIS · ONE TIME</div>'
+    +'<div class="mono" style="margin-top:14px;font-size:40px;line-height:1.3;color:#1d1d24">Every weekday at 7&nbsp;a.m., run my morning brief.<span style="display:inline-block;width:18px;height:40px;background:#ff5a3c;vertical-align:-6px;margin-left:6px"></span></div></div>');
+  h('<div style="position:absolute;left:150px;top:640px;display:flex;gap:12px;align-items:center"><span style="font:700 18px RM;letter-spacing:.12em;color:#fff1e6">CLAUDE MAY ASK</span><span class="mono" style="font-size:22px;padding:10px 16px;border-radius:999px;background:rgba(255,250,241,.9);color:#1d1d24">Which time zone?</span><span class="mono" style="font-size:22px;padding:10px 16px;border-radius:999px;background:rgba(255,250,241,.9);color:#1d1d24">Weekends too?</span></div>');
+  h('<div style="position:absolute;left:150px;top:706px;font:500 20px IN;color:#fff1e6">→ answer, then check the card</div>');
+  // Claude's confirmation card
+  h('<div class="do" style="left:150px;top:756px;width:520px;padding:20px 24px"><div style="display:flex;align-items:center;gap:10px;font:700 18px RM;letter-spacing:.14em;color:#8b8172">'+logo('anthropic',24,'#c9663f')+'CLAUDE CONFIRMS · ILLUSTRATIVE</div>'
+    +'<div style="margin-top:14px;font:500 22px RM;color:#8b8172">NAME</div><div style="font:700 32px IN">Morning brief</div>'
+    +'<div style="margin-top:10px;font:500 22px RM;color:#8b8172">SCHEDULE</div><div style="font:700 32px IN;color:#ff5a3c">On weekdays · 7:00 AM</div>'
+    +'<div style="margin-top:10px;font:500 22px RM;color:#8b8172">INSTRUCTIONS</div><div style="font:500 24px/1.3 IN">Meetings · emails that need me · promises</div></div>');
+  h('<div class="btn" style="left:150px;top:1180px;transform:scale(.96)">Schedule '+ic('check',28,'#fff',3)+'</div>');
+  h('<div style="position:absolute;left:330px;top:1214px;width:36px;height:36px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 6px rgba(255,255,255,.35)"></div>');
+  h('<div class="chip" style="left:420px;top:1196px;background:rgba(255,250,241,.85);color:#6c6457;font-size:17px">hourly · daily · weekly ·<br><b style="color:#ff5a3c">on weekdays ✓</b> · manually</div>');
+  // Blender alarm clock on the right, hands at 7:00
+  var ck=360/900, cx=640, cy=760;
+  h('<img src="../site/3d/clock.png" style="position:absolute;left:'+cx+'px;top:'+cy+'px;width:360px;filter:drop-shadow(0 26px 30px rgba(80,30,40,.35));-webkit-mask:radial-gradient(closest-side,#000 70%,transparent 100%)">');
+  fetch('../site/3d/clock.json').then(function(r){return r.json();}).then(function(J){h(hands(J,cx,cy,ck,7,0,'#1d1d24'));});
+  cap('Tell Claude: every weekday at seven, run this.', 4);
+}
+
+if (S === 7) { // step 4: bright morning, real latte photo, the edition, and where to find it
+  sky(96);
+  h('<div style="position:absolute;left:0;top:0;width:1080px;height:1000px;background:url(../site/photos/latte.jpg) center/cover;-webkit-mask:linear-gradient(180deg,#000 70%,transparent 100%)"></div>');
+  h('<div style="position:absolute;left:0;top:0;width:1080px;height:1920px;background:radial-gradient(700px 500px at 85% 10%,rgba(255,230,190,.55),transparent 70%)"></div>');
+  mast(4,'7:25');
+  h('<div class="illus" style="left:760px;top:262px;background:rgba(255,250,241,.85);color:#6c6457">PHOTO · UNSPLASH</div>');
+  // the edition
+  h('<div class="paper" style="left:150px;top:560px;width:768px;padding:22px 28px 20px;border-radius:4px;transform:rotate(-1deg)">'
+    +'<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:4px double #1d1d24;padding-bottom:8px"><span style="font:800 46px NR;letter-spacing:-.025em">The 7 a.m. Edition</span><span class="mono" style="font-size:16px;color:#8b8172">MON · ILLUSTRATIVE</span></div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:14px">'
+    +'<div class="col"><h4>MEETINGS</h4><p><b>9:30</b> Design review</p><p><b>12:00</b> 1:1 with manager</p><p><b>4:00</b> Client call</p></div>'
+    +'<div class="col"><h4>NEEDS A REPLY</h4><p><b>Invoice</b> question from accounting</p><p><b>Contract</b> edits due Wed</p></div>'
+    +'<div class="col"><h4>YOU PROMISED</h4><p>Send the Q3 deck to the team <b>by Friday</b></p></div></div></div>');
+  // where to find it: the instruction, big
+  h('<div class="do" style="left:150px;top:1010px;width:768px;padding:18px 26px"><div class="lab">FIND IT · EVERY WEEKDAY</div>'
+    +'<div style="display:flex;align-items:center;gap:10px;margin-top:10px;font:700 31px IN;color:#1d1d24;white-space:nowrap">Scheduled '+ic('chevron-right',34,'#ff5a3c',3)+' Morning brief '+ic('chevron-right',34,'#ff5a3c',3)+' <span style="color:#ff5a3c">latest run</span></div>'
+    +'<div style="display:flex;gap:10px;margin-top:14px"><span class="mono" style="font-size:18px;padding:6px 12px;border-radius:999px;background:#2fae7a;color:#fff">MON 7:00 ✓</span><span class="mono" style="font-size:18px;padding:6px 12px;border-radius:999px;background:#e9e1d3;color:#8b8172">TUE 7:00</span><span class="mono" style="font-size:18px;padding:6px 12px;border-radius:999px;background:#e9e1d3;color:#8b8172">WED 7:00</span><span class="mono" style="font-size:18px;color:#8b8172;padding:6px 0">each run = its own session</span></div></div>');
+  h('<div class="eb" style="color:#ff5a3c;top:282px;background:rgba(255,250,241,.88);padding:6px 12px;border-radius:6px">// STEP 4 · YOUR 7 A.M. EDITION</div>');
+  h('<div class="hd" style="top:330px;color:#1d1d24;width:600px;text-shadow:0 2px 14px rgba(255,250,241,.9)">Open it with <i style="color:#ff5a3c">coffee.</i></div>');
+  cap('Step four. Read it with your coffee.', 5);
+}
+</script></body></html>

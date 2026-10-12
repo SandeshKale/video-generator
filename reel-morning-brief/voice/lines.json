@@ -1,0 +1,13 @@
+[
+ ["l01", "I was asleep when Claude wrote this."],
+ ["l02", "It read my inbox and calendar, and it runs every weekday at seven. Here's the setup."],
+ ["l03", "Step one. Connect Gmail and Google Calendar. In Claude, that's Customize, then Connectors."],
+ ["l04", "Step two. Write the brief like you'd brief a person: today's meetings, emails that need me, and anything I promised someone."],
+ ["l05", "Three sections, five lines each, and skip the newsletters."],
+ ["l06", "Step three. Tell Claude: every weekday at seven, run this. Answer its questions, then hit Schedule."],
+ ["l07", "It runs in the cloud, so your laptop can sleep too."],
+ ["l08", "Step four. Read it with your coffee. Every run waits for you as its own session."],
+ ["l09", "The clever part? Ask it to draft your replies. Sending still waits for your okay."],
+ ["l10", "The catch. Scheduling needs a paid plan. It sees one Google account. It can't open attachments. And on work accounts, your admin has to switch it on."],
+ ["l11", "Save this, and follow for more."]
+]

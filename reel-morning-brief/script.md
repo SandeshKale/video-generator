@@ -54,6 +54,16 @@
     - Anthropic does not train on Gmail, Drive or Calendar connector data.
     - Retrieved data is kept with its chat and deleted when you delete the chat.
 
+**Claude connector docs, "Getting started"** (claude.com/docs/connectors/getting-started, read 12 Oct):
+16. **Connect flow:**
+    1. Go to **Customize > Connectors** (desktop: "Customize" in the sidebar, then "Connectors").
+    2. **"Discover"**, then search "Gmail".
+    3. **"Connect to Claude"**.
+    4. Sign in on Google's page and approve the access.
+    5. It shows under **"Your connectors"** as **"Connected"**.
+17. **Per chat:** "+" in the message box → "Connectors" → toggle on. When Claude asks to use a tool, you can choose **"Allow once"** or **"Always allow"**.
+18. On Team and Enterprise, members see **"Request"** until an Owner adds the connector.
+
 **Don't say (C):**
 - that it notifies or texts you;
 - a setup time ("2 minutes");
@@ -62,7 +72,7 @@
 - that it auto-sends replies;
 - that it handles several Google accounts.
 
-**Creator check before posting:** the menu label in your own app ("Customize → Connectors" is the Help Center's wording).
+**Creator check:** confirmed on 12 Oct that the app shows "Customize → Connectors".
 
 ## Benchmark to beat: `reel-teach-a-skill` (Card Catalogue)
 **Its weaknesses:**
@@ -81,7 +91,7 @@
 5. **Cuts:** a sunrise wipe. A soft horizontal band of warm light sweeps up the frame, and the next scene is revealed under it. No dark dip and no double exposure.
 6. **Hook frame 0 is composed and calm:** the dark bedroom, a clock at 6:59 and the brief card already half typed. The payoff (7:00, card complete) lands by 2.6 s.
 
-## Voice-over (the creator's cloned voice, same OmniVoice refs as `reel-teach-a-skill`; 11 lines; 157 words, ~62 s)
+## Voice-over (the creator's cloned voice, now Qwen3-TTS; see "Voice engine" below; 11 lines; 157 words, ~62 s)
 1. (hook, a touch faster) "I was asleep when Claude wrote this."
 2. "It read my inbox and calendar, and it runs every weekday at seven. Here's the setup."
 3. "Step one. Connect Gmail and Google Calendar. In Claude, that's Customize, then Connectors."
@@ -93,6 +103,22 @@
 9. "The clever part? Ask it to draft your replies. Sending still waits for your okay."
 10. (slower) "The catch. Scheduling needs a paid plan. It sees one Google account. It can't open attachments. And on work accounts, your admin has to switch it on."
 11. (warm) "Save this, and follow for more."
+
+### Voice engine (creator feedback, 12 Oct: the last clone "had a lot of reverb and is not really soothing")
+- **Cause:** zero-shot cloning copies the reference recording's room. The creator's 15 s reference has a ~220 ms reverb tail. The OmniVoice output had no silent gaps between words; spectrograms show the smear.
+- **Fix:** **Qwen3-TTS-12Hz-0.6B-Base** (Apache-2.0, offline on CPU, ~4× real time; it's the engine behind the VoiceBox app). Every line is made two ways:
+  - **x-vector mode:** speaker embedding only, so the room is not copied;
+  - **ICL mode.**
+  Spectrograms of both show clean, dry gaps between words, with speaker similarity 0.90–0.92 to the real recording.
+- **Picking takes:** Whisper accuracy, speaker similarity, and a dryness score (gap floor vs speech level).
+- **Finishing chain** (soothing, not processed-sounding):
+  - high-pass at 70 Hz;
+  - gentle de-ess;
+  - +1.5 dB warmth around 180 Hz;
+  - −1.5 dB high shelf above 8 kHz;
+  - slow 2:1 compression.
+  No artificial reverb.
+- The creator hears a sample before the build.
 
 **Claim check per line:**
 - 2: facts 2, 3 (weekdays is a listed frequency), 6.
@@ -134,12 +160,12 @@ Times are estimates and will be retimed from the voice.
 |---|---|---|---|---|---|---|
 | 1 | 0–3.2 | **Blender bedroom diorama, night → first light** (lighting states cross-faded on the clock) | Brief card types itself; Anthropic byline stamp; clock 6:59→7:00 | 7 A.M. EDITION · 3 MEETINGS · 2 NEED A REPLY · 1 THING YOU PROMISED | — (hook) | B F G K |
 | 2 | 3.2–8.0 | **The night shift:** mocap mail-sorter robot carries envelopes from an inbox chute into 3 trays; calendar pages flip on a spike | Gmail (mail icon + name chip) and Google Calendar mark (nominative) on the chute and spike; tracker drops in on "setup" | MEETINGS · NEEDS ME · PROMISES | // WHILE YOU SLEEP | C E F |
-| 3 | 8.0–13.0 | **Two plugs into one socket:** Gmail and Calendar cards slide in and lock with a green LED each | Path chip **Customize → Connectors** (held ≥ 2 s); "GMAIL: READ · SEARCH · DRAFT", "CALENDAR: EVENTS · INVITES" | 1 · CONNECT TWO APPS | // STEP 1 · GMAIL + CALENDAR | E F G |
+| 3 | 8.0–13.0 | **The click path, big:** a numbered path card: CUSTOMIZE → CONNECTORS → DISCOVER → "Gmail" → CONNECT TO CLAUDE → sign in → ✓ CONNECTED (each step lights on its word, whole path held ≥ 2.5 s). Beside it, two plugs (Gmail, Calendar) lock into a socket with green LEDs | "Repeat for Google Calendar" chip; "in a chat: + → Connectors → on" footnote | 1 · CONNECT GMAIL + CALENDAR | // STEP 1 · CUSTOMIZE → CONNECTORS | E F G |
 | 4 | 13.0–21.5 | **Laying out the edition:** a newspaper dummy page gets three column heads as they're spoken; the brief prompt types in big and holds ≥ 2 s | Prompt: "Every weekday: my meetings today, emails that need me, anything I promised. 3 sections, 5 lines each. Skip newsletters." · a "NEWSLETTERS" strip is crossed out on "skip" | 2 · WRITE THE BRIEF | // STEP 2 · THREE COLUMNS, FIVE LINES | F G K |
-| 5 | 21.5–28.0 | **Blender alarm clock** (turntable frames scrubbed by `t`); the hand sweeps to 7:00 | Frequency selector: HOURLY · DAILY · WEEKLY · **WEEKDAYS ✓** · MANUALLY; a "Schedule" button presses on "Schedule" | 3 · SCHEDULE IT | // STEP 3 · WEEKDAYS AT 7:00 | B F G |
+| 5 | 21.5–28.0 | **The exact message, big:** "Every weekday at 7 a.m., run my morning brief." typed in a chat box and held ≥ 2 s; beside it, the **Blender alarm clock** (frames scrubbed by `t`) sweeps to 7:00 | Claude's confirm card: NAME · SCHEDULE: WEEKDAYS 7:00 · INSTRUCTIONS, then the **Schedule** button presses; frequency options listed: hourly · daily · weekly · **on weekdays** · manually | 3 · TELL IT WHEN | // STEP 3 · WEEKDAYS AT 7:00 | B F G |
 | 6 | 28.0–31.5 | **Photoreal nightstand, closed laptop in moonlight** (AI still + depth parallax) | A small cloud badge "RUNNING REMOTELY" with a progress ring; "AI IMAGE" tag | YOUR LAPTOP CAN SLEEP | // RUNS IN THE CLOUD | A F H |
-| 7 | 31.5–37.0 | **Real Unsplash latte (top-down)**; the 7 a.m. Edition unfolds beside the cup; sunlight + light leak | Session list MON · TUE · WED stacking ("each run = its own session"); tracker 4/4 | 4 · READ IT WITH COFFEE | // STEP 4 · YOUR 7 A.M. EDITION | I F H |
-| 8 | 37.0–42.5 | **humaaans figure** (standing pose, coffee) reviews two draft envelopes; a Gmail "Drafts 2" counter | SEND button locked: "WAITS FOR YOUR OK" padlock; it unlocks only on a tap | DRAFTS, NOT SENDS | // REPLIES ALREADY WRITTEN | D F E |
+| 7 | 31.5–37.0 | **Real Unsplash latte (top-down)**; the 7 a.m. Edition unfolds beside the cup; sunlight + light leak | **Where to find it**, big: SCHEDULED → MORNING BRIEF → latest run; a session list MON · TUE · WED stacking ("each run = its own session"); tracker 4/4 | 4 · OPEN IT WITH COFFEE | // STEP 4 · YOUR 7 A.M. EDITION | I F H |
+| 8 | 37.0–42.5 | **The add-on line, big:** "Draft replies for anything that needs me. Don't send." appended to the brief prompt; a **humaaans figure** (standing pose, coffee) reviews two draft envelopes; a Gmail "Drafts 2" counter | SEND button locked: "WAITS FOR YOUR OK" padlock; it unlocks only on a tap | DRAFTS, NOT SENDS | // REPLIES ALREADY WRITTEN | D F E |
 | 9 | 42.5–52.5 | **Four torn calendar pages pinned to a board**, one per catch | PAID PLANS: PRO · MAX · TEAM · ENTERPRISE / ONE GOOGLE ACCOUNT / ATTACHMENTS: NAME ONLY / WORK ACCOUNTS: ADMIN SWITCHES IT ON | THE CATCH | // BEFORE YOU SET IT UP | F G E |
 | 10 | 52.5–end | **Recap: the full 7 A.M. EDITION front page** (save-worthy, ≥ 2.5 s): 4 numbered steps + the prompt | **CTA:** profile ring + @sandesh.explains + SAVE + FOLLOW (≥ 3 s); morning light leak | SAVE THIS · FOLLOW FOR MORE | (none: CTA) | F G H K |
 
@@ -213,7 +239,8 @@ Times are estimates and will be retimed from the voice.
   - sending needs approval by default;
   - Team and Enterprise admins set the rules.
 
-## Decisions for the creator
-1. **Voice:** your cloned voice again (same pipeline as the last reel)? I can generate the 11 lines as soon as you say yes.
-2. **Menu wording:** does your Claude app show "Customize → Connectors"? If it differs, tell me what it says.
-3. **Next step:** a mockup of scenes 1, 2 and 5 (Blender bedroom hook, mocap mail sorter, Blender alarm clock + frequency selector). That's three families, plus one bright-morning scene (7) to show the palette shift.
+## Decisions (answered 12 Oct)
+1. **Voice:** the cloned voice, but cleaner and calmer. Qwen3-TTS replaces OmniVoice (see "Voice engine").
+2. **Menu wording:** "Customize → Connectors" confirmed.
+3. **Mockup:** yes, with **the actual instructions as the key focus**. Every step scene's hero is the literal instruction (click path, prompt text, schedule message, where to find the run), set big, typed on its words and held ≥ 2 s. The metaphor objects (plugs, alarm clock, edition) support it beside or behind.
+   - Mockup scenes: 1 (hook, Blender bedroom), 3 (step 1 click path), 5 (step 3 schedule message + Blender clock) and 7 (step 4, Unsplash latte + bright palette).
