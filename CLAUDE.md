@@ -1134,13 +1134,13 @@ For every GIF, reel or image post, the folder's `linkedin.md` must contain, toge
 
 **Hard requirement:** every new reel must use **at least 5–6 distinct asset families**, chosen deliberately from the library, and the script's asset table must show *which scene uses which family*. Families available here (use real mixes, not decoration):
 1. Photoreal AI stills + depth-parallax WebGL (RealVisXL + Depth-Anything; `reel-plate-reader/site/gl.js` is the reusable 9:16 layer)
-2. Blender `bpy` 3D renders — Quaternius rigs/clips, toon/riso shader, objects built procedurally (`reel-humanoid-cage-match/blender/`)
+2. Blender `bpy` 3D renders (8 CC0 HDRIs for lighting in `assets/hdri/`) — Quaternius rigs/clips, toon/riso shader, objects built procedurally (`reel-humanoid-cage-match/blender/`)
 3. CMU mocap 2D rig (`rig.js`, `bvh2json.mjs`) driving human/robot skins
 4. Cut-out puppet from a generated character sheet (`proto-2d-puppet/`) — still rough; use only if its known artifacts are acceptable
 5. humaaans characters (`assets/illustrations/humaaans-react/`, 24 poses)
    - **Also available (Oct 2026):** Open Peeps (hand-drawn line-art people, mix-and-match, `assets/illustrations/open-peeps/compose.mjs`) and Open Doodles (33 full-scene doodles, `assets/illustrations/open-doodles/`). They count as separate families from humaaans; same rule: never reuse the same pose/recolour twice.
 6. Flowbite / other illustrations and brand logos (`assets/illustrations`, `assets/logos`, nominative use only)
-7. tabler icons + SVG components (rings, ladders, receipts, dials, maps, ledgers) built per scene's data
+7. tabler icons (plus Phosphor in 4 weights, Heroicons and 336 developer logos under `assets/icons/`) + SVG components (rings, ladders, receipts, dials, maps, ledgers) built per scene's data
 8. GSAP-scrubbed entrances (`dropIn`/`tumbleIn`/`runIn`) and Lottie exports where a real `.json` exists
 9. Real-footage texture overlays (`assets/animations/video-overlay/` grain, leaks, dust)
 10. Real Unsplash photos (`assets/photos/servicestack/`, 147 images) — as backgrounds, insets, collages

@@ -285,3 +285,8 @@ DanielSWolf/rhubarb-lip-sync v1.13.0 (MIT; deps MIT/BSD) was run offline on the 
 - `assets/illustrations/open-doodles/` — 33 full-scene doodles as static SVG with `{{ink}}`/`{{accent}}` placeholders (`doodle(name, ink, accent)`).
 - Artwork: Pablo Stanley (Open Peeps, Open Doodles), published by him as free/open (CC0 per his site — verify at openpeeps.com / opendoodles.com before any new use). Extracted from the MIT-licensed JSX wrappers `CeamKrier/react-peeps` and `lunahq/react-open-doodles` (their licences are copied beside the assets). Regenerate with `assets/illustrations/extract-peeps-doodles.mjs`; the npm packages are not kept as dependencies.
 - Not vendored: unDraw (licence forbids redistributing the illustrations as a collection), Blush, DiceBear, IRA Design (gradient palettes clash with per-reel palettes).
+
+## Icons and HDRIs added Oct 2026
+- `assets/icons/phosphor/` (regular, bold, fill, duotone; MIT, Phosphor Icons), `assets/icons/heroicons/` (24px outline + solid; MIT, Tailwind Labs), `assets/icons/developer-icons/` (336 tech logos/marks; MIT, xandemon/developer-icons). Each folder keeps its LICENSE. The MIT licence covers the SVG files only: the company logos in `developer-icons` remain trademarks of their owners, so use them nominatively (to identify a product), as with the other logo sets.
+- `assets/hdri/` — 8 Poly Haven 1k HDRIs, CC0 (see its README).
+- Not vendored: Rokoko free animations (download needs an account/sign-up), Mixamo and Mixkit (no redistribution of the raw files), Storyset (free tier needs attribution), paid libraries.
