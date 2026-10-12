@@ -1,0 +1,28 @@
+{
+ "integrated_LUFS": -14.0,
+ "true_peak_dBTP": -3.4,
+ "loudness_range_LU": 2.1,
+ "voice_over_music+sfx_dB_per_word": {
+  "median": 19.9,
+  "p10": 14.9,
+  "min": 11.6,
+  "words": 154
+ },
+ "music_gap_vs_voice_dB": -10.5,
+ "music_duck_while_speaking_dB": -7.5,
+ "bpm": 96,
+ "styles": [
+  "hook",
+  "drop",
+  "groove",
+  "groove",
+  "lift",
+  "breath",
+  "bright",
+  "groove",
+  "catch",
+  "cta"
+ ],
+ "stereo": true,
+ "chain": "voice dry/centred; music: 1.2-4.5 kHz carve (static + voice-keyed), kick sidechain pump, 1.5 s plate on music only; master: tanh saturation, 1.8:1 glue, oversampled limiter, 2-pass loudnorm"
+}
