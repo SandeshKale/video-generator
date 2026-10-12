@@ -58,8 +58,7 @@ Then the clever part (it costs ~100 tokens until used), the catches, and a save-
 **Inconsistency to handle:**
 - The settings path differs between pages: Help Center "Customize > Skills"; Academy "Settings > Capabilities > Skills"; platform docs "Settings > Features".
 - Plan wording also differs (the Help Center lists Free; the overview says Pro/Max/Team/Enterprise).
-- **On screen:** "your Skills settings" (voice) and "Customize → Skills" as the chip, from the most specific current source. No plan claims; say only "needs code execution on".
-- **Creator action:** check the menu in your own app once before posting.
+- **On screen (creator decision, 12 Oct):** the chip reads **"Skills settings"**, matching the voice line. No plan claims; say only "needs code execution on".
 
 **Don't say (C):**
 - that skills work on every plan;
@@ -90,7 +89,7 @@ The last two scripts:
 4. **The SKILL.md written live on a typewriter card.** Frontmatter keys type out, a ruler checks `name` ≤ 64 / lowercase-hyphen and the description "what + when". Held ≥ 2.5 s for screenshots.
 5. **The real test signal on screen:** a mock thinking strip showing "Reading weekly-team-update…" (labelled ILLUSTRATIVE), as the Academy describes.
 
-## Voice-over (Kokoro `am_michael`; 11 lines; ~164 words, ~64 s)
+## Voice-over (the creator's cloned voice, OmniVoice zero-shot from their own 15 s recording; 11 lines; ~164 words, ~64 s)
 1. (hook, 1.12) "You keep explaining the same thing to AI. Teach it once instead."
 2. "A skill is a small instruction file Claude pulls out only when needed. Four steps."
 3. "Step one. Pick a task you've explained more than twice, like your weekly update."
@@ -142,7 +141,7 @@ Times are estimates (≈ 2.55 words/s) and will be retimed from the TTS word tim
 | 3 | 7.0–10.8 | **Photoreal desk** (AI still, no people: a notebook with "weekly update" written three times, a coffee, a laptop) with parallax | Tracker 1/4; a "REPEATED ×3" stamp on the notebook | stamp | 1 · PICK A TASK YOU REPEAT | // STEP 1 · THE TASK | A F G H |
 | 4 | 10.8–16.8 | **Chat composer, typed big and held ≥ 2 s:** "Create a skill for my weekly team update." Then three attachment chips type in: **FORMAT** (wins · blockers · priorities, ≤ 3 bullets) · **TONE** ("direct, for my manager to skim") · **EXAMPLE** (a pasted update) | Tracker 2/4; Claude mark (nominative); source chip "Anthropic Academy example" | typing, chip pops ×3 | 2 · ASK CLAUDE TO BUILD IT | // STEP 2 · FORMAT, TONE, EXAMPLE | F E G |
 | 5 | 16.8–22.0 | **Typewriter index card:** the SKILL.md types itself: `---` / `name: weekly-team-update` / `description: Drafts my weekly update (wins, blockers, priorities). Use when I ask for my team update.` / `---` / `## Instructions…` | A brass ruler slides under `name` (✓ ≤ 64 · ✓ lowercase-hyphens); two highlighter marks on the description: WHAT ✓ WHEN ✓; held ≥ 2.5 s | typewriter keys, bell | NAME + DESCRIPTION (WHAT + WHEN) | // THE CARD CLAUDE WRITES | F G K |
-| 6 | 22.0–27.8 | **The card filed:** Blender drawer opens, the new card drops in, the drawer closes; the brass plate engraves "weekly-team-update" | Two paths on screen: **APP:** Customize → Skills · toggle ON / **CLAUDE CODE:** `~/.claude/skills/weekly-team-update/SKILL.md` (held ≥ 2 s); tracker 3/4 | drawer thunk, toggle click | 3 · SAVE IT, SWITCH IT ON | // STEP 3 · FILE THE CARD | B F G |
+| 6 | 22.0–27.8 | **The card filed:** Blender drawer opens, the new card drops in, the drawer closes; the brass plate engraves "weekly-team-update" | Two paths on screen: **APP:** Skills settings · toggle ON / **CLAUDE CODE:** `~/.claude/skills/weekly-team-update/SKILL.md` (held ≥ 2 s); tracker 3/4 | drawer thunk, toggle click | 3 · SAVE IT, SWITCH IT ON | // STEP 3 · FILE THE CARD | B F G |
 | 7 | 27.8–33.0 | **Mocap "librarian" robot** (CMU walk + reach) answers a new-chat request "draft this week's update from these notes": it walks to the cabinet and pulls the right card | A thinking strip types "Reading weekly-team-update…" (ILLUSTRATIVE); the output card matches the example ✓; a fallback chip: "NOT TRIGGERED? SHARPEN THE DESCRIPTION"; tracker 4/4 | footsteps, drawer, ding | 4 · TEST IN A NEW CHAT | // STEP 4 · DOES IT PICK THE CARD? | C F G |
 | 8 | 33.0–39.0 | **The context jar** (bespoke data object): 24 drawer labels each pour a thin ~100-token sliver into a glass "context window" jar, which stays nearly empty; only the pulled card pours its < 5k block in; envelopes (scripts) stay sealed at 0 | Level legend: LABEL ~100 TOKENS · ALWAYS / CARD < 5K · WHEN NEEDED / ENVELOPE 0 · UNTIL OPENED | soft pours, glass tick | ~100 TOKENS UNTIL NEEDED | // WHY DOZENS COST ALMOST NOTHING | F G K |
 | 9 | 39.0–48.5 | **The catches,** a real Unsplash photo of a locked drawer or desk (plate with parallax) behind three catalogue "warning cards" | CODE EXECUTION ON · DON'T SYNC: APP ≠ API ≠ CLAUDE CODE · ONLY SKILLS YOU TRUST (THEY CAN RUN CODE), then a red stamp **NO PASSWORDS** | low drone, card thuds, stamp | THE CATCH | // BEFORE YOU INSTALL ONE | I F G |
@@ -201,10 +200,10 @@ Times are estimates (≈ 2.55 words/s) and will be retimed from the TTS word tim
 ## Honesty guardrails
 - The chat UI, thinking strip and app menu are recreated generically and labelled ILLUSTRATIVE, not genuine screenshots.
 - The Claude logo is used nominatively.
-- The settings path shows the Help Center's "Customize → Skills"; the creator checks it in their app first (see the inconsistency note).
+- The settings path is shown generically as "Skills settings" (creator decision), since the menu name differs between Anthropic's own pages.
 - The caption discloses that the reel was made with Claude and is about Claude's own feature.
 
-## Decisions for the creator
-1. **Voice:** Kokoro `am_michael` (default), another Kokoro voice, or your own recording of these 11 lines?
-2. **App path:** please open your Claude app and tell me what the Skills menu is called today (Customize → Skills, Settings → Capabilities, or Settings → Features). I'll put the exact path on screen.
-3. **Next step:** a 3-scene mockup (scenes 2, 5 and 8: cabinet, typewriter card, context jar) before the full build.
+## Decisions for the creator (answered 12 Oct)
+1. **Voice:** the creator's own voice, cloned with OmniVoice (offline, CPU) from their 15 s reference recording. Takes are picked by Whisper word accuracy and closeness to their pitch; output in `vo/`.
+2. **App path:** "Skills settings" on screen.
+3. **Mockup:** yes. Scenes 2, 5, 7 and 8 (cabinet, typewriter card, mocap librarian, context jar), so the mockup shows 3+ asset families.
