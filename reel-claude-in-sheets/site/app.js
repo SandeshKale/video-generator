@@ -12,11 +12,11 @@
   var MK = window.MK, IC = window.IC, st = $('stage');
 
   // ---------- timeline (mockup: estimates; the full build retimes from the voice) ----------
-  var SC = [0, 2.8, 6.4], TOTAL = 12.6, CUT = .36;
+  var SC = [0, 2.65, 6.25], TOTAL = 12.4, CUT = .36;
   var LINES = [ // [start, end, text] spoken lines for captions
-    [0.0, 2.55, 'Claude just moved into your Google Sheets.'],
-    [2.85, 6.1, 'Messy data in. Clean table, pivot, and a chart out.'],
-    [6.5, 12.2, 'Step three. Ask it like a colleague: clean this up, total sales by month, and chart it.']];
+    [0.0, 2.08, 'Claude just moved into your Google Sheets.'],
+    [2.7, 6.28, 'Messy data in. Clean table, pivot, and a chart out.'],
+    [6.35, 11.95, 'Step three. Ask it like a colleague: clean this up, total sales by month, and chart it.']];
   window.SC = SC; window.TOTAL = TOTAL; window.__reelDurationSec = TOTAL;
 
   // ---------- scene 1: the messy sheet cleans itself and becomes a chart ----------
@@ -48,7 +48,7 @@
     '<div class="bub">clean this up, total by month, chart it</div>' +
     '<div class="card"><div class="t"><b>6 changes</b><br>4 dates · 3 amounts · 1 duplicate</div><div class="btn" id="apv">Approve</div></div></div>' +
     '<div class="abs" id="pill" style="left:150px;top:1004px"><div class="pill">' + IC.check.replace('<svg', '<svg width="24" height="24"') + '6 CHANGES APPLIED</div></div>' +
-    '<div class="abs" id="chart" style="left:150px;top:1070px;width:768px;height:190px;border-bottom:4px solid var(--ink)"></div>' +
+    '<div class="abs" id="chart" style="left:150px;top:1070px;width:768px;height:190px;border-bottom:4px solid var(--head)"></div>' +
     '<div class="abs ring" id="ring1"></div><div class="abs cursor" id="cur1">' + IC.cursor + '</div>';
   var sc1 = mk('s1', s1);
   var chart = $('chart'), BX = [80, 300, 520], BW = 170, BMAX = 150;
@@ -92,7 +92,7 @@
     ROWS.forEach(function (r, i) { if (gone && r[7] === 'dup') return; $('r' + i).firstChild.textContent = String(rn++); });
     // pane: cursor approves, then the pane gives way to the chart
     var c = $('cur1'), cp = eio(u(t, .05, .55)), out = eio(u(t, 1.0, .4));
-    c.style.left = lerp(890, 790, cp) + lerp(0, 160, out) + 'px'; c.style.top = lerp(1280, 1196, cp) + lerp(0, 120, out) + 'px';
+    c.style.left = lerp(850, 790, cp) + lerp(0, 160, out) + 'px'; c.style.top = lerp(1280, 1196, cp) + lerp(0, 120, out) + 'px';
     c.style.opacity = 1 - out; c.style.transform = 'scale(' + (1 - .12 * Math.sin(ap * Math.PI)) + ')';
     var ring = $('ring1'), rr = u(t, .68, .35); ring.style.left = (812 - 40 * rr) + 'px'; ring.style.top = (1216 - 40 * rr) + 'px';
     ring.style.width = ring.style.height = (80 * rr) + 'px'; ring.style.opacity = rr > 0 ? 1 - rr : 0;
@@ -117,53 +117,75 @@
   // ---------- scene 2: Blender spreadsheet board ----------
   var s2 = '<div class="abs" style="left:150px;top:176px;width:768px"><div class="eyebrow">// RAW ROWS TO A REAL CHART</div>' +
     '<div class="h1" style="margin-top:14px">MESSY IN →<br><span class="hl">CHART OUT</span></div></div>' +
-    '<canvas id="board" width="720" height="800" class="abs" style="left:150px;top:410px;width:768px;height:853px"></canvas>' +
-    '<div class="abs stamp" id="st0" style="left:150px;top:640px">CLEAN TABLE</div>' +
-    '<div class="abs stamp" id="st1" style="left:620px;top:700px">PIVOT</div>' +
-    '<div class="abs stamp" id="st2" style="left:660px;top:560px">CHART</div>' +
+    '<canvas id="board" width="847" height="630" class="abs" style="left:150px;top:512px;width:768px;height:571px"></canvas>' +
+    '<div class="abs stamp" id="st0" style="left:150px;top:1118px">CLEAN TABLE</div>' +
+    '<div class="abs stamp" id="st1" style="left:488px;top:1118px">PIVOT</div>' +
+    '<div class="abs stamp" id="st2" style="left:704px;top:1118px">CHART</div>' +
     '<div class="abs track" id="trk2" style="left:150px;top:440px"><div>1 · INSTALL</div><div>2 · OPEN</div><div>3 · ASK</div></div>';
   mk('s2', s2);
   var BOARD = [], NB = 30;
   for (var i = 0; i < NB; i++) { var im = new Image(); im.src = '3d/board/b' + (i < 10 ? '0' : '') + i + '.png'; BOARD.push(im); }
   function render2(t) { // t = local scene time
     var p = cl(t / 3.5, 0, 1), f = p * (NB - 1), a = Math.floor(f), b = Math.min(NB - 1, a + 1), k = f - a;
-    var cv = $('board'), x = cv.getContext('2d'); x.clearRect(0, 0, 720, 800);
-    x.globalAlpha = 1; x.drawImage(BOARD[a], 0, 0, 720, 800); x.globalAlpha = k; x.drawImage(BOARD[b], 0, 0, 720, 800); x.globalAlpha = 1;
-    [[.95, -6], [1.55, 5], [2.15, -4]].forEach(function (s, j) {
+    var cv = $('board'), x = cv.getContext('2d'); x.clearRect(0, 0, 847, 630);
+    x.globalAlpha = 1; x.drawImage(BOARD[a], 0, 0); x.globalAlpha = k; x.drawImage(BOARD[b], 0, 0); x.globalAlpha = 1;
+    [[.95, -4], [1.55, 3], [2.15, -3]].forEach(function (s, j) {
       var e = bk(u(t, s[0], .3), 2.2), el = $('st' + j);
       el.style.opacity = u(t, s[0], .06); el.style.transform = 'rotate(' + s[1] + 'deg) scale(' + lerp(1.8, 1, e) + ')';
     });
     var tr = $('trk2'), te = bk(u(t, 3.0, .35), 1.6); tr.style.opacity = u(t, 3.0, .08); tr.style.transform = 'translateY(' + (-30 * (1 - te)) + 'px)';
   }
 
-  // ---------- scene 5: step 3, an Open Peeps colleague over a real Unsplash desk ----------
+  // ---------- scene 5: step 3, a colleague at a desk asks the laptop (humaaans + naive-icons + rough.js) ----------
   var PROMPT = [['Clean this up', 2.35], [', ', 0], ['total sales by month', 3.3], [', and ', 0], ['chart it', 4.45], ['.', 0]];
   var s5 = '<div class="abs track" style="left:150px;top:150px;transform:scale(.8);transform-origin:0 0"><div class="done">1 · INSTALL</div><div class="done">2 · OPEN</div><div class="on">3 · ASK</div></div>' +
     '<div class="abs" style="left:150px;top:222px;width:768px"><div class="eyebrow">// STEP 3 · ONE PROMPT, THREE JOBS</div>' +
     '<div class="h1" style="margin-top:14px;font-size:84px">ASK LIKE A<br><span class="hl">COLLEAGUE</span></div></div>' +
-    '<div class="abs photo" id="ph5" style="left:150px;top:470px;width:768px;height:500px"><img id="phimg" src="photos/desk.jpg"><div class="abs tag" style="right:16px;top:14px">PHOTO · UNSPLASH</div></div>' +
-    '<div class="abs chat" id="chat5" style="left:318px;top:690px;width:600px"><div class="lb">YOU → CLAUDE</div><div class="tx" id="ptx"></div></div>' +
-    '<img class="abs" id="peep" src="peep.svg" style="left:150px;top:948px;width:270px;height:381px">' +
-    '<div class="abs" id="chips5" style="left:430px;top:1108px;width:488px;display:flex;flex-direction:column;gap:10px;align-items:flex-end"></div>' +
-    '<div class="abs tag" id="ill5" style="left:700px;top:1064px;font-size:15px">RESULTS ILLUSTRATIVE</div>';
+    '<div class="abs speech" id="chat5" style="left:150px;top:448px;width:768px"><div class="lb">YOU → CLAUDE</div><div class="tx" id="ptx"></div>' +
+    '<svg class="abs" id="ul5" width="768" height="260" style="left:0;top:0;overflow:visible"></svg><div class="tail"></div></div>' +
+    '<div class="abs desk" style="left:150px;top:1082px;width:560px;height:24px"></div>' +
+    '<div class="abs leg" style="left:186px;top:1106px;height:200px"></div><div class="abs leg" style="left:656px;top:1106px;height:200px"></div>' +
+    '<div class="abs laptop" id="lap" style="left:186px;top:790px;width:420px;height:262px"><div class="scr">' +
+    '<div class="mini" id="mini"></div><div class="lpane"><div class="lph">' + MK.claude + 'Claude</div><div id="res5"></div></div></div>' +
+    '<div class="abs tag" style="right:10px;top:-34px;font-size:14px">RESULTS ILLUSTRATIVE</div></div>' +
+    '<div class="abs lapbase" style="left:160px;top:1052px;width:472px;height:30px"></div>' +
+    '<img class="abs" src="naive/coffee.svg" style="left:628px;top:1010px;width:76px;height:76px">' +
+    '<img class="abs" id="col5" src="colleague.svg" style="left:584px;top:874px;width:334px;height:422px">';
   mk('s5', s5);
+  (function () { // mini sheet on the laptop: 6x5 cells, a few flagged; a 3-bar chart appears at the end
+    var h = ''; for (var r = 0; r < 6; r++) for (var c = 0; c < 4; c++) h += '<i id="m' + r + c + '" style="left:' + (c * 56) + 'px;top:' + (r * 30) + 'px"></i>';
+    h += '<b id="mb0" style="left:16px"></b><b id="mb1" style="left:80px"></b><b id="mb2" style="left:144px"></b>';
+    $('mini').innerHTML = h;
+  })();
   var CH = [['CLEANED 214 ROWS', 3.05], ['12 MONTHS SUMMED', 4.15], ['CHART ADDED', 5.0]];
-  CH.forEach(function (c, k) { $('chips5').insertAdjacentHTML('beforeend', '<div class="chip" id="ch' + k + '">' + IC.check + c[0] + '</div>'); });
+  CH.forEach(function (c, k) { $('res5').insertAdjacentHTML('beforeend', '<div class="rline" id="ch' + k + '">' + IC.check + c[0] + '</div>'); });
+  var RG = window.rough ? rough.svg($('ul5')) : null, ULC = {};
+  function underline(key, x1, y1, x2, k) { // a sunflower marker stroke drawn by rough.js (fixed seed), revealed by k in 0..1
+    var id = key + '|' + Math.round(x2 - x1);
+    if (!ULC[id]) { var g = RG.line(x1, y1, x2, y1 + 3, { seed: 11 + key.length * 7, stroke: '#ffc31a', strokeWidth: 9, roughness: 1.4, bowing: 1.5 });
+      g.setAttribute('data-k', id); ULC[id] = g; }
+    var g = ULC[id]; $('ul5').appendChild(g);
+    [].forEach.call(g.querySelectorAll('path'), function (pth) { var L = pth.getTotalLength(); pth.style.strokeDasharray = L; pth.style.strokeDashoffset = L * (1 - k); pth.style.strokeLinecap = 'round'; });
+  }
   function render5(t) {
-    $('phimg').style.transform = 'scale(' + (1.06 + .05 * t / 6) + ') translateX(' + (-10 * t) + 'px)';
-    var ph = eo(u(t, 0, .45)); $('ph5').style.transform = 'translateY(' + (60 * (1 - ph)) + 'px) rotate(' + (-1.2 * ph) + 'deg)';
-    var pe = bk(u(t, .15, .5), 1.4); $('peep').style.transform = 'translateX(' + (-160 * (1 - pe)) + 'px) rotate(' + (2 * Math.sin(t * 2.2)) + 'deg)';
-    $('peep').style.transformOrigin = '50% 100%';
-    var ce = eo(u(t, .3, .35)); $('chat5').style.opacity = ce; $('chat5').style.transform = 'translateY(' + (30 * (1 - ce)) + 'px)';
-    // type the prompt (done by 2.2 s so it can be read and screenshotted), then underline each clause on its word
+    var ce = bk(u(t, .2, .4), 1.5); $('chat5').style.opacity = u(t, .2, .08); $('chat5').style.transform = 'translateY(' + (40 * (1 - ce)) + 'px) scale(' + lerp(.92, 1, ce) + ')';
+    var le = eo(u(t, 0, .45)); $('lap').style.transform = 'translateY(' + (50 * (1 - le)) + 'px)'; $('lap').style.opacity = le;
+    var pe = bk(u(t, .1, .5), 1.4), col = $('col5');
+    col.style.transformOrigin = '45% 100%'; col.style.transform = 'translateX(' + (180 * (1 - pe)) + 'px) rotate(' + (1.6 * Math.sin(t * 2.4)) + 'deg)';
+    // type the prompt (done by 2.2 s so it can be read and screenshotted)
     var full = PROMPT.map(function (p) { return p[0]; }).join(''), n = Math.round(full.length * u(t, .45, 1.7)), html = '', used = 0;
-    PROMPT.forEach(function (p) {
-      var s = p[0].slice(0, Math.max(0, n - used)); used += p[0].length; if (!s) return;
-      html += p[1] ? '<u style="background-size:' + (100 * eo(u(t, p[1], .35))) + '% 30%">' + s + '</u>' : s;
-    });
+    PROMPT.forEach(function (p, i) { var s = p[0].slice(0, Math.max(0, n - used)); used += p[0].length; if (s) html += p[1] ? '<span class="cl" id="cl' + i + '">' + s + '</span>' : s; });
     $('ptx').innerHTML = html + (n < full.length || Math.floor(t * 2.5) % 2 ? '<span style="color:var(--vio)">|</span>' : '');
-    CH.forEach(function (c, k) { var e = bk(u(t, c[1], .3), 2), el = $('ch' + k); el.style.opacity = u(t, c[1], .06); el.style.transform = 'translateX(' + (60 * (1 - e)) + 'px)'; });
-    $('ill5').style.opacity = u(t, 3.05, .2);
+    // rough.js marker underlines, one per clause (per wrapped line), drawn on each clause's spoken word
+    var ul = $('ul5'); while (ul.firstChild) ul.removeChild(ul.firstChild);
+    if (RG) { var box = $('chat5').getBoundingClientRect(), sc = box.width / 768;
+      PROMPT.forEach(function (p, i) { if (!p[1]) return; var el = $('cl' + i); if (!el) return; var k = eo(u(t, p[1], .4)); if (k <= 0) return;
+        [].forEach.call(el.getClientRects(), function (r, j) { underline('c' + i + '_' + j, (r.left - box.left) / sc, (r.bottom - box.top) / sc - 6, (r.right - box.left) / sc, k); }); }); }
+    // the laptop: messy cells clean up on "clean", totals on "month", bars on "chart"
+    for (var r = 0; r < 6; r++) for (var c = 0; c < 4; c++) { var bad = hash(r, c) > .62, cl0 = u(t, 2.35 + (r + c) * .04, .12), m = $('m' + r + c);
+      m.style.background = bad && cl0 < .5 ? '#ffd9cf' : (c === 3 && r % 2 === 1 && t > 3.3 + r * .05 ? '#ffe7a3' : '#fff'); m.style.borderColor = bad && cl0 < .5 ? '#ff5233' : '#d5e3db'; }
+    [0, 1, 2].forEach(function (k) { var e = bk(u(t, 4.5 + k * .1, .35), 1.6); $('mb' + k).style.height = (e * [34, 46, 70][k]) + 'px'; });
+    CH.forEach(function (c, k) { var e = bk(u(t, c[1], .3), 2), el = $('ch' + k); el.style.opacity = u(t, c[1], .06); el.style.transform = 'translateX(' + (30 * (1 - e)) + 'px)'; });
   }
 
   // ---------- shared: background cell flashes, captions, grid-snap cuts ----------
@@ -176,7 +198,7 @@
   function flashes(id, t, si) { // a few background cells blink sunflower as if being computed (deterministic per cell slot and time)
     for (var k = 0; k < 7; k++) {
       var slot = Math.floor(t * .9 + k * .37), ph = t * .9 + k * .37 - slot, cx = Math.floor(hash(slot + si * 13, k) * 6), cy = Math.floor(hash(k, slot + si * 7) * 11);
-      var f = $(id + 'f' + k); f.style.left = (cx * 180 - 30 + 2) + 'px'; f.style.top = (cy * 180 - 20 + 2) + 'px'; f.style.opacity = .16 * Math.sin(ph * Math.PI);
+      var f = $(id + 'f' + k); f.style.left = (cx * 180 - 30 + 2) + 'px'; f.style.top = (cy * 180 - 20 + 2) + 'px'; f.style.opacity = .07 * Math.sin(ph * Math.PI);
     }
   }
   st.insertAdjacentHTML('beforeend', '<div id="cap"><div id="capd"></div></div>');
@@ -199,8 +221,8 @@
       var d = (i + j) / (cols + rows - 2), q = cl((ph - d * .5) / .5, 0, 1), s = half ? eio(q) : 1 - eio(q);
       if (s <= .002) continue;
       var hh = (h - 8) * s, y = j * h + 4 + (h - 8 - hh) / 2;
-      cx.fillStyle = (i + j) % 3 === 0 ? '#23142d' : '#7a3cff'; cx.fillRect(i * w + 4, y, w - 8, hh);
-      if (s > .6) { cx.fillStyle = 'rgba(255,195,26,' + (s - .6) * 2 + ')'; cx.fillRect(i * w + 4, y + hh - 10, w - 8, 10); }
+      cx.fillStyle = (i + j) % 3 === 0 ? '#ffc31a' : '#23142d'; cx.fillRect(i * w + 4, y, w - 8, hh);
+      if (s > .6) { cx.fillStyle = 'rgba(246,241,255,' + (s - .6) * 2 + ')'; cx.fillRect(i * w + 4, y + hh - 10, w - 8, 10); }
     }
   }
 
@@ -216,5 +238,7 @@
     cutDraw(cp); caption(t);
   };
   window.__ready = false;
-  Promise.all([document.fonts.ready].concat(BOARD.map(function (im) { return im.decode().catch(function () {}); }))).then(function () { window.__seek(0); window.__ready = true; });
+  var FACES = ['700 20px Rubik', '800 20px Rubik', '500 20px Azeret', '700 20px Azeret', '500 20px Inter', '600 20px Inter', '700 20px Inter'];
+  // load every face up front: text first set inside __seek would otherwise request its font late and stay invisible (font-display: block) on frame 0
+  Promise.all([document.fonts.ready].concat(FACES.map(function (f) { return document.fonts.load(f); }), BOARD.map(function (im) { return im.decode().catch(function () {}); }))).then(function () { window.__seek(0); window.__ready = true; });
 })();

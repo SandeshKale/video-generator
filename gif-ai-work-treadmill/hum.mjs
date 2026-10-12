@@ -8,6 +8,9 @@ export function humaaansFull(kind, name, overrides = {}) {
   if (m0) for (const m of m0[1].matchAll(/(\w+):\s*'([^']*)'/g)) defaults[m[1]] = m[2];
   const colors = { ...defaults, ...overrides };
   let body = src.match(/<svg[^>]*>([\s\S]*)<\/svg>/)[1];
+  // quote attribute values (inline HTML tolerated fill=#abc, but a standalone .svg file is XML and does not)
+  body = body.replace(/=\{darken\((\w+)\)\}/g, (_, k) => `="${darkenHex(colors[k], 0.1)}"`);
+  body = body.replace(/=\{(\w+)\}/g, (m, k) => (k in colors ? `="${colors[k]}"` : m));
   body = body.replace(/\{darken\((\w+)\)\}/g, (_, k) => darkenHex(colors[k], 0.1));
   body = body.replace(/\{(\w+)\}/g, (_, k) => (k in colors ? colors[k] : '#000000'));
   body = body.replace(/(\w+)=\{([^}]*)\}/g, (_, a, v) => `${a.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase())}="${v.replace(/['"]/g, '')}"`);

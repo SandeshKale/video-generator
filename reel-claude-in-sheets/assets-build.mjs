@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { peep } from '../assets/illustrations/open-peeps/compose.mjs';
+import { humaaansFull } from '../gif-ai-work-treadmill/hum.mjs';
 const H = path.dirname(new URL(import.meta.url).pathname), A = path.join(H, '..', 'assets'), S = path.join(H, 'site');
 const cp = (from, to) => { fs.mkdirSync(path.dirname(path.join(S, to)), { recursive: true }); fs.copyFileSync(path.join(A, from), path.join(S, to)); };
 
@@ -19,8 +19,12 @@ im = Image.open('${A}/photos/servicestack/photo-1437419764061-2473afe69fc2.jpg')
 w, h = im.size; cw = int(h * 1.45); x = 0   # left side: laptop + wood; the right side shows camera/card brand marks
 im.crop((x, 0, x + cw, h)).resize((1160, 800), Image.LANCZOS).save('${S}/photos/desk.jpg', quality=88)`]);
 
-// Open Peeps colleague (first reel to use Open Peeps): pointing pose, explaining face, violet shirt via bg fill
-fs.writeFileSync(path.join(S, 'peep.svg'), peep({ pose: 'standing/PointingFingerWB', hair: 'BunCurly', face: 'Explaining', accessory: 'GlassRound', stroke: '#23142d', bg: '#ffffff' }));
+// the colleague: humaaans sitting-1 (never used in an earlier reel), recoloured to the Cell Shock palette
+fs.writeFileSync(path.join(S, 'colleague.svg'), humaaansFull('sitting', 'sitting-1', { coatColor: '#ffc31a', pantColor: '#23142d', shirtColor: '#fbfdfc', shoeColor: '#fbfdfc', objectColor: '#11a08f' }));
+fs.rmSync(path.join(S, 'peep.svg'), { force: true });
+// hand-drawn colour icons (naive-icons, MIT) and the rough.js sketch renderer (MIT)
+for (const n of ['coffee', 'lamp', 'check-circle']) cp(`icons/naive-icons/${n}.svg`, `naive/${n}.svg`);
+cp('animations/rough/rough.min.js', 'rough.min.js');
 
 // marks: simple-icons (CC0 icon data; trademarks belong to their owners, used to identify the products)
 const mark = (name, col) => fs.readFileSync(path.join(A, 'icons/simple-icons', name + '.svg'), 'utf8').replace('<svg ', `<svg fill="${col}" `);

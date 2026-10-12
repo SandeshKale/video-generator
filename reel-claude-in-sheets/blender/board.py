@@ -9,7 +9,7 @@ from common import setup, mat, area, bev, cam_persp
 out = sys.argv[1]; N = int(sys.argv[2]) if len(sys.argv) > 2 else 30; SAMPLES = int(sys.argv[3]) if len(sys.argv) > 3 else 16
 os.makedirs(out, exist_ok=True)
 sc = setup(res=(900, 1000), samples=SAMPLES)
-sc.world.node_tree.nodes['Background'].inputs[0].default_value = (0.86, 0.95, 0.91, 1)   # mint-chalk ambient
+sc.world.node_tree.nodes['Background'].inputs[0].default_value = (0.88, 0.84, 1.0, 1)   # lavender ambient (violet ground)
 sc.world.node_tree.nodes['Background'].inputs[1].default_value = 0.65
 
 def hexc(h, a=1):
@@ -51,7 +51,7 @@ for (a, b) in [((x0, y0), (x1, y0)), ((x0, y1), (x1, y1)), ((x0, y0), (x0, y1)),
 area((-5, -6, 9), (math.radians(40), 0, math.radians(-35)), 8, 900)
 area((7, -3, 6), (math.radians(55), 0, math.radians(60)), 5, 380, (1, 0.93, 0.85))
 area((0, 8, 7), (math.radians(-50), 0, 0), 6, 250, (0.85, 0.9, 1))
-cam_persp(sc, (7.2, -11.5, 10.5), (0.3, -0.2, 1.5), lens=52)
+cam_persp(sc, (7.2, -11.5, 10.5), (0.0, -0.3, 1.1), lens=43)
 
 def ease(u): u = min(1, max(0, u)); return u * u * (3 - 2 * u)
 def back(u, s=1.6): u = min(1, max(0, u)); u -= 1; return u * u * ((s + 1) * u + s) + 1
