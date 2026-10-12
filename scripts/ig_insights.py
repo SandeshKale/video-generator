@@ -89,7 +89,7 @@ def report():
             continue
         v = p.get('plays') or p.get('views') or 0
         age_d = max(0.5, (now - datetime.fromisoformat(p['date_utc'])).total_seconds() / 86400)
-        folder, conf = match(p['caption'], caps)
+        folder, conf = match(p['caption'] or '', caps)
         ins = p.get('insights') or {}
         reach = ins.get('reach') or v
         rows.append(dict(p, v=v, age_d=age_d, folder=folder, conf=conf, ins=ins,
@@ -103,9 +103,15 @@ def report():
     med_v = statistics.median([r['v'] for r in mature]) if mature else 0
     med_e = statistics.median([r['eng'] for r in mature]) if mature else 0
     med_ss = statistics.median([r['sspk'] for r in mature if r['sspk'] is not None] or [0])
+    if not med_ss:  # most reels have 0 saves+shares: fall back to the mean so one save still counts
+        med_ss = statistics.mean([r['sspk'] for r in mature if r['sspk'] is not None] or [0])
+    # small samples: shrink engagement toward the median as if each reel had PRIOR extra views at median rate
+    PRIOR = 150
+    for r in rows:
+        r['eng_s'] = (r['likes'] + r['comments'] + PRIOR * med_e) / (r['v'] + PRIOR)
     for r in rows:
         r['vx'] = r['v'] / med_v if med_v else 0
-        r['score'] = 0.7 * r['vx'] + 0.3 * (r['eng'] / med_e if med_e else 0)  # reach first, then engagement quality
+        r['score'] = 0.7 * r['vx'] + 0.3 * (r['eng_s'] / med_e if med_e else 0)  # reach first, then engagement quality
         if r['sspk'] is not None and med_ss:  # with Insights: saves+shares per reach is the strongest topic signal
             r['score'] = 0.5 * r['vx'] + 0.3 * (r['sspk'] / med_ss) + 0.2 * ((r['hold'] or 0) / 0.6)
 
@@ -119,7 +125,7 @@ def report():
         L.append(f"| {i} | {r['date_utc'][:10]}{young} | {r['v']:,} | {r['vx']:.2f} | {r['likes']:,} | {r['comments']:,} | {r['eng']:.1%} | "
                  f"{'' if r['sspk'] is None else f'{r[chr(115)+chr(115)+chr(112)+chr(107)]:.1f}'} | {'' if r['fpk'] is None else f'{r[chr(102)+chr(112)+chr(107)]:.1f}'} | "
                  f"{'' if r['hold'] is None else f'{r[chr(104)+chr(111)+chr(108)+chr(100)]:.0%}'} | {r['ins'].get('avg_watch_s', '')} | "
-                 f"{r['folder'] or '?'} ({r['conf']:.2f}) | {r['caption'][:60].replace('|', '/').replace(chr(10), ' ')} |")
+                 f"{r['folder'] or '?'} ({r['conf']:.2f}) | {(r['caption'] or '')[:60].replace('|', '/').replace(chr(10), ' ')} |")
 
     # tag ranking: mean ×median views and engagement per tag value (mature, matched posts only)
     by = {}

@@ -1,0 +1,26 @@
+{
+  "captured_utc": "2026-10-12T15:18:09+00:00",
+  "followers": 6,
+  "follower_growth_30d": null,
+  "top_countries": null,
+  "top_cities": null,
+  "age_ranges": null,
+  "gender": null,
+  "most_active_times_local": null,
+  "most_active_times_timezone": null,
+  "accounts_reached_30d": 3063,
+  "non_follower_reach_pct_30d": null,
+  "_notes": {
+    "source": "graph-api (Composio INSTAGRAM_GET_USER_INSIGHTS), window 2026-09-12T15:17Z to 2026-10-12T15:17Z",
+    "follower_growth_30d": "follows_and_unfollows and follower_count returned no data (Meta suppresses these under 100 followers)",
+    "demographics": "follower_demographics (country/city/age/gender, timeframe this_month) returned empty: requires 100+ followers; account has 6",
+    "most_active_times": "online_followers returned empty (requires 100+ followers)",
+    "non_follower_reach_pct_30d": "left null: reach breakdown by follow_type gave NON_FOLLOWER 3063, FOLLOWER 6 against a deduplicated total of 3063, so a clean fraction is ambiguous (~1.0)",
+    "views_30d_by_follow_type": {
+      "total": 3839,
+      "NON_FOLLOWER": 3672,
+      "FOLLOWER": 165,
+      "UNKNOWN": 2
+    }
+  }
+}
