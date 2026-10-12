@@ -1246,3 +1246,15 @@ A tutorial reel (no avatar): teach Claude a skill in 4 steps (pick, ask with for
   - Courier Prime has no "×" glyph (it falls back); write "3X".
   - A scratchpad folder reused from an earlier session showed stale screenshots; use unique folder names.
 - **Mix:** voice over music + SFX median 20.1 dB, min 11.0 dB; −14.6 LUFS, −1.5 dBTP.
+
+## Reel benchmark — `reel-morning-brief` ("I was asleep when Claude wrote this.", 63 s, Dawn Edition, cloned voice)
+A tutorial reel (no avatar): Claude reads Gmail + Google Calendar and writes a weekday 7 a.m. brief as a Cowork scheduled task. Four steps (connect, write the brief, schedule, read), the drafts-not-sends trick and the catches.
+- **Look:** a reel-long wall clock (`clockMin(t)`, 6:58.8 → 7:40) drives the sky gradient from pre-dawn indigo to bright morning, plus the masthead time. Paper/ink/coral with leaf and sky. Fonts: Newsreader 800 + italic, Red Hat Mono, Inter; cover in Anton on the sunrise ground.
+- **New techniques:**
+  1. **Voice: Qwen3-TTS-12Hz-0.6B-Base (Apache-2.0) on CPU** replaced OmniVoice. The reverb came from the reference room and OmniVoice copied it; Qwen's ICL mode stays dry. **x-vector mode copies timbre only and loses the creator's Indian accent; ICL mode keeps accent and rhythm.** Takes are scored by Whisper WER + resemblyzer similarity + a dryness (gap floor) term + an accent penalty from SpeechBrain `Jzuluaga/accent-id-commonaccent_ecapa` (use the cosine *margin* indian − best other; softmax of its scores is flat). Cap `max_new_tokens` or ICL takes can run away. "A bit slow" was fixed with pause tightening (>0.40 s → 0.28 s) + atempo to ~2.85 words/s, not a faster synthesis.
+  2. **Blender bedroom in four lighting states** (night/blue hour/sunrise/morning) cross-faded on the wall clock; the sun enters only through the window (camera-invisible blockers). Clock dials are blank in Blender; hands are drawn in SVG from projected face points so they move as a pure function of `t`.
+  3. **Sunrise-wipe cuts** (`clip-path: inset()` + a warm band), and the hook holds through the music drop (`VS[1] = SC[1] + .95`).
+  4. **Mix:** voice-activity ducking, a 1.2–4.5 kHz carve in the music, kick sidechain pump, reverb on music only, oversampled limiter, 2-pass loudnorm → −14.0 LUFS, voice over music median 19.9 dB (min 11.6).
+  5. **Dashed placeholders** (`skel()`) hold slots until their words arrive, which lifted the early-scene occupancy.
+- **Pitfalls:** the generated "closed laptop" came back open with a lit screen — the screen was painted dark in the image (raw kept, disclosed in the caption); the `film`/light-leak overlay at .45 screen washed out a bright photo scene (keep ≤ .16 outside the hook); white skeleton outlines vanish on a light sky (use ink ones); `pgrep -f` waiters matched themselves again — wait on a log line instead.
+- **Validated:** `check.mjs` 0 issues (occupancy below 65 % only on the two full-bleed image scenes, 1 and 6, and scene 2's entrance), contact sheets of every scene at +0.8 s/mid/end at full and phone size.
