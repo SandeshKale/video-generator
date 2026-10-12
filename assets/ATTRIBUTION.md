@@ -279,3 +279,9 @@ Added for `reel-apple-camera-no-video`: 18_08 (conversation, explain with hand g
 
 ## Rhubarb Lip Sync (tool, MIT) — used by `reel-apple-camera-no-video`
 DanielSWolf/rhubarb-lip-sync v1.13.0 (MIT; deps MIT/BSD) was run offline on the voice-over to produce mouth-shape cues (`site/mouth.js`). The binary is not vendored (download from the project's GitHub releases); only its output is committed.
+
+## Open Peeps + Open Doodles (added Oct 2026)
+- `assets/illustrations/open-peeps/` — 38-style hair / face / facial-hair / accessory pieces and standing/sitting/bust poses, as static `.svgfrag` files with `{{stroke}}`/`{{bg}}` colour placeholders; compose with `open-peeps/compose.mjs` (`peep({...})`).
+- `assets/illustrations/open-doodles/` — 33 full-scene doodles as static SVG with `{{ink}}`/`{{accent}}` placeholders (`doodle(name, ink, accent)`).
+- Artwork: Pablo Stanley (Open Peeps, Open Doodles), published by him as free/open (CC0 per his site — verify at openpeeps.com / opendoodles.com before any new use). Extracted from the MIT-licensed JSX wrappers `CeamKrier/react-peeps` and `lunahq/react-open-doodles` (their licences are copied beside the assets). Regenerate with `assets/illustrations/extract-peeps-doodles.mjs`; the npm packages are not kept as dependencies.
+- Not vendored: unDraw (licence forbids redistributing the illustrations as a collection), Blush, DiceBear, IRA Design (gradient palettes clash with per-reel palettes).
