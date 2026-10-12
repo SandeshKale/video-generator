@@ -90,24 +90,35 @@ def report():
         v = p.get('plays') or p.get('views') or 0
         age_d = max(0.5, (now - datetime.fromisoformat(p['date_utc'])).total_seconds() / 86400)
         folder, conf = match(p['caption'], caps)
-        rows.append(dict(p, v=v, age_d=age_d, folder=folder, conf=conf,
+        ins = p.get('insights') or {}
+        reach = ins.get('reach') or v
+        rows.append(dict(p, v=v, age_d=age_d, folder=folder, conf=conf, ins=ins,
+                         sspk=1000 * ((ins.get('saves') or 0) + (ins.get('shares') or 0)) / reach if reach and ins else None,
+                         fpk=1000 * (ins.get('follows') or 0) / reach if reach and ins.get('follows') is not None else None,
+                         hold=(1 - ins['skip_rate']) if ins.get('skip_rate') is not None else None,
                          eng=(p['likes'] + p['comments']) / v if v else 0,
                          cpk=1000 * p['comments'] / v if v else 0))
     # posts younger than 2 days are still climbing: show them, but keep them out of the medians and tag ranking
     mature = [r for r in rows if r['age_d'] >= 2] or rows
     med_v = statistics.median([r['v'] for r in mature]) if mature else 0
     med_e = statistics.median([r['eng'] for r in mature]) if mature else 0
+    med_ss = statistics.median([r['sspk'] for r in mature if r['sspk'] is not None] or [0])
     for r in rows:
         r['vx'] = r['v'] / med_v if med_v else 0
         r['score'] = 0.7 * r['vx'] + 0.3 * (r['eng'] / med_e if med_e else 0)  # reach first, then engagement quality
+        if r['sspk'] is not None and med_ss:  # with Insights: saves+shares per reach is the strongest topic signal
+            r['score'] = 0.5 * r['vx'] + 0.3 * (r['sspk'] / med_ss) + 0.2 * ((r['hold'] or 0) / 0.6)
 
     L = [f"# Instagram performance report: @{USER}", '',
          f"Fetched {data['fetched_utc']} · {data['followers']} followers · {len(rows)} reels analysed "
          f"({len(mature)} older than 2 days used for medians) · median views {med_v:,.0f} · median engagement {med_e:.1%}", '',
-         '| # | Date | Views | ×median | Likes | Comments | Eng. | Reel folder (match) | Caption start |', '|---|---|---:|---:|---:|---:|---:|---|---|']
+         '| # | Date | Views | ×median | Likes | Comments | Eng. | Saves+shares /1k reach | Follows /1k | 3-s hold | Avg watch s | Reel folder (match) | Caption start |',
+         '|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---|']
     for i, r in enumerate(sorted(rows, key=lambda r: -r['score']), 1):
         young = ' (young)' if r['age_d'] < 2 else ''
         L.append(f"| {i} | {r['date_utc'][:10]}{young} | {r['v']:,} | {r['vx']:.2f} | {r['likes']:,} | {r['comments']:,} | {r['eng']:.1%} | "
+                 f"{'' if r['sspk'] is None else f'{r[chr(115)+chr(115)+chr(112)+chr(107)]:.1f}'} | {'' if r['fpk'] is None else f'{r[chr(102)+chr(112)+chr(107)]:.1f}'} | "
+                 f"{'' if r['hold'] is None else f'{r[chr(104)+chr(111)+chr(108)+chr(100)]:.0%}'} | {r['ins'].get('avg_watch_s', '')} | "
                  f"{r['folder'] or '?'} ({r['conf']:.2f}) | {r['caption'][:60].replace('|', '/').replace(chr(10), ' ')} |")
 
     # tag ranking: mean ×median views and engagement per tag value (mature, matched posts only)
