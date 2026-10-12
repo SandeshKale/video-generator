@@ -63,3 +63,5 @@ Big Shoulders Display (600, 800) — Copyright The Big Shoulders Project Authors
 DM Serif Display (400) — Copyright 2014 The DM Serif Display Project Authors, and Courier Prime (400, 700) — Copyright 2015 The Courier Prime Project Authors; both SIL Open Font License 1.1, via @fontsource.
 
 Newsreader (600, 700, 800, 600 italic) — Copyright 2020 The Newsreader Project Authors, and Red Hat Mono (500, 700) — Copyright 2021 Red Hat, Inc.; both SIL Open Font License 1.1, via @fontsource.
+
+Rubik (700, 800) — Copyright 2015 The Rubik Project Authors (https://github.com/googlefonts/rubik), and Azeret Mono (500, 700) — Copyright 2021 The Azeret Project Authors (https://github.com/displaay/azeret); both SIL Open Font License 1.1, via @fontsource.

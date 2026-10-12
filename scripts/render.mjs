@@ -105,6 +105,8 @@ async function main() {
     const cdp = SCALE === 1 ? await page.context().newCDPSession(page) : null;
     await page.goto(entryUrl, { waitUntil: 'load' });
     await page.waitForFunction(() => typeof window.__seek === 'function');
+    // pages that load fonts/images before their first frame set window.__ready = false, then true when done
+    await page.waitForFunction(() => window.__ready !== false, null, { timeout: 120000 });
 
     const DURATION_SEC = await page.evaluate(() => window.__reelDurationSec);
     if (typeof DURATION_SEC !== 'number' || !(DURATION_SEC > 0)) {
