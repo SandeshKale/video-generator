@@ -90,16 +90,16 @@ The last two scripts:
 4. **The SKILL.md written live on a typewriter card.** Frontmatter keys type out, a ruler checks `name` ≤ 64 / lowercase-hyphen and the description "what + when". Held ≥ 2.5 s for screenshots.
 5. **The real test signal on screen:** a mock thinking strip showing "Reading weekly-team-update…" (labelled ILLUSTRATIVE), as the Academy describes.
 
-## Voice-over (Kokoro `am_michael`; 11 lines; ~160 words, ~63 s)
+## Voice-over (Kokoro `am_michael`; 11 lines; ~164 words, ~64 s)
 1. (hook, 1.12) "You keep explaining the same thing to AI. Teach it once instead."
-2. "A skill is a small instruction file. Claude pulls it out only when it's needed. Four steps."
+2. "A skill is a small instruction file Claude pulls out only when needed. Four steps."
 3. "Step one. Pick a task you've explained more than twice, like your weekly update."
-4. "Step two. Just ask Claude: create a skill for my weekly team update. Give it the format, the tone, and one example you liked."
-5. "Claude writes the skill file for you. A short name, and a description of what it does, and when to use it."
-6. "Step three. Save it, and switch it on in your Skills settings. In Claude Code, it's just a folder."
+4. "Step two. Ask Claude: create a skill for my weekly team update. Add the format, the tone, and one example you liked."
+5. "Claude writes the skill file. A short name, and a description of what it does, and when."
+6. "Step three. Save it, and switch it on in Skills settings. In Claude Code, it's just a folder."
 7. "Step four. Test it in a new chat. If Claude doesn't pick it up, sharpen the description."
 8. "The clever part? Until it's needed, a skill costs about a hundred tokens. So keep dozens."
-9. (slower, 1.0) "The catch. Code execution has to be on. Skills don't sync between apps. And only install skills you trust, because they can run code."
+9. (slower, 1.0) "The catch. Code execution must be on. Skills don't sync between apps. And only install ones you trust. They can run code."
 10. "Never put passwords in one."
 11. (warm) "Save this, and follow for more."
 
