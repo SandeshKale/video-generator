@@ -346,7 +346,7 @@ window.__seek = function (t) {
   var inI = -1, outI = -1, u = 0;
   for (var k = 1; k < VS.length; k++) if (t >= VS[k] - WT / 2 && t < VS[k] + WT / 2) { inI = k; outI = k - 1; u = sm((t - (VS[k] - WT / 2)) / WT); }
   scenes.forEach(function (s, i) { var show = inI >= 0 ? (i === inI || i === outI) : i === si; s.style.display = show ? 'block' : 'none'; s.style.clipPath = ''; s.style.zIndex = 1; });
-  if (inI >= 0) { var y = (1 - u) * 100; scenes[inI].style.clipPath = 'inset(' + y.toFixed(2) + '% 0 0 0)'; scenes[inI].style.zIndex = 2; band.style.display = 'block'; band.style.top = ((1 - u) * 1920 - 130).toFixed(1) + 'px'; band.style.opacity = Math.sin(Math.PI * u).toFixed(3); }
+  if (inI >= 0) { var y = (1 - u) * 100; scenes[inI].style.clipPath = 'inset(' + y.toFixed(2) + '% 0 0 0)'; scenes[inI].style.zIndex = 2; scenes[outI].style.clipPath = 'inset(0 0 ' + (100 - y).toFixed(2) + '% 0)'; band.style.display = 'block'; band.style.top = ((1 - u) * 1920 - 130).toFixed(1) + 'px'; band.style.opacity = Math.sin(Math.PI * u).toFixed(3); }
   else band.style.display = 'none';
   var jolt = 0; [outI, inI, si].forEach(function (k, j, arr) { if (k < 0 || arr.indexOf(k) !== j) return; var r = A[k].u(t) || 0; if (k === si) jolt = r; });
   st.style.transform = jolt ? 'translate(' + (Math.sin(t * 90) * 5 * jolt).toFixed(1) + 'px,' + (Math.cos(t * 77) * 4 * jolt).toFixed(1) + 'px)' : '';
@@ -358,7 +358,7 @@ window.__seek = function (t) {
   if (inI >= 0 && MS[inI] > 0 && !vis) { mast.style.display = 'flex'; mastSet(MS[inI]); mast.style.clipPath = 'inset(' + ((1 - u) * 100).toFixed(1) + '% 0 0 0)'; } else if (inI >= 0 && MS[inI] === 0 && vis) { mast.style.clipPath = 'inset(0 0 ' + (u * 100).toFixed(1) + '% 0)'; } else mast.style.clipPath = '';
   // WebGL nightstand photo for scene 6 (clipped with its scene during the wipe)
   var gs = 5, glOn = si === gs || inI === gs || outI === gs; glc.style.display = glOn ? 'block' : 'none';
-  if (glOn) { glc.style.clipPath = inI === gs ? scenes[gs].style.clipPath : ''; glc.style.zIndex = 0; var uu = clamp((t - VS[gs]) / (VS[gs + 1] - VS[gs]), 0, 1); window.GLP.draw({ a: 'nightstand', camA: [lerp(.2, -.2, uu), .02, lerp(1.05, 1.16, uu)], par: .07, dim: .78, t: t }); }
+  if (glOn) { glc.style.clipPath = inI === gs || outI === gs ? scenes[gs].style.clipPath : ''; glc.style.zIndex = 0; var uu = clamp((t - VS[gs]) / (VS[gs + 1] - VS[gs]), 0, 1); window.GLP.draw({ a: 'nightstand', camA: [lerp(.2, -.2, uu), .02, lerp(1.05, 1.16, uu)], par: .07, dim: .78, t: t }); }
   skyEl.style.display = glOn && si === gs && inI < 0 ? 'none' : 'block';
   drawCap(t);
   var leakOn = (t > SC[1] - .1 && t < VS[1] + .2) || si === 6 || si === 9, leakOp = si === 0 ? .7 * pop(t, SC[1] - .1, 1.2) + .1 : .16;
