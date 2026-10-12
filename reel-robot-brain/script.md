@@ -1,4 +1,4 @@
-# "A chatbot just beat 40 robot brains." GPT-6 Astra as a robot policy (news explainer, no avatar, ~62 s)
+# "A chatbot just beat 40 robot brains." GPT-6 Astra as a robot policy (news explainer, no avatar, ~65 s)
 
 **Logline:** researchers handed GPT-6 Astra a robot with no fine-tuning for any of the tasks. It looks through cameras and answers with move commands. On RoboDojo's 42 tasks it ranked first against 40 robot policies, at 22% success. An older model managed under 1%. It also stacks blocks, folds clothes and plays piano with two robot hands. Then the twist: on real arms the team **stopped testing for safety**, after unsafe moves damaged equipment.
 
@@ -78,21 +78,21 @@ Previous ceiling: `reel-ai-trading-pipeline` (70 s, 11 families, cable match cut
    It shows *how* a chatbot drives a robot. No reel has shown the mechanism this literally.
 3. **A 2,100-trial dot field.** 42 columns × 50 dots fill as a pure function of `t`. Each column lights at its task's real Score ratio (best tasks bright, zero tasks dark), and the field collapses into the 22.48% bar. It's a data object built from the paper's own per-task table.
 4. **Leaderboard elevator.** Astra's card rises past 40 policy cards to rank 1, with the four named runners-up shown with their real numbers; GPT-5.5 sits at the bottom at 0.88%.
-5. **A shorter runtime:** ~62 s, ~158 words.
+5. **A shorter runtime:** ~65 s, ~166 words.
 6. **The first light palette in four reels** (headroom note from the glass-diary benchmark).
 
-## Voice-over (Kokoro `am_michael`; 13 sentences; ~158 words, ~62 s)
+## Voice-over (Kokoro `am_michael`; 13 lines; ~166 words, ~65 s)
 1. (hook, speed 1.12) "A chatbot just beat forty robot brains, at their own job."
 2. "And nobody fine-tuned it for a single one of these tasks."
-3. "Researchers gave GPT-6 Astra a pair of robot arms. Each turn, it looks through the cameras, and says where the gripper should go."
+3. "Researchers gave GPT-6 Astra robot arms. It looks through the cameras, and says where the gripper goes."
 4. "Forty-two tasks. Two thousand one hundred tries. It came first, at twenty-two percent."
-5. "Sounds low? An older OpenAI model, GPT-5.5, scored under one."
+5. "Sounds low? An older model, GPT-5.5, scored under one."
 6. "It's great when the job needs understanding. Stacking blocks. Folding clothes."
 7. "It's hopeless at precision. Plug in a charger? Zero."
-8. "It even wrote its own controller, and played Twinkle Twinkle with two robot hands, slightly better than the trained baseline."
+8. "It even wrote its own piano controller, and beat the trained baseline at Twinkle Twinkle."
 9. "On real arms, it dropped a block in a bowl nineteen times out of twenty. Claude managed eight."
 10. "A puzzle piece into its slot? Two out of twenty. For both."
-11. (slower, 0.98) "Then the real test. The team stopped its real-robot trials for safety. It kept making unsafe moves, and damaged equipment."
+11. (slower, 0.98) "Then, the real robots. The team stopped those trials for safety. It kept making unsafe moves, and damaged equipment."
 12. "Their own words: a high score doesn't mean safe control."
 13. (warm) "So, would you let it fold your laundry? Follow for more."
 
