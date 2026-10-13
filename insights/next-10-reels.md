@@ -336,3 +336,35 @@ Each reel lists: the hook (A = main, B = alternate for Trial Reels), the beats, 
 - **Screen recordings:** reels 2–9 need real screen recordings, ideally on the free ChatGPT plan, from your phone or laptop.
 - **Approvals:** OK on the series name and on the CLAUDE.md rule change.
 - **DM delivery:** ManyChat set up for the keywords, or sending them by hand.
+
+---
+
+## Revision (13 Oct): only Claude and Grok subscriptions, and what "filming" means
+
+**Which tool each reel uses.** Screen recordings come from the Claude and Grok apps you pay for. ChatGPT is optional; a free account works if a reel needs it.
+
+| Reel | Tool | Change |
+|---|---|---|
+| 1 Safe word | none (your face plus built visuals) | — |
+| 2 Ask-me-questions | Claude (Grok as a second demo) | The prompt works in any chat AI. Title changes to "Make AI ask YOU questions first". |
+| 3 Resume check | Claude (attach the resume PDF) | — |
+| 4 Memory privacy | Claude memory settings, plus Grok's if it has them | Verify each app's memory and incognito settings on the day. Title changes to "Your AI remembers you. Here's where." |
+| 5 Calculator builder | **Claude artifacts** ("make me an EMI calculator" gives a working interactive tool) | Replaces the GPT-6 Intelligent UI demo. |
+| 6 Sounding like AI | Claude | — |
+| 7 Lecture → flashcards | Claude (lecture PDF or transcript → flashcards plus a quiz artifact) | Verify whether Claude can read a YouTube link directly. If not, use the transcript or slides. |
+| 8 Free AI in India | none (a built comparison board) | Verify each row on its official page. |
+| 9 Interview practice | Claude voice mode or Grok voice mode, whichever handles it better | Verify voice mode availability on the day. |
+
+**Filming: what "about 2 minutes" means.** Only the **hook**, the first 2–3 seconds of the reel, where you say the opening line to camera.
+- **What you say:** the hook line of that reel, e.g. reel 1: *"If 'I' call you crying for money… ask me this one question."*
+- **How:**
+  - Phone held vertically at eye level, face filling the top half of the frame, eyes on the lens.
+  - Face a window for light.
+  - Record in a room with curtains, a bed or a sofa (less echo).
+  - Leave a 1-second pause before and after the line.
+  - Say it 5–8 times, varying energy (calm, urgent, smiling). Recording all the takes takes about 2 minutes.
+- **Send:** the raw video file(s). I pick the best take, trim it, clean the audio, and build the rest of the reel around it.
+- **Optional:** a 2-second reaction shot (a nod or "see?") for the end card.
+- **If you'd rather not film:** use your avatar tool for the hook, or open with the result itself (e.g. the finished EMI calculator). We lose the "real person" test, but the reel still works.
+
+**Screen recordings:** use the phone's built-in screen recorder while you do the task in the Claude or Grok app. Follow a short step list I'll give you for each reel. Record a few seconds before and after each step.
