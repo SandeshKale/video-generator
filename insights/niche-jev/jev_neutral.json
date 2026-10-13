@@ -1,0 +1,86 @@
+[
+ {
+  "framing": "growth",
+  "seed": 0,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.95,
+  "probabilities": {
+   "psychology": 0.03,
+   "personal_finance": 0.0,
+   "ai_tools": 0.01,
+   "history": 0.0,
+   "science": 0.96
+  }
+ },
+ {
+  "framing": "growth",
+  "seed": 1,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.92,
+  "probabilities": {
+   "psychology": 0.05,
+   "science": 0.94,
+   "history": 0.0,
+   "ai_tools": 0.01,
+   "personal_finance": 0.0
+  }
+ },
+ {
+  "framing": "growth",
+  "seed": 2,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.9,
+  "probabilities": {
+   "psychology": 0.06,
+   "personal_finance": 0.0,
+   "science": 0.92,
+   "history": 0.0,
+   "ai_tools": 0.02
+  }
+ },
+ {
+  "framing": "money",
+  "seed": 0,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.7,
+  "probabilities": {
+   "psychology": 0.01,
+   "personal_finance": 0.01,
+   "ai_tools": 0.22,
+   "history": 0.0,
+   "science": 0.76
+  }
+ },
+ {
+  "framing": "money",
+  "seed": 1,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.66,
+  "probabilities": {
+   "psychology": 0.02,
+   "science": 0.73,
+   "history": 0.0,
+   "ai_tools": 0.24,
+   "personal_finance": 0.01
+  }
+ },
+ {
+  "framing": "money",
+  "seed": 2,
+  "type": "choice",
+  "choice": "science",
+  "confidence": 0.52,
+  "probabilities": {
+   "psychology": 0.02,
+   "personal_finance": 0.01,
+   "science": 0.62,
+   "history": 0.0,
+   "ai_tools": 0.35
+  }
+ }
+]

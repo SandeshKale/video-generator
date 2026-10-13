@@ -1,0 +1,143 @@
+[
+ {
+  "type": "choice",
+  "choice": "everyday_you",
+  "confidence": 0.26,
+  "probabilities": {
+   "engineering_inside": 0.16,
+   "everyday_you": 0.41000000000000003,
+   "cosmic_awe": 0.31,
+   "psychology_advice": 0.01,
+   "what_if": 0.11
+  }
+ },
+ {
+  "type": "choice",
+  "choice": "everyday_you",
+  "confidence": 0.4,
+  "probabilities": {
+   "engineering_inside": 0.16,
+   "what_if": 0.05,
+   "psychology_advice": 0.01,
+   "cosmic_awe": 0.26,
+   "everyday_you": 0.52
+  }
+ },
+ {
+  "type": "choice",
+  "choice": "everyday_you",
+  "confidence": 0.26,
+  "probabilities": {
+   "engineering_inside": 0.14,
+   "everyday_you": 0.41,
+   "what_if": 0.13,
+   "psychology_advice": 0.01,
+   "cosmic_awe": 0.31
+  }
+ },
+ {
+  "cosmic_awe": {
+   "type": "score",
+   "score": 1.32,
+   "confidence": 0.5,
+   "legend": {
+    "0": "very low",
+    "1": "low",
+    "2": "moderate",
+    "3": "high",
+    "4": "very high"
+   },
+   "probabilities": {
+    "0": 0.14,
+    "1": 0.53,
+    "2": 0.21,
+    "3": 0.11,
+    "4": 0.01
+   }
+  }
+ },
+ {
+  "everyday_you": {
+   "type": "score",
+   "score": 1.27,
+   "confidence": 0.64,
+   "legend": {
+    "0": "very low",
+    "1": "low",
+    "2": "moderate",
+    "3": "high",
+    "4": "very high"
+   },
+   "probabilities": {
+    "0": 0.08,
+    "1": 0.62,
+    "2": 0.25,
+    "3": 0.05,
+    "4": 0.0
+   }
+  }
+ },
+ {
+  "engineering_inside": {
+   "type": "score",
+   "score": 1.05,
+   "confidence": 0.68,
+   "legend": {
+    "0": "very low",
+    "1": "low",
+    "2": "moderate",
+    "3": "high",
+    "4": "very high"
+   },
+   "probabilities": {
+    "0": 0.18,
+    "1": 0.64,
+    "2": 0.15,
+    "3": 0.03,
+    "4": 0.0
+   }
+  }
+ },
+ {
+  "what_if": {
+   "type": "score",
+   "score": 1.05,
+   "confidence": 0.66,
+   "legend": {
+    "0": "very low",
+    "1": "low",
+    "2": "moderate",
+    "3": "high",
+    "4": "very high"
+   },
+   "probabilities": {
+    "0": 0.19,
+    "1": 0.62,
+    "2": 0.16,
+    "3": 0.03,
+    "4": 0.0
+   }
+  }
+ },
+ {
+  "psychology_advice": {
+   "type": "score",
+   "score": 0.92,
+   "confidence": 0.68,
+   "legend": {
+    "0": "very low",
+    "1": "low",
+    "2": "moderate",
+    "3": "high",
+    "4": "very high"
+   },
+   "probabilities": {
+    "0": 0.23,
+    "1": 0.64,
+    "2": 0.11,
+    "3": 0.02,
+    "4": 0.0
+   }
+  }
+ }
+]

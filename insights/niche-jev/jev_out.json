@@ -1,0 +1,4450 @@
+{
+ "weights": {
+  "shareability": 0.2,
+  "pipeline_fit": 0.15,
+  "policy_safety": 0.15,
+  "standout_odds": 0.12,
+  "scroll_stop": 0.1,
+  "monetization": 0.12,
+  "series_follow": 0.08,
+  "evergreen": 0.08
+ },
+ "per_niche": {
+  "ai_tools": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.4,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.62,
+      "1": 0.37,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.78,
+     "confidence": 0.21,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.08,
+      "1": 0.37,
+      "2": 0.27,
+      "3": 0.24,
+      "4": 0.04
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.94,
+     "confidence": 0.46,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.34,
+      "2": 0.38,
+      "3": 0.25,
+      "4": 0.02
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.61,
+     "confidence": 0.64,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.41,
+      "1": 0.57,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.53,
+     "confidence": 0.51,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.48,
+      "2": 0.41,
+      "3": 0.07,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.78,
+     "confidence": 0.54,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.39,
+      "1": 0.5,
+      "2": 0.06,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.14,
+     "confidence": 0.73,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.09,
+      "1": 0.71,
+      "2": 0.17,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.13,
+     "confidence": 0.89,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.87,
+      "1": 0.13,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.21
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.43,
+     "confidence": 0.64,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.58,
+      "1": 0.41,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.71,
+     "confidence": 0.23,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.1,
+      "1": 0.39,
+      "2": 0.24,
+      "3": 0.23,
+      "4": 0.04
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.98,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.31,
+      "2": 0.4,
+      "3": 0.26,
+      "4": 0.02
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.56,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.45,
+      "1": 0.54,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.49,
+     "confidence": 0.53,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.51,
+      "2": 0.38,
+      "3": 0.07,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.71,
+     "confidence": 0.58,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.4,
+      "1": 0.53,
+      "2": 0.04,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.14,
+     "confidence": 0.75,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.08,
+      "1": 0.73,
+      "2": 0.16,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.13,
+     "confidence": 0.89,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.87,
+      "1": 0.13,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.22
+    }
+   }
+  },
+  "personal_finance": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.34,
+     "confidence": 0.72,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.68,
+      "1": 0.31,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.8,
+     "confidence": 0.18,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.08,
+      "1": 0.34,
+      "2": 0.29,
+      "3": 0.26,
+      "4": 0.03
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.44,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.55,
+      "2": 0.28,
+      "3": 0.1,
+      "4": 0.01
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.05,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.96,
+      "1": 0.04,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.02,
+     "confidence": 0.99,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.99,
+      "1": 0.01,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.64,
+     "confidence": 0.56,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.45,
+      "1": 0.49,
+      "2": 0.04,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.42,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.11,
+      "1": 0.53,
+      "2": 0.22,
+      "3": 0.12,
+      "4": 0.02
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 2.64,
+     "confidence": 0.59,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.09,
+      "2": 0.22,
+      "3": 0.62,
+      "4": 0.06
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.13
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.35,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.66,
+      "1": 0.33,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.79,
+     "confidence": 0.19,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.09,
+      "1": 0.35,
+      "2": 0.27,
+      "3": 0.26,
+      "4": 0.03
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.46,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.54,
+      "2": 0.29,
+      "3": 0.1,
+      "4": 0.01
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.06,
+     "confidence": 0.95,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.94,
+      "1": 0.06,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.02,
+     "confidence": 0.98,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.98,
+      "1": 0.02,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.61,
+     "confidence": 0.5,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.48,
+      "1": 0.46,
+      "2": 0.04,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.45,
+     "confidence": 0.51,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.08,
+      "1": 0.55,
+      "2": 0.24,
+      "3": 0.12,
+      "4": 0.01
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 2.59,
+     "confidence": 0.58,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.09,
+      "2": 0.25,
+      "3": 0.61,
+      "4": 0.04
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.14
+    }
+   }
+  },
+  "psychology_self_improvement": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 1.76,
+     "confidence": 0.25,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.36,
+      "2": 0.32,
+      "3": 0.24,
+      "4": 0.01
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.94,
+     "confidence": 0.12,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.32,
+      "2": 0.3,
+      "3": 0.29,
+      "4": 0.04
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 2.85,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.06,
+      "2": 0.18,
+      "3": 0.6,
+      "4": 0.16
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.55,
+     "confidence": 0.61,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.46,
+      "1": 0.53,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.85,
+     "confidence": 0.74,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.23,
+      "2": 0.69,
+      "3": 0.08,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.92,
+     "confidence": 0.16,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.34,
+      "2": 0.29,
+      "3": 0.31,
+      "4": 0.02
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 3.08,
+     "confidence": 0.64,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.03,
+      "2": 0.12,
+      "3": 0.6,
+      "4": 0.25
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 2.36,
+     "confidence": 0.43,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.15,
+      "2": 0.33,
+      "3": 0.48,
+      "4": 0.03
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.55
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 1.86,
+     "confidence": 0.38,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.32,
+      "2": 0.33,
+      "3": 0.28,
+      "4": 0.01
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.02,
+     "confidence": 0.13,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.26,
+      "2": 0.31,
+      "3": 0.34,
+      "4": 0.03
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 2.83,
+     "confidence": 0.58,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.07,
+      "2": 0.19,
+      "3": 0.57,
+      "4": 0.17
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.57,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.45,
+      "1": 0.54,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.78,
+     "confidence": 0.72,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.27,
+      "2": 0.67,
+      "3": 0.06,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.95,
+     "confidence": 0.12,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.33,
+      "2": 0.27,
+      "3": 0.32,
+      "4": 0.03
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 3.07,
+     "confidence": 0.65,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.03,
+      "2": 0.11,
+      "3": 0.61,
+      "4": 0.25
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 2.44,
+     "confidence": 0.48,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.12,
+      "2": 0.31,
+      "3": 0.52,
+      "4": 0.04
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.55
+    }
+   }
+  },
+  "fitness_wellness": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.39,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.62,
+      "1": 0.38,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.04,
+     "confidence": 0.73,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.14,
+      "1": 0.71,
+      "2": 0.12,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.87,
+     "confidence": 0.86,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.15,
+      "1": 0.83,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.28,
+     "confidence": 0.77,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.73,
+      "1": 0.27,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.22,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.58,
+      "2": 0.26,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.59,
+     "confidence": 0.63,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.43,
+      "1": 0.56,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.04,
+     "confidence": 0.84,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.82,
+      "2": 0.1,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.46,
+     "confidence": 0.5,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.53,
+      "2": 0.27,
+      "3": 0.13,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.14
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.41,
+     "confidence": 0.67,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.6,
+      "1": 0.4,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.04,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.16,
+      "1": 0.68,
+      "2": 0.13,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.83,
+     "confidence": 0.82,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.19,
+      "1": 0.79,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.27,
+     "confidence": 0.78,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.74,
+      "1": 0.26,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.24,
+     "confidence": 0.61,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.58,
+      "2": 0.25,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.55,
+     "confidence": 0.6,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.47,
+      "1": 0.52,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.04,
+     "confidence": 0.85,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.83,
+      "2": 0.09,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.56,
+     "confidence": 0.43,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.47,
+      "2": 0.3,
+      "3": 0.16,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.14
+    }
+   }
+  },
+  "science_how_it_works": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 1.38,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.13,
+      "1": 0.52,
+      "2": 0.2,
+      "3": 0.14,
+      "4": 0.01
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.9,
+     "confidence": 0.41,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.02,
+      "1": 0.12,
+      "2": 0.1,
+      "3": 0.45,
+      "4": 0.31
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 3.71,
+     "confidence": 0.78,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.01,
+      "3": 0.24,
+      "4": 0.75
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 1.06,
+     "confidence": 0.73,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.13,
+      "1": 0.7,
+      "2": 0.15,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 3.01,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.01,
+      "2": 0.16,
+      "3": 0.65,
+      "4": 0.18
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.89,
+     "confidence": 0.21,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.03,
+      "1": 0.37,
+      "2": 0.3,
+      "3": 0.28,
+      "4": 0.02
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 3.66,
+     "confidence": 0.72,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.01,
+      "2": 0.02,
+      "3": 0.26,
+      "4": 0.71
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 3.63,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.36,
+      "4": 0.64
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.79
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 1.4,
+     "confidence": 0.45,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.13,
+      "1": 0.51,
+      "2": 0.2,
+      "3": 0.15,
+      "4": 0.01
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.83,
+     "confidence": 0.36,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.03,
+      "1": 0.13,
+      "2": 0.11,
+      "3": 0.42,
+      "4": 0.31
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 3.74,
+     "confidence": 0.8,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.01,
+      "3": 0.22,
+      "4": 0.77
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 1.11,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.67,
+      "2": 0.19,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 2.98,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.01,
+      "2": 0.17,
+      "3": 0.65,
+      "4": 0.17
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.94,
+     "confidence": 0.17,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.03,
+      "1": 0.35,
+      "2": 0.29,
+      "3": 0.31,
+      "4": 0.02
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 3.59,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.01,
+      "2": 0.04,
+      "3": 0.28,
+      "4": 0.67
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 3.58,
+     "confidence": 0.66,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.41,
+      "4": 0.59
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.79
+    }
+   }
+  },
+  "history_what_if": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 1.19,
+     "confidence": 0.63,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.13,
+      "1": 0.62,
+      "2": 0.19,
+      "3": 0.06,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.5,
+     "confidence": 0.4,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.15,
+      "2": 0.19,
+      "3": 0.51,
+      "4": 0.11
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 2.67,
+     "confidence": 0.5,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.1,
+      "2": 0.26,
+      "3": 0.5,
+      "4": 0.14
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.68,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.35,
+      "1": 0.62,
+      "2": 0.03,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.25,
+     "confidence": 0.59,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.55,
+      "2": 0.29,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.82,
+     "confidence": 0.23,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.4,
+      "2": 0.24,
+      "3": 0.28,
+      "4": 0.02
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 2.91,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.06,
+      "2": 0.15,
+      "3": 0.6,
+      "4": 0.19
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 3.38,
+     "confidence": 0.67,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.01,
+      "3": 0.6,
+      "4": 0.39
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.52
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 1.16,
+     "confidence": 0.63,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.15,
+      "1": 0.61,
+      "2": 0.19,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.57,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.02,
+      "1": 0.15,
+      "2": 0.17,
+      "3": 0.55,
+      "4": 0.11
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 2.72,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.1,
+      "2": 0.22,
+      "3": 0.53,
+      "4": 0.15
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.7,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.33,
+      "1": 0.64,
+      "2": 0.03,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.34,
+     "confidence": 0.54,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.11,
+      "1": 0.51,
+      "2": 0.32,
+      "3": 0.06,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.96,
+     "confidence": 0.12,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.33,
+      "2": 0.26,
+      "3": 0.33,
+      "4": 0.03
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 2.9,
+     "confidence": 0.61,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.06,
+      "2": 0.16,
+      "3": 0.59,
+      "4": 0.19
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 3.4,
+     "confidence": 0.65,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.0,
+      "1": 0.0,
+      "2": 0.01,
+      "3": 0.58,
+      "4": 0.41
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.52
+    }
+   }
+  },
+  "general_how_to_hacks": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.6,
+     "confidence": 0.6,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.44,
+      "1": 0.53,
+      "2": 0.02,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.39,
+     "confidence": 0.58,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.58,
+      "2": 0.28,
+      "3": 0.08,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.19,
+     "confidence": 0.8,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.03,
+      "1": 0.76,
+      "2": 0.21,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.47,
+     "confidence": 0.6,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.53,
+      "1": 0.46,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.79,
+     "confidence": 0.53,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.02,
+      "1": 0.35,
+      "2": 0.46,
+      "3": 0.16,
+      "4": 0.01
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.09,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.15,
+      "1": 0.67,
+      "2": 0.13,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.55,
+     "confidence": 0.53,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.02,
+      "1": 0.49,
+      "2": 0.43,
+      "3": 0.06,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.92,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.24,
+      "1": 0.64,
+      "2": 0.1,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.2
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.61,
+     "confidence": 0.6,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.43,
+      "1": 0.53,
+      "2": 0.03,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.38,
+     "confidence": 0.58,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.07,
+      "1": 0.58,
+      "2": 0.27,
+      "3": 0.08,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.23,
+     "confidence": 0.78,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.02,
+      "1": 0.74,
+      "2": 0.24,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.47,
+     "confidence": 0.6,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.53,
+      "1": 0.46,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.91,
+     "confidence": 0.56,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.29,
+      "2": 0.49,
+      "3": 0.2,
+      "4": 0.01
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.13,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.68,
+      "2": 0.14,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.58,
+     "confidence": 0.5,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.47000000000000003,
+      "2": 0.45,
+      "3": 0.07,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.93,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.23,
+      "1": 0.64,
+      "2": 0.11,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.21
+    }
+   }
+  },
+  "food_cooking": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 1.23,
+     "confidence": 0.27,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.32,
+      "1": 0.35,
+      "2": 0.12,
+      "3": 0.19,
+      "4": 0.02
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.35,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.7,
+      "1": 0.26,
+      "2": 0.03,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.01,
+     "confidence": 0.99,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.99,
+      "1": 0.01,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.04,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.96,
+      "1": 0.04,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.36,
+     "confidence": 0.32,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.22,
+      "1": 0.41,
+      "2": 0.19,
+      "3": 0.14,
+      "4": 0.04
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.05,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.96,
+      "1": 0.04,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.25,
+     "confidence": 0.79,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.81,
+      "1": 0.16,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.01
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.31,
+     "confidence": 0.38,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.22,
+      "1": 0.42,
+      "2": 0.2,
+      "3": 0.15,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.06
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 1.34,
+     "confidence": 0.0,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.32,
+      "1": 0.3,
+      "2": 0.12,
+      "3": 0.24,
+      "4": 0.02
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.27,
+     "confidence": 0.78,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.76,
+      "1": 0.22,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.01,
+     "confidence": 0.99,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.99,
+      "1": 0.01,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.04,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.97,
+      "1": 0.03,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.13,
+     "confidence": 0.37,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.31,
+      "1": 0.42,
+      "2": 0.13,
+      "3": 0.1,
+      "4": 0.04
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.06,
+     "confidence": 0.96,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.95,
+      "1": 0.05,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.25,
+     "confidence": 0.79,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.81,
+      "1": 0.16,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.01
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.3,
+     "confidence": 0.33,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.24,
+      "1": 0.39,
+      "2": 0.2,
+      "3": 0.15,
+      "4": 0.02
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.07
+    }
+   }
+  },
+  "parenting_family": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.4,
+     "confidence": 0.67,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.61,
+      "1": 0.38,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.63,
+     "confidence": 0.54,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.46,
+      "1": 0.47,
+      "2": 0.05,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.03,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.97,
+      "1": 0.03,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.02,
+     "confidence": 0.98,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.98,
+      "1": 0.02,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.92,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.32,
+      "1": 0.49,
+      "2": 0.13,
+      "3": 0.05,
+      "4": 0.01
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.25,
+     "confidence": 0.78,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.77,
+      "1": 0.21,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.35,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.68,
+      "1": 0.3,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.21,
+     "confidence": 0.44,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.22,
+      "1": 0.46,
+      "2": 0.2,
+      "3": 0.11,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.06
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.43,
+     "confidence": 0.66,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.6,
+      "1": 0.39,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.71,
+     "confidence": 0.57,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.41,
+      "1": 0.5,
+      "2": 0.07,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.03,
+     "confidence": 0.98,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.98,
+      "1": 0.02,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.02,
+     "confidence": 0.98,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.98,
+      "1": 0.02,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.94,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.31,
+      "1": 0.5,
+      "2": 0.13,
+      "3": 0.05,
+      "4": 0.01
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.27,
+     "confidence": 0.77,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.75,
+      "1": 0.23,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.31,
+     "confidence": 0.74,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.72,
+      "1": 0.26,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.12,
+     "confidence": 0.48,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.25,
+      "1": 0.49,
+      "2": 0.16,
+      "3": 0.09,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.06
+    }
+   }
+  },
+  "motivation_quotes": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 1.6,
+     "confidence": 0.26,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.15,
+      "1": 0.41,
+      "2": 0.17,
+      "3": 0.24,
+      "4": 0.03
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.79,
+     "confidence": 0.18,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.1,
+      "1": 0.37,
+      "2": 0.24,
+      "3": 0.23,
+      "4": 0.06
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.4,
+     "confidence": 0.37,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.18,
+      "1": 0.47,
+      "2": 0.17,
+      "3": 0.13,
+      "4": 0.05
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.06,
+     "confidence": 0.95,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.94,
+      "1": 0.06,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.74,
+     "confidence": 0.56,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.41,
+      "1": 0.5,
+      "2": 0.06,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.04,
+     "confidence": 0.51,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.27,
+      "1": 0.52,
+      "2": 0.11,
+      "3": 0.09,
+      "4": 0.01
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.45,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.56,
+      "1": 0.43,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.44,
+     "confidence": 0.63,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.69,
+      "1": 0.24,
+      "2": 0.02,
+      "3": 0.04,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.12
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 1.63,
+     "confidence": 0.23,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.15,
+      "1": 0.39,
+      "2": 0.18,
+      "3": 0.25,
+      "4": 0.03
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.87,
+     "confidence": 0.16,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.08,
+      "1": 0.36,
+      "2": 0.25,
+      "3": 0.25,
+      "4": 0.06
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.28,
+     "confidence": 0.43,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.19,
+      "1": 0.51,
+      "2": 0.15,
+      "3": 0.11,
+      "4": 0.04
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.04,
+     "confidence": 0.97,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.96,
+      "1": 0.04,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 0.85,
+     "confidence": 0.53,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.36,
+      "1": 0.5,
+      "2": 0.08,
+      "3": 0.05,
+      "4": 0.01
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.99,
+     "confidence": 0.49,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.3,
+      "1": 0.5,
+      "2": 0.1,
+      "3": 0.09,
+      "4": 0.01
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.49,
+     "confidence": 0.59,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.52,
+      "1": 0.47,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.44,
+     "confidence": 0.65,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.7,
+      "1": 0.24,
+      "2": 0.01,
+      "3": 0.04,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.12
+    }
+   }
+  },
+  "aesthetic_interiors": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.87,
+     "confidence": 0.73,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.23,
+      "1": 0.68,
+      "2": 0.07,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.08,
+     "confidence": 0.13,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.06,
+      "1": 0.25,
+      "2": 0.3,
+      "3": 0.33,
+      "4": 0.06
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.52,
+     "confidence": 0.55,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.51,
+      "2": 0.43,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.69,
+     "confidence": 0.69,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.34,
+      "1": 0.63,
+      "2": 0.03,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 2.26,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.17,
+      "2": 0.41,
+      "3": 0.38,
+      "4": 0.03
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.06,
+     "confidence": 0.72,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.14,
+      "1": 0.7,
+      "2": 0.12,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.96,
+     "confidence": 0.51,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.3,
+      "2": 0.43,
+      "3": 0.25,
+      "4": 0.01
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.74,
+     "confidence": 0.3,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.4,
+      "2": 0.32,
+      "3": 0.22,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.28
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.78,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.29,
+      "1": 0.66,
+      "2": 0.04,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 2.16,
+     "confidence": 0.22,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.22,
+      "2": 0.3,
+      "3": 0.38,
+      "4": 0.05
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 1.52,
+     "confidence": 0.56,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.52,
+      "2": 0.42,
+      "3": 0.05,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.65,
+     "confidence": 0.66,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.38,
+      "1": 0.59,
+      "2": 0.03,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 2.21,
+     "confidence": 0.47,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.19,
+      "2": 0.41,
+      "3": 0.36,
+      "4": 0.03
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 1.1,
+     "confidence": 0.72,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.71,
+      "2": 0.13,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 1.85,
+     "confidence": 0.52,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.01,
+      "1": 0.35,
+      "2": 0.44,
+      "3": 0.19,
+      "4": 0.01
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.79,
+     "confidence": 0.28,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.39,
+      "2": 0.32,
+      "3": 0.24,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.29
+    }
+   }
+  },
+  "sports_micro_niche": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.31,
+     "confidence": 0.74,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.7,
+      "1": 0.29,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.35,
+     "confidence": 0.51,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.11,
+      "1": 0.52,
+      "2": 0.27,
+      "3": 0.09,
+      "4": 0.01
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.71,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.33,
+      "1": 0.63,
+      "2": 0.03,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.11,
+     "confidence": 0.92,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.9,
+      "1": 0.1,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.62,
+     "confidence": 0.27,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.39,
+      "2": 0.26,
+      "3": 0.19,
+      "4": 0.04
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.62,
+     "confidence": 0.55,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.46,
+      "1": 0.48,
+      "2": 0.04,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.6,
+     "confidence": 0.64,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.42,
+      "1": 0.57,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.41,
+     "confidence": 0.67,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.64,
+      "1": 0.33,
+      "2": 0.02,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.08
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.25,
+     "confidence": 0.79,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.76,
+      "1": 0.23,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 1.32,
+     "confidence": 0.53,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.12,
+      "1": 0.54,
+      "2": 0.25,
+      "3": 0.08,
+      "4": 0.01
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.66,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.37,
+      "1": 0.61,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.1,
+     "confidence": 0.92,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.9,
+      "1": 0.1,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.75,
+     "confidence": 0.2,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.1,
+      "1": 0.35,
+      "2": 0.28,
+      "3": 0.23,
+      "4": 0.04
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.66,
+     "confidence": 0.55,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.44,
+      "1": 0.49,
+      "2": 0.04,
+      "3": 0.03,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.63,
+     "confidence": 0.66,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.39,
+      "1": 0.59,
+      "2": 0.02,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 0.4,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.65,
+      "1": 0.32,
+      "2": 0.02,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.07
+    }
+   }
+  },
+  "photography": {
+   "jev-latest": {
+    "shareability": {
+     "type": "score",
+     "score": 0.4,
+     "confidence": 0.67,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.61,
+      "1": 0.38,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.94,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.26,
+      "1": 0.58,
+      "2": 0.12,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.18,
+     "confidence": 0.85,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.82,
+      "1": 0.18,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.08,
+     "confidence": 0.93,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.92,
+      "1": 0.08,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.45,
+     "confidence": 0.43,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.13,
+      "1": 0.48,
+      "2": 0.24,
+      "3": 0.13,
+      "4": 0.02
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.36,
+     "confidence": 0.7,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.67,
+      "1": 0.31,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.63,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.41,
+      "1": 0.56,
+      "2": 0.02,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.83,
+     "confidence": 0.24,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.05,
+      "1": 0.36,
+      "2": 0.33,
+      "3": 0.25,
+      "4": 0.01
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.09
+    }
+   },
+   "jev-preview": {
+    "shareability": {
+     "type": "score",
+     "score": 0.39,
+     "confidence": 0.68,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.62,
+      "1": 0.37,
+      "2": 0.01,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "scroll_stop": {
+     "type": "score",
+     "score": 0.95,
+     "confidence": 0.62,
+     "legend": {
+      "0": "very weak",
+      "1": "weak",
+      "2": "moderate",
+      "3": "strong",
+      "4": "very strong"
+     },
+     "probabilities": {
+      "0": 0.26,
+      "1": 0.58,
+      "2": 0.12,
+      "3": 0.04,
+      "4": 0.0
+     }
+    },
+    "pipeline_fit": {
+     "type": "score",
+     "score": 0.13,
+     "confidence": 0.9,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.88,
+      "1": 0.12,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "monetization": {
+     "type": "score",
+     "score": 0.07,
+     "confidence": 0.94,
+     "legend": {
+      "0": "very low",
+      "1": "low",
+      "2": "moderate",
+      "3": "high",
+      "4": "very high"
+     },
+     "probabilities": {
+      "0": 0.93,
+      "1": 0.07,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0
+     }
+    },
+    "policy_safety": {
+     "type": "score",
+     "score": 1.54,
+     "confidence": 0.37,
+     "legend": {
+      "0": "very unsafe",
+      "1": "unsafe",
+      "2": "moderate",
+      "3": "safe",
+      "4": "very safe"
+     },
+     "probabilities": {
+      "0": 0.1,
+      "1": 0.46,
+      "2": 0.25,
+      "3": 0.16,
+      "4": 0.03
+     }
+    },
+    "standout_odds": {
+     "type": "score",
+     "score": 0.34,
+     "confidence": 0.71,
+     "legend": {
+      "0": "very unlikely",
+      "1": "unlikely",
+      "2": "moderate",
+      "3": "likely",
+      "4": "very likely"
+     },
+     "probabilities": {
+      "0": 0.6799999999999999,
+      "1": 0.3,
+      "2": 0.01,
+      "3": 0.01,
+      "4": 0.0
+     }
+    },
+    "series_follow": {
+     "type": "score",
+     "score": 0.7,
+     "confidence": 0.63,
+     "legend": {
+      "0": "very poor",
+      "1": "poor",
+      "2": "moderate",
+      "3": "good",
+      "4": "very good"
+     },
+     "probabilities": {
+      "0": 0.37,
+      "1": 0.58,
+      "2": 0.03,
+      "3": 0.02,
+      "4": 0.0
+     }
+    },
+    "evergreen": {
+     "type": "score",
+     "score": 1.93,
+     "confidence": 0.4,
+     "legend": {
+      "0": "very short-lived",
+      "1": "short-lived",
+      "2": "moderate",
+      "3": "long-lived",
+      "4": "very long-lived"
+     },
+     "probabilities": {
+      "0": 0.04,
+      "1": 0.31,
+      "2": 0.34,
+      "3": 0.29,
+      "4": 0.02
+     }
+    },
+    "recommend": {
+     "type": "noul",
+     "noul": 0.08
+    }
+   }
+  }
+ },
+ "choice": [
+  {
+   "model": "jev-latest",
+   "seed": 0,
+   "order": [
+    "personal_finance",
+    "aesthetic_interiors",
+    "motivation_quotes",
+    "history_what_if",
+    "sports_micro_niche",
+    "psychology_self_improvement",
+    "fitness_wellness",
+    "food_cooking",
+    "parenting_family",
+    "science_how_it_works",
+    "ai_tools",
+    "photography",
+    "general_how_to_hacks"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "personal_finance": 0.0,
+    "aesthetic_interiors": 0.0,
+    "motivation_quotes": 0.0,
+    "history_what_if": 0.0,
+    "sports_micro_niche": 0.0,
+    "psychology_self_improvement": 0.0,
+    "fitness_wellness": 0.0,
+    "food_cooking": 0.0,
+    "parenting_family": 0.0,
+    "science_how_it_works": 1.0,
+    "ai_tools": 0.0,
+    "photography": 0.0,
+    "general_how_to_hacks": 0.0
+   }
+  },
+  {
+   "model": "jev-latest",
+   "seed": 1,
+   "order": [
+    "parenting_family",
+    "photography",
+    "ai_tools",
+    "sports_micro_niche",
+    "history_what_if",
+    "fitness_wellness",
+    "general_how_to_hacks",
+    "food_cooking",
+    "aesthetic_interiors",
+    "science_how_it_works",
+    "personal_finance",
+    "motivation_quotes",
+    "psychology_self_improvement"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "parenting_family": 0.0,
+    "photography": 0.0,
+    "ai_tools": 0.0,
+    "sports_micro_niche": 0.0,
+    "history_what_if": 0.0,
+    "fitness_wellness": 0.0,
+    "general_how_to_hacks": 0.0,
+    "food_cooking": 0.0,
+    "aesthetic_interiors": 0.0,
+    "science_how_it_works": 1.0,
+    "personal_finance": 0.0,
+    "motivation_quotes": 0.0,
+    "psychology_self_improvement": 0.0
+   }
+  },
+  {
+   "model": "jev-latest",
+   "seed": 2,
+   "order": [
+    "motivation_quotes",
+    "fitness_wellness",
+    "general_how_to_hacks",
+    "photography",
+    "aesthetic_interiors",
+    "food_cooking",
+    "parenting_family",
+    "science_how_it_works",
+    "psychology_self_improvement",
+    "history_what_if",
+    "sports_micro_niche",
+    "personal_finance",
+    "ai_tools"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "motivation_quotes": 0.0,
+    "fitness_wellness": 0.0,
+    "general_how_to_hacks": 0.0,
+    "photography": 0.0,
+    "aesthetic_interiors": 0.0,
+    "food_cooking": 0.0,
+    "parenting_family": 0.0,
+    "science_how_it_works": 1.0,
+    "psychology_self_improvement": 0.0,
+    "history_what_if": 0.0,
+    "sports_micro_niche": 0.0,
+    "personal_finance": 0.0,
+    "ai_tools": 0.0
+   }
+  },
+  {
+   "model": "jev-latest",
+   "seed": 3,
+   "order": [
+    "photography",
+    "sports_micro_niche",
+    "personal_finance",
+    "general_how_to_hacks",
+    "ai_tools",
+    "science_how_it_works",
+    "aesthetic_interiors",
+    "food_cooking",
+    "history_what_if",
+    "psychology_self_improvement",
+    "parenting_family",
+    "motivation_quotes",
+    "fitness_wellness"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "photography": 0.0,
+    "sports_micro_niche": 0.0,
+    "personal_finance": 0.0,
+    "general_how_to_hacks": 0.0,
+    "ai_tools": 0.0,
+    "science_how_it_works": 1.0,
+    "aesthetic_interiors": 0.0,
+    "food_cooking": 0.0,
+    "history_what_if": 0.0,
+    "psychology_self_improvement": 0.0,
+    "parenting_family": 0.0,
+    "motivation_quotes": 0.0,
+    "fitness_wellness": 0.0
+   }
+  },
+  {
+   "model": "jev-preview",
+   "seed": 0,
+   "order": [
+    "personal_finance",
+    "aesthetic_interiors",
+    "motivation_quotes",
+    "history_what_if",
+    "sports_micro_niche",
+    "psychology_self_improvement",
+    "fitness_wellness",
+    "food_cooking",
+    "parenting_family",
+    "science_how_it_works",
+    "ai_tools",
+    "photography",
+    "general_how_to_hacks"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "personal_finance": 0.0,
+    "aesthetic_interiors": 0.0,
+    "motivation_quotes": 0.0,
+    "history_what_if": 0.0,
+    "sports_micro_niche": 0.0,
+    "psychology_self_improvement": 0.0,
+    "fitness_wellness": 0.0,
+    "food_cooking": 0.0,
+    "parenting_family": 0.0,
+    "science_how_it_works": 1.0,
+    "ai_tools": 0.0,
+    "photography": 0.0,
+    "general_how_to_hacks": 0.0
+   }
+  },
+  {
+   "model": "jev-preview",
+   "seed": 1,
+   "order": [
+    "parenting_family",
+    "photography",
+    "ai_tools",
+    "sports_micro_niche",
+    "history_what_if",
+    "fitness_wellness",
+    "general_how_to_hacks",
+    "food_cooking",
+    "aesthetic_interiors",
+    "science_how_it_works",
+    "personal_finance",
+    "motivation_quotes",
+    "psychology_self_improvement"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "parenting_family": 0.0,
+    "photography": 0.0,
+    "ai_tools": 0.0,
+    "sports_micro_niche": 0.0,
+    "history_what_if": 0.0,
+    "fitness_wellness": 0.0,
+    "general_how_to_hacks": 0.0,
+    "food_cooking": 0.0,
+    "aesthetic_interiors": 0.0,
+    "science_how_it_works": 1.0,
+    "personal_finance": 0.0,
+    "motivation_quotes": 0.0,
+    "psychology_self_improvement": 0.0
+   }
+  },
+  {
+   "model": "jev-preview",
+   "seed": 2,
+   "order": [
+    "motivation_quotes",
+    "fitness_wellness",
+    "general_how_to_hacks",
+    "photography",
+    "aesthetic_interiors",
+    "food_cooking",
+    "parenting_family",
+    "science_how_it_works",
+    "psychology_self_improvement",
+    "history_what_if",
+    "sports_micro_niche",
+    "personal_finance",
+    "ai_tools"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "motivation_quotes": 0.0,
+    "fitness_wellness": 0.0,
+    "general_how_to_hacks": 0.0,
+    "photography": 0.0,
+    "aesthetic_interiors": 0.0,
+    "food_cooking": 0.0,
+    "parenting_family": 0.0,
+    "science_how_it_works": 1.0,
+    "psychology_self_improvement": 0.0,
+    "history_what_if": 0.0,
+    "sports_micro_niche": 0.0,
+    "personal_finance": 0.0,
+    "ai_tools": 0.0
+   }
+  },
+  {
+   "model": "jev-preview",
+   "seed": 3,
+   "order": [
+    "photography",
+    "sports_micro_niche",
+    "personal_finance",
+    "general_how_to_hacks",
+    "ai_tools",
+    "science_how_it_works",
+    "aesthetic_interiors",
+    "food_cooking",
+    "history_what_if",
+    "psychology_self_improvement",
+    "parenting_family",
+    "motivation_quotes",
+    "fitness_wellness"
+   ],
+   "type": "choice",
+   "choice": "science_how_it_works",
+   "confidence": 1.0,
+   "probabilities": {
+    "photography": 0.0,
+    "sports_micro_niche": 0.0,
+    "personal_finance": 0.0,
+    "general_how_to_hacks": 0.0,
+    "ai_tools": 0.0,
+    "science_how_it_works": 1.0,
+    "aesthetic_interiors": 0.0,
+    "food_cooking": 0.0,
+    "history_what_if": 0.0,
+    "psychology_self_improvement": 0.0,
+    "parenting_family": 0.0,
+    "motivation_quotes": 0.0,
+    "fitness_wellness": 0.0
+   }
+  }
+ ],
+ "served": {
+  "jev-latest": "jev-1.13.0",
+  "jev-preview": "jev-1.13.0"
+ }
+}
