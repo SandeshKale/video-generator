@@ -1334,5 +1334,5 @@ Compare every new contact sheet against `reel-ai-trading-pipeline/reel.mp4` fram
 
 **Additions from the same review (13 Oct 2026):**
 - **Voice:** use the avatar-clip voice from the trading reel (the creator's AI avatar), not the Qwen clone, for the Use It Today series.
-- **2-second switch rule:** the avatar opens full frame for the first 2 s and then becomes a corner tile, and something on screen changes at least every ~2 s.
+- **2-second change rule (creator's definition):** something on screen visibly changes at least every 2 seconds for the whole reel, including the end card (give it a typed keyword, a stamp, a pop or a pulse every ~2 s). Check it with `bun scripts/change-cadence.mjs <reel>/site` before rendering. It must report 0 stretches over 2 s. It masks the caption band and Instagram's UI zones, so word highlighting alone doesn't count. On its first run, `reel-synthid-check` failed only on its static end card (4.8 s). (The avatar opening full frame for ~2 s, then shrinking to a corner tile, is a separate layout choice, not this rule.)
 - **No spellcheck-like marks:** never use wavy red underlines. They read as typo indicators. Highlight words with solid marker bands instead.
