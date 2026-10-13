@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Build timing.json (line a/b + words) from the final voice-over (stitched avatar audio) using faster-whisper word timestamps.
 Usage: python3 timing_from_voice.py vo/voice.wav [out=timing.json]
-Aligns Whisper's words to the 9 script lines by text (difflib), so a mis-heard word does not shift a line. Prints any line it could not anchor."""
+Aligns Whisper's words to the 10 script lines by text (difflib), so a mis-heard word does not shift a line. Prints any line it could not anchor."""
 import sys, re, json, difflib
 from faster_whisper import WhisperModel
 LINES = ["You've never heard your own voice the way everyone else does.", "Two routes to your ears: air, and bone.", "Everyone hears the air. Only you get the bone.", "A recording only catches the air.",
- "One theory says you'd sound higher.", "A 2025 study: most people heard lower.", "Send this to the friend who hates voice notes.", "Now plug your ears and say anything.", "Nobody else will ever hear the version you hear."]
+ "One theory says you'd sound higher.", "A 2025 study: most people heard lower.", "Send this to the friend who hates voice notes.", "Now plug your ears and say anything.", "Nobody else will ever hear the version you hear.", "Follow for the next one."]
 SPOKEN = {5: "A twenty twenty five study: most people heard lower."}
 def norm(w): return re.sub(r"[^a-z0-9]", "", w.lower().replace("2025", "twentytwentyfive"))
 def toks(s): return [t for t in (norm(w) for w in s.replace('-', ' ').split()) if t]

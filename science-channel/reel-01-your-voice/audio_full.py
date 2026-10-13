@@ -4,8 +4,8 @@ Usage: python3 audio_full.py [voice.wav]   (default vo/voice.wav if present, els
 The voice-over is the avatar-clip audio (stitched, dereverbed); until it exists the Kokoro scratch voice stands in."""
 import numpy as np, os, sys, json, wave
 from scipy.signal import butter, sosfilt, resample_poly
-HERE = os.path.dirname(os.path.abspath(__file__)); SR = 44100; DUR = 30.0; N = int(SR * DUR); T = np.arange(N) / SR
-rng = np.random.default_rng(23); EV = json.load(open(HERE + '/events.json')); TM = json.load(open(HERE + '/timing.json'))
+HERE = os.path.dirname(os.path.abspath(__file__)); SR = 44100; TM = json.load(open(HERE + '/timing.json')); DUR = min(34.0, max(28.0, int((TM['lines'][-1]['b'] + 1.1) * 2 + .999) / 2)); N = int(SR * DUR); T = np.arange(N) / SR   # same rule as the page (main3.js)
+rng = np.random.default_rng(23); EV = json.load(open(HERE + '/events.json'))
 def E(typ): return [e['t'] for e in EV if e['type'] == typ]
 def lp(x, fc, o=2): return sosfilt(butter(o, fc, 'low', fs=SR, output='sos'), x)
 def hp(x, fc, o=2): return sosfilt(butter(o, fc, 'high', fs=SR, output='sos'), x)
