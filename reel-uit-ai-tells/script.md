@@ -1,7 +1,7 @@
 # Use It Today: "These words give your AI writing away"
 
 **Series:** Use It Today (`insights/next-10-reels.md`, plan reel 6). It's built first because it needs no avatar and no screen recording (Grok Imagine limits are back on Friday).
-**Runtime:** about 30 s. **Host:** none (test variant C: no face, cloned voice). **Keyword:** REAL → `dm-prompt.md`.
+**Runtime:** about 32 s. **Voice/host:** your AI avatar, as in the trading-pipeline reel (creator, 13 Oct: "use the trading pipeline voice"). There are 3 avatar parts (`avatar-prompts.md`), generated Friday. The avatar is full frame for the first 2 s, then a corner tile (the 2-second switch). The cloned-voice takes were stopped. **Keyword:** REAL → `dm-prompt.md`.
 
 ## Why this reel
 - **From `insights/growth-diagnosis.md`:** 0 shares, 75% of viewers skip in the first 3 s, average watch 4.5 s on 60–96 s reels.

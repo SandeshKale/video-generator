@@ -1331,3 +1331,8 @@ Tutorial picked from the Instagram data: open synthid.com → upload → read, t
 8. **A layered score** that adds a voice per step, with peak-aligned SFX.
 
 Compare every new contact sheet against `reel-ai-trading-pipeline/reel.mp4` frames before sending. If it doesn't look at least as finished, iterate first.
+
+**Additions from the same review (13 Oct 2026):**
+- **Voice:** use the avatar-clip voice from the trading reel (the creator's AI avatar), not the Qwen clone, for the Use It Today series.
+- **2-second switch rule:** the avatar opens full frame for the first 2 s and then becomes a corner tile, and something on screen changes at least every ~2 s.
+- **No spellcheck-like marks:** never use wavy red underlines. They read as typo indicators. Highlight words with solid marker bands instead.
