@@ -1,0 +1,98 @@
+[
+{
+"t": 3.307,
+"type": "tr_dive"
+},
+{
+"t": 4.967,
+"type": "air"
+},
+{
+"t": 5.5,
+"type": "bone"
+},
+{
+"t": 5.996,
+"type": "tr_cross"
+},
+{
+"t": 8.977,
+"type": "tr_whip"
+},
+{
+"t": 9.772,
+"type": "snap"
+},
+{
+"t": 11.059,
+"type": "tr_dive"
+},
+{
+"t": 11.059,
+"type": "guess"
+},
+{
+"t": 12.039,
+"type": "tr_rise"
+},
+{
+"t": 13.272,
+"type": "bar1"
+},
+{
+"t": 14.28,
+"type": "tag"
+},
+{
+"t": 16.361,
+"type": "bar2"
+},
+{
+"t": 17.111,
+"type": "stamp"
+},
+{
+"t": 17.747,
+"type": "tr_whip"
+},
+{
+"t": 17.797,
+"type": "send"
+},
+{
+"t": 18.992,
+"type": "xmark"
+},
+{
+"t": 20.256,
+"type": "tr_tilt"
+},
+{
+"t": 20.67,
+"type": "plug"
+},
+{
+"t": 22.482,
+"type": "muffle"
+},
+{
+"t": 23.882,
+"type": "swell"
+},
+{
+"t": 24.801,
+"type": "ring"
+},
+{
+"t": 27.026,
+"type": "tr_dive"
+},
+{
+"t": 28.026,
+"type": "follow"
+},
+{
+"t": 28.976,
+"type": "press"
+}
+]
