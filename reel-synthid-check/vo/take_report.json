@@ -1,0 +1,72 @@
+{
+ "l06": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.891,
+   "floor_db": -29.6,
+   "dur": 2.72,
+   "accent": 0.406,
+   "accent_top": "indian",
+   "score": 3.177,
+   "heard": "The catch, no watermark doesn't mean real."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.901,
+   "floor_db": -64.7,
+   "dur": 3.84,
+   "accent": 0.424,
+   "accent_top": "indian",
+   "score": 0.788,
+   "heard": "the catch no watermark doesn't mean real"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.906,
+   "floor_db": -50.7,
+   "dur": 3.84,
+   "accent": 0.035,
+   "accent_top": "indian",
+   "score": 3.623,
+   "heard": "The catch? No watermark doesn't mean real."
+  }
+ ],
+ "l07": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.874,
+   "floor_db": -53.0,
+   "dur": 3.68,
+   "accent": 0.303,
+   "accent_top": "indian",
+   "score": 1.004,
+   "heard": "A fake from any other tool slips straight through."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.897,
+   "floor_db": -41.0,
+   "dur": 4.32,
+   "accent": 0.114,
+   "accent_top": "indian",
+   "score": 2.331,
+   "heard": "A fake from any other tool slips straight through."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.111,
+   "sim": 0.903,
+   "floor_db": -45.7,
+   "dur": 4.48,
+   "accent": 0.346,
+   "accent_top": "indian",
+   "score": 1.889,
+   "heard": "and a fake from any other tool slips straight through."
+  }
+ ]
+}

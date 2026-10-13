@@ -1,0 +1,51 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>SynthID check</title>
+<style>
+@font-face{font-family:Bodoni;font-weight:700;src:url(fonts/bodoni-moda-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Bodoni;font-weight:800;src:url(fonts/bodoni-moda-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Chivo;font-weight:500;src:url(fonts/chivo-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Chivo;font-weight:700;src:url(fonts/chivo-mono-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
+:root{--cream:#f2ead3;--paper:#faf4e0;--ink:#13243d;--ink2:#46556b;--green:#0e6b5a;--verm:#e2412c;--brass:#c9962b;--thread:#7fb2c9;--line:#d8cca8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink)}
+#bg{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.scene{position:absolute;inset:0;display:none}
+.abs{position:absolute}
+.eyebrow{font-family:Chivo;font-weight:700;font-size:27px;letter-spacing:.13em;color:var(--green)}
+.h1{font-family:Bodoni;font-weight:800;font-size:92px;line-height:1.02;letter-spacing:-.025em;color:var(--ink)}
+.h1 .hl{color:var(--verm)}
+.tag{font-family:Chivo;font-weight:700;font-size:16px;letter-spacing:.12em;color:var(--ink);background:rgba(250,244,224,.94);border:2px solid var(--ink);padding:3px 9px;border-radius:5px}
+/* banknote cards: security thread on the left, double rule, serial label */
+.note{background:var(--paper);border:3px solid var(--ink);border-radius:18px;box-shadow:0 0 0 7px var(--paper),0 0 0 10px var(--ink),0 22px 40px rgba(19,36,61,.28);overflow:hidden}
+.thread{position:absolute;left:18px;top:0;bottom:0;width:12px;background:repeating-linear-gradient(180deg,var(--thread) 0 14px,transparent 14px 20px);opacity:.75}
+.serial{font-family:Chivo;font-weight:700;font-size:15px;letter-spacing:.2em;color:var(--green)}
+/* stamps: double border, rotated, ink-pad red or green */
+.stamp{display:inline-block;font-family:Chivo;font-weight:700;letter-spacing:.08em;text-align:center;line-height:1.1;padding:12px 20px;border:6px double currentColor;border-radius:12px;background:rgba(250,244,224,.9);mix-blend-mode:normal}
+.stamp small{display:block;font-size:14px;letter-spacing:.2em;margin-top:6px;opacity:.8}
+.stamp.found{color:var(--green)}.stamp.none{color:var(--verm)}
+/* phone */
+.phone{background:#0d1522;border:5px solid var(--ink);border-radius:46px;padding:12px;box-shadow:0 30px 50px rgba(19,36,61,.4)}
+.phone canvas{display:block;border-radius:34px}
+.ctr{font-family:Chivo;font-weight:700;font-size:26px;color:#f7f1de;background:rgba(10,15,25,.62);border-radius:20px;padding:6px 14px;display:flex;align-items:center;gap:8px}
+.play{width:104px;height:104px;border-radius:50%;background:rgba(250,244,224,.88);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+/* lightbox scene */
+.chipn{font-family:Bodoni;font-weight:800;font-size:46px;color:var(--ink)}
+.cardlab{font-family:Chivo;font-weight:700;font-size:21px;letter-spacing:.1em;line-height:1.25;color:var(--ink)}
+.pcard{background:var(--paper);border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 0 0 6px var(--paper),0 0 0 9px var(--ink),0 22px 36px rgba(19,36,61,.3)}
+.pcard img{display:block;width:100%;height:100%;object-fit:cover}
+.eq{width:84px;height:84px;border-radius:50%;background:var(--ink);color:var(--cream);font-family:Bodoni;font-weight:800;font-size:64px;display:flex;align-items:center;justify-content:center;border:5px solid var(--paper);box-shadow:0 10px 20px rgba(19,36,61,.35)}
+#cutc{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none;z-index:50}
+#cap{position:absolute;left:150px;width:768px;top:1338px;display:flex;justify-content:center;z-index:60}
+#cap div{background:rgba(19,36,61,.94);color:#f2ead3;border-radius:22px;padding:14px 26px;font-family:Inter;font-weight:700;font-size:46px;line-height:1.25;text-align:center;max-width:768px;box-shadow:0 10px 30px rgba(19,36,61,.35)}
+#cap span{opacity:.55}#cap span.on{opacity:1;color:#e9b84a}#cap span.past{opacity:1}
+</style></head>
+<body><div id="stage"><canvas id="bg" width="1080" height="1920"></canvas></div>
+<canvas id="cutc" width="1080" height="1920"></canvas>
+<script src="rough.min.js"></script>
+<script src="marks.js"></script>
+<script src="timing.js"></script>
+<script src="app.js"></script>
+</body></html>

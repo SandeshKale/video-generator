@@ -65,3 +65,5 @@ DM Serif Display (400) — Copyright 2014 The DM Serif Display Project Authors, 
 Newsreader (600, 700, 800, 600 italic) — Copyright 2020 The Newsreader Project Authors, and Red Hat Mono (500, 700) — Copyright 2021 Red Hat, Inc.; both SIL Open Font License 1.1, via @fontsource.
 
 Rubik (700, 800) — Copyright 2015 The Rubik Project Authors (https://github.com/googlefonts/rubik), and Azeret Mono (500, 700) — Copyright 2021 The Azeret Project Authors (https://github.com/displaay/azeret); both SIL Open Font License 1.1, via @fontsource.
+
+Bodoni Moda (700, 800) — Copyright 2020 The Bodoni Moda Project Authors (https://github.com/indestructible-type/Bodoni), and Chivo Mono (500, 700) — Copyright 2022 The Chivo Mono Project Authors (https://github.com/Omnibus-Type/Chivo_Mono); both SIL Open Font License 1.1, via @fontsource.
