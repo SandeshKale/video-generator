@@ -10,7 +10,7 @@ Mode — retrospective (the science is published). The only `STAGE` is the viewe
 Method used: Monkey Magic Shorts spine (write the last line first, question in frame one, progressive reveal, one human crumb, cut on the answer, loop), light mode for the explainer (opening contract, truth, safety, no forced hero arc), and rasa tagging. Short-form hook and loop craft is layered on top (see "Loop map").
 
 ## First frame (readable with sound off)
-Frame 0 is already fully composed and moving. A 3D head in 3/4 view: cyan sound waves leave the mouth toward a phone showing a voice-note waveform, and a coral ring pulses *inside* the skull. A small illustrated person winces at the phone. Top third, ≤5 words, one coral word: **"You've never heard YOU"**. Voice starts at 0.00 s. Captions are visible at 0.00 s.
+Frame 0 is already fully composed and moving. A **photoreal (AI-generated, fictional) head** in 3/4 view, depth-parallaxed, with a circular X-ray lens over the temple showing a generated radiograph registered to the ear: cyan sound waves leave the mouth toward a phone showing a voice-note waveform, and a coral ring pulses *inside* the skull. A small illustrated person winces at the phone. Top third, ≤5 words, one coral word: **"You've never heard YOU"**. Voice starts at 0.00 s. Captions are visible at 0.00 s.
 
 ## Question that cannot be answered until the end
 Which voice is the real one, the one in your head or the one on the recording? (Answered in the last 5 seconds, by showing that neither is the one everyone else hears: the head version is the one *nobody else ever will*.)
@@ -78,7 +78,7 @@ Also used: a pattern interrupt every ≤2 s (the repo's change-cadence rule); a 
 | 18.3–21.4 | 7 | Illustrated friend with a phone; a "voice note" bubble gets ignored with a rough.js X (humaaans, rough.js) | `// FOR THE VOICE-NOTE HATER` | Hasya | share line, no claim |
 | 21.6–24.0 | 8 | Lime `TRY IT` chip, hands-on-ears icon, "fingers on ears, gently". Head cut-away with ears plugged, the coral ring swelling (Blender + icons) | `// EARS PLUGGED · BONE ROUTE ONLY` | Adbhuta | F3 |
 | 24.0–25.4 | silence | The audio mix goes muffled and bass-heavy (a designed low-pass plus low shelf on the music and SFX bed). The head holds, the ring pulses (audio) | same | Adbhuta | F3 |
-| 25.4–28.4 | 9 | The coral ring swells; the cyan waves outside go silent; the line lands in big type (kinetic type) | `// THE ONLY COPY` | Adbhuta | F1 |
+| 25.4–28.4 | 9 | The coral ring swells inside the X-ray lens; the cyan waves outside go silent; big type **"Only you hear it."** (the caption carries the full spoken line) (kinetic type) | `// THE ONLY COPY` | Adbhuta | F1 |
 | 28.4–29.6 | none | End card: series badge, next tease `NEXT: 4 MILLION NEW CELLS A SECOND`, FOLLOW | none | | |
 | 29.6–30.0 | none | Crossfade to the exact frame-0 composition (seamless replay) | none | | |
 
@@ -110,7 +110,7 @@ If H2 or H3 beats H1 on 3-s hold by more than 5 points over two reels, switch th
 The earlier plan had this reel say that bone conduction makes you sound *deeper* in your head and a recording sounds *thinner and higher*. The sources disagree. One intro (Orepic 2023) says bone conduction makes your own voice lower-pitched. The strong version of the theory predicts a recording sounds higher (F4). Yet the 2025 UBC study found most people said their recording sounded lower (F5). So the script **makes no claim about direction**. It uses the disagreement as the twist, which is both accurate and a better hook. `plan-first-10.md` #01 has been corrected to match.
 
 ## Voice and sound direction
-- **Voice:** the creator's AI voice, conversational (a friend telling you something over coffee, not an announcer). One stressed word per sentence at most: "never" (1), "only" (3), "lower" (6), "plug" (8), "Nobody" (9). A touch faster on line 1 (it's the hook), slightly slower and softer on line 9. Keep contractions. No fillers.
+- **Voice:** the **avatar-clip voice used in the trading-pipeline reel** (creator's AI avatar; only the audio is used, no face on screen; prompts in `avatar-prompts.md`), conversational (a friend telling you something over coffee, not an announcer). One stressed word per sentence at most: "never" (1), "only" (3), "lower" (6), "plug" (8), "Nobody" (9). A touch faster on line 1 (it's the hook), slightly slower and softer on line 9. Keep contractions. No fillers.
 - **Pauses are designed, not accidental:** 0.8 s before line 5 (the guess), 1.4 s after line 8 (the try-it).
 - **The audio demonstrates the claim:** line 4 is processed to sound like a phone-mic recording (the contrast, not a claim about pitch). During the 1.4 s try-it silence the whole mix is low-passed with a low-shelf boost to mimic the plugged-ears feel. **Earbuds make this land.** The caption on screen says "use headphones".
 - **Music:** one calm, curious pad with a soft pulse, then a drop to near-silence at 24.0 s. Voice stays 16–20 dB above the bed.

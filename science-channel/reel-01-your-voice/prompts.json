@@ -1,0 +1,4 @@
+[
+ {"id":"head_a","seed":11,"w":576,"h":1024,"prompt":"close portrait of a calm adult person seen in three-quarter view facing right, head and shoulders, plain dark charcoal jacket, short dark hair, relaxed neutral face, lips slightly parted as if about to speak, ear clearly visible, dark navy studio background, cool cyan rim light from behind, soft key light on the face"},
+ {"id":"xray_skull","seed":5,"w":640,"h":704,"steps":8,"cfg":2.2,"suffix":", medical radiograph, x-ray film, glowing cyan blue on pure black background, high contrast, detailed bone anatomy, ultra detailed","neg":"photo of a person, face, skin, text, watermark, logo, cartoon, color photograph, low quality, blurry","prompt":"x-ray radiograph of a human head and neck, lateral side view, skull with temporal bone and ear canal visible, teeth, cervical spine"}
+]

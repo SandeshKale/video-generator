@@ -1,34 +1,47 @@
-# Mockup review: reel #01 "You've never heard YOU" (series frame v1)
+# Mockup review v2: reel #01 "You've never heard YOU" (animated preview)
 
-Files: `v1_f0.png` (frame 0), `v1_f1.png` (poll, 15.2-17.5 s), `v1_f2.png` (plugged ears, 25.4-28.4 s), `sheet1.jpg` (all three), `sheet_phone.jpg` (360 px phone-feed size). Source: `mockup.mjs` (throwaway, delete after the full build).
+**Open `preview.mp4`** (15 s, 1080x1920@60, designed sound but **no voice**: the voice-over will come from your avatar clips). Stills: `sheet.jpg` (six moments), `trans_sheet.jpg` (frames inside both transitions, taken from the final MP4). `build.mjs` + `site/` are the reusable foundation of the full build; `audio.py` is the preview sound design.
 
-## The system (fixed for the whole channel, D2)
-- Ground: deep ink `#0a1220` with a radiograph look: faint "+" registration grid, viewfinder corner marks at the safe-zone corners, a soft scan band.
-- Meaning-coded colour (same in every reel): **cyan `#52e3ff`** hidden/inside/air, **coral `#ff5a4d`** the surprising number or the bone route, **lime `#b8ff3d`** try it yourself, **amber `#ffb938`** scientists disagree.
-- Type: Familjen Grotesk 700 (headlines), Fragment Mono (labels, tracked caps), Inter 700 (captions). All vendored in `assets/fonts/` (new: Familjen Grotesk, Fragment Mono).
-- Fixed frame: badge + status dot, mono eyebrow with `//`, headline with one coral word, centrepiece, chip row, source line under a dashed rule, caption pill. Signature objects: the **X-ray lens** (frame 0: a circular cut-away over the head; frame 2: a lens ring around the whole section) and the **zoom ruler** (left edge, cm ticks computed from the head's real pixel scale).
-
-## Asset families in these three scenes (5 of the reel's 7)
-| Scene | Families |
+## What changed since v1, per your feedback
+| Feedback | Change |
 |---|---|
-| Frame 0 | Blender 3D head (closed render + coronal cut-away seen through the lens), humaaans (standing-1, recoloured, wincing), bespoke SVG (phone voice note, sound arcs, coral ring), kinetic type + caption |
-| Poll | Bespoke diverging-bar data object (hatched outline = hypothesis, solid = finding), rough.js hand-drawn circle, Phosphor icons (book, flask, warning), Blender head thumbnail |
-| Plugged ears | Blender cut-away with lime ear plugs, SVG ring swell + blocked-air arcs, Phosphor hands/ear icons, kinetic type |
-Not yet shown (arrive in the full build): audio design (the muffled mix), the end card, the "friend ignores a voice note" scene.
+| 1. More polished | Real photographic head as the plate, cinematic grade (cool shadows, vignette, grain, dust), glass panels with backdrop blur, glowing signal colours, step tracker (1-4, top right), kinetic type, a hand-drawn rough.js circle, a stamped amber chip with a screen shake, live sound arcs and a playing voice-note waveform. |
+| 2. Change the big type | The last line is now **"Only you hear it."** (two lines, coral on "you"). The caption pill keeps the full sentence, so the two no longer repeat each other. |
+| 3. More realistic | The mannequin is gone. The head is an **AI-generated photoreal portrait (RealVisXL), mirrored so the face looks right, with depth-map parallax**; the X-ray inside the lens is a **generated radiograph registered to the ear**, so the skull, jaw and ear canal line up with the face. Fictional person: it needs an "AI IMAGE" tag in the full build (see below). |
+| 4. Logical pose | The wince is now an Open Peeps bust **holding a device with a worried face** (instead of a figure running away), in a glass card next to the phone. |
+| Cinematic camera moves | The camera is a real parameter: slow push-in with parallax on the plate; **lens push-through** (0 → 4.9 s: the camera dives into the X-ray lens, flash, you emerge inside the X-ray plate for the poll); **whip pan with motion blur and a short bloom** from the poll to the plugged-ears scene (9.3 → 10.2 s); the plugged-ears scene pushes in slowly; the photo softens and desaturates during the muffled moment. Elements enter on their own beats (springy overshoot), not all at once. |
+| More asset families | See the audit below. |
+| Voice = trading pipeline | `avatar-prompts.md`: three prompts (≤ 15 s each) for the same avatar, rules R1-R15 applied, 0 FAIL on the checker (one length warning on Part 1, 3507 of 4000 chars). Only the avatar's **audio** is used; no face in this reel. The designed pauses are inserted in the edit. |
 
-## Blender
-`../blender/head.py` renders three states (`MODE=closed|cut|cutplug`) at the same camera, and writes `3d/head.json` with projected anchor points (mouth, ears, canal ends, skull centre), so the page draws the routes and rings on exact positions. The cut is a bisect through both ears; the cranium, bone ring, cavity and brain are flat decals so the section reads as a graphic plate.
+## Asset-family audit (the question "would more families improve anything?")
+| Family | In v2 | Verdict |
+|---|---|---|
+| Photoreal AI still + depth parallax | head plate, X-ray plate | **Core** of the realism; keeps the camera moves honest |
+| Generated X-ray image | lens contents, poll background | **New and the biggest single upgrade** (realistic inside view, lens is logical) |
+| Open Peeps | wince card | Right tone for "illustrated person", logical poses available |
+| Bespoke SVG data objects | diverging bars, rings, arcs, tracker | Needed; all pure functions of t |
+| rough.js | hand-drawn circle | Small, adds a human mark |
+| Phosphor icons | book, flask, warning, ear, hand, speaker | Fine |
+| Real-footage overlays | dust (screen) + film grain (multiply) | **Helps**: removes the "clean render" look; keep grain low |
+| Kinetic type | word-by-word headlines, stamp | Helps |
+| Audio family | synth bed, whooshes, bar ticks, stamp, muffled low-pass | Helps; the muffle demonstrates the claim |
+| **Tried and removed:** Blender mannequin head | v1 | **Hurt**: next to a photoreal head it looks like a toy. Blender should do **objects**, not people. |
+| **Tried and removed:** humaaans | v1 | Poses are walking/running; none holds a phone logically |
+| Not used (no job in these scenes): CMU mocap, Lottie, Unsplash, GSAP | | Skipped on purpose; adding them would be decoration |
+**For the full build, worth adding:** a Blender macro of the **ear canal + cochlea** (glass, emissive routes) for "two routes to your ears", and a glossy Blender phone for the hook; CC0 UI ticks from `assets/sfx/uisfx` under the bar rises. That makes 9-10 families with every one doing a job.
 
-## Facts check
-- The poll bars show **direction only** (chip says so). No sample size is shown: only the abstract of Walter et al. 2025 was read.
-- "Theory: higher" and "most said lower" are the script's F4 and F5. No Hz or percentages anywhere.
-
-## Checks run
-- Safe zone and caption band: only the ruler's SVG padding is outside x 150, none of its ink; nothing else crosses x 150-918 / y 140-1536 or the caption band (all three frames).
-- Not yet run (full build only): `check.mjs`, `visual-validate.mjs`, `change-cadence.mjs` (these need the timeline).
+## Honest limits and open points
+- **Realism and AI disclosure:** the head is a generated, fictional person. Every use needs a visible "AI IMAGE" tag (and the caption line), and I wrote the script's "no real person on screen" as "no real person" (a fictional face is allowed, but say it).
+- **Plate resolution:** generated at 576x1024 and upscaled 1.9x; it reads soft on a phone only at the very closest push. A second pass at a higher resolution is possible if you want it sharper (about 15 minutes per image on this CPU).
+- **Face looks closed-mouth** (it is a still). That's fine because the voice is off-screen here; the face-open test (reels #05-#07) will use your avatar.
+- **Quiet tail:** frame-to-frame motion never drops to zero (min mean diff 1.0 on a 0-255 scale), but the last ~2.5 s only has slow changes (swelling rings, pulsing chip). Under the 2-second change rule the full build must add a visible event there (for example a ripple on the "ever" word or the end-card pop).
+- **AI IMAGE tag** is on every frame, top right of the eyebrow row.
+- **Not run yet (they need the final timeline):** `check.mjs`, `visual-validate.mjs`, `change-cadence.mjs`. Checked by eye: contact sheets of six moments and ten frames inside the transitions, on the final MP4.
+- **Not auditioned:** no playback here; levels measured only (peak -1.9 dBFS, mean -15 dB).
+- Timeline is compressed to 15 s for the preview; the real reel runs 30 s on the script's beat sheet.
 
 ## Please decide
-1. **Look:** approve this series frame (D2), or name what to change.
-2. **Frame 2 caption:** the big line and the caption pill carry the same sentence. Options: keep both (series rule: captions always on), or swap the big type for "ONLY YOU HEAR IT." (a line already in the script as "Only you get the bone").
-3. **Head style:** a smooth porcelain mannequin with ink hair. If you want a more realistic or a more cartoon head, say so before the full build.
-4. **Wince figure:** humaaans standing-1 is a recoil pose, with a small "ugh" bubble. A different pose can be swapped in.
+1. Is the look polished enough, and is the **realistic AI portrait + generated X-ray** the direction? (If you prefer a different person, hair or gender, say so before the full build; a new portrait takes ~8 min.)
+2. Is **"Only you hear it."** the big line you want?
+3. OK to add the Blender ear-canal macro and phone for the full build?
+4. When you're ready on Friday: generate **Part 1** from `avatar-prompts.md` and send it.
