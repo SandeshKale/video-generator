@@ -1,0 +1,166 @@
+# "Is that clip AI? Google can sometimes tell." (tutorial reel, cloned voice, no avatar, ≤ 36 s)
+
+**Genre:** tutorial / how-to (standing rule).
+**Promise to the viewer:** three steps to check a viral image, video or audio file with Google's SynthID Detector, and the one blind spot that stops it being a verdict.
+
+## Why this reel (standing rule: decided from `insights/`, Grok pull of 12 Oct 2026, plus fresh research on 13 Oct)
+The Instagram data covers 21 reels and 6 followers, so it gives hints, not proof.
+- **The problem is still the first 3 seconds and length** (`insights/report.md`): skip rates 59–87%, average watch 3–7.5 s. The Sheets reel (47 s) overshot its ≤ 40 s target; this one is written to **77 spoken words (~28 s of voice, ≤ 36 s total)**.
+- **96% of views come from strangers** (3,672 of 3,839 in 30 days, `audience.json`). A stranger can't use a feature locked behind a paid plan. Everything the last two reels taught needs a paid Claude plan; **SynthID Detector is open to anyone** (Google's own post, 7 Oct), so every viewer can follow along tonight.
+- **Practical tool tip with a keyword CTA is the winning pattern** (`trends.md`, creator table): 4 of the top 5 AI reels this month are one creator's "Comment KEYWORD and I'll send you…" tips (333K–500K views). This reel keeps that mechanic ("Comment CHECK").
+- **Best own reel (report row 1, 610 views, skip 0.594, 7.5 s watch)** opens on a blunt claim. This reel opens on a 9-word question-and-answer that is true as stated (the "sometimes" is the honest part).
+- **Bottom reels (rows 19–21, 13–15 views)** open on a long setup sentence. Not this one.
+- **Topic fit:** "how do I tell if this viral clip is AI?" is a question this audience already asks about forwards and deepfakes. `trends.md` #7 (SynthID Detector, 7 Oct) names that tie-in itself.
+- **Candidates rejected, and why:**
+  - *Claude Dashboards/Motion* (`trends.md` #4): Dashboards needs a connected data platform (Redshift, BigQuery, Snowflake…); Motion is Team/Enterprise only. Almost no viewer can try it.
+  - *Claude Haiku 5.5 pricing* (#2): a news number for developers, no practical step, low save value.
+  - *GPT-6 "Intelligent UI"* (#1): already made as `reel-chatgpt-intelligent-ui`.
+  - *OpenAI's 722 math manuscripts* (#6): high overclaim risk, no action for the viewer.
+  - *India AI regulation paper* (#8): the paper isn't public yet, so there is nothing to explain.
+  - *Gemini agent* (#5) and *CoreWeave India* (#10): enterprise-only or infrastructure news.
+- **Re-check:** run `ig_insights.py report` 48 h after posting and compare the 3-second hold with the 13–41% band and with the Sheets reel.
+
+## Facts, with how well each one is sourced
+**Tier A, read first-hand on 13 Oct 2026 on Google's own post** (blog.google, "SynthID", Pushmeet Kohli, Google DeepMind, 7 Oct 2026):
+1. "Anyone can easily check if an image, video, or audio file was made with AI **from Google or our partners**."
+2. Partners named: **OpenAI, NVIDIA and Kakao**. **Apple is "coming soon".**
+3. Available globally in English from 7 Oct 2026. Text is not mentioned in the post.
+4. The post links to **synthid.com**. It gives no steps, no price, no limits and states no caveats.
+
+**Tier B, one outlet read first-hand (tbreak.com, plus a consistent web-search summary); not confirmed on a Google page:**
+5. Sign in with a Google, Apple or OpenAI account, upload a file; the site answers whether a SynthID watermark was found.
+6. Free; a daily quota of about **10 checks**; no stated file-size limit.
+7. Image, video and audio formats are accepted (JPG, PNG, HEIC, GIF; MP4, MOV, WEBM; MP3, WAV, FLAC and more). No text.
+8. The site itself says it "isn't a general AI detector", and that "a negative result doesn't mean a file is real". Content from tools that don't use SynthID (the article names Meta and Microsoft, which use their own watermarks, and unwatermarked open models) won't be flagged.
+
+**Don't say (C):**
+- that it detects "AI" in general, or that it "spots deepfakes". It only reads SynthID watermarks.
+- that a clean result means the file is real, or that a positive result proves who made it or how it was used.
+- that Meta, Microsoft, Midjourney or other tools are covered.
+- "10 checks a day" or "free" as hard facts. Use "reportedly" on screen, or leave them out of the voice.
+- that the watermark survives cropping, compression or screenshots (no source read).
+- anything about Indian rules or statistics. The consultation paper isn't published.
+- the file-size limit, because none is stated.
+
+**Creator check before posting:** please open synthid.com once, in your own account, and confirm (a) the sign-in options, (b) that the upload page matches the three steps below, (c) the exact wording of the "not found" result. If any differs, the on-screen UI recreation changes, not the script's claims.
+
+## Benchmark to beat: `reel-claude-in-sheets` (Cell Shock, 47 s)
+**Its weaknesses (from its own benchmark notes):**
+1. 47 s, over the ≤ 40 s target; the cloned read is slow on long product names.
+2. Everything in it needed a paid plan.
+3. The tile cuts are heavy.
+4. A hand-built DOM sheet carried most scenes (family F in 7 of 10).
+5. The CTA scene was a recap plus a profile, with no payoff object.
+
+**This reel does what none did before:**
+1. **A hold-it-to-the-light reveal (new technique).** A soft light band sweeps across a photo (a pure function of `t`), and a hidden pattern only exists inside the band, like a banknote watermark held to a window. The viewer watches the invisible thing become visible. It's the hook and the step-3 payoff.
+2. **Banknote guilloche background (new texture).** Fine engraved line rosettes drawn procedurally in SVG; their phase drifts with `t`, so a light moiré slides behind every scene. No grid, no cells, no cables.
+3. **A photoreal parallax scene** (AI-generated "viral" photo, labelled AI IMAGE) next to a **real Unsplash photo**, so the blind spot is shown, not just said: two files, same "no watermark found" stamp.
+4. **A 3D lightbox** (Blender, frame sequence scrubbed by `t`): a glass slab on a lit table with the lamp sliding over it. It is the physical version of the reveal.
+5. **Quieter cuts:** a light-band wipe (the same sweep that drives the reveal), 0.28 s, so cuts are part of the idea and not a separate effect.
+6. **A shorter script:** 77 words instead of 110.
+
+## Voice-over (the creator's cloned voice: Qwen3-TTS ICL, same setup as the Sheets reel; 9 lines, 77 words, ~28 s at ~2.8 words/s)
+1. (hook, from 0.00 s) "Is that viral clip AI? Google can sometimes tell."
+2. "It's called SynthID Detector, and now anyone can use it."
+3. "Step one. Open synthid dot com."
+4. "Step two. Upload an image, video, or audio file."
+5. "Step three. It hunts for a hidden watermark from Google or its partners."
+6. "The catch: no watermark doesn't mean real."
+7. "A fake from any other tool slips straight through."
+8. "So treat it as one clue, not a verdict."
+9. (warm) "Comment Check, and I'll send you the checklist."
+
+**Claim check per line:**
+- 1: "sometimes" is the honest word; the only sentence that follows is true (facts 1, 8).
+- 2: facts 1, 4. "Now anyone" comes from Google's own wording (fact 1).
+- 3: fact 4 (synthid.com). The sign-in step stays on screen as "reported" (fact 5).
+- 4: fact 1 (image, video, audio). The on-screen formats are tier B.
+- 5: facts 1, 2.
+- 6: fact 8 (tier B, also follows logically from fact 1: it only covers Google and partners).
+- 7: fact 1/8: a file from a tool that doesn't use SynthID has no SynthID watermark to find.
+- 8: the conclusion drawn from 6–7.
+- 9: creator decision, comment-keyword CTA (`dm-prompt.md`).
+
+**Spoken forms:** "SynthID" → "Synth-I-D" if the clone says it wrong; "synthid.com" → "synthid dot com"; "Google" and "OpenAI" are never in the voice (partners appear only as logos).
+
+## The first 3 seconds (hook design)
+- **0.0 s, frame 0:** a phone shows a "viral" photo (the AI-generated still, labelled AI IMAGE) with a fake share counter and a play icon. The caption "Is that viral clip AI?" is on screen. The voice starts at 0.00.
+- **0.9 s:** a warm light band begins to sweep across the photo and a faint engraved-dot pattern shows up inside the band, nowhere else.
+- **1.8 s on "tell":** the pattern locks and a stamp punches in: **WATERMARK FOUND · ILLUSTRATIVE**. A soft stamp thump.
+- **No cut before 2.6 s.** The open question that carries the viewer forward is *how do I do that?*
+
+## Screenplay
+**Family codes:**
+- A: photoreal AI still + parallax
+- B: Blender 3D
+- C: mocap rig
+- D: humaaans
+- E: logos/icons
+- F: bespoke SVG/DOM objects
+- G: kinetic type
+- H: real-footage overlay
+- I: real Unsplash photo
+- J: rough.js hand-drawn strokes
+- K: audio
+
+Times are estimates; everything is retimed from the voice.
+
+| # | Time | Primary visual | Layers keyed to words | On-screen words (≤ 6 big) | Eyebrow | Families |
+|---|---|---|---|---|---|---|
+| 1 | 0–2.6 | **Phone with a "viral" photo; the light band reveals a hidden pattern, then a WATERMARK FOUND stamp** (AI image, parallax, guilloche behind) | Share counter ticking; band sweep; stamp on "tell" | IS THAT CLIP AI? | (hook, none) | A F G K |
+| 2 | 2.6–6.2 | **Blender lightbox:** a glass slab on a lit table, the lamp slides across it and a marked corner lights up; SynthID Detector name stamped on | Name card types in on "SynthID"; "OPEN TO ANYONE" stamp on "anyone" | SYNTHID DETECTOR | // A WATERMARK YOU CAN'T SEE | B F G |
+| 3 | 6.2–9.2 | **Step 1, big:** a browser bar types `synthid.com`; page card with a sign-in button (reported options as small chips) | Tracker ① lights; the URL held ≥ 2.5 s | 1 · OPEN SYNTHID.COM | // STEP 1 · THE ADDRESS | F G E |
+| 4 | 9.2–12.5 | **Step 2:** a drop zone with three file tiles (image, video, audio) flying in from a hand-drawn phone; file name chips | tabler/naive icons; tiles land on "image, video, audio" | 2 · DROP IN ONE FILE | // STEP 2 · ONE FILE | F E J |
+| 5 | 12.5–17.5 | **Step 3: the light-band reveal on the real tool-page recreation:** a progress sweep crosses the file, the hidden pattern appears, three partner marks (Google, OpenAI, NVIDIA; Kakao as text chip) light up | Apple chip dimmed "COMING SOON" | 3 · IT LOOKS FOR A HIDDEN MARK | // STEP 3 · WHO LEFT IT | F E B |
+| 6 | 17.5–20.5 | **The catch, part 1:** a real Unsplash photo goes through the same sweep and stamps **NO WATERMARK FOUND**; a magnifier shows "real?" with a question mark | "I" stays tilted; honest tag "PHOTO · UNSPLASH" | NO WATERMARK ≠ REAL | // THE CLEAN RESULT | I F G |
+| 7 | 20.5–24.0 | **The catch, part 2:** two photos side by side (the real one and an AI one from a tool with no SynthID), both stamped NO WATERMARK FOUND; the AI one wears a visible AI IMAGE tag | rough.js circle around both stamps | SAME ANSWER, TWO ORIGINS | // THE BLIND SPOT | A I J |
+| 8 | 24.0–27.0 | **One clue, not a verdict:** a corkboard of three evidence cards: SOURCE · SYNTHID · CONTEXT; the SynthID card is pinned and the other two stay empty slots | Card pins on "clue" | ONE CLUE, NOT A VERDICT | // WEIGHING THE EVIDENCE | F G D |
+| 9 | 27.0–end (≥ 3 s) | **Recap, save-worthy (≥ 2.5 s):** the 3 steps + the catch in one card; then **CTA:** profile ring + @sandesh.explains + a comment bubble typing "CHECK" + "I'll DM the checklist" | Dust texture on the CTA (not the light-leak clip: it strobes) | COMMENT "CHECK" → GET THE CHECKLIST | (none: CTA) | F G H K |
+
+**Asset-mix audit:**
+- Families used: **10** (A, B, D, E, F, G, H, I, J, K). Each scene has ≥ 2.
+- Primary visual by scene: A · B · F · F · B · I · A+I · F · F. F is primary in four scenes (3, 4, 8, 9), the audit limit. Scenes 1, 2, 5, 6, 7 break it up with photoreal, 3D and real-photo visuals.
+- Neighbouring scenes never share a primary family except the 3–4 pair (browser page vs file drop zone: different objects).
+- **D (humaaans):** one person at the corkboard in scene 8 (a standing pose not used by any earlier reel; verified at mockup).
+
+## Visual identity: "Hold to the Light" (checked against every prior reel)
+- **Palette (light, banknote):**
+  - ground: **banknote cream `#f2ead3`**;
+  - ink: **engraving navy `#13243d`**;
+  - **currency green `#0e6b5a`** (found, approved);
+  - **stamp vermilion `#e2412c`** (no watermark found, the catch);
+  - **brass `#c9962b`** (the light band, highlights);
+  - a pale **security-thread blue `#7fb2c9`** for the hidden pattern.
+  No earlier reel pairs cream with banknote green; the nearest are `reel-morning-brief` (cream/coral) and `reel-teach-a-skill` (walnut/brass). The Sheets reel's violet/sunflower is the opposite end.
+- **Texture / motion language:** **guilloche**: engraved line rosettes and wave bands, generated in SVG. They drift slowly (phase driven by `t`) and a light-band sweep passes over them at each cut. No grids, dots, cables or paper grain.
+- **Component language:** passport and banknote furniture: rounded-corner **stamps** with a double border, **perforated tabs**, serial-number mono labels, ink-pad rectangles, a **security thread** (a thin vertical strip with micro-text) at the left of every card.
+- **Typography:** a high-contrast display serif for headlines (**Bodoni Moda 800**, new to reels), **Chivo Mono** for labels and serials (new), **Inter** for captions; cover in **Anton**. All three new faces to be vendored via `@fontsource` (OFL); load every face before `__ready`.
+- **Characters / photos:** one humaaans standing pose (scene 8); the AI-generated "viral" photo is made locally (RealVisXL, small size, labelled AI IMAGE, never captioned as real footage); the real photo is from `assets/photos/servicestack/` and is checked against earlier reels' photos so it hasn't been used.
+- **Cover (grid-first, ≤ 5 words):**
+  - options: **"SOMETIMES GOOGLE CAN TELL"**, **"IS THIS CLIP AI?"** or **"3 STEPS: IS IT AI?"**;
+  - hero: a big photo corner held to a light band, a hidden dot pattern glowing inside the band only;
+  - banknote-cream ground, vermilion stamp as the corner badge.
+
+## Audio plan
+- **Score:** a dry "detective-lite" cue at ~104 bpm: muted upright-bass walk, brushed snaps, a celesta ostinato; a single suspended chord under the catch; resolves bright for the CTA. Beat-locked cuts.
+- **SFX** (CC0 uisfx first, peak-aligned): a stamp thump (synth) on each stamp; a soft scanner sweep on every light-band pass; typing for the URL; a click for the sign-in button; pins into the board; success chime on the final CTA word.
+- **Targets:** voice over music + SFX median ≥ 20 dB, min ≥ 11 dB (measured on voiced frames); −14.0 LUFS; ≤ −1 dBTP; a mix report.
+
+## Honesty guardrails
+- Every UI (browser page, drop zone, result stamps) is a generic recreation labelled **ILLUSTRATIVE**. It is not a screenshot of synthid.com and it doesn't copy Google's design.
+- No real person appears in the AI-generated photo, and it isn't an image of a real event. It carries an AI IMAGE tag and the caption says so.
+- The watermark itself is **invisible** in real life. The glowing pattern in the video is a drawn illustration of the idea, and the on-screen text and the caption say so.
+- Partner marks (Google, OpenAI, NVIDIA) are used nominatively, to say whose watermarks the tool reads. Kakao and Apple are text chips (no logo in the library).
+- The caption: the source (Google's 7 Oct post, plus the tbreak report for sign-in, free and daily-quota details marked as reported), "no watermark does not mean real", and that this is a clue, not a verdict.
+- Don't claim the tool is accurate, tested or robust. This reel hasn't run any real file through it.
+
+## Decisions to confirm
+1. **Topic and angle:** SynthID Detector, as a how-to with the blind spot. (Alternative if you'd rather keep a Claude angle: a "Claude Haiku 5.5 at $0.10 per million" explainer. It's weaker on every signal in the data.)
+2. **CTA keyword:** "CHECK" with a one-page checklist DM (`dm-prompt.md`; generic verification steps, nothing unverifiable).
+3. **Creator check on synthid.com** (see Facts) before the full build.
+4. **Mockup (before the full build):** 3 scenes in 3 families:
+   - 1: the hook reveal (A + F);
+   - 2: the Blender lightbox (B);
+   - 7: the blind-spot pair (A + I + J).
+   Plus a voice sample of lines 1–2.
