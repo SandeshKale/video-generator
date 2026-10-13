@@ -155,7 +155,7 @@ def ir(seed):
     r = np.random.default_rng(seed); n = int(1.2 * SR); x = r.standard_normal(n) * np.exp(-np.arange(n) / (.26 * SR))
     x = lp(x, 6500); x[:int(.015 * SR)] = 0; return x / np.sqrt((x ** 2).sum())
 wet = np.stack([fftconvolve(music[:, 0], ir(1))[:N], fftconvolve(music[:, 1], ir(2))[:N]], 1)
-music = music + .26 * wet
+music = music + .10 * wet
 # ---------- SFX: CC0 UI samples (assets/sfx/uisfx, "soft" pack) + a few synth hits, peak-aligned to the page's cue times ----------
 EV = []
 def E(kind, t, g=1.0): EV.append(dict(k=kind, t=round(t, 3), g=g))
@@ -191,7 +191,17 @@ for e in EV:
     f, g, pn, bus = FX[e['k']]; put(bus, st(f(), pn), e['t'], g * e['g'], True)
 json.dump({'sfx': EV, 'SC': SC, 'total': TOTAL, 'bpm': BPM, 'styles': STY}, open('events.json', 'w'))
 # ---------- voice: de-harsh the 7 kHz sibilance bump (soothing), a touch of 3 kHz clarity, light compression ----------
-subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/voice.wav', '-af', 'deesser=i=0.45:m=0.6:f=0.55,equalizer=f=7400:t=q:w=1.4:g=-5,highshelf=f=10000:g=-1.5,equalizer=f=3000:t=q:w=1.5:g=0.8,acompressor=threshold=-24dB:ratio=2.2:attack=6:release=120:makeup=2,loudnorm=I=-17:TP=-2:LRA=6', '-ar', str(SR), '-ac', '1', 'audio/voice_proc.wav'])
+# creator feedback: "a lot of reverb ... clean, sharp, right amount of bass": dereverb first (spectral late-reverb suppression), then a soft
+# gap expander, +3 dB bass shelf at 130 Hz, -2 dB mud cut at 330 Hz, +3 dB presence at 3.2 kHz, +1.5 dB air at 9 kHz, de-ess, glue compression.
+from dereverb import dereverb
+import soundfile as sf
+_v, _sr = sf.read('audio/voice.wav'); _v = _v if _v.ndim == 1 else _v.mean(1)
+_d = dereverb(_v, _sr, rt60=.7, nd_ms=40, over=2.2, gmin=.08)
+_act = np.zeros(len(_d)); 
+for w in WD: _act[int(max(0, w['s'] - .05) * _sr):int(min(len(_d), (w['e'] + .12) * _sr))] = 1
+_g = np.convolve(_act, np.ones(int(.05 * _sr)) / int(.05 * _sr), 'same'); _d = _d * (.12 + .88 * _g)   # -18 dB between words
+sf.write('audio/voice_dry.wav', _d.astype('float32'), _sr)
+subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/voice_dry.wav', '-af', 'highpass=f=75,equalizer=f=130:t=q:w=0.9:g=3.0,equalizer=f=330:t=q:w=1.2:g=-2.0,equalizer=f=3200:t=q:w=1.1:g=3.0,highshelf=f=9000:g=1.5,deesser=i=0.45:m=0.6:f=0.55,acompressor=threshold=-24dB:ratio=2.2:attack=6:release=120:makeup=2,loudnorm=I=-17:TP=-2:LRA=6', '-ar', str(SR), '-ac', '1', 'audio/voice_proc.wav'])
 _, v = wavfile.read('audio/voice_proc.wav'); v = v.astype('float64') / 32768.0
 vo = np.zeros(N); vo[:min(N, len(v))] = v[:N]
 act = np.zeros(N)
@@ -209,7 +219,7 @@ def carve(x, depth): return x - depth * bp(x, 1200, 4500)
 mb = hp(music + bass * .78 + drums, 35)                       # tame the sub for headphones; nothing below 35 Hz
 mb_c = carve(mb, .35)
 mb_c = mb_c - (.35 * duck)[:, None] * bp(mb_c, 1200, 4500)
-GAP_DB, DUCK_DB = -10.5, -8.5                                  # music 10.5 dB under the voice in gaps, 19 dB while speaking
+GAP_DB, DUCK_DB = -5.5, -6.0                                  # music 10.5 dB under the voice in gaps, 19 dB while speaking
 mg = 10 ** (GAP_DB / 20) * vr / max(rms(mb_c.mean(1)), 1e-9)
 mus = mb_c * mg * (10 ** (DUCK_DB * duck / 20))[:, None]
 tail = np.clip((np.arange(N) / SR - (WD[-1]['e'] + .25)) / .6, 0, 1); mus *= (10 ** (3.0 * tail / 20))[:, None]   # outro lift once the voice stops
