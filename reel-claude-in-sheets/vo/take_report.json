@@ -69,6 +69,76 @@
    "heard": "messy data in clean table pivot and a chart out."
   }
  ],
+ "l03": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.914,
+   "floor_db": -70.9,
+   "dur": 5.68,
+   "accent": 0.36,
+   "accent_top": "indian",
+   "score": 0.69,
+   "heard": "Step 1. Get Claude from the Google Workspace Marketplace."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.222,
+   "sim": 0.867,
+   "floor_db": -53.8,
+   "dur": 5.28,
+   "accent": 0.254,
+   "accent_top": "indian",
+   "score": 3.283,
+   "heard": "Step 1. Get cloud from the Google Workplace Marketplace"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.111,
+   "sim": 0.908,
+   "floor_db": -36.3,
+   "dur": 4.56,
+   "accent": 0.229,
+   "accent_top": "indian",
+   "score": 3.158,
+   "heard": "Step one, get cloud from the Google Workspace Marketplace."
+  }
+ ],
+ "l04": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.909,
+   "floor_db": -51.4,
+   "dur": 5.52,
+   "accent": 0.232,
+   "accent_top": "indian",
+   "score": 0.724,
+   "heard": "Step two, open a sheet, then extensions, Claude, open Claude."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.2,
+   "sim": 0.91,
+   "floor_db": -48.8,
+   "dur": 5.52,
+   "accent": 0.031,
+   "accent_top": "indian",
+   "score": 5.687,
+   "heard": "Step two, open a sheet, then extensions, cloud, open cloud."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.2,
+   "sim": 0.904,
+   "floor_db": -52.2,
+   "dur": 6.88,
+   "accent": 0.37,
+   "accent_top": "indian",
+   "score": 2.772,
+   "heard": "Step 2. Open a sheet then extensions. Clawed. Open Clawed."
+  }
+ ],
  "l05": [
   {
    "take": "iclAB1",
@@ -102,6 +172,181 @@
    "accent_top": "indian",
    "score": 0.764,
    "heard": "Step 3, ask it like a colleague, clean this up, total sales by month and chart it."
+  }
+ ],
+ "l06": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.927,
+   "floor_db": -37.4,
+   "dur": 5.04,
+   "accent": 0.435,
+   "accent_top": "indian",
+   "score": 1.716,
+   "heard": "Messy joins, it pulls the range into python and writes the result back."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.931,
+   "floor_db": -48.1,
+   "dur": 6.24,
+   "accent": 0.353,
+   "accent_top": "indian",
+   "score": 0.555,
+   "heard": "messy joins it pulls the range into Python and writes the result back"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.904,
+   "floor_db": -43.6,
+   "dur": 5.68,
+   "accent": 0.247,
+   "accent_top": "indian",
+   "score": 0.975,
+   "heard": "messy joins, it pulls the range into Python and writes the result back."
+  }
+ ],
+ "l07": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.917,
+   "floor_db": -50.5,
+   "dur": 6.88,
+   "accent": 0.341,
+   "accent_top": "indian",
+   "score": 0.668,
+   "heard": "By default, it asks before every edit, so nothing changes behind your back."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.906,
+   "floor_db": -58.1,
+   "dur": 6.56,
+   "accent": 0.291,
+   "accent_top": "indian",
+   "score": 0.751,
+   "heard": "by default it asks before every edit so nothing changes behind your back"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.926,
+   "floor_db": -38.8,
+   "dur": 6.56,
+   "accent": 0.233,
+   "accent_top": "indian",
+   "score": 1.53,
+   "heard": "by default it asks before every edit so nothing changes behind your back"
+  }
+ ],
+ "l08": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.836,
+   "floor_db": -37.6,
+   "dur": 2.88,
+   "accent": 0.207,
+   "accent_top": "indian",
+   "score": 2.429,
+   "heard": "It works in Docs and Slides too."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.889,
+   "floor_db": -43.8,
+   "dur": 3.04,
+   "accent": 0.271,
+   "accent_top": "indian",
+   "score": 1.07,
+   "heard": "It works in Docs and Slides too."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.143,
+   "sim": 0.874,
+   "floor_db": -30.0,
+   "dur": 2.88,
+   "accent": 0.295,
+   "accent_top": "indian",
+   "score": 4.693,
+   "heard": "and it works in Docs and Slides too."
+  }
+ ],
+ "l09": [
+  {
+   "take": "iclAB1",
+   "wer": 0.056,
+   "sim": 0.917,
+   "floor_db": -36.1,
+   "dur": 6.48,
+   "accent": 0.153,
+   "accent_top": "indian",
+   "score": 2.552,
+   "heard": "the catch, it's a beta, it needs a paid plan and work accounts may need your admins okay."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.056,
+   "sim": 0.941,
+   "floor_db": -49.3,
+   "dur": 7.2,
+   "accent": 0.358,
+   "accent_top": "indian",
+   "score": 1.03,
+   "heard": "the catch it's a beta it needs a paid plan and work accounts may need your  admins okay"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.056,
+   "sim": 0.93,
+   "floor_db": -24.8,
+   "dur": 6.4,
+   "accent": 0.182,
+   "accent_top": "indian",
+   "score": 4.151,
+   "heard": "the catch, it's a beta, it needs a paid plan and work accounts may need your  admins okay."
+  }
+ ],
+ "l10": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.886,
+   "floor_db": -62.2,
+   "dur": 3.76,
+   "accent": 0.38,
+   "accent_top": "indian",
+   "score": 0.911,
+   "heard": "comment sheets and I'll send you the prompt."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.869,
+   "floor_db": -64.9,
+   "dur": 2.8,
+   "accent": 0.229,
+   "accent_top": "indian",
+   "score": 1.046,
+   "heard": "comment sheets and I'll send you the prompt."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.906,
+   "floor_db": -41.9,
+   "dur": 4.24,
+   "accent": 0.082,
+   "accent_top": "indian",
+   "score": 2.91,
+   "heard": "comment sheets and I'll send you the prompt."
   }
  ]
 }

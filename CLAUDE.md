@@ -1276,3 +1276,29 @@ A tutorial reel (no avatar): Claude reads Gmail + Google Calendar and writes a w
 - **Pre-speech noises in cloned voice takes:** Qwen ICL takes can carry a short sound before the first word, and Whisper folds it into the first word's start. `reel-claude-in-sheets/voice/clean.py` cuts short leading/trailing blobs separated by ≥ 0.12 s gaps and softens isolated clicks/breaths, logging each change in `vo/clean_report.json`. Run it after `pick.py`.
 - **Scene cuts with tiles:** shrinking the outgoing scene's tiles in place interleaves strips of both scenes' text. Cover with solid tiles in the first half, uncover in the second, and show only one scene at a time.
 - `pgrep -f`/`pkill -f` matched the invoking shell again (exit 144). Never use them; keep the PID from `$!` instead.
+
+## Reel benchmark — `reel-claude-in-sheets` ("Claude just moved into your Google Sheets.", 47 s, Cell Shock, cloned voice)
+The first reel picked from the Instagram data. Skip rates were 59–87% and average watch 3–7.5 s, so it is built around the first 3 s: frame 0 already shows a messy sheet, the voice starts on "Claude" at 0.00 s, and the sheet cleans itself and becomes a chart by 2.6 s. A tutorial: install (Workspace Marketplace) → open (Extensions ▸ Claude ▸ Open Claude) → ask, then the Python join, the approval card, Docs/Slides, the catch, recap and a **comment-keyword CTA** ("Comment Sheets" → `dm-prompt.md`, sent by hand or ManyChat).
+- **Look:** electric-violet ground `#4b22c9` with a faint cell grid. White cards have plum ink borders; accents are sunflower, tomato and teal. Fonts: Rubik 800, Azeret Mono and Inter; the cover is in Anton. The ground was chosen by measuring mint, violet and plum at phone size (the white sheet's contrast was ~1.1:1 on mint and ~10:1 on violet).
+- **New techniques:**
+  1. **Cells-to-chart morph:** the sheet's own total cells fly (FLIP) onto the tops of growing bars.
+  2. **A Blender spreadsheet board:** messy tiles settle into a grid, then extrude into 3D bars. Frames are cropped to their shared bounding box.
+  3. **rough.js strokes drawn by `t`:** underlines, lasso, arrows and circles.
+  4. **Real CC0 UI samples** (uisfx soft pack) mixed with the synth score.
+  5. **A two-phase cell-tile cut on one canvas:** tiles cover the outgoing scene, then uncover the incoming one, so only one scene is visible at a time.
+  6. **A shared step tracker** across the step scenes.
+  7. **A humaaans colleague at a desk** (sitting-1, recoloured). The creator rejected the black-and-white Open Peeps figure as unrelated.
+- **Families (9):** Blender 3D; humaaans; logos and icons (simple-icons, Phosphor, naive-icons); bespoke DOM sheets, menus and cards; kinetic type and captions; real-footage overlays (film grain on the catch, dust on the CTA); an Unsplash photo; rough.js hand-drawn strokes; and the audio family (score, samples and the cloned voice).
+- **Pitfalls:**
+  - **`light-leak-dust.webm` strobes:** luma jumps 3 ↔ 248 every few frames. It washed the CTA in the first render; use `dust-particles.webm` behind anything the viewer must read.
+  - **Measuring loudness:** measure voice-over-music on each word's *voiced* frames. Whisper word spans include silence, which made the minimum look 5 dB worse than it was.
+  - **Python patch scripts:** one failed `assert` aborts the whole patch. Chain the lint with `&&` so it never runs on stale code.
+- **Validated:**
+  - `check.mjs` (new for this reel: safe zone, caption band, tracker hits, text overflow and out-of-box, overlaps with `data-ov` exemptions, occupancy). Only deliberate items remain: the hook's flying total cells (2.0–2.25 s) and scene 4's pane sliding in under the window's clip.
+  - Frames of the final MP4 at frame 0, inside all 9 cuts, at every scene midpoint and across the slice joins.
+  - Overlay motion and steadiness measured on the MP4.
+  - Mix: −14.0 LUFS, −3.3 dBTP. Voice over music + SFX: median 20.9 dB, min 10.7 dB on the take's soft last word "prompt.".
+- **Headroom:**
+  - **Runtime:** 47 s against the ≤40 s target. The cloned read is slow on the long product names, and tempo is already at the 1.12× cap; shorten the text instead.
+  - **Cuts:** the tile cuts are bold; consider a quieter variant if they feel loud.
+  - **Audio:** not auditioned (no playback here).

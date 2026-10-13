@@ -1,4 +1,5 @@
-// Copy this reel's assets into site/: fonts, the Unsplash desk photo, the Open Peeps colleague, product marks (nominative use).
+// Copy this reel's assets into site/: fonts, the Unsplash desk photo, the humaaans colleague, hand-drawn icons, footage overlays,
+// the creator's profile photo and product marks (nominative use).
 //   bun assets-build.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -23,13 +24,16 @@ im.crop((x, 0, x + cw, h)).resize((1160, 800), Image.LANCZOS).save('${S}/photos/
 fs.writeFileSync(path.join(S, 'colleague.svg'), humaaansFull('sitting', 'sitting-1', { coatColor: '#ffc31a', pantColor: '#23142d', shirtColor: '#fbfdfc', shoeColor: '#fbfdfc', objectColor: '#11a08f' }));
 fs.rmSync(path.join(S, 'peep.svg'), { force: true });
 // hand-drawn colour icons (naive-icons, MIT) and the rough.js sketch renderer (MIT)
-for (const n of ['coffee', 'lamp', 'check-circle']) cp(`icons/naive-icons/${n}.svg`, `naive/${n}.svg`);
+for (const n of ['coffee', 'lamp', 'check-circle', 'shopping-bag', 'code', 'alert-triangle', 'bookmark', 'chat', 'download']) cp(`icons/naive-icons/${n}.svg`, `naive/${n}.svg`);
+// real-footage texture overlays (Pixabay, VP9) for the catch and the CTA (dust, not the light leak: that clip flickers 3<->248 luma), and the creator's profile photo for the CTA
+for (const n of ['film-grain', 'dust-particles']) cp(`animations/video-overlay/${n}.webm`, `fx/${n}.webm`);
+fs.copyFileSync(path.join(H, '..', 'reel-app', 'public', 'profile.jpg'), path.join(S, 'profile.jpg'));
 cp('animations/rough/rough.min.js', 'rough.min.js');
 
 // marks: simple-icons (CC0 icon data; trademarks belong to their owners, used to identify the products)
 const mark = (name, col) => fs.readFileSync(path.join(A, 'icons/simple-icons', name + '.svg'), 'utf8').replace('<svg ', `<svg fill="${col}" `);
 const marks = { claude: mark('claude', '#d97757'), sheets: mark('googlesheets', '#11a08f'), docs: mark('googledocs', '#4a7dff'), slides: mark('googleslides', '#f5a300') };
 const ph = (n) => fs.readFileSync(path.join(A, 'icons/phosphor/bold', n + '-bold.svg'), 'utf8').replace(/fill="[^"]*"/, 'fill="currentColor"');
-const icons = { cursor: ph('cursor'), check: ph('check-fat'), lock: ph('lock-simple'), sparkle: ph('sparkle') };
+const icons = { cursor: ph('cursor'), check: ph('check-fat'), lock: ph('lock-simple'), unlock: ph('lock-simple-open'), sparkle: ph('sparkle'), search: ph('magnifying-glass'), caret: ph('caret-right'), x: ph('x') };
 fs.writeFileSync(path.join(S, 'marks.js'), `window.MK=${JSON.stringify(marks)};window.IC=${JSON.stringify(icons)};\n`);
 console.log('assets ok');

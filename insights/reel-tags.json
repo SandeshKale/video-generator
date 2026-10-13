@@ -188,5 +188,16 @@
   "voice": "clone",
   "host": "no",
   "length": "<=60s"
+ },
+ "reel-claude-in-sheets": {
+  "genre": "tutorial",
+  "company": [
+   "anthropic",
+   "google"
+  ],
+  "voice": "clone",
+  "host": "no",
+  "length": "<=50s",
+  "cta": "comment-keyword"
  }
 }
