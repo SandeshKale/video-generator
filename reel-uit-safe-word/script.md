@@ -1,4 +1,4 @@
-# Use It Today #01: "Ask me this one question" (family safe word vs AI voice-clone scams)
+# Use It Today (safe word): "Ask me this one question" (family safe word vs AI voice-clone scams)
 
 **Series:** Use It Today (see `insights/next-10-reels.md`). **Runtime:** about 30 s. **Host:** your AI avatar (no filming). The avatar is full frame for the hook, then a corner circle. **Keyword:** SAFE → `dm-prompt.md`.
 
@@ -19,7 +19,7 @@
 **Part 1 (hook, 0–15 s):** "If I ever call you crying, asking for money... ask me one question first. Because scammers can now copy anyone's voice with A-I. Here's the thirty-second fix."
 **Part 2 (15–30 s):** "Pick a family safe word today. Say it in person, never online. If a call needs money urgently, hang up, call back, and ask for the word. Send this to your parents. Comment safe."
 
-## Beats and visuals (series frame: `USE IT TODAY · #01` badge, end card)
+## Beats and visuals (series frame: `USE IT TODAY · #NN (number set at posting)` badge, end card)
 | t (s) | Spoken | On screen (≤6 words in the first 1.5 s) | Asset families |
 |---|---|---|---|
 | 0.0–2.2 | "If I ever call you crying, asking for money…" | Avatar **full frame**; text **"ASK ME THIS FIRST"**; a phone ring hit on frame 0 | avatar video, kinetic type, SFX |

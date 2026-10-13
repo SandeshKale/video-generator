@@ -380,4 +380,4 @@ Each reel lists: the hook (A = main, B = alternate for Trial Reels), the beats, 
   - **Variant C:** no face, Qwen cloned voice (reel 2).
   - Reels 5–9 use whichever wins on skip rate and average watch %.
 - **Screen recordings:** demos in the Claude and Grok apps still need your phone's screen recorder (no camera, no face). I'll give you a short step list for each reel.
-- **Reel 1** is ready to generate: `reel-uit01-safe-word/avatar-prompts.md`.
+- **Reel 1** is ready to generate: `reel-uit-safe-word/avatar-prompts.md`.
