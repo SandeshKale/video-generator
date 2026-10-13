@@ -22,4 +22,13 @@ const ph = (n) => fs.readFileSync(path.join(A, 'icons/phosphor/bold', n + '-bold
 const marks = { google: mark('google', '#13243d'), nvidia: mark('nvidia', '#13243d') };   // OpenAI: gilbarbara/openai.svg, added in the full build
 const icons = { play: ph('play'), scan: ph('scan'), seal: ph('seal-check'), stamp: ph('stamp'), search: ph('magnifying-glass'), fingerprint: ph('fingerprint'), push: ph('push-pin'), image: ph('file-image'), film: ph('film-strip'), wave: ph('waveform'), upload: ph('upload-simple') };
 fs.writeFileSync(path.join(S, 'marks.js'), `window.MK=${JSON.stringify(marks)};window.IC=${JSON.stringify(icons)};\n`);
+// full-build extras: partner logos, footage textures, creator photo, a recoloured humaaans figure, naive icons
+import { humaaansFull } from '../gif-ai-work-treadmill/hum.mjs';
+cp('logos/gilbarbara/openai-icon.svg', 'logos/openai.svg'); cp('logos/gilbarbara/google-icon.svg', 'logos/google.svg'); cp('logos/gilbarbara/apple.svg', 'logos/apple.svg');
+cp('animations/video-overlay/dust-particles.webm', 'fx/dust.webm'); cp('animations/video-overlay/film-grain.webm', 'fx/grain.webm');
+fs.copyFileSync(path.join(H, '..', 'reel-app/public/profile.jpg'), path.join(S, 'photos/profile.jpg'));
+fs.writeFileSync(path.join(S, 'photos/figure.svg'), humaaansFull('standing', 'standing-15', { coatColor: '#0e6b5a', shirtColor: '#f2ead3', pantColor: '#13243d', shoeColor: '#e2412c' }));
+const nv = (n) => fs.readFileSync(path.join(A, 'icons/naive-icons', n + '.svg'), 'utf8');
+Object.assign(icons, { bookmark: ph('bookmark-simple'), chat: ph('chat-circle-dots'), check: ph('check-circle'), cursor: ph('cursor'), lock: ph('lock-key'), shield: ph('shield-check'), link: ph('link'), warn: ph('warning') });
+fs.writeFileSync(path.join(S, 'marks.js'), `window.MK=${JSON.stringify(marks)};window.IC=${JSON.stringify(icons)};\n`);
 console.log('assets ok');

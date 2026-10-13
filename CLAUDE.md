@@ -1302,3 +1302,12 @@ The first reel picked from the Instagram data. Skip rates were 59–87% and aver
   - **Runtime:** 47 s against the ≤40 s target. The cloned read is slow on the long product names, and tempo is already at the 1.12× cap; shorten the text instead.
   - **Cuts:** the tile cuts are bold; consider a quieter variant if they feel loud.
   - **Audio:** not auditioned (no playback here).
+
+## Reel benchmark — `reel-synthid-check` ("Is that clip AI? Google can sometimes tell.", 34 s, Hold to the Light, cloned voice)
+Tutorial picked from the Instagram data: open synthid.com → upload → read, then the catch (no watermark ≠ real) and a comment-keyword CTA ("Comment CHECK" → `dm-prompt.md`). Facts tiered in `script.md` (Google post = A; sign-in/free/quota from press = "REPORTED" on screen).
+- **Look:** banknote cream/navy grounds with guilloche lines, currency green, stamp vermilion, brass light; Bodoni Moda 800 + Chivo Mono + Inter; cover in Anton.
+- **Hook rework (user: "first 3 s cannot be quieter"):** the first mockup (small phone, stamp at 2.7 s) was rejected as quiet. The build is full-bleed: giant headline from frame 0, a light band whipping across a depth-parallax AI storm still with a hidden dot lattice, views counter, then screen shake + flash + slam stamp on the word "Google" (1.96 s) with a kick/crash/sub hit; the score is four-on-the-floor from frame 0.
+- **New techniques:** light-band reveal of a hidden dot pattern (`sweep()` canvas helper) reused as the scene-cut wipe; Blender lightbox frame sequence scrubbed by `t`; navy "honest part" ground blended across the cut.
+- **Families (10):** photoreal AI still + depth parallax, Blender 3D, humaaans, logos (Google/OpenAI/NVIDIA/Apple), Phosphor icons, bespoke DOM (browser, drop zone, evidence cards), rough.js strokes, Unsplash photo, footage overlays (dust, grain), kinetic type + synth score/CC0 samples.
+- **Validated:** `check.mjs` (only the full-bleed hook occupancy, scene 9 at 61 %, one transient stamp overshoot remain), contact sheets, 20 frames of the final MP4 incl. cuts. Mix −14.0 LUFS, −3.1 dBTP, voice over music median 20.1 dB, min 12.4 dB. Audio not auditioned.
+- **Pitfalls:** `Write` fails if the file changed since last read (re-Read first); cursor click timed after the scene end (check that scripted interactions finish before the scene does); SIGSTOP a CPU-heavy job instead of killing it; cold model load ~10–16 min.

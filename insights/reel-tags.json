@@ -199,5 +199,13 @@
   "host": "no",
   "length": "<=50s",
   "cta": "comment-keyword"
+ },
+ "reel-synthid-check": {
+  "genre": "tutorial",
+  "company": "google",
+  "voice": "clone",
+  "host": "no",
+  "length": "<=40s",
+  "cta": "comment-keyword"
  }
 }
