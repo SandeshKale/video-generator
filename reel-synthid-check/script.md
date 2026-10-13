@@ -5,7 +5,7 @@
 
 ## Why this reel (standing rule: decided from `insights/`, Grok pull of 12 Oct 2026, plus fresh research on 13 Oct)
 The Instagram data covers 21 reels and 6 followers, so it gives hints, not proof.
-- **The problem is still the first 3 seconds and length** (`insights/report.md`): skip rates 59–87%, average watch 3–7.5 s. The Sheets reel (47 s) overshot its ≤ 40 s target; this one is written to **77 spoken words (~28 s of voice, ≤ 36 s total)**.
+- **The problem is still the first 3 seconds and length** (`insights/report.md`): skip rates 59–87%, average watch 3–7.5 s. The Sheets reel (47 s) overshot its ≤ 40 s target; this one is written to **80 spoken words (~29 s of voice, ≤ 36 s total)**.
 - **96% of views come from strangers** (3,672 of 3,839 in 30 days, `audience.json`). A stranger can't use a feature locked behind a paid plan. Everything the last two reels taught needs a paid Claude plan; **SynthID Detector is open to anyone** (Google's own post, 7 Oct), so every viewer can follow along tonight.
 - **Practical tool tip with a keyword CTA is the winning pattern** (`trends.md`, creator table): 4 of the top 5 AI reels this month are one creator's "Comment KEYWORD and I'll send you…" tips (333K–500K views). This reel keeps that mechanic ("Comment CHECK").
 - **Best own reel (report row 1, 610 views, skip 0.594, 7.5 s watch)** opens on a blunt claim. This reel opens on a 9-word question-and-answer that is true as stated (the "sometimes" is the honest part).
@@ -58,9 +58,9 @@ The Instagram data covers 21 reels and 6 followers, so it gives hints, not proof
 3. **A photoreal parallax scene** (AI-generated "viral" photo, labelled AI IMAGE) next to a **real Unsplash photo**, so the blind spot is shown, not just said: two files, same "no watermark found" stamp.
 4. **A 3D lightbox** (Blender, frame sequence scrubbed by `t`): a glass slab on a lit table with the lamp sliding over it. It is the physical version of the reveal.
 5. **Quieter cuts:** a light-band wipe (the same sweep that drives the reveal), 0.28 s, so cuts are part of the idea and not a separate effect.
-6. **A shorter script:** 77 words instead of 110.
+6. **A shorter script:** 80 words instead of 110.
 
-## Voice-over (the creator's cloned voice: Qwen3-TTS ICL, same setup as the Sheets reel; 9 lines, 77 words, ~28 s at ~2.8 words/s)
+## Voice-over (the creator's cloned voice: Qwen3-TTS ICL, same setup as the Sheets reel; 9 lines, 80 words, ~29 s at ~2.8 words/s)
 1. (hook, from 0.00 s) "Is that viral clip AI? Google can sometimes tell."
 2. "It's called SynthID Detector, and now anyone can use it."
 3. "Step one. Open synthid dot com."
