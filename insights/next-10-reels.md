@@ -381,3 +381,15 @@ Each reel lists: the hook (A = main, B = alternate for Trial Reels), the beats, 
   - Reels 5–9 use whichever wins on skip rate and average watch %.
 - **Screen recordings:** demos in the Claude and Grok apps still need your phone's screen recorder (no camera, no face). I'll give you a short step list for each reel.
 - **Reel 1** is ready to generate: `reel-uit-safe-word/avatar-prompts.md`.
+
+## Revision 3 (13 Oct): polish bar = `reel-ai-trading-pipeline`
+The creator set the trading-pipeline reel as the **minimum** visual standard (see the CLAUDE.md standing rule). The Use It Today shell adopts its craft grammar:
+- graphite ground and a meaning-coded accent system
+- a signature through-line object that match-cuts every scene (per reel: a cable, an ink line, a thread)
+- a Blender centrepiece that changes state
+- typed interface panes, a mono eyebrow, a colour-blocked headline, a chip row, a source line and a colour-coded step tracker
+- the avatar tile in a corner when there's a host
+- a recap card, then the end card
+
+The series badge, end card and caption style stay fixed across reels.
+The first flat mockup (cards on black) is replaced by one built to this bar.

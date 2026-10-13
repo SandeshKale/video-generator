@@ -1312,3 +1312,22 @@ Tutorial picked from the Instagram data: open synthid.com → upload → read, t
 - **Validated:** `check.mjs` (only the full-bleed hook occupancy, scene 9 at 61 %, one transient stamp overshoot remain), contact sheets, 20 frames of the final MP4 incl. cuts. Mix −14.0 LUFS, −3.1 dBTP, voice over music median 20.1 dB, min 12.4 dB. Audio not auditioned.
 - **Pitfalls:** `Write` fails if the file changed since last read (re-Read first); cursor click timed after the scene end (check that scripted interactions finish before the scene does); SIGSTOP a CPU-heavy job instead of killing it; cold model load ~10–16 min.
 - **Update (13 Oct 2026, creator feedback on `reel-synthid-check`):** (1) voice sounded reverberant → `reel-synthid-check/dereverb.py` (Habets-style late-reverb spectral subtraction + 18 dB gap expander) then EQ (+3 dB at 130 Hz, −2 dB at 330 Hz, +3 dB at 3.2 kHz, +1.5 dB shelf at 9 kHz); music-bus plate reverb cut from .26 to .10; not auditioned, the numeric tail metric was too noisy to trust. (2) Music was "too low": gap/duck levels raised from −10.5/−8.5 to −5.5/−8.0 dB (voice over music median 16.0 dB, min 7.3 at the hook's first word). (3) A TTS reads a brand like "SynthID" as one word: spell it phonetically in the spoken text ("Synth eye dee", via `voice/spoken_fix.json`) and keep the display text "Synth ID" in `lines.json`; Whisper then hears "Synth ID".
+
+## STANDING RULE: `reel-ai-trading-pipeline` is the minimum polish level for every reel (user, 13 Oct 2026)
+*"I like the visual treatment used for trading pipeline reel. It just feels wholesome and highly polished. I need every reel to be on that level or above that."* A flat card-on-dark mockup (the first "Use It Today" draft) is below this bar. Every new reel, including the Use It Today series, must have all of the following:
+1. **One meaning-coded accent system.** Each colour stands for one concept (data blue, alert amber, order red, approval lime) and stays consistent across the reel, on a graphite ground with subtle texture.
+2. **A signature through-line object** that runs through every scene and turns each cut into a match cut, like the trading reel's cable, which leaves one scene where the next picks it up, with a camera push along it.
+3. **A crafted 3D centrepiece** (Blender, real materials: brushed metal, glass, LEDs, knobs) that **changes state with the story** (the rack gains plugged-in blocks). Moving parts are drawn in SVG from projected points, so they move as a pure function of `t`.
+4. **Real-looking interface panes:** a terminal, code, chat or settings window with typed text, a window title bar, and an "ILLUSTRATIVE" or source label.
+5. **A fixed hierarchy in every frame:**
+   - a mono eyebrow with a status dot (`// BLOCK 2 · YOUR RULES IN CODE`)
+   - a big headline, with the key word in a solid colour block
+   - the centrepiece
+   - a chip row
+   - a mono source line
+   - the caption pill above a dashed accent rule
+6. **A colour-coded step tracker** (numbered chips, top right) and a **host tile** (avatar) in a corner when there's a host.
+7. **An end recap card** (save-worthy) plus the branded CTA.
+8. **A layered score** that adds a voice per step, with peak-aligned SFX.
+
+Compare every new contact sheet against `reel-ai-trading-pipeline/reel.mp4` frames before sending. If it doesn't look at least as finished, iterate first.
