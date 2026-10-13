@@ -1,42 +1,42 @@
 {
  "integrated_LUFS": -14.0,
  "true_peak_dBTP": -3.1,
- "loudness_range_LU": 2.3,
+ "loudness_range_LU": 1.8,
  "voice_over_music+sfx_dB_per_word (voiced frames)": {
-  "median": 20.1,
-  "p10": 15.9,
-  "min": 12.4,
-  "words": 78
+  "median": 16.0,
+  "p10": 11.2,
+  "min": 7.3,
+  "words": 80
  },
  "worst_words": [
   [
-   12.4,
-   "Step",
-   10.282
-  ],
-  [
-   12.7,
-   "It's",
-   3.939
-  ],
-  [
-   12.9,
-   "Google",
-   1.96
-  ],
-  [
-   13.9,
+   7.3,
    "Is",
    0.0
   ],
   [
-   14.2,
+   8.0,
+   "Google",
+   1.96
+  ],
+  [
+   8.9,
    "Step",
-   7.828
+   15.699
+  ],
+  [
+   9.0,
+   "It's",
+   3.939
+  ],
+  [
+   9.4,
+   "Step",
+   11.771
   ]
  ],
- "music_gap_vs_voice_dB": -10.5,
- "music_duck_while_speaking_dB": -8.5,
+ "music_gap_vs_voice_dB": -5.5,
+ "music_duck_while_speaking_dB": -8.0,
  "bpm": 104,
  "styles": [
   "hook",

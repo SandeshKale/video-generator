@@ -1,0 +1,317 @@
+{
+ "l01": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.916,
+   "floor_db": -53.9,
+   "dur": 5.04,
+   "accent": 0.263,
+   "accent_top": "indian",
+   "score": 0.674,
+   "heard": "is that viral clip AI Google can sometimes tell"
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.906,
+   "floor_db": -50.9,
+   "dur": 5.2,
+   "accent": 0.284,
+   "accent_top": "indian",
+   "score": 0.754,
+   "heard": "is that viral clip AI Google can sometimes tell"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.899,
+   "floor_db": -28.6,
+   "dur": 4.32,
+   "accent": 0.261,
+   "accent_top": "indian",
+   "score": 3.27,
+   "heard": "is that viral clip AI Google can sometimes tell."
+  }
+ ],
+ "l02": [
+  {
+   "take": "iclAB1",
+   "wer": 0.167,
+   "sim": 0.921,
+   "floor_db": -59.6,
+   "dur": 4.8,
+   "accent": 0.373,
+   "accent_top": "indian",
+   "score": 2.298,
+   "heard": "It's called Synth ID Detector and now anyone can use it."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.167,
+   "sim": 0.885,
+   "floor_db": -44.4,
+   "dur": 5.12,
+   "accent": 0.349,
+   "accent_top": "indian",
+   "score": 2.677,
+   "heard": "It's called Synth ID Detector and now anyone can use it."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.167,
+   "sim": 0.919,
+   "floor_db": -42.7,
+   "dur": 4.8,
+   "accent": 0.397,
+   "accent_top": "indian",
+   "score": 2.664,
+   "heard": "it's called Synth ID Detector and now anyone can use it"
+  }
+ ],
+ "l03": [
+  {
+   "take": "iclAB1",
+   "wer": 0.167,
+   "sim": 0.869,
+   "floor_db": -60.4,
+   "dur": 2.8,
+   "accent": 0.142,
+   "accent_top": "indian",
+   "score": 2.92,
+   "heard": "Step 1, open Synthid.com"
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.167,
+   "sim": 0.929,
+   "floor_db": -34.5,
+   "dur": 4.32,
+   "accent": 0.175,
+   "accent_top": "indian",
+   "score": 3.813,
+   "heard": "Step 1. Open Synthid.com"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.333,
+   "sim": 0.884,
+   "floor_db": -48.8,
+   "dur": 3.52,
+   "accent": 0.328,
+   "accent_top": "indian",
+   "score": 4.262,
+   "heard": "Step 1. Open Synthib.com"
+  }
+ ],
+ "l04": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.868,
+   "floor_db": -53.7,
+   "dur": 5.12,
+   "accent": 0.171,
+   "accent_top": "indian",
+   "score": 1.058,
+   "heard": "Step two, upload an image, video or audio file."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.853,
+   "floor_db": -37.5,
+   "dur": 4.56,
+   "accent": 0.247,
+   "accent_top": "indian",
+   "score": 2.305,
+   "heard": "Step 2. Upload an image, video or audio file."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.823,
+   "floor_db": -57.3,
+   "dur": 4.4,
+   "accent": 0.223,
+   "accent_top": "indian",
+   "score": 1.412,
+   "heard": "Step 2. Upload an image, video or audio file."
+  }
+ ],
+ "l05": [
+  {
+   "take": "iclAB1",
+   "wer": 0.077,
+   "sim": 0.897,
+   "floor_db": -35.0,
+   "dur": 4.88,
+   "accent": 0.399,
+   "accent_top": "indian",
+   "score": 3.096,
+   "heard": "3. It hunts for a hidden watermark from Google or its partners"
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.895,
+   "floor_db": -44.1,
+   "dur": 6.32,
+   "accent": 0.233,
+   "accent_top": "indian",
+   "score": 0.968,
+   "heard": "Step 3. It hunts for a hidden watermark from Google or its partners."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.926,
+   "floor_db": -45.7,
+   "dur": 5.36,
+   "accent": 0.346,
+   "accent_top": "indian",
+   "score": 0.592,
+   "heard": "Step 3. It hunts for a hidden watermark from Google or its partners."
+  }
+ ],
+ "l06": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.891,
+   "floor_db": -29.6,
+   "dur": 2.72,
+   "accent": 0.406,
+   "accent_top": "indian",
+   "score": 3.177,
+   "heard": "The catch, no watermark doesn't mean real."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.901,
+   "floor_db": -64.7,
+   "dur": 3.84,
+   "accent": 0.424,
+   "accent_top": "indian",
+   "score": 0.788,
+   "heard": "the catch no watermark doesn't mean real"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.906,
+   "floor_db": -50.7,
+   "dur": 3.84,
+   "accent": 0.035,
+   "accent_top": "indian",
+   "score": 3.623,
+   "heard": "The catch? No watermark doesn't mean real."
+  }
+ ],
+ "l07": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.874,
+   "floor_db": -53.0,
+   "dur": 3.68,
+   "accent": 0.303,
+   "accent_top": "indian",
+   "score": 1.004,
+   "heard": "A fake from any other tool slips straight through."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.897,
+   "floor_db": -41.0,
+   "dur": 4.32,
+   "accent": 0.114,
+   "accent_top": "indian",
+   "score": 2.331,
+   "heard": "A fake from any other tool slips straight through."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.111,
+   "sim": 0.903,
+   "floor_db": -45.7,
+   "dur": 4.48,
+   "accent": 0.346,
+   "accent_top": "indian",
+   "score": 1.889,
+   "heard": "and a fake from any other tool slips straight through."
+  }
+ ],
+ "l08": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.833,
+   "floor_db": -53.6,
+   "dur": 3.76,
+   "accent": 0.155,
+   "accent_top": "indian",
+   "score": 1.337,
+   "heard": "So, treat it as one clue, not a verdict."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.867,
+   "floor_db": -44.6,
+   "dur": 3.52,
+   "accent": 0.209,
+   "accent_top": "indian",
+   "score": 1.12,
+   "heard": "So, treat it as one clue, not a verdict."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.889,
+   "floor_db": -46.6,
+   "dur": 3.6,
+   "accent": 0.245,
+   "accent_top": "indian",
+   "score": 0.885,
+   "heard": "So, treat it as one clue, not a verdict."
+  }
+ ],
+ "l09": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.885,
+   "floor_db": -66.0,
+   "dur": 2.96,
+   "accent": 0.359,
+   "accent_top": "indian",
+   "score": 0.922,
+   "heard": "comment, check and I'll send you the checklist."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.892,
+   "floor_db": -53.4,
+   "dur": 3.6,
+   "accent": 0.266,
+   "accent_top": "indian",
+   "score": 0.865,
+   "heard": "comment, check, and I'll send you the checklist."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.125,
+   "sim": 0.892,
+   "floor_db": -42.1,
+   "dur": 4.08,
+   "accent": 0.434,
+   "accent_top": "indian",
+   "score": 2.54,
+   "heard": "button, comment check and I'll send you the checklist."
+  }
+ ]
+}

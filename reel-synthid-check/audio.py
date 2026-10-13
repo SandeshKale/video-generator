@@ -219,7 +219,7 @@ def carve(x, depth): return x - depth * bp(x, 1200, 4500)
 mb = hp(music + bass * .78 + drums, 35)                       # tame the sub for headphones; nothing below 35 Hz
 mb_c = carve(mb, .35)
 mb_c = mb_c - (.35 * duck)[:, None] * bp(mb_c, 1200, 4500)
-GAP_DB, DUCK_DB = -5.5, -6.0                                  # music 10.5 dB under the voice in gaps, 19 dB while speaking
+GAP_DB, DUCK_DB = -5.5, -8.0                                  # music 10.5 dB under the voice in gaps, 19 dB while speaking
 mg = 10 ** (GAP_DB / 20) * vr / max(rms(mb_c.mean(1)), 1e-9)
 mus = mb_c * mg * (10 ** (DUCK_DB * duck / 20))[:, None]
 tail = np.clip((np.arange(N) / SR - (WD[-1]['e'] + .25)) / .6, 0, 1); mus *= (10 ** (3.0 * tail / 20))[:, None]   # outro lift once the voice stops
