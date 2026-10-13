@@ -18,7 +18,11 @@ REQUIRED = [  # (substring, rule id)
     ('Never stare, never look away', 'R6 gaze on the lens'),
     ('none in the first second', 'R7 blinks'),
     ('At most two small nods', 'R8 restraint: nods'),
-    ('No hand gestures', 'R8 restraint: hands'),
+    ('slightly restrained gestures', 'R14 hands: subtle, restrained'),
+    ('Natural five-finger hands, no pointing at the camera', 'R14 hands: guardrails'),
+    ('from mid-chest up', 'R14 framing shows the hands'),
+    ('dry, no echo or reverb', 'R15 voice: dry, close-mic'),
+    ('Natural pitch movement', 'R15 voice: tonal movement'),
     ('No wide smiles, no raised-brow acting', 'R8 restraint: face'),
     ('at most one lightly stressed word per sentence', 'R9 voice'),
     ('No announcer tone', 'R9 voice'),
@@ -49,7 +53,8 @@ def main(path):
     for n, tot, body in ps:
         tag = f'P{n}'
         if len(body) > 4000: fails.append(f'{tag}: {len(body)} characters > 4000 (R3 hard limit)')
-        elif len(body) > 2900: warns.append(f'{tag}: {len(body)} characters (template guideline ~2.2-2.9k; every extra directive gets over-performed)')
+        elif len(body) > 3400: warns.append(f'{tag}: {len(body)} characters (template guideline ~2.6-3.4k since R14/R15; every extra directive gets over-performed)')
+        if 'No hand gestures' in body: fails.append(f'{tag}: says "No hand gestures"; superseded by R14 (subtle, restrained gestures)')
         for s, rid in REQUIRED:
             if s not in body: fails.append(f'{tag}: missing "{s}" ({rid})')
         for key in ('IDENTITY:', 'FRAMING:'):
