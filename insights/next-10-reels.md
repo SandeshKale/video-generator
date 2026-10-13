@@ -368,3 +368,16 @@ Each reel lists: the hook (A = main, B = alternate for Trial Reels), the beats, 
 - **If you'd rather not film:** use your avatar tool for the hook, or open with the result itself (e.g. the finished EMI calculator). We lose the "real person" test, but the reel still works.
 
 **Screen recordings:** use the phone's built-in screen recorder while you do the task in the Claude or Grok app. Follow a short step list I'll give you for each reel. Record a few seconds before and after each step.
+
+## Revision 2 (13 Oct): no filming. Your AI avatar hosts instead
+- **Hooks:** every "face hook" (reels 1, 3, 4, and any others that open on a face) uses your avatar clip in place of filmed video:
+  - full frame for the first ~2 s
+  - then a corner circle while the demo plays
+  - The avatar speaks the whole reel (2 parts × 15 s), so the voice stays one voice.
+- **Prompts:** follow `AVATAR-PROMPT-TEMPLATE.md` and pass `scripts/check-avatar-prompts.py` with 0 FAIL. Always deliver Part 1 first for review.
+- **Test matrix, updated:**
+  - **Variant A:** avatar face plus avatar voice (reels 1, 3, 4).
+  - **Variant C:** no face, Qwen cloned voice (reel 2).
+  - Reels 5–9 use whichever wins on skip rate and average watch %.
+- **Screen recordings:** demos in the Claude and Grok apps still need your phone's screen recorder (no camera, no face). I'll give you a short step list for each reel.
+- **Reel 1** is ready to generate: `reel-uit01-safe-word/avatar-prompts.md`.
