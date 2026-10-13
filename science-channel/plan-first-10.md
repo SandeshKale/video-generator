@@ -47,17 +47,17 @@ Mockup first, per CLAUDE.md: build the series frame once, with 3 scenes from 3 d
 The posting order puts the highest-share topic first and spaces out the two tests. "Jev" is the topic score: 35% send, 30% scroll-stop, 20% visual payoff, 15% surprise, on a 0–4 scale. Jev's scores sit close together (1.43–1.89), so they only broke ties. The topics were chosen for variety and verified facts. Fact tiers: **A** = peer-reviewed paper or agency source, **B** = established textbook fact, **C** = don't say.
 
 ### #01 · Your voice on recordings (body/senses · Jev 1.75, highest send score 0.97)
-- **Frame-0 text:** "Everyone else hears THIS voice"
-- **Hook line:** "That voice you hate on recordings? That's the one everyone else hears."
+- **Full script:** `science-channel/reel-01-your-voice/script.md`.
+- **Frame-0 text:** "You've never heard YOU"
+- **Hook line:** "You've never heard your own voice the way everyone else does."
 - **Beats:**
-  - 0–6 s: two sound paths drawn into a 3D head cut-away. **Air path** through the ear canal (cyan); **bone path** through the skull (coral).
-  - 6–14 s: an EQ curve. Bone conduction boosts the low frequencies, so in your head you sound deeper. A recording only captures the air path.
-  - 14–20 s: **lime "try it"**: plug your ears and hum, and that's mostly the bone path.
-  - 20–26 s: share line, end card.
-- **Facts:** two conduction paths; bone conduction carries more low-frequency energy, so self-heard voice sounds deeper (B; Stenfelt & Goode 2005 review, *Otology & Neurotology*).
-  - Don't claim exact Hz bands unless read in the paper.
-  - Microphones and speakers also colour the sound a little (Frontiers for Young Minds 2025).
-- **Share line:** "Send this to the friend who refuses to send voice notes."
+  - 0–10 s: 3D head cut-away. Two routes to your ears: **air** (cyan, what everyone hears) and **bone** (coral, only you). A recording only catches the air.
+  - 10–18 s: "higher or lower?" One theory says a recording should sound higher. In a 2025 study most people said lower. Scientists still disagree (amber chip).
+  - 18–28 s: share line, then a try-it: plug your ears and talk, with the audio mix going muffled to match. Last line: "Nobody else will ever hear the version you hear."
+- **Facts:** two routes, and a recording drops the bone route (A, Hullar, Scientific American). Earplugs leave only the bone route (A, same source). The strong bone-conduction theory predicts "higher" (A, Walter et al. 2025, *Canadian Acoustics*). Most participants judged their recording *lower* (A, same abstract).
+  - **Correction (13 Oct):** the first draft said bone conduction makes you sound deeper in your head and a recording thinner and higher. The sources disagree on direction, so the reel makes no direction claim and uses the disagreement as the twist.
+  - Don't claim exact Hz bands. Microphones and speakers also colour the sound a little (Frontiers for Young Minds 2025).
+- **Share line:** "Send this to the friend who hates voice notes."
 
 ### #02 · You make ~4 million new cells every second (body · Jev 1.89)
 - **Frame-0 text:** "4 million. Every second."
