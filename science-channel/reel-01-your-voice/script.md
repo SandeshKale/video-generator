@@ -153,7 +153,7 @@ Family count: 7.
 - `insights/niche-jev/jev_topics.json`: this topic had the **highest send score of all 22 topics (0.97)**, but a middling total (1.75), so it's here for shares, not novelty.
 
 ## Benchmark to beat
-This is the channel's first reel, so the bar is the @sandesh.explains best in `insights/report.md`: 3-s hold up to 43% (`reel-ai-reads-tokens`, only 13 plays so far) and average watch up to 7.5 s (the 610-play post). Targets: 3-s hold ≥ 45%, average watch ≥ 12 s (40% of runtime), shares ≥ 10 per 1,000 reached, comments ≥ 5 per 1,000.
+This is the channel's first reel, so the bar is the @sandesh_explains best in `insights/report.md`: 3-s hold up to 43% (`reel-ai-reads-tokens`, only 13 plays so far) and average watch up to 7.5 s (the 610-play post). Targets: 3-s hold ≥ 45%, average watch ≥ 12 s (40% of runtime), shares ≥ 10 per 1,000 reached, comments ≥ 5 per 1,000.
 New things this reel does that earlier ones didn't: a **designed audio demonstration** (the mix itself goes muffled at the try-it), a **stacked-loop structure with a silence-based guess beat**, and a **seamless last-frame to first-frame replay loop**.
 
 ## Audit

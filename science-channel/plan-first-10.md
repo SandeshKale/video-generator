@@ -1,7 +1,7 @@
 # Science explainer channel: plan for the first 10 reels (13 Oct 2026)
 
 This follows `insights/niche-decision.md`. Jev chose science and "how things work" explainers, with the angle **everyday things and your own body and brain**.
-It also applies what `insights/growth-diagnosis.md` measured on @sandesh.explains:
+It also applies what `insights/growth-diagnosis.md` measured on @sandesh_explains:
 - 75% of viewers skipped in the first 3 s.
 - Viewers watched for 4.5 s on average.
 - 0 shares.
@@ -15,10 +15,10 @@ The first 10 reels have two jobs: grow the account, and act as **two controlled 
 | # | Decision | Default |
 |---|---|---|
 | D1 | Channel name and handle | **"What's Actually Happening"**: badge `WHAT'S ACTUALLY HAPPENING · #01`, handle `@whatsactuallyhappening` or `@actually.happening` (check availability). Alternatives: "Inside You", "Tiny Whys". |
-| D2 | Fixed series frame, which overrides the CLAUDE.md rule that every reel needs a new visual identity | **Yes, for this channel only.** One palette, font set, signature object and end card. Variety comes from each reel's centrepiece. Keep the "new identity" rule for one-off reels on @sandesh.explains. |
+| D2 | Fixed series frame, which overrides the CLAUDE.md rule that every reel needs a new visual identity | **Yes, for this channel only.** One palette, font set, signature object and end card. Variety comes from each reel's centrepiece. Keep the "new identity" rule for one-off reels on @sandesh_explains. |
 | D3 | Who opens the reel | **Test it** (Part 3, test B): reels 1–3 open on the 3D object, reels 5–7 open on *your real face* (1.5 s, filmed on your phone). |
 | D4 | Voice | **The avatar-clip voice used in the trading-pipeline reel.** That was the CLAUDE.md choice for the Use It Today series, and it's an Indian-accented voice that is yours. Disclose it with each platform's AI label (Meta's "AI info" and YouTube's "altered or synthetic content" setting), because a cloned voice counts as realistic synthetic audio. |
-| D5 | Platforms | **Instagram Reels + YouTube Shorts, same file.** No TikTok (banned in India; see the niche decision). New accounts, separate from @sandesh.explains. |
+| D5 | Platforms | **Instagram Reels + YouTube Shorts, same file.** No TikTok (banned in India; see the niche decision). New accounts, separate from @sandesh_explains. |
 
 ## Part 1: The series system (identical in every reel)
 
@@ -185,7 +185,7 @@ All other variables stay fixed (length 25–30 s, posting time, caption structur
 
 **Targets per reel**, measured 48 h after posting with `scripts/ig_insights.py report`:
 
-| Metric | @sandesh.explains today | Target for #01–#10 |
+| Metric | @sandesh_explains today | Target for #01–#10 |
 |---|---|---|
 | Skipped in first 3 s | 75% | **< 60%**, stretch < 50% |
 | Average watch | 4.5 s (5–8% of runtime) | **> 40% of runtime** |
@@ -213,9 +213,9 @@ All other variables stay fixed (length 25–30 s, posting time, caption structur
 
 - [ ] D1–D5 decided.
 - [ ] Instagram account created (creator account) and YouTube channel created. Same name, same avatar (the X-ray lens mark), bio = the promise line.
-- [ ] Get the first ~100 followers from outside the channel (friends, @sandesh.explains story, LinkedIn). This unlocks audience insights.
+- [ ] Get the first ~100 followers from outside the channel (friends, @sandesh_explains story, LinkedIn). This unlocks audience insights.
 - [ ] 2–3 reels fully built before #01 is posted.
-- [ ] `insights/reel-tags.json` gets a `channel` field so this channel's reels are reported separately from @sandesh.explains.
+- [ ] `insights/reel-tags.json` gets a `channel` field so this channel's reels are reported separately from @sandesh_explains.
 
 ## Sources
 - Cells: [Sender & Milo 2021, Nature Medicine (PDF)](https://www.Gwern.net/doc/biology/2021-sender.pdf), [Weizmann summary](https://wis-wander.weizmann.ac.il/node/11205), [Scientific American](https://www.scientificamerican.com/article/our-bodies-replace-billions-of-cells-every-day/)

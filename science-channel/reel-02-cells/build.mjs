@@ -43,9 +43,9 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 02 cells</title><
 <svg id="strike" width="250" height="250" style="position:absolute;left:0;top:0"><path d="M24 214 L226 36" stroke="#ff4d3d" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="290" stroke-dashoffset="290" style="filter:drop-shadow(0 0 12px rgba(255,77,61,.7))"/></svg></div></section>
 <section class="sc" id="sc7"><div class="glass" id="friend" style="position:absolute;left:150px;top:620px;width:768px;height:690px;overflow:hidden">${doodle}</div>
 <div class="glass" id="bubble" style="position:absolute;left:250px;top:440px;width:668px;padding:26px 34px;border-radius:34px 34px 8px 34px;font:700 54px/1.1 Fam;letter-spacing:-.02em;color:var(--tx)">I'm a new person now. <span style="color:var(--li);display:inline-block;width:40px;height:40px;vertical-align:-6px">${ph('sparkle')}</span></div></section>
-<section class="sc" id="sc9"><div id="av" style="position:absolute;left:380px;top:520px;width:320px;height:320px;border-radius:50%;background:url(media/profile.jpg) center/cover;border:6px solid var(--li);box-shadow:0 0 0 10px rgba(198,255,74,.18),0 0 70px rgba(198,255,74,.4),0 24px 60px rgba(0,0,0,.6)"></div>
-<div id="hd" style="position:absolute;left:150px;top:880px;width:768px;text-align:center;font:700 74px/1 Fam;letter-spacing:-.03em;text-shadow:0 6px 26px rgba(0,0,0,.6)">@sandesh.explains</div>
-<div id="fol" style="position:absolute;left:150px;top:1020px;width:768px;display:flex;justify-content:center"><span class="pill"><span class="ic">${ph('plus-circle')}</span>FOLLOW</span></div></section>
+<section class="sc" id="sc9"><div id="av" style="position:absolute;left:380px;top:650px;width:320px;height:320px;border-radius:50%;background:url(media/profile.jpg) center/cover;border:6px solid var(--li);box-shadow:0 0 0 10px rgba(198,255,74,.18),0 0 70px rgba(198,255,74,.4),0 24px 60px rgba(0,0,0,.6)"></div>
+<div id="hd" style="position:absolute;left:150px;top:1010px;width:768px;text-align:center;font:700 74px/1 Fam;letter-spacing:-.03em;text-shadow:0 6px 26px rgba(0,0,0,.6)">@sandesh_explains</div>
+<div id="fol" style="position:absolute;left:150px;top:1150px;width:768px;display:flex;justify-content:center"><span class="pill"><span class="ic">${ph('plus-circle')}</span>FOLLOW</span></div></section>
 
 <div id="cntwrap"><div id="cnt"></div><div id="cntlab">SINCE YOU PRESSED PLAY</div></div>
 <div id="ill">ILLUSTRATION · NOT A MICROSCOPE IMAGE</div><div id="cap"></div></div>

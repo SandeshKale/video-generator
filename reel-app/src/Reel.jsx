@@ -72,7 +72,7 @@ export default function Reel() {
       <div ref={set('cta')} style={styles.scene}>
         <div ref={set('ctaCard')} style={styles.card}>
           <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="" style={styles.profilePic} />
-          <div style={styles.ctaMain}>@sandesh.explains</div>
+          <div style={styles.ctaMain}>@sandesh_explains</div>
         </div>
       </div>
 

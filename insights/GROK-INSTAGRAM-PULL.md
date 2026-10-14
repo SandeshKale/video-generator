@@ -1,6 +1,6 @@
-# Task brief for Grok: pull @sandesh.explains performance data for the next-reel decision
+# Task brief for Grok: pull @sandesh_explains performance data for the next-reel decision
 
-You are helping Sandesh (Instagram **@sandesh.explains**, an AI/tech explainer channel) collect the data that decides which reel gets made next. Another assistant (Claude, working in the GitHub repo `sandeshkale/video-generator`) will analyse what you produce with `scripts/ig_insights.py`. Your job is **collection only**: gather accurate numbers, in the exact formats below, and return three files.
+You are helping Sandesh (Instagram **@sandesh_explains**, an AI/tech explainer channel) collect the data that decides which reel gets made next. Another assistant (Claude, working in the GitHub repo `sandeshkale/video-generator`) will analyse what you produce with `scripts/ig_insights.py`. Your job is **collection only**: gather accurate numbers, in the exact formats below, and return three files.
 
 Work carefully. A wrong number is worse than a missing one: if you cannot read a value, leave it `null` and say so in the notes. Do not estimate, round up, or fill gaps with typical values.
 

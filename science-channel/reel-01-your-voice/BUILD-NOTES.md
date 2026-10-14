@@ -5,7 +5,7 @@
 ## What changed
 - Text: tracker, eyebrow, source line, tags and chip rows removed. Left: opening headline, "AIR/BONE", "2025", THEORY/STUDY, "SCIENTISTS DISAGREE", "TRY IT", "Only you hear it.", end card. Captions are 2-3 word chunks, key word coloured.
 - Voice: the creator's trading-reel voice cloned with Qwen3-TTS (ICL, 3 seeds per line, scored by Whisper WER, speaker similarity, accent margin). 10 lines incl. a spoken CTA "Follow for the next one." Designed silences: 1.15 s guess beat, 1.45 s muffled try-it.
-- Visuals: glossy lens rims, bigger single-idea scenes (crowd row + coral "you", pillars + 2025, paper plane to the friend, crossed voice note), glossier Blender ear frames (no wire cage, coat/subsurface, depth of field), branded end card (profile photo, @sandesh.explains, FOLLOW, NEXT teaser) held ~3 s.
+- Visuals: glossy lens rims, bigger single-idea scenes (crowd row + coral "you", pillars + 2025, paper plane to the friend, crossed voice note), glossier Blender ear frames (no wire cage, coat/subsurface, depth of field), branded end card (profile photo, @sandesh_explains, FOLLOW, NEXT teaser) held ~3 s.
 
 ## Validated
 - `check.mjs`: 5 items, all deliberate (labels on the poll panel, voice-note bubble sliding over the friend card, hand at the ear, fixed to stay inside x>=152).

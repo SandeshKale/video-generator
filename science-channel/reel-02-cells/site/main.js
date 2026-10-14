@@ -190,8 +190,8 @@ function draw9(t, al) {
   var u = t - sa(8), ca = al * ctx.__sa, ak = back(seg(u, .05, .6)), av = $('av'); av.style.opacity = clamp(ak * 3, 0, 1) * ctx.__sa; av.style.transform = 'translateY(' + (Math.sin(t * 1.8) * 3) + 'px) scale(' + lerp(.6, 1, ak) + ')';
   var hk = e3(seg(u, .3, .75)), hd = $('hd'); hd.style.opacity = hk * ctx.__sa; hd.style.transform = 'translateY(' + ((1 - hk) * 30) + 'px)';
   var fk = back(seg(t, L(9).a - .1, L(9).a + .45)), press = seg(t, L(9).b - .05, L(9).b + .1) * (1 - seg(t, L(9).b + .1, L(9).b + .3)), fo = $('fol'); fo.style.opacity = clamp(fk * 3, 0, 1) * ctx.__sa; fo.firstElementChild.style.transform = 'scale(' + (lerp(.6, 1, fk) - .07 * press) + ')';
-  ctx.globalCompositeOperation = 'lighter'; for (var i = 0; i < 3; i++) { var ph = (t * .6 + i / 3) % 1; ctx.globalAlpha = (1 - ph) * .7 * ak * ca; ctx.strokeStyle = '#c6ff4a'; ctx.lineWidth = 6 - 4 * ph; ctx.beginPath(); ctx.arc(540, 680, 180 + ph * 170, 0, TAU); ctx.stroke(); }
-  var rs = seg(t, L(9).b - .05, L(9).b + .6); if (rs > 0 && rs < 1) { ctx.globalAlpha = (1 - rs) * ca; ctx.lineWidth = 8 * (1 - rs); ctx.beginPath(); ctx.arc(540, 1100, 90 + rs * 260, 0, TAU); ctx.stroke(); }
+  ctx.globalCompositeOperation = 'lighter'; for (var i = 0; i < 3; i++) { var ph = (t * .6 + i / 3) % 1; ctx.globalAlpha = (1 - ph) * .7 * ak * ca; ctx.strokeStyle = '#c6ff4a'; ctx.lineWidth = 6 - 4 * ph; ctx.beginPath(); ctx.arc(540, 810, 180 + ph * 170, 0, TAU); ctx.stroke(); }
+  var rs = seg(t, L(9).b - .05, L(9).b + .6); if (rs > 0 && rs < 1) { ctx.globalAlpha = (1 - rs) * ca; ctx.lineWidth = 8 * (1 - rs); ctx.beginPath(); ctx.arc(540, 1230, 90 + rs * 260, 0, TAU); ctx.stroke(); }
   var r = rng(19); ctx.globalAlpha = 1; for (var j = 0; j < 120; j++) { var x = r() * W, y0 = r() * H, sp = 25 + r() * 70, y = ((y0 - t * sp) % H + H) % H; spot(GL_LIME, x, y, 3 + r() * 5, .4 * ca * (.5 + .5 * Math.sin(t * 2 + j))); }
   ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
 }

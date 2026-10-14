@@ -117,7 +117,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <svg class="abs" id="endsvg" width="1080" height="1920"></svg>
 <div style="position:absolute;left:150px;top:340px;width:768px;text-align:center;font:400 22px/1 Frag;letter-spacing:.16em;color:var(--cy)" id="brand12">WHAT'S ACTUALLY HAPPENING</div>
 <div id="av12" style="position:absolute;left:380px;top:420px;width:320px;height:320px;border-radius:50%;background:url(media/profile.jpg) center/cover;border:6px solid var(--li);box-shadow:0 0 0 10px rgba(191,255,69,.18),0 0 70px rgba(191,255,69,.4),0 24px 60px rgba(0,0,0,.6)"></div>
-<div id="hd12" style="position:absolute;left:150px;top:790px;width:768px;text-align:center;font:700 74px/1 Fam;letter-spacing:-.03em;text-shadow:0 6px 26px rgba(0,0,0,.6)">@sandesh.explains</div>
+<div id="hd12" style="position:absolute;left:150px;top:790px;width:768px;text-align:center;font:700 74px/1 Fam;letter-spacing:-.03em;text-shadow:0 6px 26px rgba(0,0,0,.6)">@sandesh_explains</div>
 <div id="fol12" style="position:absolute;left:150px;top:930px;width:768px;display:flex;justify-content:center"><span class="fol"><span class="ic">${ph('plus-circle')}</span>FOLLOW</span></div>
 <div class="glass" id="next12" style="position:absolute;left:150px;top:1140px;width:768px;padding:26px 34px;overflow:hidden"><div style="font:400 20px/1 Frag;letter-spacing:.16em;color:rgba(236,241,248,.72)">NEXT</div><div style="font:700 56px/1.04 Fam;letter-spacing:-.03em;margin-top:12px"><span class="coralt" id="n4m">4 million</span> new cells a second</div><div id="sweep12" style="position:absolute;top:0;bottom:0;width:140px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-14deg)"></div></div></section>
 

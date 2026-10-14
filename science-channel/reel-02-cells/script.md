@@ -88,7 +88,7 @@ Reel #01 (v3) is clean but still reads as *layered UI over two photo plates*. Fo
 | 15.8–19.0 | 6 | Camera pushes into the cyan head of the light-body: a **constellation of neurons** that do not change while the lime wave passes around them without touching. Held for the line. | neuron cloud 3 layers; wave as backlight | steady glow | F5 |
 | 19.0–23.0 | 7 | Light, human beat: cut from the light-body to a happy doodle friend (palette-matched, recoloured to the reel's colours) with a chat bubble "I'm a new person now ✨"; the counter ticks in the corner, a paper plane flies. | doodle card (near); counter; soft blurred body behind | paper plane | share line |
 | 23.0–26.4 | 8 | **The payoff.** The light-body bursts outward into a field of lime sparks (every spark ≈ 1 M cells) while the counter, now below the figure, passes **100,000,000**; flash, sub-bass hit, anamorphic streak. | spark field 3 layers; body silhouette far | the big number | F1, F8 |
-| 26.4–32.0 | 9 + end card | Hold on the counter (it keeps running); profile photo, @sandesh.explains, FOLLOW. Last 0.45 s cross-fades to frame 0. | end card | follow press | |
+| 26.4–32.0 | 9 + end card | Hold on the counter (it keeps running); profile photo, @sandesh_explains, FOLLOW. Last 0.45 s cross-fades to frame 0. | end card | follow press | |
 
 Every row changes the picture at least every 2 s, and several rows contain two changes. Verify with `bun scripts/change-cadence.mjs`.
 
