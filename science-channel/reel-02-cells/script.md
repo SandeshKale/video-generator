@@ -10,7 +10,7 @@ Mode — retrospective (published science). The only live element is a counter t
 Method: Monkey Magic Shorts spine (write the last line first, question in frame one, progressive reveal, cut on the answer, loop), light explainer mode. **New this reel: the visual grammar is cinematic, not HUD-and-cards** (see "Cinematic direction"). Reel #01 is the baseline to beat.
 
 ## First frame (readable with sound off)
-Frame 0 is already moving and fully composed: the camera is *inside a capillary*, a river of translucent red blood cells sweeping past in slow motion, shallow depth of field, one cell in sharp focus drifting toward the lens. A large counter sits in the upper third and is already rolling: **`0 000 000 → …`** in mono digits, with one small caption under it: **"CELLS YOUR BODY HAS REPLACED SINCE YOU PRESSED PLAY"**. (≤ 5 words of headline: the counter *is* the headline.) Voice starts at 0.00 s. Captions are visible at 0.00 s.
+Frame 0 is already moving and fully composed: the camera is *inside a capillary*, a river of translucent red blood cells sweeping past in slow motion, shallow depth of field, one cell in sharp focus drifting toward the lens. A large counter sits in the upper third and is already rolling: **`0 000 000 → …`** in mono digits, with one short caption under it: **"SINCE YOU PRESSED PLAY"** (approved wording; the "average rate, reference adult" footnote lives in the post caption, not on screen). The counter *is* the headline. Voice starts at 0.00 s. Captions are visible at 0.00 s.
 
 ## Question that cannot be answered until the end
 How many cells has your body replaced while you watched this? (Answered in the last 6 seconds: the counter crosses 100,000,000 on screen, with the voice saying it.)
@@ -73,7 +73,7 @@ Reel #01 (v3) is clean but still reads as *layered UI over two photo plates*. Fo
 3. **Physical materials, not flat icons.** Red blood cells are biconcave discs with transmission/subsurface and a soft rim light. Gut villi are glossy, wet, and pink-amber. Neurons are thin glowing filaments with emission. Everything reads as *a microscope-photography-meets-film* look, labelled **"ILLUSTRATION · not a microscope image"**.
 4. **A cinematic grade, on top of everything:** filmic S-curve, bloom/halation on highlights, subtle chromatic aberration toward the frame edges, anamorphic streak on the big flashes, deband + film grain, and a slow handheld drift (≤ 6 px) so the frame is alive even when the subject is still.
 5. **Light is the narrative.** *Newly made* cells enter as a lime-white spark that cools to the cell's own colour; *old* cells dim. Colour carries meaning, not labels: **crimson = blood, amber = gut, cyan = neurons (permanent), lime = newly made.** No text legend.
-6. **Text budget: ≤ 6 on-screen text elements for the whole reel** (the counter + its one-line caption, "≈ 86 %", "120 DAYS", "3–5 DAYS", a struck-through "7 YEARS", the end card) plus chunked captions. Anything else must be a picture.
+6. **Text budget: ≤ 6 on-screen text elements for the whole reel** (the counter + its short caption, "≈ 86 %", "120 DAYS", "3–5 DAYS", a struck-through "7 YEARS", the end card) plus chunked captions. Anything else must be a picture.
 7. **Sound is half the immersion.** Interior scenes sit in a low-passed, slightly reverberant "inside the body" bed (heartbeat-like sub pulse at 60 bpm, fluid whoosh swells that follow the camera's speed, Doppler-style passes when a cell rushes the lens); exterior scenes (body, galaxy) open the filter to full range. Counter milestones (1 M, 10 M, 100 M) get sub-bass hits. All aligned to the page's own event list.
 
 ### Shot list (camera path, ~32 s)
@@ -183,11 +183,11 @@ Targets: 3-s hold ≥ 55 %, average watch ≥ 14 s (> 40 % of runtime), shares �
 
 ## Audit and open items
 - **Mockup before full build (required):** three scenes from three families: shot 1 (capillary plate + counter + rack focus), shot 4 (gut tunnel + shedding wave), shot 8 (spark field + payoff). Approve the look before building all 9.
-- **Creator approvals:** the "illustration not a microscope image" label; the AI-generated body plate; the counter label wording.
+- **Creator approvals (14 Oct 2026): done.** "ILLUSTRATION" label OK; AI-generated body plate OK; counter caption shortened to "SINCE YOU PRESSED PLAY".
 - **GAP: myth origin (F9).** Trace where "a new body every seven years" comes from if we ever want to attribute it. Until then it stays "you've heard".
 - **GAP: F2 inconsistency** (abstract "close to 90 %", text "about 86 %"). Using 86 % with the paper's own sentence; double-check against the published HTML version when possible (the PDF copy was read, not the publisher page).
 - **Disclosure:** AI voice and AI-generated body image. Set Meta's "AI info" and YouTube's "altered or synthetic content".
-- **Safety:** no health advice, no claims about individual turnover. The counter label says *average rate, reference adult*.
+- **Safety:** no health advice, no claims about individual turnover. The post caption says *average rate, reference adult* (the on-screen caption is only "SINCE YOU PRESSED PLAY").
 - **Production checks still to run:** `check.mjs`, `scripts/change-cadence.mjs`, caption-band check, contact sheets at full and phone size, a frame-by-frame check of the DOF/rack focus and of the match moves, and a headphone listen for the interior/exterior mix (measured, not auditioned).
 
 ## Sources

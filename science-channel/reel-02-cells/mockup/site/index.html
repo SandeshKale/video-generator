@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><title>cells mockup</title>
+<style>
+@font-face{font-family:'Fam';font-weight:700;src:url('fonts/familjen-grotesk-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:'Frag';font-weight:400;src:url('fonts/fragment-mono-latin-400-normal.woff2');font-display:block}
+@font-face{font-family:'InterX';font-weight:700;src:url('fonts/inter-latin-700-normal.woff2');font-display:block}
+:root{--li:#c6ff4a;--co:#ff4d3d;--am:#ffb43a;--cy:#5ce6ff;--tx:#f1ece6}
+*{box-sizing:border-box}html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#05070d;font-family:InterX;color:var(--tx)}
+#gl,#fx{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#fx{display:none}
+#cntwrap{position:absolute;left:150px;width:768px;top:214px;text-align:center;will-change:transform}
+#cnt{display:inline-flex;font:400 112px/1 Frag;letter-spacing:-.02em;color:#f4ffd8;text-shadow:0 0 40px rgba(198,255,74,.55),0 6px 30px rgba(0,0,0,.6);height:112px;overflow:hidden}
+#cnt .d{display:block;width:.6em;height:112px;overflow:hidden;position:relative}#cnt .d i{display:block;font-style:normal;height:112px;text-align:center}
+#cnt .sp{display:block;width:.3em}
+#cntlab{font:400 24px/1 Frag;letter-spacing:.22em;color:rgba(241,236,230,.82);margin-top:16px;text-shadow:0 2px 14px rgba(0,0,0,.8)}
+#cap{position:absolute;left:150px;top:1346px;width:768px;height:132px;display:flex;align-items:center;justify-content:center}
+#cap div{display:none;white-space:nowrap;padding:12px 32px 16px;border-radius:26px;background:rgba(5,9,18,.78);border:1.5px solid rgba(241,236,230,.14);backdrop-filter:blur(14px);font:700 64px/1.1 Fam;letter-spacing:-.02em;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+#cap .k{color:var(--li)}#cap .a{color:var(--am)}
+#big{position:absolute;left:150px;width:768px;top:760px;text-align:center;font:700 170px/.95 Fam;letter-spacing:-.045em;opacity:0;will-change:transform,opacity}
+#ill{position:absolute;left:150px;top:148px;font:400 15px/1 Frag;letter-spacing:.12em;color:rgba(241,236,230,.78);border:1.5px solid rgba(241,236,230,.32);border-radius:8px;padding:6px 9px;background:rgba(6,11,22,.5)}
+#dust,#grain{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;pointer-events:none}#dust{mix-blend-mode:screen;opacity:.35}#grain{mix-blend-mode:multiply;opacity:.12}
+</style>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><canvas id="fx" width="1080" height="1920"></canvas>
+<video id="dust" src="media/dust-particles.webm" muted playsinline preload="auto"></video><video id="grain" src="media/film-grain.webm" muted playsinline preload="auto"></video>
+<div id="cntwrap"><div id="cnt"></div><div id="cntlab">SINCE YOU PRESSED PLAY</div></div>
+<div id="big"></div><div id="ill">ILLUSTRATION · NOT A MICROSCOPE IMAGE</div><div id="cap"></div></div>
+<script src="gl3.js"></script><script src="main.js"></script>
