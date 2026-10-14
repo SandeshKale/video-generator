@@ -10,7 +10,7 @@ Mode — retrospective (published science). The only live element is a counter t
 Method: Monkey Magic Shorts spine (write the last line first, question in frame one, progressive reveal, cut on the answer, loop), light explainer mode. **New this reel: the visual grammar is cinematic, not HUD-and-cards** (see "Cinematic direction"). Reel #01 is the baseline to beat.
 
 ## First frame (readable with sound off)
-Frame 0 is already moving and fully composed: the camera is *inside a capillary*, a river of translucent red blood cells sweeping past in slow motion, shallow depth of field, one cell in sharp focus drifting toward the lens. A large counter sits in the upper third and is already rolling: **`0 000 000 → …`** in mono digits, with one short caption under it: **"SINCE YOU PRESSED PLAY"** (approved wording; the "average rate, reference adult" footnote lives in the post caption, not on screen). The counter *is* the headline. Voice starts at 0.00 s. Captions are visible at 0.00 s.
+Frame 0 is already moving and fully composed: the camera floats *in warm, lit blood plasma* (no vessel wall: open space, like a film, not a pipe), a river of glossy red blood cells sweeping past in slow motion, shallow depth of field, one cell in sharp focus drifting toward the lens. A large counter sits in the upper third and is already rolling: **`0 000 000 → …`** in mono digits, with one short caption under it: **"SINCE YOU PRESSED PLAY"** (approved wording; the "average rate, reference adult" footnote lives in the post caption, not on screen). The counter *is* the headline. Voice starts at 0.00 s. Captions are visible at 0.00 s.
 
 ## Question that cannot be answered until the end
 How many cells has your body replaced while you watched this? (Answered in the last 6 seconds: the counter crosses 100,000,000 on screen, with the voice saying it.)
@@ -80,14 +80,14 @@ Reel #01 (v3) is clean but still reads as *layered UI over two photo plates*. Fo
 
 | Clock | Spoken | Shot (camera moves through…) | Depth layers | New particle/visual | Src |
 |---|---|---|---|---|---|
-| 0.0–3.4 | 1 | **Inside a capillary.** Slow-motion river of blood cells passes; one cell in focus drifts to the lens, then rack focus to the stream behind it. Counter rolling from frame 0. | cell stream far/mid; two bokeh cells near; vessel-wall haze | counter odometer (digits roll) | F1 |
-| 3.4–5.4 | 2 | Camera accelerates along the vessel and **punches through the wall into the bone-marrow cavity**: a lit cave of budding cells. "~4 M/s" reads as **a visible spray of ~4,000 sparks per second** (1 spark = 1,000 cells; legend is the counter's tiny caption). | marrow cave far; cell clusters mid; sparks near | lime-white emission, deterministic | F1 |
+| 0.0–3.4 | 1 | **In the plasma.** Slow-motion river of blood cells passes; one cell in focus drifts to the lens, then rack focus to the stream behind it. Counter rolling from frame 0. | cell stream far/mid; two bokeh cells near; warm plasma haze and light shafts | counter odometer (digits roll) | F1 |
+| 3.4–5.4 | 2 | Camera accelerates with the stream and **pushes through the cells into the bone-marrow cavity**: a lit cave of budding cells. "~4 M/s" reads as **a visible spray of ~4,000 sparks per second** (1 spark = 1,000 cells; legend is the counter's tiny caption). | marrow cave far; cell clusters mid; sparks near | lime-white emission, deterministic | F1 |
 | 5.4–10.0 | 3 | Camera rides **out with the new cells** into a wide vessel; the stream resolves into a ring that fills to **≈ 86 %** crimson (the rest amber). One red cell is followed: a thin ring around it counts up to **120 DAYS** while its colour dulls and a fresh crimson cell swaps in beside it. | stream; ring (mid); followed cell (near, in focus) | day-ring, colour dull | F2, F3 |
 | 10.0–12.4 | 4 | Camera exits the vessel and **dives into the intestine**: a tunnel of glossy villi; the amber cells on the tips shed in a slow cascade while a pale-lime wave rises from the base; **3–5 DAYS** inks in. | villi rows far/mid/near; shed cells as bokeh | wave of "new" colour | F4 |
-| 12.4–15.8 | 5 | Pull back **through the gut wall** into a full-body figure (a generated X-ray plate, as in #01, so the series stays one world). A **7-year calendar** flips in the corner; a renewal wave sweeps the body head-to-toe… and "7 YEARS" gets crossed out as the wave **stops at the brain**. | body plate; wave layer; calendar (near) | struck stamp | F5, F7 |
-| 15.8–19.0 | 6 | Camera pushes into the skull: a **constellation of cyan neurons** that do not change while a lime wave passes around them without touching. Held for the line. | neuron cloud 3 layers; wave as backlight | steady glow | F5 |
-| 19.0–23.0 | 7 | Light, human beat: pull out of the head to a happy doodle friend (palette-matched, recoloured to the reel's colours) with a chat bubble "I'm a new person now ✨"; the counter ticks in the corner, a paper plane flies. | doodle card (near); counter; soft blurred body behind | paper plane | share line |
-| 23.0–26.4 | 8 | **The payoff.** The body shrinks into the distance; the camera pulls back through a field of lime sparks (every spark ≈ 1 M cells) while the counter races up to **100,000,000**; flash, sub-bass hit, anamorphic streak. | spark field 3 layers; body silhouette far | the big number | F1, F8 |
+| 12.4–15.8 | 5 | Pull back out of the gut to a **body made of light** (a soft silhouette of ~7,500 glowing points: friendly, no skeleton, no X-ray). A **7-year calendar** flips in the corner; a lime renewal wave sweeps the body foot-to-head… and "7 YEARS" gets crossed out as the wave **stops at the brain**, which stays cyan. | light-body points + glow; wave layer; calendar (near) | struck stamp | F5, F7 |
+| 15.8–19.0 | 6 | Camera pushes into the cyan head of the light-body: a **constellation of neurons** that do not change while the lime wave passes around them without touching. Held for the line. | neuron cloud 3 layers; wave as backlight | steady glow | F5 |
+| 19.0–23.0 | 7 | Light, human beat: cut from the light-body to a happy doodle friend (palette-matched, recoloured to the reel's colours) with a chat bubble "I'm a new person now ✨"; the counter ticks in the corner, a paper plane flies. | doodle card (near); counter; soft blurred body behind | paper plane | share line |
+| 23.0–26.4 | 8 | **The payoff.** The light-body bursts outward into a field of lime sparks (every spark ≈ 1 M cells) while the counter, now below the figure, passes **100,000,000**; flash, sub-bass hit, anamorphic streak. | spark field 3 layers; body silhouette far | the big number | F1, F8 |
 | 26.4–32.0 | 9 + end card | Hold on the counter (it keeps running); profile photo, @sandesh.explains, FOLLOW. Last 0.45 s cross-fades to frame 0. | end card | follow press | |
 
 Every row changes the picture at least every 2 s, and several rows contain two changes. Verify with `bun scripts/change-cadence.mjs`.
@@ -131,14 +131,14 @@ Every row changes the picture at least every 2 s, and several rows contain two c
 ## On-screen text rules
 - Captions: 2–3 word chunks, one at a time, key word coloured (same system as #01), inside x 150–918, caption band y 1346–1478.
 - Everything else inside x 150–918, y 140–1536; the counter sits at y ≈ 220–420, over the top darkening scrim.
-- English only. Disclosure tag "AI IMAGE" stays for the generated body plate; the Blender plates carry "ILLUSTRATION" in the caption and alt text.
+- English only. A small "ILLUSTRATION · NOT A MICROSCOPE IMAGE" tag sits top-left; no AI-generated images in this reel.
 
 ## Caption (300–700 characters)
 
 > About four million. Every second. 🧬
 > Your body replaces about 330 billion cells a day. Roughly 86% of them are blood cells, and a red blood cell lasts about four months. The lining of your gut turns over in 3–5 days. By count, your body makes about 30 trillion cells every 80 days, yet most of your brain's neurons are never replaced. So no, it isn't a brand-new body every seven years.
 > The counter in the video runs at the average rate for a reference adult (a healthy 70 kg adult aged 20–30). Rates vary with age, sex and health.
-> 🤖 Voice: AI-generated (a likeness of mine). Visuals are illustrations; the body image is AI-generated. Script and research are mine.
+> 🤖 Voice: AI-generated (a likeness of mine). Visuals are illustrations. Script and research are mine.
 > Source: Sender & Milo 2021, Nature Medicine 27:45–48.
 > #Cells #DidYouKnow #BodyFacts #HumanBody #WhatsActuallyHappening
 
@@ -150,12 +150,12 @@ Every row changes the picture at least every 2 s, and several rows contain two c
 2. **WebGL depth-parallax + DOF/grade engine** (reuse `gl.js`, extended with rack focus, bloom, chromatic aberration, anamorphic streak)
 3. **Deterministic particle emission** (spark fields tied to the counter; seeded, pure `t`)
 4. **Bespoke data objects**: odometer counter, ≈ 86 % ring, 120-day ring, 7-year calendar, struck stamp
-5. **AI-generated photoreal/X-ray body plate** (RealVisXL + Depth-Anything), shared with #01's world
+5. **Light-body particle figure** (a silhouette sampled into ~7,500 deterministic points, wave and burst driven by `t`); replaces the earlier AI X-ray body plate
 6. **Open Doodles** friend (recoloured to the reel's palette, happy)
 7. **Phosphor icons** (paper plane, follow) + kinetic type and chunked captions
 8. **Real-footage overlays** (dust, film grain; light leak not used: it strobes)
 9. **Audio family**: cloned voice, heartbeat/pad/sub score, interior/exterior filter, counter-milestone hits
-Family count: 9. Primary family by scene: 1 Blender, 2 Blender+particles, 3 Blender+data, 4 Blender, 5 AI body plate, 6 Blender, 7 Open Doodles, 8 particles, 9 data+photo.
+Family count: 9. Primary family by scene: 1 Blender cells + plasma plate, 2 Blender+particles, 3 Blender+data, 4 Blender villi, 5 light-body particles, 6 light-body/neurons, 7 Open Doodles, 8 particles, 9 data+photo.
 
 ## Benchmark to beat
 Previous reel's ceiling (`reel-01-your-voice` v3): clean, text-light, photoreal AI head + X-ray lens, Blender ear macro scrubbed by `t`, whip/dive/tilt transitions, glass cards, chunked captions, branded end card. What it still *is*: layered UI over two photo plates; the Blender object is a single small macro; transitions are graphic wipes.
@@ -175,18 +175,22 @@ Targets: 3-s hold ≥ 55 %, average watch ≥ 14 s (> 40 % of runtime), shares �
 | Camera path | one JSON path in the page, plates reprojected with parallax (depth maps) rather than re-rendered per frame | negligible |
 | DOF / rack focus | per-pixel blur radius from the Z pass in the GL shader (two-pass separable), focus distance = f(t) | render cost only |
 | Particles | seeded instanced points on a GL canvas, ≤ 60k live, rate = counter | render cost only |
-| Body plate | one RealVisXL generation (X-ray, full body, 576×1024), Depth-Anything | ~15 min |
+| Light-body figure | canvas silhouette sampled to points; no generation needed | negligible |
 | Voice | Qwen3-TTS ICL, 9 lines × 3 seeds | ~45 min, run alone |
 | Render | 32 s × 60 = 1,920 frames at ~1 s/frame | ~30–40 min |
 
 **Honest risk:** a Blender-rendered *stills-plus-parallax* approach gives rack focus and parallax but **not** parallax-correct motion *through* an opening (the fly-through). The mockup must test that the vessel-wall and villi "match moves" read convincingly with plates only. If not, fall back to **short Blender frame sequences (24 fps, 2 s each, ~48 frames at 640 px, then upscaled)** for just those two moves.
 
+## Creator taste rules learned (apply to every science reel)
+- **Nothing frightening:** no skulls, skeletons or X-ray bone imagery. Prefer warm, glowing, friendly forms (light-body, cells, doodles). (Reel #01's X-ray head predates this rule.)
+- **No odd interiors:** a vessel-as-tunnel looked "weird"; show cells in open lit fluid instead of a pipe with a hole at the end.
+
 ## Audit and open items
 - **Mockup before full build (required):** three scenes from three families: shot 1 (capillary plate + counter + rack focus), shot 4 (gut tunnel + shedding wave), shot 8 (spark field + payoff). Approve the look before building all 9.
-- **Creator approvals (14 Oct 2026): done.** "ILLUSTRATION" label OK; AI-generated body plate OK; counter caption shortened to "SINCE YOU PRESSED PLAY".
+- **Creator approvals (14 Oct 2026): done.** "ILLUSTRATION" label OK; counter caption shortened to "SINCE YOU PRESSED PLAY". **After the first mockup the creator asked to remove the skull ("scary") and said the vessel interior "looks weird"**: both replaced (light-body figure; open plasma instead of a vessel tunnel). The AI-generated body plate approval is moot; no AI image is used, so no "AI IMAGE" tag is needed (voice disclosure stays).
 - **GAP: myth origin (F9).** Trace where "a new body every seven years" comes from if we ever want to attribute it. Until then it stays "you've heard".
 - **GAP: F2 inconsistency** (abstract "close to 90 %", text "about 86 %"). Using 86 % with the paper's own sentence; double-check against the published HTML version when possible (the PDF copy was read, not the publisher page).
-- **Disclosure:** AI voice and AI-generated body image. Set Meta's "AI info" and YouTube's "altered or synthetic content".
+- **Disclosure:** AI voice (a likeness of the creator). Set Meta's "AI info" and YouTube's "altered or synthetic content".
 - **Safety:** no health advice, no claims about individual turnover. The post caption says *average rate, reference adult* (the on-screen caption is only "SINCE YOU PRESSED PLAY").
 - **Production checks still to run:** `check.mjs`, `scripts/change-cadence.mjs`, caption-band check, contact sheets at full and phone size, a frame-by-frame check of the DOF/rack focus and of the match moves, and a headphone listen for the interior/exterior mix (measured, not auditioned).
 
