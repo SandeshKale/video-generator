@@ -45,7 +45,7 @@ function smooth(x, a, b) { var k = clamp((x - a) / (b - a), 0, 1); return k * k 
 function counter(t) {
   var V = RATE * t, v = Math.floor(V), wrap = $('cntwrap');
   digs.forEach(function (e) { var k = e._k, cur, nxt, off = 0;
-    if (k >= 6) { var q = V / Math.pow(10, k), fl = Math.floor(q), fr = q - fl; cur = fl % 10; nxt = (fl + 1) % 10; off = smooth(fr, .86, 1); e.style.filter = 'none'; }
+    if (k >= 6) { var q = V / Math.pow(10, k), fl = Math.floor(q), fr = q - fl; cur = fl % 10; nxt = (fl + 1) % 10; off = smooth(fr, .5, 1); e.style.filter = 'none'; }
     else { var r = ((Math.floor(t * 60) * 7919 + k * 104729 + 13) % 9973); cur = r % 10; nxt = cur; e.style.filter = 'blur(' + (k < 3 ? 3 : 1.6) + 'px)'; }
     var is = e.children; is[0].textContent = cur; is[1].textContent = nxt; is[0].style.marginTop = (-off * 112) + 'px'; e.style.opacity = (v >= Math.pow(10, k) || k < 4) ? 1 : .22; });
   var down = eio(seg(t, sa(7) - .1, sa(7) + .7)) * (1 - eio(seg(t, sb(7) - .3, sb(7) + .5))), pulse = Math.max(0, 1 - Math.abs(t - TC) / .28);
@@ -97,7 +97,8 @@ function draw2(t, al) {
 // ---------- scene 3: blood share ring (crimson ~86 % / amber ~14 %) + one cell's 120-day clock
 function draw3(t, al) {
   stream(t, 3.4, .55 * e3(seg(t, sa(2), sa(2) + .5)), { bias: 1, hero: false, focus: 14 }); var s0 = sa(2), tR = wt(3, 2) - .2, kR = eio(seg(t, tR, tR + 1.1)), a0 = -Math.PI / 2, cx = 540, cy = 680, R = 215, ca = al * ctx.__sa;
-  ctx.save(); ctx.globalAlpha = ca * .9 * e3(seg(t, tR - .1, tR + .3)); ctx.lineCap = 'round';
+  ctx.save(); ctx.globalAlpha = ca * .55 * e3(seg(t, tR - .1, tR + .3)); ctx.fillStyle = 'rgba(8,6,14,1)'; ctx.beginPath(); ctx.arc(cx, cy, R + 62, 0, TAU); ctx.fill(); ctx.restore();
+  ctx.save(); ctx.globalAlpha = ca * .95 * e3(seg(t, tR - .1, tR + .3)); ctx.lineCap = 'round';
   ctx.strokeStyle = 'rgba(8,10,20,.72)'; ctx.lineWidth = 60; ctx.beginPath(); ctx.arc(cx, cy, R, 0, TAU); ctx.stroke();
   ctx.strokeStyle = '#ff4d3d'; ctx.shadowColor = 'rgba(255,77,61,.8)'; ctx.shadowBlur = 36; ctx.lineWidth = 46; ctx.beginPath(); ctx.arc(cx, cy, R, a0, a0 + TAU * .86 * kR); ctx.stroke();
   ctx.strokeStyle = '#ffb43a'; ctx.shadowColor = 'rgba(255,180,58,.8)'; ctx.beginPath(); ctx.arc(cx, cy, R, a0 + TAU * .865, a0 + TAU * (.865 + .135 * kR)); ctx.stroke(); ctx.restore();
@@ -209,9 +210,9 @@ function states(t) {
 function glp(i, t) {
   var sway = [Math.sin(t * .7) * .55, Math.cos(t * .55) * .3];
   if (i === 0) return { cam: [sway[0], sway[1], 1 + .03 * t / 5], dof: .028, focus: dep(focus1(t)), dim: 1, par: .05 };
-  if (i === 1) return { cam: [sway[0], sway[1], 1.04], dof: .025, focus: .55, dim: 1, par: .05 };
-  if (i === 2) return { cam: [sway[0], sway[1], 1.12], dof: .02, focus: .5, dim: .72, par: .04 };
-  if (i === 3) { var u = t - sa(3); return { cam: [sway[0], sway[1], 1 + .06 * seg(u, 0, 3)], dof: .03, focus: dep(15), dim: 1, par: .05 }; }
+  if (i === 1) return { cam: [sway[0], sway[1], 1.04], dof: .025, focus: .55, dim: .9, par: .05 };
+  if (i === 2) return { cam: [sway[0], sway[1], 1.12], dof: .02, focus: .5, dim: .6, par: .04 };
+  if (i === 3) { var u = t - sa(3); return { cam: [sway[0], sway[1], 1 + .06 * seg(u, 0, 3)], dof: .03, focus: dep(15), dim: .8, par: .05 }; }
   return { cam: [0, 0, 1], dof: 0, focus: .5, dim: 1, par: .01 };
 }
 function seekAll(t) {
