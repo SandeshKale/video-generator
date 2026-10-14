@@ -75,7 +75,7 @@ env = np.abs(vv); env = lp(env, 6, 1); env = np.clip(env / (env.max() + 1e-9) * 
 music = (bed + sfx)
 m0, m1 = E('muffle')[0], L[9]['a'] - .02; mm = np.clip((T - m0) / .25, 0, 1) * np.clip((m1 + .25 - T) / .25, 0, 1)
 low = lp(music, 420, 4) * 1.6; music = music * (1 - mm) + low * mm
-gain = .36 * (1 - .6 * env) * np.clip(T / .03, 0, 1) * np.clip((DUR - T) / .4, 0, 1)
+gain = .5 * (1 - .6 * env) * np.clip(T / .03, 0, 1) * np.clip((DUR - T) / .4, 0, 1)
 mix = vv * 1.0 + music * gain
 mix = np.tanh(mix * 1.15) * .8; mix = mix / np.abs(mix).max() * .85
 st = np.stack([mix, np.roll(mix, 28) * .98], 1); os.makedirs(HERE + '/audio', exist_ok=True)

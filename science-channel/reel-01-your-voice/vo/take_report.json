@@ -1,0 +1,352 @@
+{
+ "l01": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.902,
+   "floor_db": -18.4,
+   "dur": 2.88,
+   "accent": 0.336,
+   "accent_top": "indian",
+   "score": 4.777,
+   "heard": "You've never heard your own voice the way everyone else does."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.943,
+   "floor_db": -27.0,
+   "dur": 4.4,
+   "accent": 0.417,
+   "accent_top": "indian",
+   "score": 3.162,
+   "heard": "You've never heard your own voice the way everyone else does."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.915,
+   "floor_db": -20.0,
+   "dur": 3.28,
+   "accent": 0.488,
+   "accent_top": "indian",
+   "score": 4.429,
+   "heard": "You've never heard your own voice the way everyone else does."
+  }
+ ],
+ "l02": [
+  {
+   "take": "iclAB1",
+   "wer": 0.125,
+   "sim": 0.839,
+   "floor_db": -85.0,
+   "dur": 4.16,
+   "accent": 0.309,
+   "accent_top": "indian",
+   "score": 2.539,
+   "heard": "Two roots to your ears, air and bone."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.125,
+   "sim": 0.895,
+   "floor_db": -89.5,
+   "dur": 3.04,
+   "accent": 0.395,
+   "accent_top": "indian",
+   "score": 2.092,
+   "heard": "two roots to your ears, air and bone."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.125,
+   "sim": 0.896,
+   "floor_db": -83.0,
+   "dur": 3.28,
+   "accent": 0.448,
+   "accent_top": "indian",
+   "score": 2.082,
+   "heard": "Two roots to your ears, air and bone."
+  }
+ ],
+ "l03": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -80.2,
+   "dur": 3.44,
+   "accent": 0.218,
+   "accent_top": "indian",
+   "score": 0.652,
+   "heard": "Everyone hears the air. Only you get the bone."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.923,
+   "floor_db": -87.3,
+   "dur": 3.68,
+   "accent": 0.457,
+   "accent_top": "indian",
+   "score": 0.618,
+   "heard": "Everyone hears the air, only you get the bone."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -66.3,
+   "dur": 3.6,
+   "accent": 0.373,
+   "accent_top": "indian",
+   "score": 1.012,
+   "heard": "Everyone hears the air, only you get the bone."
+  }
+ ],
+ "l04": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.914,
+   "floor_db": -20.8,
+   "dur": 2.32,
+   "accent": 0.333,
+   "accent_top": "indian",
+   "score": 4.317,
+   "heard": "A recording only catches the air."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -17.6,
+   "dur": 2.4,
+   "accent": 0.403,
+   "accent_top": "indian",
+   "score": 5.128,
+   "heard": "A recording only catches the air."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.878,
+   "floor_db": -18.3,
+   "dur": 2.24,
+   "accent": 0.445,
+   "accent_top": "indian",
+   "score": 4.978,
+   "heard": "A recording only catches the air."
+  }
+ ],
+ "l05": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.904,
+   "floor_db": -16.0,
+   "dur": 2.32,
+   "accent": 0.447,
+   "accent_top": "indian",
+   "score": 5.117,
+   "heard": "One theory says you'd sound higher."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.892,
+   "floor_db": -18.9,
+   "dur": 2.48,
+   "accent": 0.343,
+   "accent_top": "indian",
+   "score": 4.783,
+   "heard": "One theory says you'd sound higher."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.899,
+   "floor_db": -16.3,
+   "dur": 2.24,
+   "accent": 0.394,
+   "accent_top": "indian",
+   "score": 5.12,
+   "heard": "One theory says you'd sound higher."
+  }
+ ],
+ "l06": [
+  {
+   "take": "iclAB1",
+   "wer": 0.889,
+   "sim": 0.911,
+   "floor_db": -72.5,
+   "dur": 3.36,
+   "accent": 0.475,
+   "accent_top": "indian",
+   "score": 9.599,
+   "heard": "A 20-25 study, most people heard lower than 10% of the study."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.333,
+   "sim": 0.952,
+   "floor_db": -71.7,
+   "dur": 4.32,
+   "accent": 0.45,
+   "accent_top": "indian",
+   "score": 3.716,
+   "heard": "A 2025 study, most people heard lower."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.333,
+   "sim": 0.95,
+   "floor_db": -62.2,
+   "dur": 3.52,
+   "accent": 0.423,
+   "accent_top": "indian",
+   "score": 3.735,
+   "heard": "A 2025 study, most people heard lower..."
+  }
+ ],
+ "l07": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.874,
+   "floor_db": -29.7,
+   "dur": 2.72,
+   "accent": 0.407,
+   "accent_top": "indian",
+   "score": 3.308,
+   "heard": "Send this to the friend who hates voice notes."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.875,
+   "floor_db": -23.5,
+   "dur": 3.36,
+   "accent": 0.24,
+   "accent_top": "indian",
+   "score": 4.227,
+   "heard": "Send this to the friend who hates voice notes."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.881,
+   "floor_db": -21.9,
+   "dur": 3.04,
+   "accent": 0.273,
+   "accent_top": "indian",
+   "score": 4.419,
+   "heard": "Send this to the friend who hates voice notes."
+  }
+ ],
+ "l08": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.887,
+   "floor_db": -26.6,
+   "dur": 2.32,
+   "accent": 0.419,
+   "accent_top": "indian",
+   "score": 3.66,
+   "heard": "Now plug your ears and say anything."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.854,
+   "floor_db": -27.5,
+   "dur": 3.36,
+   "accent": 0.361,
+   "accent_top": "indian",
+   "score": 3.786,
+   "heard": "Now plug your ears and say anything."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.878,
+   "floor_db": -17.6,
+   "dur": 2.96,
+   "accent": 0.24,
+   "accent_top": "indian",
+   "score": 5.093,
+   "heard": "Now plug your ears and say anything."
+  }
+ ],
+ "l09": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.893,
+   "floor_db": -23.8,
+   "dur": 3.6,
+   "accent": 0.472,
+   "accent_top": "indian",
+   "score": 4.035,
+   "heard": "Nobody else will ever hear the version you hear."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.896,
+   "floor_db": -14.5,
+   "dur": 3.44,
+   "accent": 0.498,
+   "accent_top": "indian",
+   "score": 5.401,
+   "heard": "Nobody else will ever hear the version you hear."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.918,
+   "floor_db": -16.1,
+   "dur": 2.8,
+   "accent": 0.415,
+   "accent_top": "indian",
+   "score": 4.99,
+   "heard": "Nobody else will ever hear the version you hear."
+  }
+ ],
+ "l10": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -26.6,
+   "dur": 1.76,
+   "accent": 0.401,
+   "accent_top": "indian",
+   "score": 3.776,
+   "heard": "Follow for the next one."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.835,
+   "floor_db": -23.9,
+   "dur": 1.6,
+   "accent": 0.425,
+   "accent_top": "indian",
+   "score": 4.492,
+   "heard": "Follow for the next one."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.863,
+   "floor_db": -28.6,
+   "dur": 1.44,
+   "accent": 0.328,
+   "accent_top": "indian",
+   "score": 3.554,
+   "heard": "Follow for the next one."
+  }
+ ]
+}

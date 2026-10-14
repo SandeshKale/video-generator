@@ -281,7 +281,7 @@ function r9(t) {
   el('circle', { cx: pc[0], cy: pc[1], r: (16 + 8 * swell + 8 * sw2) * z1, fill: '#ff5a4d', filter: 'url(#glowo)' }, l);
   el('rect', { x: ear2[0] - 38 * pk, y: ear2[1] - 22 * pk, width: 76 * pk, height: 44 * pk, rx: 20, fill: '#bfff45', filter: 'url(#glowo)' }, l);
   lensRim($('lrim9'), sk2[0], sk2[1], R2, t);
-  var hL = $('hand9'), hk = e3(seg(t, s9 + .5, s9 + 1.1)); hL.style.left = (ear2[0] - 138) + 'px'; hL.style.top = (ear2[1] - 56 + (1 - hk) * 160) + 'px'; hL.style.opacity = hk; hL.style.transform = 'rotate(' + (22 - 6 * Math.sin(t * 2)) + 'deg)';
+  var hL = $('hand9'), hk = e3(seg(t, s9 + .5, s9 + 1.1)); hL.style.left = Math.max(152, ear2[0] - 138) + 'px'; hL.style.top = (ear2[1] - 56 + (1 - hk) * 160) + 'px'; hL.style.opacity = hk; hL.style.transform = 'rotate(' + (22 - 6 * Math.sin(t * 2)) + 'deg)';
   var sp = $('spk9'); put(sp, back(seg(t, tp + .3, tp + .8)), 0, Math.sin(t * 2.4) * 4, .5);
   var tr = $('tryit'); put(tr, back(seg(t, s9 + .7, s9 + 1.2)), 0, 0, .8);
   var bl = 3.4 * eio(seg(t, L(8).b - .1, L(8).b + .9)); $('gl').style.filter = 'blur(' + bl.toFixed(2) + 'px) saturate(' + (1 - .25 * eio(seg(t, L(8).b, L(8).b + .9))) + ')';
