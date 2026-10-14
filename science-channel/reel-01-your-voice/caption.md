@@ -6,9 +6,9 @@ Follows `insights/caption-template.md` and `insights/hashtag-research.md`. Scien
 
 ```
 Higher or lower? Do you hear your own voice as higher or lower than your recording? ⬆️ or ⬇️ 👇
-You hear yourself two ways: through the air, and through your skull. A recording only catches the air. One theory says you'd sound higher. In a 2025 study, most people said their recording sounded lower than they expected. Scientists still disagree.
+You hear yourself two ways: through the air, and through bone. A recording only catches the air. One theory says you'd sound higher. In a 2025 study, most people said their recording sounded lower than they expected. Scientists still disagree.
 Try it: plug your ears gently and say anything (headphones help).
-🤖 Voice: AI-generated (a likeness of mine). The head and X-ray images are AI-generated. The script and research are mine.
+🤖 Voice: AI-generated (a likeness of mine). The head image is AI-generated. The script and research are mine.
 Sources: Hullar, Scientific American (air vs bone route; recordings drop the bone route); Walter et al. 2025, Canadian Acoustics 53(3), abstract; Orepic et al. 2023, R. Soc. Open Sci.
 #Hearing #DidYouKnow #BodyFacts #VoiceNotes #WhatsActuallyHappening
 ```
@@ -31,10 +31,10 @@ Paste line: `#Hearing #DidYouKnow #BodyFacts #VoiceNotes #WhatsActuallyHappening
 (Keep the second sentence only if the follow-up is really posted. The full paper is not read yet: only the abstract of Walter et al. 2025.)
 
 ## 4. Alt text (≤ 900 characters)
-A 30-second explainer video. A photorealistic AI-generated head with an X-ray view of the skull and ear, a glowing coral ring where bone carries sound to the inner ear, and cyan lines for the route through the air. A phone shows a voice note. Two bars compare a theory that a recording should sound higher with a 2025 study in which most people said lower. The video ends with a person plugging their ears and the line "Only you hear it." All people and X-ray images are AI-generated.
+A 30-second explainer video. A photorealistic AI-generated head with a magnifier lens on the ear, a glowing coral ring where bone carries sound to the inner ear, and cyan lines for the route through the air. A phone shows a voice note. Two bars compare a theory that a recording should sound higher with a 2025 study in which most people said lower. The video ends with a person plugging their ears and the line "Only you hear it." The head image is AI-generated.
 
 ## 5. Platform settings
-- Meta: set **AI info** (AI-generated voice and images). YouTube: "altered or synthetic content" = yes.
+- Meta: set **AI info** (AI-generated voice and image). YouTube: "altered or synthetic content" = yes.
 - Instagram + YouTube Shorts, same file. Cover: `cover.png` (3:4 grid first).
 
 ## 6. Fact tiers (see script.md ledger)

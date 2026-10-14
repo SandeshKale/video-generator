@@ -44,13 +44,13 @@ var drift = function (t) { return [Math.sin(t * .45) * 9, Math.cos(t * .37) * 6]
 function glFor(i, t) {
   var par = [Math.sin(t * .5) * .6, Math.cos(t * .4) * .3];
   if (i === 0) { var c = cam1(t); return { shot: 'head_a', cam: [par[0], par[1], c.z], sh: sh(c), dim: .88 - .1 * eio(seg(t, BD[0] - .6, BD[0] - .1)), par: .045 }; }
-  if (i === 1 || i === 2) return { shot: 'xray_skull', cam: [par[0] * .8, 0, 1 + .1 * seg(t, sa(1), sb(2))], sh: [0, 0], dim: .36, par: .03 };
+  if (i === 1 || i === 2) return { shot: 'void', cam: [par[0] * .8, 0, 1 + .1 * seg(t, sa(1), sb(2))], sh: [0, 0], dim: .36, par: .03 };
   if (i === 3) { var c4 = cam4(t); return { shot: 'head_a', cam: [par[0], par[1], c4.z], sh: sh(c4), dim: .8, par: .045 }; }
-  if (i === 4) return { shot: 'xray_skull', cam: [par[0] * .6, 0, 1.05 + .05 * seg(t, sa(4), sb(4))], sh: [0, 0], dim: .28, par: .03 };
-  if (i === 5) return { shot: 'xray_skull', cam: [par[0] * .6, 0, 1.08 + .08 * seg(t, sa(5), sb(5))], sh: [0, 0], dim: .34, par: .03 };
+  if (i === 4) return { shot: 'void', cam: [par[0] * .6, 0, 1.05 + .05 * seg(t, sa(4), sb(4))], sh: [0, 0], dim: .28, par: .03 };
+  if (i === 5) return { shot: 'void', cam: [par[0] * .6, 0, 1.08 + .08 * seg(t, sa(5), sb(5))], sh: [0, 0], dim: .34, par: .03 };
   if (i === 6) { var c8 = cam8(t); return { shot: 'head_a', cam: [par[0], par[1], c8.z], sh: sh(c8), dim: .46, par: .03 }; }
   if (i === 7) { var c9 = cam9(t); return { shot: 'head_a', cam: [par[0] * 1.2, par[1], c9.z], sh: sh(c9), dim: .8, par: .05 }; }
-  return { shot: 'xray_skull', cam: [par[0] * .5, 0, 1.1], sh: [0, 0], dim: .22, par: .03 };
+  return { shot: 'void', cam: [par[0] * .5, 0, 1.1], sh: [0, 0], dim: .22, par: .03 };
 }
 function sceneAt(t) { for (var i = 0; i < SCN.length; i++) if (t < sb(i)) return i; return SCN.length - 1; }
 function seekGL(t) {
@@ -162,10 +162,8 @@ var rx8 = gen.toPaths(gen.line(158, 548, 442, 694, { seed: 3, roughness: 2 })).c
 
 function r1(t) {
   var tt = t > DUR - .45 ? 0 : t, c = cam1(tt), lc = lensImg(tt), lcs = scr(lc, c), push = eio(seg(tt, BD[0] - .6, BD[0] + .05)), R = 200 * c.z + 1100 * push, d = drift(tt);
-  var L1 = $('lens1'); L1.style.clipPath = 'circle(' + R + 'px at ' + lcs[0] + 'px ' + lcs[1] + 'px)'; L1.style.background = 'rgba(3,8,18,.86)';
-  var sk = scr(AN.head.ear, c), s = c.z * (W / IW) * AN.xray.k, xi = $('xr1'); xi.style.mixBlendMode = 'screen'; xi.style.filter = 'brightness(1.25) contrast(1.15) saturate(1.1)';
-  xi.style.transform = 'translate(' + (sk[0] - AN.xray.ear[0] * s + AN.xray.dx * c.z) + 'px,' + (sk[1] - AN.xray.ear[1] * s + AN.xray.dy * c.z) + 'px) scale(' + s + ')';
-  var ls = $('lsvg1'); wipe(ls); var pc = scr(AN.head.coral, c), pul = 1 + .07 * Math.sin(tt * 5.2);
+  var L1 = $('lens1'); L1.style.clipPath = 'circle(' + R + 'px at ' + lcs[0] + 'px ' + lcs[1] + 'px)'; L1.style.background = 'radial-gradient(circle at ' + lcs[0] + 'px ' + lcs[1] + 'px,#0f3a52,#050c18 75%)';
+    var ls = $('lsvg1'); wipe(ls); var pc = scr(AN.head.coral, c), pul = 1 + .07 * Math.sin(tt * 5.2);
   [[44, 8, 1], [76, 3, .55], [106, 2, .3]].forEach(function (r) { el('circle', { cx: pc[0], cy: pc[1], r: r[0] * c.z * pul, fill: 'none', stroke: '#ff5a4d', 'stroke-width': r[1] * c.z, opacity: r[2], filter: 'url(#glowo)' }, ls); });
   el('circle', { cx: pc[0], cy: pc[1], r: 18 * c.z * pul, fill: '#ff5a4d', filter: 'url(#glowo)' }, ls);
   lensRim($('lrim1'), lcs[0], lcs[1], R, tt); $('lrim1').style.opacity = 1 - push * .8;
@@ -174,7 +172,7 @@ function r1(t) {
     el('path', { d: 'M' + (m[0] + r * Math.cos(a0)) + ' ' + (m[1] + r * Math.sin(a0)) + 'A' + r + ' ' + r + ' 0 0 1 ' + (m[0] + r * Math.cos(a1)) + ' ' + (m[1] + r * Math.sin(a1)), fill: 'none', stroke: '#5ce6ff', 'stroke-width': 7 - 4 * ph, 'stroke-linecap': 'round', opacity: (1 - ph) * .95 * (1 - push), filter: 'url(#glowc)' }, wv); }
   var p1 = $('phone1'); put(p1, e3(seg(tt, 0, .35)), d[0] * 1.6, d[1] * 1.6, .85); p1.style.opacity = 1 - push;
   animBars(pb1, tt, (tt * 2.2) % 16);
-  var pcd = $('peep1'); put(pcd, back(seg(tt, 0, .5)), d[0] * 1.2, d[1] * 1.2, .7); pcd.style.opacity = 1 - push;
+  $('recdot').style.opacity = .4 + .6 * (Math.sin(tt * 6) > 0 ? 1 : 0); var pcd = $('peep1'); put(pcd, back(seg(tt, 0, .5)), d[0] * 1.2, d[1] * 1.2, .7); pcd.style.opacity = 1 - push;
   $('h1').style.opacity = 1 - seg(tt, BD[0] - 1.0, BD[0] - .55); $('h1').style.transform = 'translate(' + (-d[0] * .3) + 'px,' + (-d[1] * .3) + 'px)';
 }
 function r2(t) {
@@ -270,10 +268,8 @@ function r9(t) {
   var c2 = cam9(t), sk2 = scr(AN.head.skull, c2), ear2 = scr(AN.head.ear, c2), R2 = 232 * c2.z / 1.3 * (1 + .25 * eio(seg(t, L(9).a - .1, L(9).b)));
   var s9 = sa(7), tp = wt(8, 1) - .05, pk = back(seg(t, tp, tp + .5)), swell = seg(t, tp, L(9).b), sw2 = seg(t, L(9).a, L(9).b + .3);
   var h11 = $('h11'); h11.style.opacity = seg(t, L(9).a - .15, L(9).a); wordsIn(h11, t, L(9).a - .1, .13);
-  var L9 = $('lens9'); L9.style.clipPath = 'circle(' + R2 + 'px at ' + sk2[0] + 'px ' + sk2[1] + 'px)'; L9.style.background = 'rgba(3,8,18,.84)';
-  var s = c2.z * (W / IW) * AN.xray.k, xi = $('xr9'); xi.style.mixBlendMode = 'screen'; xi.style.filter = 'brightness(1.25) contrast(1.15)';
-  xi.style.transform = 'translate(' + (ear2[0] - AN.xray.ear[0] * s + AN.xray.dx * c2.z) + 'px,' + (ear2[1] - AN.xray.ear[1] * s + AN.xray.dy * c2.z) + 'px) scale(' + s + ')';
-  var l = $('lsvg9'); wipe(l); var pc = scr(AN.head.coral, c2), z1 = c2.z / 1.3;
+  var L9 = $('lens9'); L9.style.clipPath = 'circle(' + R2 + 'px at ' + sk2[0] + 'px ' + sk2[1] + 'px)'; L9.style.background = 'radial-gradient(circle at ' + sk2[0] + 'px ' + sk2[1] + 'px,#0f3a52,#050c18 75%)';
+    var l = $('lsvg9'); wipe(l); var pc = scr(AN.head.coral, c2), z1 = c2.z / 1.3;
   var gd = el('radialGradient', { id: 'cg9' }, l.firstChild); el('stop', { offset: 0, 'stop-color': '#ff5a4d', 'stop-opacity': .7 }, gd); el('stop', { offset: 1, 'stop-color': '#ff5a4d', 'stop-opacity': 0 }, gd);
   el('circle', { cx: pc[0], cy: pc[1], r: (190 + 120 * sw2) * z1, fill: 'url(#cg9)', opacity: .5 + .45 * swell }, l);
   for (var k = 0; k < 4; k++) { var ph = (t * .38 + k / 4) % 1, rr = (30 + ph * (130 + 120 * swell + 110 * sw2)) * z1; el('circle', { cx: pc[0], cy: pc[1], r: rr, fill: 'none', stroke: '#ff5a4d', 'stroke-width': (7 - 5 * ph) * (1 + swell * .6), opacity: (1 - ph) * (.5 + .5 * swell), filter: 'url(#glowo)' }, l); }
@@ -319,8 +315,8 @@ function seekDom(t) {
 var vids = { dust: $('dust'), grain: $('grain') };
 function vseek(v, t) { return new Promise(function (res) { if (!v.duration) return res(); var tt = (t % v.duration); function done() { v.removeEventListener('seeked', done); res(); } v.addEventListener('seeked', done); v.currentTime = tt; setTimeout(res, 400); }); }
 window.__seek = function (t) { t = clamp(t, 0, DUR - 1e-3); seekGL(t); seekDom(t); return Promise.all([vseek(vids.dust, t), vseek(vids.grain, t)]); };
-var imgs = [].slice.call(document.querySelectorAll('.ef2,.ef3')).concat([$('xr1'), $('xr9')]);
-Promise.all([document.fonts.load('700 100px Fam'), document.fonts.load('600 20px Fam'), document.fonts.load('400 20px Frag'), document.fonts.load('700 40px InterX'), document.fonts.load('600 20px InterX'), window.GLP.load(['head_a', 'xray_skull'])].concat(imgs.map(function (im) { return im.decode ? im.decode().catch(function () {}) : Promise.resolve(); }))).then(function () {
+var imgs = [].slice.call(document.querySelectorAll('.ef2,.ef3'));
+Promise.all([document.fonts.load('700 100px Fam'), document.fonts.load('600 20px Fam'), document.fonts.load('400 20px Frag'), document.fonts.load('700 40px InterX'), document.fonts.load('600 20px InterX'), window.GLP.load(['head_a', 'void'])].concat(imgs.map(function (im) { return im.decode ? im.decode().catch(function () {}) : Promise.resolve(); }))).then(function () {
   return new Promise(function (r) { var n = 0; ['dust', 'grain'].forEach(function (k) { var v = vids[k]; if (v.readyState >= 2) { if (++n === 2) r(); } else v.addEventListener('loadeddata', function () { if (++n === 2) r(); }); }); });
 }).then(function () { return window.__seek(0); }).then(function () { window.__ready = true; });
 })();

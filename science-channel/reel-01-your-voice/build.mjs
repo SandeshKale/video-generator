@@ -14,8 +14,8 @@ if (existsSync(S + 'ear/ear.json')) writeFileSync(S + 'ear/ear.js', 'window.EAR=
 const TM = JSON.parse(readFileSync(HERE + 'timing.json', 'utf8')); writeFileSync(S + 'timing.js', 'window.TM=' + JSON.stringify(TM) + ';');
 const ph = (n) => readFileSync(`${R}assets/icons/phosphor/bold/${n}-bold.svg`, 'utf8').replace('<svg ', '<svg class="ic" ');
 const doodle = (n, vb, acc) => readFileSync(`${R}assets/illustrations/open-doodles/${n}.svg`, 'utf8').replace(/\{\{accent\}\}/g, acc).replace(/\{\{ink\}\}/g, '#dfe8f4').replace(/viewBox="[^"]*"/, `viewBox="${vb}"`).replace('<svg ', '<svg class="peep" preserveAspectRatio="xMidYMid meet" ');
-const wincer = doodle('SelfieDoodle', '230 30 600 700', '#ff5a4d');   // happy: selfie / recording yourself
-const hater = doodle('ChillingDoodle', '20 80 980 640', '#5ce6ff');   // happy: friend chilling, ignoring the voice note
+const wincer = `<div class="rec"><span class="recdot" id="recdot"></span><span class="ic">${ph('microphone')}</span><b>REC</b></div>`;
+const hater = `<div class="chat"><div class="ch"><span class="av"><span class="ic">${ph('chat-circle')}</span></span><b>Friend</b><i>online</i></div><div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div></div>`;
 const ff = (fam, w, f) => `@font-face{font-family:'${fam}';font-weight:${w};src:url('fonts/${f}.woff2');font-display:block}`;
 const css = `${ff('Fam', 700, 'familjen-grotesk-latin-700-normal')}${ff('Fam', 600, 'familjen-grotesk-latin-600-normal')}${ff('Frag', 400, 'fragment-mono-latin-400-normal')}${ff('InterX', 700, 'inter-latin-700-normal')}${ff('InterX', 600, 'inter-latin-600-normal')}
 :root{--ink:#070d1a;--cy:#5ce6ff;--co:#ff5a4d;--li:#bfff45;--am:#ffbd3a;--tx:#ecf1f8}
@@ -44,7 +44,7 @@ const css = `${ff('Fam', 700, 'familjen-grotesk-latin-700-normal')}${ff('Fam', 6
 .vn .top{display:flex;justify-content:space-between;font:400 13px Frag;letter-spacing:.06em;color:rgba(236,241,248,.74);margin-bottom:10px}
 .vn .row{display:flex;gap:10px;align-items:center}.vn b{width:40px;height:40px;border-radius:50%;background:var(--cy);color:var(--ink);display:grid;place-items:center;flex:none}.vn b .ic{width:20px;height:20px}
 .bars{display:flex;gap:3px;align-items:center;height:44px;width:112px;overflow:hidden}.bars i{display:block;width:4px;border-radius:2px;background:var(--cy);flex:none}
-.peepcard{position:absolute;overflow:hidden;border-radius:30px;background:linear-gradient(160deg,rgba(30,48,84,.78),rgba(8,14,28,.88));border:1.5px solid rgba(150,210,255,.3);backdrop-filter:blur(18px);box-shadow:0 34px 90px rgba(0,0,0,.6),inset 0 1.5px 0 rgba(255,255,255,.16)}.peepcard .peep{position:absolute;left:0;top:0;width:100%;height:100%}
+.rec{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#ff5a4d}.rec .ic{width:84px;height:84px;display:block}.rec b{font:600 26px Frag;letter-spacing:.18em;color:#ecf1f8}.recdot{position:absolute;right:22px;top:20px;width:20px;height:20px;border-radius:50%;background:#ff5a4d;box-shadow:0 0 20px #ff5a4d}.chat{position:absolute;inset:0;padding:34px 40px;color:#ecf1f8}.chat .ch{display:flex;align-items:center;gap:16px;margin-bottom:34px}.chat .av{width:64px;height:64px;border-radius:50%;background:rgba(92,230,255,.18);border:2px solid #5ce6ff;color:#5ce6ff;display:flex;align-items:center;justify-content:center}.chat .av .ic{width:36px;height:36px;display:block}.chat b{font:700 34px Fam}.chat i{font:400 20px Frag;color:#bfff45;margin-left:auto}.chat .ln{height:26px;border-radius:13px;background:rgba(236,241,248,.14);margin-bottom:22px}.chat .w1{width:78%}.chat .w2{width:56%}.chat .w3{width:68%}.peepcard{position:absolute;overflow:hidden;border-radius:30px;background:linear-gradient(160deg,rgba(30,48,84,.78),rgba(8,14,28,.88));border:1.5px solid rgba(150,210,255,.3);backdrop-filter:blur(18px);box-shadow:0 34px 90px rgba(0,0,0,.6),inset 0 1.5px 0 rgba(255,255,255,.16)}.peepcard .peep{position:absolute;left:0;top:0;width:100%;height:100%}
 .lens{position:absolute;left:0;top:0;width:1080px;height:1920px}.lens img{position:absolute;transform-origin:0 0}
 .vp{position:absolute;border-radius:50%;overflow:hidden;background:radial-gradient(circle,#0c1c34,#060c18)}
 .lab{position:absolute;display:flex;gap:12px;align-items:center;font:700 40px/1 Fam;letter-spacing:-.01em}.lab .ic{width:46px;height:46px}.lab.c{color:var(--cy)}.lab.o{color:var(--co)}
@@ -67,7 +67,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <div class="scrim" id="scrim" style="background:linear-gradient(180deg,rgba(5,9,18,.88) 0,rgba(5,9,18,.55) 24%,rgba(5,9,18,0) 36%,rgba(5,9,18,0) 70%,rgba(5,9,18,.7) 100%)"></div>
 
 <section class="scene" id="s1">${H('h1', "You've never heard {blk}YOU")}
-<div class="lens" id="lens1"><img id="xr1" src="shots/xray_skull.jpg"><svg class="abs" id="lsvg1" width="1080" height="1920"></svg></div>
+<div class="lens" id="lens1"><svg class="abs" id="lsvg1" width="1080" height="1920"></svg></div>
 <svg class="abs" id="lrim1" width="1080" height="1920"></svg><svg class="abs" id="waves1" width="1080" height="1920"></svg>
 <div class="phone glass" id="phone1" style="left:696px;top:1008px"><div class="pn"></div><div class="vn"><div class="top"><span>Voice note</span><span>0:07</span></div><div class="row"><b>${ph('play')}</b><div class="bars" id="pbars1"></div></div></div></div>
 <div class="peepcard" id="peep1" style="left:150px;top:1002px;width:226px;height:256px">${wincer}</div></section>
@@ -107,7 +107,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <div class="round" id="send8" style="left:150px;top:1010px;width:150px;height:150px;background:var(--li);color:var(--ink);box-shadow:0 0 60px rgba(191,255,69,.5),0 14px 34px rgba(0,0,0,.45)"><span class="ic" style="width:78px;height:78px">${ph('paper-plane-tilt')}</span></div></section>
 
 <section class="scene" id="s9"><h1 class="hl" id="h11" style="top:190px;font-size:108px"><span class="w">Only</span> <span class="w coralt">you</span><br><span class="w">hear</span> <span class="w">it.</span></h1>
-<div class="lens" id="lens9"><img id="xr9" src="shots/xray_skull.jpg"><svg class="abs" id="lsvg9" width="1080" height="1920"></svg></div>
+<div class="lens" id="lens9"><svg class="abs" id="lsvg9" width="1080" height="1920"></svg></div>
 <svg class="abs" id="lrim9" width="1080" height="1920"></svg>
 <div class="round glass" id="spk9" style="left:722px;top:1010px;width:150px;height:150px;color:var(--cy)"><span class="ic" style="width:80px;height:80px">${ph('speaker-x')}</span></div>
 <div class="hand" id="hand9">${ph('hand-palm')}</div>

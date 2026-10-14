@@ -5,8 +5,8 @@ Aligns Whisper's words to the 10 script lines by text (difflib), so a mis-heard 
 import sys, re, json, difflib
 from faster_whisper import WhisperModel
 LINES = ["You've never heard your own voice the way everyone else does.", "Two routes to your ears: air, and bone.", "Everyone hears the air. Only you get the bone.", "A recording only catches the air.",
- "One theory says you'd sound higher.", "A 2025 study: most people heard lower.", "Send this to the friend who hates voice notes.", "Now plug your ears and say anything.", "Nobody else will ever hear the version you hear.", "Follow for the next one."]
-SPOKEN = {5: "A twenty twenty five study: most people heard lower."}
+ "One theory says you'd sound higher.", "A twenty twenty-five study: most people heard lower.", "Send this to the friend who hates voice notes.", "Now plug your ears and say anything.", "Nobody else will ever hear the version you hear.", "Follow for the next one."]
+SPOKEN = {}
 def norm(w): return re.sub(r"[^a-z0-9]", "", w.lower().replace("2025", "twentytwentyfive"))
 def toks(s): return [t for t in (norm(w) for w in s.replace('-', ' ').split()) if t]
 src, out = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else 'timing.json')
@@ -16,6 +16,7 @@ W = [(norm(w.word), w.start, w.end) for s in segs for w in s.words if norm(w.wor
 flat = []
 for t, s, e in W:
     if t == 'twentytwentyfive': flat += [('twenty', s, s + (e - s) / 3), ('twenty', s + (e - s) / 3, s + 2 * (e - s) / 3), ('five', s + 2 * (e - s) / 3, e)]
+    elif t == 'twentyfive': flat += [('twenty', s, (s + e) / 2), ('five', (s + e) / 2, e)]
     else: flat.append((t, s, e))
 script = []; owner = []
 for i, l in enumerate(LINES):
