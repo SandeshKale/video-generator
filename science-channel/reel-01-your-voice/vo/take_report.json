@@ -41,53 +41,91 @@
    "heard": "You've never heard your own voice the way everyone else does."
   }
  ],
- "p2": [
+ "p2a": [
   {
    "flow": [
-    "transcript",
-    "rate 1.60"
+    "pause 1.06@ears,",
+    "rate 2.16"
    ],
    "take": "iclAB1",
-   "wer": 0.059,
-   "sim": 0.887,
-   "floor_db": -81.0,
-   "dur": 15.92,
-   "accent": 0.341,
+   "wer": 0.0,
+   "sim": 0.839,
+   "floor_db": -85.0,
+   "dur": 4.16,
+   "accent": 0.309,
    "accent_top": "indian",
-   "score": 61.49,
-   "heard": "two roots to your ears air and bone everyone hears the air only you get the  bone"
+   "score": 61.289,
+   "heard": "Two roots to your ears, air and bone."
   },
   {
    "flow": [
-    "transcript",
-    "pause 0.94@bone."
+    "pause 0.74@ears,"
    ],
    "take": "iclAB2",
-   "wer": 0.059,
-   "sim": 0.937,
-   "floor_db": -88.4,
-   "dur": 6.24,
-   "accent": 0.415,
+   "wer": 0.0,
+   "sim": 0.895,
+   "floor_db": -89.5,
+   "dur": 3.04,
+   "accent": 0.395,
    "accent_top": "indian",
-   "score": 61.089,
-   "heard": "Two roots to your ears, air and bone.  Everyone hears the air, only you get the bone."
+   "score": 55.842,
+   "heard": "two roots to your ears, air and bone."
   },
   {
    "flow": [
-    "transcript",
-    "pause 0.64@ears.",
-    "pause 0.98@bone.",
-    "pause 0.60@air."
+    "pause 0.58@ears,"
    ],
    "take": "iclAB3",
-   "wer": 0.059,
-   "sim": 0.938,
-   "floor_db": -95.1,
-   "dur": 6.96,
-   "accent": 0.486,
+   "wer": 0.0,
+   "sim": 0.896,
+   "floor_db": -83.0,
+   "dur": 3.28,
+   "accent": 0.448,
    "accent_top": "indian",
-   "score": 71.087,
-   "heard": "Two roots to your ears. Air and bone. Everyone hears the air. Only you get the bone."
+   "score": 55.832,
+   "heard": "Two roots to your ears, air and bone."
+  }
+ ],
+ "p2b": [
+  {
+   "flow": [
+    "pause 0.72@air."
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -80.2,
+   "dur": 3.44,
+   "accent": 0.218,
+   "accent_top": "indian",
+   "score": 55.652,
+   "heard": "Everyone hears the air. Only you get the bone."
+  },
+  {
+   "flow": [
+    "pause 0.64@air,"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.923,
+   "floor_db": -87.3,
+   "dur": 3.68,
+   "accent": 0.457,
+   "accent_top": "indian",
+   "score": 55.618,
+   "heard": "Everyone hears the air, only you get the bone."
+  },
+  {
+   "flow": [],
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -66.3,
+   "dur": 3.6,
+   "accent": 0.373,
+   "accent_top": "indian",
+   "score": 1.012,
+   "heard": "Everyone hears the air, only you get the bone."
   }
  ],
  "p3": [
@@ -130,49 +168,45 @@
  ],
  "p4": [
   {
-   "flow": [
-    "transcript"
-   ],
+   "flow": [],
    "take": "iclAB1",
-   "wer": 0.2,
+   "wer": 0.0,
    "sim": 0.944,
    "floor_db": -71.4,
    "dur": 5.76,
    "accent": 0.515,
    "accent_top": "indian",
-   "score": 57.45,
+   "score": 0.45,
    "heard": "One theory says you'd sound higher, a 2025 study, most people heard lower."
   },
   {
    "flow": [
-    "transcript",
     "pause 0.72@higher."
    ],
    "take": "iclAB2",
-   "wer": 0.2,
+   "wer": 0.0,
    "sim": 0.96,
    "floor_db": -60.8,
    "dur": 6.24,
    "accent": 0.473,
    "accent_top": "indian",
-   "score": 62.321,
+   "score": 55.321,
    "heard": "One theory says you'd sound higher.  A 2025 study, most people heard lower"
   },
   {
    "flow": [
-    "transcript",
     "pause 0.80@higher.",
     "pause 0.74@study.",
     "rate 2.06"
    ],
    "take": "iclAB3",
-   "wer": 0.2,
+   "wer": 0.0,
    "sim": 0.949,
    "floor_db": -82.7,
    "dur": 6.8,
    "accent": 0.504,
    "accent_top": "indian",
-   "score": 72.412,
+   "score": 65.412,
    "heard": "One theory says you'd sound higher.  A 2025 study.  Most people heard lower."
   }
  ],
