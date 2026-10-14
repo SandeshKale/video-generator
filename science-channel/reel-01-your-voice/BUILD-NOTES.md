@@ -17,3 +17,8 @@
 - Voice and mix measured, not auditioned. Cloned-voice pronunciation of "2025" (read "twenty twenty-five"/"2025") unchecked by ear.
 - Portrait is 576x1024 upscaled (soft at closest push). Phone safe-zone not checked on a device.
 - Caption chunk timing is proportional by characters within each line.
+
+## v4 fix (14 Oct 2026)
+- Removed the skull/X-ray (void plate, dark lens interiors with the coral cochlea ring) and both cartoon doodles (hook = REC tile, friend scene = chat panel). New profile photo and `@sandesh_explains` on the end card and cover chip.
+- Voice rebuilt as breath-group takes (`voice/lines_v5.json`, Qwen ICL, 3 seeds each), picked by `voice/pick2.py` (flow check: transcript, pauses <= 0.55 s, 2.3-3.6 words/s, onset, ending), no pause cutting or tempo change, `voice/assemble2.py` designed gaps only. One known soft flag: p2a has a 0.58 s comma pause after "ears,". Not auditioned by ear.
+- `change-cadence`: 0 stretches over 2 s (scan band added to the try-it lens). Reviewed 12 page frames and 7 frames of the final MP4. Mix: loudnorm -14 LUFS, voice over music 16.3 dB (voiced frames).
