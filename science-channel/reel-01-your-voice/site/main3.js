@@ -269,7 +269,7 @@ function r9(t) {
   var s9 = sa(7), tp = wt(8, 1) - .05, pk = back(seg(t, tp, tp + .5)), swell = seg(t, tp, L(9).b), sw2 = seg(t, L(9).a, L(9).b + .3);
   var h11 = $('h11'); h11.style.opacity = seg(t, L(9).a - .15, L(9).a); wordsIn(h11, t, L(9).a - .1, .13);
   var L9 = $('lens9'); L9.style.clipPath = 'circle(' + R2 + 'px at ' + sk2[0] + 'px ' + sk2[1] + 'px)'; L9.style.background = 'radial-gradient(circle at ' + sk2[0] + 'px ' + sk2[1] + 'px,#0f3a52,#050c18 75%)';
-    var l = $('lsvg9'); wipe(l); var pc = scr(AN.head.coral, c2), z1 = c2.z / 1.3;
+    $('scan9').style.top = (sk2[1] - R2 - 75 + ((t * 0.55) % 1) * (2 * R2 + 150)) + 'px'; var l = $('lsvg9'); wipe(l); var pc = scr(AN.head.coral, c2), z1 = c2.z / 1.3;
   var gd = el('radialGradient', { id: 'cg9' }, l.firstChild); el('stop', { offset: 0, 'stop-color': '#ff5a4d', 'stop-opacity': .7 }, gd); el('stop', { offset: 1, 'stop-color': '#ff5a4d', 'stop-opacity': 0 }, gd);
   el('circle', { cx: pc[0], cy: pc[1], r: (190 + 120 * sw2) * z1, fill: 'url(#cg9)', opacity: .5 + .45 * swell }, l);
   for (var k = 0; k < 4; k++) { var ph = (t * .38 + k / 4) % 1, rr = (30 + ph * (130 + 120 * swell + 110 * sw2)) * z1; el('circle', { cx: pc[0], cy: pc[1], r: rr, fill: 'none', stroke: '#ff5a4d', 'stroke-width': (7 - 5 * ph) * (1 + swell * .6), opacity: (1 - ph) * (.5 + .5 * swell), filter: 'url(#glowo)' }, l); }

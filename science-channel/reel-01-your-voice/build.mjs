@@ -107,7 +107,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <div class="round" id="send8" style="left:150px;top:1010px;width:150px;height:150px;background:var(--li);color:var(--ink);box-shadow:0 0 60px rgba(191,255,69,.5),0 14px 34px rgba(0,0,0,.45)"><span class="ic" style="width:78px;height:78px">${ph('paper-plane-tilt')}</span></div></section>
 
 <section class="scene" id="s9"><h1 class="hl" id="h11" style="top:190px;font-size:108px"><span class="w">Only</span> <span class="w coralt">you</span><br><span class="w">hear</span> <span class="w">it.</span></h1>
-<div class="lens" id="lens9"><svg class="abs" id="lsvg9" width="1080" height="1920"></svg></div>
+<div class="lens" id="lens9"><div id="scan9" style="position:absolute;left:0;right:0;height:150px;background:linear-gradient(180deg,transparent,rgba(92,230,255,.30),transparent)"></div><svg class="abs" id="lsvg9" width="1080" height="1920"></svg></div>
 <svg class="abs" id="lrim9" width="1080" height="1920"></svg>
 <div class="round glass" id="spk9" style="left:722px;top:1010px;width:150px;height:150px;color:var(--cy)"><span class="ic" style="width:80px;height:80px">${ph('speaker-x')}</span></div>
 <div class="hand" id="hand9">${ph('hand-palm')}</div>
