@@ -13,9 +13,9 @@ for (const d of ['shots', 'depth']) if (existsSync(HERE + d)) for (const f of re
 if (existsSync(S + 'ear/ear.json')) writeFileSync(S + 'ear/ear.js', 'window.EAR=' + readFileSync(S + 'ear/ear.json', 'utf8') + ';'); else writeFileSync(S + 'ear/ear.js', 'window.EAR={frames:[]};');
 const TM = JSON.parse(readFileSync(HERE + 'timing.json', 'utf8')); writeFileSync(S + 'timing.js', 'window.TM=' + JSON.stringify(TM) + ';');
 const ph = (n) => readFileSync(`${R}assets/icons/phosphor/bold/${n}-bold.svg`, 'utf8').replace('<svg ', '<svg class="ic" ');
-const wincer = peep({ pose: 'bust/Device', hair: 'MediumShort', face: 'ConcernedFear', stroke: '#ecf1f8', bg: '#12213d' }).replace('<svg ', '<svg class="peep" ');
-const hater = peep({ pose: 'bust/Whatever', hair: 'Pomp', face: 'Contempt', stroke: '#ecf1f8', bg: '#12213d' }).replace('<svg ', '<svg class="peep" ');
-
+const doodle = (n, vb) => readFileSync(`${R}assets/illustrations/open-doodles/${n}.svg`, 'utf8').replace(/\{\{accent\}\}/g, '#ffbd3a').replace(/\{\{ink\}\}/g, '#0b1424').replace(/viewBox="[^"]*"/, `viewBox="${vb}"`).replace('<svg ', '<svg class="peep" preserveAspectRatio="xMidYMid meet" ');
+const wincer = doodle('SelfieDoodle', '230 30 600 700');   // happy: selfie / recording yourself
+const hater = doodle('ChillingDoodle', '20 80 980 640');   // happy: friend chilling, ignoring the voice note
 const ff = (fam, w, f) => `@font-face{font-family:'${fam}';font-weight:${w};src:url('fonts/${f}.woff2');font-display:block}`;
 const css = `${ff('Fam', 700, 'familjen-grotesk-latin-700-normal')}${ff('Fam', 600, 'familjen-grotesk-latin-600-normal')}${ff('Frag', 400, 'fragment-mono-latin-400-normal')}${ff('InterX', 700, 'inter-latin-700-normal')}${ff('InterX', 600, 'inter-latin-600-normal')}
 :root{--ink:#070d1a;--cy:#5ce6ff;--co:#ff5a4d;--li:#bfff45;--am:#ffbd3a;--tx:#ecf1f8}
@@ -44,7 +44,7 @@ const css = `${ff('Fam', 700, 'familjen-grotesk-latin-700-normal')}${ff('Fam', 6
 .vn .top{display:flex;justify-content:space-between;font:400 13px Frag;letter-spacing:.06em;color:rgba(236,241,248,.74);margin-bottom:10px}
 .vn .row{display:flex;gap:10px;align-items:center}.vn b{width:40px;height:40px;border-radius:50%;background:var(--cy);color:var(--ink);display:grid;place-items:center;flex:none}.vn b .ic{width:20px;height:20px}
 .bars{display:flex;gap:3px;align-items:center;height:44px;width:112px;overflow:hidden}.bars i{display:block;width:4px;border-radius:2px;background:var(--cy);flex:none}
-.peepcard{position:absolute;overflow:hidden;border-radius:30px}.peepcard .peep{position:absolute;left:-26px;top:-4px;width:270px;height:auto}#peep8 .peep{left:-24px;top:44px;width:700px}
+.peepcard{position:absolute;overflow:hidden;border-radius:30px;background:#f3eee3;border:3px solid #fff;box-shadow:0 26px 70px rgba(0,0,0,.55),0 0 40px rgba(255,189,58,.25)}.peepcard .peep{position:absolute;left:0;top:0;width:100%;height:100%}
 .lens{position:absolute;left:0;top:0;width:1080px;height:1920px}.lens img{position:absolute;transform-origin:0 0}
 .vp{position:absolute;border-radius:50%;overflow:hidden;background:radial-gradient(circle,#0c1c34,#060c18)}
 .lab{position:absolute;display:flex;gap:12px;align-items:center;font:700 40px/1 Fam;letter-spacing:-.01em}.lab .ic{width:46px;height:46px}.lab.c{color:var(--cy)}.lab.o{color:var(--co)}
@@ -70,7 +70,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <div class="lens" id="lens1"><img id="xr1" src="shots/xray_skull.jpg"><svg class="abs" id="lsvg1" width="1080" height="1920"></svg></div>
 <svg class="abs" id="lrim1" width="1080" height="1920"></svg><svg class="abs" id="waves1" width="1080" height="1920"></svg>
 <div class="phone glass" id="phone1" style="left:696px;top:1008px"><div class="pn"></div><div class="vn"><div class="top"><span>Voice note</span><span>0:07</span></div><div class="row"><b>${ph('play')}</b><div class="bars" id="pbars1"></div></div></div></div>
-<div class="peepcard glass" id="peep1" style="left:150px;top:1012px;width:216px;height:236px">${wincer}</div></section>
+<div class="peepcard" id="peep1" style="left:150px;top:1002px;width:226px;height:256px">${wincer}</div></section>
 
 <section class="scene" id="s2">
 <div class="vp" id="vp2"><div id="ew2" style="position:absolute;left:0;top:0">${earimgs(2)}</div></div><svg class="abs" id="rt2" width="1080" height="1920"></svg><svg class="abs" id="rim2" width="1080" height="1920"></svg>
@@ -100,7 +100,7 @@ const html = `<!doctype html><meta charset="utf-8"><title>reel 01</title><style>
 <div style="position:absolute;left:150px;top:1252px;width:768px;display:flex;justify-content:center"><span class="pill am" id="amber"><span class="ic">${ph('warning')}</span>SCIENTISTS DISAGREE</span></div></section>
 
 <section class="scene" id="s8">
-<div class="peepcard glass" id="peep8" style="left:330px;top:440px;width:588px;height:660px">${hater}</div>
+<div class="peepcard" id="peep8" style="left:310px;top:620px;width:608px;height:420px">${hater}</div>
 <div class="phone glass" id="bub8" style="left:150px;top:560px;width:300px;height:120px;border-radius:26px"><div class="vn" style="left:10px;right:10px;top:12px;padding:10px"><div class="row"><b>${ph('play')}</b><div class="bars" id="pbars8" style="width:150px"></div><span style="font:400 14px Frag;color:#5ce6ff">0:07</span></div></div></div>
 <svg class="abs" id="rough8" width="1080" height="1920"></svg>
 <svg class="abs" id="fly8" width="1080" height="1920"></svg>
