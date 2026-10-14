@@ -13,7 +13,8 @@ FORCE = dict(x.split(':') for x in os.environ.get('FORCE', '').split(',') if x)
 lines = json.load(open(os.environ.get('LINES', os.path.join(HERE, 'lines.json'))))
 asr = WhisperModel('small.en', device='cpu', compute_type='int8'); enc = VoiceEncoder('cpu'); eref = enc.embed_utterance(preprocess_wav(REAL))
 NUM = {'1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '7': 'seven'}
-def norm(s): return [NUM.get(w, w) for w in re.sub(r"[^a-z0-9' ]", ' ', s.lower().replace('-', ' ')).split()]
+HOM = {'roots': 'routes', '2025': 'twenty twenty five'}
+def norm(s): return ' '.join(HOM.get(w, NUM.get(w, w)) for w in re.sub(r"[^a-z0-9' ]", ' ', s.lower().replace('-', ' ')).split()).split()
 def floor_db(y, sr):
     hop = int(.01 * sr); d = 20 * np.log10(librosa.feature.rms(y=y, frame_length=hop * 3, hop_length=hop)[0] + 1e-7)
     hi = np.percentile(d, 95); v = np.where(d > hi - 30)[0]
