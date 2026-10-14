@@ -65,10 +65,10 @@ The posting order puts the highest-share topic first and spaces out the two test
 - **Beats:**
   - A coral counter ticks at 3.8 M/s through the whole reel.
   - Zoom ruler: 1 m to 10 µm into the bloodstream.
-  - A count pie: **close to 90% by count are blood cells**.
+  - A count ring: **about 86% by count are blood cells** (corrected 14 Oct 2026 from the paper's results sentence; its abstract says "close to 90%"). Full brief: `reel-02-cells/script.md`.
   - Myth chip: "a new body every 7 years" ✗.
   - Caveat: most of your brain's neurons stay with you for life.
-- **Facts:** about 330 billion cells turned over per day, about 30 trillion cells in the body, close to 90% of the daily count is blood cells (**A**, Sender & Milo 2021, *Nature Medicine* 27:45–48). 3.8 M/s is derived (330 bn ÷ 86,400 s), so say "about 4 million".
+- **Facts:** about 330 billion cells turned over per day, about 30 trillion cells in the body, about 86% of the daily count is blood cells (**A**, Sender & Milo 2021, *Nature Medicine* 27:45–48). 3.8 M/s is derived (330 bn ÷ 86,400 s), so say "about 4 million".
 - **Share line:** "Send this to the friend who says they're a new person now."
 
 ### #03 · You're barely outnumbered by bacteria (body · Jev 1.85)
