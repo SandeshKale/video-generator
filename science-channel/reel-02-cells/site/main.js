@@ -22,7 +22,7 @@ function wt(i, k) { var l = L(i), ws = LW[i - 1], tot = ws.join(' ').length, c =
 var DUR = Math.min(35, Math.max(30, Math.ceil((L(9).b + 2.4) * 2) / 2)); window.__reelDurationSec = DUR;
 var RATE = 3.82e6, TC = 100e6 / RATE;   // counter = RATE x t (330 bn / 86,400 s); crosses 100,000,000 at TC
 // scene boundaries: BD[k] between scene k and k+1; kinds and widths
-var BD = [L(2).a - .1, L(3).a - .1, L(4).a - .1, L(5).a - .1, L(6).a - .1, L(7).a - .1, L(8).a - .1, L(8).b + .75];
+var BD = [L(2).a - .1, L(3).a - .1, L(4).a - .1, L(5).a - .1, L(6).a - .1, L(7).a - .1, L(8).a - .1, L(8).b + 1.2];
 var TK = ['push', 'pull', 'push', 'pull', 'push', 'cross', 'pull', 'cross'], TW = [.7, .6, .7, .7, .7, .5, .7, .5];
 var ORG = [[540, 900], [540, 900], [540, 840], [540, 900], [540, 520], [540, 900], [540, 840], [540, 900]];
 var PLATE = ['plasma', 'marrow', 'plasma', 'gut_bg', 'void', 'void', 'void', 'void', 'void'];
@@ -48,7 +48,7 @@ function counter(t) {
     if (k >= 6) { var q = V / Math.pow(10, k), fl = Math.floor(q), fr = q - fl; cur = fl % 10; nxt = (fl + 1) % 10; off = smooth(fr, .5, 1); e.style.filter = 'none'; }
     else { var r = ((Math.floor(t * 60) * 7919 + k * 104729 + 13) % 9973); cur = r % 10; nxt = cur; e.style.filter = 'blur(' + (k < 3 ? 3 : 1.6) + 'px)'; }
     var is = e.children; is[0].textContent = cur; is[1].textContent = nxt; is[0].style.marginTop = (-off * 112) + 'px'; e.style.opacity = (v >= Math.pow(10, k) || k < 4) ? 1 : .22; });
-  var down = eio(seg(t, sa(7) - .1, sa(7) + .7)) * (1 - eio(seg(t, sb(7) - .3, sb(7) + .5))), pulse = Math.max(0, 1 - Math.abs(t - TC) / .28);
+  var down = eio(seg(t, sa(7) - .1, sa(7) + .7)) * (1 - eio(seg(t, sb(7) - .75, sb(7) + .1))), pulse = Math.max(0, 1 - Math.abs(t - TC) / .28);
   wrap.style.transform = 'translateY(' + (down * 930) + 'px) scale(' + (1 + .1 * down + .07 * pulse) + ')'; $('cntlab').style.opacity = 1 - .25 * down;
 }
 
