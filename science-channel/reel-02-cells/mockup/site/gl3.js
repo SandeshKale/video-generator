@@ -8,9 +8,9 @@ var VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=
 function prog(fs) { var p = gl.createProgram(); gl.attachShader(p, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); return p; }
 var FS1 = ['precision highp float;varying vec2 vUv;uniform sampler2D uA,uAd,uB,uBd;uniform vec3 camA,camB;uniform vec2 shA,shB;uniform float uMix,uPar,uDim,uDof,uFocus,uCA,uWaveD,uWaveW,uWaveA,uTime;',
 'vec3 shot(sampler2D c,sampler2D d,vec3 cam,vec2 sh,vec2 uv){vec2 p=(uv-.5)/cam.z+.5+sh;float dep=texture2D(d,p).r;float coc=uDof*abs(dep-uFocus);vec3 acc=vec3(0.);float wd=0.;',
-' for(int i=0;i<10;i++){float a=float(i)*2.39996;float r=sqrt((float(i)+.5)/10.)*coc;vec2 pp=p+vec2(cos(a),sin(a))*r*vec2(1.,.5625);float dd=texture2D(d,pp).r;vec2 off=cam.xy*(dd-.42)*uPar;vec2 q=clamp(pp+off,vec2(.002),vec2(.998));vec2 ca=(uv-.5)*uCA;',
+' for(int i=0;i<7;i++){float a=float(i)*2.39996;float r=sqrt((float(i)+.5)/7.)*coc;vec2 pp=p+vec2(cos(a),sin(a))*r*vec2(1.,.5625);float dd=texture2D(d,pp).r;vec2 off=cam.xy*(dd-.42)*uPar;vec2 q=clamp(pp+off,vec2(.002),vec2(.998));vec2 ca=(uv-.5)*uCA;',
 '  acc+=vec3(texture2D(c,clamp(q+ca,vec2(.002),vec2(.998))).r,texture2D(c,q).g,texture2D(c,clamp(q-ca,vec2(.002),vec2(.998))).b);}',
-' vec3 col=acc/10.;float wv=smoothstep(uWaveW,0.,abs(dep-uWaveD))*uWaveA;col+=vec3(.42,1.,.18)*wv*(.35+1.2*dot(col,vec3(.333)));return col;}',
+' vec3 col=acc/7.;float wv=smoothstep(uWaveW,0.,abs(dep-uWaveD))*uWaveA;col+=vec3(.42,1.,.18)*wv*(.12+.7*dot(col,vec3(.333)));return col;}',
 'vec3 both(vec2 uv){vec3 a=shot(uA,uAd,camA,shA,uv);if(uMix<=.001)return a;vec3 b=shot(uB,uBd,camB,shB,uv);return mix(a,b,uMix);}',
 'void main(){vec3 col=both(vUv)*uDim;gl_FragColor=vec4(col,1.);}'].join('\n');
 var FS2 = 'precision highp float;varying vec2 vUv;uniform sampler2D uP,uS;void main(){vec3 c=texture2D(uP,vUv).rgb;vec4 s=texture2D(uS,vUv);gl_FragColor=vec4(c*(1.-s.a)+s.rgb,1.);}';
