@@ -22,7 +22,7 @@ function wt(i, k) { var l = L(i), ws = LW[i - 1], tot = ws.join(' ').length, c =
 var DUR = Math.min(35, Math.max(30, Math.ceil((L(9).b + 2.4) * 2) / 2)); window.__reelDurationSec = DUR;
 var RATE = 3.82e6, TC = 100e6 / RATE;   // counter = RATE x t (330 bn / 86,400 s); crosses 100,000,000 at TC
 // scene boundaries: BD[k] between scene k and k+1; kinds and widths
-var BD = [L(2).a - .1, L(3).a - .1, L(4).a - .1, L(5).a - .1, L(6).a - .1, L(7).a - .1, L(8).a - .1, L(8).b + .4];
+var BD = [L(2).a - .1, L(3).a - .1, L(4).a - .1, L(5).a - .1, L(6).a - .1, L(7).a - .1, L(8).a - .1, L(8).b + .75];
 var TK = ['push', 'pull', 'push', 'pull', 'push', 'cross', 'pull', 'cross'], TW = [.7, .6, .7, .7, .7, .5, .7, .5];
 var ORG = [[540, 900], [540, 900], [540, 840], [540, 900], [540, 520], [540, 900], [540, 840], [540, 900]];
 var PLATE = ['plasma', 'marrow', 'plasma', 'gut_bg', 'void', 'void', 'void', 'void', 'void'];

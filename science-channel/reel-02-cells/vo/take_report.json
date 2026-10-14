@@ -1,0 +1,317 @@
+{
+ "l01": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.937,
+   "floor_db": -32.4,
+   "dur": 3.44,
+   "accent": 0.359,
+   "accent_top": "indian",
+   "score": 2.395,
+   "heard": "While I say this, your body replaces millions of cells."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.915,
+   "floor_db": -20.5,
+   "dur": 3.68,
+   "accent": 0.404,
+   "accent_top": "indian",
+   "score": 4.357,
+   "heard": "While I say this, your body replaces millions of cells."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.934,
+   "floor_db": -49.2,
+   "dur": 3.68,
+   "accent": 0.519,
+   "accent_top": "indian",
+   "score": 0.529,
+   "heard": "While I say this, your body replaces millions of cells."
+  }
+ ],
+ "l02": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.895,
+   "floor_db": -88.1,
+   "dur": 2.72,
+   "accent": 0.49,
+   "accent_top": "indian",
+   "score": 0.841,
+   "heard": "About four million every second"
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.924,
+   "floor_db": -83.7,
+   "dur": 3.44,
+   "accent": 0.435,
+   "accent_top": "indian",
+   "score": 0.609,
+   "heard": "About 4 million. Every second."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.878,
+   "floor_db": -75.8,
+   "dur": 2.48,
+   "accent": 0.28,
+   "accent_top": "indian",
+   "score": 0.979,
+   "heard": "About 4 million every second"
+  }
+ ],
+ "l03": [
+  {
+   "take": "iclAB1",
+   "wer": 0.083,
+   "sim": 0.932,
+   "floor_db": -51.5,
+   "dur": 4.16,
+   "accent": 0.379,
+   "accent_top": "indian",
+   "score": 1.376,
+   "heard": "Most of blood cells, a red blood cell lasts about 4 months."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.912,
+   "floor_db": -37.4,
+   "dur": 4.4,
+   "accent": 0.309,
+   "accent_top": "indian",
+   "score": 1.852,
+   "heard": "Most are blood cells. A red blood cell lasts about 4 months."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -30.4,
+   "dur": 4.0,
+   "accent": 0.286,
+   "accent_top": "indian",
+   "score": 2.837,
+   "heard": "Most are blood cells. A red blood cell lasts about 4 months."
+  }
+ ],
+ "l04": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.883,
+   "floor_db": -85.7,
+   "dur": 2.88,
+   "accent": 0.531,
+   "accent_top": "indian",
+   "score": 0.933,
+   "heard": "Your gut lining, 3 to 5 days."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.905,
+   "floor_db": -87.4,
+   "dur": 3.68,
+   "accent": 0.559,
+   "accent_top": "indian",
+   "score": 0.761,
+   "heard": "Your gut lining 3 to 5 days."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.929,
+   "floor_db": -76.4,
+   "dur": 3.04,
+   "accent": 0.392,
+   "accent_top": "indian",
+   "score": 0.571,
+   "heard": "Your gut lining 3 to 5 days."
+  }
+ ],
+ "l05": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.938,
+   "floor_db": -85.3,
+   "dur": 3.68,
+   "accent": 0.384,
+   "accent_top": "indian",
+   "score": 0.497,
+   "heard": "A brand new body every 7 years.  Not quite."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.935,
+   "floor_db": -82.5,
+   "dur": 4.4,
+   "accent": 0.43,
+   "accent_top": "indian",
+   "score": 0.523,
+   "heard": "A brand new body every 7 years?  Not quite."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.932,
+   "floor_db": -86.8,
+   "dur": 4.08,
+   "accent": 0.398,
+   "accent_top": "indian",
+   "score": 0.54,
+   "heard": "A brand new body every 7 years.  Not quite."
+  }
+ ],
+ "l06": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -18.8,
+   "dur": 2.48,
+   "accent": 0.478,
+   "accent_top": "indian",
+   "score": 4.567,
+   "heard": "Most of your brain's neurons are never replaced."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.912,
+   "floor_db": -19.8,
+   "dur": 3.2,
+   "accent": 0.466,
+   "accent_top": "indian",
+   "score": 4.478,
+   "heard": "Most of your brain's neurons are never replaced."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.937,
+   "floor_db": -15.7,
+   "dur": 2.64,
+   "accent": 0.474,
+   "accent_top": "indian",
+   "score": 4.888,
+   "heard": "Most of your brain's neurons are never replaced."
+  }
+ ],
+ "l07": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.882,
+   "floor_db": -31.2,
+   "dur": 3.2,
+   "accent": 0.4,
+   "accent_top": "indian",
+   "score": 3.008,
+   "heard": "Send this to the friend who says they're a new person."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.86,
+   "floor_db": -19.3,
+   "dur": 3.6,
+   "accent": 0.268,
+   "accent_top": "indian",
+   "score": 4.978,
+   "heard": "Send this to the friend who says they're a new person."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.87,
+   "floor_db": -19.6,
+   "dur": 2.8,
+   "accent": 0.389,
+   "accent_top": "indian",
+   "score": 4.854,
+   "heard": "Send this to the friend who says they're a new person."
+  }
+ ],
+ "l08": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.948,
+   "floor_db": -34.1,
+   "dur": 2.72,
+   "accent": 0.332,
+   "accent_top": "indian",
+   "score": 2.057,
+   "heard": "since you pressed play about a hundred million."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.943,
+   "floor_db": -80.9,
+   "dur": 3.44,
+   "accent": 0.407,
+   "accent_top": "indian",
+   "score": 0.453,
+   "heard": "Since you pressed play, about a hundred million"
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.125,
+   "sim": 0.894,
+   "floor_db": -80.9,
+   "dur": 2.72,
+   "accent": 0.327,
+   "accent_top": "indian",
+   "score": 2.102,
+   "heard": "Since you press play, about a hundred million."
+  }
+ ],
+ "l09": [
+  {
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.873,
+   "floor_db": -26.6,
+   "dur": 1.76,
+   "accent": 0.401,
+   "accent_top": "indian",
+   "score": 3.776,
+   "heard": "Follow for the next one."
+  },
+  {
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.835,
+   "floor_db": -23.9,
+   "dur": 1.6,
+   "accent": 0.425,
+   "accent_top": "indian",
+   "score": 4.492,
+   "heard": "Follow for the next one."
+  },
+  {
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.863,
+   "floor_db": -28.6,
+   "dur": 1.44,
+   "accent": 0.328,
+   "accent_top": "indian",
+   "score": 3.554,
+   "heard": "Follow for the next one."
+  }
+ ]
+}

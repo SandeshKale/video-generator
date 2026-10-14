@@ -2,7 +2,7 @@
 import bpy, math, sys, os
 sys.path.insert(0, os.path.dirname(__file__)); from cells_lib import *
 OUT = os.environ.get('OUT', os.path.join(os.path.dirname(__file__), '..', 'mockup', 'site', 'plates'))
-sc = setup(res=(256, 256), samples=int(os.environ.get('SPP', 64))); sc.render.film_transparent = True
+sc = setup(res=(int(os.environ.get('RES', 256)),) * 2, samples=int(os.environ.get('SPP', 64))); sc.render.film_transparent = True
 sc.view_settings.view_transform = 'Standard'; sc.view_settings.exposure = 0.0
 w = sc.world; w.use_nodes = True; w.node_tree.nodes['Background'].inputs[0].default_value = srgb('#3a1a22'); w.node_tree.nodes['Background'].inputs[1].default_value = .6
 M = principled('rbc', '#b3141f', rough=.32, sss=.8, sss_col=(1.0, .18, .12), coat=.35, emit='#ff3b2f', emit_s=.12)
