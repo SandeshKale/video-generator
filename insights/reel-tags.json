@@ -207,5 +207,12 @@
   "host": "no",
   "length": "<=40s",
   "cta": "comment-keyword"
+ },
+ "reel-01-bedtime-list": {
+  "genre": "wellness-hack",
+  "company": "none",
+  "voice": "cloned (Qwen3-TTS)",
+  "host": "none",
+  "length": "47-60s"
  }
 }
