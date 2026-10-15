@@ -90,7 +90,7 @@ if VIEW == 'wide':
     cam.lens = float(os.environ.get('LENS', 26)); co.location = (.05, -.95, .86); tgt = mathutils.Vector((.08, .8, float(os.environ.get('TZ', .42)))); NEAR, FAR = 1.0, 4.5
 else:
     cam.lens = 40; co.location = (.26, -.12, .40); tgt = mathutils.Vector((.27, .50, .00)); NEAR, FAR = .25, 2.6
-    cam.dof.use_dof = True; cam.dof.focus_distance = (tgt - co.location).length * .92; cam.dof.aperture_fstop = 2.2
+    cam.dof.use_dof = True; cam.dof.focus_distance = (tgt - co.location).length * .92; cam.dof.aperture_fstop = float(os.environ.get("FSTOP", 2.2))
 co.rotation_euler = (tgt - co.location).to_track_quat('-Z', 'Y').to_euler()
 bpy.context.view_layer.update()
 # anchors

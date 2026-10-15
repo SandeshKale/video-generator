@@ -30,7 +30,7 @@ function camWide(t) { // plate A (room_warm) then C (room_dim)
   var d = seg(t, T_DIVE0, T_MAC0 + .2); var e = d * d * (3 - 2 * d) * 1.0; return { cx: lerp(.5, .60, eio(d)), cy: lerp(.58, .84, eio(d)), z: lerp(1.3, 3.6, Math.pow(d, 1.6)) };
 }
 function camRoom(t) { var u = eio(seg(t, T_OUT0 + .2, T_END)); return { cx: lerp(.60, .5, u), cy: lerp(.84, .52, u), z: lerp(3.6, 1.0, u) }; }
-function camMacro(t) { var s = eio(seg(t, T_DIVE0 + 1.3, T_MAC0 + 1.2)), tr = clamp(penX, .35, .65); return { cx: lerp(.5, tr, .55) + (t > T_MAC0 ? 0 : 0), cy: .52 + .02 * Math.sin(t * .8), z: lerp(1.55, 1.04, s) * (1 + .06 * seg(t, T_MAC0 + 3, T_OUT0)) }; }
+function camMacro(t) { var s = eio(seg(t, T_DIVE0 + 1.3, T_MAC0 + 1.2)), tr = clamp(penX, .35, .65); return { cx: lerp(.5, tr, .55) + (t > T_MAC0 ? 0 : 0), cy: .66 + .015 * Math.sin(t * .8), z: lerp(1.55, 1.12, s) * (1 + .06 * seg(t, T_MAC0 + 3, T_OUT0)) }; }
 function drift(t) { return [Math.sin(t * .9) * .25, Math.cos(t * .7) * .15]; }
 
 // ---------- handwriting ----------
@@ -38,15 +38,15 @@ function lineGeom(A, c, li, k) { var L = A.lines[li], p0 = scr([L[0][0], L[0][1]
 function writeProg(i, t) { return sm(seg(t, TW0[i], TW0[i] + TWD)); }
 var STRIKE0 = 11.15, REWR0 = 11.45, REWR_D = 1.0, NEWTXT = '→ call accountant, 10 am';
 function drawWriting(A, c, big, showPen, t) {
-  if (!A) return; var ink = '#1c2650'; var tipOut = null;
-  for (var i = 0; i < 5; i++) { var g = lineGeom(A, c, 2 + i * 3, 1), fs = Math.max(10, g.pitch * 1.18), pr = writeProg(i, t); if (pr <= 0) continue;
+  if (!A) return; var LS = big ? .30 : .03; var ink = '#1c2650'; var tipOut = null;
+  for (var i = 0; i < 5; i++) { var g = lineGeom(A, c, 2 + i * 3, 1), fs = Math.max(10, g.pitch * (big ? .95 : 1.18)), pr = writeProg(i, t); if (pr <= 0) continue;
     cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var txt = '• ' + TASKS[i], tw = cx.measureText(txt).width;
-    cx.beginPath(); cx.rect(-4, -fs * 1.2, tw * pr + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.globalAlpha = .94; cx.fillText(txt, g.len * .03, -fs * .12); cx.restore();
-    if (pr < 1 && pr > 0) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * .03 + tw * pr) , y: g.p0[1] + Math.sin(g.ang) * (g.len * .03 + tw * pr), pitch: g.pitch, ang: g.ang };
+    cx.beginPath(); cx.rect(-4, -fs * 1.2, tw * pr + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.globalAlpha = .94; cx.fillText(txt, g.len * LS, -fs * .12); cx.restore();
+    if (pr < 1 && pr > 0) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw * pr) , y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw * pr), pitch: g.pitch, ang: g.ang };
     if (i === 4) { // taxes: strike then rewrite
-      var sp = sm(seg(t, STRIKE0, STRIKE0 + .35)); if (sp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); var w2 = cx.measureText ? 0 : 0; cx.font = 'italic ' + fs + 'px Ser'; var tw2 = cx.measureText('• taxes').width; cx.strokeStyle = TANG; cx.lineWidth = Math.max(3, fs * .09); cx.lineCap = 'round'; cx.beginPath(); cx.moveTo(g.len * .03 - 6, -fs * .30); cx.bezierCurveTo(g.len * .03 + tw2 * .3, -fs * .42, g.len * .03 + tw2 * .6, -fs * .18, g.len * .03 + tw2 * sp + 6, -fs * .32); cx.stroke(); cx.restore(); }
-      var rp = sm(seg(t, REWR0, REWR0 + REWR_D)); if (rp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var tw3 = cx.measureText('• taxes').width, tw4 = cx.measureText(NEWTXT).width; cx.beginPath(); cx.rect(g.len * .03 + tw3 + 14, -fs * 1.2, tw4 * rp + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.fillText(NEWTXT, g.len * .03 + tw3 + 22, -fs * .12); cx.restore();
-        if (rp < 1) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * .03 + tw3 + 22 + tw4 * rp), y: g.p0[1] + Math.sin(g.ang) * (g.len * .03 + tw3 + 22 + tw4 * rp), pitch: g.pitch, ang: g.ang }; } }
+      var sp = sm(seg(t, STRIKE0, STRIKE0 + .35)); if (sp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); var w2 = cx.measureText ? 0 : 0; cx.font = 'italic ' + fs + 'px Ser'; var tw2 = cx.measureText('• taxes').width; cx.strokeStyle = TANG; cx.lineWidth = Math.max(3, fs * .09); cx.lineCap = 'round'; cx.beginPath(); cx.moveTo(g.len * LS - 6, -fs * .30); cx.bezierCurveTo(g.len * LS + tw2 * .3, -fs * .42, g.len * LS + tw2 * .6, -fs * .18, g.len * LS + tw2 * sp + 6, -fs * .32); cx.stroke(); cx.restore(); }
+      var rp = sm(seg(t, REWR0, REWR0 + REWR_D)); if (rp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var tw3 = cx.measureText('• taxes').width, tw4 = cx.measureText(NEWTXT).width; cx.beginPath(); cx.rect(g.len * LS + tw3 + 14, -fs * 1.2, tw4 * rp + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.fillText(NEWTXT, g.len * LS + tw3 + 22, -fs * .12); cx.restore();
+        if (rp < 1) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), pitch: g.pitch, ang: g.ang }; } }
   }
   if (showPen) { var tp = tipOut; if (!tp) { var lg = lineGeom(A, c, 14, 1); tp = { x: lg.p0[0] + lg.len * .62, y: lg.p0[1] - lg.pitch * .2, pitch: lg.pitch, ang: lg.ang }; }
     var s = tp.pitch / 62; cx.save(); cx.translate(tp.x, tp.y + Math.sin(t * 22) * 1.2 * s); cx.rotate(-.95); cx.shadowColor = 'rgba(0,0,0,.45)'; cx.shadowBlur = 14 * s; cx.shadowOffsetX = 10 * s; cx.shadowOffsetY = 14 * s;
@@ -86,7 +86,7 @@ var CAP = [[0, 3.2, 'Brain still running a hundred tabs?'], [3.4, 5.3, 'Here\'s 
 var vids = { dust: $('dust') }; function vseek(v, t) { return new Promise(function (res) { if (!v.duration) return res(); var tt = t % v.duration; function done() { v.removeEventListener('seeked', done); res(); } v.addEventListener('seeked', done); v.currentTime = tt; setTimeout(res, 400); }); }
 window.__reelDurationSec = DUR;
 window.__seek = function (t) {
-  t = clamp(t, 0, DUR - 1e-3); cx.clearRect(0, 0, W, H); var dr = drift(t), o = { t: t, par: .03, dof: 0, focus: .5, bloom: 1.05, streak: .15, vig: .6, dim: 1 };
+  t = clamp(t, 0, DUR - 1e-3); cx.clearRect(0, 0, W, H); var dr = drift(t), o = { t: t, par: .015, dof: 0, focus: .5, bloom: .35, streak: .05, vig: .5, dim: 1 };
   var inWide = t < T_MAC0 + .3, inMac = t >= T_MAC0 - .7 && t < T_OUT0 + .7, inRoom = t >= T_OUT0 - .2;
   var mixM = sm(seg(t, T_MAC0 - .8, T_MAC0 - .05)), mixR = sm(seg(t, T_OUT0 - .1, T_ROOM)), cW = camWide(t), cM = camMacro(t), cR = camRoom(t);
   if (t < T_MAC0 - .05) { o.a = 'room_warm'; o.camA = [dr[0], dr[1], cW.z]; o.shA = shf(cW, cW.z); if (mixM > 0) { o.b = 'page_warm'; o.camB = [dr[0] * .5, dr[1] * .5, cM.z]; o.shB = shf(cM, cM.z); o.mix = mixM; } }
@@ -95,7 +95,7 @@ window.__seek = function (t) {
   else { o.a = 'room_dim'; o.camA = [dr[0], dr[1], cR.z]; o.shA = shf(cR, cR.z); }
   // focus pulls (rack focus): panes first, then the page, then the room
   var pf = t < 1.4 ? .85 : t < 4.2 ? lerp(.85, .5, sm(seg(t, 1.4, 2.6))) : lerp(.5, .1, sm(seg(t, 4.2, 5.4)));
-  o.dof = t < T_DIVE0 ? 1.1 : (t < T_MAC0 ? 1.1 + 2.4 * seg(t, T_DIVE0, T_MAC0) : (t < T_OUT0 ? 1.6 : 1.4)); o.focus = t < T_MAC0 ? .5 : (t < T_OUT0 ? .62 : .5);
+  o.dof = 0; o.focus = t < T_MAC0 ? .5 : (t < T_OUT0 ? .62 : .5);
   o.dim = t > T_OUT0 ? lerp(1, .86, sm(seg(t, T_OUT0, T_ROOM + 2))) : 1; o.flash = 0;
   // panes
   if (t < T_MAC0 + .2) drawPanes(PW_, cW, t, pf, 1, 1.4, 1 - mixM);
