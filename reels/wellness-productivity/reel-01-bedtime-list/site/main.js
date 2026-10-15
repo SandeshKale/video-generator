@@ -58,7 +58,7 @@ function drawWriting(A, c, big, showPen, t) {
       var rp = sm(seg(t, REWR0, REWR0 + REWR_D)); if (rp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var tw3 = cx.measureText('• taxes').width, tw4 = cx.measureText(NEWTXT).width; cx.beginPath(); cx.rect(g.len * LS + tw3 + 14, -fs * 1.2, tw4 * rp + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.fillText(NEWTXT, g.len * LS + tw3 + 22, -fs * .12); cx.restore();
         if (rp < 1) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), pitch: g.pitch, ang: g.ang }; } }
   }
-  if (showPen) { var tp = tipOut; if (!tp) { var lg = lineGeom(A, c, 16, 1); tp = { x: lg.p0[0] + lg.len * .62, y: lg.p0[1] - lg.pitch * .2, pitch: lg.pitch, ang: lg.ang }; }
+  if (showPen) { var tp = tipOut; if (!tp) { var lg = lineGeom(A, c, 16, 1); tp = { x: lg.p0[0] + lg.len * .62 + 70 * Math.sin(t * 1.9), y: lg.p0[1] - lg.pitch * .2 + 55 * Math.sin(t * 2.6 + 1), pitch: lg.pitch, ang: lg.ang }; }   // idle pen hovers and drifts over the page
     var s = tp.pitch / 62; cx.save(); cx.translate(tp.x, tp.y + Math.sin(t * 22) * 1.2 * s); cx.rotate(-.95); cx.shadowColor = 'rgba(0,0,0,.45)'; cx.shadowBlur = 14 * s; cx.shadowOffsetX = 10 * s; cx.shadowOffsetY = 14 * s;
     var gr = cx.createLinearGradient(0, 0, 0, -380 * s); gr.addColorStop(0, '#c79a4a'); gr.addColorStop(.07, '#c79a4a'); gr.addColorStop(.08, '#1a1d1f'); gr.addColorStop(1, '#2a2f33'); cx.fillStyle = gr; cx.beginPath(); cx.moveTo(0, 0); cx.lineTo(-9 * s, -46 * s); cx.lineTo(-11 * s, -380 * s); cx.lineTo(11 * s, -380 * s); cx.lineTo(9 * s, -46 * s); cx.closePath(); cx.fill(); cx.restore(); penX = tp.x / W; }
 }
