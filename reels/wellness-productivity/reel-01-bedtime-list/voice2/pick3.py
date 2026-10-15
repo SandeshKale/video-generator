@@ -5,7 +5,7 @@ from resemblyzer import VoiceEncoder, preprocess_wav
 HERE = os.path.dirname(os.path.abspath(__file__)); lines = json.load(open(f'{HERE}/lines.json'))
 asr = WhisperModel('small.en', device='cpu', compute_type='int8'); enc = VoiceEncoder('cpu'); eref = enc.embed_utterance(preprocess_wav(f'{HERE}/ref_adam.wav'))
 NUM = {'1': 'one', '2': 'two', '10': 'ten', '57': 'fifty seven', '100': 'hundred', '5': 'five'}
-def norm(s): return ' '.join(NUM.get(w, w) for w in re.sub(r"[^a-z0-9' ]", ' ', s.lower().replace('-', ' ')).split()).split()
+def norm(s): return ' '.join(NUM.get(w, w) for w in re.sub(r"[^a-z0-9' ]", ' ', s.lower().replace('a.m.', 'am').replace('-', ' ')).split()).replace(' a m', ' am').split()
 rep = {}; best = {}
 for sid, text in lines:
     rows = []
