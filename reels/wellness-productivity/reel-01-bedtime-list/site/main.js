@@ -52,7 +52,8 @@ function drawWriting(A, c, big, showPen, t) {
     cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var txt = '• ' + TASKS[i], tw = cx.measureText(txt).width;
     cx.beginPath(); cx.rect(-4, -fs * 1.2, g.len * LS + tw * pr + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.globalAlpha = .94; cx.fillText(txt, g.len * LS, -fs * .12); cx.restore();
     if (pr < 1 && pr > 0) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw * pr) , y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw * pr), pitch: g.pitch, ang: g.ang };
-    if (i === 4) { // taxes: strike then rewrite
+    if (i === 4) { var hl_ = sm(seg(t, K_THREE + .4, K_TAXES - .1)) * (1 - sm(seg(t, STRIKE0 + .3, STRIKE0 + .6))); if (hl_ > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var twh = cx.measureText('• taxes').width; cx.fillStyle = 'rgba(242,193,78,' + (.38 * hl_) + ')'; cx.fillRect(g.len * LS - 8, -fs * .95, (twh + 16) * hl_, fs * 1.2); cx.restore(); }
+      // taxes: strike then rewrite
       var sp = sm(seg(t, STRIKE0, STRIKE0 + .35)); if (sp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); var w2 = cx.measureText ? 0 : 0; cx.font = 'italic ' + fs + 'px Ser'; var tw2 = cx.measureText('• taxes').width; cx.strokeStyle = TANG; cx.lineWidth = Math.max(3, fs * .09); cx.lineCap = 'round'; cx.beginPath(); cx.moveTo(g.len * LS - 6, -fs * .30); cx.bezierCurveTo(g.len * LS + tw2 * .3, -fs * .42, g.len * LS + tw2 * .6, -fs * .18, g.len * LS + tw2 * sp + 6, -fs * .32); cx.stroke(); cx.restore(); }
       var rp = sm(seg(t, REWR0, REWR0 + REWR_D)); if (rp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var tw3 = cx.measureText('• taxes').width, tw4 = cx.measureText(NEWTXT).width; cx.beginPath(); cx.rect(g.len * LS + tw3 + 14, -fs * 1.2, tw4 * rp + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.fillText(NEWTXT, g.len * LS + tw3 + 22, -fs * .12); cx.restore();
         if (rp < 1) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), pitch: g.pitch, ang: g.ang }; } }
@@ -134,6 +135,11 @@ function drawCTA(t) {
   cx.restore();
 }
 
+// the sample, shown: 57 dots (one per participant) fill in while "fifty-seven healthy adults" is spoken, then pulse
+function drawDots(t) { var t0 = K_FIFTY - .3; if (t < t0 || t > T_BACK1) return; var fade = 1 - sm(seg(t, T_BACK0, T_BACK1)); cx.save();
+  for (var i = 0; i < 57; i++) { var a = back(seg(t, t0 + i * .042, t0 + i * .042 + .3)); if (a <= 0) continue; var r = Math.floor(i / 19), c = i % 19, x = 170 + c * 41, y = 270 + r * 44, pu = 1 + .35 * Math.max(0, Math.sin((t - t0 - 2.5) * 5 - c * .5)) * (t > t0 + 2.5 ? 1 : 0);
+    cx.globalAlpha = clamp(a * 1.5, 0, 1) * fade; cx.fillStyle = r === 1 ? MINT : MINT; cx.beginPath(); cx.arc(x, y, 11 * a * pu, 0, 6.3); cx.fill(); }
+  cx.restore(); }
 // ambient light band: a soft mint sweep crossing the frame every ~2.5 s (keeps held hero visuals alive without touching them)
 function drawBand(t) { if (t < 2.5) return; var per = 2.5, u = ((t / per) % 1), x = -260 + u * 1600, g = cx.createLinearGradient(x - 170, 0, x + 170, 0); g.addColorStop(0, 'rgba(142,240,200,0)'); g.addColorStop(.5, 'rgba(142,240,200,.10)'); g.addColorStop(1, 'rgba(142,240,200,0)');
   cx.save(); cx.fillStyle = g; cx.fillRect(x - 170, 380, 340, 900); cx.restore(); }
@@ -163,7 +169,7 @@ window.__seek = function (t) {
   // handwriting: macro page live; the small notebook in the dim room shows the finished list; the proof beat shows both notebooks
   if (RM && t >= T_MAC0 - .9 && t < T_OUT0 + .8) { cx.save(); cx.globalAlpha = mixM * (1 - mixR); drawWriting(RM, cM, true, t >= T_MAC0 - .3 && t < T_OUT0 + .4, t); cx.restore(); }
   if (RW && t >= T_OUT0 - .2 && t < T_PROOF1) { cx.save(); cx.globalAlpha = mixR * (1 - mixP); drawWriting(RW, cR, false, false, 99); cx.restore(); }
-  drawProof(t, cP, mixP * (1 - mixB)); drawRecap(t); drawCTA(t); drawBand(t); o.spr = spr;
+  drawProof(t, cP, mixP * (1 - mixB)); drawDots(t); drawRecap(t); drawCTA(t); drawBand(t); o.spr = spr;
   window.GLP.draw(o);
   // overlays
   var hlA = 1 - sm(seg(t, T_DIVE0, T_DIVE0 + 1.0)); $('hl').style.opacity = hlA; $('hl').style.transform = 'translateY(' + (-30 * seg(t, T_DIVE0, T_DIVE0 + 1.0)) + 'px)';
