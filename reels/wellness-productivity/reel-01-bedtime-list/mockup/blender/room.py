@@ -76,6 +76,20 @@ def page(name, x0, flip):
 pl_ = page('pageL', -.15, False); pr_ = page('pageR', .15, True)
 box('ribbon', (.012, .30, .002), (.02, -.04, .021), ribbon, rot=(0, 0, 0)).parent = nb
 # pen on the right page (omitted in the macro view: the page's writing pen is a live sprite)
+if VIEW == 'proof':
+    nb.location = (-.20, .46, 0)
+    kids = [o for o in bpy.data.objects if o.parent == nb]
+    bpy.ops.object.select_all(action='DESELECT'); nb.select_set(True)
+    for k in kids: k.select_set(True)
+    bpy.context.view_layer.objects.active = nb; bpy.ops.object.duplicate()
+    nb2 = [o for o in bpy.context.selected_objects if o.type == 'EMPTY'][0]; nb2.location = (.44, .50, 0); nb2.rotation_euler = (0, 0, math.radians(7))
+    grey = bpy.data.materials.new('greyrib'); grey.use_nodes = True; grey.node_tree.nodes['Principled BSDF'].inputs[0].default_value = (.35, .35, .33, 1)
+    for o in bpy.context.selected_objects:
+        if o.name.startswith('ribbon'): o.data.materials.clear(); o.data.materials.append(grey)
+    # the TO-DO notebook's ribbon glows mint
+    mint = bpy.data.materials.new('mintrib'); mint.use_nodes = True; nt = mint.node_tree.nodes; nt.clear(); em3 = nt.new('ShaderNodeEmission'); em3.inputs[0].default_value = srgb('#8ef0c8'); em3.inputs[1].default_value = 6.0; oo = nt.new('ShaderNodeOutputMaterial'); mint.node_tree.links.new(em3.outputs[0], oo.inputs[0])
+    for o in kids:
+        if o.name.startswith('ribbon'): o.data.materials.clear(); o.data.materials.append(mint)
 if VIEW == 'wide':
     pen = bpy.data.objects.new('pen', None); sc.collection.objects.link(pen); pen.parent = nb; pen.location = (.17, -.02, .035); pen.rotation_euler = (math.radians(4), math.radians(0), math.radians(58))
     b1 = cyl('penbody', .0065, .15, (0, 0, 0), ink, v=32); b1.rotation_euler = (0, math.pi / 2, 0); b1.parent = pen
@@ -88,6 +102,8 @@ cyl('glass', .036, .095, (.66, .86, .048), glass, v=48); cyl('water', .033, .06,
 cam = bpy.data.cameras.new('c'); cam.sensor_fit = 'VERTICAL'; cam.sensor_height = 24; co = bpy.data.objects.new('c', cam); sc.collection.objects.link(co); sc.camera = co
 if VIEW == 'wide':
     cam.lens = float(os.environ.get('LENS', 26)); co.location = (.05, -.95, .86); tgt = mathutils.Vector((.08, .8, float(os.environ.get('TZ', .42)))); NEAR, FAR = 1.0, 4.5
+elif VIEW == 'proof':
+    cam.lens = 34; co.location = (.12, -.40, .62); tgt = mathutils.Vector((.12, .52, .0)); NEAR, FAR = .4, 3.0
 else:
     cam.lens = 40; co.location = (.26, -.12, .40); tgt = mathutils.Vector((.27, .50, .00)); NEAR, FAR = .25, 2.6
     cam.dof.use_dof = True; cam.dof.focus_distance = (tgt - co.location).length * .92; cam.dof.aperture_fstop = float(os.environ.get("FSTOP", 2.2))
@@ -104,6 +120,12 @@ anch['pageR'] = [proj(wl(.15 + sx * .145, sy * .21)) for sx, sy in [(-1, -1), (1
 anch['lines'] = [[proj(wl(.15 - .13, y)), proj(wl(.15 + .13, y))] for y in [(-.17 + i * (.34 / 17)) for i in range(18)]]
 anch['pen'] = proj(tuple(M @ mathutils.Vector((.11, -.04, .03))))
 json.dump(anch, open(os.path.join(os.path.dirname(__file__), '..', 'site', f'room_{VIEW}.json'), 'w'))
-name = f'room_{STATE}' if VIEW == 'wide' else f'page_{STATE}'
+if VIEW == 'proof':
+    Mp = nb.matrix_world; Mq = nb2.matrix_world
+    anch['todo'] = proj(tuple(Mp @ mathutils.Vector((0, 0, .03)))); anch['done'] = proj(tuple(Mq @ mathutils.Vector((0, 0, .03))))
+    anch['todoPage'] = [proj(tuple(Mp @ mathutils.Vector((.15 + sx * .145, sy * .21, .02)))) for sx, sy in [(-1, -1), (1, -1), (1, 1), (-1, 1)]]
+    anch['donePage'] = [proj(tuple(Mq @ mathutils.Vector((.15 + sx * .145, sy * .21, .02)))) for sx, sy in [(-1, -1), (1, -1), (1, 1), (-1, 1)]]
+    json.dump(anch, open(os.path.join(os.path.dirname(__file__), '..', 'site', 'room_proof.json'), 'w'))
+name = f'room_{STATE}' if VIEW == 'wide' else (f'proof_{STATE}' if VIEW == 'proof' else f'page_{STATE}')
 render_pair(sc, os.path.join(OUT, name + '.png'), os.path.join(OUT, name + '_depth.png'), co, NEAR, FAR, depth_samples=1)
 print('done', name)
