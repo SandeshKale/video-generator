@@ -36,8 +36,8 @@ function camWide(t) { // plate A (room_warm) then C (room_dim)
   if (t < T_DIVE0) { var u = eio(seg(t, 0, T_DIVE0)); return { cx: .5, cy: lerp(.50, .58, u), z: lerp(1.0, 1.3, u) }; }
   var d = seg(t, T_DIVE0, T_MAC0 + .2); var e = d * d * (3 - 2 * d) * 1.0; return { cx: lerp(.5, .60, eio(d)), cy: lerp(.58, .84, eio(d)), z: lerp(1.3, 3.6, Math.pow(d, 1.6)) };
 }
-function camRoom(t) { var u = eio(seg(t, T_OUT0 + .2, T_PROOF0)); return { cx: lerp(.60, .5, u) + Math.sin(u * Math.PI) * .06, cy: lerp(.84, .52, u), z: lerp(3.6, 1.05, u) }; }
-function camProof(t) { var u = eio(seg(t, T_PROOF0, K_FIFTY + 1.4)); return { cx: lerp(.36, .60, u), cy: .56, z: lerp(1.2, 1.5, u) }; }
+function camRoom(t) { var u = eio(seg(t, T_OUT0 + .2, T_OUT0 + 2.6)), o = seg(t, T_OUT0 + 2.6, T_PROOF0); return { cx: lerp(.60, .5, u) + Math.sin(u * Math.PI) * .05 + o * .05, cy: lerp(.84, .52, u) - o * .03, z: lerp(3.6, 1.05, u) + o * .1 }; }
+function camProof(t) { var u = eio(seg(t, T_PROOF0, K_FIFTY + 1.4)); return { cx: lerp(.44, .56, u), cy: lerp(.60, .64, u), z: lerp(1.0, 1.12, u) }; }
 function camEnd(t) { var u = eio(seg(t, T_BACK0, K_FOLLOW + 1)); return { cx: .5, cy: lerp(.55, .40, u), z: lerp(1.5, 1.1, u) }; }
 function camMacro(t) { var s = eio(seg(t, T_DIVE0 + 1.3, T_MAC0 + 1.2)), tr = clamp(penX, .35, .65); return { cx: .5 + .04 * Math.sin(t * .5), cy: .50 + .015 * Math.sin(t * .8), z: lerp(1.55, 1.12, s) * (1 + .06 * seg(t, T_MAC0 + 3, T_OUT0)) }; }
 function drift(t) { return [Math.sin(t * .9) * .25, Math.cos(t * .7) * .15]; }
@@ -73,8 +73,8 @@ function glassPane(x, y, w, h, title, open, blur, alpha, close) {
   if (close.u === 0) { cx.fillStyle = '#ff5a4f'; cx.beginPath(); cx.arc(w / 2 - 22, -h / 2 + 24, 11, 0, 6.3); cx.fill(); cx.fillStyle = '#fff'; cx.font = '800 15px Man'; cx.fillText('!', w / 2 - 22, -h / 2 + 30); }
   cx.restore();
 }
-function drawPanes(set, c, t, focusN, scale, kPar, vis) {
-  for (var i = 0; i < 14; i++) { var P = set[i], tc = CLOSE[i], cu = seg(t, tc, tc + .55); if (t > tc + .6) continue;
+function drawPanes(set, c, t, focusN, scale, kPar, vis, skip13) {
+  for (var i = 0; i < 14; i++) { if (skip13 && i === 13) continue; var P = set[i], tc = CLOSE[i], cu = seg(t, tc, tc + .55); if (t > tc + .6) continue;
     var ph = i * 1.7, flo = [Math.sin(t * .8 + ph) * 8, Math.cos(t * .6 + ph) * 10]; var pos = scr([P[0], P[1]], c, 1 + P[2] * kPar); var w = 250 * P[3] * scale, h = 150 * P[3] * scale;
     var blur = clamp(Math.abs(P[2] - focusN) * 34 * (scale > 1.2 ? .8 : 1), 0, 26), flick = .86 + .14 * Math.sin(t * 9 + ph * 3) * (cu > 0 ? 0 : 1);
     glassPane(pos[0] + flo[0], pos[1] + flo[1], w, h, PANES[i], true, blur, vis * flick, { u: cu }); }
@@ -84,7 +84,7 @@ function qpt(q, c, u, v) { var P = q.map(function (p) { return scr(p, c, 1); }),
   var tx = lerp(tl[0], tr[0], u), ty = lerp(tl[1], tr[1], u), bx = lerp(bl[0], br[0], u), by = lerp(bl[1], br[1], u); return [lerp(tx, bx, v), lerp(ty, by, v)]; }
 function quadText(q, c, rows, ink, alpha, strikeIdx) {
   var tl = qpt(q, c, 0, 0), tr = qpt(q, c, 1, 0), bl = qpt(q, c, 0, 1), ang = Math.atan2(tr[1] - tl[1], tr[0] - tl[0]), ph = Math.hypot(bl[0] - tl[0], bl[1] - tl[1]), pw = Math.hypot(tr[0] - tl[0], tr[1] - tl[1]);
-  var fs = Math.max(12, ph * .085);
+  var fs = Math.max(12, Math.min(ph * .09, pw * .064));
   for (var i = 0; i < rows.length; i++) { var p = qpt(q, c, .07, .14 + i * .16); cx.save(); cx.translate(p[0], p[1]); cx.rotate(ang); cx.font = 'italic ' + fs + 'px Ser'; cx.fillStyle = ink; cx.globalAlpha = alpha; cx.fillText(rows[i], 0, 0);
     if (i === strikeIdx) { var w = cx.measureText(rows[i].split(' → ')[0]).width; cx.strokeStyle = TANG; cx.lineWidth = Math.max(2, fs * .08); cx.beginPath(); cx.moveTo(-4, -fs * .3); cx.lineTo(w + 6, -fs * .34); cx.stroke(); } cx.restore(); } }
 function nbTag(p, c, text, col, dy, alpha, fg) { var q = scr(p, c, 1); cx.save(); cx.globalAlpha = alpha; cx.font = '500 26px Mar'; var w = cx.measureText(text).width + 52; cx.translate(q[0], q[1] + dy);
@@ -95,42 +95,42 @@ function drawProof(t, c, alpha) {
   quadText(RP.donePage, c, ['• emailed the team', '• went to gym', '• cooked dinner', '• replied to Dad', '• watched a show'], '#6a6a63', alpha * .8, -1);
   var a1 = sm(seg(t, K_LAB, K_LAB + .5)) * alpha;
   nbTag(RP.todo, c, 'TO-DO LIST', MINT, -250, a1); nbTag(RP.done, c, 'DONE LIST', '#b8b8b0', -230, a1, '#d8d8d0');
-  var sp = back(seg(t, K_FASTER - .1, K_FASTER + .45)); if (sp > 0) { var q = scr(RP.todo, c, 1); cx.save(); cx.globalAlpha = clamp(sp * 2, 0, 1) * alpha; cx.translate(q[0], q[1] - 40); cx.rotate(-.09); cx.scale(lerp(1.5, 1, sp), lerp(1.5, 1, sp));
-    cx.font = '800 58px Man'; var w = cx.measureText('FELL ASLEEP FASTER').width + 60; cx.strokeStyle = MINT; cx.lineWidth = 6; cx.fillStyle = 'rgba(13,43,42,.82)'; cx.beginPath(); cx.rect(-w / 2, -48, w, 96); cx.fill(); cx.stroke(); cx.fillStyle = MINT; cx.textAlign = 'center'; cx.fillText('FELL ASLEEP FASTER', 0, 20); cx.restore(); }
+  var sp = back(seg(t, K_FASTER - .1, K_FASTER + .45)); if (sp > 0) { var q = scr(RP.done, c, 1); cx.save(); cx.globalAlpha = clamp(sp * 2, 0, 1) * alpha; cx.translate(q[0] + 10, q[1] + 205); cx.rotate(-.07); cx.scale(lerp(1.5, 1, sp), lerp(1.5, 1, sp));
+    cx.font = '800 46px Man'; var w = cx.measureText('FELL ASLEEP FASTER').width + 50; cx.strokeStyle = MINT; cx.lineWidth = 6; cx.fillStyle = 'rgba(13,43,42,.82)'; cx.beginPath(); cx.rect(-w / 2, -40, w, 80); cx.fill(); cx.stroke(); cx.fillStyle = MINT; cx.textAlign = 'center'; cx.fillText('FELL ASLEEP FASTER', 0, 16); cx.restore(); }
 }
 // ---------- recap + full call to action ----------
 var prof = new Image(); prof.src = 'media/profile.jpg';
 function glassBox(x, y, w, h, fill, line, r) { cx.beginPath(); cx.moveTo(x + r, y); cx.arcTo(x + w, y, x + w, y + h, r); cx.arcTo(x + w, y + h, x, y + h, r); cx.arcTo(x, y + h, x, y, r); cx.arcTo(x, y, x + w, y, r); cx.closePath(); cx.fillStyle = fill; cx.fill(); cx.lineWidth = 3; cx.strokeStyle = line; cx.stroke(); }
 var CHIPS = [['SAVE', MINT, 150, 150, function () { return K_SAVE; }], ['SEND', MINT, 316, 150, function () { return K_SEND; }], ['COMMENT', AMB, 482, 230, function () { return K_COMMENT; }], ['FOLLOW', TANG, 728, 190, function () { return K_FOLLOW; }]];
 function drawRecap(t) {
-  var tin = K_SAVE - .3, tout = K_FOLLOW - .15, u = back(seg(t, tin, tin + .6)), o = 1 - sm(seg(t, tout, tout + .45)); if (u <= 0 || o <= .01) return;
-  cx.save(); cx.globalAlpha = clamp(u * 2, 0, 1) * o; var sc = lerp(.86, 1, u) * (1 - .05 * sm(seg(t, K_COMMENT - .1, K_COMMENT + .4))); cx.translate(540, 700 + (1 - u) * 80 - 90 * sm(seg(t, K_COMMENT - .1, K_COMMENT + .4))); cx.scale(sc, sc);
+  var tin = K_SAVE - .3, tout = K_COMMENT + .15, u = back(seg(t, tin, tin + .6)), o = 1 - sm(seg(t, tout, tout + .45)); if (u <= 0 || o <= .01) return;
+  cx.save(); cx.globalAlpha = clamp(u * 2, 0, 1) * o; var sc = lerp(.86, 1, u); cx.translate(540, 700 + (1 - u) * 80); cx.scale(sc, sc);
   cx.shadowColor = 'rgba(0,0,0,.5)'; cx.shadowBlur = 40; cx.shadowOffsetY = 18; glassBox(-384, -320, 768, 560, PAPER, '#101a1a', 30); cx.shadowColor = 'transparent';
   cx.fillStyle = TANG; cx.font = '500 24px Mar'; cx.textAlign = 'left'; cx.fillText('TONIGHT · 5 MINUTES · PEN + PAPER', -340, -262);
   cx.strokeStyle = 'rgba(16,26,26,.25)'; cx.lineWidth = 2; cx.setLineDash([10, 8]); cx.beginPath(); cx.moveTo(-340, -232); cx.lineTo(340, -232); cx.stroke(); cx.setLineDash([]);
   var rows = [['1', 'PEN + PAPER', '5 min'], ['2', 'EVERYTHING YOU STILL NEED TO DO', ''], ['3', 'BE SPECIFIC: THE NEXT ACTION', 'not "taxes"']];
   for (var i = 0; i < 3; i++) { var r = back(seg(t, tin + .4 + i * .42, tin + .85 + i * .42)); if (r <= 0) continue; cx.save(); cx.globalAlpha = clamp(r * 2, 0, 1); var y = -150 + i * 150;
     cx.fillStyle = INK; cx.beginPath(); cx.arc(-320, y - 12, 34, 0, 6.3); cx.fill(); cx.fillStyle = MINT; cx.font = '800 40px Man'; cx.textAlign = 'center'; cx.fillText(rows[i][0], -320, y + 2);
-    cx.fillStyle = INK; cx.textAlign = 'left'; cx.font = '800 ' + (i === 1 ? 33 : 42) + 'px Man'; cx.fillText(rows[i][1], -262, y - 2); if (rows[i][2]) { cx.fillStyle = '#6b5a3e'; cx.font = 'italic 36px Ser'; cx.fillText(rows[i][2], -262, y + 44); }
+    cx.fillStyle = INK; cx.textAlign = 'left'; cx.font = '800 ' + (i === 1 ? 31 : 34) + 'px Man'; cx.fillText(rows[i][1], -262, y - 2); if (rows[i][2]) { cx.fillStyle = '#6b5a3e'; cx.font = 'italic 36px Ser'; cx.fillText(rows[i][2], -262, y + 44); }
     cx.restore(); }
   cx.restore();
 }
 function drawCTA(t) {
   if (t < K_SAVE - .3) return; cx.save();
   for (var i = 0; i < 4; i++) { var C = CHIPS[i], t0 = C[4](), a = back(seg(t, t0 - .05, t0 + .4)); if (a <= 0) continue; var y = 1160, w = C[3]; cx.save(); cx.globalAlpha = clamp(a * 2, 0, 1); cx.translate(C[2] + w / 2, y + 38); cx.scale(lerp(.8, 1, a), lerp(.8, 1, a));
-    var lit = (i === 3 && t > K_FOLLOW + 1.1); glassBox(-w / 2, -38, w, 76, lit ? C[1] : 'rgba(16,26,26,.8)', C[1], 28); cx.fillStyle = lit ? INK : C[1]; cx.font = '500 26px Mar'; cx.textAlign = 'center'; cx.fillText(i === 3 && lit ? 'FOLLOWING ✓' : C[0], 0, 9); cx.restore(); }
+    var lit = (i === 3 && t > K_FOLLOW + 1.1); glassBox(-w / 2, -38, w, 76, lit ? C[1] : 'rgba(16,26,26,.8)', C[1], 28); cx.fillStyle = lit ? INK : C[1]; cx.font = '500 26px Mar'; cx.textAlign = 'center'; cx.font = '500 ' + (i === 3 && lit ? 21 : 26) + 'px Mar'; cx.fillText(i === 3 && lit ? 'FOLLOWING' : C[0], 0, 8); cx.restore(); }
   // SEND: a paper plane leaves the chip
   var pf = seg(t, K_SEND + .1, K_SEND + 1.0); if (pf > 0 && pf < 1) { var e = eio(pf), px = lerp(391, 860, e), py = 1198 - Math.sin(e * Math.PI) * 420 - e * 760; cx.save(); cx.globalAlpha = 1 - pf * pf; cx.translate(px, py); cx.rotate(-.5 - e * .6); cx.fillStyle = MINT; cx.beginPath(); cx.moveTo(34, 0); cx.lineTo(-24, -20); cx.lineTo(-10, 0); cx.lineTo(-24, 20); cx.closePath(); cx.fill(); cx.restore(); }
   // COMMENT: a field types the keyword
-  var ca = back(seg(t, K_COMMENT - .05, K_COMMENT + .45)), co = 1 - sm(seg(t, K_FOLLOW - .15, K_FOLLOW + .35)); if (ca > 0 && co > .01) { cx.save(); cx.globalAlpha = clamp(ca * 2, 0, 1) * co; cx.translate(540, 905); cx.scale(lerp(.9, 1, ca), lerp(.9, 1, ca));
+  var ca = back(seg(t, K_COMMENT - .05, K_COMMENT + .45)), co = 1 - sm(seg(t, K_FOLLOW + 1.4, K_FOLLOW + 1.9)); if (ca > 0 && co > .01) { cx.save(); cx.globalAlpha = clamp(ca * 2, 0, 1) * co; cx.translate(540, 1040); cx.scale(lerp(.9, 1, ca), lerp(.9, 1, ca));
     glassBox(-384, -46, 768, 92, 'rgba(16,26,26,.86)', AMB, 46); var n = Math.floor(clamp((t - K_COMMENT - .25) / .55, 0, 1) * 7), word = 'TONIGHT'.slice(0, n);
     cx.fillStyle = PAPER; cx.font = '500 34px Mar'; cx.textAlign = 'left'; cx.fillText(word + ((Math.floor(t * 2.4) % 2 === 0 || n < 7) ? '▍' : ' '), -336, 12); cx.fillStyle = AMB; cx.font = '500 22px Mar'; cx.textAlign = 'right'; cx.fillText('POST', 340, 9); cx.restore(); }
   // FOLLOW: creator card
-  var fu = back(seg(t, K_FOLLOW - .05, K_FOLLOW + .6)); if (fu > 0) { cx.save(); cx.globalAlpha = clamp(fu * 2, 0, 1); cx.translate(540, 560); cx.scale(lerp(.8, 1, fu), lerp(.8, 1, fu));
+  var fu = back(seg(t, K_COMMENT + .3, K_COMMENT + .9)), bu = back(seg(t, K_FOLLOW - .05, K_FOLLOW + .5)); if (fu > 0) { cx.save(); cx.globalAlpha = clamp(fu * 2, 0, 1); cx.translate(540, 560); cx.scale(lerp(.8, 1, fu), lerp(.8, 1, fu));
     var pr = (t * .8) % 1; for (var k = 0; k < 2; k++) { var pp = (pr + k * .5) % 1; cx.strokeStyle = 'rgba(142,240,200,' + (.55 * (1 - pp)) + ')'; cx.lineWidth = 5; cx.beginPath(); cx.arc(0, 0, 146 + pp * 90, 0, 6.3); cx.stroke(); }
     cx.beginPath(); cx.arc(0, 0, 146, 0, 6.3); cx.fillStyle = 'rgba(142,240,200,.18)'; cx.fill(); cx.lineWidth = 9; cx.strokeStyle = MINT; cx.stroke(); cx.save(); cx.beginPath(); cx.arc(0, 0, 130, 0, 6.3); cx.clip(); if (prof.complete) cx.drawImage(prof, -130, -130, 260, 260); cx.restore();
     cx.fillStyle = PAPER; cx.font = '800 62px Man'; cx.textAlign = 'center'; cx.shadowColor = 'rgba(0,0,0,.6)'; cx.shadowBlur = 20; cx.fillText('@sandesh_explains', 0, 250); cx.shadowColor = 'transparent';
-    var pressed = t > K_FOLLOW + 1.0, bw = 360; glassBox(-bw / 2, 290, bw, 96, pressed ? MINT : TANG, pressed ? MINT : TANG, 48); cx.fillStyle = INK; cx.font = '800 40px Man'; cx.fillText(pressed ? 'FOLLOWING ✓' : 'FOLLOW', 0, 354); cx.restore(); }
+    if (bu > 0) { var pressed = t > K_FOLLOW + 1.0, bw = 360; cx.save(); cx.globalAlpha = clamp(bu * 2, 0, 1); cx.translate(0, 338); cx.scale(lerp(.8, 1, bu) * (pressed && t < K_FOLLOW + 1.15 ? .94 : 1), lerp(.8, 1, bu) * (pressed && t < K_FOLLOW + 1.15 ? .94 : 1)); glassBox(-bw / 2, -48, bw, 96, pressed ? MINT : TANG, pressed ? MINT : TANG, 48); cx.fillStyle = INK; cx.font = '800 40px Man'; cx.fillText(pressed ? 'FOLLOWING ✓' : 'FOLLOW', 0, 16); cx.restore(); } cx.restore(); }
   cx.restore();
 }
 
@@ -155,7 +155,8 @@ window.__seek = function (t) {
   var pf = t < 1.4 ? .85 : t < T_DIVE0 ? lerp(.85, .5, sm(seg(t, 1.4, 2.6))) : lerp(.5, .1, sm(seg(t, T_DIVE0, T_DIVE0 + 1.2)));
   if (t < T_MAC0 + .2) drawPanes(PW_, cW, t, pf, 1, 1.4, 1 - mixM);
   if (t >= T_MAC0 - .9 && t < T_OUT0 + .8) drawPanes(PM_, cM, t, .15, 1, 0.3, mixM * (1 - mixR));
-  if (t >= T_OUT0 - .2 && t < T_PROOF1) drawPanes(PW_, cR, t, .45, 1, 1.4, mixR * (1 - mixP));
+  if (t >= T_OUT0 - .2 && t < T_PROOF1) drawPanes(PW_, cR, t, .45, 1, 1.4, mixR * (1 - mixP), true);
+  if (t >= T_OUT0 + 1.2 && t < CLOSE[13] + .7) { var la = sm(seg(t, T_OUT0 + 1.2, T_OUT0 + 1.9)) * (1 - mixP); glassPane(690, 640 + Math.sin(t * 1.3) * 10, 400, 240, 'RSVP Meera', true, 0, la * (.88 + .12 * Math.sin(t * 7)), { u: seg(t, CLOSE[13], CLOSE[13] + .55) }); }
   // handwriting: macro page live; the small notebook in the dim room shows the finished list; the proof beat shows both notebooks
   if (RM && t >= T_MAC0 - .9 && t < T_OUT0 + .8) { cx.save(); cx.globalAlpha = mixM * (1 - mixR); drawWriting(RM, cM, true, t >= T_MAC0 - .3 && t < T_OUT0 + .4, t); cx.restore(); }
   if (RW && t >= T_OUT0 - .2 && t < T_PROOF1) { cx.save(); cx.globalAlpha = mixR * (1 - mixP); drawWriting(RW, cR, false, false, 99); cx.restore(); }

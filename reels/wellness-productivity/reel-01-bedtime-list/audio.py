@@ -70,7 +70,7 @@ sfx = np.zeros((N, 2)); acc = np.zeros((N, 2))
 for e in EV:
     k, tm = e['k'], e['t']
     if k == 'close': put(sfx, st(click(e['i']), (rng.uniform(-.5, .5))), tm, .26)
-    elif k == 'pen': put(sfx, st(scratch(max(.2, e.get('d', .7))), .15), tm, .2)
+    elif k == 'pen': put(sfx, st(scratch(max(.2, e.get('d', .7))), .15), tm, .1)
     elif k == 'strike': put(sfx, st(swish(.3, 1500, 7000), -.2), tm, .22)
     elif k == 'stamp': put(acc, st(thud(), 0), tm, .35); put(acc, st(bell(79, 1.6, .5), .1), tm + .02, .12)
     elif k == 'recap': put(sfx, st(noise_burst(.25, 700, 5000, 1, 14), 0), tm, .2)
@@ -81,10 +81,10 @@ for e in EV:
     elif k == 'type':
         for j in range(7): put(sfx, st(tick(), .1), tm + j * (e.get('d', .5) / 7), .2)
     elif k == 'press': put(acc, st(thud(), 0), tm, .22); [put(acc, st(bell(m, 1.8, .5), 0), tm + .05 + j * .09, .09) for j, m in enumerate((88, 91, 95))]
-    elif k == 'dive': put(sfx, st(swish(1.2, 300, 3000), 0), tm, .16)
-    elif k == 'macro': put(sfx, st(noise_burst(.5, 200, 1500, 1, 6), 0), tm, .12)
-    elif k == 'out': put(sfx, st(swish(1.0, 500, 2500), 0), tm, .12)
-    elif k == 'proof': put(sfx, st(swish(.9, 600, 4000), .2), tm, .12)
+    elif k == 'dive': put(sfx, st(swish(1.2, 300, 3000), 0), tm, .06)
+    elif k == 'macro': put(sfx, st(noise_burst(.5, 200, 1500, 1, 6), 0), tm, .05)
+    elif k == 'out': put(sfx, st(swish(1.0, 500, 2500), 0), tm, .05)
+    elif k == 'proof': put(sfx, st(swish(.9, 600, 4000), .2), tm, .05)
     elif k == 'quiet': put(acc, st(thud() * .6, 0), tm, .18)
 # ---------- voice ----------
 subprocess.check_call(['ffmpeg', '-y', '-loglevel', 'error', '-i', 'audio/voice.wav', '-af', 'highpass=f=70,deesser=i=0.35:m=0.5:f=0.5,equalizer=f=180:t=q:w=1.0:g=1.5,equalizer=f=3000:t=q:w=1.5:g=0.8,highshelf=f=8000:g=-1.5,acompressor=threshold=-22dB:ratio=2:attack=15:release=200:makeup=1.5', '-ar', str(SR), '-ac', '1', 'audio/voice_proc.wav'])
@@ -95,17 +95,22 @@ for w in words: act[int(max(0, w['s'] - .06) * SR):int(min(N, (w['e'] + .1) * SR
 duck = smooth(act, .03, .28); vr = rms(vo[act > 0])
 carve = lambda x, depth: x - depth * bp(x, 1200, 4500)
 mb = hp(mur * 1.0 + bed * 1.0, 35); mb = carve(mb, .4); mb = mb - (.4 * duck)[:, None] * bp(mb, 1200, 4500)
-GAP_DB, DUCK_DB = float(__import__('os').environ.get('GAP_DB', -12)), float(__import__('os').environ.get('DUCK_DB', -9))
+GAP_DB, DUCK_DB = float(__import__('os').environ.get('GAP_DB', -8)), float(__import__('os').environ.get('DUCK_DB', -12))
 mg = 10 ** (GAP_DB / 20) * vr / max(rms(mb.mean(1)), 1e-9)
-mus = mb * mg * (10 ** (DUCK_DB * duck / 20))[:, None]
-fx = (carve(sfx, .45) + carve(acc, .3)) * (vr / .2) * (10 ** (-5 * duck / 20))[:, None]
+mus = mb * mg * (10 ** ((DUCK_DB - 9 * lvl) * duck / 20))[:, None]   # the louder the murmur (more tabs open), the deeper it ducks under a word
+fx = (carve(sfx, .45) + carve(acc, .3)) * (vr / .2) * (10 ** (-10 * duck / 20))[:, None]
 mix = st(vo, 0) * np.sqrt(2) + mus + fx
-seps = []
+seps = []; named = []; FR = int(.02 * SR); bedm = (mus + fx).mean(1)
 for w in words:
     a, b2 = int(w['s'] * SR), int(w['e'] * SR)
     if b2 - a < int(.08 * SR): continue
-    seps.append(db(rms(vo[a:b2])) - db(rms((mus[a:b2] + fx[a:b2]).mean(1))))
-seps = np.array(seps); mix = np.tanh(mix * 1.1) / 1.1
+    rr = []
+    for f0 in range(a, b2 - FR, FR):   # voiced frames only (Whisper word spans include trailing silence)
+        vr_ = rms(vo[f0:f0 + FR])
+        if db(vr_) > db(vr) - 12: rr.append(db(vr_) - db(rms(bedm[f0:f0 + FR])))
+    if len(rr) < 3: continue
+    v_ = float(np.median(rr)); seps.append(v_); named.append((round(v_, 1), w['w'], round(w['s'], 2)))
+seps = np.array(seps); print('worst words:', sorted(named)[:8]); mix = np.tanh(mix * 1.1) / 1.1
 peak = np.abs(mix).max(); wavfile.write('audio/premaster.wav', SR, (mix / peak * .9 * 32767).astype('int16'))
 CH = 'acompressor=threshold=-18dB:ratio=1.8:attack=20:release=250:makeup=1.5,aresample=192000,alimiter=limit=0.7:attack=3:release=60:level=false,aresample=48000'
 m1 = subprocess.run(['ffmpeg', '-hide_banner', '-i', 'audio/premaster.wav', '-af', CH + ',loudnorm=I=-14:TP=-1:LRA=8:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr

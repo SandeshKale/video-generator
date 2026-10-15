@@ -3,8 +3,8 @@
 Then: python3 timing_from_voice.py vo/voice.wav -> timing.json."""
 import os, numpy as np, soundfile as sf
 HERE = os.path.dirname(os.path.abspath(__file__)); VO = os.path.join(HERE, '..', 'vo'); SR = 24000
-IDS = ['p1','p2a','p2b','p3','p4','p5','p6','p7','p8']
-GAP = {'p1': .35, 'p2a': .30, 'p2b': .35, 'p3': .40, 'p4': .50, 'p5': .45, 'p6': 1.30, 'p7': .55}   # silence AFTER paragraph i (p6 = muffled try-it beat)
+IDS = ['q1','q2','q3','q4','q5','q6','q7','q8']
+GAP = {'q1': .30, 'q2': .25, 'q3': .35, 'q4': .45, 'q5': .45, 'q6': .35, 'q7': .30}   # designed silence AFTER each breath group; nothing is cut or sped up
 parts = [np.zeros(int(.02 * SR), np.float32)]
 for i in IDS:
     y, sr = sf.read(os.path.join(VO, f'{i}.wav')); assert sr == SR
