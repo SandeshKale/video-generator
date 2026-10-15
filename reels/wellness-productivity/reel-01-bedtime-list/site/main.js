@@ -64,15 +64,21 @@ function drawWriting(A, c, big, showPen, t) {
 }
 
 // ---------- panes ----------
+var PCACHE = {};   // pane sprites are rendered once per (title, size, quantised blur, closed?) and reused: per-frame canvas blur filters were ~8 s/frame
+function paneSprite(w, h, title, blur, closed) {
+  var bq = Math.round(blur / 2) * 2, key = title + '|' + Math.round(w) + '|' + Math.round(h) + '|' + bq + '|' + (closed ? 1 : 0); if (PCACHE[key]) return PCACHE[key];
+  var pad = Math.ceil(bq * 2.6 + 10), cw = Math.ceil(w + 2 * pad), ch = Math.ceil(h + 2 * pad), A = document.createElement('canvas'); A.width = cw; A.height = ch; var c = A.getContext('2d');
+  c.translate(cw / 2, ch / 2); var col = closed ? MINT : TANG; c.beginPath(); var r = 22; c.moveTo(-w / 2 + r, -h / 2); c.arcTo(w / 2, -h / 2, w / 2, h / 2, r); c.arcTo(w / 2, h / 2, -w / 2, h / 2, r); c.arcTo(-w / 2, h / 2, -w / 2, -h / 2, r); c.arcTo(-w / 2, -h / 2, w / 2, -h / 2, r); c.closePath();
+  var g = c.createLinearGradient(0, -h / 2, 0, h / 2); g.addColorStop(0, closed ? 'rgba(142,240,200,.34)' : 'rgba(255,150,70,.34)'); g.addColorStop(1, closed ? 'rgba(142,240,200,.10)' : 'rgba(255,122,26,.10)'); c.fillStyle = g; c.fill(); c.lineWidth = 3; c.strokeStyle = col; c.globalAlpha = .95; c.stroke(); c.globalAlpha = 1;
+  c.fillStyle = col; for (var d = 0; d < 3; d++) { c.beginPath(); c.arc(-w / 2 + 28 + d * 20, -h / 2 + 26, 5, 0, 6.3); c.fill(); }
+  c.fillStyle = '#ffe9d2'; c.font = '500 ' + Math.round(h * .19) + 'px Mar'; c.textAlign = 'center'; c.fillText(closed ? '✓ done' : title, 0, h * .12);
+  if (!closed) { c.fillStyle = '#ff5a4f'; c.beginPath(); c.arc(w / 2 - 22, -h / 2 + 24, 11, 0, 6.3); c.fill(); c.fillStyle = '#fff'; c.font = '800 15px Man'; c.fillText('!', w / 2 - 22, -h / 2 + 30); }
+  if (bq < 1) return PCACHE[key] = A;
+  var B = document.createElement('canvas'); B.width = cw; B.height = ch; var bc = B.getContext('2d'); bc.filter = 'blur(' + bq + 'px)'; bc.drawImage(A, 0, 0); return PCACHE[key] = B;
+}
 function glassPane(x, y, w, h, title, open, blur, alpha, close) {
-  var a = alpha * (1 - close.u); if (a <= .01) return; var sc = lerp(1, .82, close.u), yy = y - 40 * close.u;
-  cx.save(); cx.globalAlpha = a; if (blur > .5) cx.filter = 'blur(' + blur.toFixed(1) + 'px)'; cx.translate(x, yy); cx.scale(sc, sc);
-  var col = close.u > 0 ? MINT : TANG; cx.beginPath(); var r = 22; cx.moveTo(-w / 2 + r, -h / 2); cx.arcTo(w / 2, -h / 2, w / 2, h / 2, r); cx.arcTo(w / 2, h / 2, -w / 2, h / 2, r); cx.arcTo(-w / 2, h / 2, -w / 2, -h / 2, r); cx.arcTo(-w / 2, -h / 2, w / 2, -h / 2, r); cx.closePath();
-  var g = cx.createLinearGradient(0, -h / 2, 0, h / 2); g.addColorStop(0, close.u > 0 ? 'rgba(142,240,200,.34)' : 'rgba(255,150,70,.34)'); g.addColorStop(1, close.u > 0 ? 'rgba(142,240,200,.10)' : 'rgba(255,122,26,.10)'); cx.fillStyle = g; cx.fill(); cx.lineWidth = 3; cx.strokeStyle = col; cx.globalAlpha = a * .95; cx.stroke(); cx.globalAlpha = a;
-  cx.fillStyle = col; for (var d = 0; d < 3; d++) { cx.beginPath(); cx.arc(-w / 2 + 28 + d * 20, -h / 2 + 26, 5, 0, 6.3); cx.fill(); }
-  cx.fillStyle = '#ffe9d2'; cx.font = '500 ' + Math.round(h * .19) + 'px Mar'; cx.textAlign = 'center'; cx.fillText(close.u > 0 ? '✓ done' : title, 0, h * .12);
-  if (close.u === 0) { cx.fillStyle = '#ff5a4f'; cx.beginPath(); cx.arc(w / 2 - 22, -h / 2 + 24, 11, 0, 6.3); cx.fill(); cx.fillStyle = '#fff'; cx.font = '800 15px Man'; cx.fillText('!', w / 2 - 22, -h / 2 + 30); }
-  cx.restore();
+  var a = alpha * (1 - close.u); if (a <= .01) return; var sc = lerp(1, .82, close.u), yy = y - 40 * close.u, S = paneSprite(w, h, title, blur, close.u > 0);
+  cx.save(); cx.globalAlpha = a; cx.translate(x, yy); cx.scale(sc, sc); cx.drawImage(S, -S.width / 2, -S.height / 2); cx.restore();
 }
 function drawPanes(set, c, t, focusN, scale, kPar, vis, skip13) {
   for (var i = 0; i < 14; i++) { if (skip13 && i === 13) continue; var P = set[i], tc = CLOSE[i], cu = seg(t, tc, tc + .55); if (t > tc + .6) continue;
