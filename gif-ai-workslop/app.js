@@ -152,5 +152,5 @@ window.__seek = function (tt) {
   var off = (t / DUR) * TW * 4; tick.forEach(function (g, q2) { var x = mod(40 + q2 * TW - off + 520, TW * 4) - 520; g.setAttribute('transform', 'translate(' + x.toFixed(1) + ',0)'); });
 };
 window.__reelDurationSec = DUR; window.__ready = false; window.__seek(0);
-Promise.all([document.fonts.load('900 40px FR'), document.fonts.load('600 20px PM'), document.fonts.load('600 20px IN'), document.fonts.load('700 20px IN')]).then(function () { window.__seek(0); window.__ready = true; });
+Promise.all([document.fonts.load('900 40px FR'), document.fonts.load('600 20px PM'), document.fonts.load('600 20px IN'), document.fonts.load('700 20px IN')]).catch(function () {}).then(function () { window.__seek(0); window.__ready = true; });
 })();
