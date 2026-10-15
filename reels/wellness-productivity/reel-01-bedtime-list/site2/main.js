@@ -24,7 +24,7 @@ var HOME = TASKS.map(function (_, i) { var r = Math.floor(i / 4), c = i % 4; ret
 var GRAV = 6200, DROP_H = 900;
 
 // ---------- timeline derived from the voice ----------
-var T_DROP0 = .12, DROP_STEP = .3, T_NB = K.grab - .35, T_PEN = K.grab + .35;
+var DT = [.25, 1.05, 1.85, 2.75, 3.65, 4.55, 5.5, 6.45], T_NB = K.grab - .35, T_PEN = K.grab + .35;
 var STEP_W = Math.max(.42, (K.hangEnd - K.write) / 8.3), TW = [], TWD = Math.min(.44, STEP_W * .86);
 for (var i = 0; i < NCARD; i++) TW[i] = K.write + i * STEP_W;
 var T_QUIET = K.quiet - .3, T_P0 = K.lab - 1.3, T_P1 = T_P0 + 1.2, T_CL0 = K.save - 1.5, T_CL1 = T_CL0 + 1.0;
@@ -48,7 +48,7 @@ function wrapText(txt, maxw) { var w = txt.split(' '), lines = [], cur = ''; for
 function dropH(tau) { var Tf = Math.sqrt(2 * DROP_H / GRAV); if (tau < 0) return DROP_H; if (tau < Tf) return DROP_H - .5 * GRAV * tau * tau;
   var v1 = GRAV * Tf * .3, t2 = tau - Tf, T2 = 2 * v1 / GRAV; if (t2 < T2) return v1 * t2 - .5 * GRAV * t2 * t2; var v2 = v1 * .3, t3 = t2 - T2, T3 = 2 * v2 / GRAV; return t3 < T3 ? v2 * t3 - .5 * GRAV * t3 * t3 : 0; }
 function cardState(i, t) {
-  var H0 = HOME[i], t0 = T_DROP0 + i * DROP_STEP, tau = t - t0, h = dropH(tau), s = {}; s.x = H0.x; s.y = H0.y; s.rot = H0.rot; s.alpha = clamp(tau / .05, 0, 1); s.h = h; s.sc = 1 + h / 1500; s.rot += Math.sin(tau * 9) * .03 * clamp(h / 300, 0, 1);
+  var H0 = HOME[i], t0 = DT[i], tau = t - t0, h = dropH(tau), s = {}; s.x = H0.x; s.y = H0.y; s.rot = H0.rot; s.alpha = clamp(tau / .05, 0, 1); s.h = h; s.sc = 1 + h / 1500; s.rot += Math.sin(tau * 9) * .03 * clamp(h / 300, 0, 1);
   var tl = TW[i] - .06, u = t - tl; if (u > 0) { var lift = sm(u / .16) * 62; s.h = lift; s.sc = 1 + lift / 700; var f = (u - .2) / .5; if (f > 0) { var d = ein(f) * 1500; s.x += d * .52; s.y -= d * .85; s.rot += f * f * .9; s.h = lift + f * 30; if (f > 1) s.gone = true; } }
   s.landed = tau > Math.sqrt(2 * DROP_H / GRAV); return s;
 }
@@ -104,8 +104,8 @@ function penState(t) {
     if (t < S.a) { var A1 = prevEnd, B1 = W_(st), u2 = eio(seg(t, prevT, S.a)); res = { x: lerp(A1.x, B1.x, u2), y: lerp(A1.y, B1.y, u2), h: Math.sin(u2 * Math.PI) * 16, hover: true }; break; }
     if (t <= S.b) { var pr = sm(seg(t, S.a, S.b)), tl = penTipLocal(S.i, pr), w = W_(tl); res = { x: w.x, y: w.y + Math.sin(t * 31) * 1.1, h: 0 }; break; }
     prevEnd = W_(en); prevT = S.b; }
-  if (!res) { var tr = prevT + 1.0; if (t < tr) { var u3 = eio(seg(t, prevT, tr)); var rl = { x: NB.w / 2 - 110, y: LY0 + 5.5 * PITCH }; var Wr = W_(rl); res = { x: lerp(prevEnd.x, Wr.x, u3), y: lerp(prevEnd.y, Wr.y, u3), h: Math.sin(u3 * Math.PI) * 26 }; out.ang = lerp(wAng, -.5, u3); out.x = res.x; out.y = res.y; out.h = res.h; return out; }
-    var rl2 = W_({ x: NB.w / 2 - 110, y: LY0 + 5.5 * PITCH }); out.x = rl2.x; out.y = rl2.y; out.ang = -.5 + A.rot * 0; out.h = 0; return out; }
+  if (!res) { var tr = prevT + 1.0; if (t < tr) { var u3 = eio(seg(t, prevT, tr)); var rl = { x: -300, y: 330 }; var Wr = W_(rl); res = { x: lerp(prevEnd.x, Wr.x, u3), y: lerp(prevEnd.y, Wr.y, u3), h: Math.sin(u3 * Math.PI) * 26 }; out.ang = lerp(wAng, -.14, u3); out.x = res.x; out.y = res.y; out.h = res.h; return out; }
+    var rl2 = W_({ x: -300, y: 330 }); out.x = rl2.x; out.y = rl2.y; out.ang = -.14; out.h = 0; return out; }
   out.x = res.x; out.y = res.y; out.h = res.h; out.ang = wAng; return out;
 }
 function drawPen(t) {
@@ -186,14 +186,14 @@ window.__seek = function (t) {
   drawProof(t); drawRecap(t); drawCTA(t);
   // overlays
   var hl = $('hl'); var ho = 1 - sm(seg(t, K.grab - .6, K.grab)); hl.style.opacity = ho; hl.style.transform = 'translateY(' + (-24 * (1 - ho)) + 'px)';
-  var st = t < K.grab ? null : t < K.write ? '1/3 · PEN + PAPER' : t < K.dont ? '2/3 · WRITE EVERYTHING' : t < K.unf ? '3/3 · BE SPECIFIC' : null, stE = $('step'); stE.textContent = st ? 'STEP ' + st : ''; stE.style.opacity = st ? sm(seg(t, st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont, (st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont) + .3)) : 0;
-  var n = 0; for (var k = 0; k < NCARD; k++) { var tl = T_DROP0 + k * DROP_STEP + .55; if (t >= tl && t < TW[k] + .35) n++; } var oe = $('open'); oe.textContent = n + ' OPEN LOOPS'; oe.style.color = (n || t < K.write) ? TANG : MINT; oe.style.borderColor = oe.style.color; oe.style.opacity = t < T_P0 ? 1 : 1 - seg(t, T_P0, T_P0 + .4);
+  var st = t < K.grab ? null : t < K.write ? '1/3 · PEN + PAPER' : t < K.dont ? '2/3 · WRITE IT ALL' : t < K.unf ? '3/3 · BE SPECIFIC' : null, stE = $('step'); stE.textContent = st ? 'STEP ' + st : ''; stE.style.opacity = st ? sm(seg(t, st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont, (st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont) + .3)) : 0;
+  var n = 0; for (var k = 0; k < NCARD; k++) { var tl = DT[k] + .55; if (t >= tl && t < TW[k] + .35) n++; } var oe = $('open'); oe.textContent = n + ' OPEN LOOPS'; oe.style.color = (n || t < K.write) ? TANG : MINT; oe.style.borderColor = oe.style.color; oe.style.opacity = t < T_P0 ? 1 : 1 - seg(t, T_P0, T_P0 + .4);
   var il = $('ill'); il.style.opacity = sm(seg(t, K.dont, K.dont + .4)) * (1 - sm(seg(t, K.c2End, K.c2End + .4)));
   var ce = $('catch'); ce.style.opacity = sm(seg(t, K.only, K.only + .5)) * (1 - sm(seg(t, T_CL0, T_CL0 + .4))); ce.style.transform = 'translateY(' + (1 - sm(seg(t, K.only, K.only + .5))) * 20 + 'px)';
   var c2 = ''; (TM.caps || []).forEach(function (cc) { if (t >= cc[0] && t < cc[1]) c2 = cc[2]; }); var capE = $('cap'); capE.textContent = c2; capE.style.opacity = c2 ? 1 : 0;
   return Promise.resolve();
 };
-window.EV = (function () { var e = []; for (var i = 0; i < NCARD; i++) { var t0 = T_DROP0 + i * DROP_STEP; e.push({ t: t0 + Math.sqrt(2 * DROP_H / GRAV), k: 'drop', i: i }); e.push({ t: TW[i] - .06, k: 'lift', i: i }); e.push({ t: TW[i] + .16, k: 'flick', i: i }); e.push({ t: TW[i], k: 'pen', d: TWD, i: i }); }
+window.EV = (function () { var e = []; for (var i = 0; i < NCARD; i++) { var t0 = DT[i]; e.push({ t: t0 + Math.sqrt(2 * DROP_H / GRAV), k: 'drop', i: i }); e.push({ t: TW[i] - .06, k: 'lift', i: i }); e.push({ t: TW[i] + .16, k: 'flick', i: i }); e.push({ t: TW[i], k: 'pen', d: TWD, i: i }); }
   e.push({ t: T_NB, k: 'slide' }, { t: T_PEN, k: 'pickup' }, { t: K.dont, k: 'marker' }, { t: K.taxes, k: 'strike' }, { t: K.next, k: 'pen', d: Math.max(.9, K.ten - K.next + .2), i: 8 }, { t: K.ten + .1, k: 'tick' }, { t: T_QUIET, k: 'quiet' }, { t: T_P0, k: 'rise' }, { t: K.faster - .3, k: 'bars' }, { t: K.faster, k: 'stamp' },
     { t: K.fifty - .3, k: 'dots' }, { t: T_CL0, k: 'clear' }, { t: K.save - .3, k: 'recap' }, { t: K.save, k: 'chip', n: 0 }, { t: K.send, k: 'chip', n: 1 }, { t: K.send + .1, k: 'swoosh' }, { t: K.comment, k: 'chip', n: 2 }, { t: K.comment + .25, k: 'type', d: .55 }, { t: K.follow, k: 'chip', n: 3 }, { t: K.follow + 1.0, k: 'press' }); return e; })();
 // pen speed/height sampled at 100 Hz from the same function that draws the pen, so the scratch sound follows the motion exactly

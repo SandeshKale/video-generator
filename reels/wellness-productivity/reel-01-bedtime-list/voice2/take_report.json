@@ -1,0 +1,65 @@
+{
+ "best": {
+  "c1": "c1_s1.wav",
+  "c2": "c2_s1.wav",
+  "c3": "c3_s1.wav",
+  "c4": "c4_s1.wav",
+  "c5": "c5_s1.wav"
+ },
+ "rows": {
+  "c1": [
+   {
+    "take": "c1_s1.wav",
+    "flow": [],
+    "sim": 0.961,
+    "rate": 3.38,
+    "dur": 8.2,
+    "heard": "It's one in the morning, you're exhausted, and your brain is still running about a hundred tabs.  Here's a five-minute fix with actual science behind it."
+   }
+  ],
+  "c2": [
+   {
+    "take": "c2_s1.wav",
+    "flow": [],
+    "sim": 0.937,
+    "rate": 3.37,
+    "dur": 8.59,
+    "heard": "Grab a pen and paper and write down everything that's still hanging over you.  But don't just write taxes. Write the next step. Call the accountant at 10."
+   }
+  ],
+  "c3": [
+   {
+    "take": "c3_s1.wav",
+    "flow": [],
+    "sim": 0.957,
+    "rate": 3.48,
+    "dur": 14.06,
+    "heard": "Unfinished things keep looping in your head, and a specific plan is what quiets them down.  In a sleep lab, people who wrote a to-do list fell asleep faster than people who listed what  they'd already done, and the more specific the list, the faster they went."
+   }
+  ],
+  "c4": [
+   {
+    "take": "c4_s1.wav",
+    "flow": [
+     "transcript 0.06"
+    ],
+    "sim": 0.934,
+    "rate": 3.79,
+    "dur": 4.28,
+    "heard": "It was on 57 healthy adults, so try it as an experiment, not a cure."
+   }
+  ],
+  "c5": [
+   {
+    "take": "c5_s1.wav",
+    "flow": [
+     "transcript 0.07"
+    ],
+    "sim": 0.971,
+    "rate": 3.61,
+    "dur": 7.79,
+    "heard": "Save this for tonight, send it to someone who's always up at 2 AM, and comment tonight for the printable list.  Follow for more hacks like this."
+   }
+  ]
+ }
+}

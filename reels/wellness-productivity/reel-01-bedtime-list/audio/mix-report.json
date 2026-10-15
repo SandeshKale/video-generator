@@ -1,15 +1,13 @@
 {
  "integrated_LUFS": -14.0,
- "true_peak_dBTP": -1.5,
- "loudness_range_LU": 2.4,
+ "true_peak_dBTP": -2.4,
+ "loudness_range_LU": 2.1,
  "voice_over_bed+sfx_dB_per_word": {
-  "median": 28.3,
-  "p10": 22.9,
-  "min": 15.9,
-  "words": 99
+  "median": 24.8,
+  "p10": 17.4,
+  "min": 13.6,
+  "words": 145
  },
- "bed_gap_vs_voice_dB": -8.0,
- "bed_duck_while_speaking_dB": -12.0,
- "murmur": "six formant-noise whisper voices, level = f(open tabs, 14 -> 0)",
- "targets": "median >= 19, min >= 13 (standing rule)"
+ "music": "66 BPM F major; bars aligned to story cues (build bar 2, quiet bar 6, proof bar 7)",
+ "targets": "median >= 19, min >= 13"
 }

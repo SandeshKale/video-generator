@@ -43,7 +43,7 @@ BPM = 66; BEAT = 60 / BPM; BAR = 4 * BEAT; T0 = 0.0
 def bar_at(t): return int(round((t - T0) / BAR))
 def tb(b): return T0 + b * BAR                       # bar index -> time
 slide, quiet, rise, clear, recap = first('slide', 9), first('quiet', 24), first('rise', 26), first('clear', 36), first('recap', 36)
-B_BUILD, B_QUIET, B_PROOF, B_CLEAR = bar_at(slide), bar_at(quiet), bar_at(rise), bar_at(clear)
+B_BUILD, B_QUIET, B_CLEAR = bar_at(slide), bar_at(quiet), bar_at(clear); B_PROOF = max(bar_at(rise), B_QUIET + 1)
 NB = int((DUR + .3) / BAR) + 2
 # ---------- instruments ----------
 def rhodes(m, d, g=.12):
@@ -163,7 +163,7 @@ act = np.zeros(N)
 for w in words: act[int(max(0, w['s'] - .06) * SR):int(min(N, (w['e'] + .1) * SR))] = 1
 duck = smooth(act, .03, .28); vr = rms(vo[act > 0]); carve = lambda x, d: x - d * bp(x, 1200, 4500)
 bus = hp(musbus + mur * .5, 35); bus = carve(bus, .35); bus = bus - (.35 * duck)[:, None] * bp(bus, 1200, 4500)
-GAP_DB, DUCK_DB = float(os.environ.get('GAP_DB', -9)), float(os.environ.get('DUCK_DB', -8))
+GAP_DB, DUCK_DB = float(os.environ.get('GAP_DB', -9)), float(os.environ.get('DUCK_DB', -15))
 mg = 10 ** (GAP_DB / 20) * vr / max(rms(bus.mean(1)), 1e-9); mus = bus * mg * (10 ** (DUCK_DB * duck / 20))[:, None]
 tail = np.clip((np.arange(N) / SR - (words[-1]['e'] + .3)) / .8, 0, 1); mus *= (10 ** (4.0 * tail / 20))[:, None]                       # the bed swells once the voice stops
 fx = (carve(sfx, .3) + carve(acc, .2)) * (vr / .2) * (10 ** (-6 * duck / 20))[:, None]
