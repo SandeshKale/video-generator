@@ -135,6 +135,11 @@ function drawLight(t) {
   g.save(); g.globalCompositeOperation = 'multiply'; var gr = g.createRadialGradient(300, 560, 40, 300, 560, R); gr.addColorStop(0, 'rgb(255,236,205)'); gr.addColorStop(.35, 'rgb(205,185,160)'); gr.addColorStop(1, 'rgb(' + Math.round(255 * (1 - a) * .55) + ',' + Math.round(255 * (1 - a) * .62) + ',' + Math.round(255 * (1 - a) * .62) + ')'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
   g.globalCompositeOperation = 'screen'; var wm = g.createRadialGradient(240, 460, 20, 240, 460, 900); wm.addColorStop(0, 'rgba(255,170,80,.20)'); wm.addColorStop(1, 'rgba(255,170,80,0)'); g.fillStyle = wm; g.fillRect(0, 0, W, H); g.restore();
 }
+// moonlight through swaying blinds: soft diagonal stripes drifting slowly across the desk (window is off-frame upper right); gets stronger as the lamp pool shrinks
+function drawBlinds(t) {
+  var q = sm(seg(t, T_QUIET, T_QUIET + 1.6)), amp = lerp(.10, .17, q), per = 120, off = (t * 46) % per; g.save(); g.globalCompositeOperation = 'screen'; g.beginPath(); g.rect(0, 0, W, H); g.clip();
+  var mk = g.createLinearGradient(W, 0, 0, H * .9); mk.addColorStop(0, 'rgba(150,185,255,' + amp + ')'); mk.addColorStop(.55, 'rgba(150,185,255,' + amp * .55 + ')'); mk.addColorStop(1, 'rgba(150,185,255,0)'); g.fillStyle = mk;
+  for (var x = -H; x < W + H; x += per) { var xx = x + off; g.beginPath(); g.moveTo(xx, 0); g.lineTo(xx + 56, 0); g.lineTo(xx + 56 - H * .55, H); g.lineTo(xx - H * .55, H); g.closePath(); g.fill(); } g.restore(); }
 function drawDesk() { var s = CAM.s, P = worldPt(-600, -1000); g.drawImage(DESK, P[0], P[1], 2400 * s, 4000 * s); }
 
 // sleep-lab trace (polysomnography-style): slow waves take over sooner for the to-do group. Illustrative shapes, not data.
