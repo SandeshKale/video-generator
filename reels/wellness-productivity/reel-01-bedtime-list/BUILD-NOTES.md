@@ -1,19 +1,20 @@
-# Hack Zone #01 "Brain won't switch off? Write this." — build notes (15 Oct 2026)
+# Hack Zone #01 "Brain won't switch off? Write this." — v2 build notes (15 Oct 2026)
 
-**Files:** `reel.mp4` (1080×1920@60, 50.07 s, CRF 25, 10.7 MB), `cover.png`, `caption.md`, `deliverables/printable-list-{A5,phone}.pdf`, `dm-prompt.md`, `script.md` (approved brief), `site/` (page), `voice/`, `audio.py`, `timing_from_voice.py`, `check.mjs`, `cover-build.mjs`, `printable-build.mjs`, `blender/` (see below).
+**Files:** `reel.mp4` (1080x1920@60, 47.1 s, CRF 22, 7.2 MB), `cover.png` (sticky-note desk), `caption.md`, `deliverables/printable-list-{A5,phone}.pdf`, `dm-prompt.md`, `script.md` (v2 script and design), `site/` (page), `voice2/` (OmniVoice generation, picker, assembler), `audio2.py` (score + SFX + mix), `timing_from_voice2.py`, `tools/events.mjs`, `check.mjs`, `cover-build.mjs`, `printable-build.mjs`.
 
-**Pipeline:** Qwen3-TTS ICL clone (3 seeds × 8 breath-group takes) → `voice/pick2.py` flow check (all 8 picks pass) → `voice/assemble2.py` (designed silences only) → `timing_from_voice.py` (word times, cue times, caption chunks → `site/timing.js`) → page (every time derives from the cues) → `tools/events.mjs` (page's own cue list) → `audio.py` → 3 render slices → concat + mux.
+**What changed after the "pathetic output" feedback**
+1. Voice: OmniVoice (k2-fsa/OmniVoice) zero-shot cloned from the Adam voice (Kokoro `am_adam` reference clip), reading ONE paragraph as 5 whole takes (2 seeds each); flow check + closest-to-Adam pick. Similarity to the reference 0.93-0.97. 44.4 s read at ~3.4 words/s.
+2. Script: rewritten as a single flowing paragraph (see script.md).
+3. Visuals: rebuilt as a coherent top-down desk (one camera, one lamp, consistent shadows) with physical motion: gravity drops with one bounce, sliding with friction, lift-and-flick, the pen carried and writing at its real speed, a camera rise for the comparison, desk clearing, recap note dropping. Canvas 2D, pure function of t. Old WebGL/Blender plate version removed (history keeps it).
+4. Music and SFX: new composed score (66 BPM, F major) with bars aligned to story cues, motion-driven physical SFX and CC0 UI samples (`audio2.py`).
 
-**New this reel:** (1) the murmur bed is a pure function of the open-tab count (14 → 0), so the audio is the argument; (2) one continuous camera over four Blender plates (wide warm, macro page, wide dim, proof) cross-faded with the camera path, no cuts; (3) handwriting registered to the Blender page by projected ruled-line anchors; (4) 57 dots fill while "fifty-seven healthy adults" is spoken; (5) pane sprites cached (per-frame canvas blur was ~8 s/frame).
+**Measured:** `check.mjs` 0 DOM issues; contact sheets (screenshots at 30+ times) and 18 frames of the final MP4 including the slice join at 24 s; mix -14.0 LUFS, -2.6 dBTP, voice over bed+SFX median 27.9 dB, minimum 13.6 dB (voiced frames, targets 19/13). **Not auditioned by ear** (voice, score, SFX): please listen before posting.
 
-**Measured:** `check.mjs` 0 DOM issues; `change-cadence` 0 stretches over 2 s (held visuals kept; ambient light band, idle pen drift, marker highlight, 57 dots); contact sheets at full size plus 16 frames of the final MP4 incl. both slice joins (12.5 s, 25 s) and all phases. Mix: −14.0 LUFS, −1.5 dBTP, voice over bed median 28.3 dB, min 15.9 dB (voiced frames; not auditioned).
+**Known gaps (stated, not hidden)**
+- `change-cadence` still flags 7 stretches of 2.25-6 s: the visuals in them are deliberate holds or small motions (pen writing, the thought-loop, the sleep-lab traces, dots, a pulsing bookmark, confetti) that fall under the checker's whole-frame threshold. A full-frame stripe overlay passed the threshold but made the picture messy, so it was removed.
+- Runtime 47 s (the ~38 s plan was set before the voice read slower/longer as a paragraph).
+- "Adam" was interpreted as the Kokoro `am_adam` voice used on earlier reels; if a different Adam voice is meant, swap `voice2/ref_adam.wav` and re-run `voice2/gen.py`.
+- Disk: the RealVisXL weights (6.9 GB) and the Qwen3-TTS cache were removed from the HF cache to fit OmniVoice (3.3 GB); they re-download on demand.
+- Sticky "8 OPEN LOOPS" counter is literal (8 notes) while the voice says "a hundred tabs" as a figure of speech.
 
-**Deviations from the approved brief (say these out loud):**
-- **Runtime 50.1 s, not ~38 s.** The cloned read is a calm ~2.1 words/s and no tempo change is allowed, so 95 words became 46.9 s of speech. Cutting the script (e.g. drop "Five minutes.") would need new takes.
-- `pick2.py` thresholds relaxed for this voice: speaking-rate floor 1.9 words/s (was 2.3), pauses after a sentence end allowed up to 1.0 s, clipped-onset check dropped (voice starts at 0.00 s on purpose).
-- No photoreal AI still / depth-parallax family (the plates are Blender renders with a depth pass); families used: Blender 3D, bespoke DOM/canvas objects (tabs, recap, CTA), deterministic handwriting, kinetic type + captions, real-footage dust overlay, creator photo, printable PDF, audio family (murmur, SFX, cloned voice) = 8.
-- rough.js strokes were not used (the strike-through is drawn in canvas).
-
-**Not validated:** voice and mix not auditioned by ear; DM links in `dm-prompt.md` are placeholders; hashtag post counts not checked in the app.
-
-**Pitfalls hit:** the first picker run rejected 7/8 takes on thresholds tuned for a faster voice; the first-quarter render crawled at ~8 s/frame until pane sprites were cached; `sed` on `os.environ.get(...)` did not match the `__import__('os')` spelling (check a replacement actually changed the file); 1080×1920 plates made each frame ~2 s in swiftshader (50 s reel ≈ 1 h with 2 slices).
+**Pitfalls hit:** the HF xet download stalled at 1.8 GB (fix: `HF_HUB_DISABLE_XET=1`); a `sed` on `os.environ.get(...)` silently did not match; the per-frame canvas blur had cost 8 s/frame (cache the sprites); `jiwer`/`faster-whisper` live in `/tmp/qwenenv`, OmniVoice in `/tmp/ttsenv`; an empty `#cap` pill rendered as a dark blob until opacity was set.
