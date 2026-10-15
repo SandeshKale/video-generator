@@ -1,0 +1,376 @@
+{
+ "q1": [
+  {
+   "flow": [
+    "transcript",
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.091,
+   "sim": 0.89,
+   "floor_db": -49.1,
+   "dur": 4.88,
+   "accent": 0.195,
+   "accent_top": "indian",
+   "score": 61.788,
+   "heard": "brain still running a hundred taps here's a five minute fix"
+  },
+  {
+   "flow": [
+    "transcript",
+    "pause 0.68@taps."
+   ],
+   "take": "iclAB2",
+   "wer": 0.091,
+   "sim": 0.896,
+   "floor_db": -46.4,
+   "dur": 4.96,
+   "accent": 0.245,
+   "accent_top": "indian",
+   "score": 61.74,
+   "heard": "Brain still running a hundred taps. Here's a five minute fix."
+  },
+  {
+   "flow": [
+    "transcript"
+   ],
+   "take": "iclAB3",
+   "wer": 0.091,
+   "sim": 0.885,
+   "floor_db": -43.9,
+   "dur": 5.12,
+   "accent": 0.421,
+   "accent_top": "indian",
+   "score": 56.989,
+   "heard": "brain still running a hundred taps here's a five minute fix"
+  }
+ ],
+ "q2": [
+  {
+   "flow": [
+    "pause 0.94@1.",
+    "pause 0.84@paper.",
+    "pause 0.88@2.",
+    "rate 1.82",
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.923,
+   "floor_db": -58.7,
+   "dur": 8.16,
+   "accent": 0.201,
+   "accent_top": "indian",
+   "score": 75.619,
+   "heard": "1. Pen and paper. 5 minutes. 2. Write down everything still hanging over you."
+  },
+  {
+   "flow": [
+    "transcript",
+    "rate 2.08",
+    "clipped-onset"
+   ],
+   "take": "iclAB2",
+   "wer": 0.071,
+   "sim": 0.913,
+   "floor_db": -62.0,
+   "dur": 7.44,
+   "accent": 0.323,
+   "accent_top": "indian",
+   "score": 66.413,
+   "heard": "one pen and paper five minutes to write down everything still hanging over you"
+  },
+  {
+   "flow": [
+    "rate 2.14"
+   ],
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.941,
+   "floor_db": -41.2,
+   "dur": 6.64,
+   "accent": 0.327,
+   "accent_top": "indian",
+   "score": 56.043,
+   "heard": "1 pen and paper 5 minutes 2 write down everything still hanging over you"
+  }
+ ],
+ "q3": [
+  {
+   "flow": [
+    "transcript",
+    "pause 0.82@specific,",
+    "pause 0.88@taxes.",
+    "pause 0.60@accountant.",
+    "rate 1.66",
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.182,
+   "sim": 0.933,
+   "floor_db": -51.1,
+   "dur": 6.56,
+   "accent": 0.457,
+   "accent_top": "indian",
+   "score": 82.357,
+   "heard": "3. Be specific, not taxes. Call the accountant. 10 am."
+  },
+  {
+   "flow": [
+    "rate 1.92"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.935,
+   "floor_db": -58.5,
+   "dur": 5.92,
+   "accent": 0.454,
+   "accent_top": "indian",
+   "score": 55.521,
+   "heard": "three be specific not taxes call the accountant 10 a.m."
+  },
+  {
+   "flow": [
+    "pause 0.66@3.",
+    "pause 0.72@specific,",
+    "pause 0.90@taxes.",
+    "rate 1.50"
+   ],
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.95,
+   "floor_db": -54.2,
+   "dur": 7.44,
+   "accent": 0.384,
+   "accent_top": "indian",
+   "score": 70.399,
+   "heard": "3. Be specific, not taxes. Call the accountant 10 a.m."
+  }
+ ],
+ "q4": [
+  {
+   "flow": [
+    "rate 2.15",
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.905,
+   "floor_db": -53.7,
+   "dur": 5.68,
+   "accent": -0.047,
+   "accent_top": "us",
+   "score": 65.683,
+   "heard": "Unfinished things keep looping. A specific plan can quiet the loop."
+  },
+  {
+   "flow": [
+    "rate 2.09"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.909,
+   "floor_db": -55.9,
+   "dur": 5.68,
+   "accent": 0.3,
+   "accent_top": "indian",
+   "score": 55.727,
+   "heard": "Unfinished things keep looping. A specific plan can quiet the loop."
+  },
+  {
+   "flow": [],
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.921,
+   "floor_db": -36.7,
+   "dur": 5.04,
+   "accent": 0.275,
+   "accent_top": "indian",
+   "score": 1.881,
+   "heard": "unfinished things keep looping a specific plan can quiet the loop"
+  }
+ ],
+ "q5": [
+  {
+   "flow": [
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.89,
+   "floor_db": -45.6,
+   "dur": 8.4,
+   "accent": 0.284,
+   "accent_top": "indian",
+   "score": 55.876,
+   "heard": "In a sleep lab to-do lists beat done lists people fell asleep faster the more specific the list the faster"
+  },
+  {
+   "flow": [
+    "pause 0.68@lists,",
+    "pause 0.56@lists,",
+    "pause 0.80@faster.",
+    "rate 2.15"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.909,
+   "floor_db": -51.6,
+   "dur": 10.0,
+   "accent": 0.282,
+   "accent_top": "indian",
+   "score": 70.728,
+   "heard": "In a sleep lab, to-do lists, beat, done lists, people fell asleep faster.  The more specific the list, the faster."
+  },
+  {
+   "flow": [
+    "pause 0.86@lists,",
+    "pause 0.62@faster.",
+    "rate 2.30",
+    "clipped-onset"
+   ],
+   "take": "iclAB3",
+   "wer": 0.0,
+   "sim": 0.928,
+   "floor_db": -44.6,
+   "dur": 9.76,
+   "accent": 0.329,
+   "accent_top": "indian",
+   "score": 70.628,
+   "heard": "in a sleep lab to do lists, beat, done lists, people fell asleep faster.  The more specific the list, the faster."
+  }
+ ],
+ "q6": [
+  {
+   "flow": [
+    "rate 2.08"
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.92,
+   "floor_db": -37.3,
+   "dur": 3.92,
+   "accent": 0.374,
+   "accent_top": "indian",
+   "score": 56.802,
+   "heard": "the catch one study 57 healthy adults"
+  },
+  {
+   "flow": [
+    "rate 1.97"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.919,
+   "floor_db": -60.2,
+   "dur": 4.24,
+   "accent": 0.399,
+   "accent_top": "indian",
+   "score": 55.648,
+   "heard": "the catch one study 57 healthy adults"
+  },
+  {
+   "flow": [
+    "transcript"
+   ],
+   "take": "iclAB3",
+   "wer": 0.125,
+   "sim": 0.867,
+   "floor_db": -25.2,
+   "dur": 3.36,
+   "accent": 0.38,
+   "accent_top": "indian",
+   "score": 60.285,
+   "heard": "in the catch one study 57 healthy adults."
+  }
+ ],
+ "q7": [
+  {
+   "flow": [],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.905,
+   "floor_db": -54.2,
+   "dur": 6.32,
+   "accent": 0.322,
+   "accent_top": "indian",
+   "score": 0.759,
+   "heard": "save this for tonight send it to someone who's always up at 2 a.m."
+  },
+  {
+   "flow": [
+    "pause 0.82@tonight.",
+    "clipped-onset"
+   ],
+   "take": "iclAB2",
+   "wer": 0.0,
+   "sim": 0.898,
+   "floor_db": -55.6,
+   "dur": 5.68,
+   "accent": 0.043,
+   "accent_top": "indian",
+   "score": 63.497,
+   "heard": "save this for tonight. Send it to someone who's always up at 2 a.m."
+  },
+  {
+   "flow": [
+    "transcript"
+   ],
+   "take": "iclAB3",
+   "wer": 0.2,
+   "sim": 0.905,
+   "floor_db": -48.3,
+   "dur": 5.12,
+   "accent": 0.319,
+   "accent_top": "indian",
+   "score": 57.763,
+   "heard": "Save this for tonight, send it to someone who's always up at 2am."
+  }
+ ],
+ "q8": [
+  {
+   "flow": [
+    "clipped-onset"
+   ],
+   "take": "iclAB1",
+   "wer": 0.0,
+   "sim": 0.883,
+   "floor_db": -50.2,
+   "dur": 5.84,
+   "accent": 0.287,
+   "accent_top": "indian",
+   "score": 55.934,
+   "heard": "comment tonight for the printable list and follow for more hacks like this"
+  },
+  {
+   "flow": [
+    "transcript",
+    "rate 2.10",
+    "clipped-onset"
+   ],
+   "take": "iclAB2",
+   "wer": 0.077,
+   "sim": 0.923,
+   "floor_db": -51.2,
+   "dur": 6.72,
+   "accent": 0.254,
+   "accent_top": "indian",
+   "score": 66.388,
+   "heard": "comment tonite for the printable list and follow for more hacks like this."
+  },
+  {
+   "flow": [
+    "transcript"
+   ],
+   "take": "iclAB3",
+   "wer": 0.077,
+   "sim": 0.901,
+   "floor_db": -36.3,
+   "dur": 5.6,
+   "accent": 0.274,
+   "accent_top": "indian",
+   "score": 57.871,
+   "heard": "comment tonite for the printable list and follow for more hacks like this"
+  }
+ ]
+}
