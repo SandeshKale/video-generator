@@ -1,12 +1,12 @@
 {
  "integrated_LUFS": -14.0,
- "true_peak_dBTP": -2.4,
+ "true_peak_dBTP": -2.6,
  "loudness_range_LU": 2.1,
  "voice_over_bed+sfx_dB_per_word": {
-  "median": 24.8,
-  "p10": 17.4,
+  "median": 27.9,
+  "p10": 21.4,
   "min": 13.6,
-  "words": 145
+  "words": 143
  },
  "music": "66 BPM F major; bars aligned to story cues (build bar 2, quiet bar 6, proof bar 7)",
  "targets": "median >= 19, min >= 13"

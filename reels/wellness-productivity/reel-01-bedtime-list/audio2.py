@@ -163,10 +163,10 @@ act = np.zeros(N)
 for w in words: act[int(max(0, w['s'] - .06) * SR):int(min(N, (w['e'] + .1) * SR))] = 1
 duck = smooth(act, .03, .28); vr = rms(vo[act > 0]); carve = lambda x, d: x - d * bp(x, 1200, 4500)
 bus = hp(musbus + mur * .5, 35); bus = carve(bus, .35); bus = bus - (.35 * duck)[:, None] * bp(bus, 1200, 4500)
-GAP_DB, DUCK_DB = float(os.environ.get('GAP_DB', -9)), float(os.environ.get('DUCK_DB', -15))
+GAP_DB, DUCK_DB = float(os.environ.get('GAP_DB', -9)), float(os.environ.get('DUCK_DB', -18))
 mg = 10 ** (GAP_DB / 20) * vr / max(rms(bus.mean(1)), 1e-9); mus = bus * mg * (10 ** (DUCK_DB * duck / 20))[:, None]
 tail = np.clip((np.arange(N) / SR - (words[-1]['e'] + .3)) / .8, 0, 1); mus *= (10 ** (4.0 * tail / 20))[:, None]                       # the bed swells once the voice stops
-fx = (carve(sfx, .3) + carve(acc, .2)) * (vr / .2) * (10 ** (-6 * duck / 20))[:, None]
+fx = (carve(sfx, .3) + carve(acc, .2)) * (vr / .2) * (10 ** (-12 * duck / 20))[:, None]
 mix = np.stack([vo, vo], 1) * np.sqrt(2) + mus + fx
 seps = []; named = []; FR = int(.02 * SR); bedm = (mus + fx).mean(1)
 for w in words:

@@ -1,23 +1,19 @@
 <!doctype html><html><head><meta charset="utf8"><title>Hack Zone 01</title><style>
 @font-face{font-family:Ser;font-style:italic;src:url(fonts/instrument-serif-latin-400-italic.woff2);font-display:block}
-@font-face{font-family:Ser;font-style:normal;src:url(fonts/instrument-serif-latin-400-normal.woff2);font-display:block}
 @font-face{font-family:Man;font-weight:800;src:url(fonts/manrope-latin-800-normal.woff2);font-display:block}
 @font-face{font-family:Mar;font-weight:500;src:url(fonts/martian-mono-latin-500-normal.woff2);font-display:block}
-html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d2b2a}
-#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0d2b2a}
-canvas#gl{position:absolute;left:0;top:0}
-#dust{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:.16;mix-blend-mode:screen;pointer-events:none}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d1412}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden}
+canvas#c{position:absolute;left:0;top:0}
 .t{position:absolute;color:#f4ecd8;text-shadow:0 6px 24px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.8);white-space:nowrap}
-#hl{left:150px;top:250px;font:800 92px/1.02 Man;letter-spacing:-.03em;width:760px;white-space:normal}
+#hl{left:150px;top:210px;font:800 88px/1.02 Man;letter-spacing:-.03em;width:760px;white-space:normal}
 #hl b{color:#ff7a1a;font-weight:800}
-#trk{left:150px;top:176px;font:500 24px Mar;letter-spacing:.14em;color:#f4ecd8}
 .chip{position:absolute;border-radius:999px;font:500 24px Mar;letter-spacing:.08em;padding:14px 26px;white-space:nowrap}
-#step{left:150px;top:176px;background:#8ef0c8;color:#101a1a;opacity:0}
-#open{left:690px;top:176px;background:rgba(16,26,26,.72);color:#ff7a1a;border:2px solid #ff7a1a;opacity:1}
-#ill{left:150px;top:252px;background:rgba(16,26,26,.78);color:#f4ecd8;border:2px solid #f4ecd8;opacity:0;font-size:22px}
+#step{left:150px;top:150px;background:#8ef0c8;color:#101a1a;opacity:0}
+#open{right:162px;top:150px;background:rgba(16,26,26,.72);color:#ff7a1a;border:2px solid #ff7a1a;opacity:1}
+#ill{left:150px;top:222px;background:rgba(16,26,26,.78);color:#f4ecd8;border:2px solid #f4ecd8;opacity:0;font-size:22px}
 #catch{left:150px;top:1170px;background:#f2c14e;color:#101a1a;opacity:0;font-size:26px;white-space:normal;width:620px;text-align:center;border-radius:36px;line-height:1.35}
 #cap{position:absolute;left:50%;transform:translateX(-50%);width:max-content;max-width:716px;top:1342px;text-align:center;background:rgba(8,22,22,.6);padding:12px 28px 14px;border-radius:30px;font:800 46px/1.15 Man;color:#f4ecd8;text-shadow:0 4px 18px rgba(0,0,0,.7)}
-#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(2,12,12,.55) 100%);pointer-events:none}
-</style></head><body><div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><video id="dust" src="media/dust-particles.webm" muted playsinline preload="auto"></video><div id="vig"></div>
-<div class="t" id="hl">BRAIN WON'T <b>SWITCH OFF?</b></div><div class="chip t" id="step">STEP 1/3</div><div class="chip t" id="open">14 OPEN</div><div class="chip t" id="catch">ONE LAB STUDY<br>57 HEALTHY ADULTS · AGED 18–30</div><div class="chip t" id="ill">ILLUSTRATIVE EXAMPLE</div><div id="cap"></div></div>
-<script src="gl3.js"></script><script src="room_wide.js"></script><script src="room_macro.js"></script><script src="room_proof.js"></script><script src="timing.js"></script><script src="main.js"></script></body></html>
+</style></head><body><div id="stage"><canvas id="c" width="1080" height="1920"></canvas>
+<div class="t" id="hl">BRAIN WON'T <b>SWITCH OFF?</b></div><div class="chip t" id="step">STEP 1/3</div><div class="chip t" id="open">8 OPEN LOOPS</div><div class="chip t" id="ill">ILLUSTRATIVE EXAMPLE</div><div class="chip t" id="catch">ONE LAB STUDY<br>57 HEALTHY ADULTS · AGED 18–30</div><div id="cap"></div></div>
+<script src="timing.js"></script><script src="main.js"></script></body></html>

@@ -8,7 +8,7 @@ Brain won't switch off? Try this tonight:
 3. Be specific: not "taxes", but "call the accountant, 10 am".
 Sleep-lab study, 57 healthy adults (18-30): writing a to-do list beat listing what you'd already done, and the more specific the list, the faster they fell asleep. Why isn't proven. One small study, not medical advice.
 Source: Scullin et al., J Exp Psychol Gen 2018.
-🤖 Voice: AI-generated (a likeness of mine). Script and research are mine; I use Claude to help build these.
+🤖 Voice: AI-generated (OmniVoice). Script and research are mine; I use Claude to help build these.
 #Sleep #Productivity #Psychology #LifeHack #HackZone
 ```
 Characters: 664 (limit 700 for the series template).
