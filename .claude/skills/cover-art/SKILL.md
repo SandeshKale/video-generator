@@ -8,7 +8,7 @@ description: Build a purpose-built Instagram cover/thumbnail image for a finishe
 A reel's cover/thumbnail is a **standalone design**, not a frame pulled from
 the video. This was explicit, repeated feedback in this repo's history
 ("why pull out a frame from the reel only... be creative") and the fix —
-`reel-openai-loop-method/cover-build.mjs` — is the template every future
+`reels/tech/reel-openai-loop-method/cover-build.mjs` — is the template every future
 cover should follow. Produce the cover only once the reel's design and
 script are finalized (it reuses the reel's finished palette/fonts/assets).
 
@@ -177,7 +177,7 @@ await page.screenshot({ path: join(__dirname, 'cover.png') });
 await browser.close();
 ```
 
-(`reel-openai-loop-method/cover-build.mjs` itself stops at writing
+(`reels/tech/reel-openai-loop-method/cover-build.mjs` itself stops at writing
 `cover.html` and was screenshotted via a separate Playwright call in that
 session — either approach is fine; inlining the screenshot call as above
 is simpler for a new reel.)
@@ -200,7 +200,7 @@ is simpler for a new reel.)
       and legible at a glance — this image has to work as a scroll-stopping
       thumbnail, not just as a nice full-size render.
 
-Grid-first reference implementation: `reel-openai-agent-swarm/cover-build.mjs` (cobalt/lime, giant "700", 2 title words,
-face chip bottom-right). Older reference (pre-grid-rules, don't copy its lockup): `reel-openai-loop-method/cover-build.mjs` (and
-its output `reel-openai-loop-method/cover.png`) — read it end to end
+Grid-first reference implementation: `reels/tech/reel-openai-agent-swarm/cover-build.mjs` (cobalt/lime, giant "700", 2 title words,
+face chip bottom-right). Older reference (pre-grid-rules, don't copy its lockup): `reels/tech/reel-openai-loop-method/cover-build.mjs` (and
+its output `reels/tech/reel-openai-loop-method/cover.png`) — read it end to end
 before writing a new reel's cover script.

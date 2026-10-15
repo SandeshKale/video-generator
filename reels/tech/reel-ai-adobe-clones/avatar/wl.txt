@@ -1,0 +1,5 @@
+file '/home/user/video-generator/reels/tech/reel-ai-adobe-clones/avatar/c/c1.wav'
+file '/home/user/video-generator/reels/tech/reel-ai-adobe-clones/avatar/c/c2.wav'
+file '/home/user/video-generator/reels/tech/reel-ai-adobe-clones/avatar/c/c3.wav'
+file '/home/user/video-generator/reels/tech/reel-ai-adobe-clones/avatar/c/c4.wav'
+file '/home/user/video-generator/reels/tech/reel-ai-adobe-clones/avatar/c/c5.wav'

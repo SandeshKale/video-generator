@@ -1,13 +1,13 @@
 node_modules/
 *.log
 
-reel-*/out/slices/
-reel-*/audio/cache/
-reel-ai-chat-not-diary/out/
+reels/*/*/out/slices/
+reels/*/*/audio/cache/
+reels/tech/reel-ai-chat-not-diary/out/
 assets/quaternius/
-reel-morning-brief/out/
-reel-claude-in-sheets/out/
-reel-claude-in-sheets/audio/premaster.wav
-reel-claude-in-sheets/audio/music_stem.wav
-reel-synthid-check/out/
-reel-synthid-check/site/3d/lightbox/
+reels/tech/reel-morning-brief/out/
+reels/tech/reel-claude-in-sheets/out/
+reels/tech/reel-claude-in-sheets/audio/premaster.wav
+reels/tech/reel-claude-in-sheets/audio/music_stem.wav
+reels/tech/reel-synthid-check/out/
+reels/tech/reel-synthid-check/site/3d/lightbox/

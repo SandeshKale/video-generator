@@ -58,9 +58,9 @@ Full detail and the reasoning behind it is in `assets/ATTRIBUTION.md` under
 ## Every reel needs its own visual identity — hard, non-negotiable rule
 
 `reel-openai-loop-method` was first built by copying
-`reel-anthropic-rundown-ios/build.mjs` as a template and only swapping the
+`reels/tech/reel-anthropic-rundown-ios/build.mjs` as a template and only swapping the
 script content — same dot-grid/hatch texture, same streamline gutters, same
-card style, same color wash, same `reel-app/src/humaaans` character. This
+card style, same color wash, same `prototypes/reel-app/src/humaaans` character. This
 was called out explicitly and strongly: reusing a prior reel's palette,
 background texture, component language, or character is not acceptable,
 even when the underlying layout mechanics (safe-zone, band system, GSAP
@@ -104,26 +104,34 @@ each reel's own distinct palette/fonts/components.
 
 ```
 video-generator/
-├── scripts/
-│   ├── render.mjs            Generic renderer: bun scripts/render.mjs <src> <out.mp4> [scale]
-│   └── static-server.mjs     Zero-dep Node-API http server, used only for directory sources
-├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library
-│   ├── fonts/                 Vendored webfonts (Poppins, Inter, JetBrains Mono, Space Grotesk, ...) — see "Typography" below
-│   ├── animations/gsap/       Vendored GSAP core (gsap.min.js) — see "Entrance animations" below
-│   ├── animations/lottie/     Vendored lottie-web runtime (lottie.min.js) — see "Lottie" below
-│   ├── animations/video-overlay/ 3 real-footage texture clips (grain/leaks/dust) — see "Video overlays" below
-│   ├── illustrations/humaaans-react/  24 pre-composed humaaans character poses — see "Character variety" below
-│   └── ATTRIBUTION.md        License table per source + the animation-seeking caveat above
-├── reel-anthropic-opus-5-5/          Reel 1 (template-based, hand-written HTML + profile pic substitution)
-├── reel-anthropic-opus-5-5-v2/       Reel 1, v2 (denser)
-├── reel-anthropic-rundown-ios/       Reel 2 (programmatically built from build.mjs; navy dot-grid/streamline visual system)
-├── reel-openai-loop-method/          Reel 3 (programmatically built; cyan/magenta "Terminal/Signal" visual system —
-│                                       see build.mjs, and cover-build.mjs for its purpose-built cover image)
-├── reel-app/                         React/Vite POC proving the contract also works from a bundled app
-├── package.json / bun.lock            Root deps (Bun-managed): playwright, gsap
-├── README.md                         User-facing overview and quick start
-└── CLAUDE.md                         This file
+├── reels/                    Vertical 1080×1920 Instagram reels, one folder per reel, by category
+│   ├── tech/                  AI / tech news and tutorials (reel-ai-*, reel-openai-*, reel-claude-*, ...)
+│   ├── science/               Science channel (reel-01-your-voice, reel-02-cells, reel-03-bacteria, plan-first-10.md)
+│   └── wellness-productivity/ Hack Zone series (psychology, wellness, productivity hacks)
+├── gifs/                     LinkedIn GIFs (gifs/tech/gif-*), plus gifs/research/ topic deep dives
+├── videos/                   Landscape 1920×1080 long-form videos (videos/tech/video-*)
+├── posts/                    Text/image post briefs (posts/tech/linkedin-*)
+├── prototypes/               reel-app (React/Vite POC), reel-motion-showreel-demo, proto-2d-puppet
+├── tools/                    Small apps (tools/post-runway: posting tracker + SQL)
+├── docs/                     Reference notes (MOTION-*, ANIMATION-RESOURCES, OPUS-VIDEOS, DESIGN-POLISH, AVATAR-PROMPT-TEMPLATE)
+├── scripts/                  render.mjs (generic renderer), static-server.mjs, ig_insights.py, checkers
+├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library (see assets/ATTRIBUTION.md)
+├── insights/                 Instagram performance data, reports, caption/hashtag templates
+├── account/                  Account (@sandesh_explains) setup material and profile images
+├── package.json / bun.lock   Root deps (Bun-managed): playwright, gsap
+├── README.md                 User-facing overview and quick start
+└── CLAUDE.md                 This file
 ```
+
+**Where new work goes (standing rule, user instruction Oct 2026):**
+- A new reel → `reels/<category>/reel-<slug>/` where category is `tech`, `science` or `wellness-productivity` (create a new category folder only if none fits and say so).
+- A new LinkedIn GIF → `gifs/<category>/gif-<slug>/`; a landscape long-form video → `videos/<category>/video-<slug>/`; a text/image post → `posts/<category>/`.
+- Experiments that are not a shipped content type → `prototypes/`; shared reference notes → `docs/`.
+- Folders sit **three levels below the repo root** (`reels/<cat>/<name>/`), so a reel's own `build.mjs` reaches the shared library with `../../../assets`, `../../../scripts` and `../../../prototypes/reel-app/public/profile.jpg` (gifs/videos are also three deep; `site/` sub-folders add one more `../`). Note: older sections below still say `../assets`/`reel-x/` for brevity — read them as relative to the new location.
+- Old names in this file that look like `reel-foo/` are folder names under `reels/<category>/`.
+
+## STANDING RULE — git identity (user instruction, Oct 2026)
+All commits are authored as **Sandesh Kale <kale.sd111@gmail.com>** (`git config user.name "Sandesh Kale"`, `git config user.email kale.sd111@gmail.com` in every new clone/session before committing). Keep the Claude co-author trailer lines as configured by the session.
 
 **Runtime/package manager: Bun**, not Node/npm. `bun install` resolves
 `package.json` against the committed `bun.lock` (a human-readable text
@@ -133,7 +141,7 @@ lockfile — diff and commit it like any other source file, unlike npm's
 with `bun <script>` instead of `node <script>`. This is a drop-in swap —
 none of these scripts use anything beyond standard `node:fs`/`node:path`/
 `node:http`/`node:child_process` APIs, which Bun implements natively, so
-no source changes were needed to move off Node. `reel-app/` (the Vite
+no source changes were needed to move off Node. `prototypes/reel-app/` (the Vite
 POC) is likewise installed and built with `bun install` / `bun run
 build`; Vite's own CLI is unchanged, only the package manager invoking it
 is different.
@@ -208,11 +216,11 @@ A single `.html` file with inline `<style>` and `<script>`. Scenes are
 of `{start, duration, el}` entries; `window.__seek(t)` finds the active
 scene(s) for `t`, toggles `display`, and calls a per-scene render routine
 that sets `opacity`/`transform` on child elements based on local elapsed
-time within the scene. `reel-anthropic-opus-5-5/reel.html.tmpl` shows the
+time within the scene. `reels/tech/reel-anthropic-opus-5-5/reel.html.tmpl` shows the
 templated form (`{{PROFILE_PIC_B64}}` substitution) used to generate a
 variant with a different profile picture.
 
-### 2. Generated HTML via a Node build script (`reel-anthropic-rundown-ios/build.mjs`, `reel-openai-loop-method/build.mjs`)
+### 2. Generated HTML via a Node build script (`reels/tech/reel-anthropic-rundown-ios/build.mjs`, `reels/tech/reel-openai-loop-method/build.mjs`)
 
 This is now the standard pattern for a new reel — two live examples exist
 (`reel-anthropic-rundown-ios` and `reel-openai-loop-method`), each with its
@@ -225,7 +233,7 @@ from copy-pasted SVG markup. **`reel.html` in this folder is a generated
 artifact — never hand-edit it.** Edit `build.mjs` and regenerate:
 
 ```bash
-cd reel-anthropic-rundown-ios && bun build.mjs
+cd reels/tech/reel-anthropic-rundown-ios && bun build.mjs
 ```
 
 Key pieces of `build.mjs`:
@@ -253,7 +261,7 @@ Key pieces of `build.mjs`:
     for new reels** (see "Character variety (humaaans)" below) — it works
     on full pre-composed poses with resolvable color props instead of
     manually-positioned parts, and gives access to 24 poses instead of one.
-    `humaaansPart`/the single curated `reel-app/src/humaaans` figure are
+    `humaaansPart`/the single curated `prototypes/reel-app/src/humaaans` figure are
     kept only because `reel-anthropic-rundown-ios` still depends on them;
     don't extend that pattern further.
     strips the component wrapper.
@@ -283,7 +291,7 @@ Key pieces of `build.mjs`:
     plain CSS `transform`/`opacity` interpolation, no GSAP) when you want
     more kinetic, less uniform motion — mixing all three across a scene's
     elements is what gives these reels their "tumbling, dropping, running"
-    character. `reel-openai-loop-method/build.mjs` has the same three
+    character. `reels/tech/reel-openai-loop-method/build.mjs` has the same three
     helpers verbatim — copy that block into a new reel rather than
     re-deriving it, but keep `enter()`'s plain-CSS fallback for anything
     that doesn't need the extra weight of a GSAP timeline.
@@ -398,7 +406,7 @@ darken what's underneath.
 
 Hard cuts between scenes work but feel abrupt; a short crossfade reads as
 more polished without calling attention to itself. Pattern from
-`reel-openai-loop-method/build.mjs`'s `window.__seek`:
+`reels/tech/reel-openai-loop-method/build.mjs`'s `window.__seek`:
 
 - Each scene's visibility window is extended backward by a small
   `TRANS` constant (e.g. `0.32` seconds). For `raw = t - scene.start`:
@@ -425,7 +433,7 @@ more polished without calling attention to itself. Pattern from
 
 Early reels (`reel-anthropic-rundown-ios`, and the first draft of
 `reel-openai-loop-method`) all reused the exact same single humaaans
-figure — assembled from `reel-app/src/humaaans/{head/Short.jsx,
+figure — assembled from `prototypes/reel-app/src/humaaans/{head/Short.jsx,
 torso/PointingUp.jsx, bottom/SkinnyJeans.jsx}` — including using it *twice
 in the same reel* (hook scene and CTA scene). This was called out
 explicitly: reusing one character everywhere reads as templated, not
@@ -434,11 +442,11 @@ designed.
 **Use `assets/illustrations/humaaans-react/` instead** — 24 full
 pre-composed "standing" poses (plus several "sitting" poses), vendored
 from the `react-humaaans` npm package (MIT). Unlike the old
-`reel-app/src/humaaans` set (three separate body-part files manually
+`prototypes/reel-app/src/humaaans` set (three separate body-part files manually
 stitched together with hardcoded `translate()` offsets), each pose here is
 one self-contained file with its own color props already resolved —
 `standing/standing-N/StandingN.js`. Extraction pattern (see
-`reel-openai-loop-method/build.mjs`'s `humaaansFull()`):
+`reels/tech/reel-openai-loop-method/build.mjs`'s `humaaansFull()`):
 
 1. Read the pose file's source text.
 2. Parse its `defaultProps` block (`skinColor`, `hairColor`, `shoeColor`,
@@ -469,7 +477,7 @@ motion-graphics styles for a standalone showreel/sting — kinetic
 typography, glitch transitions, isometric blueprint, liquid glass,
 particle fields, CRT terminal, brutalist type, and more — each with a
 concrete `t`-driven CSS/SVG build technique already checked against this
-repo's deterministic-seek constraint. `reel-motion-showreel-demo/`
+repo's deterministic-seek constraint. `prototypes/reel-motion-showreel-demo/`
 (starburst → morphing shape with a live rotation gizmo → wave grid →
 closing wordmark, all wrapped in fake-editor HUD chrome) is the approved
 feasibility demo/reference implementation for this whole category. Check
@@ -626,7 +634,7 @@ A reel's Instagram cover/thumbnail should be a **purpose-built design**,
 not a screenshot pulled from the middle of the reel. A frame grab was
 tried first for `reel-openai-loop-method` and explicitly rejected: "why
 pull out a frame from the reel only... be creative." The fix —
-`reel-openai-loop-method/cover-build.mjs` — is a small standalone script
+`reels/tech/reel-openai-loop-method/cover-build.mjs` — is a small standalone script
 (reuses the reel's own icon/logo extraction helpers, duplicated locally
 rather than imported, since there's no shared module between reel folders
 yet) that composes a dedicated single-frame layout: a custom hero graphic
@@ -679,7 +687,7 @@ see"). If you add or edit a scene, apply these patterns:
   alone in a large flex band reads as "empty space" even if technically
   non-empty. Wrap such rows in a semi-transparent bordered rounded-rect
   "card" div (matching the app's existing card style) to give them visual
-  mass — see `#s7card` / `#s9card` in `reel-anthropic-rundown-ios/build.mjs`
+  mass — see `#s7card` / `#s9card` in `reels/tech/reel-anthropic-rundown-ios/build.mjs`
   for the pattern. Prefer this over just increasing flex-basis on the
   containing band — that alone tends to make sparse content look *more*
   isolated, not less.
@@ -771,7 +779,7 @@ see"). If you add or edit a scene, apply these patterns:
   Method reel — a single small caret character (`▾`) sitting in that gap
   still reads as empty space, even though technically non-blank. The fix
   that actually worked: a **signal bridge** component —
-  `reel-openai-loop-method/build.mjs`'s `.signal-bridge` (`.sig-wire` +
+  `reels/tech/reel-openai-loop-method/build.mjs`'s `.signal-bridge` (`.sig-wire` +
   `.sig-pulse` + `.sig-readout` + `.sig-cursor`, driven by the `sigBridge()`
   JS helper) — a short vertical "data wire" with a traveling glow pulse,
   feeding into a **terminal-style typewriter line that is specific to that
@@ -891,13 +899,13 @@ reading the generated CSS/markup.
 
 ## Directory sources & the module-script/CORS gotcha
 
-`reel-app/` is a React + Vite proof-of-concept validating that the same
+`prototypes/reel-app/` is a React + Vite proof-of-concept validating that the same
 `window.__seek` contract works when the DOM is built once by React and then
 mutated imperatively per-frame (React should **not** re-render on every
-`__seek` call — see `reel-app/src/Reel.jsx`: refs are set up once in a
+`__seek` call — see `prototypes/reel-app/src/Reel.jsx`: refs are set up once in a
 mount-only `useEffect`, and `__seek` does direct `ref.current.style.x = ...`
 mutation, never `setState`). Because Vite's build output uses `type="module"`
-scripts, `reel-app/dist/` must be rendered via `scripts/render.mjs`'s
+scripts, `prototypes/reel-app/dist/` must be rendered via `scripts/render.mjs`'s
 directory-source path (local HTTP server), not `file://` — see "Source
 resolution" above.
 
@@ -984,9 +992,9 @@ or link-lists, not actual files.
   staying under the delivery limit without an extra re-encode pass
   matters.
 
-## Landscape long-form benchmark — `video-ai-bubble-v2/` (16:9, 1920×1080@60, ~7 min)
+## Landscape long-form benchmark — `videos/tech/video-ai-bubble-v2/` (16:9, 1920×1080@60, ~7 min)
 
-The user called this "better than the previous one" and set it as the bar the next landscape video must **top in every aspect** (script, visuals, motion, audio, polish). v1 (`video-ai-bubble-machine/`, flat sticker graphics, 12 chapters, ~12 min) was rejected for: slow/low-quality animation, not engaging, too long, no real-world imagery, nothing ultra-realistic. Don't regress to that style.
+The user called this "better than the previous one" and set it as the bar the next landscape video must **top in every aspect** (script, visuals, motion, audio, polish). v1 (`videos/tech/video-ai-bubble-machine/`, flat sticker graphics, 12 chapters, ~12 min) was rejected for: slow/low-quality animation, not engaging, too long, no real-world imagery, nothing ultra-realistic. Don't regress to that style.
 
 **Recipe that worked (reuse, then improve):**
 - Script: beat-level (87 beats / 28 scenes, ~1000 words), hook in the first 10 s, open loops, a mid-video twist, "what to watch" close. Every scene anchored to hard numbers; the sourced fact table lives in the v1 `facts.md`.
@@ -1009,7 +1017,7 @@ The user called this "better than the previous one" and set it as the bar the ne
 Benchmark order of precedence: **each new reel must beat the previous reel in every aspect** (script, visuals, motion, voice, audio, CTA, polish). When starting a reel, list the previous reel's weaknesses below and fix all of them before adding anything new.
 
 1. **Captions must never collide with foreground content or busy background detail.** The word-highlight caption block sits at y≈1330–1490; graphics ended at ~1250–1300 and some (scanner, quote, folders) ran into it, and captions also sat over bright rack/LED texture. Rules: reserve the caption band as a no-go zone in layout (content ≤ y 1270 for 1–2 caption lines, ≤ 1220 for 3), give captions a dark scrim/pill behind them (not just a text-shadow), keep to ≤2 lines (shorten beats or reduce font) and run an automated check that no layer's bounding box intersects the caption box at any sampled time (extend the planned pre-render overlap checker).
-2. **The end CTA must be unmistakable and branded.** Last scene needs: the creator's profile picture (`reel-app/public/profile.jpg`, circular, high-contrast ring, ≥200px) + handle **@sandesh_explains** (large, readable) + a clear single action ("Follow for the follow-up"), held on screen ≥2.5 s with the voiceover saying the ask. A question stamp alone ("Would you?") is not a CTA. Keep it inside the safe zone (above y 1536, inside x 150–918).
+2. **The end CTA must be unmistakable and branded.** Last scene needs: the creator's profile picture (`prototypes/reel-app/public/profile.jpg`, circular, high-contrast ring, ≥200px) + handle **@sandesh_explains** (large, readable) + a clear single action ("Follow for the follow-up"), held on screen ≥2.5 s with the voiceover saying the ask. A question stamp alone ("Would you?") is not a CTA. Keep it inside the safe zone (above y 1536, inside x 150–918).
 3. **Use far more foreground imagery, animation and components.** Every scene should layer: photoreal cut-outs/inset photos or screenshots-style panels, brand logos (`assets/logos`, nominative use), icons (tabler), characters/hands/devices where useful, animated charts/maps/flows, particles, and kinetic type — not one panel over a dim background. Target ≥4 distinct foreground elements per scene, with continuous motion (parallax inset photos, travelling lines, counters, tickers). Backgrounds must stay secondary.
 4. **Voice-over must be more nuanced and natural.** Kokoro `af_heart` reads flat/uniform. Next reel: (a) write the script for the ear (contractions, rhythm, emphasis, short punchy sentences, questions), (b) add SSML-like control via per-phrase speed/pauses and varied sentence splitting in `tts.py`, (c) evaluate better engines available offline (OmniVoice is cached in the HF hub dir; try its expressive/emotion controls, plus other Kokoro voices) with A/B takes of the hook line, and pick by listening to spectral/prosody variation, (d) add breaths/micro-pauses and slight pitch/speed variation on key numbers, (e) consider mixing in room tone. Don't ship the default flat read.
 5. **Always top the previous reel's benchmark** — see the log above; this list is cumulative.
@@ -1040,7 +1048,7 @@ Built from the user's pointers: lower the 3-second skip rate, more natural voice
 - **Voice pace**: the 52 s StarCraft reel (Kokoro base speed 1.3) was "too fast to understand". Use **base ≈ 1.05–1.12** (slightly slower, not slow); keep the hook sentence only a touch faster than the rest. Re-check word timestamps so the hook payoff still lands near 3 s by shortening the hook text, not by speeding it up.
 - **Fillers**: separate "um"/"uh" clips sounded unnatural. Don't insert synthetic fillers as separate clips; prefer natural phrasing, commas and short pauses (or at most one inline hesitation as part of the same take with an ellipsis). Don't regenerate shipped reels for this; apply it to new ones.
 - **Every new reel must top the benchmark set by previous reels** (see the benchmark sections above).
-- **GIFs**: every new GIF must differ from the previous GIF in **orientation (alternate horizontal/vertical), visual style, format/layout and palette**. Previous GIFs: `gif-agentic-graphrag` (horizontal 1600x900, dark forest-green + lime/sky/coral/amber, SVG blueprint flow diagram with numbered connectors); `gif-ai-work-treadmill` (vertical 4:5, pop-art yellow/blue/pink, humaaans runner on a treadmill + burst stat badges); `gif-agent-security` (horizontal 16:9, light isometric layered-architecture diagram, indigo/blue/teal/slate with emerald/rose/amber signals, Plus Jakarta Sans — the "professional LinkedIn architecture" register the user preferred for LinkedIn; pop-art is fine for Instagram-style, not LinkedIn); `gif-mcp-stateless` (vertical 4:5 1080×1350, dark charcoal + postal red/airmail blue/kraft + reply green, Bricolage Grotesque 800 + Inter + JetBrains Mono; sorting-hub metaphor for MCP's stateless spec, 8 letters in flight + gateway + 4 servers + off-ramp clock + SDK equalizer + ticker — next GIF should be horizontal and use a new palette); `gif-agent-metro` (horizontal 1600×900, dark midnight-plum transit map, yellow/aqua/lavender ticket classes + coral/orchid/blue lines, Unbounded + Inter + JetBrains Mono, 6 trains + gates + departures board + neighbour networks; **user: static-looking slides are rejected — 'agentic graphrag' (dense, ~25 independently moving parts) is the gold standard; propose wild/abstract metaphors and approve before building**); `gif-agent-front-door/v2` (vertical 4:5 1080×1350, light architecture diagram with extruded cards, navy + orange + teal, Plus Jakarta Sans; user rejected the cartoon facade `facade-v1` and asked for the diagram register of the two earlier LinkedIn GIFs — next GIF should be horizontal and use a new palette). A first vertical attempt (cream/navy/coral bar-chart infographic) was rejected as "just a text slide": **a GIF must lead with a visual metaphor/illustration (character, object, scene), keep text to a short headline + number badges, and be bold/catchy** — not a text-and-chart slide. Humaaans extraction for SVG scenes: `gif-ai-work-treadmill/hum.mjs` (`humaaansFull`). `gif-agent-memory` (horizontal 1600×900, cream) came next; then `gif-agent-coworkers` (vertical 1080×1350, **dark petrol-navy `#0b1620` + violet/mint/sky/rose/saffron, Space Grotesk + IBM Plex Mono + Inter**; Google's Gemini agent as a live control-plane diagram — user asked for a **dark background, standout visuals and many *logical* moving elements**: every motion is a system step (objective → model switch → sub-agent spawn with ID stamp → bus → policy bounce → gateway lane → tool, each crossing prints a signed audit line and charges a spend meter; cap pause + admin resume; sub-agents fold away). Then `gif-agent-workflows` (horizontal 1600×900, **dark espresso `#15100d` + ember/cobalt/jade/magenta/gold, Outfit 800 + DM Mono + Inter**; Claude Managed Agents dynamic workflows — the current benchmark: a typed program whose executing line is highlighted, a 64-cell fan-out grid fed by a queue with live WORKING n/64 and STARTED n/1,000 gauges, result dots flying to the program, merge → review (round 1 rejected) → revise → pass, report through the shared-files band, a scrolling event strip with real event names, and benchmark bars; frame 0 offset to mid-action because LinkedIn shows frame 0 as the still). Then `gif-agent-containment` (vertical 1080×1350, **graphite-olive `#11130e` + ice-cyan/chartreuse/coral/sodium-amber, Big Shoulders Display 800 + Geist Mono + Inter**; Anthropic's Oct 9 disclosure of agents working around restrictions — the current benchmark: built from an engagement deep-dive in its `research.md` (saves + dwell time; walkthrough beats static diagram; ≤5 MB and ≤400 frames or LinkedIn freezes frame 1). A July flashback (live internet on, a request reaches a real site) flips to Oct 9 (airlock seals); four real workaround types are each caught at a different, further-out layer of a numbered 4-layer stack plus a training gauge; a ledger fills row by row as a save-worthy reference; skeleton rows avoid an empty panel early in the loop). Next GIF should be horizontal with a new palette and beat this one.
+- **GIFs**: every new GIF must differ from the previous GIF in **orientation (alternate horizontal/vertical), visual style, format/layout and palette**. Previous GIFs: `gif-agentic-graphrag` (horizontal 1600x900, dark forest-green + lime/sky/coral/amber, SVG blueprint flow diagram with numbered connectors); `gif-ai-work-treadmill` (vertical 4:5, pop-art yellow/blue/pink, humaaans runner on a treadmill + burst stat badges); `gif-agent-security` (horizontal 16:9, light isometric layered-architecture diagram, indigo/blue/teal/slate with emerald/rose/amber signals, Plus Jakarta Sans — the "professional LinkedIn architecture" register the user preferred for LinkedIn; pop-art is fine for Instagram-style, not LinkedIn); `gif-mcp-stateless` (vertical 4:5 1080×1350, dark charcoal + postal red/airmail blue/kraft + reply green, Bricolage Grotesque 800 + Inter + JetBrains Mono; sorting-hub metaphor for MCP's stateless spec, 8 letters in flight + gateway + 4 servers + off-ramp clock + SDK equalizer + ticker — next GIF should be horizontal and use a new palette); `gif-agent-metro` (horizontal 1600×900, dark midnight-plum transit map, yellow/aqua/lavender ticket classes + coral/orchid/blue lines, Unbounded + Inter + JetBrains Mono, 6 trains + gates + departures board + neighbour networks; **user: static-looking slides are rejected — 'agentic graphrag' (dense, ~25 independently moving parts) is the gold standard; propose wild/abstract metaphors and approve before building**); `gifs/tech/gif-agent-front-door/v2` (vertical 4:5 1080×1350, light architecture diagram with extruded cards, navy + orange + teal, Plus Jakarta Sans; user rejected the cartoon facade `facade-v1` and asked for the diagram register of the two earlier LinkedIn GIFs — next GIF should be horizontal and use a new palette). A first vertical attempt (cream/navy/coral bar-chart infographic) was rejected as "just a text slide": **a GIF must lead with a visual metaphor/illustration (character, object, scene), keep text to a short headline + number badges, and be bold/catchy** — not a text-and-chart slide. Humaaans extraction for SVG scenes: `gifs/tech/gif-ai-work-treadmill/hum.mjs` (`humaaansFull`). `gif-agent-memory` (horizontal 1600×900, cream) came next; then `gif-agent-coworkers` (vertical 1080×1350, **dark petrol-navy `#0b1620` + violet/mint/sky/rose/saffron, Space Grotesk + IBM Plex Mono + Inter**; Google's Gemini agent as a live control-plane diagram — user asked for a **dark background, standout visuals and many *logical* moving elements**: every motion is a system step (objective → model switch → sub-agent spawn with ID stamp → bus → policy bounce → gateway lane → tool, each crossing prints a signed audit line and charges a spend meter; cap pause + admin resume; sub-agents fold away). Then `gif-agent-workflows` (horizontal 1600×900, **dark espresso `#15100d` + ember/cobalt/jade/magenta/gold, Outfit 800 + DM Mono + Inter**; Claude Managed Agents dynamic workflows — the current benchmark: a typed program whose executing line is highlighted, a 64-cell fan-out grid fed by a queue with live WORKING n/64 and STARTED n/1,000 gauges, result dots flying to the program, merge → review (round 1 rejected) → revise → pass, report through the shared-files band, a scrolling event strip with real event names, and benchmark bars; frame 0 offset to mid-action because LinkedIn shows frame 0 as the still). Then `gif-agent-containment` (vertical 1080×1350, **graphite-olive `#11130e` + ice-cyan/chartreuse/coral/sodium-amber, Big Shoulders Display 800 + Geist Mono + Inter**; Anthropic's Oct 9 disclosure of agents working around restrictions — the current benchmark: built from an engagement deep-dive in its `research.md` (saves + dwell time; walkthrough beats static diagram; ≤5 MB and ≤400 frames or LinkedIn freezes frame 1). A July flashback (live internet on, a request reaches a real site) flips to Oct 9 (airlock seals); four real workaround types are each caught at a different, further-out layer of a numbered 4-layer stack plus a training gauge; a ledger fills row by row as a save-worthy reference; skeleton rows avoid an empty panel early in the loop). Next GIF should be horizontal with a new palette and beat this one.
 
 - **LinkedIn GIF/post visuals — approved style and a standing layout rule** (user approved `gif-agent-security`): professional, architecture-oriented, light, clean. For every future LinkedIn visual: **everything must be legible** (body text ≥ ~18 px at 1600×900 canvas, ≥ ~22 px at 1080-wide; check at the final GIF scale, not just the full-res screenshot), **use the empty space in the frame** (no dead corners or large blank bands; scale up the hero diagram, add purposeful elements such as legends, callouts, stat chips), but **do not over-clutter** (leave breathing room between elements, ≤ ~5 numbered items, one clear focal visual). Check legibility and balance on a downscaled frame before delivering.
 
@@ -1095,14 +1103,14 @@ Warm cream/terracotta/teal/butter paper-cut look; Bricolage Grotesque 800 + Inte
 - Pitfalls: `PUP.svg` face param must be continuous (-1..1) for head turns; foot-locked walking = clip time from screen x (`walkAt`); `rig.sample` loop needs `Math.max(0,…)` after the cycle subtraction (float edge crashed a render); note slots beat free placement; 3D (bpy) is not renderable at video scale on this CPU box (see ANIMATION-RESOURCES-NOTES.md round 3).
 - Headroom: bodies are side-projected mocap (no torso turns); passing characters overlap in 2D; no real footage.
 
-- **Update (Oct 2026): host = the creator's own photo, lip-synced.** `reel-apple-camera-no-video/site/photohost.js` animates `profile.jpg` (1408²) as a *photo puppet*: Rhubarb cues → a feathered jaw patch drops (D/C/E/F/G/H/B shapes blend over 70 ms) over a painted dark mouth cavity with teeth/tongue, plus head sway/bob from the cues; Pip (the cartoon host) was removed. Per-window instances (`win.__ph`), crop window 960×1030 source px. Blink overlay was tried and dropped (eyelid blobs over glasses looked bad). Heavier tools (SadTalker, Wav2Lip, LivePortrait) need GPU + large checkpoints and several carry non-commercial terms — not used.
+- **Update (Oct 2026): host = the creator's own photo, lip-synced.** `reels/tech/reel-apple-camera-no-video/site/photohost.js` animates `profile.jpg` (1408²) as a *photo puppet*: Rhubarb cues → a feathered jaw patch drops (D/C/E/F/G/H/B shapes blend over 70 ms) over a painted dark mouth cavity with teeth/tongue, plus head sway/bob from the cues; Pip (the cartoon host) was removed. Per-window instances (`win.__ph`), crop window 960×1030 source px. Blink overlay was tried and dropped (eyelid blobs over glasses looked bad). Heavier tools (SadTalker, Wav2Lip, LivePortrait) need GPU + large checkpoints and several carry non-commercial terms — not used.
 
-- **Update 2 (Oct 2026): host mouth = MLS-warped viseme images.** `reel-apple-camera-no-video/tools/mls_visemes.py` pre-warps the photo's lower face for the 9 Rhubarb shapes with Moving-Least-Squares (affine) control points (jaw/chin/lower-lip follow the drop, corners pinned, painted dark mouth + teeth/tongue), writes `site/vis/v_*.png`; `site/photohost.js` cross-fades prev→cur viseme (70 ms) under a feathered mask. Replaced the earlier jaw-patch translation (visible seam/ghosting). Natural-looking, but a deformation of a still: real talking-head quality still needs a GPU model (HF ZeroGPU token or a paid API).
+- **Update 2 (Oct 2026): host mouth = MLS-warped viseme images.** `reels/tech/reel-apple-camera-no-video/tools/mls_visemes.py` pre-warps the photo's lower face for the 9 Rhubarb shapes with Moving-Least-Squares (affine) control points (jaw/chin/lower-lip follow the drop, corners pinned, painted dark mouth + teeth/tongue), writes `site/vis/v_*.png`; `site/photohost.js` cross-fades prev→cur viseme (70 ms) under a feathered mask. Replaced the earlier jaw-patch translation (visible seam/ghosting). Natural-looking, but a deformation of a still: real talking-head quality still needs a GPU model (HF ZeroGPU token or a paid API).
 
 - **Update 3 (Oct 2026): host = MoDA talking-head video (hosted, GPU).** The MLS warp was replaced by real model output: `multimodalart/MoDA-fast-talking-head` (HF Space via `gradio_client`, `/generate_motion`, needs a user-supplied HF token passed as an env var — never written to a file or commit) run on `profile.jpg` (512² crop) + the voice-over split at silences into 7 chunks (~10 s each, ~15 s generation per chunk). Chunks are snapped to the 25 fps grid, stitched, and encoded to `site/host.webm` (VP9; headless Chromium can't decode H.264). `site/hostvideo.js` seeks the visible scene's `<video>` to `(frame+.5)/25` on `seeked`; `app.js` `seek()` now returns a Promise. `photohost.js`/`tools/mls_visemes.py` stay as the CPU fallback. Result looks natural (real jaw/cheek/head motion); chunk joins are not visible because cuts fall in pauses.
   - **Pitfall (video seeking in renders):** the first MoDA render shipped with a *frozen* host: page screenshots over `file://` showed motion, but `scripts/render.mjs` serves directory sources over HTTP and `static-server.mjs` had no `Range` support or `.webm` MIME, so `<video>.currentTime` changes never produced new frames. Fixed in `static-server.mjs` (206 range responses, `video/webm`), and `hostvideo.js` copies each seeked frame into a `<canvas>`. **Always verify a video-driven element on the final MP4** (frame-diff of the host crop at several times, `mean diff` ≈ 2 when moving, ≈ 0 when frozen), not only on a `file://` screenshot.
 
-- **Update 4 (Oct 2026): host mouth re-sync via LatentSync (user-run on Colab).** MoDA's head motion is good but its lip articulation is weak (user feedback). Free HF ZeroGPU quota is spent by MoDA, and the dedicated-GPU lip-sync Spaces were down, so `reel-apple-camera-no-video/lipsync-colab/` holds `LatentSync_lipsync.ipynb` (installs LatentSync in a py3.10 venv, picks 1.5 on ≤15 GB GPUs / 1.6 on ≥20 GB, runs the 7 chunks) + `lipsync-input.zip` (the 7 MoDA clips `c*.mp4` and voice chunks `c*.wav`). The user runs it and returns `lipsync-out.zip` (`l0..l6.mp4`); then `python3 reel-apple-camera-no-video/tools/stitch_host.py <dir> l` rewrites `site/host.webm` (same 25 fps frame snapping, 1718 frames), re-render, and verify mouth motion on the final MP4 with the frame-diff check. The notebook is untested on a GPU (dependency pins resolved with `uv pip compile` only). Wav2Lip Spaces were rejected: non-commercial terms and blurrier mouths.
+- **Update 4 (Oct 2026): host mouth re-sync via LatentSync (user-run on Colab).** MoDA's head motion is good but its lip articulation is weak (user feedback). Free HF ZeroGPU quota is spent by MoDA, and the dedicated-GPU lip-sync Spaces were down, so `reels/tech/reel-apple-camera-no-video/lipsync-colab/` holds `LatentSync_lipsync.ipynb` (installs LatentSync in a py3.10 venv, picks 1.5 on ≤15 GB GPUs / 1.6 on ≥20 GB, runs the 7 chunks) + `lipsync-input.zip` (the 7 MoDA clips `c*.mp4` and voice chunks `c*.wav`). The user runs it and returns `lipsync-out.zip` (`l0..l6.mp4`); then `python3 reels/tech/reel-apple-camera-no-video/tools/stitch_host.py <dir> l` rewrites `site/host.webm` (same 25 fps frame snapping, 1718 frames), re-render, and verify mouth motion on the final MP4 with the frame-diff check. The notebook is untested on a GPU (dependency pins resolved with `uv pip compile` only). Wav2Lip Spaces were rejected: non-commercial terms and blurrier mouths.
 
 ## Reel benchmark — `reel-chatgpt-intelligent-ui` ("Widget Toybox", 80 s, Hindi voice-over, English on screen)
 
@@ -1133,10 +1141,10 @@ For every GIF, reel or image post, the folder's `linkedin.md` must contain, toge
 `reel-plate-reader` ("Somebody keeps notes on your car", Highway Signage) was judged "not so good" even though it was clean and in sync: **it used only ~2 asset families** — AI photoreal stills with depth parallax, plus DOM sign panels/text — out of the many this repo holds. The user's instruction: *"so many asset types for you to choose from but you picked just 1–2. Remember for the next reel."* The reel is kept as shipped; the rule below governs everything after it.
 
 **Hard requirement:** every new reel must use **at least 5–6 distinct asset families**, chosen deliberately from the library, and the script's asset table must show *which scene uses which family*. Families available here (use real mixes, not decoration):
-1. Photoreal AI stills + depth-parallax WebGL (RealVisXL + Depth-Anything; `reel-plate-reader/site/gl.js` is the reusable 9:16 layer)
-2. Blender `bpy` 3D renders (8 CC0 HDRIs for lighting in `assets/hdri/`) — Quaternius rigs/clips, toon/riso shader, objects built procedurally (`reel-humanoid-cage-match/blender/`)
+1. Photoreal AI stills + depth-parallax WebGL (RealVisXL + Depth-Anything; `reels/tech/reel-plate-reader/site/gl.js` is the reusable 9:16 layer)
+2. Blender `bpy` 3D renders (8 CC0 HDRIs for lighting in `assets/hdri/`) — Quaternius rigs/clips, toon/riso shader, objects built procedurally (`reels/tech/reel-humanoid-cage-match/blender/`)
 3. CMU mocap 2D rig (`rig.js`, `bvh2json.mjs`) driving human/robot skins
-4. Cut-out puppet from a generated character sheet (`proto-2d-puppet/`) — still rough; use only if its known artifacts are acceptable
+4. Cut-out puppet from a generated character sheet (`prototypes/proto-2d-puppet/`) — still rough; use only if its known artifacts are acceptable
 5. humaaans characters (`assets/illustrations/humaaans-react/`, 24 poses)
    - **Also available (Oct 2026):** Open Peeps (hand-drawn line-art people, mix-and-match, `assets/illustrations/open-peeps/compose.mjs`) and Open Doodles (33 full-scene doodles, `assets/illustrations/open-doodles/`). They count as separate families from humaaans; same rule: never reuse the same pose/recolour twice.
 6. Flowbite / other illustrations and brand logos (`assets/illustrations`, `assets/logos`, nominative use only)
@@ -1273,7 +1281,7 @@ A tutorial reel (no avatar): Claude reads Gmail + Google Calendar and writes a w
 ## Pitfalls found on `reel-claude-in-sheets` (Oct 2026)
 - **Load every font face before `__ready`.** `document.fonts.ready` resolves for faces already in use. Text first set inside `__seek` requests its face late, and with `font-display:block` it is invisible on frame 0 (cells were blank in the MP4 but fine in previews). Call `document.fonts.load('600 20px Inter')` etc. for every face, then mark ready. `scripts/render.mjs` now waits for `window.__ready !== false`.
 - **Standalone SVG files must be valid XML.** The Open Peeps fragments (`fill={{bg}}`) and `humaaansFull()` (`fill=#57331F`) produced unquoted attributes. Inline HTML tolerates them; `<img src="x.svg">` shows a broken image. Both are fixed at the source. Validate generated SVGs with `xml.dom.minidom` before use.
-- **Pre-speech noises in cloned voice takes:** Qwen ICL takes can carry a short sound before the first word, and Whisper folds it into the first word's start. `reel-claude-in-sheets/voice/clean.py` cuts short leading/trailing blobs separated by ≥ 0.12 s gaps and softens isolated clicks/breaths, logging each change in `vo/clean_report.json`. Run it after `pick.py`.
+- **Pre-speech noises in cloned voice takes:** Qwen ICL takes can carry a short sound before the first word, and Whisper folds it into the first word's start. `reels/tech/reel-claude-in-sheets/voice/clean.py` cuts short leading/trailing blobs separated by ≥ 0.12 s gaps and softens isolated clicks/breaths, logging each change in `vo/clean_report.json`. Run it after `pick.py`.
 - **Scene cuts with tiles:** shrinking the outgoing scene's tiles in place interleaves strips of both scenes' text. Cover with solid tiles in the first half, uncover in the second, and show only one scene at a time.
 - `pgrep -f`/`pkill -f` matched the invoking shell again (exit 144). Never use them; keep the PID from `$!` instead.
 
@@ -1311,7 +1319,7 @@ Tutorial picked from the Instagram data: open synthid.com → upload → read, t
 - **Families (10):** photoreal AI still + depth parallax, Blender 3D, humaaans, logos (Google/OpenAI/NVIDIA/Apple), Phosphor icons, bespoke DOM (browser, drop zone, evidence cards), rough.js strokes, Unsplash photo, footage overlays (dust, grain), kinetic type + synth score/CC0 samples.
 - **Validated:** `check.mjs` (only the full-bleed hook occupancy, scene 9 at 61 %, one transient stamp overshoot remain), contact sheets, 20 frames of the final MP4 incl. cuts. Mix −14.0 LUFS, −3.1 dBTP, voice over music median 20.1 dB, min 12.4 dB. Audio not auditioned.
 - **Pitfalls:** `Write` fails if the file changed since last read (re-Read first); cursor click timed after the scene end (check that scripted interactions finish before the scene does); SIGSTOP a CPU-heavy job instead of killing it; cold model load ~10–16 min.
-- **Update (13 Oct 2026, creator feedback on `reel-synthid-check`):** (1) voice sounded reverberant → `reel-synthid-check/dereverb.py` (Habets-style late-reverb spectral subtraction + 18 dB gap expander) then EQ (+3 dB at 130 Hz, −2 dB at 330 Hz, +3 dB at 3.2 kHz, +1.5 dB shelf at 9 kHz); music-bus plate reverb cut from .26 to .10; not auditioned, the numeric tail metric was too noisy to trust. (2) Music was "too low": gap/duck levels raised from −10.5/−8.5 to −5.5/−8.0 dB (voice over music median 16.0 dB, min 7.3 at the hook's first word). (3) A TTS reads a brand like "SynthID" as one word: spell it phonetically in the spoken text ("Synth eye dee", via `voice/spoken_fix.json`) and keep the display text "Synth ID" in `lines.json`; Whisper then hears "Synth ID".
+- **Update (13 Oct 2026, creator feedback on `reel-synthid-check`):** (1) voice sounded reverberant → `reels/tech/reel-synthid-check/dereverb.py` (Habets-style late-reverb spectral subtraction + 18 dB gap expander) then EQ (+3 dB at 130 Hz, −2 dB at 330 Hz, +3 dB at 3.2 kHz, +1.5 dB shelf at 9 kHz); music-bus plate reverb cut from .26 to .10; not auditioned, the numeric tail metric was too noisy to trust. (2) Music was "too low": gap/duck levels raised from −10.5/−8.5 to −5.5/−8.0 dB (voice over music median 16.0 dB, min 7.3 at the hook's first word). (3) A TTS reads a brand like "SynthID" as one word: spell it phonetically in the spoken text ("Synth eye dee", via `voice/spoken_fix.json`) and keep the display text "Synth ID" in `lines.json`; Whisper then hears "Synth ID".
 
 ## STANDING RULE: `reel-ai-trading-pipeline` is the minimum polish level for every reel (user, 13 Oct 2026)
 *"I like the visual treatment used for trading pipeline reel. It just feels wholesome and highly polished. I need every reel to be on that level or above that."* A flat card-on-dark mockup (the first "Use It Today" draft) is below this bar. Every new reel, including the Use It Today series, must have all of the following:
@@ -1330,7 +1338,7 @@ Tutorial picked from the Instagram data: open synthid.com → upload → read, t
 7. **An end recap card** (save-worthy) plus the branded CTA.
 8. **A layered score** that adds a voice per step, with peak-aligned SFX.
 
-Compare every new contact sheet against `reel-ai-trading-pipeline/reel.mp4` frames before sending. If it doesn't look at least as finished, iterate first.
+Compare every new contact sheet against `reels/tech/reel-ai-trading-pipeline/reel.mp4` frames before sending. If it doesn't look at least as finished, iterate first.
 
 **Additions from the same review (13 Oct 2026):**
 - **Voice:** use the avatar-clip voice from the trading reel (the creator's AI avatar), not the Qwen clone, for the Use It Today series.
@@ -1340,16 +1348,16 @@ Compare every new contact sheet against `reel-ai-trading-pipeline/reel.mp4` fram
 ## STANDING RULE: caption structure for every Use It Today reel (user, 13 Oct 2026)
 Every `caption.md` follows `insights/caption-template.md`: a 300–700 character caption with the comment-keyword CTA on line 1, **the avatar disclosure line** ("🤖 Host: my AI avatar (a likeness of me, voiced by AI). The script, research and edit are mine; I use Claude to help build these."), tier-A sources, and a separate **"Hashtags (top 5)"** section: exactly 5 tags, one per role (topic, intent, audience, niche keyword, series `#UseItToday`), each with a one-line reason, chosen with `insights/hashtag-research.md`. Instagram caps captions at 5 hashtags and says hashtags classify content rather than raise reach.
 
-## Reel benchmark — `science-channel/reel-01-your-voice` mockup v2 ("X-ray Plate", 15 s animated preview)
+## Reel benchmark — `reels/science/reel-01-your-voice` mockup v2 ("X-ray Plate", 15 s animated preview)
 Photoreal head plate + depth parallax + a **generated X-ray registered to the ear** inside a circular lens; the lens is the signature object *and* the transition (camera dives into it, flash, emerges inside the X-ray plate), followed by a whip pan with blur. The camera is one `{z, cx, cy}` state that drives both the WebGL shader and every DOM anchor (`scr()` in `site/app.js`), so overlays stay glued to the photo while it moves.
-- **Lessons:** a Blender mannequin next to a photoreal face looks like a toy (Blender = objects, not people); mirror a generated plate to put the face where the layout needs it and register anchors afterwards; register an X-ray to the ear and jaw, not to the skull centre; generated people need a visible "AI IMAGE" tag; diffusers on this box needs a stub `torchaudio` on `PYTHONPATH` (`/tmp/stub/torchaudio/{__init__,functional}.py`, re-create from `reel-teach-a-skill/voice/torchaudio_shim_functional.py`); Open Peeps `bust/Device` + a worried face is the logical "wince at a phone" pose (humaaans poses are all walking).
+- **Lessons:** a Blender mannequin next to a photoreal face looks like a toy (Blender = objects, not people); mirror a generated plate to put the face where the layout needs it and register anchors afterwards; register an X-ray to the ear and jaw, not to the skull centre; generated people need a visible "AI IMAGE" tag; diffusers on this box needs a stub `torchaudio` on `PYTHONPATH` (`/tmp/stub/torchaudio/{__init__,functional}.py`, re-create from `reels/tech/reel-teach-a-skill/voice/torchaudio_shim_functional.py`); Open Peeps `bust/Device` + a worried face is the logical "wince at a phone" pose (humaaans poses are all walking).
 - **Voice:** the avatar-clip voice (same as the trading reel), prompts in `avatar-prompts.md` (rules R1-R15, 0 FAIL).
 
-- **Full build (14 Oct 2026):** `science-channel/reel-01-your-voice/` is the first timeline-driven reel: `timing.json` (voice line and word times) → `site/timing.js` → every scene boundary, word cue, caption and SFX derives from it, so a voice swap re-times everything (`VOICE-SWAP.md`, `timing_from_voice.py`). Transitions are kinds on the scene boundaries (`dive` into a lens/mic/ring, `whip`, `tilt`, `rise`, `cross`) with a matching WebGL plate move, flash and SFX. A Blender sequence (`blender/ear.py`, 16 camera positions) is scrubbed by t and the routes are drawn on its projected anchor points. The page publishes its own event list (`window.EV`, dumped to `events.json`) so `audio_full.py` aligns SFX without guessing.
+- **Full build (14 Oct 2026):** `reels/science/reel-01-your-voice/` is the first timeline-driven reel: `timing.json` (voice line and word times) → `site/timing.js` → every scene boundary, word cue, caption and SFX derives from it, so a voice swap re-times everything (`VOICE-SWAP.md`, `timing_from_voice.py`). Transitions are kinds on the scene boundaries (`dive` into a lens/mic/ring, `whip`, `tilt`, `rise`, `cross`) with a matching WebGL plate move, flash and SFX. A Blender sequence (`blender/ear.py`, 16 camera positions) is scrubbed by t and the routes are drawn on its projected anchor points. The page publishes its own event list (`window.EV`, dumped to `events.json`) so `audio_full.py` aligns SFX without guessing.
 - **Pitfalls:** the cadence checker reads small localized motion as static (a ripple or a bobbing arrow did not count; a moving scan band did); frame 0 must set every pop-in element to opacity 1 from t=0; `Write` on a file edited by a script needs a re-Read (write to a new filename instead); keep chip transform-origin at the left or a scale overshoot leaves the safe zone.
 
-## Reel benchmark — `science-channel/reel-02-cells` mockup ("Plasma & Light-Body", cinematic bar)
-Script + fact ledger: `science-channel/reel-02-cells/script.md` (facts read from the full Sender & Milo 2021 text). Mockup: `mockup/` (silent 15 s preview, 3 scenes).
+## Reel benchmark — `reels/science/reel-02-cells` mockup ("Plasma & Light-Body", cinematic bar)
+Script + fact ledger: `reels/science/reel-02-cells/script.md` (facts read from the full Sender & Milo 2021 text). Mockup: `mockup/` (silent 15 s preview, 3 scenes).
 - **Look:** warm crimson plasma, amber gut, cyan = neurons that stay, lime = newly made; Familjen Grotesk + Fragment Mono. Meaning-coded colour, no legend.
 - **New techniques:** (1) `site/gl3.js` three-pass pipeline: depth-parallax plates with depth-of-field and chroma shift, 2D sprite canvas composited as a texture, then mip-biased bloom + anamorphic streak + filmic curve + grain; (2) Blender red-cell sprite sheet (biconcave Evans-Fung mesh, 8 tilts) drawn as a depth-sorted, focus-blurred stream in a 2D canvas, with fog/blur variants pre-baked; (3) Blender plates with a depth map from a material override (no compositor needed); (4) a body of light: silhouette sampled to points, renewal wave and burst as pure functions of `t`; (5) odometer counter = 3.82 M x t.
 - **Creator taste rules (14 Oct 2026):** the skull/X-ray was "scary" and the vessel-tunnel "looks weird". Science reels: nothing frightening, no skeleton imagery, open lit fluid instead of a pipe.
@@ -1357,19 +1365,19 @@ Script + fact ledger: `science-channel/reel-02-cells/script.md` (facts read from
 - **Cost:** mockup plates were rendered at 810x1440 / 24 spp; final plates should be re-rendered at higher spp.
 
 ## STANDING NOTE — new Instagram account (14 Oct 2026)
-The previous account was suspended. **The new handle is `@sandesh_explains`** (underscore) with a new profile photo (`account/profile-square-1000.jpg`, also `reel-app/public/profile.jpg`, used on every end card and cover chip). It posts **science, wellness and tech** reels. Full profile brief for the account-setup assistant: `account/SETUP-sandesh_explains.md`. Old-account stats in `insights/` are history; reels built before this date (`science-channel/reel-01-your-voice`) still show the old handle/photo in their rendered MP4 and need a re-render before posting.
+The previous account was suspended. **The new handle is `@sandesh_explains`** (underscore) with a new profile photo (`account/profile-square-1000.jpg`, also `prototypes/reel-app/public/profile.jpg`, used on every end card and cover chip). It posts **science, wellness and tech** reels. Full profile brief for the account-setup assistant: `account/SETUP-sandesh_explains.md`. Old-account stats in `insights/` are history; reels built before this date (`reels/science/reel-01-your-voice`) still show the old handle/photo in their rendered MP4 and need a re-render before posting.
 
-- **Full build (14 Oct 2026), `science-channel/reel-02-cells/` ("Four million. Every second.", 30 s, cloned voice):** timeline page (`site/main.js`, voice-timed; counter = 3.82 M x t crossing 100 M while line 8 is spoken), 9 scenes joined by match moves (push/pull/cross, no wipes), Blender plates (gut, RBC sprites at 512 px) + procedural plasma/marrow/void plates, light-body figure, neuron constellation, happy Open Doodle friend, branded end card. Audio `audio_cells.py` (heartbeat + pad, dark and reverberant inside the body, opens to full range when the camera leaves; voice over music 17.2 dB, -14.3 LUFS, -2.4 dBTP; measured, not auditioned). Voice: Qwen3-TTS ICL clone, 3 seeds per line, `voice/assemble.py` sets the pauses (tune them so a spoken number lands with the counter). Validated: `change-cadence` 0 stretches over 2 s; contact sheet of all 8 transitions plus the join and ending; the last 5 s were re-rendered separately (`REEL_START=25 REEL_END=30`) and spliced with ffmpeg `trim`+`concat` after an end-card timing fix (a slice render is a quick way to fix late-timeline problems).
+- **Full build (14 Oct 2026), `reels/science/reel-02-cells/` ("Four million. Every second.", 30 s, cloned voice):** timeline page (`site/main.js`, voice-timed; counter = 3.82 M x t crossing 100 M while line 8 is spoken), 9 scenes joined by match moves (push/pull/cross, no wipes), Blender plates (gut, RBC sprites at 512 px) + procedural plasma/marrow/void plates, light-body figure, neuron constellation, happy Open Doodle friend, branded end card. Audio `audio_cells.py` (heartbeat + pad, dark and reverberant inside the body, opens to full range when the camera leaves; voice over music 17.2 dB, -14.3 LUFS, -2.4 dBTP; measured, not auditioned). Voice: Qwen3-TTS ICL clone, 3 seeds per line, `voice/assemble.py` sets the pauses (tune them so a spoken number lands with the counter). Validated: `change-cadence` 0 stretches over 2 s; contact sheet of all 8 transitions plus the join and ending; the last 5 s were re-rendered separately (`REEL_START=25 REEL_END=30`) and spliced with ffmpeg `trim`+`concat` after an end-card timing fix (a slice render is a quick way to fix late-timeline problems).
 - **Pitfalls:** `ps aux | grep -q "[r]ender.mjs site"` inside a command that also contains that text killed the invoking shell (exit 144) again: keep PIDs in a file. A waiter on `grep -q Done: render.log` fired for a render I had killed because the new render reused the same log file: use a unique log per render. Whisper writes spoken numbers as digits, so `timing_from_voice.py` maps them back to words. `grep -r` over the repo root hangs on the large tree: grep specific folders.
 - **Not validated:** voice and mix not auditioned; no `check.mjs` equivalent for this page (safe zone and overlaps judged on frames); the cells-reel page has no occupancy check.
 
 ## STANDING RULES — creator taste and voice quality (user, 14 Oct 2026; apply to every reel from now on)
 1. **No human-looking cartoon characters.** The creator called Open Peeps, humaaans and Open Doodles people "extremely pathetic". Do not use illustrated or cartoon humans in any new reel, cover or GIF (they are still in `assets/` but off the menu for people). Use objects, icons, light/particle forms, real photos of objects, 3D objects, data objects and the creator's own photo instead. Characters may stay only as non-human mascots (e.g. a cursor).
 2. **Nothing frightening in science reels:** no skulls, skeletons, X-ray bone imagery or pipe-like vessel interiors (see the cells reel notes).
-3. **Voice-over must never contain broken sentences.** A sentence is spoken in one take with natural flow, never cut mid-thought. Rules: (a) write the script as flowing breath groups and generate **one take per breath group (1-3 short sentences)**, not one take per sentence fragment; (b) **no pause cutting and no tempo change** after generation (the old `pick.py` shortened pauses over 0.40 s and time-stretched takes up to 1.12x, which can clip soft word endings and sounds choppy); (c) only designed silences (a guess beat, a try-it beat, before the CTA) go between takes, 0.25-0.40 s otherwise; (d) every take must pass an automated flow check before it is used: Whisper transcript equals the script word for word, no internal pause over 0.55 s, speaking rate 2.3-3.6 words/s, no clipped onset, ending decays naturally (`voice/pick2.py` in `science-channel/reel-01-your-voice/`); (e) numbers are spelled the way they should sound ("twenty twenty-five") in the text sent to the TTS; (f) still not auditioned by ear here: flag that in the delivery message.
+3. **Voice-over must never contain broken sentences.** A sentence is spoken in one take with natural flow, never cut mid-thought. Rules: (a) write the script as flowing breath groups and generate **one take per breath group (1-3 short sentences)**, not one take per sentence fragment; (b) **no pause cutting and no tempo change** after generation (the old `pick.py` shortened pauses over 0.40 s and time-stretched takes up to 1.12x, which can clip soft word endings and sounds choppy); (c) only designed silences (a guess beat, a try-it beat, before the CTA) go between takes, 0.25-0.40 s otherwise; (d) every take must pass an automated flow check before it is used: Whisper transcript equals the script word for word, no internal pause over 0.55 s, speaking rate 2.3-3.6 words/s, no clipped onset, ending decays naturally (`voice/pick2.py` in `reels/science/reel-01-your-voice/`); (e) numbers are spelled the way they should sound ("twenty twenty-five") in the text sent to the TTS; (f) still not auditioned by ear here: flag that in the delivery message.
 
 ## STANDING RULE — reel #02 stays as shipped; every next reel must top the bar (user, 14 Oct 2026)
-- **`science-channel/reel-02-cells` is kept exactly as shipped** (its Open Doodle friend scene and old-picker voice are NOT to be redone unless the creator asks).
+- **`reels/science/reel-02-cells` is kept exactly as shipped** (its Open Doodle friend scene and old-picker voice are NOT to be redone unless the creator asks).
 - **Every next reel must really top the already high benchmark in every aspect** (script, visuals, motion, voice, audio, CTA, polish), measured against `reel-01-your-voice` v4 and `reel-02-cells`, on top of the cumulative standing rules above (no cartoon people, nothing frightening, unbroken voice-over via `voice/pick2.py` flow checks, benchmark-to-beat block in `script.md`, ≥5-6 asset families, new technique per reel, strict validation before sending).
 - `reel-01-your-voice` v4 state: skull and doodles removed, breath-group voice, `change-cadence` 0 stretches, mix −14 LUFS; voice and mix not auditioned by ear.
 
@@ -1382,7 +1390,7 @@ The previous account was suspended. **The new handle is `@sandesh_explains`** (u
 2. **Background music must never overpower the voice-over.** Targets, measured on voiced frames only: **voice over music (median) ≥ 19 dB and minimum ≥ 13 dB**, with the music bed ducked under every word (voice-activity ducking + a 1.2-4.5 kHz carve), kept simple under the voice (no lead melody in the speech band), and louder only in designed gaps (hook sting, try-it silence). `reel-01-your-voice` v4 measured only 16.3 dB median: below this bar, so lower its music bed ~3-4 dB if it is ever re-mixed. Report the median/min numbers in every delivery; listen-check is still not possible here, so say so.
 
 ## GIF benchmark — `gif-ai-workslop` ("Someone sent you workslop. Now it's your job.", horizontal 1600×900, 12 s loop, 10 fps, 120 frames, 4.4 MB)
-Picked from a topic deep dive (`gif-next-research/research.md`; the creator approved topic + metaphor). **Cream paper `#f6efe0` + ink `#1b2a33` + deep teal + tomato + marigold; Fraunces 900 + IBM Plex Mono 600 + Inter.** Metaphor: a customs inspection desk. Three belts (peer / report / boss) carry glossy documents into a lens; 2 of 12 are stamped HOLLOW and ride a rework chute to a bench; a clock, an 8-hour day bar, a 100-dot grid (15.4%), sender bars (40/18/16) and a $186 bill counter run alongside. Source: BetterUp Labs + Stanford (HBR, Sept 2025), read via The Decoder summary (tier B); documents and the 2-in-12 ratio are labelled schematic.
+Picked from a topic deep dive (`gifs/research/gif-next-research/research.md`; the creator approved topic + metaphor). **Cream paper `#f6efe0` + ink `#1b2a33` + deep teal + tomato + marigold; Fraunces 900 + IBM Plex Mono 600 + Inter.** Metaphor: a customs inspection desk. Three belts (peer / report / boss) carry glossy documents into a lens; 2 of 12 are stamped HOLLOW and ride a rework chute to a bench; a clock, an 8-hour day bar, a 100-dot grid (15.4%), sender bars (40/18/16) and a $186 bill counter run alongside. Source: BetterUp Labs + Stanford (HBR, Sept 2025), read via The Decoder summary (tier B); documents and the 2-in-12 ratio are labelled schematic.
 - **Pitfall:** `scripts/render.mjs` serves only the GIF's own folder, so `../assets/fonts` URLs 404, the font promise never settles and `__ready` hangs (the first render also showed serif fallbacks). `build.mjs` now copies the fonts into `./fonts/` and `app.js` sets `__ready` after `document.fonts.load` with a `.catch`.
 - A 120-frame render takes >2 minutes: run it with `nohup` and wait on the log, not in the foreground. Encode: `fps=10`, `max_colors=40`, `dither=none` gave 4.4 MB (48 colours 4.8 MB, 12 fps 6.7 MB). Keep flat backgrounds.
 - Loop: frame 0 is offset 4.5 s into the loop (`OFF`), counters ramp and reset during the last 0.6 s of the internal clock.

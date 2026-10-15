@@ -151,7 +151,7 @@ Highlight covers: square 1080 x 1920 story format, symbol only, no text. **[NEED
 
 - Instagram lets you **pin up to 3 posts** to the top of the grid [VERIFY IN APP, was 3].
 - Candidate first posts, in order:
-  1. **Reel #02 "Four million. Every second."** (cells). Built with the new handle and photo on its end card. Render in progress; caption, hashtags, cover and alt text are in `science-channel/reel-02-cells/`.
+  1. **Reel #02 "Four million. Every second."** (cells). Built with the new handle and photo on its end card. Render in progress; caption, hashtags, cover and alt text are in `reels/science/reel-02-cells/`.
   2. **Reel #01 "You've never heard YOU"** (hearing). **Not ready to pin or post as is:** its end card shows the old handle and photo, and its visuals use an X-ray skull that Sandesh found scary. It needs a re-render (new handle/photo; consider replacing the skull). Do not post the current file.
   3. Reel #03 (bacteria vs human cells) once built.
 - **Do not post anything during setup.** Posting is a separate step after Sandesh approves each reel.

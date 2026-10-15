@@ -56,7 +56,7 @@ def norm(s):
 
 def repo_captions():
     caps = {}
-    for f in glob.glob(os.path.join(ROOT, '*', 'caption.md')) + glob.glob(os.path.join(ROOT, '*', 'linkedin.md')):
+    for f in glob.glob(os.path.join(ROOT, 'reels', '*', '*', 'caption.md')) + glob.glob(os.path.join(ROOT, 'gifs', '*', '*', 'linkedin.md')):
         folder = os.path.basename(os.path.dirname(f))
         caps.setdefault(folder, set(norm(open(f, encoding='utf-8').read())))
     return caps

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Post Runway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a broadcast run-sheet — weeks stack, each weekday is a row with two airtime slots (11:00 / 20:30 SGT) and a LinkedIn lane */
+:root{
+  --bg:#f3f5f8; --panel:#ffffff; --ink:#18202c; --mute:#5c6778; --line:#dde3ea;
+  --accent:#1f5eff; --onair:#e5484d; --done:#13915f; --warn:#b26b00; --chip:#eef2f7;
+  --display:"Familjen Grotesk",system-ui,sans-serif; --body:"Instrument Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1319; --panel:#171c24; --ink:#e7ecf3; --mute:#97a3b4; --line:#2a323e;
+  --accent:#6f94ff; --onair:#ff6b6f; --done:#3fcf8e; --warn:#f0a63a; --chip:#1f2630; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1319; --panel:#171c24; --ink:#e7ecf3; --mute:#97a3b4; --line:#2a323e;
+  --accent:#6f94ff; --onair:#ff6b6f; --done:#3fcf8e; --warn:#f0a63a; --chip:#1f2630; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);padding-inline:16px;padding-block:24px 48px}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:22px}
+header{display:grid;gap:10px}
+h1{font:700 clamp(28px,4vw,40px)/1.05 var(--display);margin:0;letter-spacing:-.02em;text-wrap:balance}
+.sub{color:var(--mute);margin:0;max-width:70ch}
+.stats{display:flex;flex-wrap:wrap;gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:150px;display:grid;gap:4px}
+.stat b{font:600 22px/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font:500 12px/1.2 var(--mono);color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.bar{height:6px;border-radius:3px;background:var(--chip);overflow:hidden}.bar i{display:block;height:100%;background:var(--done);width:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{font:500 13px var(--body);color:var(--mute);background:none;border:0;padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.week{display:grid;gap:10px}
+.week h2{font:700 20px/1.2 var(--display);margin:0;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.week h2 small{font:500 12px var(--mono);color:var(--mute);letter-spacing:.05em}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:12px;display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);overflow:hidden}
+.day.today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.dlab{padding:14px;border-right:1px solid var(--line);display:grid;align-content:start;gap:2px}
+.dlab b{font:700 17px/1.1 var(--display)}.dlab span{font:500 12px var(--mono);color:var(--mute)}
+.dlab em{font:600 11px var(--mono);color:var(--accent);font-style:normal;letter-spacing:.06em}
+.slot{padding:12px 14px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start;min-width:0}
+.slot:last-child{border-right:0}
+.slot.empty{color:var(--mute);font-size:13px;align-content:center}
+.when{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:600 12px var(--mono);letter-spacing:.04em}
+.when .t{color:var(--ink)}.when .z{color:var(--mute);font-weight:500}
+.kind{font:600 11px var(--mono);padding:2px 7px;border-radius:999px;background:var(--chip);color:var(--mute);letter-spacing:.06em}
+.kind.li{color:var(--accent)}
+.ttl{font:600 15px/1.3 var(--body);margin:0}
+.meta{font:500 12px/1.4 var(--mono);color:var(--mute);word-break:break-word}
+.flag{font:600 11.5px/1.35 var(--body);color:var(--warn)}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.ck{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--body);background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:5px 9px;cursor:pointer;user-select:none}
+.ck input{accent-color:var(--done);width:16px;height:16px;margin:0;cursor:pointer}
+.ck.on{border-color:var(--done);color:var(--done)}
+.slot.complete .ttl{color:var(--done)}
+.slot.complete .when .t::after{content:" ✓ live";color:var(--done)}
+.pubgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.slot.pub{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.note h3{font:700 16px var(--display);margin:0}
+.note ul{margin:0;padding-left:18px;display:grid;gap:4px;color:var(--ink)}
+.note li{max-width:90ch}
+.empty-state{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:28px;color:var(--mute);text-align:center}
+.status{font:500 12px var(--mono);color:var(--mute)}
+@media (max-width:820px){.day{grid-template-columns:1fr}.dlab{border-right:0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.slot{border-right:0;border-bottom:1px solid var(--line)}.slot:last-child{border-bottom:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <h1>Post Runway</h1>
+    <p class="sub">Every finished reel and LinkedIn GIF in the repo, scheduled Monday to Friday in Singapore time, starting Mon 12 Oct. Posts you have already published sit at the bottom. Tick each platform as it goes live; ticks sync through Supabase, so every device sees the same state.</p>
+    <div class="stats" id="stats"></div>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Show">
+        <button id="f-all" aria-pressed="true" data-f="all">All</button>
+        <button id="f-left" aria-pressed="false" data-f="left">Still to post</button>
+        <button id="f-wk" aria-pressed="false" data-f="wk">This week</button>
+      </div>
+      <span class="status" id="status">Connecting to the tracker…</span>
+    </div>
+  </header>
+  <main id="weeks"><div class="empty-state">The schedule loads here: 11 reels and 6 LinkedIn posts still to post.</div></main>
+  <section class="note" aria-labelledby="why">
+    <h3 id="why">How this schedule was set</h3>
+    <ul>
+      <li><b>Reels</b> go out at 11:00 and 20:30 SGT, Monday to Friday, to Instagram, TikTok and YouTube Shorts at once. 20:30 SGT is 8:30 am in New York, 1:30 pm in London (12:30 pm after 25 Oct) and 6 pm in India.</li>
+      <li><b>LinkedIn gets one post a day, not two.</b> A second post within the same day competes with the first for reach. It goes out at 20:30 SGT, the start of the US working morning, when B2B feeds are busiest.</li>
+      <li><b>Re-packed around what is already live.</b> Any post with a platform ticked moved to the Already published list, and the 21 still to post were re-packed from Mon 12 Oct, keeping the same order: fresh news and evergreen explainers first, the one September story (OpenAI dots vs Grok) last. A post that is live on only some platforms shows which are still missing.</li>
+      <li><b>The run now ends Wed 21 Oct.</b> As of the evening of Tue 13 Oct, 11 reels and 6 LinkedIn posts remain. The two Wed 21 Oct reel slots now hold the newest reels (Teach your AI once, I was asleep when Claude wrote this).</li>
+      <li><b>For each post:</b> pin the first comment from the caption pack, then stay 15 minutes and reply to every comment.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+(function(){
+  var SB = { url: 'https://urevewbhdnvfgcgxbdyc.supabase.co', key: 'sb_publishable_-cKeb9_U6itvfL8Er235EQ_LmBnQrii' };
+  var ROWS = [{"n": 1, "kind": "reel", "format": null, "title": "Software is over?", "folder": "reel-ai-adobe-clones", "media": "reels/tech/reel-ai-adobe-clones/reel.mp4", "copy": "reels/tech/reel-ai-adobe-clones/caption.md", "flag": null, "date": "2026-10-12", "slot": "11:00", "week": 1, "len": "73s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "2026-10-12-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "This agent writes its own orchestration code", "folder": "gif-agent-workflows", "media": "gifs/tech/gif-agent-workflows/agent-workflows.gif", "copy": "gifs/tech/gif-agent-workflows/linkedin.md", "flag": null, "date": "2026-10-12", "slot": "20:30", "week": 1, "len": null, "ig": false, "tt": false, "yt": false, "li": true, "cmt": true, "rep": true, "id": "2026-10-12-2030-li", "archived": false}, {"n": 2, "kind": "reel", "format": null, "title": "AI can't read.", "folder": "reel-ai-reads-tokens", "media": "reels/tech/reel-ai-reads-tokens/reel.mp4", "copy": "reels/tech/reel-ai-reads-tokens/caption.md", "flag": null, "date": "2026-10-12", "slot": "20:30", "week": 1, "len": "74s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "2026-10-12-2030-reel", "archived": false}, {"n": 3, "kind": "reel", "format": null, "title": "Your AI is about to go shopping for you", "folder": "reel-ai-shopping-agent", "media": "reels/tech/reel-ai-shopping-agent/reel.mp4", "copy": "reels/tech/reel-ai-shopping-agent/caption.md", "flag": null, "date": "2026-10-13", "slot": "11:00", "week": 1, "len": "59s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "2026-10-13-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "Google gave AI agents an employee badge", "folder": "gif-agent-coworkers", "media": "gifs/tech/gif-agent-coworkers/agent-coworkers.gif", "copy": "gifs/tech/gif-agent-coworkers/linkedin.md", "flag": null, "date": "2026-10-13", "slot": "20:30", "week": 1, "len": null, "ig": false, "tt": false, "yt": false, "li": true, "cmt": true, "rep": true, "id": "2026-10-13-2030-li", "archived": false}, {"n": 4, "kind": "reel", "format": null, "title": "A bot that can't panic", "folder": "reel-ai-trading-pipeline", "media": "reels/tech/reel-ai-trading-pipeline/reel.mp4", "copy": "reels/tech/reel-ai-trading-pipeline/caption.md", "flag": null, "date": "2026-10-13", "slot": "20:30", "week": 1, "len": "70s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "2026-10-13-2030-reel", "archived": false}, {"n": 5, "kind": "reel", "format": null, "title": "Somebody's keeping notes on your car", "folder": "reel-plate-reader", "media": "reels/tech/reel-plate-reader/reel.mp4", "copy": "reels/tech/reel-plate-reader/caption.md", "flag": null, "date": "2026-10-14", "slot": "11:00", "week": 1, "len": "60s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-14-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "The front door for AI agents (Personal Agent Protocol)", "folder": "gif-agent-front-door", "media": "gifs/tech/gif-agent-front-door/v2/front-door-architecture.gif", "copy": "gifs/tech/gif-agent-front-door/linkedin.md", "flag": "PAP spec v0.1 was due later in October. Check whether it has shipped and update one line if so.", "date": "2026-10-14", "slot": "20:30", "week": 1, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-14-2030-li", "archived": false}, {"n": 6, "kind": "reel", "format": null, "title": "Wi-Fi off. AI on.", "folder": "reel-ai-offline-laptop", "media": "reels/tech/reel-ai-offline-laptop/reel.mp4", "copy": "reels/tech/reel-ai-offline-laptop/caption.md", "flag": null, "date": "2026-10-14", "slot": "20:30", "week": 1, "len": "73s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-14-2030-reel", "archived": false}, {"n": 7, "kind": "reel", "format": null, "title": "Apple's rumored camera that doesn't record", "folder": "reel-apple-camera-no-video", "media": "reels/tech/reel-apple-camera-no-video/reel.mp4", "copy": "reels/tech/reel-apple-camera-no-video/caption.md", "flag": null, "date": "2026-10-15", "slot": "11:00", "week": 1, "len": "68s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-15-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "MCP just stopped remembering you. On purpose.", "folder": "gif-mcp-stateless", "media": "gifs/tech/gif-mcp-stateless/mcp-stateless.gif", "copy": "gifs/tech/gif-mcp-stateless/linkedin.md", "flag": null, "date": "2026-10-15", "slot": "20:30", "week": 1, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-15-2030-li", "archived": false}, {"n": 8, "kind": "reel", "format": null, "title": "Your AI chat isn't a diary", "folder": "reel-ai-chat-not-diary", "media": "reels/tech/reel-ai-chat-not-diary/reel.mp4", "copy": "reels/tech/reel-ai-chat-not-diary/caption.md", "flag": null, "date": "2026-10-15", "slot": "20:30", "week": 1, "len": "75s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-15-2030-reel", "archived": false}, {"n": 9, "kind": "reel", "format": null, "title": "Chat box. Gone. (ChatGPT Intelligent UI)", "folder": "reel-chatgpt-intelligent-ui", "media": "reels/tech/reel-chatgpt-intelligent-ui/reel.mp4", "copy": "reels/tech/reel-chatgpt-intelligent-ui/caption.md", "flag": null, "date": "2026-10-16", "slot": "11:00", "week": 1, "len": "80s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-16-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "Agent memory is not RAG", "folder": "gif-agent-memory", "media": "gifs/tech/gif-agent-memory/agent-memory.gif", "copy": "gifs/tech/gif-agent-memory/linkedin.md", "flag": null, "date": "2026-10-16", "slot": "20:30", "week": 1, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-16-2030-li", "archived": false}, {"n": 10, "kind": "reel", "format": null, "title": "The robot didn't fight. A gamer did.", "folder": "reel-humanoid-cage-match", "media": "reels/tech/reel-humanoid-cage-match/reel.mp4", "copy": "reels/tech/reel-humanoid-cage-match/caption.md", "flag": null, "date": "2026-10-16", "slot": "20:30", "week": 1, "len": "53s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-16-2030-reel", "archived": false}, {"n": 11, "kind": "reel", "format": null, "title": "AI quietly upsells you if it thinks you are rich", "folder": "reel-ai-rich-upsell", "media": "reels/tech/reel-ai-rich-upsell/reel.mp4", "copy": "reels/tech/reel-ai-rich-upsell/caption.md", "flag": null, "date": "2026-10-19", "slot": "11:00", "week": 0, "len": "69s", "ig": true, "tt": true, "yt": false, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-19-1100-reel", "archived": true}, {"n": 12, "kind": "reel", "format": null, "title": "700 AI agents just hacked a real company", "folder": "reel-openai-agent-swarm", "media": "reels/tech/reel-openai-agent-swarm/reel.mp4", "copy": "reels/tech/reel-openai-agent-swarm/caption.md", "flag": null, "date": "2026-10-19", "slot": "11:00", "week": 2, "len": "73s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-19-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "AI made you faster. Then the treadmill sped up.", "folder": "gif-ai-work-treadmill", "media": "gifs/tech/gif-ai-work-treadmill/ai-treadmill.gif", "copy": "gifs/tech/gif-ai-work-treadmill/linkedin.md", "flag": null, "date": "2026-10-19", "slot": "20:30", "week": 2, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-19-2030-li", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "Securing AI agents: a zero-trust reference architecture", "folder": "gif-agent-security", "media": "gifs/tech/gif-agent-security/agent-security-architecture.gif", "copy": "gifs/tech/gif-agent-security/linkedin.md", "flag": null, "date": "2026-10-19", "slot": "20:30", "week": 0, "len": null, "ig": false, "tt": false, "yt": false, "li": true, "cmt": true, "rep": true, "id": "pub-2026-10-19-2030-li", "archived": true}, {"n": 13, "kind": "reel", "format": null, "title": "An AI got caught cheating at StarCraft", "folder": "reel-ai-cheats-starcraft", "media": "reels/tech/reel-ai-cheats-starcraft/reel.mp4", "copy": "reels/tech/reel-ai-cheats-starcraft/caption.md", "flag": null, "date": "2026-10-19", "slot": "20:30", "week": 2, "len": "51s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-19-2030-reel", "archived": false}, {"n": 17, "kind": "reel", "format": null, "title": "OpenAI dots vs Grok", "folder": "reel-openai-dots-vs-grok", "media": "reels/tech/reel-openai-dots-vs-grok/reel.mp4", "copy": "reels/tech/reel-openai-dots-vs-grok/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-20", "slot": "11:00", "week": 2, "len": "58s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-20-1100-reel", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "Agent Metro: how agent traffic is routed", "folder": "gif-agent-metro", "media": "gifs/tech/gif-agent-metro/agent-metro.gif", "copy": "gifs/tech/gif-agent-metro/linkedin.md", "flag": "linkedin.md in this folder holds the front-door post by mistake. Write the Metro copy before posting (first-comment-and-alt.md is correct).", "date": "2026-10-20", "slot": "20:30", "week": 2, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-20-2030-li", "archived": false}, {"n": null, "kind": "linkedin", "format": "GIF", "title": "Agentic GraphRAG, end to end", "folder": "gif-agentic-graphrag", "media": "gifs/tech/gif-agentic-graphrag/agentic-graphrag.gif", "copy": "gifs/tech/gif-agentic-graphrag/linkedin.md", "flag": null, "date": "2026-10-20", "slot": "20:30", "week": 0, "len": null, "ig": false, "tt": false, "yt": false, "li": true, "cmt": true, "rep": true, "id": "pub-2026-10-20-2030-li", "archived": true}, {"n": 14, "kind": "reel", "format": null, "title": "Hyundai workers strike, partly over a robot", "folder": "reel-hyundai-atlas-strike", "media": "reels/tech/reel-hyundai-atlas-strike/reel.mp4", "copy": "reels/tech/reel-hyundai-atlas-strike/caption.md", "flag": null, "date": "2026-10-20", "slot": "20:30", "week": 0, "len": "86s", "ig": true, "tt": true, "yt": false, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-20-2030-reel", "archived": true}, {"n": 25, "kind": "reel", "format": null, "title": "Teach your AI once.", "folder": "reel-teach-a-skill", "media": "reels/tech/reel-teach-a-skill/reel.mp4", "copy": "reels/tech/reel-teach-a-skill/caption.md", "flag": null, "date": "2026-10-21", "slot": "11:00", "week": 2, "len": "61s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-21-1100-reel", "archived": false}, {"n": 15, "kind": "reel", "format": null, "title": "Google just put four AI chips in orbit", "folder": "reel-google-suncatcher", "media": "reels/tech/reel-google-suncatcher/reel.mp4", "copy": "reels/tech/reel-google-suncatcher/caption.md", "flag": null, "date": "2026-10-21", "slot": "11:00", "week": 0, "len": "96s", "ig": true, "tt": false, "yt": true, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-21-1100-reel", "archived": true}, {"n": null, "kind": "linkedin", "format": "NATIVE VIDEO", "title": "AI can't read. (the tokens reel as native LinkedIn video)", "folder": "reel-ai-reads-tokens", "media": "reels/tech/reel-ai-reads-tokens/reel.mp4", "copy": "reels/tech/reel-ai-reads-tokens/caption.md (adapt for LinkedIn)", "flag": "Only 9 GIFs exist, so this slot reuses the tokens reel. Upload it natively with captions on.", "date": "2026-10-21", "slot": "20:30", "week": 2, "len": null, "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-21-2030-li", "archived": false}, {"n": 26, "kind": "reel", "format": null, "title": "I was asleep when Claude wrote this.", "folder": "reel-morning-brief", "media": "reels/tech/reel-morning-brief/reel.mp4", "copy": "reels/tech/reel-morning-brief/caption.md", "flag": null, "date": "2026-10-21", "slot": "20:30", "week": 2, "len": "63s", "ig": false, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "2026-10-21-2030-reel", "archived": false}, {"n": 16, "kind": "reel", "format": null, "title": "OpenAI's agents broke out of their test environment", "folder": "reel-openai-agents-escaped", "media": "reels/tech/reel-openai-agents-escaped/reel.mp4", "copy": "reels/tech/reel-openai-agents-escaped/caption.md", "flag": null, "date": "2026-10-21", "slot": "20:30", "week": 0, "len": "66s", "ig": true, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-21-2030-reel", "archived": true}, {"n": 18, "kind": "reel", "format": null, "title": "AI found something new inside a virus", "folder": "reel-anthropic-bio-lab", "media": "reels/tech/reel-anthropic-bio-lab/reel-fullhd60.mp4", "copy": "reels/tech/reel-anthropic-bio-lab/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-22", "slot": "20:30", "week": 0, "len": "60s", "ig": true, "tt": false, "yt": true, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-22-2030-reel", "archived": true}, {"n": 19, "kind": "reel", "format": null, "title": "Gold at the Math Olympiad, fails at simple tasks", "folder": "reel-ai-jagged-frontier", "media": "reels/tech/reel-ai-jagged-frontier/reel-fullhd60.mp4", "copy": "reels/tech/reel-ai-jagged-frontier/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-23", "slot": "11:00", "week": 0, "len": "60s", "ig": true, "tt": false, "yt": true, "li": false, "cmt": false, "rep": true, "id": "pub-2026-10-23-1100-reel", "archived": true}, {"n": 20, "kind": "reel", "format": null, "title": "The robot's cartwheel was a human's first", "folder": "reel-robot-cartwheel", "media": "reels/tech/reel-robot-cartwheel/reel.mp4", "copy": "reels/tech/reel-robot-cartwheel/caption.md", "flag": null, "date": "2026-10-23", "slot": "20:30", "week": 0, "len": "65s", "ig": false, "tt": true, "yt": false, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-23-2030-reel", "archived": true}, {"n": 21, "kind": "reel", "format": null, "title": "The price cut that didn't matter", "folder": "reel-claude-price-war", "media": "reels/tech/reel-claude-price-war/reel-fullhd60.mp4", "copy": "reels/tech/reel-claude-price-war/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-26", "slot": "11:00", "week": 0, "len": "60s", "ig": true, "tt": false, "yt": false, "li": false, "cmt": false, "rep": false, "id": "pub-2026-10-26-1100-reel", "archived": true}, {"n": 22, "kind": "reel", "format": null, "title": "ChatGPT at $500 a month", "folder": "reel-openai-pro-max", "media": "reels/tech/reel-openai-pro-max/reel-fullhd60.mp4", "copy": "reels/tech/reel-openai-pro-max/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-26", "slot": "20:30", "week": 0, "len": "60s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "pub-2026-10-26-2030-reel", "archived": true}, {"n": 23, "kind": "reel", "format": null, "title": "Amazon blocked it. Five giants joined it.", "folder": "reel-meta-muse-takeover", "media": "reels/tech/reel-meta-muse-takeover/reel-fullhd60.mp4", "copy": "reels/tech/reel-meta-muse-takeover/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-27", "slot": "11:00", "week": 0, "len": "60s", "ig": true, "tt": true, "yt": true, "li": false, "cmt": false, "rep": true, "id": "pub-2026-10-27-1100-reel", "archived": true}, {"n": 24, "kind": "reel", "format": null, "title": "310,000 people asked AI to roast their feed", "folder": "reel-ai-roast-me", "media": "reels/tech/reel-ai-roast-me/reel-fullhd60.mp4", "copy": "reels/tech/reel-ai-roast-me/caption.md", "flag": "September news. Check the facts are still current, or post it as a recap.", "date": "2026-10-27", "slot": "20:30", "week": 0, "len": "60s", "ig": true, "tt": false, "yt": false, "li": false, "cmt": false, "rep": true, "id": "pub-2026-10-27-2030-reel", "archived": true}];
+  var rows = [], filter = 'all', db = null, busy = {}, KEY, saved;
+  var $ = function(id){ return document.getElementById(id); };
+  var REEL_CHECKS = [['ig','Instagram'],['tt','TikTok'],['yt','YT Shorts'],['rep','Replied 15 min']];
+  var LI_CHECKS = [['li','Posted'],['cmt','First comment'],['rep','Replied 15 min']];
+  function zoneTime(date, slot, tz){
+    var p = date.split('-').map(Number), h = slot.split(':').map(Number);
+    var d = new Date(Date.UTC(p[0], p[1]-1, p[2], h[0]-8, h[1]));
+    return new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d);
+  }
+  function dayLabel(date){ var p=date.split('-').map(Number); var d=new Date(Date.UTC(p[0],p[1]-1,p[2])); return {wd:new Intl.DateTimeFormat('en-GB',{weekday:'long',timeZone:'UTC'}).format(d), dm:new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'UTC'}).format(d)}; }
+  function sgtToday(){ return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Singapore'}).format(new Date()); }
+  function checksFor(r){ return r.kind === 'linkedin' ? LI_CHECKS : REEL_CHECKS; }
+  function isDone(r){ return !!r.archived || checksFor(r).every(function(c){ return !!r[c[0]]; }); }
+  function missing(r){ return checksFor(r).filter(function(c){ return c[0] !== 'rep' && !r[c[0]]; }).map(function(c){ return c[1]; }); }
+  function el(tag, cls, text){ var e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+
+  function slotCard(r){
+    var s = el('div','slot'+(isDone(r)?' complete':''));
+    var w = el('div','when');
+    w.appendChild(el('span','t', r.slot+' SGT'));
+    w.appendChild(el('span','z', 'NY '+zoneTime(r.date,r.slot,'America/New_York')+' · LDN '+zoneTime(r.date,r.slot,'Europe/London')+' · IST '+zoneTime(r.date,r.slot,'Asia/Kolkata')));
+    s.appendChild(w);
+    var k = el('span','kind'+(r.kind==='linkedin'?' li':''), r.kind==='linkedin' ? 'LINKEDIN · '+(r.format||'GIF') : 'REEL #'+r.n+' · '+(r.len||''));
+    s.appendChild(k);
+    s.appendChild(el('p','ttl', r.title));
+    s.appendChild(el('div','meta', r.media + '  ·  copy: ' + r.copy));
+    if (r.flag) s.appendChild(el('div','flag', r.flag));
+    var cks = el('div','checks');
+    checksFor(r).forEach(function(c){
+      var id = 'ck-'+r.id+'-'+c[0];
+      var lab = el('label','ck'+(r[c[0]]?' on':'')); lab.htmlFor = id;
+      var inp = document.createElement('input'); inp.type='checkbox'; inp.id=id; inp.checked=!!r[c[0]]; inp.disabled=!db || !!busy[r.id+c[0]];
+      inp.addEventListener('change', function(){ toggle(r, c[0], inp.checked); });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(c[1])); cks.appendChild(lab);
+    });
+    s.appendChild(cks);
+    return s;
+  }
+
+  function render(){
+    var today = sgtToday();
+    var total = 0, done = 0, reels = 0, reelsDone = 0, li = 0, liDone = 0;
+    rows.forEach(function(r){ total++; if(isDone(r)) done++; if(r.kind==='linkedin'){li++; if(isDone(r)) liDone++;} else {reels++; if(isDone(r)) reelsDone++;} });
+    var next = rows.filter(function(r){ return !isDone(r); }).sort(function(a,b){ return (a.date+a.slot+a.kind).localeCompare(b.date+b.slot+b.kind); })[0];
+    var st = $('stats'); st.textContent='';
+    [['Published', done+' / '+total, total?done/total:0],['Reels live', reelsDone+' / '+reels, reels?reelsDone/reels:0],['LinkedIn live', liDone+' / '+li, li?liDone/li:0]].forEach(function(x){
+      var s=el('div','stat'); s.appendChild(el('span',null,x[0])); s.appendChild(el('b',null,x[1])); var b=el('div','bar'); var i=el('i'); i.style.width=Math.round(x[2]*100)+'%'; b.appendChild(i); s.appendChild(b); st.appendChild(s); });
+    var nx=el('div','stat'); nx.appendChild(el('span',null,'Up next')); nx.appendChild(el('b',null, next ? dayLabel(next.date).wd.slice(0,3)+' '+next.slot : 'All done')); nx.appendChild(el('div','meta', next ? next.title : '')); st.appendChild(nx);
+
+    var weeks = {}; rows.filter(function(r){ return !r.archived; }).forEach(function(r){ (weeks[r.week] = weeks[r.week] || {}); (weeks[r.week][r.date] = weeks[r.week][r.date] || []).push(r); });
+    var curWeek = (rows.filter(function(r){ return !r.archived && r.date >= today; })[0] || rows[rows.length-1] || {}).week;
+    var main = $('weeks'); main.textContent='';
+    if (!rows.length) { main.appendChild(el('div','empty-state', db ? 'No posts in the tracker yet. Ask Claude to load the schedule.' : 'The schedule loads here once the tracker connects.')); return; }
+    Object.keys(weeks).sort().forEach(function(wk){
+      if (filter==='wk' && Number(wk)!==curWeek) return;
+      var days = weeks[wk], ws = el('section','week');
+      var dates = Object.keys(days).sort(); var first=dayLabel(dates[0]).dm, last=dayLabel(dates[dates.length-1]).dm;
+      var wdone=0, wtot=0; dates.forEach(function(d){ days[d].forEach(function(r){ wtot++; if(checksFor(r).every(function(c){ return !!r[c[0]]; })) wdone++; }); });
+      var h = el('h2',null,'Week '+wk); h.appendChild(el('small',null, first+' – '+last+' · '+wdone+'/'+wtot+' live')); ws.appendChild(h);
+      var shown = 0;
+      dates.forEach(function(d){
+        var list = days[d]; if (filter==='left' && list.every(isDone)) return;
+        var row = el('div','day'+(d===today?' today':'')); var L=dayLabel(d);
+        var dl = el('div','dlab'); dl.appendChild(el('b',null,L.wd)); dl.appendChild(el('span',null,L.dm)); if(d===today) dl.appendChild(el('em',null,'TODAY')); row.appendChild(dl);
+        ['11:00|reel','20:30|reel','20:30|linkedin'].forEach(function(k){ var p=k.split('|'); var r=list.filter(function(x){ return x.slot===p[0] && (x.kind==='linkedin')===(p[1]==='linkedin'); })[0];
+          row.appendChild(r ? slotCard(r) : el('div','slot empty', p[1]==='linkedin' ? 'No LinkedIn post · make a new GIF for this slot' : 'Open slot')); });
+        ws.appendChild(row); shown++;
+      });
+      if (shown) main.appendChild(ws);
+    });
+    var arch = rows.filter(function(r){ return r.archived; });
+    if (arch.length && filter !== 'wk') {
+      var as = el('section','week'); var ah = el('h2',null,'Already published'); ah.appendChild(el('small',null, arch.length+' posts you marked live. Left out of the schedule.')); as.appendChild(ah);
+      var grid = el('div','pubgrid');
+      arch.forEach(function(r){
+        var card = slotCard(r); card.className = 'slot pub';
+        var miss = missing(r);
+        card.querySelector('.when').remove(); var old = card.querySelector('.flag'); if (old) old.remove();
+        if (miss.length) card.insertBefore(el('div','flag','Not yet on: '+miss.join(', ')), card.querySelector('.checks'));
+        grid.appendChild(card);
+      });
+      as.appendChild(grid); main.appendChild(as);
+    }
+  }
+
+  function toggle(r, field, val){
+    r[field] = val; var s = saved[r.id] = saved[r.id] || {}; s[field] = val; render();
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e) {}
+    if (!SB.url) return;
+    var patch = {}; patch[field] = val; patch.updated_at = new Date().toISOString();
+    $('status').textContent = 'Saving…';
+    fetch(SB.url + '/rest/v1/post_runway?id=eq.' + encodeURIComponent(r.id), { method: 'PATCH', headers: sbHeaders({'Content-Type':'application/json','Prefer':'return=minimal'}), body: JSON.stringify(patch) })
+      .then(function(res){ if (!res.ok) throw new Error(res.status); delete s[field]; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e) {} $('status').textContent = 'Saved to Supabase'; })
+      .catch(function(){ $('status').textContent = 'Could not reach Supabase. The tick is kept in this browser and syncs on the next load.'; });
+  }
+
+  function sbHeaders(extra){ var h = { apikey: SB.key }; for (var k in extra) h[k] = extra[k]; return h; }
+  function load(){
+    if (!SB.url) return;
+    fetch(SB.url + '/rest/v1/post_runway?select=*&order=date,slot,kind', { headers: sbHeaders({}) })
+      .then(function(res){ if (!res.ok) throw new Error(res.status); return res.json(); })
+      .then(function(list){
+        if (!list.length) return;
+        var pending = [];
+        rows = list.map(function(r){ var s = saved[r.id] || {}; Object.keys(s).forEach(function(k){ if (r[k] !== s[k]) pending.push([r, k, s[k]]); r[k] = s[k]; }); return r; });
+        render(); $('status').textContent = 'Synced with Supabase';
+        pending.forEach(function(p){ toggle(p[0], p[1], p[2]); });
+      })
+      .catch(function(){ $('status').textContent = 'Offline: showing the built-in schedule and ticks from this browser.'; });
+  }
+
+  document.querySelectorAll('.seg button').forEach(function(b){ b.addEventListener('click', function(){ filter=b.dataset.f; document.querySelectorAll('.seg button').forEach(function(x){ x.setAttribute('aria-pressed', String(x===b)); }); render(); }); });
+  render();
+  KEY='postRunway.v1'; saved={};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { saved = {}; }
+  rows = ROWS.map(function(r){ var x = Object.assign({}, r), s = saved[r.id] || {}; Object.keys(s).forEach(function(k){ x[k] = s[k]; }); return x; });
+  db = true; render();
+  $('status').textContent = 'Connecting to Supabase…';
+  load();
+})();
+</script>
+
+</body>
+</html>
