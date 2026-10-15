@@ -1,7 +1,7 @@
 # Shorts brief: "Brain won't switch off? Write this." (Hack Zone #01): topic + script for approval
 
 Aspect: 9:16 (1080×1920@60)
-Target seconds: 32 (hard ceiling 34; the end card is part of it)
+Target seconds: 38 (hard ceiling 40; the full end card is part of it: a complete four-part call to action needs about 6 s)
 Language: English (en-IN, cloned creator voice, no avatar video)
 Series: **Hack Zone** (new series on @sandesh_explains: wellness, psychology and productivity hacks you can try tonight). Separate from the science series *What's Actually Happening*; the science series frame (cyan/coral/ink) is **not** reused.
 Genre: tutorial / how-to (standing rule: numbered step tracker throughout, each instruction held ≥ 2 s, honest "catch" beat, save-worthy recap card ≥ 2.5 s, CTA = Save + Follow).
@@ -24,32 +24,51 @@ What this reel does that none did:
 6. Voice recorded as breath-group takes with the `pick2.py` flow check from the start.
 
 ## First frame (readable with sound off)
-Frame 0 is already moving: the dark spruce-green screen, 14 tangerine tabs across the top flickering with small badges, a murmur of overlapping whispers already audible, the Blender lamp and an open notebook in the lower half. Top-third text: **"BRAIN WON'T SWITCH OFF?"** (y 200–520). Voice starts at 0.00 s.
+The camera is already moving: a slow push through a dark spruce-green room. Fourteen glowing tangerine glass panes (the "tabs", each a pending task with a small badge) hang in the air around a warm lamp and an open notebook; a murmur of overlapping whispers is already audible. Top-third text: **"BRAIN WON'T SWITCH OFF?"** (y 200-520). Voice starts at 0.00 s.
 
 ## Question that cannot be answered until the end
 Does writing a list actually help you fall asleep? (Answered at ~21 s with the lab result, then qualified with the catch.)
 
-## Spoken lines (≤ 12 words each; numbers spelled the way they sound)
-1. Can't switch your brain off at night? Try this.
-2. Step one: pen and paper. Five minutes.
-3. Step two: write everything you still need to do.
-4. Step three: be specific.
-5. Unfinished goals keep looping in your head. A specific plan can quiet them.
-6. In a sleep lab, people writing to-dos fell asleep faster than people listing what they'd done.
-7. The catch: fifty-seven healthy young adults. One study.
-8. Save this for tonight. Follow for more hacks.
+## Spoken lines (rewritten for rhythm; numbers spelled the way they sound)
+Written for the ear, not the page: short-short-long phrasing, a repeated "One / Two / Three" melody, one stressed word per line, softer and slower on the line that is meant to calm.
 
-(8 takes, 72 words. At the cloned voice's ~2.8 words/s that is ~26 s of speech, designed silences ~2.5 s, end card ~2.5 s: about 31 s.) Breath-group takes: 1, 2+3, 4, 5, 6, 7, 8 (the step sentences share one take only if the flow check passes; otherwise one take each).
-**Sync constraints:** tabs 1-5 close on "write everything" (line 3); "TAXES" is struck through and rewritten on "be specific" (line 4); the murmur bed drops by ~12 dB over line 5; the recap card holds ≥ 2.5 s under line 8.
+| # | Line (commas mark the micro-pauses the cloned voice is asked to take) | Delivery |
+|---|---|---|
+| 1 | Brain still running a hundred tabs? Here's a five-minute fix. | quick, a little tired; slight lift on "tabs", settles on "fix" |
+| 2 | One: pen and paper. Five minutes. | even, steady; the start of a count |
+| 3 | Two: write down everything, still hanging over you. | same melody as "One", slightly slower on "hanging" |
+| 4 | Three: be specific. Not "taxes". "Call the accountant, ten a.m." | the same count melody; "taxes" flat and short, the example warmer and concrete |
+| 5 | Unfinished things keep looping. A specific plan, can quiet the loop. | slower, lower; the calming line; pause before "can quiet" |
+| 6 | In a sleep lab, to-do lists beat done lists. People fell asleep faster. | plain and factual, no hype; steps down on "faster" |
+| 7 | The more specific the list, the faster. | a short echo of line 6, almost a whisper-smile |
+| 8 | The catch: one study, fifty-seven healthy adults. | honest, level; "catch" slightly stressed |
+| 9 | Save this, for tonight. | warm, direct (the CTA starts) |
+| 10 | Send it to someone, who's always up at two a.m. | light, a little humour |
+| 11 | Comment TONIGHT, for the printable list. | clear and even, "TONIGHT" stressed |
+| 12 | And follow, for more hacks like this. | soft landing, a smile in the voice |
+
+(12 lines, 95 words. At the cloned voice's ~2.8 words/s that is ~34 s of speech; designed silences ~2.5 s; about 38 s with the end card.)
+**Breath-group takes (one take each, never cut or sped up after generation):** 1 / 2+3 / 4 / 5 / 6+7 / 8 / 9+10 / 11+12. If a pair fails the flow check it is generated as two takes.
+**Sync constraints:** tabs 1-5 close as the pen writes on line 3; "TAXES" is struck and rewritten on line 4; the murmur bed drops ~12 dB over line 5; the full CTA chips pop in on their words (SAVE on 9, SEND on 10, COMMENT on 11, FOLLOW on 12) and the card holds ≥ 4 s.
+
+## Full call to action (all four actions, spoken and shown)
+| Beat | Spoken | On screen | Deliverable it needs |
+|---|---|---|---|
+| SAVE | "Save this, for tonight." | bookmark chip + the recap card (PEN + PAPER · 5 MIN · EVERYTHING YOU STILL NEED TO DO · BE SPECIFIC) held ≥ 2.5 s | none |
+| SEND | "Send it to someone, who's always up at two a.m." | paper-plane chip flies off | none |
+| COMMENT | "Comment TONIGHT, for the printable list." | a comment field types TONIGHT | `printable-list.pdf` (phone-size and A5 "Tonight's 5-minute list": 3 steps, 8 blank lines, a "next action" column) + `dm-prompt.md` for the auto-reply |
+| FOLLOW | "And follow, for more hacks like this." | creator photo (≥ 200 px, ring), **@sandesh_explains**, FOLLOW pressed | none |
+The end card changes every ~1.5 s (chips pop in sequence, then the FOLLOW press, then a pulse ring), so the change-cadence rule holds without cutting the card short.
 
 ## On-screen text budget (≤ 8 elements + captions)
 1. BRAIN WON'T SWITCH OFF? (frame 0)
-2. step tracker chips 1 / 2 / 3
-3. the handwritten list (the content of the hack, not a label)
-4. TAXES → CALL ACCOUNTANT, 10 AM (illustrative; labelled ILLUSTRATIVE)
-5. "57 healthy adults · 18-30 · one lab study" amber catch chip
-6. recap card: PEN + PAPER · 5 MIN · EVERYTHING YOU STILL NEED TO DO · BE SPECIFIC
-7. end card (profile photo, @sandesh_explains, SAVE + FOLLOW)
+2. step chips 1 / 2 / 3 on the tab strip
+3. the handwritten list (the content of the hack)
+4. TAXES → CALL ACCOUNTANT, 10 AM (labelled ILLUSTRATIVE)
+5. amber catch chip: "ONE LAB STUDY · 57 HEALTHY ADULTS 18-30"
+6. recap card (PEN + PAPER · 5 MIN · EVERYTHING YOU STILL NEED TO DO · BE SPECIFIC)
+7. CTA chips SAVE · SEND · COMMENT TONIGHT · FOLLOW
+8. end card (profile photo, @sandesh_explains)
 
 ## Fact ledger (every spoken claim has an id; read 15 Oct 2026)
 
@@ -92,17 +111,22 @@ When you want your brain to switch off at night, you watch 14 open tabs close on
 
 Also used: a pattern interrupt ≤ every 2 s via ambient layers (tab flicker, lamp glow breathing, pen tip, murmur waveform), never by cutting a hero visual; a save line (line 8) at ~88%; a comment trigger ("Reply TONIGHT and I'll send the printable list").
 
-## Shot list (~32 s)
+## One-shot camera (no cuts, no wipes, no card flips)
+The whole reel is **one continuous camera move through one lit world**: a dark room with a lamp and a notebook on a nightstand, fourteen glass "tab" panes floating around them, a window behind. Every transition is the camera moving, refocusing or the light changing; nothing is ever cut. The camera path is a single pure function of `t`: `{x, y, z, roll, fov, focus, aperture}` with a slow handheld drift (≤ 5 px) and easing between keyframes (no linear moves).
 
-| t (s) | Hero visual (holds for its reading time) | Ambient motion | Sound |
-|---|---|---|---|
-| 0.0-3.0 | 14 tabs open over the lamp-and-notebook macro; "BRAIN WON'T SWITCH OFF?" | tab badges flicker, lamp breathes | murmur bed at full, voice L1 |
-| 3.0-6.0 | Step 1/3: pen + paper, a 5:00 timer starts | timer ticks, dust motes | page rustle, voice L2 |
-| 6.0-12.0 | Step 2/3: the pen writes 5 real-looking tasks; tabs 1-5 close as each is written | pen tip glow, ink dry-down | pen scratch per item, soft click per tab, murmur thins |
-| 12.0-16.0 | Step 3/3: "TAXES" struck (rough stroke) and rewritten "CALL ACCOUNTANT, 10 AM"; tabs 6-14 close in a cascade | lamp dims one step, tab cascade | clicks, a low warm chord |
-| 16.0-21.5 | "why": a single tab left, glowing, then a plan beside it and it closes; the room is quiet | tiny stars of dust, slow push-in | murmur drops ~12 dB, voice L5 |
-| 21.5-27.0 | proof: two lists side by side (TO-DO vs DONE) with a "fell asleep faster" bar in the TO-DO side (no minute value) + amber chip "57 HEALTHY ADULTS 18-30 · ONE LAB STUDY" | lamp dims again, bar glints | soft tone on the verdict, voice L6-L7 |
-| 27.0-32.0 | recap card (≥ 2.5 s), then end card with photo + SAVE + FOLLOW | pulse ring, drifting dot | music resolves, voice L8 |
+| t (s) | Camera move | What the move reveals / does | Light + focus | Sound |
+|---|---|---|---|---|
+| 0.0-3.4 | wide, slow **push-in** from the room's far corner through the floating panes | 14 panes in a loose arc, badges flickering; "BRAIN WON'T SWITCH OFF?" | warm lamp, cool moonlight; focus on the near panes | murmur at full |
+| 3.4-6.6 | gentle **crane down** toward the notebook; the panes slide up and defocus into bokeh | step 1: a pen enters; the 5:00 timer glows on the page | **rack focus** from panes to page | page rustle, steady drone |
+| 6.6-12.2 | **macro dolly along the page**, following the pen tip left to right | the pen writes five tasks; as each is written the camera pulls focus up to the matching pane and it closes | focus ping-pongs page ↔ pane per task | pen scratch, one soft click per pane |
+| 12.2-16.4 | camera **leans** onto the page, then **rises** and tilts up | "TAXES" is struck and rewritten; nine remaining panes close in a cascade behind it | lamp dims one step | clicks cascade, low warm chord |
+| 16.4-21.0 | slow **orbit** around the lamp (about 70°) | one last pane glows; a plan appears beside it; it closes; the room is quiet | lamp dims again; moonlight takes over | murmur drops ~12 dB |
+| 21.0-27.0 | smooth **lateral dolly** to the second notebook on the nightstand | proof: TO-DO notebook vs DONE notebook; a "fell asleep faster" ribbon lights on the TO-DO one; amber catch chip | soft key light shifts to the TO-DO side | verdict tone |
+| 27.0-32.0 | long, graceful **pull-back and rise** toward the window | the recap card is the notebook's open page, held ≥ 2.5 s; the moon through the window | slow rise of moonlight | music resolves |
+| 32.0-38.0 | the camera settles; the window frames the **end card** (the CTA chips pop in on their words as glass panes, then the creator's photo and FOLLOW) | SAVE · SEND · COMMENT TONIGHT · FOLLOW | gentle lens-flare on the FOLLOW press | CTA voice; soft sparkle per chip |
+The last frame (a quiet room) fades back to the first (a loud room) by the lamp rising and the panes re-igniting, so a replay reads as one loop.
+
+**How it is built (feasible on this CPU box):** the room is rendered in Blender (Cycles, real materials) as **far / mid / near plates with Z passes** (window and moonlight, nightstand + lamp + notebooks, pen and page), then composited in WebGL with per-layer parallax, depth-of-field and rack focus driven by the camera path, bloom and grain (the `gl3.js` pipeline from reel #02). The panes are depth-sorted glass sprites in the same camera space; the handwriting is drawn into the page texture frame by frame. This is the same technique as reel #02's uncut camera, with a longer, more varied path.
 
 ## Asset families (≥ 6; no cartoon people)
 
@@ -115,7 +139,7 @@ Also used: a pattern interrupt ≤ every 2 s via ambient layers (tab flicker, la
 | 5 | Kinetic type, chunked captions, recap card | all |
 | 6 | Real-footage overlays (dust-particles; grain only on the proof beat) | scenes 2-6 |
 | 7 | Photoreal AI still + depth parallax (the dark bedroom window behind the lamp; tagged AI IMAGE) | scenes 1, 5 |
-| 8 | The creator's photo (end card) | scene 8 |
+| 8 | The creator's photo (end card) + the printable-list PDF deliverable | end card |
 | 9 | Audio family: **tab-count-driven murmur bed**, event SFX (pen, page, click), cloned voice | all |
 
 Families used: **9 (≥ 5)**. No scene is photo + panel + text only; no family is used in more than 4 scenes except type, tabs and audio.
@@ -124,6 +148,8 @@ Families used: **9 (≥ 5)**. No scene is photo + panel + text only; no family i
 Spruce-green night `#0d2b2a`, paper `#f4ecd8`, tangerine `#ff7a1a` (= open / unfinished), mint `#8ef0c8` (= closed / done), ink `#101a1a`, amber `#f2c14e` (= caveat). Meaning-coded: tangerine open, mint closed, amber caveat. Fonts to settle at the mockup (not used by recent reels): Instrument Serif italic for headlines, Manrope 800, Martian Mono for numbers; Anton on the cover.
 
 ## Audio plan
+(Also: a soft glass-chime per CTA chip and a final bookmark click on SAVE.)
+
 Score: no music for the first 3 s, only the murmur and a low drone; a warm pad enters as tabs close; resolves in the last 4 s. Murmur = layered band-passed noise with formant-like peaks, level = f(open tabs). Voice-activity ducking, 1.2-4.5 kHz carve, loudnorm −14 LUFS. **Targets: voice over music median ≥ 19 dB, min ≥ 13 dB (voiced frames).** Measured, not auditioned.
 
 ## Voice
@@ -131,7 +157,8 @@ Cloned creator voice (Qwen3-TTS ICL), breath-group takes, three seeds each, `pic
 
 ## Instagram caption draft (≤ 700 characters)
 ```
-Brain won't switch off? Try this tonight. 👇
+Comment TONIGHT and I'll send you the printable list. 👇
+Brain won't switch off? Try this tonight.
 1. Pen and paper, 5 minutes.
 2. Write everything you still need to do.
 3. Be specific: not "taxes" but "call the accountant, 10 am".
@@ -141,7 +168,12 @@ Sources: Scullin et al., J Exp Psychol Gen 2018; Masicampo & Baumeister, JPSP 20
 🤖 Voice: AI-generated (a likeness of mine). Script and research are mine; I use Claude to help build these.
 #Sleep #Productivity #Psychology #LifeHack #HackZone
 ```
-(~690 characters.) Hashtag roles: topic #Sleep, intent #LifeHack, audience #Productivity, niche #Psychology, series #HackZone. Check each tag's post count in the app before posting; swap any outside ~20K-2M (series tag excepted).
+(~740 characters: trim the Masicampo sentence if the final count is over 700.) Hashtag roles: topic #Sleep, intent #LifeHack, audience #Productivity, niche #Psychology, series #HackZone. Check each tag's post count in the app before posting; swap any outside ~20K-2M (series tag excepted).
+
+## Changes in this revision (your three notes)
+1. **Rhythm:** all lines rewritten for the ear (count melody One/Two/Three, short-short-long, one stress per line, commas for the micro-pauses), with a delivery note per line.
+2. **Full CTA:** four actions, spoken and shown (SAVE, SEND, COMMENT TONIGHT, FOLLOW) on a held end card, plus a printable-list PDF and a DM reply as deliverables.
+3. **One-shot camera:** the whole reel is a single uncut camera move through one lit world, with a keyframed path, rack focus and an orbit, a lateral dolly, a pull-back; the length rises to ~38 s to fit the complete CTA.
 
 ## What I need from you before the mockup
 1. Approve the topic (the bedtime to-do list) and the 8 spoken lines. Or say "do the physiological sigh first" and I will rewrite for that.
