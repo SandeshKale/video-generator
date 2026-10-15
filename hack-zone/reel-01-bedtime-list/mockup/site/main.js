@@ -30,7 +30,7 @@ function camWide(t) { // plate A (room_warm) then C (room_dim)
   var d = seg(t, T_DIVE0, T_MAC0 + .2); var e = d * d * (3 - 2 * d) * 1.0; return { cx: lerp(.5, .60, eio(d)), cy: lerp(.58, .84, eio(d)), z: lerp(1.3, 3.6, Math.pow(d, 1.6)) };
 }
 function camRoom(t) { var u = eio(seg(t, T_OUT0 + .2, T_END)); return { cx: lerp(.60, .5, u), cy: lerp(.84, .52, u), z: lerp(3.6, 1.0, u) }; }
-function camMacro(t) { var s = eio(seg(t, T_DIVE0 + 1.3, T_MAC0 + 1.2)), tr = clamp(penX, .35, .65); return { cx: lerp(.5, tr, .55) + (t > T_MAC0 ? 0 : 0), cy: .66 + .015 * Math.sin(t * .8), z: lerp(1.55, 1.12, s) * (1 + .06 * seg(t, T_MAC0 + 3, T_OUT0)) }; }
+function camMacro(t) { var s = eio(seg(t, T_DIVE0 + 1.3, T_MAC0 + 1.2)), tr = clamp(penX, .35, .65); return { cx: .5 + .04 * Math.sin(t * .5), cy: .50 + .015 * Math.sin(t * .8), z: lerp(1.55, 1.12, s) * (1 + .06 * seg(t, T_MAC0 + 3, T_OUT0)) }; }
 function drift(t) { return [Math.sin(t * .9) * .25, Math.cos(t * .7) * .15]; }
 
 // ---------- handwriting ----------
@@ -38,17 +38,17 @@ function lineGeom(A, c, li, k) { var L = A.lines[li], p0 = scr([L[0][0], L[0][1]
 function writeProg(i, t) { return sm(seg(t, TW0[i], TW0[i] + TWD)); }
 var STRIKE0 = 11.15, REWR0 = 11.45, REWR_D = 1.0, NEWTXT = '→ call accountant, 10 am';
 function drawWriting(A, c, big, showPen, t) {
-  if (!A) return; var LS = big ? .30 : .03; var ink = '#1c2650'; var tipOut = null;
-  for (var i = 0; i < 5; i++) { var g = lineGeom(A, c, 2 + i * 3, 1), fs = Math.max(10, g.pitch * (big ? .95 : 1.18)), pr = writeProg(i, t); if (pr <= 0) continue;
+  if (!A) return; var LS = big ? .36 : .03; var ink = '#1c2650'; var tipOut = null;
+  for (var i = 0; i < 5; i++) { var g = lineGeom(A, c, 14 - i * 2, 1), fs = Math.max(10, g.pitch * (big ? 1.2 : 1.0)), pr = writeProg(i, t); if (pr <= 0) continue;
     cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var txt = '• ' + TASKS[i], tw = cx.measureText(txt).width;
-    cx.beginPath(); cx.rect(-4, -fs * 1.2, tw * pr + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.globalAlpha = .94; cx.fillText(txt, g.len * LS, -fs * .12); cx.restore();
+    cx.beginPath(); cx.rect(-4, -fs * 1.2, g.len * LS + tw * pr + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.globalAlpha = .94; cx.fillText(txt, g.len * LS, -fs * .12); cx.restore();
     if (pr < 1 && pr > 0) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw * pr) , y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw * pr), pitch: g.pitch, ang: g.ang };
     if (i === 4) { // taxes: strike then rewrite
       var sp = sm(seg(t, STRIKE0, STRIKE0 + .35)); if (sp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); var w2 = cx.measureText ? 0 : 0; cx.font = 'italic ' + fs + 'px Ser'; var tw2 = cx.measureText('• taxes').width; cx.strokeStyle = TANG; cx.lineWidth = Math.max(3, fs * .09); cx.lineCap = 'round'; cx.beginPath(); cx.moveTo(g.len * LS - 6, -fs * .30); cx.bezierCurveTo(g.len * LS + tw2 * .3, -fs * .42, g.len * LS + tw2 * .6, -fs * .18, g.len * LS + tw2 * sp + 6, -fs * .32); cx.stroke(); cx.restore(); }
       var rp = sm(seg(t, REWR0, REWR0 + REWR_D)); if (rp > 0) { cx.save(); cx.translate(g.p0[0], g.p0[1]); cx.rotate(g.ang); cx.font = 'italic ' + fs + 'px Ser'; var tw3 = cx.measureText('• taxes').width, tw4 = cx.measureText(NEWTXT).width; cx.beginPath(); cx.rect(g.len * LS + tw3 + 14, -fs * 1.2, tw4 * rp + 6, fs * 1.6); cx.clip(); cx.fillStyle = ink; cx.fillText(NEWTXT, g.len * LS + tw3 + 22, -fs * .12); cx.restore();
         if (rp < 1) tipOut = { x: g.p0[0] + Math.cos(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), y: g.p0[1] + Math.sin(g.ang) * (g.len * LS + tw3 + 22 + tw4 * rp), pitch: g.pitch, ang: g.ang }; } }
   }
-  if (showPen) { var tp = tipOut; if (!tp) { var lg = lineGeom(A, c, 14, 1); tp = { x: lg.p0[0] + lg.len * .62, y: lg.p0[1] - lg.pitch * .2, pitch: lg.pitch, ang: lg.ang }; }
+  if (showPen) { var tp = tipOut; if (!tp) { var lg = lineGeom(A, c, 16, 1); tp = { x: lg.p0[0] + lg.len * .62, y: lg.p0[1] - lg.pitch * .2, pitch: lg.pitch, ang: lg.ang }; }
     var s = tp.pitch / 62; cx.save(); cx.translate(tp.x, tp.y + Math.sin(t * 22) * 1.2 * s); cx.rotate(-.95); cx.shadowColor = 'rgba(0,0,0,.45)'; cx.shadowBlur = 14 * s; cx.shadowOffsetX = 10 * s; cx.shadowOffsetY = 14 * s;
     var gr = cx.createLinearGradient(0, 0, 0, -380 * s); gr.addColorStop(0, '#c79a4a'); gr.addColorStop(.07, '#c79a4a'); gr.addColorStop(.08, '#1a1d1f'); gr.addColorStop(1, '#2a2f33'); cx.fillStyle = gr; cx.beginPath(); cx.moveTo(0, 0); cx.lineTo(-9 * s, -46 * s); cx.lineTo(-11 * s, -380 * s); cx.lineTo(11 * s, -380 * s); cx.lineTo(9 * s, -46 * s); cx.closePath(); cx.fill(); cx.restore(); penX = tp.x / W; }
 }
