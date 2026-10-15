@@ -11,3 +11,8 @@ reels/tech/reel-claude-in-sheets/audio/premaster.wav
 reels/tech/reel-claude-in-sheets/audio/music_stem.wav
 reels/tech/reel-synthid-check/out/
 reels/tech/reel-synthid-check/site/3d/lightbox/
+
+# intermediates (untracked by design)
+reels/tech/reel-ai-reads-tokens/out/
+reels/tech/reel-ai-reads-tokens/avatar/raw/
+reels/tech/reel-ai-reads-tokens/audio/*.wav
