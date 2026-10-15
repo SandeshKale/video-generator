@@ -16,3 +16,6 @@ reels/tech/reel-synthid-check/site/3d/lightbox/
 reels/tech/reel-ai-reads-tokens/out/
 reels/tech/reel-ai-reads-tokens/avatar/raw/
 reels/tech/reel-ai-reads-tokens/audio/*.wav
+reels/wellness-productivity/*/out/
+reels/wellness-productivity/*/shots/
+reels/wellness-productivity/*/sheet*.png
