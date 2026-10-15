@@ -134,6 +134,9 @@ function drawCTA(t) {
   cx.restore();
 }
 
+// ambient light band: a soft mint sweep crossing the frame every ~2.5 s (keeps held hero visuals alive without touching them)
+function drawBand(t) { if (t < 2.5) return; var per = 2.5, u = ((t / per) % 1), x = -260 + u * 1600, g = cx.createLinearGradient(x - 170, 0, x + 170, 0); g.addColorStop(0, 'rgba(142,240,200,0)'); g.addColorStop(.5, 'rgba(142,240,200,.10)'); g.addColorStop(1, 'rgba(142,240,200,0)');
+  cx.save(); cx.fillStyle = g; cx.fillRect(x - 170, 380, 340, 900); cx.restore(); }
 // ---------- per-frame ----------
 var vids = { dust: $('dust') }; function vseek(v, t) { return new Promise(function (res) { if (!v.duration) return res(); var tt = t % v.duration; function done() { v.removeEventListener('seeked', done); res(); } v.addEventListener('seeked', done); v.currentTime = tt; setTimeout(res, 400); }); }
 window.__reelDurationSec = DUR;
@@ -160,7 +163,7 @@ window.__seek = function (t) {
   // handwriting: macro page live; the small notebook in the dim room shows the finished list; the proof beat shows both notebooks
   if (RM && t >= T_MAC0 - .9 && t < T_OUT0 + .8) { cx.save(); cx.globalAlpha = mixM * (1 - mixR); drawWriting(RM, cM, true, t >= T_MAC0 - .3 && t < T_OUT0 + .4, t); cx.restore(); }
   if (RW && t >= T_OUT0 - .2 && t < T_PROOF1) { cx.save(); cx.globalAlpha = mixR * (1 - mixP); drawWriting(RW, cR, false, false, 99); cx.restore(); }
-  drawProof(t, cP, mixP * (1 - mixB)); drawRecap(t); drawCTA(t); o.spr = spr;
+  drawProof(t, cP, mixP * (1 - mixB)); drawRecap(t); drawCTA(t); drawBand(t); o.spr = spr;
   window.GLP.draw(o);
   // overlays
   var hlA = 1 - sm(seg(t, T_DIVE0, T_DIVE0 + 1.0)); $('hl').style.opacity = hlA; $('hl').style.transform = 'translateY(' + (-30 * seg(t, T_DIVE0, T_DIVE0 + 1.0)) + 'px)';
