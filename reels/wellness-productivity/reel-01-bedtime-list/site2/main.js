@@ -137,18 +137,25 @@ function drawLight(t) {
 }
 function drawDesk() { var s = CAM.s, P = worldPt(-600, -1000); g.drawImage(DESK, P[0], P[1], 2400 * s, 4000 * s); }
 
+// sleep-lab trace (polysomnography-style): slow waves take over sooner for the to-do group. Illustrative shapes, not data.
+function drawTraces(t, alpha) {
+  var tau0 = T_P1, rows = [{ y: 1176, col: MINT, T: 1.5 }, { y: 1262, col: '#a8a8a0', T: 4.2 }], x0 = 124, x1 = 956, spd = 120; g.save(); g.globalAlpha = alpha; g.lineJoin = 'round';
+  for (var r = 0; r < 2; r++) { var R = rows[r]; g.fillStyle = 'rgba(16,26,26,.62)'; rr(x0 - 12, R.y - 40, x1 - x0 + 24, 80, 14); g.fill(); g.strokeStyle = R.col; g.lineWidth = 3; g.beginPath();
+    for (var x = x0; x <= x1; x += 3) { var tt_ = t - (x1 - x) / spd - tau0; var fq = tt_ < 0 ? 9 : 2 + 7 * Math.exp(-tt_ / R.T); var ph = tt_ < 0 ? 9 * tt_ : 2 * tt_ + 7 * R.T * (1 - Math.exp(-tt_ / R.T)); var amp = 10 + 22 * (1 - (fq - 2) / 7); var yy = R.y + Math.sin(ph * 6.283 * .9) * amp * .8 + Math.sin(ph * 19.1) * 3; x === x0 ? g.moveTo(x, yy) : g.lineTo(x, yy); } g.stroke(); }
+  g.fillStyle = PAPER; g.font = '500 20px Mar'; g.textAlign = 'center'; g.fillText('SLEEP-LAB TRACE · ILLUSTRATIVE, NOT DATA', 540, 1318); g.restore(); }
+// ---------- the thought loop (infinity) that runs while "unfinished things keep looping", slowing to a point as the plan quiets it ----------
+function drawLoop(t) {
+  var a0 = K.unf - .2, a1 = K.quiet + 1.1, al = sm(seg(t, a0, a0 + .4)) * (1 - sm(seg(t, K.quiet + .3, a1))); if (al <= .01) return; var calm = sm(seg(t, K.quiet - .2, K.quiet + .9)), A = lerp(210, 40, calm), sp = lerp(2.6, .5, calm), s0 = (t - a0) * sp, col = calm > .5 ? MINT : TANG;
+  g.save(); g.lineCap = 'round'; for (var k = 0; k < 60; k++) { var u = s0 - k * .045, d = 1 + Math.sin(u) * Math.sin(u), x = 540 + A * Math.cos(u) / d, y = 640 + A * Math.sin(u) * Math.cos(u) / d * 1.1; g.fillStyle = col; g.globalAlpha = al * (1 - k / 60) * .9; g.beginPath(); g.arc(x, y, lerp(12, 3, k / 60), 0, 6.3); g.fill(); } g.restore(); }
 // ---------- proof (screen space): tags, bars racing to sleep, stamp, 57 dots ----------
 function glassBox(x, y, w, h, fill, line, r) { rr(x, y, w, h, r); g.fillStyle = fill; g.fill(); g.lineWidth = 3; g.strokeStyle = line; g.stroke(); }
 function screenTag(x, y, text, col, alpha) { g.save(); g.globalAlpha = alpha; g.font = '500 26px Mar'; var w = g.measureText(text).width + 52; glassBox(x - w / 2, y - 30, w, 60, 'rgba(16,26,26,.82)', col, 30); g.fillStyle = col; g.textAlign = 'center'; g.fillText(text, x, y + 9); g.restore(); }
 function drawProof(t) {
   var pa = sm(seg(t, T_P1 - .3, T_P1 + .3)) * (1 - sm(seg(t, T_CL0, T_CL0 + .4))); if (pa <= .01) return;
   screenTag(320, 600, 'TO-DO LIST', MINT, pa); screenTag(760, 600, 'DONE LIST', '#c8c8c0', pa);
-  var b0 = K.faster - .3, ba = sm(seg(t, b0 - .3, b0)) * (1 - sm(seg(t, K.only - .3, K.only)));
-  if (ba > .01) { g.save(); g.globalAlpha = ba; var bx = [124, 564], fill = [eout(seg(t, b0, b0 + 1.3)), eout(seg(t, b0, b0 + 2.7)) * .92], col = [MINT, '#a8a8a0'], nm = ['asleep', 'asleep'];
-    for (var i = 0; i < 2; i++) { rr(bx[i], 1180, 392, 36, 18); g.fillStyle = 'rgba(16,26,26,.7)'; g.fill(); rr(bx[i], 1180, Math.max(36, 392 * fill[i]), 36, 18); g.fillStyle = col[i]; g.fill(); g.fillStyle = INK; g.font = '500 22px Mar'; g.textAlign = 'left'; g.fillText('☾', bx[i] + Math.max(36, 392 * fill[i]) - 28, 1205); }
-    g.fillStyle = PAPER; g.font = '500 20px Mar'; g.textAlign = 'center'; g.fillText('TIME TO FALL ASLEEP · ILLUSTRATIVE, NOT TO SCALE', 540, 1252); g.restore(); }
+  var ba = sm(seg(t, T_P1 - .1, T_P1 + .4)) * (1 - sm(seg(t, K.only - .3, K.only))); if (ba > .01) drawTraces(t, ba);
   var sp = back(seg(t, K.faster - .1, K.faster + .45)); if (sp > 0) { g.save(); g.globalAlpha = clamp(sp * 2, 0, 1) * pa; g.translate(330, 1010); g.rotate(-.08); g.scale(lerp(1.6, 1, sp), lerp(1.6, 1, sp)); g.font = '800 44px Man'; var w = g.measureText('FELL ASLEEP FASTER').width + 48; g.strokeStyle = MINT; g.lineWidth = 6; g.fillStyle = 'rgba(13,43,42,.86)'; g.beginPath(); g.rect(-w / 2, -40, w, 80); g.fill(); g.stroke(); g.fillStyle = MINT; g.textAlign = 'center'; g.fillText('FELL ASLEEP FASTER', 0, 15); g.restore(); }
-  var d0 = K.fifty - .3, fade = 1 - sm(seg(t, T_CL0, T_CL0 + .5)); if (t >= d0) { g.save(); for (var k = 0; k < 57; k++) { var a = back(seg(t, d0 + k * .04, d0 + k * .04 + .3)); if (a <= 0) continue; var r = Math.floor(k / 19), c = k % 19, pu = 1 + .35 * Math.max(0, Math.sin((t - d0 - 2.5) * 5 - c * .5)) * (t > d0 + 2.5 ? 1 : 0); g.globalAlpha = clamp(a * 1.5, 0, 1) * fade; g.fillStyle = MINT; g.beginPath(); g.arc(170 + c * 41, 330 + r * 44, 11 * a * pu, 0, 6.3); g.fill(); } g.restore(); }
+  var d0 = K.fifty - .3, fade = 1 - sm(seg(t, T_CL0, T_CL0 + .5)); if (t >= d0) { g.save(); for (var k = 0; k < 57; k++) { var a = back(seg(t, d0 + k * .055, d0 + k * .055 + .3)); if (a <= 0) continue; var r = Math.floor(k / 19), c = k % 19, pu = 1 + .4 * Math.max(0, Math.sin((t - d0 - 3.3) * 5 - c * .5)) * (t > d0 + 3.3 ? 1 : 0); g.globalAlpha = clamp(a * 1.5, 0, 1) * fade; g.fillStyle = MINT; g.beginPath(); g.arc(170 + c * 41, 330 + r * 44, 13 * a * pu, 0, 6.3); g.fill(); } g.restore(); }
 }
 // ---------- recap note drops onto the cleared desk, then the call to action ----------
 var prof = new Image(); prof.src = 'media/profile.jpg';
@@ -158,6 +165,7 @@ function drawRecap(t) {
   g.save(); g.globalAlpha = clamp(tau / .06, 0, 1) * o; g.translate(540, 660); g.scale(sc, sc); var so = sh(h); g.shadowColor = 'rgba(8,4,0,' + so.a + ')'; g.shadowOffsetX = so.ox; g.shadowOffsetY = so.oy; g.shadowBlur = so.bl + 10;
   rr(-384, -270, 768, 540, 12); g.fillStyle = g.createPattern(PAPERTX, 'repeat'); g.fill(); g.shadowColor = 'transparent'; g.fillStyle = 'rgba(255,122,26,.85)'; g.fillRect(-90, -292, 180, 44);   // washi tape
   g.fillStyle = TANG; g.font = '500 24px Mar'; g.textAlign = 'left'; g.fillText('TONIGHT · 5 MINUTES · PEN + PAPER', -340, -214); g.strokeStyle = 'rgba(16,26,26,.25)'; g.lineWidth = 2; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(-340, -186); g.lineTo(340, -186); g.stroke(); g.setLineDash([]);
+  for (var q = 0; q < 2; q++) { var ph = ((t * .9) + q * .5) % 1; g.strokeStyle = 'rgba(142,240,200,' + (.6 * (1 - ph)) + ')'; g.lineWidth = 5; g.beginPath(); g.arc(310, -214, 18 + ph * 70, 0, 6.3); g.stroke(); } g.fillStyle = MINT; g.beginPath(); g.moveTo(296, -240); g.lineTo(324, -240); g.lineTo(324, -190); g.lineTo(310, -202); g.lineTo(296, -190); g.closePath(); g.fill();
   var rows = [['1', 'PEN + PAPER', '5 min'], ['2', 'EVERYTHING YOU STILL NEED TO DO', ''], ['3', 'BE SPECIFIC: THE NEXT ACTION', 'not "taxes"']];
   for (var i = 0; i < 3; i++) { var r = back(seg(t, t0 + .7 + i * .45, t0 + 1.15 + i * .45)); if (r <= 0) continue; g.save(); g.globalAlpha *= clamp(r * 2, 0, 1); var y = -100 + i * 140; g.fillStyle = INK; g.beginPath(); g.arc(-320, y - 12, 32, 0, 6.3); g.fill(); g.fillStyle = MINT; g.font = '800 36px Man'; g.textAlign = 'center'; g.fillText(rows[i][0], -320, y);
     g.fillStyle = INK; g.textAlign = 'left'; g.font = '800 ' + (i === 1 ? 31 : 34) + 'px Man'; g.fillText(rows[i][1], -262, y - 2); if (rows[i][2]) { g.fillStyle = '#6b5a3e'; g.font = 'italic 34px Ser'; g.fillText(rows[i][2], -262, y + 42); } g.restore(); }
@@ -176,6 +184,11 @@ function drawCTA(t) {
     if (bu > 0) { var pressed = t > K.follow + 1.0, bw = 360, pk = pressed && t < K.follow + 1.15 ? .94 : 1; g.save(); g.globalAlpha = clamp(bu * 2, 0, 1); g.translate(0, 338); g.scale(lerp(.8, 1, bu) * pk, lerp(.8, 1, bu) * pk); glassBox(-bw / 2, -48, bw, 96, pressed ? MINT : TANG, pressed ? MINT : TANG, 48); g.fillStyle = INK; g.font = '800 40px Man'; g.fillText(pressed ? 'FOLLOWING ✓' : 'FOLLOW', 0, 16); g.restore(); } g.restore(); }
   g.restore();
 }
+function drawSparkle(t) {
+  var t0 = K.follow + 1.0; if (t < t0) return; g.save(); var tau = t - t0;
+  for (var k = 0; k < 46; k++) { var a = hash(k) * 6.283, v = 380 + hash(k + 50) * 520, life = 1.6 + hash(k + 90) * .8; if (tau > life) continue; var x = 540 + Math.cos(a) * v * tau * .9, y = 900 + Math.sin(a) * v * tau * .6 + 900 * tau * tau * .55 - 180 * tau; g.globalAlpha = clamp(1 - tau / life, 0, 1); g.fillStyle = [MINT, TANG, AMB, PAPER][k % 4]; g.save(); g.translate(x, y); g.rotate(tau * (3 + hash(k + 7) * 5)); g.fillRect(-7, -4, 14, 8); g.restore(); }
+  for (var j = 0; j < 6; j++) { var an = t * .9 + j * 1.0472, rx = 540 + Math.cos(an) * 190, ry = 560 + Math.sin(an) * 190; g.globalAlpha = .55 + .45 * Math.sin(t * 5 + j * 2); g.fillStyle = MINT; g.beginPath(); g.moveTo(rx, ry - 12); g.lineTo(rx + 4, ry - 4); g.lineTo(rx + 12, ry); g.lineTo(rx + 4, ry + 4); g.lineTo(rx, ry + 12); g.lineTo(rx - 4, ry + 4); g.lineTo(rx - 12, ry); g.lineTo(rx - 4, ry - 4); g.closePath(); g.fill(); }
+  g.restore(); }
 // ---------- per-frame ----------
 window.__reelDurationSec = DUR;
 window.__seek = function (t) {
@@ -183,7 +196,7 @@ window.__seek = function (t) {
   var p = eio(seg(t, T_P0, T_P1)), c = eio(seg(t, T_CL0, T_CL1)), sP = lerp(lerp(1, .56, p), 1, c); CAM.s = sP; CAM.x = 540; CAM.y = lerp(960, 1000, sm(p) * (1 - c));
   drawDesk(); for (var i = 0; i < NCARD; i++) drawCard(i, t);
   var A = nbCenterA(t); if (t >= T_NB) { drawNotebookBody(A, 'TO-DO', true, t); drawWriting(t); } drawNotebookB(t); drawPen(t); drawLight(t);
-  drawProof(t); drawRecap(t); drawCTA(t);
+  drawLoop(t); drawProof(t); drawRecap(t); drawCTA(t); drawSparkle(t);
   // overlays
   var hl = $('hl'); var ho = 1 - sm(seg(t, K.grab - .6, K.grab)); hl.style.opacity = ho; hl.style.transform = 'translateY(' + (-24 * (1 - ho)) + 'px)';
   var st = t < K.grab ? null : t < K.write ? '1/3 · PEN + PAPER' : t < K.dont ? '2/3 · WRITE IT ALL' : t < K.unf ? '3/3 · BE SPECIFIC' : null, stE = $('step'); stE.textContent = st ? 'STEP ' + st : ''; stE.style.opacity = st ? sm(seg(t, st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont, (st.charAt(0) === '1' ? K.grab : st.charAt(0) === '2' ? K.write : K.dont) + .3)) : 0;
