@@ -77,12 +77,12 @@ pl_ = page('pageL', -.15, False); pr_ = page('pageR', .15, True)
 box('ribbon', (.012, .30, .002), (.02, -.04, .021), ribbon, rot=(0, 0, 0)).parent = nb
 # pen on the right page (omitted in the macro view: the page's writing pen is a live sprite)
 if VIEW == 'proof':
-    nb.location = (-.20, .46, 0)
+    nb.location = (.08, .30, 0); nb.rotation_euler = (0, 0, math.radians(-7))
     kids = [o for o in bpy.data.objects if o.parent == nb]
     bpy.ops.object.select_all(action='DESELECT'); nb.select_set(True)
     for k in kids: k.select_set(True)
     bpy.context.view_layer.objects.active = nb; bpy.ops.object.duplicate()
-    nb2 = [o for o in bpy.context.selected_objects if o.type == 'EMPTY'][0]; nb2.location = (.44, .50, 0); nb2.rotation_euler = (0, 0, math.radians(7))
+    nb2 = [o for o in bpy.context.selected_objects if o.type == 'EMPTY'][0]; nb2.location = (.20, .90, 0); nb2.rotation_euler = (0, 0, math.radians(5))
     grey = bpy.data.materials.new('greyrib'); grey.use_nodes = True; grey.node_tree.nodes['Principled BSDF'].inputs[0].default_value = (.35, .35, .33, 1)
     for o in bpy.context.selected_objects:
         if o.name.startswith('ribbon'): o.data.materials.clear(); o.data.materials.append(grey)
@@ -103,7 +103,7 @@ cam = bpy.data.cameras.new('c'); cam.sensor_fit = 'VERTICAL'; cam.sensor_height 
 if VIEW == 'wide':
     cam.lens = float(os.environ.get('LENS', 26)); co.location = (.05, -.95, .86); tgt = mathutils.Vector((.08, .8, float(os.environ.get('TZ', .42)))); NEAR, FAR = 1.0, 4.5
 elif VIEW == 'proof':
-    cam.lens = 34; co.location = (.12, -.40, .62); tgt = mathutils.Vector((.12, .52, .0)); NEAR, FAR = .4, 3.0
+    cam.lens = 27; co.location = (.14, -.55, 1.05); tgt = mathutils.Vector((.16, .62, .0)); NEAR, FAR = .5, 3.5
 else:
     cam.lens = 40; co.location = (.26, -.12, .40); tgt = mathutils.Vector((.27, .50, .00)); NEAR, FAR = .25, 2.6
     cam.dof.use_dof = True; cam.dof.focus_distance = (tgt - co.location).length * .92; cam.dof.aperture_fstop = float(os.environ.get("FSTOP", 2.2))
