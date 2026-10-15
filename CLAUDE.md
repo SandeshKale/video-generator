@@ -1387,3 +1387,9 @@ Picked from a topic deep dive (`gif-next-research/research.md`; the creator appr
 - A 120-frame render takes >2 minutes: run it with `nohup` and wait on the log, not in the foreground. Encode: `fps=10`, `max_colors=40`, `dither=none` gave 4.4 MB (48 colours 4.8 MB, 12 fps 6.7 MB). Keep flat backgrounds.
 - Loop: frame 0 is offset 4.5 s into the loop (`OFF`), counters ramp and reset during the last 0.6 s of the internal clock.
 - Next GIF: **vertical 4:5 (1080×1350)** and a new palette (not cream/teal/tomato).
+
+## GIF benchmark — `gif-ai-rollout` ("Everyone got the same AI. Only some teams lit up.", vertical 4:5 1080×1350, 12 s loop, 10 fps, 120 frames, 3.5 MB)
+Topic from a second research pass: Gallup, "Employee Engagement Remains Flat as AI Adoption Accelerates" (J. Harter, 21 Jul 2026; 43,262 US workers), read in full (tier A). **Lilac paper `#ebe8ff` + indigo ink `#14122b` + ultramarine + lime + coral; Archivo Black + Martian Mono + Inter; hard offset shadows.** Metaphor: three identical office towers, 100 windows each (1 window = 1 in 100 employees, lit = engaged): manager doesn't back AI use 30%, manager backs it 48%, frequent use + clear plan + manager 53%; a breaker panel of three toggles with bars (+18 / +15 / +8, separate comparisons, labelled "not additive"), confetti on 53%, drifting clouds, cars, blinking antennas, a fact ticker. Caveats printed on the GIF (survey data, not proof of cause).
+- Encode: `fps=10`, `max_colors=64`, `dither=none` gave 3.5 MB (flat colours; lit windows twinkle between two fixed limes, not by opacity, to keep the palette small). Render with `nohup`, the same font-copy trick as workslop (`fonts/` next to `index.html`).
+- `validate.mjs` has the canvas size hard-coded (bounds 1066 × 1342 here): update it when the format changes. Only the scrolling ticker (deliberately clipped) remains.
+- Next GIF: horizontal 1600×900 and a new palette (not cream/teal/tomato, not lilac/lime).
