@@ -32,10 +32,10 @@ Claim hygiene: say "I measured / I found", never "nobody has noticed".
 01 Ravana named 34 s before Ram · 02 the villain's hero shot (opinion) · 03 Ram's entrance is the darkest stretch · 04 the giant hidden in the dark · 05 ten seconds of logos · 06 the end poster: no cast names · 07 the practical close-up that works (opinion). Each card carries a MEASURED / OPINION source line. Use each as a ≤2.5 s still with a caption, never as moving footage; mute the trailer audio.
 
 ## Hindi voice-over v3 (concrete, logical chain, ~27 words per part so every sentence finishes; four 15 s parts)
-1. "रुकिए! रामायण का नया ट्रेलर आ गया। जुलाई वाले से ये काफ़ी बेहतर है। दस गुना बेहतर? ये नापना मुश्किल है, पर सुधार साफ़ दिखता है।"
-2. "जुलाई में कई लोगों को राक्षस और फ़ौज सपाट लगे थे। इस बार बर्फ़ और आसमान के शॉट्स दमदार हैं, और बड़े राक्षस ज़्यादातर अंधेरे में रखे हैं।"
-3. "दूसरी बात। रावण का नाम पहले आता है, खुली रोशनी में। राम बाद में आते हैं, अंधेरे जंगल में, चुपचाप। हीरो की एंट्री इतनी शांत क्यों?"
-4. "मेरा अंदाज़ा: रावण का शोर पहले है, राम की ताक़त बाद में खुलेगी। फ़ैसला पाँच नवंबर को थिएटर में। आपको क्या लगता है? कमेंट करिए, और फ़ॉलो करिए।"
+1. "रुकिए! रामायण का नया ट्रेलर आ गया। मैंने इसे ध्यान से देखा। जुलाई वाले से ये काफ़ी बेहतर है। दस गुना बेहतर? ये नापना मुश्किल है, पर सुधार साफ़ दिखता है।"
+2. "जुलाई में कई लोगों को राक्षस और फ़ौज सपाट लगे थे। इस बार बर्फ़ और आसमान के शॉट्स दमदार हैं, और बड़े राक्षस ज़्यादातर अंधेरे में रखे हैं। फ़र्क़ तुरंत दिखता है।"
+3. "दूसरी बात। रावण का नाम पहले आता है, खुली रोशनी में। राम बाद में आते हैं, अंधेरे जंगल में, चुपचाप। ये इत्तेफ़ाक़ नहीं लगता। हीरो की एंट्री इतनी शांत क्यों?"
+4. "मेरा अंदाज़ा: रावण का शोर पहले है, राम की ताक़त बाद में खुलेगी। ट्रेलर बस झलक है। फ़ैसला पाँच नवंबर को थिएटर में। आपको क्या लगता है? कमेंट करिए, और फ़ॉलो करिए।"
 
 Why v3: the first avatar clips (v2 script, 31-34 words each) ran to 14.3-14.7 s and the lines were abstract ("बड़ी ताक़त शोर करती है, सच्ची हिम्मत नहीं"). v3 is a chain a listener can follow: (1) new trailer, better than July; (2) why: July's flat monsters vs this trailer's strong snow/sky shots, big monsters kept in the dark; (3) second thing noticed: the villain is named first in daylight, the hero arrives later, quietly, in a dark forest; (4) my guess (opinion): the film shows the villain's noise first and the hero's strength later; verdict 5 Nov; comment + follow. The no-cast-names poster point moves to the caption and a card, not the voice.
 
