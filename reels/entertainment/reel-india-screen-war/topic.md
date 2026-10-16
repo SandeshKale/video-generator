@@ -24,3 +24,11 @@ Status: topic chosen, **not scripted**. Replaces the earlier "box-office numbers
 
 ## Next steps when approved
 Script in concrete cause→effect sentences (≤28 words per avatar part), "Benchmark to beat" block, a 3-scene card-style mockup (small borderless avatar), avatar prompts + checker, build with the overlap/typo/tasteful-motion/named-people checklist; caption.md with the YouTube Shorts sheet.
+
+## Google Trends check (16 Oct 2026, India)
+Method: public daily-trends RSS (`scripts/gtrends_in.py rss`) + one 7-day hourly comparison (`pytrends`, geo IN). Google then answered 429 for every further call from this sandbox (waited 10+ minutes, still blocked), so only this snapshot exists; a wider term sweep needs a retry later or the creator's machine.
+- **Daily trends RSS (10 items, volumes only "200+"/"500+"):** politics and shopping dominate (SIR protests, Akhilesh Yadav, RBI, Diwali appliance offers, Chennai monsoon). **Entertainment is nearly absent:** only "enna vilai 2026" (a Tamil film/OTT release) and "Soori" (new film launch) plus "Prajakta Mali" (no news attached). So there is no mass Hindi-film spike in the daily list, which means the entertainment audience is searching by title, not riding a general surge.
+- **7-day relative interest (terms compared against each other, last 24 h average, 0–100):** **Jailer 2 ≈ 74** (7-day mean ≈ 23.5, about 3× its own week: the only clear breakout), Drishyam 3 ≈ 6.5 (7-day mean ≈ 10, cooling), Bigg Boss 20 ≈ 5, Dhurandhar ≈ 2, "Ramayana trailer" ≈ 1. Jailer 2 draws roughly 11× the searches of Drishyam 3 right now.
+- **What it changes:** the live breakout is **Jailer 2**, not Drishyam. Re-frame the reel around Jailer 2 with the screen war as the explanation: *the most-searched film in India this week has a Hindi version that is not in the national multiplex chains (PVR INOX, Cinepolis, Miraj), reportedly because of a ~4-week OTT window; yet it sold 39,485 Hindi tickets for day 1.* Drishyam's week-3 show demand is the incumbent's side of the same fight.
+- Hook candidates: "India's most-searched film this week isn't in your multiplex. Not in Hindi." / "Jailer 2 in Hindi: why you can't find it at PVR."
+- Caveat: search interest is not ticket sales; Google's index is relative; check the multiplex status on the day (bookings may have been added) before scripting.
