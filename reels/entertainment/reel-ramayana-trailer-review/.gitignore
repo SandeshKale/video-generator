@@ -1,2 +1,5 @@
 frames/
 out/
+avatar/raw/
+site/frames/
+audio/*.wav

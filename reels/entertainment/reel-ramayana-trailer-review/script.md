@@ -59,3 +59,8 @@ Confirm the avatar tool speaks Hindi; confirm Sony's date wording (5 Nov) on the
 
 ## Update: previous-trailer comparison (creator request)
 Part 4 now compares with the 30 Jul trailer. **"10x better" is not claimed as fact**: it appears only as a question the host answers with "hard to measure, but the improvement shows". That is an opinion based on press coverage of July (flat armies/giant, unfinished VFX per the producer), since the July footage was not available to compare. For a real comparison, supply the July trailer file and I will measure luma, shot length and creature-shot share side by side and put the numbers on a card.
+
+## Pipeline status (while the avatar clips are being generated)
+Ready: `annotate.mjs` (cards; `MOCK=1` renders the approved small borderless-avatar mockup), `scenes.json` (scene → Hindi cue word → card), `avatar/transcribe.py` (Hindi Whisper), `avatar/stitch.py` (clips → `site/host.webm`, `audio/voice.wav`, `avatar/words.json`; no pause cutting), `caption.md` (template-compliant, 5 hashtags).
+After the clips arrive (drop them as `avatar/raw/p1.mp4`…`p4.mp4`): transcribe → hand-fix words.json → stitch → build `site/` scenes with times from the cue words → score + SFX → `check.mjs`/cadence/contact sheets → render at scale 1 → cover.
+Avatar on the page: small (~300 px), borderless, soft-feathered edge, bottom-right inside the safe zone; the host video replaces the placeholder photo.

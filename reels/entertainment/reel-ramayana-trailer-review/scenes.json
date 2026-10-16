@@ -1,0 +1,56 @@
+[
+ {
+  "id": "hook",
+  "cue": "रुकिए",
+  "card": "hook",
+  "frame": "g_42"
+ },
+ {
+  "id": "verdict",
+  "cue": "पहले सीधी",
+  "card": "verdict",
+  "frame": "g_17"
+ },
+ {
+  "id": "july",
+  "cue": "जुलाई",
+  "card": "july-vs-oct"
+ },
+ {
+  "id": "scale",
+  "cue": "तस्वीर",
+  "card": "scale",
+  "frame": "g_112"
+ },
+ {
+  "id": "entry",
+  "cue": "अब वो बात",
+  "card": "entry-order",
+  "frames": [
+   "g_42",
+   "g_63"
+  ]
+ },
+ {
+  "id": "dark",
+  "cue": "चुपचाप",
+  "card": "ram-dark",
+  "frame": "g_68"
+ },
+ {
+  "id": "poster",
+  "cue": "पोस्टर",
+  "card": "poster",
+  "frame": "end"
+ },
+ {
+  "id": "verdict2",
+  "cue": "दस गुना",
+  "card": "ten-x-question"
+ },
+ {
+  "id": "cta",
+  "cue": "फ़ैसला",
+  "card": "cta"
+ }
+]
