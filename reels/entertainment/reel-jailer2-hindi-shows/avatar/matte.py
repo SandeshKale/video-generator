@@ -1,8 +1,8 @@
 # Cut the host out of the avatar clips (u2net_human_seg via rembg, Apache-2.0 model) -> site/host.webm (VP9 + alpha, 24 fps, 480x480).
-# Part 2's cut-out fades out between y=66% and 74% of the frame, which also removes the avatar tool's burned-in subtitles (Part 2).
+# Full cut-out, background removed only. Part 2's burned-in subtitles are detected (white text, lower chest) and inpainted.
 # Cuts/timing identical to stitch.py (cut after last word + 0.38 s, 1.5 s freeze tail on the last part). Audio is built separately (stitch.py).
 import json, os, subprocess, sys, glob, shutil
-import numpy as np
+import numpy as np, cv2
 from PIL import Image
 from rembg import new_session, remove
 H = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(H, '..'); FPS = 24; TAIL = 1.5
@@ -20,8 +20,16 @@ for k, c in zip(parts, cuts):
         im = Image.open(f).convert('RGB'); a = remove(im, session=sess, only_mask=True)
         a = np.asarray(a.resize((S, S))).astype(np.float32) / 255
         a = np.where(a > .5, np.clip((a - .35) / .5, 0, 1), np.clip(a * 1.2, 0, 1) * .6) if False else a
-        a = np.clip((a - .12) / .76, 0, 1) * (fade if k == 'p2' else fade_none)       # tighten the soft edge a little
-        rgba = np.dstack([np.asarray(im), (a * 255).astype(np.uint8)])
+        a = np.clip((a - .12) / .76, 0, 1) * fade_none       # tighten the soft edge a little
+        rgb = np.asarray(im)
+        if k == 'p2':   # burned-in subtitles: near-white, low-saturation pixels on the chest -> inpaint instead of fading the body away
+            r = cv2.resize(rgb, (S, S)); mn = r.min(2); mx = r.max(2)
+            m = ((mn > 215) & ((mx.astype(int) - mn) < 28)).astype(np.uint8); m[:int(S * .66)] = 0
+            if m.sum() > 60:
+                m = cv2.dilate(m, np.ones((9, 9), np.uint8)); rgb = cv2.inpaint(r, m * 255, 5, cv2.INPAINT_TELEA)
+            else: rgb = r
+        else: rgb = cv2.resize(rgb, (S, S))
+        rgba = np.dstack([rgb, (a * 255).astype(np.uint8)])
         Image.fromarray(rgba, 'RGBA').save(f'{tmp}/f{n:05d}.png'); n += 1; last = f'{tmp}/f{n-1:05d}.png'
     print(k, n, flush=True)
 for i in range(int(TAIL * FPS)): shutil.copy(last, f'{tmp}/f{n:05d}.png'); n += 1
