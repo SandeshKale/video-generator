@@ -8,6 +8,7 @@
 *{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
 body{position:relative;color:var(--paper);font-family:Inter}
 #bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 45% at 50% 28%,#34141c 0,var(--bg) 72%)}
+#sweep{position:absolute;left:-400px;top:0;width:360px;height:1920px;background:linear-gradient(90deg,transparent,rgba(255,61,127,.10),transparent);transform:skewX(-14deg)}
 #seats{position:absolute;inset:-60px 0 -60px 0;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='56'><rect x='12' y='10' width='36' height='28' rx='9' fill='%23f3e9d2'/><rect x='6' y='30' width='48' height='14' rx='6' fill='%23f3e9d2'/></svg>")}
 .sc{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
 .eye{position:absolute;left:120px;top:150px;font:700 26px MM;letter-spacing:.12em;color:var(--hindi)}
@@ -18,10 +19,12 @@ body{position:relative;color:var(--paper);font-family:Inter}
 .src{position:absolute;left:120px;width:840px;font:600 18px/1.35 MM;color:var(--dim);letter-spacing:.04em}
 .chip{position:absolute;border:3px solid var(--paper);padding:10px 16px;font:700 24px/1.2 MM;background:rgba(26,12,16,.88);white-space:nowrap}
 .stamp{position:absolute;font:400 110px/1 Archivo;border:8px solid var(--hindi);color:var(--hindi);padding:4px 24px;white-space:nowrap;text-transform:uppercase}
-#av{position:absolute;left:610px;top:1215px;width:300px;height:300px;-webkit-mask-image:radial-gradient(ellipse 50% 52% at 50% 46%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 52% at 50% 46%,#000 60%,transparent 100%)}
-#av canvas{width:300px;height:300px}
-#cap{position:absolute;left:120px;top:1250px;width:470px;min-height:130px;background:rgba(0,0,0,.72);border-left:8px solid var(--hindi);padding:14px 18px;font:700 32px/1.28 Inter;color:var(--paper)}
-#caprule{position:absolute;left:120px;width:470px;top:1232px;border-top:4px dashed var(--hindi)}
+#av{position:absolute;left:585px;top:1200px;width:330px;height:330px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14px);mask-image:linear-gradient(to bottom,transparent 0,#000 14px);filter:drop-shadow(0 10px 22px rgba(0,0,0,.55))}
+#av canvas{width:330px;height:330px}
+.pol{position:absolute;background:#f3e9d2;padding:10px 10px 0;box-shadow:0 18px 34px rgba(0,0,0,.55);color:#1a0c10}.pol img{display:block;width:100%;object-fit:cover}.pol .cap{font:700 16px/1.2 MM;padding:9px 0 2px}.pol .cr{font:600 12px/1.2 MM;color:#6b5a52;padding:0 0 9px}.pol.nop img{display:none}.pol.nop .ph{display:flex}.pol .ph{display:none;align-items:center;justify-content:center;font:400 90px Archivo;color:#1a0c10;background:#d9ccb0}
+.plate{position:absolute;left:0;top:0;width:1080px;height:1200px;object-fit:cover;filter:saturate(.7) brightness(.55) contrast(1.05);mix-blend-mode:luminosity;opacity:.0}
+#cap{position:absolute;left:120px;top:1250px;width:450px;min-height:130px;background:rgba(0,0,0,.72);border-left:8px solid var(--hindi);padding:14px 18px;font:700 32px/1.28 Inter;color:var(--paper)}
+#caprule{position:absolute;left:120px;width:450px;top:1232px;border-top:4px dashed var(--hindi)}
 #dust{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;mix-blend-mode:screen;pointer-events:none}
-</style></head><body><div id="bg"></div><div id="seats"></div><div id="scenes"></div><video id="dust" muted preload="auto" src="dust-particles.webm"></video><div id="caprule"></div><div id="cap"></div><div id="av"><canvas id="avc" width="380" height="380"></canvas></div>
-<script src="vendor/rough.min.js"></script><script src="timing.js"></script><script src="app.js"></script></body></html>
+</style></head><body><div id="bg"></div><div id="seats"></div><div id="sweep"></div><div id="scenes"></div><video id="dust" muted preload="auto" src="dust-particles.webm"></video><div id="caprule"></div><div id="cap"></div><div id="av"><canvas id="avc" width="380" height="380"></canvas></div>
+<script src="vendor/rough.min.js"></script><script src="timing.js"></script><script src="credits.js"></script><script src="app.js"></script></body></html>
