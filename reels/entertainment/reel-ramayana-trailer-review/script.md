@@ -35,7 +35,7 @@ Claim hygiene: say "I measured / I found", never "nobody has noticed".
 1. "रुकिए! रामायण का नया ट्रेलर आया, और मैंने इसे सेकंड दर सेकंड नापा। एक चीज़ ऐसी मिली, जो मुझे कहीं और नहीं दिखी। पहले सीधी बात: ये ट्रेलर देखने लायक है।"
 2. "पहली बात, पैमाना। बर्फ़ के पहाड़, जलता शहर, आसमान में उड़ता विशाल पक्षी। फ़िल्म पाँच नवंबर को आई-मैक्स में आ रही है। रावण वाला हिस्सा सबसे दमदार है: सुनहरा आसमान, ऊँचा कैमरा।"
 3. "अब मेरी खोज। रावण का नाम राम से चौंतीस सेकंड पहले आता है। राम की एंट्री पूरे ट्रेलर का सबसे अंधेरा और शांत हिस्सा है। किसी कलाकार का नाम नहीं दिखा।"
-4. "मेरी राय: कुछ बड़े शॉट्स में इफ़ेक्ट अधूरे लगे, और निर्माता कह चुके हैं VFX अभी पूरा नहीं है। थिएटर में फ़ैसला करूँगा। आपको कैसा लगा? ऐसे रिव्यू के लिए फ़ॉलो करिए।"
+4. "जुलाई वाले ट्रेलर पर VFX की बहस हुई थी। इस बार बड़े शॉट्स ज़्यादा सधे लगते हैं। दस गुना बेहतर? नापना मुश्किल है, पर सुधार दिखता है। फ़ैसला थिएटर में। फ़ॉलो करिए।"
 
 On-screen text stays English (standing rule): captions are English subtitles timed to the Hindi lines.
 Tone: respectful craft criticism of a film based on a sacred text; opinions labelled; no mocking of faith, cast or looks; the voice is the creator's AI avatar (disclosure line in the caption).
@@ -56,3 +56,6 @@ Trailer footage belongs to Sony/T-Series; use only short stills (≤2.5 s) with 
 
 ## Open items before a full build
 Confirm the avatar tool speaks Hindi; confirm Sony's date wording (5 Nov) on the day of posting; decide whether to include the 30 Jul reactions (clearly labelled as the earlier trailer); mockup (3 scenes from 3 asset families) before the build.
+
+## Update: previous-trailer comparison (creator request)
+Part 4 now compares with the 30 Jul trailer. **"10x better" is not claimed as fact**: it appears only as a question the host answers with "hard to measure, but the improvement shows". That is an opinion based on press coverage of July (flat armies/giant, unfinished VFX per the producer), since the July footage was not available to compare. For a real comparison, supply the July trailer file and I will measure luma, shot length and creature-shot share side by side and put the numbers on a card.

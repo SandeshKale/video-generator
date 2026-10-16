@@ -91,8 +91,8 @@ PERFORMANCE (keep it subtle):
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: speak in HINDI (natural spoken Hindi with Indian film-and-tech words as Indians say them, not Sanskritised, not English). Super friendly, soothing yet punchy: warm, grounded, chest-resonant, like a trusted elder-brother friend; sounds close to a good microphone in a quiet room (dry, no echo or reverb). Everyday pace, short punchy sentence endings that land downward, a soft smile in the voice. Natural pitch movement: lighter and slightly higher on a question, lower and a touch slower on the key line, a short pause before the most important line. Small human pauses at commas; at most one lightly stressed word per sentence; slightly softer on asides. No announcer tone, no sing-song, no robotic flatness, no filler sounds.
 PRONUNCIATION: 'VFX' = 'vee-eff-eks', 'फ़ॉलो' = 'fo-lo'
-MOOD BY SECTION: 0-6s thoughtful and fair, a slight inner-brow raise on 'अधूरे'; 6-11s warm and reassuring, a faint smile; 11-14s friendly and direct at the lens, a small nod on 'फ़ॉलो करिए'.
-SCRIPT: "मेरी राय: कुछ बड़े शॉट्स में इफ़ेक्ट अधूरे लगे, और निर्माता कह चुके हैं VFX अभी पूरा नहीं है। थिएटर में फ़ैसला करूँगा। आपको कैसा लगा? ऐसे रिव्यू के लिए फ़ॉलो करिए।"
+MOOD BY SECTION: 0-6s thoughtful and fair, a slight inner-brow raise on 'बहस'; 6-11s warm and reassuring, a faint smile; 11-14s friendly and direct at the lens, a small nod on 'सुधार दिखता है'.
+SCRIPT: "जुलाई वाले ट्रेलर पर VFX की बहस हुई थी। इस बार बड़े शॉट्स ज़्यादा सधे लगते हैं। दस गुना बेहतर? नापना मुश्किल है, पर सुधार दिखता है। फ़ैसला थिएटर में। फ़ॉलो करिए।"
 TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s, then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
@@ -101,4 +101,4 @@ AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic sk
 1. "Rukiye! Ramayan ka naya trailer aaya, aur maine ise second dar second naapa. Ek cheez aisi mili, jo mujhe kahin aur nahin dikhi. Pehle seedhi baat: ye trailer dekhne layak hai."
 2. "Pehli baat, pamaana. Barf ke pahaad, jalta shehar, aasmaan mein udta vishaal pakshi. Film paanch november ko eye-max mein aa rahi hai. Raavan wala hissa sabse damdaar hai: sunehra aasmaan, ooncha camera."
 3. "Ab meri khoj. Raavan ka naam Ram se chauntees second pehle aata hai. Ram ki entry poore trailer ka sabse andhera aur shaant hissa hai. Kisi kalakaar ka naam nahin dikha."
-4. "Meri raay: kuch bade shots mein effects adhoore lage, aur nirmaata keh chuke hain VFX abhi poora nahin hai. Theatre mein faisla karoonga. Aapko kaisa laga? Aise review ke liye follow kariye."
+4. "July wale trailer par VFX ki bahas hui thi. Is baar bade shots zyaada sadhe lagte hain. Das guna behtar? Naapna mushkil hai, par sudhaar dikhta hai. Faisla theatre mein. Follow kariye."
