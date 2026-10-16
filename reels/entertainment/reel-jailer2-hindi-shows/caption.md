@@ -49,3 +49,10 @@ Sources: Sacnilk via The Week and IWMBuzz, Pinkvilla (16 Oct 2026); Deccan Heral
 **Pinned first comment:** आपके शहर में हिंदी जेलर 2 कहाँ चल रहा है? City + theatre type (multiplex / single screen) बताइए। Numbers: Sacnilk via The Week, 16 Oct 2026.
 
 **Before upload:** re-check the numbers and the PVR INOX/Cinepolis/Miraj status on the day; paste no Instagram "Comment your city" line into YouTube (use the pinned comment).
+
+## Photo credits (Wikimedia Commons)
+- Nelson Dilipkumar: Naveen Thavaneshwar, CC0
+- Anirudh Ravichander: Surajram Kumaravel, CC BY 3.0
+- Apollo Theatre, Pune: DesiBoy101, CC BY 4.0
+- Rajinikanth card: typographic placeholder (no licensed photo retrieved yet)
+Host is my AI avatar (likeness of me, voiced by AI). Box-office numbers are tracker estimates, not official figures.
