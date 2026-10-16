@@ -10,6 +10,6 @@ for w in "0 10.5" "28 34" "43 54" "54.05 57.4"; do
   ffmpeg -v error -y -i $R/out/mw/w$i.mp4 -i $R/out/mw/a$i.m4a -c:v copy -c:a aac -shortest $R/out/mw/m$i.mp4
   echo "window $i done" >> /tmp/jmw_progress.log
 done
-for i in 1 2 3 4; do echo "file 'mw/m$i.mp4'" ; done > $R/out/mw/list.txt
+for i in 1 2 3 4; do echo "file 'm$i.mp4'" ; done > $R/out/mw/list.txt
 ffmpeg -v error -y -f concat -safe 0 -i $R/out/mw/list.txt -c:v libx264 -crf 22 -pix_fmt yuv420p -c:a aac -movflags +faststart $R/out/mockup.mp4
 echo ALLDONE >> /tmp/jmw_progress.log
