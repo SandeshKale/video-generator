@@ -31,14 +31,14 @@ Claim hygiene: say "I measured / I found", never "nobody has noticed".
 ## Annotated screengrabs (`out/*.png`, 1080×1920, built by `annotate.mjs`; frames in `frames/` are gitignored, copyrighted)
 01 Ravana named 34 s before Ram · 02 the villain's hero shot (opinion) · 03 Ram's entrance is the darkest stretch · 04 the giant hidden in the dark · 05 ten seconds of logos · 06 the end poster: no cast names · 07 the practical close-up that works (opinion). Each card carries a MEASURED / OPINION source line. Use each as a ≤2.5 s still with a caption, never as moving footage; mute the trailer audio.
 
-## Hindi voice-over (spoken forms; four 15 s avatar parts, ~58 s)
-1. "रुकिए! रामायण का नया ट्रेलर आया, और मैंने इसे सेकंड दर सेकंड नापा। एक चीज़ ऐसी मिली, जो मुझे कहीं और नहीं दिखी। पहले सीधी बात: ये ट्रेलर देखने लायक है।"
-2. "पहली बात, पैमाना। बर्फ़ के पहाड़, जलता शहर, आसमान में उड़ता विशाल पक्षी। फ़िल्म पाँच नवंबर को आई-मैक्स में आ रही है। रावण वाला हिस्सा सबसे दमदार है: सुनहरा आसमान, ऊँचा कैमरा।"
-3. "अब मेरी खोज। रावण का नाम राम से चौंतीस सेकंड पहले आता है। राम की एंट्री पूरे ट्रेलर का सबसे अंधेरा और शांत हिस्सा है। किसी कलाकार का नाम नहीं दिखा।"
-4. "जुलाई वाले ट्रेलर पर VFX की बहस हुई थी। इस बार बड़े शॉट्स ज़्यादा सधे लगते हैं। दस गुना बेहतर? नापना मुश्किल है, पर सुधार दिखता है। फ़ैसला थिएटर में। फ़ॉलो करिए।"
+## Hindi voice-over v2 (plain words, one flowing rhythm, four 15 s parts, ~58 s)
+1. "रुकिए! रामायण का नया ट्रेलर आ गया। और इस बार, बात कुछ अलग है। मैंने इसे ध्यान से देखा, और एक चीज़ मिली, जो आपने शायद छोड़ दी। पहले सीधी बात: देखने लायक है।"
+2. "जुलाई में जो ट्रेलर आया था, उस पर बहुत बहस हुई। इस बार तस्वीर ज़्यादा सधी हुई है। बर्फ़ के पहाड़, आसमान में पंख फैलाता पक्षी, और पाँच नवंबर की तारीख़।"
+3. "अब वो बात। रावण पहले आता है, पूरे रुतबे के साथ। राम बाद में आते हैं, चुपचाप, अंधेरे में। जैसे कहानी कह रही हो: बड़ी ताक़त शोर करती है, सच्ची हिम्मत नहीं।"
+4. "और एक मज़ेदार बात: पोस्टर पर किसी सितारे का नाम नहीं। यहाँ कहानी ही सबसे बड़ा नाम है। दस गुना बेहतर? नापना मुश्किल है, पर सुधार दिखता है। फ़ैसला थिएटर में। फ़ॉलो करिए।"
 
-On-screen text stays English (standing rule): captions are English subtitles timed to the Hindi lines.
-Tone: respectful craft criticism of a film based on a sacred text; opinions labelled; no mocking of faith, cast or looks; the voice is the creator's AI avatar (disclosure line in the caption).
+Design of the read: short line, longer line, short line, so it breathes like a story told aloud, with one idea per sentence and no numbers beyond the date. Masses get the spectacle, the July contrast and a clear verdict; classes get the quiet reading (the villain walks in first and loud, the hero arrives last and quiet; the poster sells the story, not a star). The Ravana/Ram observation is offered as "what I noticed", never announced as a finding. The measured numbers (34 s, luma, LUFS) stay on the screengrab cards, not in the voice.
+On-screen text stays English; captions are English subtitles timed to the Hindi.
 
 ## Performance track (R10, for checking the clips)
 | Part | Sentence | Brow | Head | Gaze |
