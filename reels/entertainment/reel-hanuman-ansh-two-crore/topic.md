@@ -5,7 +5,7 @@ Status: **recommended, not scripted.** Chosen 16 Oct 2026 after three checks: we
 ## What the three checks said
 | Check | Finding |
 |---|---|
-| **YouTube Charts, India, weekly 2–8 Oct** (read from charts.youtube.com's own data) | "**Parvati**" (Sadhu Tiwari, from *Hanuman Ansh*) is **#2 song** (29.65M weekly views) and **#3 video** (15.1M), 6 weeks on the chart, views −16% week on week (a long tail, not a spike). #1 song is a remix, #1 video is Honey Singh's tequila-brand track (alcohol brand: skipped). Biggest risers: Aawaara Angaara (A. R. Rahman, +98%), Alfaaz (+47%, 23→10). |
+| **YouTube Charts, India, weekly 2–8 Oct** (read from charts.youtube.com's own data) | "**Parvati**" (Sadhu Tiwari, from *Hanuman Ansh*) is **#2 song** (29.65M weekly views) and **#3 video** (15.1M), 6 weeks on the chart, views −13% week on week for the song, −16% for the video (a long tail, not a spike). #1 song is a remix, #1 video is Honey Singh's tequila-brand track (alcohol brand: skipped). Biggest risers: Aawaara Angaara (A. R. Rahman, +98%), Alfaaz (+47%, 23→10). |
 | **Google Trends (India)** | Daily list has almost no entertainment. 7-day compare: Jailer 2 the clear spike. *Hanuman Ansh* was not in the one comparison that got through (then blocked, 429). |
 | **News (tier B)** | Film is a sleeper: see numbers below; "Parvati" reported as No. 1 on YouTube Music India and 100M+ views (figures vary by outlet: another says 47M India views), 1.5M+ short videos use it; Modi was seen enjoying a live rendition at a "Bhajan Clubbing" event ([CSR Journal](https://thecsrjournal.in/parvati-from-hanuman-ansh-no-1-in-india-no-2-globally-after-crossing-100-million-views), [NewsBytes](https://www.newsbytesapp.com/news/entertainment/parvati-tops-youtube-music-india-hanuman-ansh-crosses-100-million-streams/tldr), [Devdiscourse](https://www.devdiscourse.com/article/entertainment/3979318-parvati-hitmaker-sadhu-tiwari-meets-gwalior-mp-amid-hanuman-ansh-success-recalls-struggles-in-mumbai)). |
 
@@ -20,7 +20,7 @@ Also checked: The Week's "1,168% jump" for week 3 doesn't match its own numbers 
 
 ## Masses and classes; not obvious
 - Masses: a tiny devotional film beating star-led releases; a song every phone has heard; "kitna paisa".
-- Classes: how distribution actually works (opening screens → word of mouth → screen counts → per-screen yield), the long-tail chart behaviour (−16% a week for 6 weeks), a sleeper vs a marketed hit.
+- Classes: how distribution actually works (opening screens → word of mouth → screen counts → per-screen yield), the long-tail chart behaviour (about −13% a week, 6 weeks on the chart), a sleeper vs a marketed hit.
 - Not obvious: coverage reports the total; the per-screen yield and the week-2 near-miss are the insight.
 
 ## Cautions (sensitive subject)
