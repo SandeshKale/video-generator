@@ -1,14 +1,14 @@
 # Caption: Jailer 2 Hindi shows
 
 ## Instagram caption
-Jailer 2 in Hindi: a quarter of the shows, only 6% of the money 👇 Comment your city and tell me where you found a show.
+Jailer 2: about ₹125 crore worldwide on day one, only ₹3.5 crore in Hindi. Why? 👇 Comment your city and tell me where you found a Hindi show.
 
-Day 1 (tracker figures, Sacnilk via The Week): about 16,600 shows in India, 4,371 of them Hindi. The Hindi version earned ₹3.50 crore net, which is 10× the first Jailer's Hindi opening (₹35 lakh), even though it is reportedly not in the big multiplex chains (PVR INOX, Cinepolis, Miraj). The per-show average, my own arithmetic: about ₹46,000 in Tamil, about ₹8,000 in Hindi.
+Day 1 (tracker figures): about ₹125 crore worldwide gross (trackers range ₹124–130 crore). In India, about 16,600 shows, 4,371 of them Hindi (Sacnilk). Hindi earned about ₹3.5 crore net, 10× the first Jailer's Hindi opening (₹35 lakh), but Hindi shows were about 20% full against about 71% for Tamil. My arithmetic: about ₹46,000 per Tamil show vs about ₹8,000 per Hindi show. Reportedly, PVR INOX and Cinepolis did not screen the Hindi version over an OTT-window dispute (8 weeks asked, 4 weeks agreed by the producers); the film's team said the Hindi release went ahead.
 
-The catch: trackers revise day-1 numbers, and I don't know why the Hindi per-show figure is lower; fewer screens and cheaper tickets are the reported reasons, not proven.
+The catch: trackers revise day-1 numbers and no official figure is out; the multiplex dispute is reported, not confirmed, and occupancy explains most but not all of the per-show gap.
 
 🤖 Host: my AI avatar (a likeness of me, voiced by AI). The script, research and edit are mine; I use Claude to help build these.
-Sources: Sacnilk via The Week (16 Oct 2026); Bollywood Hungama (14 Oct 2026, Hindi release status); ETV Bharat (15 Oct 2026). Read 16 Oct 2026; trade estimates.
+Sources: Sacnilk via The Week and IWMBuzz (16 Oct 2026); Pinkvilla (16 Oct); Deccan Herald and The Week (12 Oct, multiplex dispute). Read 16 Oct 2026; trade estimates.
 
 #Jailer2 #BoxOfficeIndia #SouthCinema #HindiDubbed #ExplainedBySandesh
 
@@ -24,7 +24,7 @@ Sources: Sacnilk via The Week (16 Oct 2026); Bollywood Hungama (14 Oct 2026, Hin
 ## YouTube Shorts (fill in Studio exactly like this; limits per `insights/caption-template.md` section 4, verify in Studio)
 | Field | Value |
 |---|---|
-| Title (≤100; hook first) | जेलर 2 हिंदी: शो का चौथाई, कमाई का सिर्फ़ 6% | Jailer 2 Hindi box office |
+| Title (≤100; hook first) | जेलर 2: ₹125 करोड़, पर हिंदी में सिर्फ़ ₹3.5 करोड़ | Why? Box office |
 | Visibility | Scheduled; 7–9 pm IST, same evening as the Instagram post |
 | Audience | No, it's not made for kids |
 | Altered or synthetic content | **Yes**: host is my AI avatar (a likeness of me, voiced by AI) |
@@ -36,11 +36,11 @@ Sources: Sacnilk via The Week (16 Oct 2026); Bollywood Hungama (14 Oct 2026, Hin
 | Thumbnail | Pick the strongest frame in the Shorts picker (the 100-dot show grid scene) |
 
 **Description (paste):**
-Jailer 2 Hindi on day one: a quarter of the shows, only 6% of the earnings. The Hindi version earned ₹3.50 crore net (10× the first Jailer's Hindi opening) while reportedly missing from the big multiplex chains. Tracker figures and my own arithmetic, explained in 50 seconds.
+Jailer 2 earned about ₹125 crore worldwide on day one, but only about ₹3.5 crore net came from the Hindi version. Why? Hindi had a quarter of the shows and 6% of the money, and its shows were about 20% full. Tracker figures and my own arithmetic, explained in about a minute.
 
-Numbers: about 16,600 shows in India on day 1, 4,371 in Hindi; net per show about ₹46,500 (Tamil) vs about ₹8,000 (Hindi). Trade estimates; they get revised.
+Numbers: about 16,600 shows in India on day 1, 4,371 in Hindi; occupancy about 71% Tamil vs 20% Hindi; net per show about ₹46,500 (Tamil) vs about ₹8,000 (Hindi). Trade estimates; they get revised. No official figure was published when this was made.
 🤖 Host: my AI avatar (a likeness of me, voiced by AI). The script, research and edit are mine; I use Claude to help build these.
-Sources: Sacnilk via The Week (16 Oct 2026), Bollywood Hungama (14 Oct 2026), ETV Bharat (15 Oct 2026).
+Sources: Sacnilk via The Week and IWMBuzz, Pinkvilla (16 Oct 2026); Deccan Herald, The Week (12 Oct 2026).
 
 #Jailer2 #BoxOfficeIndia #HindiDubbed
 
