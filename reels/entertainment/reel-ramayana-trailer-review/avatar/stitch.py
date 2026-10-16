@@ -6,7 +6,7 @@ H = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(H, '..')
 FPS = 24; TAIL = 1.5; PARTS = ['p1', 'p2', 'p3', 'p4']; GAP = 0.18   # short breath between parts so the cadence stays continuous
 def run(*a): subprocess.check_call(list(a))
 def probe(f):
-    o = subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', f]).decode().split(',')
+    o = subprocess.check_output(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', f]).decode().split(',')
     return int(o[0]), int(o[1])
 tmp = '/tmp/rama_st'; os.makedirs(tmp, exist_ok=True)
 words, cuts, segs, off = [], [], [], 0.0
@@ -17,9 +17,9 @@ for pi, k in enumerate(PARTS):
     last = W[-1][2]; cut = round(min(15.0, last + 0.38) * FPS) / FPS
     hold = TAIL if pi == len(PARTS) - 1 else 0
     o = f'{tmp}/{k}.mkv'
-    vf = f'fps={FPS},crop={crop},scale=720:720' + (f',tpad=stop_mode=clone:stop_duration={hold}' if hold else '')
+    vf = f'fps={FPS},crop={crop},scale=544:544' + (f',tpad=stop_mode=clone:stop_duration={hold}' if hold else '')
     af = 'aresample=48000,pan=mono|c0=c0' + (f',apad=pad_dur={hold}' if hold else '')
-    run('ffmpeg', '-v', 'error', '-y', '-ss', '0', '-to', f'{cut:.4f}', '-i', src, '-vf', vf, '-af', af, '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-c:a', 'pcm_s16le', o)
+    run('ffmpeg', '-v', 'error', '-y', '-ss', '0', '-to', f'{cut:.4f}', '-i', src, '-map', '0:v:0', '-map', '0:a:0', '-vf', vf, '-af', af, '-c:v', 'libx264', '-crf', '14', '-preset', 'veryfast', '-c:a', 'pcm_s16le', o)
     segs.append(o)
     for ww, s, e in W: words.append([pi + 1, ww, round(s + off, 3), round(e + off, 3)])
     cuts.append(round(cut, 3)); off += cut
