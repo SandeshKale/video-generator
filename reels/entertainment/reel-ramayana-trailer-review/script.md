@@ -31,14 +31,13 @@ Claim hygiene: say "I measured / I found", never "nobody has noticed".
 ## Annotated screengrabs (`out/*.png`, 1080×1920, built by `annotate.mjs`; frames in `frames/` are gitignored, copyrighted)
 01 Ravana named 34 s before Ram · 02 the villain's hero shot (opinion) · 03 Ram's entrance is the darkest stretch · 04 the giant hidden in the dark · 05 ten seconds of logos · 06 the end poster: no cast names · 07 the practical close-up that works (opinion). Each card carries a MEASURED / OPINION source line. Use each as a ≤2.5 s still with a caption, never as moving footage; mute the trailer audio.
 
-## Hindi voice-over v2 (plain words, one flowing rhythm, four 15 s parts, ~58 s)
-1. "रुकिए! रामायण का नया ट्रेलर आ गया। और इस बार, बात कुछ अलग है। मैंने इसे ध्यान से देखा, और एक चीज़ मिली, जो आपने शायद छोड़ दी। पहले सीधी बात: देखने लायक है।"
-2. "जुलाई में जो ट्रेलर आया था, उस पर बहुत बहस हुई। इस बार तस्वीर ज़्यादा सधी हुई है। बर्फ़ के पहाड़, आसमान में पंख फैलाता पक्षी, और पाँच नवंबर की तारीख़।"
-3. "अब वो बात। रावण पहले आता है, पूरे रुतबे के साथ। राम बाद में आते हैं, चुपचाप, अंधेरे में। जैसे कहानी कह रही हो: बड़ी ताक़त शोर करती है, सच्ची हिम्मत नहीं।"
-4. "और एक मज़ेदार बात: पोस्टर पर किसी सितारे का नाम नहीं। यहाँ कहानी ही सबसे बड़ा नाम है। दस गुना बेहतर? नापना मुश्किल है, पर सुधार दिखता है। फ़ैसला थिएटर में। फ़ॉलो करिए।"
+## Hindi voice-over v3 (concrete, logical chain, ~27 words per part so every sentence finishes; four 15 s parts)
+1. "रुकिए! रामायण का नया ट्रेलर आ गया। जुलाई वाले से ये काफ़ी बेहतर है। दस गुना बेहतर? ये नापना मुश्किल है, पर सुधार साफ़ दिखता है।"
+2. "जुलाई में कई लोगों को राक्षस और फ़ौज सपाट लगे थे। इस बार बर्फ़ और आसमान के शॉट्स दमदार हैं, और बड़े राक्षस ज़्यादातर अंधेरे में रखे हैं।"
+3. "दूसरी बात। रावण का नाम पहले आता है, खुली रोशनी में। राम बाद में आते हैं, अंधेरे जंगल में, चुपचाप। हीरो की एंट्री इतनी शांत क्यों?"
+4. "मेरा अंदाज़ा: रावण का शोर पहले है, राम की ताक़त बाद में खुलेगी। फ़ैसला पाँच नवंबर को थिएटर में। आपको क्या लगता है? कमेंट करिए, और फ़ॉलो करिए।"
 
-Design of the read: short line, longer line, short line, so it breathes like a story told aloud, with one idea per sentence and no numbers beyond the date. Masses get the spectacle, the July contrast and a clear verdict; classes get the quiet reading (the villain walks in first and loud, the hero arrives last and quiet; the poster sells the story, not a star). The Ravana/Ram observation is offered as "what I noticed", never announced as a finding. The measured numbers (34 s, luma, LUFS) stay on the screengrab cards, not in the voice.
-On-screen text stays English; captions are English subtitles timed to the Hindi.
+Why v3: the first avatar clips (v2 script, 31-34 words each) ran to 14.3-14.7 s and the lines were abstract ("बड़ी ताक़त शोर करती है, सच्ची हिम्मत नहीं"). v3 is a chain a listener can follow: (1) new trailer, better than July; (2) why: July's flat monsters vs this trailer's strong snow/sky shots, big monsters kept in the dark; (3) second thing noticed: the villain is named first in daylight, the hero arrives later, quietly, in a dark forest; (4) my guess (opinion): the film shows the villain's noise first and the hero's strength later; verdict 5 Nov; comment + follow. The no-cast-names poster point moves to the caption and a card, not the voice.
 
 ## Performance track (R10, for checking the clips)
 | Part | Sentence | Brow | Head | Gaze |
