@@ -1,42 +1,61 @@
-# Singapore haze UGC — Grok Imagine prompt pack (30 s = 5 × 6 s clips)
+# Singapore haze UGC — Grok Imagine prompt pack v2 (30 s, news-explainer style)
 
-**Why this is split the way it is:** each clip is one location, one action, ≤ 6 s, started from the **same full-body reference still**, so identity, outfit and body proportions cannot drift. Only clips 1 and 5 have visible lip-sync speech; clips 2–4 are voice-over with the mouth closed, which hides lip-sync drift. We join them in the edit (match cuts on movement, captions, PSI graphic, grade, mix).
+**v2 changes (from the first test clip):** (1) CNA-style framing: camera far back, he is ~45 % of frame height and the landmark is the star of the shot, so scale reads right; (2) background people: very few, small, slow, real-time speed; (3) 3 b-roll cutaways with nobody in them; (4) he always moves while he talks (walk-and-talk, gestures, a look to the landmark). Identity/outfit rules unchanged.
 
-**Facts (tier A, read 17 Oct 2026, haze.gov.sg + NEA):** PSI 0–100 Good to Moderate, 101–200 Unhealthy, 201–300 Very Unhealthy, 301+ Hazardous. 1-hr PM2.5 bands: Normal 0–55, Elevated 56–150, High 151–250, Very High 251+ µg/m³. NEA: smoke from fires in Kalimantan and southern Sumatra drifts to Singapore under prevailing south-easterly/easterly winds. haze.gov.sg summary 17 Oct: stations in Singapore and Peninsular Malaysia "Unhealthy to Very Unhealthy". Health line "vulnerable persons" is not defined on the page: keep the wording general.
+**Structure (7 generations, ≈ 30 s after trimming):** 4 anchor clips (A1–A4, speaking) + 3 b-roll clips (B1–B3, no people, voice-over). Every anchor line is short (≤ 16 words) and ends on a closed-mouth beat, so lip-sync drift never builds up. The edit cuts b-roll over the voice-over and adds the PSI graphic.
 
-## Script (≈ 75 words)
-1. **0–6 s, on camera:** "That orange sun isn't a filter. It's haze, and it's back in Singapore."
-2. **6–24 s, voice-over (mouth closed in clips 2–4):** "Smoke from fires in Sumatra and Kalimantan, blown our way by south-easterly winds. NEA tracks it with the PSI: up to a hundred is fine, a hundred and one to two hundred is unhealthy, above two hundred, very unhealthy. When it's unhealthy, skip hard outdoor workouts, and take extra care if you have lung or heart issues."
-3. **24–30 s, on camera:** "Check the PSI on haze dot gov dot S G before you plan your day. Follow for more."
+| Time | Clip | Place | Voice |
+|---|---|---|---|
+| 0–5 | A1 anchor | Marina Bay promenade, Marina Bay Sands behind | on camera |
+| 5–8 | B1 b-roll | dim sun over MBS skyline | voice-over |
+| 8–14 | A2 anchor | HDB estate walkway | on camera |
+| 14–16.5 | B2 b-roll | hazy skyline from the Marina Barrage side | voice-over |
+| 16.5–19 | B3 b-roll | MRT station glass gates, hazy daylight | voice-over |
+| 19–25 | A3 anchor | Supertree Grove, Gardens by the Bay | on camera |
+| 25–30 | A4 anchor | Orchard Road pavement | on camera |
 
-## Step 0 — one full-body reference still (do this first, reuse for all clips)
-Upload `prototypes/reel-app/public/profile.jpg` (your face photo) to Grok Imagine (image mode) with:
+## Script (≈ 80 words)
+- **A1 (0–5):** "That orange sun isn't a filter. It's haze, and it's back."
+- **B1 (5–8), voice-over:** "It's smoke from fires in Sumatra and Kalimantan,"
+- **A2 (8–14):** "blown our way by south-easterly winds. NEA tracks it with the PSI."
+- **B2+B3 (14–19), voice-over:** "Up to 100 is fine. 101 to 200, unhealthy. Above 200, very unhealthy."
+- **A3 (19–25):** "When it's unhealthy, skip hard outdoor workouts, and take extra care with lung or heart issues."
+- **A4 (25–30):** "Check haze dot gov dot S G before you plan your day. Follow for more."
 
-> Photorealistic full-body photo of the exact man in the reference photo, same face, same black rectangular glasses, same trimmed dark beard and moustache, same short dark wavy hair. He is 5 ft 6 in (168 cm) tall with a compact, average build: standing relaxed, head to white sneakers fully visible, feet on the ground, arms natural. Outfit: plain light-blue short-sleeved cotton shirt, dark navy chinos, white minimalist sneakers, no watch, no cap, no jewellery. Plain, softly lit outdoor pavement background. Shot on a smartphone, natural skin texture, no retouching, no text, no logos. Vertical 9:16.
+Facts (tier A, haze.gov.sg and NEA, read 17 Oct 2026): PSI 0–100 Good to Moderate, 101–200 Unhealthy, 201–300 Very Unhealthy, 301+ Hazardous; smoke from fires in Kalimantan and southern Sumatra drifts here on south-easterly or easterly winds; the 17 Oct haze.gov.sg summary lists Singapore stations at Unhealthy to Very Unhealthy. "Vulnerable persons" is not defined on the page, so the line stays general.
 
-Pick the one that looks most like you (check the beard line, glasses, ears). **Use that exact still as the start image of every clip below.** If a clip drifts, regenerate that clip only.
+## Step 0 — one reference still (use as the start image of every anchor clip)
+Upload your face photo (`prototypes/reel-app/public/profile.jpg`) to Grok Imagine (image mode):
 
-## Shared block (paste at the top of every clip prompt, unchanged)
-> UGC smartphone video, vertical 9:16, handheld with natural slight shake, main phone camera (about 24 mm), natural phone colour and mild noise, not cinematic, no slow motion, no filters, no lens flare. The man is exactly the person in the start image: same face, glasses, beard, hair, same light-blue short-sleeved shirt, navy chinos, white sneakers; 5 ft 6 in (168 cm), compact build, natural human proportions, hands with five normal fingers. FULL BODY stays in frame, head to shoes. Singapore haze conditions: milky grey-beige sky, the sun a dim pale-orange disc, distant buildings fading into haze, soft diffused light with no hard shadows, slight warm cast, humid tropical air. No readable text, signs, logos or licence plates anywhere in the frame. No subtitles. Everyone else in the shot is a distant, blurred passer-by.
+> Photorealistic wide full-body photo of the exact man in the reference photo, same face, same black rectangular glasses, same trimmed dark beard and moustache, same short dark wavy hair. He is 5 ft 6 in (168 cm), compact average build, standing relaxed on a wide waterfront promenade, seen from about 9 m away with a 28 mm phone lens at chest height: his whole body from head to white sneakers fills only about 45 % of the frame height, with plenty of open ground and sky around him. Outfit: plain light-blue short-sleeved cotton shirt, dark navy chinos, white minimalist sneakers, no watch, no cap, no jewellery. Natural skin texture, no retouching, no text, no logos. Vertical 9:16.
 
-## Clip 1 — hook (6 s), Marina Bay waterfront promenade
-> [shared block] Location: the Marina Bay waterfront promenade with the Marina Bay Sands towers softly fading into haze behind him, the Helix Bridge area on the right. A friend films him from about 3 m away at chest height. He stands in the middle, full body visible, looks at the camera, then glances up at the dim orange sun and back, and says in a relaxed natural Singapore-English voice: "That orange sun isn't a filter. It's haze, and it's back in Singapore." Faint natural smile, one blink, small natural hand gesture toward the sky at "sun". Real room-less outdoor ambience, light breeze, distant traffic. Camera slowly pushes in 20 cm.
+Check: face, beard line, glasses; he must look **small in the frame**, not filling it.
 
-## Clip 2 — source (6 s, voice-over, mouth closed), HDB heartland void deck
-> [shared block] Location: a typical Singapore HDB housing estate: void deck with a covered walkway, tall point-block flats rising into thick haze, a basketball court beyond. He walks slowly from left to right along the walkway, full body visible, looks up at the grey-beige sky, mouth closed, calm concerned expression, one hand shading his eyes. Camera tracks him sideways at the same walking pace, steady. Distant ambience only, no speech.
+## Shared block (paste at the top of every ANCHOR clip prompt, unchanged)
+> UGC-style news-explainer video, vertical 9:16, shot by a camera operator on a gimbal, smooth and stable (very slight natural sway only), 28 mm phone lens at chest height. The camera stays 8–10 m away from the man. He is exactly the person in the start image: same face, glasses, beard, hair, light-blue short-sleeved shirt, navy chinos, white sneakers; 5 ft 6 in (168 cm), compact build, natural human proportions, five fingers per hand. WIDE FRAMING: his whole body, head to shoes, occupies only about 40–50 % of the frame height, placed on the left or right third; the landmark behind him is large, 150–300 m away, and fills the upper half of the frame. Singapore haze: milky grey-beige sky, the sun a dim pale-orange disc, distant buildings fading into haze, soft diffused light, no hard shadows, slight warm cast, humid tropical air. BACKGROUND PEOPLE: at most 3 or 4, small and far away, walking at a slow relaxed strolling pace in real time, no running, no fast or jerky motion, nobody passes close to him; the rest of the background is almost still. No readable text, signs, logos or licence plates. No subtitles.
 
-## Clip 3 — the PSI (6 s, voice-over, mouth closed), MRT station concourse
-> [shared block] Location: the covered concourse of a Singapore MRT station, glass fare gates in the background (the gate top reaches about his hip), commuters blurred in the distance, daylight coming in hazy. He stops, takes his phone from his pocket, glances at it (screen not visible to camera) and tilts it slightly toward the camera with his other hand pointing at it, mouth closed. Camera holds a medium-wide full-body shot, very slight handheld drift. Ambient station sound only, no speech.
+## A1 — hook (5 s), Marina Bay promenade
+> [shared block] Location: the Marina Bay waterfront promenade, Marina Bay Sands' three towers rising large behind him in the haze, Helix Bridge further right. He walks slowly toward the camera, 4 relaxed steps, speaking naturally to the lens in a relaxed Singapore-English voice: "That orange sun isn't a filter. It's haze, and it's back." On "sun" he looks up and gestures once toward the sky with an open palm at shoulder height, on "back" he looks into the lens with a small knowing nod. Closed-mouth beat for the last half second. Light breeze, distant ambience.
 
-## Clip 4 — advice (6 s, voice-over, mouth closed), Gardens by the Bay Supertree Grove
-> [shared block] Location: Supertree Grove at Gardens by the Bay, the Supertrees looming into haze, a walkway with railing at his waist-to-hip height. He leans one forearm on the railing, looks across the hazy skyline, then turns and starts walking away from the camera along the walkway, mouth closed, relaxed pace. Full body visible throughout, camera follows 4 m behind. Ambient sound only, no speech.
+## A2 — source (6 s), HDB estate walkway
+> [shared block] Location: a Singapore HDB estate: a long covered walkway beside tall point-block flats rising into thick haze, a quiet playground far behind. He walks slowly along the walkway from right to left while the camera tracks him sideways at the same pace, speaking to the camera: "blown our way by south-easterly winds. NEA tracks it with the PSI." On "winds" he sweeps one open hand left to right at chest height, on "PSI" he lightly counts one finger. Closed-mouth beat at the end. Ambient estate sound, very few distant residents.
 
-## Clip 5 — call to action (6 s), Orchard Road
-> [shared block] Location: a wide Orchard Road pavement, shopfronts and rain trees along the road, tall buildings fading into haze. He walks toward the camera for two steps, stops, full body visible, looks straight into the lens, and says warmly in a relaxed Singapore-English voice: "Check the PSI on haze dot gov dot S G before you plan your day. Follow for more." Small natural smile, one nod on "Follow". Light traffic ambience. He holds the last pose still for the final 0.7 s with a relaxed closed-mouth smile.
+## A3 — advice (6 s), Supertree Grove at Gardens by the Bay
+> [shared block] Location: Supertree Grove, the Supertrees looming large into the haze behind him, a wide elevated walkway with a railing at his hip height. He walks slowly along the walkway, then stops and turns toward the camera, speaking calmly: "When it's unhealthy, skip hard outdoor workouts, and take extra care with lung or heart issues." On "skip" a small shake of the open hand, on "lung or heart" he touches his chest once. Serious but warm. Closed-mouth beat at the end. Very few distant visitors, slow.
 
-## Rules we are working to
-- **Voice:** Grok's own speech is a bonus. If it sounds off, we replace the voice in the edit with your avatar voice; that is why clips 2–4 are mouth-closed and clips 1 and 5 end with a still closed-mouth beat (easy to re-time).
-- **Body check on each clip:** he must read as 168 cm (5 ft 6 in): head about 1/7.5 of body height, compact build, no tall or lanky drift. Fare-gate top ≈ hip, waist-high railing ≈ waist. Regenerate if he looks 6 ft.
-- **Face check:** compare each clip's first and last frame with the reference: glasses frame shape, beard edge, hairline.
-- **Disclosure:** these are AI-generated scenes of Singapore places with your AI likeness, not real footage. The caption carries the avatar disclosure line, and the edit adds a small "AI-generated scenes" tag; haze facts come from NEA/haze.gov.sg and are cited on screen.
-- **Edit plan (what I do):** assemble the five clips with match cuts, English captions (word-highlighted, safe zone), a PSI band bar (0–100 / 101–200 / 201–300 / 301+, with the reading the day you post), source line "haze.gov.sg / NEA, read <date>", a haze-colour grade across all clips for consistency, VO mix (−14 LUFS, voice ≥ 19 dB over ambience), cover.
+## A4 — call to action (5 s), Orchard Road
+> [shared block] Location: a wide Orchard Road pavement with rain trees and tall buildings fading into the haze, light slow traffic far off. He walks toward the camera for 3 steps, stops, looks straight into the lens and says warmly: "Check haze dot gov dot S G before you plan your day. Follow for more." Small natural smile, one nod on "Follow". Holds a relaxed closed-mouth smile for the last 0.7 s.
+
+## B-roll (no people in focus, no text, 6 s each, we use 2.5–3 s)
+Shared b-roll block: *Documentary-style smartphone footage, vertical 9:16, stable, real time (no time-lapse, no slow motion), Singapore haze: milky grey-beige sky, dim pale-orange sun, soft diffused light. No people close to camera, no readable text or logos.*
+- **B1:** the Marina Bay Sands skyline across the water with the dim orange sun disc above the towers; very slow 10 cm push-in; a couple of tiny boats far away.
+- **B2:** the Singapore central skyline seen from the Marina Barrage side, buildings fading layer by layer into haze, a slow lateral pan; a few distant cars on a road, moving slowly.
+- **B3:** the glass fare gates and concourse of an MRT station, hazy daylight at the open end, two or three commuters far away standing or walking slowly; camera slowly glides forward.
+
+## Checks per clip (we go through these together)
+- **Scale:** he must look about 168 cm next to a 1 m railing (railing at hip) and next to the fare gates (gate top ≈ hip). If he fills the frame or the landmark looks tiny, regenerate with "camera 10 m away".
+- **Face:** compare first and last frame with the reference (glasses shape, beard edge).
+- **Motion:** he walks and gestures; background people strolling slowly. If the crowd races, append "the whole scene is real-time, calm, quiet".
+- **Voice:** Grok's own speech is a bonus; if it sounds off we replace it with your avatar voice in the edit (the closed-mouth beats help re-timing).
+- **Disclosure:** AI-generated scenes and AI likeness; the caption carries the avatar disclosure line and the edit adds a small "AI-generated scenes" tag.
+- **Edit (me):** match cuts on movement, word-highlighted captions in the safe zone, a PSI band bar with the day's reading and a source line "haze.gov.sg / NEA", one haze grade across all clips, mix at −14 LUFS with voice ≥ 19 dB over ambience, cover.
