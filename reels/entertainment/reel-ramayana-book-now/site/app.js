@@ -31,7 +31,7 @@ var upd=[];
 // 2 ticket tear ------------------------------------------------------------
 (function(){var s0=S[2],el=mk(head('// WHAT YOU ARE BUYING','HALF THE <span class="k">STORY</span>')+
  '<div class="tk" id="tl" data-b="tl" style="left:116px;top:930px;width:474px"><div class="a">RAMAYANA · ADMIT ONE</div><div class="b">PART 1</div><div class="c">IN CINEMAS 5 NOV 2026</div></div>'+
- '<div class="tk" id="tr" data-b="tr" style="left:590px;top:930px;width:298px;background:#d9cfb8"><div class="a" style="left:40px">LATER</div><div class="b" style="left:40px">PART 2</div><div class="c" style="left:40px">DIWALI 2027</div></div>'+
+ '<div class="tk" id="tr" data-b="tr" style="left:590px;top:930px;width:298px;background:#d9cfb8"><div class="a" style="left:30px">LATER</div><div class="b" style="left:30px;font-size:60px">PART 2</div><div class="c" style="left:30px">DIWALI 2027</div></div>'+
  '<div class="lab" id="tag" data-b="tag" style="left:110px;top:1140px;color:var(--gold);font-size:26px">ONE FILM · TWO TICKETS · TWO YEARS</div>');
  upd[2]=function(t){var l=t-s0,tear=E.o5(seg(l,2.6,3.1));ent(q(el,'.eye'),l,0,.3,{y:0});ent(q(el,'.h'),l,.05,.4);ent(q(el,'#tl'),l,.25,.5,{x:-70,y:0});ent(q(el,'#tr'),l,.4,.5,{x:70,y:0});
   var a=q(el,'#tl'),b=q(el,'#tr');a.style.transform='translate('+(-6*tear)+'px,'+(4*tear)+'px) rotate('+(-3*tear)+'deg)'+(l<.75?'':'');b.style.transform='translate('+(12*tear)+'px,'+(8*tear)+'px) rotate('+(4*tear)+'deg)';b.style.opacity=lerp(1,.62,tear);
