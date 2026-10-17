@@ -54,5 +54,6 @@ Sources: Sacnilk via The Week and IWMBuzz, Pinkvilla (16 Oct 2026); Deccan Heral
 - Nelson Dilipkumar: Naveen Thavaneshwar, CC0
 - Anirudh Ravichander: Surajram Kumaravel, CC BY 3.0
 - Apollo Theatre, Pune: DesiBoy101, CC BY 4.0
-- Rajinikanth card: typographic placeholder (no licensed photo retrieved yet)
+- Rajinikanth card: official Jailer 2 poster (Sun Pictures), supplied by the creator; used for commentary, credited on screen
+- Call-to-action background: multiplex interior photo supplied by the creator
 Host is my AI avatar (likeness of me, voiced by AI). Box-office numbers are tracker estimates, not official figures.
