@@ -82,7 +82,7 @@ defs[3]=function(){var st=T.shows,GX=150,GY=520,P=36,R=14;
  var d=mk('<div class="eye" data-b="eye"><i></i>SHOWS ON DAY ONE</div><div class="h" data-b="h" style="width:480px">Shows on<br><span class="k">day one</span></div>'+
  pol('pt','theatre-single.jpg',640,160,270,170,3,'A SINGLE-SCREEN THEATRE, PUNE',CR.theatre||'',"S")+
  '<svg id="sv" style="position:absolute;left:0;top:0;width:1080px;height:1000px" viewBox="0 0 1080 1000"></svg>'+
- '<div id="n1" data-b="n1" style="position:absolute;left:560px;top:520px;font:400 84px/1 Archivo;font-variant-numeric:tabular-nums">0</div><div class="lab" id="n1l" data-b="n1l" style="left:562px;top:612px;color:#f3e9d2">SHOWS IN INDIA, DAY 1</div>'+
+ '<div id="n1" data-b="n1" style="position:absolute;left:560px;top:520px;font:400 84px/1 Archivo;font-variant-numeric:tabular-nums">0</div><div class="lab" id="n1l" data-b="n1l" style="left:562px;top:612px;color:#f3e9d2">SHOWS ON DAY 1</div>'+
  '<div id="n2" data-b="n2" style="position:absolute;left:560px;top:670px;font:400 84px/1 Archivo;color:#ff3d7f;font-variant-numeric:tabular-nums">0</div><div class="lab" id="n2l" data-b="n2l" style="left:562px;top:762px;color:#ff3d7f">OF THEM IN HINDI</div>'+
  '<div class="stamp" id="q4" data-b="q4" style="left:560px;top:830px;font-size:70px;border-width:6px;background:#1a0c10">1 in 4</div>'+
  '<div class="chip" id="lg" data-b="lg" style="left:150px;top:940px;border-color:#8a7378;color:#f3e9d2;font-size:22px">TAMIL 9,326 · TELUGU 2,792 · KANNADA 110</div>'+
@@ -205,7 +205,7 @@ defs[8]=function(){var st=T.chain;
   ent(q(d,'#r1'),t,st+1.4,.45,{y:16});ent(q(d,'#r2'),t,st+2.0,.45,{y:16});ent(q(d,'#r3'),t,st+2.6,.45,{y:16});pop(q(d,'#rp'),t,st+2.9,.4,-5);q(d,'.src').style.opacity=E.o3(seg(lt,.8,1.4))}};
 defs[9]=function(){var st=T.win,X0=150,WK=88;
  var d=mk('<div class="eye" data-b="eye"><i></i>THE WINDOW</div><div class="h" data-b="h"><span class="k">8 weeks</span><br>vs 4 weeks</div>'+
- '<div class="lab" id="a1" data-b="a1" style="left:'+X0+'px;top:470px;color:#2ee6d6">CHAINS WANT: 8 WEEKS IN THEATRES (REPORTED)</div>'+
+ '<div class="lab" id="a1" data-b="a1" style="left:'+X0+'px;top:470px;color:#2ee6d6">CHAINS WANT 8 WEEKS (REPORTED)</div>'+
  '<svg id="sv" style="position:absolute;left:0;top:0;width:1080px;height:1100px" viewBox="0 0 1080 1100"></svg>'+
  '<div class="lab" id="a2" data-b="a2" style="left:'+X0+'px;top:690px;color:#ff3d7f">FILM: OTT AFTER 4 WEEKS (REPORTED)</div>'+
  '<div class="chip" id="c1" data-b="c1" style="left:150px;top:920px;border-color:#c6f432;color:#c6f432">OTT PREMIERE EXPECTED NOVEMBER (REPORTED)</div>'+
@@ -224,7 +224,7 @@ defs[9]=function(){var st=T.win,X0=150,WK=88;
 defs[10]=function(){var st=T.cta,CITIES=['PUNE · SINGLE SCREEN','CHENNAI · PVR','LUCKNOW · NOT FOUND','DELHI · SINGLE SCREEN','MUMBAI · CINEPOLIS?'];
  var d=mk('<img class="plate" id="pl" src="photos/plate-cta.jpg" onerror="this.style.display=\'none\'"><div class="eye" data-b="eye"><i></i>YOUR TURN</div><div class="h" data-b="h">Where is it<br>playing <span class="k">near you?</span></div>'+
  '<div id="pp" data-b="pp" style="position:absolute;left:150px;top:520px;width:230px;height:230px;border-radius:50%;border:10px solid #ff3d7f;overflow:hidden;box-shadow:0 0 50px rgba(255,61,127,.45)"><img src="profile.jpg" style="width:100%;height:100%;object-fit:cover"></div>'+
- '<div id="hd" data-b="hd" style="position:absolute;left:410px;top:540px;font:400 56px/1 Archivo;color:#f3e9d2;white-space:nowrap">@sandesh_explains</div><div id="sb" data-b="sb" style="position:absolute;left:410px;top:620px;font:700 24px MM;color:#ff3d7f">BOX OFFICE, EXPLAINED</div>'+
+ '<div id="hd" data-b="hd" style="position:absolute;left:410px;top:540px;font:400 44px/1 Archivo;color:#f3e9d2;white-space:nowrap">@sandesh_explains</div><div id="sb" data-b="sb" style="position:absolute;left:410px;top:620px;font:700 24px MM;color:#ff3d7f">BOX OFFICE, EXPLAINED</div>'+
  '<div id="cb" data-b="cb" style="position:absolute;left:150px;top:800px;width:760px;height:110px;border:3px solid #f3e9d2;border-radius:14px;background:rgba(26,12,16,.9)"><div style="position:absolute;left:22px;top:12px;font:700 18px MM;color:#8a7378">COMMENT YOUR CITY</div><div id="ty" style="position:absolute;left:22px;top:48px;font:700 34px MM;color:#f3e9d2;white-space:nowrap"></div></div>'+
  '<div id="fl" data-b="fl" style="position:absolute;left:150px;top:960px;font:400 80px/1 Archivo;background:#ff3d7f;color:#1a0c10;padding:12px 38px;transform-origin:0 50%">FOLLOW</div>'+
  '<div class="src" data-b="src" style="top:1180px">NUMBERS: SACNILK VIA THE WEEK / IWMBUZZ, 16 OCT 2026 · TRADE ESTIMATES · PHOTOS: WIKIMEDIA COMMONS</div>');
