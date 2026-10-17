@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Ramayana bookings</title><style>
+@font-face{font-family:Bod;font-weight:800;src:url(fonts/bodoni-moda-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:CM;font-weight:500;src:url(fonts/chivo-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:CM;font-weight:700;src:url(fonts/chivo-mono-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
+:root{--bg:#0d1030;--gold:#ffb300;--kum:#e8341c;--lotus:#ff7aa8;--cream:#f6ecd5;--teal:#2ee6c0;--viol:#a58bff;--lime:#c6f432;--dim:#8f88a8;--ink:#0d1030}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+body{position:relative;color:var(--cream);font-family:Inter}
+#bg{position:absolute;inset:0}
+#rang{position:absolute;inset:-60px;opacity:.16;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><path d='M32 6 L40 32 L32 58 L24 32Z M6 32 L32 24 L58 32 L32 40Z' fill='none' stroke='%23ffb300' stroke-width='1.6'/><circle cx='32' cy='32' r='3' fill='%23ffb300'/></svg>")}
+#sweep{position:absolute;left:-400px;top:0;width:340px;height:1920px;background:linear-gradient(90deg,transparent,rgba(255,179,0,.12),transparent);transform:skewX(-14deg)}
+#win{position:absolute;left:110px;top:400px;width:820px;height:461px;background:#000;border:5px solid var(--gold);box-shadow:0 0 0 3px var(--ink),0 0 0 6px rgba(255,179,0,.5),0 24px 50px rgba(0,0,0,.6);overflow:hidden;opacity:0}
+#gl{position:absolute;left:0;top:0;width:820px;height:461px}
+#wcr{position:absolute;left:110px;top:870px;font:500 15px CM;letter-spacing:.06em;color:var(--dim);opacity:0}
+.sc{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
+.eye{position:absolute;left:110px;top:150px;font:700 24px CM;letter-spacing:.14em;color:var(--gold)}
+.eye i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--gold);margin-right:12px;vertical-align:-1px}
+.h{position:absolute;left:110px;width:820px;top:196px;font:800 80px/1.04 Bod;letter-spacing:-.02em;text-shadow:0 4px 12px rgba(0,0,0,.5);text-transform:uppercase}
+.h .k{background:var(--kum);color:var(--cream);padding:0 14px;text-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.h .g{background:var(--gold);color:var(--ink);padding:0 14px;text-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lab{position:absolute;font:700 22px CM;letter-spacing:.08em;white-space:nowrap}
+.src{position:absolute;left:110px;width:818px;font:500 16px/1.35 CM;color:var(--dim);letter-spacing:.03em}
+.chip{position:absolute;border:3px solid var(--cream);padding:10px 16px;font:700 24px/1.2 CM;background:rgba(13,16,48,.9);white-space:nowrap}
+.tk{position:absolute;height:170px;border-radius:18px;background:var(--cream);color:var(--ink);box-shadow:0 18px 34px rgba(0,0,0,.55);overflow:hidden}
+.tk .a{position:absolute;left:26px;top:18px;font:700 20px CM;letter-spacing:.14em}.tk .b{position:absolute;left:26px;top:48px;font:800 78px/1 Bod;letter-spacing:-.01em;white-space:nowrap}.tk .c{position:absolute;left:26px;bottom:14px;font:500 17px CM;letter-spacing:.08em;color:#5d5660}
+.tk:before,.tk:after{content:"";position:absolute;top:50%;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:var(--bg)}.tk:before{left:-17px}.tk:after{right:-17px}
+#cap{position:absolute;left:110px;top:1250px;width:460px;min-height:130px;background:rgba(0,0,0,.72);border-left:8px solid var(--gold);padding:14px 18px;font:700 31px/1.28 Inter;color:var(--cream)}
+#caprule{position:absolute;left:110px;width:460px;top:1232px;border-top:4px dashed var(--gold)}
+#av{position:absolute;left:585px;top:1200px;width:330px;height:330px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.55))}
+#av canvas{width:330px;height:330px}
+#dust{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;mix-blend-mode:screen;pointer-events:none}
+#pet{position:absolute;left:0;top:0;pointer-events:none}
+</style></head><body><div id="bg"></div><div id="rang"></div><div id="sweep"></div><canvas id="pet" width="1080" height="1000"></canvas><div id="win"><canvas id="gl" width="820" height="461"></canvas></div><div id="wcr">TRAILER STILL · © SONY PICTURES</div><div id="scenes"></div><video id="dust" muted preload="auto" src="dust-particles.webm"></video><div id="caprule"></div><div id="cap"></div><div id="av"><canvas id="avc" width="544" height="544"></canvas></div>
+<script src="vendor/rough.min.js"></script><script src="timing.js"></script><script src="gl.js"></script><script src="app.js"></script></body></html>
