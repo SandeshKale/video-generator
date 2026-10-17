@@ -30,7 +30,7 @@ Sources: Sacnilk via The Week and IWMBuzz (16 Oct 2026); Pinkvilla (16 Oct); Dec
 | Altered or synthetic content | **Yes**: host is my AI avatar (a likeness of me, voiced by AI) |
 | Category / language | Entertainment / Hindi (captions: English burned-in; optional .srt) |
 | Comments | On, hold potentially-spam for review |
-| Remix | On is fine (no footage in this reel); Off if the official poster is used |
+| Remix | Off (the official poster is used) |
 | License / paid promotion | Standard YouTube licence / No |
 | Playlist | Box office explained |
 | Thumbnail | Pick the strongest frame in the Shorts picker (the 100-dot show grid scene) |
