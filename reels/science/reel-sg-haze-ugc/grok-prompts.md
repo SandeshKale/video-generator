@@ -1,20 +1,20 @@
 # Singapore haze UGC — Grok Imagine prompt pack v3 (≈ 34 s, calm news-explainer)
 
-**v3 changes (from test clip 2):** (1) the **start image decides the framing**, so every anchor clip now gets its own wide location still (you were 90 % of the frame because the old still was a close shot); (2) camera **locked off**, he walks toward it; (3) haze density fixed in the still so it doesn't fade in; (4) **calm, soothing, friendly voice** and **8 full sentences** with natural pauses; (5) gestures written as a sequence, not tied to words; (6) a 4th b-roll and a slightly longer cut (≈ 34 s) so more sentences fit without rushing the voice.
+**v3 changes (from test clip 2):** (1) the **start image decides the framing**, so every anchor clip now gets its own wide location still (you were 90 % of the frame because the old still was a close shot); (2) camera **locked off**, he walks toward it; (3) haze density fixed in the still so it doesn't fade in; (4) **calm, soothing, friendly voice** and **11 full sentences** with natural pauses; (5) gestures written as a sequence, not tied to words; (6) a 4th b-roll and a slightly longer cut (≈ 34 s) so more sentences fit without rushing the voice.
 
-**Structure (8 generations):** 4 anchor clips (A1–A4, speaking) + 4 b-roll (B1–B4, voice-over). Anchor clips hold ≤ 2 sentences each (≤ 15 words per clip, ≤ 6 s) and end on a closed-mouth beat.
+**Structure (8 generations: 4 anchor + 4 b-roll):** Anchor clips (A1–A4, speaking) and b-roll (B1–B4, voice-over). Anchor clips hold ≤ 2 sentences each (≤ 15 words per clip, ≤ 6 s) and end on a closed-mouth beat.
 
 | Time | Clip | Place | Voice |
 |---|---|---|---|
-| 0–5 | A1 | Marina Bay promenade, Marina Bay Sands behind | on camera: sentence 1 |
-| 5–8 | B1 | dim sun over the MBS skyline | voice-over: sentence 2 |
-| 8–14 | A2 | HDB estate walkway | on camera: sentences 3–4 |
-| 14–20.5 | B2 + B3 | skyline from the Marina Barrage side, MRT fare gates | voice-over: sentence 5 (PSI bands) |
-| 20.5–25 | A3 | Supertree Grove, Gardens by the Bay | on camera: sentence 6 |
-| 25–29 | B4 | N95 mask and a window view at home | voice-over: sentence 7 |
-| 29–34.5 | A4 | Orchard Road | on camera: sentence 8 |
+| 0–5 | A1 | Marina Bay promenade, Marina Bay Sands behind | on camera: line 1 |
+| 5–8 | B1 | dim sun over the MBS skyline | voice-over: line 2 |
+| 8–14 | A2 | HDB estate walkway | on camera: line 3 |
+| 14–20.5 | B2 + B3 | skyline from the Marina Barrage side, MRT fare gates | voice-over: line 4 (PSI bands) |
+| 20.5–25 | A3 | Supertree Grove, Gardens by the Bay | on camera: line 5 |
+| 25–29 | B4 | N95 mask and a window view at home | voice-over: line 6 |
+| 29–34.5 | A4 | Orchard Road | on camera: line 7 |
 
-## Script — 8 full sentences (≈ 86 words, calm pace ≈ 2.5 words/s)
+## Script — 11 full sentences in 7 lines (≈ 86 words, calm pace ≈ 2.5 words/s)
 1. **A1:** "That orange sun isn't a filter. It's haze, and it's back in Singapore."
 2. **B1 (VO):** "It's smoke from fires in Sumatra and Kalimantan."
 3. **A2:** "On south-easterly winds, it drifts our way. NEA tracks it with the PSI."
@@ -22,8 +22,6 @@
 5. **A3:** "On an unhealthy day, go easy on hard outdoor workouts."
 6. **B4 (VO):** "And if you have lung or heart issues, take extra care."
 7. **A4:** "Check haze dot gov dot S G before you plan your day, and follow for more."
-
-(Sentence counting: A2 holds two short sentences, so the pack has 8 sentences in total.)
 
 Facts (tier A, haze.gov.sg and NEA, read 17 Oct 2026): PSI 0–100 Good to Moderate, 101–200 Unhealthy, 201–300 Very Unhealthy, 301+ Hazardous; smoke from fires in Kalimantan and southern Sumatra drifts here on south-easterly or easterly winds; the 17 Oct haze.gov.sg summary lists Singapore stations at Unhealthy to Very Unhealthy. "Vulnerable persons" is not defined on the page, so the health line stays general.
 
