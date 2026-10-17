@@ -36,7 +36,7 @@ Pick the one that looks most like you (check the beard line, glasses, ears). **U
 
 ## Rules we are working to
 - **Voice:** Grok's own speech is a bonus. If it sounds off, we replace the voice in the edit with your avatar voice; that is why clips 2–4 are mouth-closed and clips 1 and 5 end with a still closed-mouth beat (easy to re-time).
-- **Body check on each clip:** he must be 168 cm: head roughly 1/7.5 of body height, shoulders about 1.4 head-widths... in short, no tall/lanky drift. Fare-gate top ≈ hip, waist-high railing ≈ waist. Regenerate if he looks 6 ft.
+- **Body check on each clip:** he must read as 168 cm (5 ft 6 in): head about 1/7.5 of body height, compact build, no tall or lanky drift. Fare-gate top ≈ hip, waist-high railing ≈ waist. Regenerate if he looks 6 ft.
 - **Face check:** compare each clip's first and last frame with the reference: glasses frame shape, beard edge, hairline.
 - **Disclosure:** these are AI-generated scenes of Singapore places with your AI likeness, not real footage. The caption carries the avatar disclosure line, and the edit adds a small "AI-generated scenes" tag; haze facts come from NEA/haze.gov.sg and are cited on screen.
 - **Edit plan (what I do):** assemble the five clips with match cuts, English captions (word-highlighted, safe zone), a PSI band bar (0–100 / 101–200 / 201–300 / 301+, with the reading the day you post), source line "haze.gov.sg / NEA, read <date>", a haze-colour grade across all clips for consistency, VO mix (−14 LUFS, voice ≥ 19 dB over ambience), cover.
