@@ -1431,3 +1431,21 @@ The first comedy explainer (`docs/STYLE-ROAST-EXPLAINER.md`): one escalating coo
   - An inline `//` comment inserted mid-line broke `__seek` (the page error was "window.__seek is not a function").
   - A `glob` of the uploads folder picked up every earlier upload; copy the named files only.
 - **Mix:** measured on 250 ms windows inside word spans: voice over music + SFX minimum 13.1 dB, median 27 dB, −14 LUFS. The CTA melody waits for the last word, and the SFX duck under speech. Not auditioned.
+
+## GIF benchmark — `gif-prompt-cache` ("Don't break the cache.", horizontal 1600×900, 12 s loop, 10 fps, 120 frames, 1.9 MB)
+An architecture GIF on prompt caching. Topic and metaphor were approved from `gifs/research/gif-next-research/research-2026-10-18.md`. Sources: Anthropic and OpenAI prompt-caching docs, plus Lumer et al., arXiv 2601.06007 (tier A).
+- **Look:** pale concrete `#eceae4` with a static blueprint grid; steel blue, safety-yellow crane, hit green, miss red, re-write orange. Fonts: Manrope 800, Azeret Mono and Inter.
+- **Metaphor (a pre-cast tower):**
+  - TOOLS and SYSTEM are the foundation slabs, with one floor per turn.
+  - A green scan runs up the tower on each hit (read 0.1×).
+  - A timestamp brick pushed into SYSTEM cracks it; every floor above turns red and re-pours (1.25×).
+  - The crane moves the brick to the newest floor; after one re-write, everything hits again.
+  - Alongside: a cost bar per turn, a 5-minute TTL ring that resets on hits, a cached-prefix bracket, five numbered rules (the current one highlighted) and a measured-savings box.
+  - Frame 0 is offset to the red miss, the most explanatory still.
+- **Pitfalls:**
+  - A drifting background grid made the GIF 7.3 MB, because every pixel changed every frame. A static grid with `paletteuse=dither=none:diff_mode=rectangle` gave 1.6–1.9 MB.
+  - The `E(tag, at, par, txt)` helper was called with text and parent swapped (`appendChild is not a function`); it now accepts both orders.
+  - tabler has no `tool` icon (`puzzle` is used).
+  - Mono labels inside pills need measured widths ("WRITE 1.25×" clipped at 116 px).
+- **Validation:** `validate.mjs` reports one finding, the brick passing the TURN 1 label for one frame while it's lowered (deliberate motion). The GIF frames were checked at full size and at an 800 px feed width.
+- **Next GIF:** vertical 4:5 with a new palette (not concrete/blueprint/safety-yellow).
