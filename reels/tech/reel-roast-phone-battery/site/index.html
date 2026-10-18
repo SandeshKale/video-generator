@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Battery roast</title><style>
+@font-face{font-family:Unb;font-weight:800;src:url(fonts/unbounded-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Unb;font-weight:900;src:url(fonts/unbounded-latin-900-normal.woff2);font-display:block}
+@font-face{font-family:GM;font-weight:600;src:url(fonts/geist-mono-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
+/* Meaning-coded colours: green = health, orange = heat (red = scorched), magenta = full-charge stress, cyan = the fix / cool. */
+:root{--bg:#f6f3ec;--tile:#e7e0d2;--ink:#141414;--green:#1fbf5b;--heat:#ff6a2b;--red:#d7261e;--mag:#e0218a;--cyan:#1e9bff;--paper:#fffaf0;--dim:#6f6a60}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+body{position:relative;color:var(--ink);font-family:Inter}
+#tiles{position:absolute;inset:-130px;background-image:linear-gradient(var(--tile) 3px,transparent 3px),linear-gradient(90deg,var(--tile) 3px,transparent 3px);background-size:130px 130px}
+#warm,#cool{position:absolute;inset:0;opacity:0}
+#warm{background:radial-gradient(900px 900px at 50% 46%,rgba(255,106,43,.42),rgba(255,106,43,.10) 55%,transparent 75%)}
+#cool{background:radial-gradient(900px 900px at 50% 46%,rgba(30,155,255,.30),rgba(30,155,255,.08) 55%,transparent 75%)}
+.sc{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
+.eye{position:absolute;left:110px;top:150px;font:600 23px GM;letter-spacing:.12em;color:var(--ink);white-space:nowrap}
+.eye i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--heat);margin-right:12px;vertical-align:0}
+.h{position:absolute;left:110px;width:650px;top:194px;font:800 62px/1.08 Unb;letter-spacing:-.025em;text-transform:uppercase;color:var(--ink)}
+.h{transform-origin:0 50%}.h span{color:var(--paper);padding:0 12px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:var(--heat)}
+.h span.m{background:var(--mag)}.h span.c{background:var(--cyan)}.h span.r{background:var(--red)}.h span.g{background:var(--green)}
+.chip{position:absolute;border:4px solid var(--ink);border-radius:999px;padding:10px 22px;font:600 24px/1.15 GM;letter-spacing:.06em;background:var(--paper);white-space:nowrap;box-shadow:5px 5px 0 var(--ink)}
+.tag{position:absolute;font:600 22px GM;letter-spacing:.14em;padding:8px 16px;color:var(--paper);white-space:nowrap}
+.stamp{position:absolute;font:900 62px/1 Unb;letter-spacing:.01em;padding:8px 24px 12px;border:8px solid currentColor;border-radius:14px;white-space:nowrap;background:rgba(255,250,240,.86)}
+.src{position:absolute;left:110px;width:810px;font:600 17px/1.4 GM;color:var(--dim);letter-spacing:.02em}
+.card{position:absolute;background:var(--paper);border:5px solid var(--ink);border-radius:26px;box-shadow:9px 9px 0 var(--ink)}
+.ic{display:inline-block}.ic svg{width:100%;height:100%;display:block}
+#bedw{position:absolute;left:160px;top:372px;width:760px;height:649px;opacity:0}
+#bedw img{position:absolute;inset:0;width:760px;height:649px;opacity:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(transparent,#000 8%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(transparent,#000 8%,#000 90%,transparent);mask-composite:intersect}
+#steam{position:absolute;left:0;top:0;width:1080px;height:1300px;pointer-events:none;overflow:visible}
+#dial{position:absolute;left:776px;top:132px;width:142px;height:190px}
+#cap{position:absolute;left:110px;top:1262px;width:430px;min-height:118px;background:var(--ink);border-radius:18px;padding:14px 20px;font:700 31px/1.3 Inter;color:#f3efe6}
+#cap b{color:var(--heat);font-weight:700}
+#caprule{position:absolute;left:110px;width:430px;top:1240px;border-top:4px dashed var(--heat)}
+#av{position:absolute;left:566px;top:1176px;width:360px;height:360px;filter:drop-shadow(0 12px 18px rgba(20,20,20,.35))}
+#av canvas{width:360px;height:360px}
+#dust{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:0;mix-blend-mode:multiply;pointer-events:none;filter:invert(1)}
+#conf{position:absolute;left:0;top:0;pointer-events:none}
+.mas{position:absolute;overflow:visible}
+</style></head><body><div id="tiles"></div><div id="warm"></div><div id="cool"></div>
+<div id="bedw"></div><canvas id="conf" width="1080" height="1300"></canvas><div id="scenes"></div><svg id="steam" viewBox="0 0 1080 1300"></svg>
+<svg id="dial" viewBox="0 0 142 190"></svg>
+<div id="caprule"></div><div id="cap"></div><div id="av"><canvas id="avc" width="544" height="544"></canvas></div>
+<video id="hostv" muted preload="auto" src="host_en.webm" style="display:none"></video>
+<script src="vendor/rough.min.js"></script><script src="icons.js"></script><script src="3d/bed.js"></script><script src="timing.js"></script><script src="app.js"></script></body></html>
