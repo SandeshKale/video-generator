@@ -222,5 +222,13 @@
   "host": "avatar",
   "length": "47-60s",
   "cta": "send-to-friend"
+ },
+ "reel-king-december-clash": {
+  "genre": "entertainment-news",
+  "company": "bollywood/hollywood",
+  "voice": "avatar (hindi)",
+  "host": "avatar",
+  "length": "47-60s",
+  "cta": "comment-poll"
  }
 }

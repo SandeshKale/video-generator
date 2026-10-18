@@ -1,0 +1,9 @@
+{
+ "windows": 106,
+ "median_250ms_db": 24.4,
+ "min_250ms_db": 14.0,
+ "music_only_median_db": 24.7,
+ "music_only_min_db": 14.0,
+ "LUFS": "-14.00",
+ "TP": "-4.58"
+}

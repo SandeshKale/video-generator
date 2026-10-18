@@ -46,6 +46,6 @@ The "6 days" hook is *Avengers: Doomsday* (18 Dec) → *King* (24 Dec).
 | 4 | "और फिर किंग…" | The *King* card drops on 24 DEC. A cast strip (name cards, no AI likeness): SRK, Deepika, Abhishek ("reportedly villain"), Rani, Suhana ("DEBUT"). |
 | 5 | "बजट…" | A money ladder: budget ₹350–400 cr (REPORTED), theatrical deal ₹250 cr (REPORTED), Netflix (REPORTED). |
 | 6 | "शूटिंग में चोट…" | A "DATE LOCKED" stamp on 24 DEC with the "final schedule, Oct 2026" chip. |
-| 7 | "पहले कौन-सी…" | A poll card: FAUZI / DUNE / AVENGERS / KING, the profile photo, @sandesh_explains and FOLLOW. |
+| 7 | "पहले कौन-सी…" | A poll card: FAUZI / DUNE / AVENGERS / KING, the profile photo, @sandeshexplains (no underscore, creator request) and FOLLOW. |
 
 **Imagery rule:** only official posters, title cards or teaser stills the creator supplies, credited, used for commentary. Never generate a real person's likeness. Fallback: typographic title cards.

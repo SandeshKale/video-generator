@@ -24,6 +24,7 @@ Fonts vendored in this folder:
 - manrope/manrope-latin-800-normal.woff2
 - bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2
 - bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2
+- bebas-neue/bebas-neue-latin-400-normal.woff2 (@fontsource/bebas-neue, OFL; reel-king-december-clash)
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
 @fontsource/jetbrains-mono, @fontsource/space-grotesk,

@@ -1460,3 +1460,20 @@ An architecture GIF on idempotency keys. The topic and metaphor were approved fr
 - **Source:** Stripe API reference, "Idempotent requests" (tier A). The agent "stacked retries" claims from blogs were left out (tier C).
 - **Validation:** `validate.mjs` reports 0 text findings. Checked at full size and at a 540 px feed width.
 - **Next GIF:** horizontal 1600×900 with a new palette (not sage/brass/oxblood, not concrete/blueprint).
+
+## Reel benchmark — `reels/entertainment/reel-king-december-clash` ("Premiere Night", 50.6 s, Hindi avatar, English on screen)
+December 2026 box-office war: Fauzi + Ranger (3 Dec) → Dune: Part Three + Avengers: Doomsday ("Dunesday", 16–18 Dec) → King (24 Dec). Built as three numbered clashes, then the date lock and a poll CTA. The end card shows **@sandeshexplains** (no underscore; creator request, 18 Oct 2026).
+- **Look:** velvet plum-black + sweeping gold searchlights. One colour per film (crimson King, acid-green Avengers, sand Dune, cobalt Fauzi, gold = money). Bebas Neue (newly vendored) + IBM Plex Mono + Inter; the cover is in Anton.
+- **Real posters:** official key art was downloaded from **TMDB** (the website and `image.tmdb.org` are reachable from this sandbox, `media.themoviedb.org` was cut off by the proxy, and the API needs a key). IMDb was not used. Credits are in `site/img/CREDITS.md` and the caption. A film without a poster (Ranger) gets a typographic title card. CineMaterial and PICRYL returned 403 here.
+- **New techniques:**
+  1. A **December film-strip ribbon** (the through-line) that scrolls to the date each scene is about.
+  2. **Marquee-bulb poster frames** with a `t`-driven chase.
+  3. Ticket-stub chips (CSS radial-gradient masks).
+  4. A **Blender clapperboard** (`blender/clapper.py`, 9 hinge frames) whose slate text is DOM type placed on projected chalk-area anchors. It snaps shut on "बदलेगी" with a flash, shake and a 0.3 s hole in the score.
+  5. A **projector-light sweep** every 1.8 s, the ambient layer that satisfies the 2-second rule without cutting any hero visual.
+  6. Hindi cues are **word indices checked against expected first letters** (`timing.py`), and the English captions are phrase-mapped onto Hindi word spans.
+- **Pitfalls:**
+  - A statement that starts with `[` after a function expression with no `;` (`upd[1]=function(){…}\n [..].forEach`) indexes the function: always end `upd[i]=function…` with `;`.
+  - `scripts/change-cadence.mjs` now prints per-step diffs with `CC_DEBUG=1`. Pops of about 260×390 px only reach a diff of about 1.9 (threshold 2), so use a full-stage ambient layer.
+  - Dhol-style low drums were the masker under soft word endings: duck them extra (`drums * (1 - .45*duck)`), and put brass stabs after the word, not on it.
+- **Validated:** `check.mjs` 0 findings (0.25 s steps); `change-cadence` 0 stretches (longest 1.5 s); mix −14.0 LUFS, voice over music + SFX median 24.4 dB, min 14.0 dB (250 ms windows inside words). Not auditioned.

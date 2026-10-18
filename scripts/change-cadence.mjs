@@ -2,7 +2,7 @@
 // Samples a reel page every STEP s, measures how much the picture changed since the previous sample (grey, 1/10 scale,
 // caption band and Instagram UI zones masked out so word highlighting alone doesn't count), marks a "visible change" when
 // the mean absolute difference is ≥ THR (0–255), and reports every stretch longer than MAXGAP s without one.
-//   bun scripts/change-cadence.mjs <reel>/site [maxgap=2] [step=0.25] [thr=2.0]
+//   bun scripts/change-cadence.mjs <reel>/site [maxgap=2] [step=0.25] [thr=2.0]   (CC_DEBUG=1 prints the per-step diff)
 import { chromium } from 'playwright';
 import { serveDir } from './static-server.mjs';
 const [site, MAXGAP = '2', STEP = '0.25', THR = '2.0'] = process.argv.slice(2);
@@ -26,6 +26,7 @@ for (let t = 0; t <= dur + 1e-6; t += step) {
     for (let y = 0; y < 192; y++) { if (y < 14 || (y >= 132 && y < 150) || y >= 154) continue;   // top UI, caption band, bottom UI
       for (let x = 15; x < 92; x++) { s += Math.abs(g[y * 108 + x] - prev[y * 108 + x]); n++; } }
     const m = s / n;
+    if (process.env.CC_DEBUG) console.log(`t=${t.toFixed(2)} diff=${m.toFixed(2)}`);   // CC_DEBUG=1 prints every step's change
     if (m >= +THR) { const gap = t - lastChange; if (gap > +MAXGAP) gaps.push([lastChange, t]); worst = Math.max(worst, gap); lastChange = t; }
   }
   prev = g;

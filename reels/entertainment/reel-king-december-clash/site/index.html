@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><title>December box-office war</title><style>
+@font-face{font-family:BB;font-weight:400;src:url(fonts/bebas-neue-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:PM;font-weight:600;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
+/* "Premiere Night". Meaning-coded colours, one per film: crimson = King, acid green = Avengers: Doomsday, sand amber = Dune: Part Three,
+   cobalt = Fauzi (3 Dec), gold = the searchlights / the money, bone = neutral text. */
+:root{--bg:#120b17;--bg2:#1f1428;--bone:#f3ece0;--dim:#a99db0;--king:#ff2e4d;--aveng:#8bff4a;--dune:#ffae3d;--fauzi:#3fa9ff;--gold:#ffd34d;--ink:#120b17}
+*{box-sizing:border-box;margin:0}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+body{position:relative;color:var(--bone);font-family:Inter}
+#velvet{position:absolute;inset:0;background:radial-gradient(1200px 900px at 50% 38%,#2a1934 0%,#170e1e 55%,#0d0811 100%)}
+#folds{position:absolute;inset:-40px;opacity:.35;background:repeating-linear-gradient(90deg,rgba(0,0,0,.0) 0 60px,rgba(0,0,0,.35) 90px,rgba(0,0,0,0) 120px)}
+.beam{position:absolute;left:0;top:0;width:340px;height:2300px;transform-origin:50% 100%;opacity:.16;mix-blend-mode:screen;
+ background:linear-gradient(0deg,rgba(255,211,77,.0) 0%,rgba(255,226,150,.85) 6%,rgba(255,211,77,.25) 55%,rgba(255,211,77,0) 100%);clip-path:polygon(44% 100%,56% 100%,100% 0,0 0);filter:blur(6px)}
+#dust{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;opacity:.32;mix-blend-mode:screen;pointer-events:none}
+#sweep{position:absolute;left:0;top:400px;width:1080px;height:760px;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(105deg,transparent 42%,rgba(255,226,170,.20) 50%,transparent 58%) 0 0/300% 100% no-repeat}
+#flash{position:absolute;inset:0;background:#fff7e6;opacity:0;pointer-events:none}
+/* through-line: December film strip */
+#rib{position:absolute;left:110px;top:150px;width:818px;height:104px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+#ribs{position:absolute;left:0;top:0;height:104px;background:#07040a;border-top:3px solid #2c2033;border-bottom:3px solid #2c2033}
+.fr{position:absolute;top:16px;width:84px;height:72px;border-radius:6px;background:#1c1322;text-align:center;overflow:hidden}
+.fr b{display:block;font:400 44px/48px BB;color:var(--bone);margin-top:4px}.fr i{display:block;font:600 13px PM;font-style:normal;letter-spacing:.12em;color:var(--dim)}
+.fr .bar{position:absolute;left:0;right:0;bottom:0;height:7px}
+.sp{position:absolute;width:14px;height:9px;border-radius:2px;background:#2c2033}
+#mark{position:absolute;left:509px;top:258px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:14px solid var(--gold)}
+#ribl{position:absolute;left:110px;top:258px;font:600 17px PM;letter-spacing:.18em;color:var(--dim)}
+.sc{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
+.eye{position:absolute;left:110px;top:280px;font:600 23px PM;letter-spacing:.14em;color:var(--bone);white-space:nowrap}
+.eye i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--gold);margin-right:12px;vertical-align:0}
+.h{position:absolute;left:110px;width:818px;top:324px;font:400 104px/.96 BB;letter-spacing:.005em;color:var(--bone);text-shadow:0 6px 18px rgba(0,0,0,.55);transform-origin:0 50%}
+.h span{color:var(--ink);padding:0 14px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:var(--king);text-shadow:none}
+.h span.a{background:var(--aveng)}.h span.d{background:var(--dune)}.h span.f{background:var(--fauzi)}.h span.g{background:var(--gold)}
+.rs{font-family:Inter;font-weight:700;font-size:.82em}
+.post{position:absolute;border-radius:10px;background:#000 center/cover no-repeat;box-shadow:0 22px 50px rgba(0,0,0,.6)}
+.mq{position:absolute;border-radius:16px;background:#2a1a12;border:4px solid #4a3020}
+.bulb{position:absolute;width:12px;height:12px;border-radius:50%;margin:-6px 0 0 -6px;background:#5a4630}
+.lab{position:absolute;left:0;right:0;bottom:0;padding:10px 12px 9px;font:400 30px/1 BB;letter-spacing:.04em;color:var(--ink);text-align:center}
+.tk{position:absolute;padding:13px 30px;font:600 22px/1.15 PM;letter-spacing:.06em;color:var(--ink);background:var(--bone);white-space:nowrap;
+ -webkit-mask:radial-gradient(circle at 0 50%,transparent 11px,#000 12px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 11px,#000 12px) right/51% 100% no-repeat;
+ mask:radial-gradient(circle at 0 50%,transparent 11px,#000 12px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 11px,#000 12px) right/51% 100% no-repeat}
+.tk .ic{vertical-align:-6px;margin-right:10px}
+.stamp{position:absolute;font:400 70px/1 BB;letter-spacing:.06em;padding:8px 26px 4px;border:7px solid currentColor;border-radius:10px;white-space:nowrap;background:rgba(18,11,23,.82)}
+.tag{position:absolute;font:600 18px PM;letter-spacing:.14em;padding:6px 12px;color:var(--ink);white-space:nowrap}
+.src{position:absolute;left:110px;width:430px;font:600 15px/1.4 PM;color:var(--dim);letter-spacing:.02em}
+.card{position:absolute;background:var(--bg2);border:3px solid #3a2b42;border-radius:14px}
+.ic{display:inline-block}.ic svg{width:100%;height:100%;display:block}
+#cap{position:absolute;left:110px;top:1262px;width:430px;min-height:118px;background:var(--bone);border-radius:16px;padding:14px 20px;font:700 31px/1.3 Inter;color:var(--ink)}
+#cap b{color:var(--king);font-weight:700}
+#caprule{position:absolute;left:110px;width:430px;top:1240px;border-top:4px dashed var(--gold)}
+#avg{position:absolute;left:520px;top:1120px;width:450px;height:450px;background:radial-gradient(closest-side,rgba(255,211,77,.20),rgba(255,46,77,.08) 60%,transparent)}
+#av{position:absolute;left:566px;top:1176px;width:360px;height:360px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.5))}
+#av canvas{width:360px;height:360px}
+#rough{position:absolute;left:0;top:0;width:1080px;height:1300px;pointer-events:none;overflow:visible}
+</style></head><body><div id="velvet"></div><div id="folds"></div><div class="beam" id="b1"></div><div class="beam" id="b2"></div>
+<video id="dust" muted preload="auto" src="dust-particles.webm"></video>
+<div id="rib"><div id="ribs"></div></div><div id="mark"></div><div id="ribl">DEC 2026</div>
+<div id="scenes"></div><div id="sweep"></div><svg id="rough" viewBox="0 0 1080 1300"></svg>
+<div id="caprule"></div><div id="cap"></div><div id="avg"></div><div id="av"><canvas id="avc" width="544" height="544"></canvas></div>
+<video id="hostv" muted preload="auto" src="host.webm" style="display:none"></video><div id="flash"></div>
+<script src="vendor/rough.min.js"></script><script src="icons.js"></script><script src="3d/clap.js"></script><script src="timing.js"></script><script src="app.js"></script></body></html>
