@@ -34,7 +34,7 @@ AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic sk
 
 ## Rules log: every avatar instruction so far, in one place (Oct 2026)
 
-Before delivering prompts, **run `python3 scripts/check-avatar-prompts.py <reel>/avatar-prompts.md` and get 0 FAIL**. It checks R1–R13 below. The template above is the starting point; this log wins where they differ.
+Before delivering prompts, **run `python3 scripts/check-avatar-prompts.py <reel>/avatar-prompts.md` and get 0 FAIL**. It checks R1–R16 below. The template above is the starting point; this log wins where they differ.
 
 | # | Rule | Source |
 |---|---|---|
@@ -53,6 +53,7 @@ Before delivering prompts, **run `python3 scripts/check-avatar-prompts.py <reel>
 | R13 | **No on-screen text or subtitles** (the avatar tool burned subtitles into the adobe clips). | Adobe-clones reel |
 | R14 | **Hands: subtle, slightly restrained gestures** for credibility. Use 2–3 small, slow movements per clip, kept low near the chest and then back to rest. Allowed shapes: an open palm or a gentle 'one point'. Framing is mid-chest up, so the hands show. Natural five-finger hands; no pointing at the camera, no waving, no fast or repeated motions. At most one gesture cue per mood section, tied to a key word, and counted together with nods. **Check every clip for hand artifacts** (extra or merged fingers) and regenerate a part that has any. | Creator, 13 Oct 2026: "involve subtle and slightly restrained hand gestures as well for the avatar to improve credibility" |
 | R15 | **Voice tone:** grounded and warm with chest resonance; dry, close-mic sound (no echo or reverb). Natural pitch movement: lighter on questions, lower and slower on the key instruction, a short pause before the most important line, statements ending downward. Keep R9's limits (≤ 1 stressed word per sentence, no sing-song). | Creator, 13 Oct 2026: "toning of the voiceover can also be a bit better", following the SynthID feedback "a lot of reverb… clean, sharp with right amount of bass" |
+| R16 | **Comedy / roast hosts are expressive, not deadpan.** Declare `PERFORMANCE (expressive and playful, never over the top):` and replace R8's face line with an expressive one: amused eyes, a knowing half-smirk and a quick one-sided brow lift on punchlines, then back to warm neutral. It must keep the guardrail "No mugging, no cartoonish faces, no wide-eyed acting, no cheek bunching". Nods (≤ 2), gaze, blinks, hands and voice limits are unchanged; the voice gets a short pause before each punchline, which lands with a little bite, not shouted. | Creator, 18 Oct 2026: "no deadpan hosting. first 2-3s have to be hooky" (`docs/STYLE-ROAST-EXPLAINER.md` B7) |
 
 **What went wrong on the Claudex reel, and why this log exists:** the first draft passed the template but packed in extra word cues. The "fix" then overcorrected. It stripped every cue (against R10) and toned down the 0–3 s hook (against R4), because R4 lived only in past prompts and chat, not in the template. Both are now written down here and enforced by the checker.
 

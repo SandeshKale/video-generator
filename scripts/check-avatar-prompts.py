@@ -32,6 +32,10 @@ REQUIRED = [  # (substring, rule id)
     ('any on-screen text or subtitles', 'R13 no burned-in text'),
 ]
 HOOK = '0-3s ENTHUSIASTIC AND ENGAGING'
+# R16: comedy/roast hosts are expressive (creator: "no deadpan hosting"). A prompt that declares the
+# expressive performance block swaps the R8 face line for its own anti-mugging guardrails.
+EXPRESSIVE = 'PERFORMANCE (expressive and playful, never over the top):'
+EXPRESSIVE_FACE = 'No mugging, no cartoonish faces, no wide-eyed acting'
 # Words that have needed a respelling before; if one is spoken in a part, its PRONUNCIATION line must cover it.
 RISKY = ['Claude', 'Klaw-dex', 'Codex', 'Astra', 'TradingView', 'Co-work', 'Cowork', 'SEBI', 'G P T', 'tokenizer', 'web-hook', 'Pine Script', 'Ollama']
 
@@ -55,7 +59,10 @@ def main(path):
         if len(body) > 4000: fails.append(f'{tag}: {len(body)} characters > 4000 (R3 hard limit)')
         elif len(body) > 3400: warns.append(f'{tag}: {len(body)} characters (template guideline ~2.6-3.4k since R14/R15; every extra directive gets over-performed)')
         if 'No hand gestures' in body: fails.append(f'{tag}: says "No hand gestures"; superseded by R14 (subtle, restrained gestures)')
+        expressive = EXPRESSIVE in body
         for s, rid in REQUIRED:
+            if expressive and rid == 'R8 restraint: face':
+                s, rid = EXPRESSIVE_FACE, 'R16 expressive host: anti-mugging guardrail'
             if s not in body: fails.append(f'{tag}: missing "{s}" ({rid})')
         for key in ('IDENTITY:', 'FRAMING:'):
             line = next((l for l in body.splitlines() if l.startswith(key)), '')
