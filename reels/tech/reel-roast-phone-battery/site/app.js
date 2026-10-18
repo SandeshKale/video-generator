@@ -240,7 +240,7 @@ function confetti(t,bursts,dur){cx2.clearRect(0,0,1080,1300);bursts.forEach(func
 function cap(t){var CP=TM.CAP,k=-1;for(var i=0;i<CP.length;i++)if(t>=CP[i][0]-.05)k=i;var c=$('cap');if(k<0||t>CP[k][1]+1.2&&(k===CP.length-1||t<CP[k+1][0]-.05)){if(k<0){c.style.opacity=0;return}}
  var ws=CP[k][2],h='';ws.forEach(function(w,j){var on=t>=w[1]&&(j===ws.length-1||t<ws[j+1][1]);h+=(j?' ':'')+(on?'<b>'+w[0]+'</b>':w[0])});c.innerHTML=h;var u=E.o3(seg(t,CP[k][0]-.05,CP[k][0]+.12));c.style.opacity=1;c.style.transform='translateY('+(6*(1-u))+'px)'}
 
-// ---- host + seek ----------------------------------------------------------------------------------------------------
+// ---- host + seek (cuts are sequential: the outgoing scene clears in the first half, the incoming arrives in the second, so text never double-exposes) ----
 var els=[].slice.call(document.querySelectorAll('#scenes > .sc'));
 var vid=$('hostv'),avc=$('avc'),hx=avc.getContext('2d'),lastF=-1;
 function hostSeek(t){if(!vid.duration)return Promise.resolve();var f=Math.floor(t*24);if(f===lastF)return Promise.resolve();lastF=f;var ft=(f+.5)/24;if(vid.duration)ft=Math.min(ft,vid.duration-.02);
@@ -252,10 +252,10 @@ window.__seek=function(t){
  $('tiles').style.transform='translate('+(-(t*9)%130)+'px,'+(-(t*5)%130)+'px)';
  var d=drawDial(t);
  els.forEach(function(el,si){var s0=S[si],s1=si+1<S.length?S[si+1]:END,raw=t-s0,op=0,tf='';
-  if((raw>=-TR||si===0)&&t<=s1+.001){if(raw<0&&si>0){var p=E.o3(seg(t,s0-TR,s0));op=p;tf='translateY('+(16*(1-p))+'px) scale('+lerp(.985,1,p)+')'}else if(si<S.length-1&&t>s1-TR){var p=E.o3(seg(t,s1-TR,s1-.06));op=1-p;tf='translateY('+(-10*p)+'px)'}else op=1;upd[si](t)}
+  if((raw>=-TR||si===0)&&t<=s1+.001){if(raw<0&&si>0){var p=E.o3(seg(t,s0-.15,s0+.02));op=p;tf='translateY('+(16*(1-p))+'px) scale('+lerp(.985,1,p)+')'}else if(si<S.length-1&&t>s1-TR){var p=E.o3(seg(t,s1-TR,s1-.15));op=1-p;tf='translateY('+(-10*p)+'px)'}else op=1;upd[si](t)}
   el.style.opacity=op;el.style.transform=tf;el.style.display=op>0?'block':'none'});
  // bed layer: hook + slow-cook, and again for the oven scene
- var bo=0,f=pillowF(t);if(t<S[2])bo=1-seg(t,S[2]-TR,S[2]-.06);else if(t>=S[4]-TR&&t<S[5])bo=Math.min(seg(t,S[4]-TR,S[4]),1-seg(t,S[5]-TR,S[5]-.06));
+ var bo=0,f=pillowF(t);if(t<S[2])bo=1-seg(t,S[2]-TR,S[2]-.15);else if(t>=S[4]-.15&&t<S[5])bo=Math.min(seg(t,S[4]-.15,S[4]+.02),1-seg(t,S[5]-TR,S[5]-.15));
  bw.style.opacity=bo;bw.style.display=bo>0?'block':'none';if(bo>0){bedFrame(f);var jt=t>C.pillow2+.5&&t<C.oven?seg(t,C.pillow2+.5,C.oven):0;bw.style.transform='translate('+(Math.sin(t*37)*5*jt)+'px,'+(Math.sin(t*29)*3*jt)+'px) scale('+(1+.012*Math.sin(t*.8)+.03*jt*(.5+.5*Math.sin(t*6)))+')'}
  var p=bedPt(f,'phone'),hot=bo*(t<S[2]?lerp(.55,1,seg(t,.35,1)):lerp(.6,1,seg(t,C.pillow2,C.oven)));glow.setAttribute('cx',p[0]);glow.setAttribute('cy',p[1]);glow.setAttribute('opacity',hot*(.75+.25*Math.sin(t*4)));
  if(bo>0)steam(p[0],p[1]-30,bo*(t<S[1]?seg(t,1,1.6)*.6:1),t);else steam(0,0,0,t);

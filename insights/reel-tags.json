@@ -214,5 +214,13 @@
   "voice": "cloned (Qwen3-TTS)",
   "host": "none",
   "length": "47-60s"
+ },
+ "reel-roast-phone-battery": {
+  "genre": "comedy-explainer",
+  "company": "apple",
+  "voice": "avatar (english)",
+  "host": "avatar",
+  "length": "47-60s",
+  "cta": "send-to-friend"
  }
 }

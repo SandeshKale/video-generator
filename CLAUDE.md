@@ -1413,3 +1413,21 @@ Hindi avatar clips (544², ≤13.1 s of speech per 15 s clip after the ~27–33 
 
 ## External reference — `docs/STYLE-ROAST-EXPLAINER.md` (comedy explainer house style, Oct 2026)
 The "Roasted & Explained" style for funny/roast/dark-comedy explainers, synthesised from five research briefs (`docs/COMEDY-EXPLAINER-RESEARCH.md` + four creator-supplied). Use it for any comedic reel: the six beats (cold roast → plain truth → wrong-but-right analogy → escalation ×3 → dark turn → toast + callback + send CTA), the four truth tests on **every joke** (remove-the-jokes, mapping, myth, source), the dark dial (default 2, one moment at 3) and its banned list (no suicide/self-harm, religion/mythology, caste/region/gender, named politicians, real tragedies, profanity), `REAL FACT` / `ANALOGY` / `MYTH` truth markers, **no deadpan hosting** (creator, 18 Oct 2026: an expressive, sarcastic host and a hard, high-energy hook in the first 2–3 s; avatar rule R4 applies), and the script template with a "fact carried" column.
+
+## Reel benchmark — `reels/tech/reel-roast-phone-battery` ("Roast of Your Phone Battery", Roasted & Explained #01, 51.5 s, English avatar; Hindi version pending)
+The first comedy explainer (`docs/STYLE-ROAST-EXPLAINER.md`): one escalating cooking gag (slow-cooking → oven → roasting → "the friend whose phone sleeps in an oven"), every rung carrying a sourced fact (Apple battery pages, Apple Support 108055, Apple iPhone safety page, Battery University BU-808).
+- **Look ("Kitchen Timer"):** the first light palette in a while: warm off-white enamel tiles; meaning-coded green = health, orange → red = heat, magenta = full-charge stress, cyan = the fix. Unbounded 800/900 + Geist Mono + Inter; cover in Anton.
+- **New techniques:**
+  1. A googly-eyed **battery mascot** (`mascot()` in `site/app.js`): charge level, colour, mouth, brows, sweat, blush, belt (bloats, and the buckle pops), sunglasses, blinks. All of it is a pure function of `t`, and it is the through-line in every scene.
+  2. A **heat dial** (top right) that is the step tracker. It drives the warm/cool background glow and clicks with an SFX on each rung.
+  3. A **Blender bed whose pillow lifts** (9 hinge frames scrubbed by `t`, `blender/bed.py`). It returns in the oven scene, where it is scrubbed backwards so the pillow slams back down. Projected anchors (`site/3d/bed.js`) keep the mascot, steam and glow glued to the phone.
+  4. **Two voice versions from one page:** `timing.py <v>` looks scene starts and cues up by spoken word and writes the joke ladder labels (oven/roasted vs tandoor/kebab). Each version has its own avatar folder, host video and mix.
+- **Avatar prompts:** an expressive host needed rule **R16** (an expressive mode with anti-mugging guardrails) in `scripts/check-avatar-prompts.py`. The English clips came back in order, and Whisper dropped "Congratulations" (an energy check found it, and it was added by hand).
+- **Pitfalls:**
+  - A Blender hinge rotates the wrong way with positive angles about +x (the front edge sinks): use negative angles.
+  - An AgX view transform plus about 4× lower light energy fixed a blown-out first render.
+  - A shadow-catcher plane leaves a grey rectangle on the cream page: mask the image edges with intersecting linear-gradient masks.
+  - Overlapping crossfades double-expose text; use sequential cuts (out in the first half, in in the second).
+  - An inline `//` comment inserted mid-line broke `__seek` (the page error was "window.__seek is not a function").
+  - A `glob` of the uploads folder picked up every earlier upload; copy the named files only.
+- **Mix:** measured on 250 ms windows inside word spans: voice over music + SFX minimum 13.1 dB, median 27 dB, −14 LUFS. The CTA melody waits for the last word, and the SFX duck under speech. Not auditioned.
