@@ -1476,4 +1476,4 @@ December 2026 box-office war: Fauzi + Ranger (3 Dec) → Dune: Part Three + Aven
   - A statement that starts with `[` after a function expression with no `;` (`upd[1]=function(){…}\n [..].forEach`) indexes the function: always end `upd[i]=function…` with `;`.
   - `scripts/change-cadence.mjs` now prints per-step diffs with `CC_DEBUG=1`. Pops of about 260×390 px only reach a diff of about 1.9 (threshold 2), so use a full-stage ambient layer.
   - Dhol-style low drums were the masker under soft word endings: duck them extra (`drums * (1 - .45*duck)`), and put brass stabs after the word, not on it.
-- **Validated:** `check.mjs` 0 findings (0.25 s steps); `change-cadence` 0 stretches (longest 1.5 s); mix −14.0 LUFS, voice over music + SFX median 24.4 dB, min 14.0 dB (250 ms windows inside words). Not auditioned.
+- **Validated:** `check.mjs` 0 findings (0.25 s steps); `change-cadence` 0 stretches (longest 1.5 s); 29 frames of the final MP4 (frame 0, inside all 7 cuts, scene midpoints, the 25.3 s slice join); host-crop diff 2.6–12 in every scene; mix −14.0 LUFS, voice over music + SFX median 24.4 dB, min 14.0 dB (250 ms windows inside words). Not auditioned.

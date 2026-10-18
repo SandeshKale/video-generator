@@ -9,7 +9,7 @@ import { dirname, join } from 'node:path';
 import { chromium } from 'playwright';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const A = '../../../assets/fonts/';
-const fan = [['fauzi', '#3fa9ff', -24, 250, 690], ['dune', '#ffae3d', -9, 400, 640], ['avengers', '#8bff4a', 7, 560, 640], ['king', '#ff2e4d', 0, 400, 560]];
+const fan = [['fauzi', '#3fa9ff', -16, 110, 700], ['dune', '#ffae3d', -7, 230, 630], ['avengers', '#8bff4a', 9, 650, 650], ['king', '#ff2e4d', 0, 400, 560]];
 let cards = '';
 for (const [f, c, r, x, y] of fan) {
   const big = f === 'king', w = big ? 330 : 280, h = big ? 495 : 420;
