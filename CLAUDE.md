@@ -1449,3 +1449,14 @@ An architecture GIF on prompt caching. Topic and metaphor were approved from `gi
   - Mono labels inside pills need measured widths ("WRITE 1.25×" clipped at 116 px).
 - **Validation:** `validate.mjs` reports one finding, the brick passing the TURN 1 label for one frame while it's lowered (deliberate motion). The GIF frames were checked at full size and at an 800 px feed width.
 - **Next GIF:** vertical 4:5 with a new palette (not concrete/blueprint/safety-yellow).
+
+## GIF benchmark — `gif-idempotency` ("Your AI agent just paid twice.", vertical 4:5 1080×1350, 12 s loop, 10 fps, 120 frames, 1.6 MB)
+An architecture GIF on idempotency keys. The topic and metaphor were approved from two options. The other, retry storms with jitter (sources: AWS Architecture Blog, Google's 20 Aug 2026 us-west1 report on "cascading retries"), is still unbuilt and pairs with this one as a "retries" series.
+- **Look:** pale sage with a dot grid, deep-teal ink, brass canisters and valve, oxblood for the duplicate, key blue, and green for replies and "charged once". Fonts: DM Serif Display, Red Hat Mono and Inter.
+- **Metaphor:** a pneumatic-tube bank. Canisters move along SVG paths via `getPointAtLength`, so placement stays a pure function of `t`. The reply stalls at a TIMEOUT gate, and an agent timer ring runs out before the retry. A NO KEY / WITH KEY switch flips between two acts in one loop:
+  - **No key:** charges 2, and the card is stamped DUPLICATE, $98.
+  - **With key:** a valve plus a key store returns the saved response, ALREADY DONE is stamped, and the card is charged once.
+  - Frame 0 is offset to the duplicate.
+- **Source:** Stripe API reference, "Idempotent requests" (tier A). The agent "stacked retries" claims from blogs were left out (tier C).
+- **Validation:** `validate.mjs` reports 0 text findings. Checked at full size and at a 540 px feed width.
+- **Next GIF:** horizontal 1600×900 with a new palette (not sage/brass/oxblood, not concrete/blueprint).
