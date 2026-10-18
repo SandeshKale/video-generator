@@ -43,13 +43,13 @@ PERFORMANCE (keep it subtle):
 - Mouth: natural speech movement with moderate opening; do not over-articulate.
 VOICE: speak in HINDI (everyday spoken Hindi; film titles and English words like box office, weekend, debut, budget said the way Indians say them). Warm, grounded, chest-resonant, a friend with good news; sounds close to a good microphone in a quiet room (dry, no echo or reverb). Smooth and flowing: join phrases in one breath, short sentence endings that land downward. Natural pitch movement: lighter and higher on a question, lower and a touch slower on numbers and dates, a short pause before the most important line. Slightly brisk everyday pace. Small human pauses at commas; at most one lightly stressed word per sentence. No announcer tone, no sing-song, no robotic flatness, no filler sounds.
 PRONUNCIATION: 'एवेंजर्स' = 'a-ven-jers', 'डूम्सडे' = 'dooms-day', 'क्रिसमस ईव' = 'kris-mas eev', 'शाहरुख़' = 'shaah-rukh'
-MOOD BY SECTION: 0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic, a confident open smile, a little quicker, a small lean-in, still natural (no shouting, no wide-eyed acting, no head bobbing), dead-on at the lens; 3-8s vivid, a faint smile on 'किंग'; 8-12s settle, one small open-palm gesture on 'बॉक्स ऑफ़िस की जंग'.
+MOOD BY SECTION: 0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic, a confident open smile, a little quicker, a small lean-in, still natural (no shouting, no wide-eyed acting, no head bobbing), dead-on at the lens; 3-8s vivid, faint smile on 'किंग'; 8-12s settle, one small open-palm gesture on 'बॉक्स ऑफ़िस की जंग'.
 SCRIPT: "सिर्फ़ छह दिन! एवेंजर्स डूम्सडे को बस छह दिन मिलेंगे, फिर क्रिसमस ईव पर आ रहे हैं शाहरुख़ ख़ान, 'किंग' लेकर। ये दिसंबर, बॉक्स ऑफ़िस की जंग है।"
 TIMING: begin speaking at 0.0 s, no lead-in. Finish by about 14.2 s at the latest (aim for about 12.5 s), every sentence fully completed; then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, any on-screen text or subtitles.
 ```
 
-3401 characters · 28 words
+3399 characters · 28 words
 
 ## Part 2 of 4 — the month: Fauzi, Ranger, Dunesday (15–30 s)
 

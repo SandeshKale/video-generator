@@ -28,7 +28,7 @@ AVOID = "AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, p
 PARTS = [
     ("hook: six days, then King (0–15 s)",
      "'एवेंजर्स' = 'a-ven-jers', 'डूम्सडे' = 'dooms-day', 'क्रिसमस ईव' = 'kris-mas eev', 'शाहरुख़' = 'shaah-rukh'",
-     HOOK + "; 3-8s vivid, a faint smile on 'किंग'; 8-12s settle, one small open-palm gesture on 'बॉक्स ऑफ़िस की जंग'.",
+     HOOK + "; 3-8s vivid, faint smile on 'किंग'; 8-12s settle, one small open-palm gesture on 'बॉक्स ऑफ़िस की जंग'.",
      "सिर्फ़ छह दिन! एवेंजर्स डूम्सडे को बस छह दिन मिलेंगे, फिर क्रिसमस ईव पर आ रहे हैं शाहरुख़ ख़ान, 'किंग' लेकर। ये दिसंबर, बॉक्स ऑफ़िस की जंग है।"),
     ("the month: Fauzi, Ranger, Dunesday (15–30 s)",
      "'फ़ौजी' = 'fau-jee', 'रेंजर' = 'ren-jer', 'ड्यून' = 'dyoon', 'वीकेंड' = 'week-end'",
