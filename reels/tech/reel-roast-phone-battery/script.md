@@ -1,4 +1,4 @@
-# Reel — "Roast of Your Phone Battery" v2 (≈ 50 s, Hinglish voice, English on screen)
+# Reel — "Roast of Your Phone Battery" v2 (≈ 50 s, two voice versions: Hindi and English; English on screen)
 
 Folder: `reels/tech/reel-roast-phone-battery/` · Series: **Roasted & Explained #01** · Style: `docs/STYLE-ROAST-EXPLAINER.md` (six beats, truth tests on every joke, dark dial ≤ 3, **no deadpan: high-energy hook in the first 2–3 s, expressive sarcastic host**).
 
@@ -36,17 +36,41 @@ Its ceiling was depth-parallax real stills, a tearing ticket, language stubs, a 
 | F7 | Many Android phones have a charge-limit setting (Samsung: "Protect battery"); the limit varies by model. | B | say "many Androids", no percentage |
 | F8 | "Don't sleep on a device, power adapter, or wireless charger, or place them under a blanket, pillow, or your body, when it's connected to a power source." Keep it "in a well-ventilated area when in use or charging." | **A (verified verbatim)** | [Apple, Important safety information for iPhone](https://support.apple.com/guide/iphone/important-safety-information-iph301fc905/ios) |
 
-## Voice-over (Hinglish in Devanagari, 4 avatar parts, ≤ 28 words each, finish by ~12.5 s)
+## Voice-over: two versions from one page
+
+The same 9 scenes are rendered twice, once per voice. All on-screen text stays English in both. Only the cooking-ladder words differ, because each language gets the pun that works natively. `site/` reads `?v=hi` or `?v=en` and swaps a small text map (stamps, dial labels, CTA icon). Each version is timed from its own avatar clips (`avatar-hi/words.json`, `avatar-en/words.json`), so scene boundaries follow that version's speech.
+
+| Rung | Hindi version (H) | English version (E) |
+|---|---|---|
+| 1 | धीमी आँच (slow-cooking) | slow-cooking |
+| 2 | तंदूर (tandoor) | oven |
+| 3 | कबाब (kebab) | **roasting**, which is also the series name |
+| CTA callback | "phone sleeps in a tandoor" | "phone sleeps in an oven" |
+| Dial labels | LOW · TANDOOR · KEBAB · OFF | LOW · OVEN · ROASTED · OFF |
+
+### Version H: Hindi (conversational, Devanagari; tech words such as charge/percent stay as spoken)
+4 avatar parts, ≤ 28 words each, finishing by ~12.5 s.
 1. **P1 (27 words), hook roast + plain truth:** "फ़ोन रात भर तकिये के नीचे चार्ज करते हो? बधाई हो, बैटरी को धीमी आँच पर पका रहे हो। गर्मी और फुल चार्ज: बैटरी के दो दुश्मन।"
 2. **P2 (27), analogy + escalation ×3:** "सौ परसेंट पर घंटों बैठना, बुफ़े के बाद ठूँसकर लेटने जैसा है। ऊपर से चार्जिंग में गेमिंग, मोटा कवर, और तकिया? अब ये फ़ोन नहीं, तंदूर है।"
 3. **P3 (25), the dark turn with the numbers:** "लैब टेस्ट: चालीस डिग्री, सौ परसेंट पर एक साल, बची पैंसठ परसेंट। पच्चीस डिग्री, चालीस परसेंट पर? छियानवे। आप बैटरी नहीं, कबाब बना रहे हो।"
 4. **P4 (28), fix + toast + callback + send:** "इलाज सिंपल: अस्सी परसेंट लिमिट ऑन करो, फ़ोन को ठंडी जगह सुलाओ। बैटरी खुश, आप खुश। और ये उस दोस्त को भेजो, जिसका फ़ोन तंदूर में सोता है।"
 
-**English captions (on screen):**
+English subtitles shown with Version H:
 - **P1:** "Charging your phone under the pillow all night? Congrats, you're slow-cooking the battery. Heat and a full charge: its two enemies."
 - **P2:** "Sitting at 100% for hours is like lying down stuffed after a buffet. Add gaming while charging, a thick case, and a pillow? That's not a phone anymore, it's a tandoor."
 - **P3:** "Lab test: a year at 40 °C and 100% left 65%. At 25 °C and 40%? 96%. You're not charging a battery, you're making a kebab."
 - **P4:** "The fix is simple: turn on the 80% limit and let it sleep somewhere cool. Happy battery, happy you. Now send this to the friend whose phone sleeps in a tandoor."
+
+### Version E: English (written for the ear, not translated)
+4 avatar parts, ≤ 31 words each (English avatar pace is ~2.5 words/s), finishing by ~12.5 s. Numbers are written the way they are spoken, for the TTS; the captions show them as digits.
+1. **P1 (27 words), hook roast + plain truth:** "Charging your phone under the pillow all night? Congratulations. You're slow-cooking your battery, every single night. Heat and a full charge are its two worst enemies."
+2. **P2 (31), analogy + escalation ×3:** "Sitting at a hundred percent for hours is like lying down after a buffet. Add gaming while charging, a thick case, and a pillow? That's not a phone. That's an oven."
+3. **P3 (31), the dark turn with the numbers:** "In a lab test, a year at forty degrees and a hundred percent left sixty-five percent. At twenty-five degrees and forty percent? Ninety-six. You're not charging a battery. You're roasting it."
+4. **P4 (30), fix + toast + callback + send:** "The fix: turn on the eighty percent limit, and let it sleep somewhere cool. Happy battery, happy you. Now send this to the friend whose phone sleeps in an oven."
+
+Captions shown with Version E are the spoken words, with digits ("100%", "40 °C", "65%", "96%", "80%").
+
+**Hook timing check (both versions):** the question ends by ~2.3 s ("…चार्ज करते हो?" / "…all night?"), and the visual jolt (pillow flip) lands at 0.4 s, before the first word ends.
 
 ## Joke table (each joke carries a fact; target = who the punch is aimed at)
 | t (s, est.) | Beat | Line (gist) | Fact carried | Engine | Target | Marker |
@@ -86,23 +110,23 @@ Fonts: **Unbounded 800/900** for headlines, **Geist Mono 600** for tags and trut
 | 2 | 2.4–5 | "…धीमी आँच पर पका रहे हो" | Heat dial snaps to **LOW · SLOW-COOK**; a pot lid lands on the phone with a clang and the **"SLOW-COOKING"** stamp slams; the host does an eyebrow-up grin | through-line dial, stamp, footage heat-shimmer overlay |
 | 3 | 5–8 | "गर्मी और फुल चार्ज…" | Two "enemy" cards slide in: a thermometer (the 35 °C line, "Apple: above 35 °C can permanently damage capacity") and a 100% bar in magenta; `REAL FACT` stamp | Phosphor icons, bespoke data cards |
 | 4 | 8–13 | "सौ परसेंट पर घंटों… बुफ़े…" | `ANALOGY` tag; the mascot swells at 100% beside an empty buffet plate and loosens a belt; a "4 h at 100%" timer chip ticks | SVG mascot, real Unsplash photo (plate/table) |
-| 5 | 13–19 | "गेमिंग, मोटा कवर, तकिया… तंदूर" | **Heat stack:** three blocks drop onto the phone, one per word (gamepad, thick case, pillow), each pushing the thermometer up; the dial clicks to **TANDOOR**; the clay-oven silhouette closes around the phone | GSAP drop-ins, icons, through-line dial |
-| 6 | 19–27 | "लैब टेस्ट… पैंसठ… छियानवे… कबाब" | **Chart crime done right:** four thermometers (25 °C/40%, 25 °C/100%, 40 °C/40%, 40 °C/100%) drain to 96 / 80 / 85 / **65**. The 65 one chars red, and a skewer slides through the battery on "कबाब". Tag: "1-YEAR LAB STORAGE TEST · BATTERY UNIVERSITY BU-808" | bespoke data object, kinetic counters |
+| 5 | 13–19 | "गेमिंग, मोटा कवर, तकिया… तंदूर" (E: "…an oven") | **Heat stack:** three blocks drop onto the phone, one per word (gamepad, thick case, pillow), each pushing the thermometer up; the dial clicks to **TANDOOR** (E: **OVEN**); a clay-oven silhouette (E: an oven door) closes around the phone | GSAP drop-ins, icons, through-line dial |
+| 6 | 19–27 | "लैब टेस्ट… पैंसठ… छियानवे… कबाब" (E: "…roasting it") | **Chart crime done right:** four thermometers (25 °C/40%, 25 °C/100%, 40 °C/40%, 40 °C/100%) drain to 96 / 80 / 85 / **65**. The 65 one chars red, and a skewer slides through the battery on "कबाब" (E: the battery spins on a rotisserie spit on "roasting", and a **ROASTED** stamp lands). Tag: "1-YEAR LAB STORAGE TEST · BATTERY UNIVERSITY BU-808" | bespoke data object, kinetic counters |
 | 7 | 27–31 | "इलाज: अस्सी परसेंट लिमिट…" | The dial turns to **OFF** (cyan). A mock **Settings › Battery › Charging** pane (ILLUSTRATIVE) snaps its slider to 80%. Chips: "iPhone 15+: Charge Limit", "Older iPhones: Optimized Battery Charging", "Many Androids: 'Protect battery'". Side strip: `MYTH` "Drain to 0% to reset?" → "Partial charging is fine" | mock UI pane, chips, stamps |
 | 8 | 31–34 | "ठंडी जगह… बैटरी खुश" | Blender cool state: the phone is lifted onto a bedside table in blue light; the mascot cools from orange to green and puts on sunglasses | Blender 3D, mascot |
-| 9 | 34–40+ | "उस दोस्त को भेजो… तंदूर में सोता है" | CTA: profile-photo ring + **@sandesh_explains** + FOLLOW. A pillow wears an Apple-quoted sign: "Don't charge under a pillow (Apple)". A **"SEND TO: that friend"** button pulses every 1.5 s and the tandoor icon blinks | profile, kinetic type, SFX |
+| 9 | 34–40+ | "उस दोस्त को भेजो… तंदूर में सोता है" | CTA: profile-photo ring + **@sandesh_explains** + FOLLOW. A pillow wears an Apple-quoted sign: "Don't charge under a pillow (Apple)". A **"SEND TO: that friend"** button pulses every 1.5 s and the tandoor icon (E: oven icon) blinks | profile, kinetic type, SFX |
 
 **Asset families: 9.** Blender 3D; SVG mascot; bespoke data objects; mock UI pane; Phosphor icons; Unsplash photo; footage heat-shimmer/dust overlay; kinetic type + truth stamps + GSAP entrances; audio (a score that gets "hotter" with each rung, plus CC0 kitchen/rubber SFX: lid clang, sizzle, oven ding, whoosh). No scene shares a primary family with its neighbour.
 
 **Ambient motion for the 2 s rule:** steam wisps, the dial needle wobble, the thermometer creep, a ticking timer chip, mascot blinks and sweat drops. The hero visuals hold for their reading time.
 
-## Performance track (for the avatar prompts; R4 hook)
-- **P1:** 0–3 s ENTHUSIASTIC AND ENGAGING. A mock-suspicious squint and lean-in on "तकिये के नीचे?", eyebrows up. Then a big sarcastic "बधाई हो" with a grin, and a matter-of-fact settle on "दो दुश्मन".
-- **P2:** playful. A slow, smug nod on the buffet line; counting energy on the three habits (one small one-two-three), building to a delighted "तंदूर है!"
-- **P3:** mock-serious lab voice on the numbers (slower, clear, eyebrows level), then a deadpan beat and a grin on "कबाब बना रहे हो". The beat is a pause, not a flat performance; the energy stays up.
-- **P4:** warm and helpful on the fix, a genuine smile on "बैटरी खुश, आप खुश", a cheeky grin and lean-in on the send line, eyes on the lens.
+## Performance track (for the avatar prompts; R4 hook; same beats in both languages, with the E cue words in brackets)
+- **P1:** 0–3 s ENTHUSIASTIC AND ENGAGING. A mock-suspicious squint and lean-in on "तकिये के नीचे?" ["under the pillow"], eyebrows up. Then a big sarcastic "बधाई हो" ["Congratulations"] with a grin, and a matter-of-fact settle on "दो दुश्मन" ["two worst enemies"].
+- **P2:** playful. A slow, smug nod on the buffet line; counting energy on the three habits (one small one-two-three), building to a delighted "तंदूर है!" ["That's an oven."]
+- **P3:** mock-serious lab voice on the numbers (slower, clear, eyebrows level), then a deadpan beat and a grin on "कबाब बना रहे हो" ["You're roasting it."]. The beat is a pause, not a flat performance; the energy stays up.
+- **P4:** warm and helpful on the fix, a genuine smile on "बैटरी खुश, आप खुश" ["Happy battery, happy you"], a cheeky grin and lean-in on the send line, eyes on the lens.
 
 ## Next
 1. Creator OK on this script.
-2. Avatar prompts (4 parts, checker 0 FAIL), Part 1 first.
-3. Mockup of 3 scenes from 3 families: 1 (Blender pillow hook), 6 (thermometer chart crime), 7 (settings fix).
+2. Avatar prompts for both versions (4 Hindi + 4 English parts, checker 0 FAIL on each file: `avatar-prompts-hi.md`, `avatar-prompts-en.md`), Part 1 of each first.
+3. Two renders and two captions (`caption-hi.md`, `caption-en.md`) from one page. Mockup first: 3 scenes from 3 families: 1 (Blender pillow hook), 6 (thermometer chart crime), 7 (settings fix).
