@@ -1,4 +1,4 @@
-# House style: "Roasted & Explained" (deadpan roast explainers)
+# House style: "Roasted & Explained" (sarcastic roast explainers)
 
 Built 18 Oct 2026 from five research briefs: ours (`docs/COMEDY-EXPLAINER-RESEARCH.md`) and four supplied by the creator (the "Roasting God's design choices" framework, the "Explaining anything like it insulted you" brief, the creator-reference brief, and the "Pedagogy of Ridicule" paper). Part A is the analysis of the five sources; Part B is the style we use; Part C is the production kit; Part D is a worked example.
 
@@ -47,18 +47,20 @@ Built 18 Oct 2026 from five research briefs: ours (`docs/COMEDY-EXPLAINER-RESEAR
 ## Part B: the house style
 
 ### B1. One sentence
-**A calm, unimpressed expert roasts a concept's absurd truth until you understand it, then admits they love it.**
+**A sarcastic, high-energy friend roasts a concept's absurd truth until you understand it, then admits they love it.**
 
-### B2. The persona: "the unimpressed expert"
-- Knows the subject cold; is tired of how ridiculous it is; is on the viewer's side (we laugh *together* at the universe, the system, our own habits).
-- **Deadpan**: never laughs at its own jokes; tiny eyebrow lift on understatement; calm is the joke.
+> **Creator decision (18 Oct 2026): no deadpan hosting.** The host is expressive and animated, and the first 2–3 s must be a hard hook (energy, a provocative claim, a visual jolt). The deadpan *writing* devices (understatement, mock-official documents) stay; only the *performance* is not deadpan.
+
+### B2. The persona: "the sarcastic friend who knows too much"
+- Knows the subject cold; finds it ridiculous; is on the viewer's side (we laugh *together* at the universe, the system, our own habits).
+- **Expressive, not deadpan**: bright hook energy, playful eyebrows and a knowing smirk on the punchlines, a quick lean-in on the roast, warm on the toast. Sarcasm is in the words and the timing, not in a flat face.
 - **Self-deprecating** where the concept hits us too ("I also have an EMI").
 - Indian everyday frame of reference: chai, samosa, EMI, UPI, traffic, family WhatsApp forwards, exam season. Situational jokes that survive translation (not puns), because the voice may be Hindi/Hinglish while the on-screen text is English.
 
 ### B3. Structure: the six beats (45–60 s)
 | # | Beat | Time | Job | Rule |
 |---|---|---|---|---|
-| 1 | **Cold roast** | 0–3 s | Insult the concept with a true, surprising fact | Frame 0 already shows the concept as a character + the roast line; the voice starts at 0.0 s |
+| 1 | **Hook roast** | 0–3 s | Provocative, high-energy claim about the viewer + a true surprising fact ("your battery is breaking up with you, and it's your fault") | Frame 0 already shows the concept as a character + the roast line; the voice starts at 0.0 s, loud and quick; a visual jolt (stamp slam, zoom punch) lands before 1.5 s |
 | 2 | **Plain truth** | ~3–9 s | Say what it actually is, straight | One or two plain sentences + a **REAL FACT** stamp; no joke in this beat (alternation) |
 | 3 | **Wrong-but-right analogy** | ~9–20 s | A ridiculous but structurally exact comparison | Must pass the mapping test (B5); label it ANALOGY on screen |
 | 4 | **Escalation ×3** | ~20–35 s | Rule of three: two expected facts, the third absurd but true | Each step is a real fact; a laugh beat every 5–8 s |
@@ -99,10 +101,10 @@ Default for a reel: **2, with one moment at 3** (the dark turn).
 
 **Banned (never a punchline):** suicide/self-harm (Instagram policy and harm); real deaths, disasters, terror, war victims; illness of real people or cancer as a punchline; religion, deities, mythology (incl. our Ramayana reels); caste, region, language groups, gender stereotypes, body shaming, disability; named politicians; private individuals; profanity; sexual content. India context: FIRs over comedy (the 2025 *India's Got Latent* cases) show "the process is the punishment" even when courts later side with the comedian.
 
-### B7. Voice and performance
-- **Deadpan, warm underneath**: steady, slightly dry, unhurried; a 0.3–0.5 s silent beat **before** each punchline; the punchline is said *quieter*, not louder.
-- No laugh track, no "haha". The host never smiles at their own joke; one small genuine smile is allowed on the toast.
-- Avatar prompt change for this series: the template's Rule R4 ("0–3 s ENTHUSIASTIC") becomes "0–3 s DEADPAN CONFIDENT: calm, direct, a hint of disdain". This is a deviation from the standing avatar rules and needs the creator's OK per series.
+### B7. Voice and performance (creator decision: no deadpan)
+- **Hook (0–3 s):** the avatar rule R4 applies as written: ENTHUSIASTIC AND ENGAGING, quicker, a confident grin, dead-on at the lens.
+- **Body:** expressive sarcastic friend: lively pitch movement, a playful eyebrow and a knowing smirk on each punchline, a short 0.3 s pause *before* the punchline (timing), the punchline lands with a little extra bite, not shouted.
+- **Toast:** warm and sincere, a genuine smile. No laugh track, no "haha".
 
 ---
 
@@ -111,7 +113,7 @@ Default for a reel: **2, with one moment at 3** (the dark turn).
 | Need | How we build it |
 |---|---|
 | **Concept character** | A non-human object mascot (house rule: no cartoon people): the concept as a googly-eyed object (a coin, a battery, a cell, a planet), SVG or a Blender prop; given a name plate ("COMPOUND INTEREST, 72, unbothered"). One mascot per reel; recurring mascots per series are welcome. |
-| **Host** | Avatar tile (deadpan prompt) or cloned voice; punch-in zoom 1.0 → 1.12 over 0.2 s on punchlines. |
+| **Host** | Avatar tile (energetic hook, expressive sarcastic body) or cloned voice; punch-in zoom 1.0 → 1.12 over 0.2 s on punchlines. |
 | **Truth markers** | `REAL FACT` stamp (on every fact beat), `ANALOGY` tag (on every analogy), `MYTH` stamp (on any myth said for effect). The lint checks every fact beat has its stamp. |
 | **Mock documents** | Memo, warning label, ingredients, terms & conditions, HR complaint form, performance review, parody ad with fine print: DOM components with a typewriter reveal. |
 | **Comic timing** | Freeze-frame + record-scratch; hard cut to silence; the punchline word highlighted in the caption; a "beat" of stillness before it. |
@@ -132,7 +134,7 @@ Default for a reel: **2, with one moment at 3** (the dark turn).
 5. Joke density: a laugh beat every 5–8 s, alternating with plain facts; the strongest jokes at the open, middle and close.
 6. Read-aloud test with 2–3 people: cut any joke that gets only a polite smile.
 7. Stranger-send test: would someone send this to a friend? If not, sharpen the cold roast and the callback.
-8. Deadpan check on the avatar clips: no smiling at own jokes; silent beat before punchlines.
+8. Performance check on the avatar clips: the first 2–3 s are high-energy and hooky; punchlines get a beat before them and a smirk, not a flat face.
 9. Plus every standing rule: no overlaps, no typos, real people shown only when named and licensed, 2-second change rule, mix targets, caption template, disclosure line.
 
 ### C3. Series slate (all pass the banned list)
