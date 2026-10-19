@@ -1,32 +1,38 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Shot right now — mockup</title><style>
+<!doctype html><html><head><meta charset="utf-8"><title>Shot right now</title><style>
 @font-face{font-family:AB;font-weight:100 900;font-stretch:50% 150%;src:url(fonts/anybody-latin-standard-normal.woff2) format('woff2');font-display:block}
 @font-face{font-family:FC;font-weight:500;src:url(fonts/fira-code-latin-500-normal.woff2);font-display:block}
 @font-face{font-family:FC;font-weight:600;src:url(fonts/fira-code-latin-600-normal.woff2);font-display:block}
 @font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2);font-display:block}
-/* "Cloud Chamber": particle colours are meaning-coded. cyan = neutrino, magenta = muon, orange = cosmic-ray shower,
+/* "Cloud Chamber". Meaning-coded particle colours: cyan = neutrino, magenta = muon, orange = cosmic-ray shower,
    uranium green = radioactive decay, amber = meteor, white-gold = speed. */
-:root{--bg:#03050a;--nu:#9fe8ff;--mu:#ff4fd8;--cr:#ff8a2a;--de:#9dff5a;--me:#ffc66b;--sp:#fff3c4;--ink:#e9eef6;--dim:#7d8a9c}
+:root{--bg:#03050a;--nu:#9fe8ff;--mu:#ff4fd8;--cr:#ff8a2a;--de:#9dff5a;--me:#ffc66b;--sp:#fff3c4;--ink:#e9eef6;--dim:#8d9aae}
 *{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
 canvas{position:absolute;left:0;top:0}
-.hud{position:absolute;left:110px;top:150px;width:818px;display:flex;gap:14px}
-.ct{flex:1;border:2px solid rgba(255,255,255,.14);border-radius:8px;padding:12px 14px 10px;background:rgba(3,5,10,.6);backdrop-filter:blur(2px)}
-.ct b{display:block;font:600 15px FC;letter-spacing:.14em;color:var(--dim)}
-.ct i{display:block;font:800 34px/1.1 AB;font-style:normal;font-stretch:118%;font-variant-numeric:tabular-nums;margin-top:6px;white-space:nowrap}
-#sub{position:absolute;left:110px;top:282px;font:600 16px FC;letter-spacing:.16em;color:var(--dim)}
-.h{position:absolute;left:110px;width:818px;top:330px;font:900 92px/.92 AB;font-stretch:125%;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase;text-shadow:0 0 30px rgba(3,5,10,.9)}
+.hud{position:absolute;left:110px;top:150px;width:818px;display:flex;gap:12px}
+.ct{flex:1;border:2px solid rgba(255,255,255,.16);border-radius:8px;padding:10px 12px 8px;background:rgba(3,5,10,.72)}
+.ct b{display:block;font:600 14px FC;letter-spacing:.12em;color:var(--dim);white-space:nowrap}
+.ct i{display:block;font:800 30px/1.1 AB;font-style:normal;font-stretch:112%;font-variant-numeric:tabular-nums;margin-top:5px;white-space:nowrap}
+#live{position:absolute;left:110px;top:262px;font:600 15px FC;letter-spacing:.16em;color:var(--dim)}
+#live i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff3b3b;margin-right:8px;vertical-align:0}
+.sc{position:absolute;inset:0;opacity:0;pointer-events:none}
+.eye{position:absolute;left:110px;top:300px;font:600 20px FC;letter-spacing:.12em;color:var(--dim);white-space:nowrap}
+.h{position:absolute;left:110px;width:818px;top:332px;font:900 74px/.95 AB;font-stretch:122%;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase;text-shadow:0 0 24px rgba(3,5,10,.95),0 2px 6px rgba(3,5,10,.9)}
 .h em{font-style:normal}
-.tag{position:absolute;font:600 18px FC;letter-spacing:.14em;padding:7px 12px;border:2px solid currentColor;border-radius:6px;background:rgba(3,5,10,.7);white-space:nowrap}
-.lab{position:absolute;font:600 19px FC;letter-spacing:.08em;white-space:nowrap}
-#cap{position:absolute;left:110px;top:1262px;width:430px;background:rgba(233,238,246,.94);border-radius:14px;padding:14px 20px;font:700 31px/1.3 Inter;color:#03050a}
+#cap{position:absolute;left:110px;top:1262px;width:430px;min-height:96px;background:rgba(233,238,246,.95);border-radius:14px;padding:13px 18px;font:700 30px/1.28 Inter;color:#03050a}
 #cap b{color:#b0129a}
-#host{position:absolute;left:566px;top:1176px;width:360px;height:360px;border-radius:12px;border:2px dashed rgba(255,255,255,.18);font:600 16px FC;color:var(--dim);display:flex;align-items:center;justify-content:center;letter-spacing:.12em}
-.sc{position:absolute;inset:0;opacity:0}
+#caprule{position:absolute;left:110px;width:430px;top:1240px;border-top:3px dashed rgba(159,232,255,.6)}
+#hostw{position:absolute;left:556px;top:1150px;width:380px;height:386px}
+#hostw canvas{position:absolute;left:0;top:0;width:380px;height:380px}
+#end{position:absolute;left:110px;top:760px;width:818px;height:320px;opacity:0}
+#pf{position:absolute;left:0;top:30px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:6px solid #03050a;box-shadow:0 0 0 5px var(--nu),0 0 40px rgba(159,232,255,.6)}
+#hd{position:absolute;left:250px;top:62px;font:800 52px/1 Inter;letter-spacing:-.02em;color:var(--ink)}
+#fo{position:absolute;left:250px;top:140px;padding:14px 40px 12px;border-radius:999px;background:var(--mu);color:#fff;font:900 40px/1 AB;font-stretch:120%;letter-spacing:.06em}
 </style></head><body>
 <canvas id="cv" width="1080" height="1920"></canvas>
-<div id="scA" class="sc"><div class="h" id="hA" style="font-size:108px;font-stretch:96%;color:var(--nu)">100,000,000,000<div style="font-size:58px;font-stretch:118%;color:var(--ink);margin-top:10px">just went through your thumbnail</div></div></div>
-<div id="scB" class="sc"><div class="h" id="hB" style="font-size:70px">Muons <em style="color:var(--mu)">should never reach you</em></div></div>
-<div id="scC" class="sc"><div class="h" id="hC" style="font-size:70px">You are <em style="color:var(--de)">≈ 260 bananas</em> radioactive</div></div>
+<div id="scenes"></div>
 <div class="hud"><div class="ct"><b>NEUTRINOS · 1 cm²</b><i id="c1" style="color:var(--nu)">0</i></div><div class="ct"><b>MUONS · YOUR PALM</b><i id="c2" style="color:var(--mu)">0</i></div><div class="ct"><b>DECAYS · INSIDE YOU</b><i id="c3" style="color:var(--de)">0</i></div></div>
-<div id="sub">● LIVE · REAL RATES SINCE YOU PRESSED PLAY</div>
-<div id="cap"></div><div id="host">AVATAR HOST</div>
-<script src="mock.js"></script></body></html>
+<div id="live"><i></i>LIVE · REAL RATES SINCE YOU PRESSED PLAY</div>
+<div id="end"><div id="pf"></div><div id="hd">@sandeshexplains</div><div id="fo">FOLLOW</div></div>
+<div id="caprule"></div><div id="cap"></div><div id="hostw"><canvas id="avc" width="544" height="544"></canvas></div>
+<video id="hostv" muted preload="auto" src="host.webm" style="display:none"></video>
+<script src="timing.js"></script><script src="app.js"></script></body></html>

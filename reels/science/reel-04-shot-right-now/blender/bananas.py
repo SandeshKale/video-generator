@@ -13,7 +13,7 @@ def srgb(h, a=1):
     c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
     return tuple(((x + .055) / 1.055) ** 2.4 if x > .04045 else x / 12.92 for x in c) + (a,)
 sc = setup((W, Hh), SPP); sc.render.film_transparent = True; sc.view_settings.view_transform = 'AgX'; sc.view_settings.look = 'AgX - Punchy'
-sc.frame_start, sc.frame_end = 1, 96; sc.render.fps = 24
+sc.frame_start, sc.frame_end = 1, 112; sc.render.fps = 24
 w = sc.world; w.node_tree.nodes['Background'].inputs[1].default_value = .05
 
 # --- one banana mesh: a curved, five-sided tube with tapered, darker tips (length ~19 cm) -------------------------------
@@ -62,7 +62,7 @@ glass = bpy.data.materials.new('glass'); glass.use_nodes = True; gb = glass.node
 gb.inputs['Base Color'].default_value = srgb('#1b2b22'); gb.inputs['Roughness'].default_value = .08; gb.inputs['Transmission Weight'].default_value = .85; gb.inputs['IOR'].default_value = 1.5
 bowl.data.materials.append(glass)
 bpy.ops.rigidbody.world_add(); rw = sc.rigidbody_world; rw.substeps_per_frame = 20; rw.solver_iterations = 20
-rw.point_cache.frame_start, rw.point_cache.frame_end = 1, 96
+rw.point_cache.frame_start, rw.point_cache.frame_end = 1, 112
 bpy.context.view_layer.objects.active = bowl; bpy.ops.rigidbody.object_add(); bowl.rigid_body.type = 'PASSIVE'; bowl.rigid_body.collision_shape = 'MESH'; bowl.rigid_body.friction = .7
 bpy.ops.mesh.primitive_plane_add(size=6, location=(0, 0, 0)); fl = bpy.context.object; fl.is_shadow_catcher = True
 bpy.ops.rigidbody.object_add(); fl.rigid_body.type = 'PASSIVE'
@@ -71,10 +71,13 @@ bpy.ops.rigidbody.object_add(); fl.rigid_body.type = 'PASSIVE'
 random.seed(7); bans = []
 for i in range(N):
     o = bpy.data.objects.new(f'b{i}', me); sc.collection.objects.link(o)
-    layer, k = divmod(i, 9); gx, gy = k % 3 - 1, k // 3 - 1     # 3x3 grid per layer, layers 6 cm apart: no overlaps at release
-    o.location = (gx * .21 + random.uniform(-.02, .02), gy * .21 + random.uniform(-.02, .02), .62 + layer * .065)
+    layer, k = divmod(i, 16); gx, gy = k % 4 - 1.5, k // 4 - 1.5  # hopper above the frame: 4x4 per layer, 6.5 cm layers, no overlaps
+    o.location = (gx * .2 + random.uniform(-.02, .02), gy * .2 + random.uniform(-.02, .02), 1.95 + layer * .065)
     o.rotation_euler = (random.uniform(-.25, .25), random.uniform(-.25, .25), random.uniform(0, 6.28))
     bpy.context.view_layer.objects.active = o; o.select_set(True); bpy.ops.rigidbody.object_add(); o.select_set(False)
+    # release: held ("animated") until its layer's frame, then pure Bullet dynamics; layers open bottom-up so they pour as a stream
+    rel = 4 + layer * 4.5 + random.uniform(0, 3); o.rigid_body.kinematic = True; o.keyframe_insert('rigid_body.kinematic', frame=int(rel))
+    o.rigid_body.kinematic = False; o.keyframe_insert('rigid_body.kinematic', frame=int(rel) + 1)
     rb = o.rigid_body; rb.collision_shape = 'CONVEX_HULL'; rb.mass = .12; rb.friction = .65; rb.restitution = .08
     rb.linear_damping = .04; rb.angular_damping = .12; rb.collision_margin = .001
     bans.append(o)
