@@ -123,7 +123,7 @@
   ev(S[2], 'whoosh'); ev(C.bed, 'pop');
   // 3 look up: cosmic-ray air showers, muons, and the relativity clocks -------------------------------------------------------------------
   var hB = mk('// COSMIC RAYS · 15 km ABOVE YOU', 'Muons <em style="color:var(--mu)">should never</em> reach you');
-  var Y15 = 520, Y0 = 1140, PXKM = (Y0 - Y15) / 15, VKM = 15 / (C.reaches - C.smash), NODES = [], SHOW = [[0, 0, 1], [-260, .7, .5], [200, 1.3, .55], [-130, 2.0, .45], [320, 2.6, .5], [-340, 3.1, .4], [70, 3.6, .45], [250, 4.4, .4], [-220, 5.0, .4]];
+  var Y15 = 590, Y0 = 1140, PXKM = (Y0 - Y15) / 15, VKM = 15 / (C.reaches - C.smash), NODES = [], SHOW = [[0, 0, 1], [-260, .7, .5], [200, 1.3, .55], [-130, 2.0, .45], [320, 2.6, .5], [-340, 3.1, .4], [70, 3.6, .45], [250, 4.4, .4], [-220, 5.0, .4]];
   (function build() { function node(x, h, ang, gen, id, mu) { NODES.push({ x: x, h: h, a: ang, g: gen, id: id, mu: mu }); if (mu) return; var hn = h - 1.3; if (gen >= 7 || hn < 6.2) { NODES[NODES.length - 1].stop = hn + .9; return }
       for (var c = 0; c < 2; c++) { var id2 = id * 2 + c, sp = .11 / (gen + 1) * (c ? 1 : -1) + (ih(id2, 41) - .5) * .05; node(x + Math.tan(ang) * 1.3 * PXKM, hn, ang + sp, gen + 1, id2, gen >= 1 && ih(id2, 42) < .3) } }
     node(560, 15, .02, 0, 1, false) })();
@@ -141,11 +141,14 @@
     // look up: the sky photo slides down as the camera tilts up
     g.save(); g.globalAlpha = a * .55; cover(IM.sky, 0, 380, W, 900, .45, lerp(.9, .25, io(seg(l, 0, 1.2)))); g.restore();
     var gr = g.createLinearGradient(0, 380, 0, 1280); gr.addColorStop(0, 'rgba(3,5,10,.2)'); gr.addColorStop(1, 'rgba(3,5,10,.9)'); g.fillStyle = gr; g.fillRect(0, 380, W, 900);
-    SHOW.slice(1).forEach(function (s) { shower1(t - s[1], a * s[2], s[0], false) }); var hf = shower1(t, a, 0, true);
+    SHOW.slice(1).forEach(function (s) { shower1(t - s[1] + 5.5, a * s[2], s[0], false) }); var hf = shower1(t, a, 0, true);
     // ruler
     g.save(); g.globalAlpha = a * seg(l, .5, 1); g.strokeStyle = 'rgba(233,238,246,.5)'; g.lineWidth = 2; g.beginPath(); g.moveTo(150, Y15); g.lineTo(150, Y0); g.stroke(); g.font = '600 17px FC'; g.fillStyle = '#9aa7ba';
-    for (var k = 0; k <= 15; k += 3) { var y = Yk(k); g.beginPath(); g.moveTo(140, y); g.lineTo(162, y); g.stroke(); g.fillText(k + ' km', 170, y + 6) }
+    for (var k = 0; k <= 15; k += 3) { var y = Yk(k); if (k === 15) { g.beginPath(); g.moveTo(140, y); g.lineTo(162, y); g.stroke(); continue } g.beginPath(); g.moveTo(140, y); g.lineTo(162, y); g.stroke(); g.fillText(k + ' km', 170, y + 6) }
     g.strokeStyle = 'rgba(157,255,90,.5)'; g.beginPath(); g.moveTo(130, Y0); g.lineTo(930, Y0); g.stroke(); g.fillStyle = '#9dff5a'; g.fillText('GROUND · YOU', 170, Y0 + 26);
+    // altitude references so "15 km" means something: airliners cruise at 10-12 km, Everest's summit is 8.8 km
+    [[11, 'airliners cruise ≈ 11 km', 1.0], [8.85, 'Everest summit 8.8 km', 1.4]].forEach(function (r) { var ra = seg(l, r[2], r[2] + .3); if (ra <= 0) return; var y = Yk(r[0]); g.globalAlpha = a * ra; g.strokeStyle = 'rgba(255,198,107,.45)'; g.setLineDash([2, 6]); g.beginPath(); g.moveTo(230, y); g.lineTo(680, y); g.stroke(); g.setLineDash([]); g.fillStyle = '#ffc66b'; g.fillText(r[1], 240, y - 8); g.globalAlpha = a * seg(l, .5, 1) });
+    g.fillStyle = '#ff8a2a'; g.globalAlpha = a * seg(l, .2, .5); g.font = '800 30px AB'; g.fillText('15 km', 230, Yk(15) + 10); g.globalAlpha = a * seg(l, .5, 1); g.font = '600 17px FC';
     if (hf > 0 && hf < 15) { g.strokeStyle = 'rgba(255,241,214,.35)'; g.setLineDash([3, 7]); g.beginPath(); g.moveTo(230, Yk(hf)); g.lineTo(930, Yk(hf)); g.stroke(); g.setLineDash([]) } g.restore();
     // time-dilation clocks: ground clock 0 -> 50 us while the front falls 15 km; the muon's clock runs gamma = 23x slower (2.2 us)
     var ca = a * seg(t, C.lives - .2, C.lives + .2), us = 50 * seg(t, C.smash, C.reaches);
@@ -194,7 +197,7 @@
   ev(S[5], 'whoosh'); ev(C.k4, 'geigerbuzz');
   // 6 bananas: Blender rigid-body pour (real time, 24 fps) + the same ~4,000 decays/s inside them -----------------------------------------
   mk('// BANANA EQUIVALENT · ~15 DECAYS/s EACH', '≈ <em style="color:var(--de)">260 bananas</em> of radioactivity');
-  var BAN = [], BPTS = []; for (var bi = 1; bi <= 112; bi++) BAN.push(img('3d/ban/ban_' + String(bi).padStart(3, '0') + '.png'));
+  var BAN = [], BPTS = []; for (var bi = 1; bi <= 112; bi++) BAN.push(img('3d/ban/ban_' + String(bi).padStart(3, '0') + '.webp'));
   var BX = 90, BY = 470, BW = 900, BH = 1000;
   function banFrame(t) { return cl(Math.floor(12 + (t - S[6]) * 24), 0, BAN.length - 1) }
   function banPts(k) { if (BPTS[k]) return BPTS[k]; var im = BAN[k]; if (!im.complete || !im.naturalWidth) return null; var c = document.createElement('canvas'); c.width = im.naturalWidth; c.height = im.naturalHeight; var x = c.getContext('2d'); x.drawImage(im, 0, 0);

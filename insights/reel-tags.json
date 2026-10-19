@@ -230,5 +230,13 @@
   "host": "avatar",
   "length": "47-60s",
   "cta": "comment-poll"
+ },
+ "reel-04-shot-right-now": {
+  "genre": "science-explainer",
+  "company": "none",
+  "voice": "avatar (english, fast)",
+  "host": "avatar",
+  "length": "47-60s",
+  "cta": "follow"
  }
 }
