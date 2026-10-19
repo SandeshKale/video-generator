@@ -7,6 +7,7 @@
   var TM = window.TM, S = TM.S, C = TM.CUE, END = TM.END, W = 1080, H = 1920;
   var cv = document.getElementById('cv'), g = cv.getContext('2d');
   var fx = document.createElement('canvas'); fx.width = W; fx.height = H; var f = fx.getContext('2d');
+  var uc = document.createElement('canvas'); uc.width = W; uc.height = H; var U = uc.getContext('2d');
   var sm = document.createElement('canvas'); sm.width = W / 4; sm.height = H / 4; var sx = sm.getContext('2d');
   var $ = function (id) { return document.getElementById(id) };
   function cl(x, a, b) { return Math.min(b == null ? 1 : b, Math.max(a || 0, x)) }
@@ -22,12 +23,12 @@
   var IM = { sky: img('img/sky.jpg'), night: img('img/earth_night.jpg'), earth: img('img/earth.jpg'), latte: img('img/latte.jpg') };
 
   // ---- small drawing helpers ------------------------------------------------------------------------------------------------
-  function tag(txt, col, x, y, a) { if (a <= 0) return; g.save(); g.globalAlpha = a; g.font = '600 17px FC'; var w = g.measureText(txt).width + 24; g.fillStyle = 'rgba(3,5,10,.78)'; g.fillRect(x, y, w, 36); g.strokeStyle = col; g.lineWidth = 2; g.strokeRect(x, y, w, 36); g.fillStyle = col; g.fillText(txt, x + 12, y + 24); g.restore(); return w }
-  function label(txt, col, x, y, a, sz, align) { if (a <= 0) return; g.save(); g.globalAlpha = a; g.font = '600 ' + (sz || 18) + 'px FC'; g.fillStyle = col; g.textAlign = align || 'left'; g.shadowColor = 'rgba(3,5,10,.9)'; g.shadowBlur = 8; g.fillText(txt, x, y); g.restore() }
-  function big(txt, col, x, y, a, sz, align) { if (a <= 0) return; g.save(); g.globalAlpha = a; g.font = '900 ' + sz + 'px AB'; g.fillStyle = col; g.textAlign = align || 'left'; g.shadowColor = 'rgba(3,5,10,.9)'; g.shadowBlur = 14; g.fillText(txt, x, y); g.restore() }
-  function square(x, y, a, col, txt, s) { if (a <= 0) return; s = s || 77; g.save(); g.globalAlpha = a; g.strokeStyle = col; g.lineWidth = 3; g.strokeRect(x - s, y - s, 2 * s, 2 * s);
-    g.beginPath(); [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function (c) { g.moveTo(x + c[0] * s, y + c[1] * s); g.lineTo(x + c[0] * (s + 26), y + c[1] * (s + 26)) }); g.stroke();
-    if (txt) { g.font = '600 17px FC'; g.fillStyle = col; g.shadowColor = '#03050a'; g.shadowBlur = 6; g.fillText(txt, x - s, y + s + 30) } g.restore() }
+  function tag(txt, col, x, y, a) { if (a <= 0) return; U.save(); U.globalAlpha = a; U.font = '600 17px FC'; var w = U.measureText(txt).width + 24; U.fillStyle = 'rgba(3,5,10,.78)'; U.fillRect(x, y, w, 36); U.strokeStyle = col; U.lineWidth = 2; U.strokeRect(x, y, w, 36); U.fillStyle = col; U.fillText(txt, x + 12, y + 24); U.restore(); return w }
+  function label(txt, col, x, y, a, sz, align) { if (a <= 0) return; U.save(); U.globalAlpha = a; U.font = '600 ' + (sz || 18) + 'px FC'; U.fillStyle = col; U.textAlign = align || 'left'; U.shadowColor = 'rgba(3,5,10,.9)'; U.shadowBlur = 8; U.fillText(txt, x, y); U.restore() }
+  function big(txt, col, x, y, a, sz, align) { if (a <= 0) return; U.save(); U.globalAlpha = a; U.font = '900 ' + sz + 'px AB'; U.fillStyle = col; U.textAlign = align || 'left'; U.shadowColor = 'rgba(3,5,10,.9)'; U.shadowBlur = 14; U.fillText(txt, x, y); U.restore() }
+  function square(x, y, a, col, txt, s) { if (a <= 0) return; s = s || 77; U.save(); U.globalAlpha = a; U.strokeStyle = col; U.lineWidth = 3; U.strokeRect(x - s, y - s, 2 * s, 2 * s);
+    U.beginPath(); [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(function (c) { U.moveTo(x + c[0] * s, y + c[1] * s); U.lineTo(x + c[0] * (s + 26), y + c[1] * (s + 26)) }); U.stroke();
+    if (txt) { U.font = '600 17px FC'; U.fillStyle = col; U.shadowColor = '#03050a'; U.shadowBlur = 6; U.fillText(txt, x - s, y + s + 30) } U.restore() }
   function streak(x1, y1, x2, y2, col, w, a) { f.globalAlpha = a; f.strokeStyle = col; f.lineWidth = w; f.beginPath(); f.moveTo(x1, y1); f.lineTo(x2, y2); f.stroke() }
   function cover(im, x, y, w, h, fx0, fy0, zoom) {   // draw an image cropped to fill (x,y,w,h); fx0/fy0 = focus 0..1
     if (!im.complete || !im.naturalWidth) return; var iw = im.naturalWidth, ihh = im.naturalHeight, s = Math.max(w / iw, h / ihh) * (zoom || 1), sw = w / s, sh = h / s;
@@ -152,11 +153,11 @@
     if (hf > 0 && hf < 15) { g.strokeStyle = 'rgba(255,241,214,.35)'; g.setLineDash([3, 7]); g.beginPath(); g.moveTo(230, Yk(hf)); g.lineTo(930, Yk(hf)); g.stroke(); g.setLineDash([]) } g.restore();
     // time-dilation clocks: ground clock 0 -> 50 us while the front falls 15 km; the muon's clock runs gamma = 23x slower (2.2 us)
     var ca = a * seg(t, C.lives - .2, C.lives + .2), us = 50 * seg(t, C.smash, C.reaches);
-    [[800, 640, 'OUR CLOCK', us, '#e9eef6'], [800, 870, 'MUON’S CLOCK', us / 23, COL.mu]].forEach(function (d, i) { if (ca <= 0) return; g.save(); g.globalAlpha = ca;
-      g.fillStyle = 'rgba(3,5,10,.7)'; g.beginPath(); g.arc(d[0], d[1], 90, 0, 7); g.fill(); g.strokeStyle = 'rgba(233,238,246,.22)'; g.lineWidth = 8; g.beginPath(); g.arc(d[0], d[1], 78, 0, 7); g.stroke();
-      g.strokeStyle = d[4]; g.beginPath(); g.arc(d[0], d[1], 78, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * (i ? d[3] / 2.2 : d[3] / 50) * (i ? 2.2 / 50 : 1)); g.stroke();
-      g.font = '800 32px AB'; g.fillStyle = d[4]; g.textAlign = 'center'; g.fillText(d[3].toFixed(1) + ' µs', d[0], d[1] + 11); g.font = '600 14px FC'; g.fillStyle = '#9aa7ba'; g.fillText(d[2], d[0], d[1] + 118);
-      if (i && t > C.clock) { var pz = Math.max(0, 1 - (t - C.clock) / .5); g.strokeStyle = COL.mu; g.lineWidth = 4; g.globalAlpha = ca * pz; g.beginPath(); g.arc(d[0], d[1], 90 + 30 * (1 - pz), 0, 7); g.stroke() } g.restore() });
+    [[800, 640, 'OUR CLOCK', us, '#e9eef6'], [800, 870, 'MUON’S CLOCK', us / 23, COL.mu]].forEach(function (d, i) { if (ca <= 0) return; U.save(); U.globalAlpha = ca;
+      U.fillStyle = 'rgba(3,5,10,.7)'; U.beginPath(); U.arc(d[0], d[1], 90, 0, 7); U.fill(); U.strokeStyle = 'rgba(233,238,246,.22)'; U.lineWidth = 8; U.beginPath(); U.arc(d[0], d[1], 78, 0, 7); U.stroke();
+      U.strokeStyle = d[4]; U.beginPath(); U.arc(d[0], d[1], 78, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * (i ? d[3] / 2.2 : d[3] / 50) * (i ? 2.2 / 50 : 1)); U.stroke();
+      U.font = '800 32px AB'; U.fillStyle = d[4]; U.textAlign = 'center'; U.fillText(d[3].toFixed(1) + ' µs', d[0], d[1] + 11); U.font = '600 14px FC'; U.fillStyle = '#9aa7ba'; U.fillText(d[2], d[0], d[1] + 118);
+      if (i && t > C.clock) { var pz = Math.max(0, 1 - (t - C.clock) / .5); U.strokeStyle = COL.mu; U.lineWidth = 4; U.globalAlpha = ca * pz; U.beginPath(); U.arc(d[0], d[1], 90 + 30 * (1 - pz), 0, 7); U.stroke() } U.restore() });
     label('× = where a muon dies without Einstein (~660 m)', COL.mu, 110, 1186, a * seg(t, C.die, C.die + .3), 17);
     var ein = seg(t, C.einstein, C.einstein + .25); if (ein > 0) tag('EINSTEIN: γ ≈ 23 → 2.2 µs LASTS 50 µs FOR US', COL.mu, 110, 1214, a * ein);
     tag('SLOWED ≈ 110,000×', COL.cr, 750, 1186, a * seg(t, C.smash, C.smash + .3) * (1 - ein));
@@ -284,14 +285,17 @@
   window.EV = EV.sort(function (a, b) { return a[0] - b[0] });
   window.__reelDurationSec = END;
   window.__seek = function (t) {
-    t = Math.max(0, Math.min(END - 1e-3, t)); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H); f.clearRect(0, 0, W, H); bg(t);
+    t = Math.max(0, Math.min(END - 1e-3, t)); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, W, H); f.clearRect(0, 0, W, H); U.clearRect(0, 0, W, H); bg(t);
     // sequential cuts with a small "dive": the outgoing scene pushes in and clears in .22 s, the incoming settles from 0.94 in .2 s
     SC.forEach(function (fn, si) { var s0 = S[si], s1 = si + 1 < S.length ? S[si + 1] : END, op = 0, sc = 1;
       if (t >= s0 && t < s1) { op = Math.min(seg(t, s0, s0 + .2) || (si === 0 ? 1 : 0), si < S.length - 1 ? 1 - seg(t, s1 - .22, s1) : 1); if (si === 0) op = Math.min(1, si < S.length - 1 ? 1 - seg(t, s1 - .22, s1) : 1); sc = lerp(.94, 1, e3(seg(t, s0, s0 + .2))) * lerp(1, 1.06, seg(t, s1 - .22, s1)); if (si === 0) sc = lerp(1, 1.06, seg(t, s1 - .22, s1)) }
       DOMS[si].style.opacity = op; DOMS[si].style.transform = 'scale(' + sc + ')';
-      if (op > 0) { g.save(); f.save(); [g, f].forEach(function (c) { c.translate(540, 860); c.scale(sc, sc); c.translate(-540, -860) }); fn(t, op); g.restore(); f.restore() } });
+      if (op > 0) { g.save(); f.save(); U.save(); [g, f, U].forEach(function (c) { c.translate(540, 860); c.scale(sc, sc); c.translate(-540, -860) }); fn(t, op); g.restore(); f.restore(); U.restore() } });
     sx.clearRect(0, 0, sm.width, sm.height); sx.filter = 'blur(3px)'; sx.drawImage(fx, 0, 0, sm.width, sm.height); sx.filter = 'none';
-    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = .9; g.drawImage(sm, 0, 0, W, H); g.globalAlpha = 1; g.drawImage(fx, 0, 0); g.restore();
+    g.save(); g.globalCompositeOperation = 'lighter'; g.globalAlpha = .9; g.drawImage(sm, 0, 0, W, H); g.globalAlpha = 1; g.drawImage(fx, 0, 0); g.restore(); g.drawImage(uc, 0, 0);
+    // ambient detector scan: a faint read-out band sweeping the stage every 1.8 s (keeps slow, local physics from reading as a still frame)
+    var sp = (t % 1.8) / 1.8, sy = lerp(330, 1300, sp), sb = g.createLinearGradient(0, sy - 90, 0, sy + 30); sb.addColorStop(0, 'rgba(159,232,255,0)'); sb.addColorStop(.8, 'rgba(159,232,255,.10)'); sb.addColorStop(1, 'rgba(159,232,255,0)');
+    g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = sb; g.fillRect(0, sy - 90, W, 120); g.fillStyle = 'rgba(159,232,255,.22)'; g.fillRect(0, sy + 18, W, 2); g.restore();
     var scr = g.createLinearGradient(0, 40, 0, 520); scr.addColorStop(0, 'rgba(3,5,10,0)'); scr.addColorStop(.2, 'rgba(3,5,10,.82)'); scr.addColorStop(.7, 'rgba(3,5,10,.5)'); scr.addColorStop(1, 'rgba(3,5,10,0)'); g.fillStyle = scr; g.fillRect(0, 40, W, 480);
     var gl = 1 - seg(Math.abs(t - nearestCut(t)), 0, .08); if (gl > 0) { g.save(); g.globalAlpha = gl * .16; g.fillStyle = '#e8f6ff'; g.fillRect(0, 0, W, H); g.restore() }   // a faint flash on every cut
     $('c1').textContent = fmt(6.5e10 * t); $('c2').textContent = fmt(100 / 60 * t); $('c3').textContent = fmt(4000 * t);
