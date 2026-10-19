@@ -139,7 +139,7 @@
   window.__reelDurationSec = END;
   window.__seek = function (t) {
     g.clearRect(0, 0, W, H); f.clearRect(0, 0, W, H); bg(t);
-    var aA = 1 - seg(t, SA[1] - .25, SA[1]), aB = Math.min(seg(t, SB[0] - .1, SB[0] + .2), 1 - seg(t, SB[1] - .25, SB[1])), aC = seg(t, SC[0] - .1, SC[0] + .2);
+    var aA = 1 - seg(t, SA[1] - .25, SA[1]), aB = Math.min(seg(t, SB[0], SB[0] + .2), 1 - seg(t, SB[1] - .25, SB[1])), aC = seg(t, SC[0], SC[0] + .2);   // sequential cuts: never two scenes at once
     // A
     if (aA > 0) {
       var pb = io(seg(t, 2.9, 3.9)), sc2 = 1 - pb * .985;
