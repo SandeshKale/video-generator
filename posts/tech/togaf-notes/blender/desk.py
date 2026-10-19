@@ -11,14 +11,14 @@ def srgb(h, a=1):
     c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
     return tuple(((x + .055) / 1.055) ** 2.4 if x > .04045 else x / 12.92 for x in c) + (a,)
 # per-page variation: notebook yaw (deg), pen [x, y, yaw], highlighter [x, y, yaw, colour], mug corner, sun yaw, sticky
-V = {1: dict(rot=-2.2, pen=(-0.012, -0.108, 186), hl=(-0.03, 0.128, 4, '#f5e21c'), mug=(.122, .15), sun=-38, sticky=(.083, -.07, 9, 1)),
-     2: dict(rot=1.6, pen=(0.01, -0.108, 174), hl=(0.04, -0.137, -3, '#ff5fa8'), mug=(-.122, .15), sun=-30, sticky=None),
-     3: dict(rot=-1.2, pen=(-0.02, -0.108, 183), hl=(-0.05, -0.137, 182, '#6fe36f'), mug=(.122, -.15), sun=-42, sticky=None),
-     4: dict(rot=2.4, pen=(0.015, -0.108, 177), hl=(0.02, 0.128, 176, '#f5e21c'), mug=(-.122, -.15), sun=-34, sticky=None),
-     5: dict(rot=-2.8, pen=(0, -0.108, 188), hl=(-0.04, 0.128, 3, '#5fc8ff'), mug=(.122, .15), sun=-40, sticky=None),
-     6: dict(rot=1.2, pen=(-0.01, -0.108, 172), hl=(0.05, -0.137, -5, '#ff5fa8'), mug=(.122, -.15), sun=-28, sticky=None),
-     7: dict(rot=-1.8, pen=(0.02, -0.108, 185), hl=(-0.02, -0.137, 178, '#6fe36f'), mug=(-.122, .15), sun=-36, sticky=None),
-     8: dict(rot=2.0, pen=(-0.015, -0.108, 176), hl=(0.03, 0.128, -4, '#f5e21c'), mug=(.122, .15), sun=-44, sticky=None)}[P]
+V = {1: dict(rot=-2.2, pen=(-0.012, -0.108, 186), hl=(-0.03, 0.128, 4, '#f5e21c'), mug=(0.122, 0.15), sun=-38, sticky=(.083, -.07, 9, 1)),
+     2: dict(rot=1.6, pen=(0.01, -0.108, 174), hl=(0.04, -0.137, -3, '#ff5fa8'), mug=(0.118, 0.153), sun=-30, sticky=None),
+     3: dict(rot=-1.2, pen=(-0.02, -0.108, 183), hl=(-0.05, -0.137, 182, '#6fe36f'), mug=(0.126, 0.147), sun=-42, sticky=None),
+     4: dict(rot=2.4, pen=(0.015, -0.108, 177), hl=(0.02, 0.128, 176, '#f5e21c'), mug=(0.12, 0.155), sun=-34, sticky=None),
+     5: dict(rot=-2.8, pen=(0, -0.108, 188), hl=(-0.04, 0.128, 3, '#5fc8ff'), mug=(0.124, 0.149), sun=-40, sticky=None),
+     6: dict(rot=1.2, pen=(-0.01, -0.108, 172), hl=(0.05, -0.137, -5, '#ff5fa8'), mug=(0.122, 0.151), sun=-28, sticky=None),
+     7: dict(rot=-1.8, pen=(0.02, -0.108, 185), hl=(-0.02, -0.137, 178, '#6fe36f'), mug=(0.119, 0.148), sun=-36, sticky=None),
+     8: dict(rot=2.0, pen=(-0.015, -0.108, 176), hl=(0.03, 0.128, -4, '#f5e21c'), mug=(0.125, 0.152), sun=-44, sticky=None)}[P]
 sc = setup(RES, SPP); sc.view_settings.view_transform = 'AgX'; sc.view_settings.look = 'AgX - Medium High Contrast'
 sc.render.film_transparent = False; sc.render.image_settings.color_depth = '16'; sc.cycles.max_bounces = 6
 w = sc.world; nt = w.node_tree; bg = nt.nodes['Background']; env = nt.nodes.new('ShaderNodeTexEnvironment')
