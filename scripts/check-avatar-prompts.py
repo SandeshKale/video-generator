@@ -36,6 +36,9 @@ HOOK = '0-3s ENTHUSIASTIC AND ENGAGING'
 # expressive performance block swaps the R8 face line for its own anti-mugging guardrails.
 EXPRESSIVE = 'PERFORMANCE (expressive and playful, never over the top):'
 EXPRESSIVE_FACE = 'No mugging, no cartoonish faces, no wide-eyed acting'
+# R17: when the creator asks for maximum pace (19 Oct 2026: "avatar videos need to be as fast as they can be"), a prompt declares
+# FAST and may carry up to ~48 words per 15 s part, delivered quickly but clearly (no rushing that drops syllables).
+FAST = 'PACE: FAST AND PUNCHY'
 # Words that have needed a respelling before; if one is spoken in a part, its PRONUNCIATION line must cover it.
 RISKY = ['Claude', 'Klaw-dex', 'Codex', 'Astra', 'TradingView', 'Co-work', 'Cowork', 'SEBI', 'G P T', 'tokenizer', 'web-hook', 'Pine Script', 'Ollama']
 
@@ -87,7 +90,9 @@ def main(path):
         if cues > max(2, sections): fails.append(f'{tag}: {cues} word-anchored cues in MOOD; max one per section (R5: never per word)')
         if cues == 0: warns.append(f'{tag}: no word-anchored cue; R10 asks expressions/nods to match the script on its key line')
         words = len(script.split())
-        if words > 34: fails.append(f'{tag}: {words} words; > ~34 overruns 15 s at the slower pace (R12)')
+        cap = 48 if FAST in body else 34
+        if words > cap: fails.append(f'{tag}: {words} words; > ~{cap} overruns 15 s at this pace (R12/R17)')
+        if FAST in body and words < 36: warns.append(f'{tag}: FAST part with only {words} words; pack it to ~40-46 (R17)')
         if re.search(r'\b(um|uh|erm)\b', script, re.I): fails.append(f'{tag}: synthetic fillers in SCRIPT (R9: no um/uh)')
         if re.search(r'[0-9&%=/@#]', script): fails.append(f'{tag}: digits or symbols in SCRIPT; write them as spoken (R11)')
         for w in RISKY:
