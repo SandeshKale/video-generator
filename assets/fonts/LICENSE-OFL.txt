@@ -25,6 +25,8 @@ Fonts vendored in this folder:
 - bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2
 - bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2
 - bebas-neue/bebas-neue-latin-400-normal.woff2 (@fontsource/bebas-neue, OFL; reel-king-december-clash)
+- caveat/caveat-latin-{400,600,700}-normal.woff2 (@fontsource/caveat, OFL; posts/tech/togaf-notes)
+- architects-daughter/architects-daughter-latin-400-normal.woff2 (@fontsource/architects-daughter, OFL; posts/tech/togaf-notes)
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
 @fontsource/jetbrains-mono, @fontsource/space-grotesk,

@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><title>TOGAF notes page</title><style>
+@font-face{font-family:CV;font-weight:400;src:url(fonts/caveat-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:CV;font-weight:500 600;src:url(fonts/caveat-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:CV;font-weight:700;src:url(fonts/caveat-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:AD;font-weight:400;src:url(fonts/architects-daughter-latin-400-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1600px;height:2240px;background:transparent;overflow:hidden}
+#page{position:absolute;left:0;top:0;width:1600px;height:2240px;background:#f5f0e3;overflow:hidden;-webkit-mask:radial-gradient(circle at 36px 46px,transparent 13px,#000 15px) 0 0/72px 100% repeat-x;mask:radial-gradient(circle at 36px 46px,transparent 13px,#000 15px) 0 0/72px 100% repeat-x}
+#rules{position:absolute;inset:0;background:
+ linear-gradient(90deg,transparent 168px,rgba(206,72,78,.55) 168px,rgba(206,72,78,.55) 171px,transparent 171px,transparent 176px,rgba(206,72,78,.35) 176px,rgba(206,72,78,.35) 178px,transparent 178px),
+ repeating-linear-gradient(180deg,transparent 0,transparent 63px,rgba(92,138,196,.42) 63px,rgba(92,138,196,.42) 66px);background-position:0 0,0 236px;background-size:100% 100%,100% 66px;background-repeat:no-repeat,repeat-y}
+#rules:before{content:"";position:absolute;left:0;right:0;top:0;height:233px;background:#f5f0e3}
+#hdr{position:absolute;right:120px;top:150px;font:400 26px/1 AD;color:rgba(92,138,196,.75);letter-spacing:.12em}
+#hdr span{display:inline-block;width:150px;border-bottom:2px solid rgba(92,138,196,.6);margin:0 18px 0 10px}
+#fib{position:absolute;inset:0;opacity:.16;mix-blend-mode:multiply}
+#hl{position:absolute;inset:0;mix-blend-mode:multiply;overflow:visible}
+#pen{position:absolute;inset:0;overflow:visible}
+.w{position:absolute;white-space:nowrap;line-height:1;text-shadow:0 0 .6px currentColor}
+.w span{text-shadow:inherit}
+.stain{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(150,95,40,0) 82%,rgba(150,95,40,.20) 90%,rgba(130,80,30,.38) 95%,rgba(150,95,40,0) 100%);mix-blend-mode:multiply;filter:blur(1px)}
+</style></head><body><div id="page"><div id="rules"></div>
+<svg id="fib" width="1600" height="2240"><filter id="f"><feTurbulence type="fractalNoise" baseFrequency=".9 .12" numOctaves="3" seed="4"/><feColorMatrix type="saturate" values="0"/></filter><rect width="1600" height="2240" filter="url(#f)"/></svg>
+<div id="hdr">DATE<span></span>NO.<span style="width:90px"></span></div>
+<svg id="hl" width="1600" height="2240"></svg><svg id="pen" width="1600" height="2240"></svg></div>
+<script src="vendor/rough.min.js"></script><script src="notes.js"></script><script src="pages.js"></script>
+<script>
+var P=+(new URLSearchParams(location.search).get('p')||1);
+Promise.all(['500 52px CV','700 52px CV','400 52px CV','400 30px AD'].map(function(f){return document.fonts.load(f)})).then(function(){
+ N.seed(P*7+3);PAGES[P]();finish();window.__done=true}).catch(function(e){document.title='ERR '+e;window.__done=true});
+</script></body></html>
