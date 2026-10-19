@@ -134,7 +134,7 @@
     NODES.forEach(function (n) { if (hf > n.h) return; var h1 = n.mu ? 0 : (n.stop != null ? n.stop : n.h - 1.3), hEnd = Math.max(h1, hf), nx = n.x + dx, x2 = nx + Math.tan(n.a) * (n.h - hEnd) * PXKM, age = (n.h - hf) / VKM;
       var fade = n.mu ? 1 : (n.stop != null ? 1 - seg(hf, n.stop, n.stop - 2) : 1) * (1 - seg(age, 1.4, 2.6) * .55);
       streak(nx, Yk(n.h), x2, Yk(hEnd), n.mu ? COL.mu : COL.cr, n.mu ? 3 : Math.max(1.2, 4 - n.g * .4), a * fade * (n.mu ? .95 : .8));
-      if (n.mu || n.g < 4) { g.save(); g.globalAlpha = a * fade * .2 * seg(age, 0, .6); g.strokeStyle = '#cfd8e6'; g.lineWidth = 6 + 10 * seg(age, 0, 2.5); g.filter = 'blur(4px)'; g.beginPath(); g.moveTo(nx, Yk(n.h)); g.lineTo(x2, Yk(hEnd)); g.stroke(); g.restore() }   // vapour trail
+      if (n.mu || n.g < 4) streak(nx, Yk(n.h), x2, Yk(hEnd), '#cfd8e6', 6 + 10 * seg(age, 0, 2.5), a * fade * .07 * seg(age, 0, .6));   // vapour trail (wide, faint; the bloom pass softens it - no per-stroke blur filter)
       if (main && n.mu && t > C.die && hf < n.h - .66) { var gx = nx + Math.tan(n.a) * .66 * PXKM + 24, gy = Yk(n.h - .66); g.save(); g.globalAlpha = a * .8 * seg(t, C.die, C.die + .3); g.strokeStyle = COL.mu; g.lineWidth = 2; g.setLineDash([5, 6]); g.beginPath(); g.moveTo(nx + 24, Yk(n.h)); g.lineTo(gx, gy); g.stroke(); g.setLineDash([]); g.beginPath(); g.moveTo(gx - 7, gy - 7); g.lineTo(gx + 7, gy + 7); g.moveTo(gx + 7, gy - 7); g.lineTo(gx - 7, gy + 7); g.stroke(); g.restore() }
       if (n.mu && hf <= 0 && hf > -1.5) { f.globalAlpha = a * (1 + hf / 1.5); f.fillStyle = COL.mu; f.beginPath(); f.arc(x2, Y0, 8, 0, 7); f.fill() } });
     f.globalAlpha = 1; return hf }
@@ -160,7 +160,7 @@
       if (i && t > C.clock) { var pz = Math.max(0, 1 - (t - C.clock) / .5); U.strokeStyle = COL.mu; U.lineWidth = 4; U.globalAlpha = ca * pz; U.beginPath(); U.arc(d[0], d[1], 90 + 30 * (1 - pz), 0, 7); U.stroke() } U.restore() });
     label('× = where a muon dies without Einstein (~660 m)', COL.mu, 110, 1186, a * seg(t, C.die, C.die + .3), 17);
     var ein = seg(t, C.einstein, C.einstein + .25); if (ein > 0) tag('EINSTEIN: γ ≈ 23 → 2.2 µs LASTS 50 µs FOR US', COL.mu, 110, 1214, a * ein);
-    tag('SLOWED ≈ 110,000×', COL.cr, 750, 1186, a * seg(t, C.smash, C.smash + .3) * (1 - ein));
+    tag('SLOWED ≈ 110,000×', COL.cr, 110, 1214, a * seg(t, C.smash, C.smash + .3) * (1 - ein));
     hB.querySelector('.h').innerHTML = t < C.einstein ? 'Muons <em style="color:var(--mu)">should never</em> reach you' : '<em style="color:var(--mu)">Einstein</em> says they do';
   });
   ev(S[3], 'whoosh'); ev(C.cosmic, 'riser'); ev(C.smash, 'boom'); ev(C.die, 'tick'); ev(C.reaches, 'hit'); ev(C.einstein, 'chime'); ev(C.clock, 'pulse');
