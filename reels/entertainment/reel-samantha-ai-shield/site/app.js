@@ -14,6 +14,7 @@
   var EV = []; function ev(t, k) { EV.push([+t.toFixed(3), k]) }
   var INK = '#14101a', PAPER = '#f4ecd8', PK = '#ff2d78', TQ = '#00b8ad', SF = '#ffb000', DIM = '#6d6458';
   function img(src) { var i = new Image(); i.src = src; return i }
+  var PH = {}; ['samantha', 'preity', 'akshay', 'shilpa', 'kartik', 'suniel'].forEach(function (k) { PH[k] = img('img/' + k + '.jpg') });
   var GAV = []; for (var gi = 0; gi < 14; gi++) GAV.push(img('3d/gavel_' + String(gi).padStart(2, '0') + '.png'));
 
   // ---- halftone newsprint ground: a pink dot screen that drifts (pure t) ------------------------------------------------------------
@@ -35,6 +36,11 @@
       var sh = g.createLinearGradient(-.3 * h, 0, .3 * h, 0); sh.addColorStop(0, 'rgba(255,255,255,.38)'); sh.addColorStop(.5, 'rgba(255,255,255,0)'); sh.addColorStop(1, 'rgba(0,0,0,.22)'); g.fillStyle = sh; body(); g.fill();
       g.strokeStyle = 'rgba(20,16,26,.28)'; g.lineWidth = Math.max(1, h * .008); g.beginPath(); g.moveTo(-.2 * h, -.18 * h); g.quadraticCurveTo(0, -.1 * h, .2 * h, -.18 * h); g.moveTo(0, -.5 * h); g.lineTo(0, .08 * h); g.stroke() }
     g.restore() }
+  // a real portrait (TMDB) as a taped photo card, cropped to the face (top of the image); label strip inside the bottom
+  function photo(k, x, y, w, h, a, rot, label, sub) { var im = PH[k]; if (a <= 0 || !im.complete || !im.naturalWidth) return; g.save(); g.globalAlpha = a; g.translate(x + w / 2, y + h / 2); g.rotate(rot || 0); g.fillStyle = '#fffdf3'; g.fillRect(-w / 2 - 8, -h / 2 - 8, w + 16, h + 16 + (label ? 6 : 0)); g.strokeStyle = INK; g.lineWidth = 4; g.strokeRect(-w / 2 - 8, -h / 2 - 8, w + 16, h + 16 + (label ? 6 : 0));
+    var sw = im.naturalWidth, sh = sw * h / w; g.drawImage(im, 0, Math.min(im.naturalHeight - sh, im.naturalHeight * .02), sw, sh, -w / 2, -h / 2, w, h);
+    if (label) { g.fillStyle = INK; g.fillRect(-w / 2, h / 2 - 44, w, 44); g.fillStyle = PAPER; g.font = '400 17px SE'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(label, -w / 2 + 8, h / 2 - 28); g.fillStyle = SF; g.font = '400 14px SE'; g.fillText(sub || '', -w / 2 + 8, h / 2 - 11) }
+    g.fillStyle = 'rgba(255,176,0,.8)'; g.fillRect(-34, -h / 2 - 20, 68, 24); g.restore() }
   function stamp(label, x, y, w, hh, col, rot, u, a) { if (u <= 0) return; var s = u < 1 ? lerp(2.4, 1, e3(u)) : 1; g.save(); g.globalAlpha = a == null ? cl(u * 3) : a; g.translate(x, y); g.rotate(rot); g.scale(s, s);
     g.strokeStyle = col; g.lineWidth = 9; g.strokeRect(-w / 2, -hh / 2, w, hh); g.lineWidth = 3; g.strokeRect(-w / 2 + 12, -hh / 2 + 12, w - 24, hh - 24); g.fillStyle = col; g.font = '400 ' + Math.floor(hh * .5) + 'px BG'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(label, 0, 4); g.restore() }
   function lock(x, y, s, col, a) { if (a <= 0) return; g.save(); g.globalAlpha = a; g.translate(x, y); g.fillStyle = col; g.strokeStyle = INK; g.lineWidth = 4; rr(-s / 2, -s * .1, s, s * .8, s * .12); g.fill(); g.stroke(); g.beginPath(); g.arc(0, -s * .1, s * .3, Math.PI, 0); g.lineWidth = s * .14; g.stroke(); g.restore() }
@@ -84,7 +90,7 @@
     DOCK.forEach(function (ln, i) { var part = ln.slice(0, Math.max(0, Math.min(ln.length, shown - pos))); pos += ln.length + 2; txt(part, 150, y + 130 + i * 46, i === 0 || i === 2 ? '400 34px BG' : '400 27px SE', INK, a) });
     if (Math.floor(t * 2) % 2 === 0) { g.save(); g.globalAlpha = a; g.fillStyle = INK; g.fillRect(150 + (pos > 0 ? 6 : 0) + 18 * 0, y + 130 + 6 * 46 + 8, 14, 28); g.restore() }
     stamp('INTERIM', 760, y + 450, 330, 100, SF, .12, seg(l, 1.6, 1.85), a); mask(790, y + 20 + 0, 0, TQ, 0);
-    mask(250, y + 580, 200, TQ, a * seg(l, .3, .6)); txt('NAME · IMAGE · VOICE: HERS', 380, y + 590, '400 24px SE', INK, a * seg(l, .6, .9)); tag('JUSTICE MADHAV JAMDAR · REPORTED', TQ, 380, y + 610, a * seg(l, .8, 1.1)) });
+    photo('samantha', 160, y + 452, 150, 168, a * seg(l, .3, .6), -.05, 'S. R. PRABHU', 'REAL PHOTO · TMDB'); txt('NAME · IMAGE · VOICE: HERS', 380, y + 560, '400 24px SE', INK, a * seg(l, .6, .9)); tag('JUSTICE MADHAV JAMDAR · REPORTED', TQ, 380, y + 590, a * seg(l, .8, 1.1)) });
   ev(S[1], 'whoosh'); ev(S[1] + 1.6, 'stamp');
 
   // 2 fakes everywhere -> gavel -> order (one continuous scene so the strike is never cut) ------------------------------------------------------
@@ -125,7 +131,7 @@
   function strip(label, sub, x, y, w, t0, t, a, col) { var u = seg(t, t0, t0 + .25); if (u <= 0) return; g.save(); g.globalAlpha = a * u; g.translate(x + (1 - e3(u)) * 140, y); g.rotate((1 - u) * .05); g.fillStyle = col; g.fillRect(0, 0, w, 84); g.strokeStyle = INK; g.lineWidth = 5; g.strokeRect(0, 0, w, 84);
     g.fillStyle = INK; g.font = '400 31px BG'; g.textBaseline = 'middle'; g.fillText(label, 112, 30); g.font = '400 19px SE'; g.fillText(sub, 112, 62); g.restore(); mask(x + 54 + (1 - e3(u)) * 140, y + 50, 78, PK, a * u, {}) }
   SC.push(function (t, a) { var l = t - S[3];
-    var nu = seg(t, C.preity - .2, C.preity + .25); if (nu > 0) { g.save(); g.globalAlpha = a * nu; g.translate(110 + (1 - e3(nu)) * -60, 470); g.rotate(-.012); g.fillStyle = '#fffdf3'; g.fillRect(0, 0, 808, 124); g.strokeStyle = INK; g.lineWidth = 5; g.strokeRect(0, 0, 808, 124); g.fillStyle = INK; g.font = '400 52px BG'; g.textBaseline = 'alphabetic'; g.fillText('PREITY ZINTA', 24, 66); g.font = '400 21px SE'; g.fillText('SAME COURT · INTERIM ORDER · JULY 2026 · AS REPORTED', 24, 102); g.restore() }
+    var nu = seg(t, C.preity - .2, C.preity + .25); if (nu > 0) { g.save(); g.globalAlpha = a * nu; g.translate(110 + (1 - e3(nu)) * -60, 470); g.rotate(-.012); g.fillStyle = '#fffdf3'; g.fillRect(0, 0, 808, 124); g.strokeStyle = INK; g.lineWidth = 5; g.strokeRect(0, 0, 808, 124); g.fillStyle = INK; g.font = '400 46px BG'; g.textBaseline = 'alphabetic'; g.fillText('PREITY ZINTA', 168, 66); g.font = '400 19px SE'; g.fillText('SAME COURT · INTERIM ORDER · JUL 2026 · REPORTED', 168, 102); g.restore(); photo('preity', 118, 470 + 6, 118, 118, a * nu, -.03, null) }
     var cu = seg(t, C.links - .3, C.links + .1), cnt = Math.round(275 * e3(seg(t, C.links, C.links + .9)));
     if (cu > 0) { g.save(); g.globalAlpha = a * cu; g.translate(110, 640); g.fillStyle = PK; g.fillRect(0, 0, 808, 236); g.strokeStyle = INK; g.lineWidth = 6; g.strokeRect(0, 0, 808, 236); g.restore(); txt('~' + cnt, 150, 790, '400 150px BG', PAPER, a * cu, 'left', 6); txt('LINKS', 610, 770, '400 52px BG', PAPER, a * cu); txt('FLAGGED · REPORTED, APPROX.', 610, 812, '400 19px SE', PAPER, a * cu);
       var pr = (cnt % 50) / 50; if (cu >= 1 && cnt < 275) { g.save(); g.globalAlpha = a * (1 - pr) * .5; g.strokeStyle = PAPER; g.lineWidth = 4; g.beginPath(); g.arc(860, 700, 18 + 30 * pr, 0, 7); g.stroke(); g.restore() } }
@@ -144,10 +150,12 @@
       if (gone > 0 && gone < 1) { g.save(); g.globalAlpha = a * (1 - gone); g.strokeStyle = TQ; g.lineWidth = 8; g.beginPath(); g.moveTo(cx[i], 600); g.lineTo(cx[i], 650 - 190 * io(gone) + 90); g.stroke(); g.restore() } }
     stamp('REMOVED', 540, 750, 380, 100, TQ, -.08, seg(t, C.pull + .8, C.pull + 1.0), a);
     tag('ILLUSTRATION · POST CARDS, NOT REAL POSTS', PK, 110, 840, a * seg(t, S[4] + .4, S[4] + .7), PAPER);
-    txt('SAME SHIELD, MORE NAMES', 110, 930, '400 30px BG', INK, a * seg(t, C.bollywood - .1, C.bollywood + .2));
-    for (var q = 0; q < 6; q++) { var qb = C.bollywood + .1 + q * (C.shield - C.bollywood) / 7, qu = seg(t, qb - .15, qb + .15); if (qu <= 0) continue; var qx = 190 + q * 135, st = seg(t, qb + .22, qb + .38);
-      mask(qx + (1 - e3(qu)) * -80, 1060, 190, st > 0 ? TQ : '#bdb29c', a * qu); if (st > 0) { g.save(); g.globalAlpha = a * st; g.translate(qx, 1000); g.rotate(-.2); g.fillStyle = SF; g.fillRect(-44, -18, 88, 36); g.strokeStyle = INK; g.lineWidth = 3; g.strokeRect(-44, -18, 88, 36); g.fillStyle = INK; g.font = '400 18px SE'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('SHIELD', 0, 2); g.restore() } }
-    g.save(); g.globalAlpha = a * seg(t, C.bollywood - .1, C.bollywood + .2); g.fillStyle = INK; g.fillRect(110, 1146, 808, 18); g.restore(); });
+    txt('SAME SHIELD, MORE NAMES', 110, 924, '400 30px BG', INK, a * seg(t, C.bollywood - .1, C.bollywood + .2));
+    var QS = [['akshay', 'AKSHAY KUMAR', 'OCT 2025 · REPORTED'], ['suniel', 'SUNIEL SHETTY', 'OCT 2025 · REPORTED'], ['shilpa', 'SHILPA SHETTY', 'MAR 2026 · REPORTED'], ['kartik', 'KARTIK AARYAN', 'APR 2026 · REPORTED']];
+    for (var q = 0; q < 4; q++) { var qb = C.bollywood + .1 + q * (C.shield - C.bollywood) / 4.5, qu = seg(t, qb - .15, qb + .15); if (qu <= 0) continue; var qx = 110 + q * 205, st = seg(t, qb + .22, qb + .38);
+      photo(QS[q][0], qx + 8 + (1 - e3(qu)) * -90, 960, 172, 150, a * qu, (q % 2 ? .03 : -.03), QS[q][1], QS[q][2]); if (st > 0) { g.save(); g.globalAlpha = a * st; g.translate(qx + 140, 985); g.rotate(-.2); g.fillStyle = SF; g.fillRect(-44, -18, 88, 36); g.strokeStyle = INK; g.lineWidth = 3; g.strokeRect(-44, -18, 88, 36); g.fillStyle = INK; g.font = '400 18px SE'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('SHIELD', 0, 2); g.restore() } }
+    tag('REAL PHOTOS · TMDB · BOMBAY HC ORDERS, AS REPORTED', TQ, 110, 1138, a * seg(t, C.bollywood + .2, C.bollywood + .5), INK);
+    });
   ev(S[4], 'whoosh'); ev(C.google, 'pop'); ev(C.meta, 'pop'); ev(C.x, 'pop'); ev(C.pull, 'whoosh'); ev(C.pull + .8, 'stamp'); ev(C.bollywood, 'tick');
 
   // 5 personality rights: three locks on the original; an AI company's price tag bounces off the shield ---------------------------------------------------
@@ -235,6 +243,7 @@
     cap(t); return hostSeek(t) };
   window.__ready = false;
   var waits = ['400 68px BG', '400 22px SE', '700 30px Inter', '400 40px AN'].map(function (x) { return document.fonts.load(x) })
+        .concat(Object.keys(PH).map(function (k) { var im = PH[k]; return new Promise(function (r) { if (im.complete) r(); else { im.onload = r; im.onerror = r } }) }))
     .concat(GAV.map(function (im) { return new Promise(function (r) { if (im.complete) r(); else { im.onload = r; im.onerror = r } }) }))
     .concat([new Promise(function (r) { if (vid.readyState >= 2) r(); vid.addEventListener('loadeddata', r); vid.addEventListener('error', r); setTimeout(r, 3000) })]);
   Promise.all(waits).catch(function () {}).then(function () { return window.__seek(0) }).then(function () { window.__ready = true });
