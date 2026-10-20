@@ -1,7 +1,7 @@
 {
  "windows": 150,
  "median_250ms_db": 21.2,
- "min_250ms_db": 15.9,
+ "min_250ms_db": 16.0,
  "music_only_median_db": 21.2,
  "music_only_min_db": 16.0,
  "LUFS": "-14.00",

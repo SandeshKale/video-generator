@@ -78,8 +78,8 @@ CUE = dict(judge=tk('कोर्ट'), internet=tk('इंटरनेट'), ta
            links=tk('लिंक'), fakes=tk('डीपफ़ेक', 2), morphed=tk('एडिटेड'), chatbots=tk('चैटबॉट'), google=tk('गूगल'), meta=tk('मेटा'), x=tk('एक्स'), pull=tk('हटाना'),
            bollywood=tk('बड़े'), shield=tk('ढाल'), rights=tk('राइट्स'), pface=tk('चेहरा', 3), pname=tk('नाम', 3), pvoice=tk('आवाज़', 3), nocompany=tk('कोई'), asking=tk('पूछे'),
            careful=tk('ध्यान'), interim2=tk('इंटरिम', 2), final=tk('फ़ाइनल'), december=tk('दिसंबर'), fight=tk('लड़ाई'), twist=tk('ट्विस्ट'), lawyer=tk('वकील'), you=tk('आपके'),
-           cloned=tk('क्लोन'), seconds=tk('सेकंड'), before=tk('पहले'), note=tk('नोट'), twice=tk('सोचो'), follow=tk('फ़ॉलो'), last=TOK[-1][2])
-S = [0, CUE['samantha'], tk('क्योंकि'), tk('अकेली') - .15, CUE['google'], tk('तो'), tk('पर', 1) - .05, tk('अब') - .1, CUE['follow'] - .15]
+           cloned=tk('क्लोन'), seconds=tk('सेकंड'), before=tk('वॉइस'), note=tk('भेजने'), twice=tk('सोचो'), follow=tk('फ़ॉलो'), last=TOK[-1][2])
+S = [0, CUE['samantha'], tk('क्योंकि'), tk('अकेली') - .15, CUE['google'], tk('तो'), CUE['careful'] - .3, tk('अब') - .1, CUE['follow'] - .15]
 raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', os.path.join(H, 'audio', 'voice_hi.wav'), '-f', 'f32le', '-ac', '1', '-ar', '16000', '-'])
 x = np.frombuffer(raw, np.float32); n = int(len(x) / 320); env = np.sqrt((x[:n * 320].reshape(n, 320) ** 2).mean(1)); env = np.minimum(1, env / (np.percentile(env, 98) + 1e-9))
 js = 'window.TM=' + json.dumps({'END': END, 'S': [round(v, 3) for v in S], 'CUE': CUE, 'CAP': SUBS, 'ENV': [int(round(v * 99)) for v in env]}, ensure_ascii=False) + ';\n'
