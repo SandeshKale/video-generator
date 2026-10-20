@@ -68,3 +68,12 @@ Real-data waveform clones: the avatar's own PCM peaks are sampled per frame (pur
 
 ## Deliverables
 reel.mp4 + share encode, cover (grid-first: mask + 4 words), caption.md (CTA, avatar disclosure, sources, exactly 5 hashtags, YouTube sheet), `insights/reel-tags.json` entry, CLAUDE.md benchmark note.
+
+## Hindi voice-over version (same reel, `avatar-prompts-hi.md`)
+Everyday spoken Hindi with English loanwords (AI, deepfake, High Court, interim, link, voice note); on-screen text stays English (creator's standing rule), captions are English subtitles timed to the Hindi. Same facts and tiers; the "दो सौ पचहत्तर" figure is F3 (about 275, Outlook), the Hindi line drops "क़रीब", so on screen show "~275" and keep the REPORTED tag. Same R18 serious face. The build uses `timing.py hi` style word-index cues checked against expected words, as in the King reel.
+1. कोर्ट ने इंटरनेट से कहा: उसका चेहरा हटाओ। समांथा रुथ प्रभु एक अक्टूबर को बॉम्बे हाई कोर्ट पहुँचीं, क्योंकि एआई डीपफ़ेक में उनका चेहरा और आवाज़ हर जगह थी। इंटरिम ऑर्डर: इन्हें हटाओ। उनका नाम, उनकी तस्वीर, उनकी आवाज़। सिर्फ़ उनकी।
+2. और वो अकेली नहीं हैं। जुलाई में प्रीटी ज़िंटा को उसी कोर्ट से यही ऑर्डर मिला। दो सौ पचहत्तर लिंक: डीपफ़ेक, एडिटेड फ़ोटो, एआई चैटबॉट। गूगल, मेटा और एक्स को इन्हें हटाना पड़ा। बड़े नाम इसी ढाल की लाइन में हैं।
+3. तो ये है क्या? पर्सनैलिटी राइट्स। आपका चेहरा, आपका नाम, आपकी आवाज़ आपकी है। कोई एआई कंपनी बिना पूछे इन्हें बेच नहीं सकती। पर ध्यान रहे, ये ऑर्डर इंटरिम है, फ़ाइनल नहीं। अगली सुनवाई दिसंबर में है। लड़ाई अभी बाक़ी है।
+4. अब असली ट्विस्ट। स्टार के पास वकील है, आपके पास वकील नहीं। पर आपकी आवाज़ भी क्लोन हो सकती है, बस कुछ सेकंड की रिकॉर्डिंग से। वॉइस नोट भेजने से पहले दो बार सोचो। Sandesh Explains को फ़ॉलो कीजिए।
+(Part 3 "अगली सुनवाई दिसंबर में" rides on F2: if unverified, change to "फ़ाइनल फ़ैसला अभी बाक़ी है" in both languages.)
+
