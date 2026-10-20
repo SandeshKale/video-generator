@@ -40,7 +40,7 @@ n = 0; last = None
 for k, c in zip(parts, cuts):
     src = os.path.join(H, 'raw', k + '.mp4'); fd = f'{tmp}/{k}'; os.makedirs(fd, exist_ok=True)
     if not glob.glob(fd + '/*.png'): subprocess.check_call(['ffmpeg', '-v', 'error', '-y', '-i', src, '-map', '0:v:0', '-t', f'{c:.4f}', '-vf', f'fps={FPS}', f'{fd}/%04d.png'])
-    fs = sorted(glob.glob(fd + '/[0-9]*.png'))
+    fs = sorted([f for f in glob.glob(fd + '/[0-9]*.png') if not f.endswith('.m.png')])
     if all(os.path.exists(f'{tmp}/f{n + i:05d}.png') for i in range(len(fs))): n += len(fs); last = f'{tmp}/f{n - 1:05d}.png'; print(k, n, 'cached', flush=True); continue
     ims = [np.asarray(Image.open(f).convert('RGB').resize((S, S)), np.float32) / 255 for f in fs]
     ms = []
