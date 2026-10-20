@@ -1505,3 +1505,6 @@ A physics explainer packed for density: solar neutrinos (through your thumbnail,
 12. **Purpose-built cover:** bright cyan ground (pops on a dark grid), the cut-out host with tracks shooting through him, one 1 cm² square, 5 words, checked on the 3-up grid mock.
 - **Known headroom:** voice and mix not auditioned by ear; "lives two microseconds" needs a listen (Whisper heard "lifts two microsex"); the render stalled on a per-stroke canvas `blur` filter (use wide faint strokes on the bloomed layer instead); the 66 MB MP4 exceeds GitHub's recommended size; no real footage.
 
+## STANDING RULE — always show the avatar prompts file in chat (user, 20 Oct 2026)
+Whenever avatar prompts are written or changed (`avatar-prompts.md`), **send the file to the user in the same reply with `SendUserFile` (display `render`)**, not just a path or a summary. Re-send it after every edit.
+
