@@ -1,2 +1,5 @@
 out/
 site/3d/*.png.bak
+/site/timing.js
+/site/host.webm
+/site/host_*.webm

@@ -238,5 +238,13 @@
   "host": "avatar",
   "length": "47-60s",
   "cta": "follow"
+ },
+ "reel-samantha-ai-shield": {
+  "genre": "entertainment-news",
+  "company": "none",
+  "voice": "avatar (english + hindi)",
+  "host": "avatar",
+  "length": "47-60s",
+  "cta": "follow"
  }
 }
