@@ -74,3 +74,5 @@ Rubik (700, 800) — Copyright 2015 The Rubik Project Authors (https://github.co
 Bodoni Moda (700, 800) — Copyright 2020 The Bodoni Moda Project Authors (https://github.com/indestructible-type/Bodoni), and Chivo Mono (500, 700) — Copyright 2022 The Chivo Mono Project Authors (https://github.com/Omnibus-Type/Chivo_Mono); both SIL Open Font License 1.1, via @fontsource.
 
 Familjen Grotesk (600, 700) — Copyright 2019 The Familjen Grotesk Project Authors, and Fragment Mono (400) — Copyright 2021 The Fragment Mono Project Authors; both SIL Open Font License 1.1, via @fontsource.
+
+Bungee (Copyright 2016 The Bungee Project Authors, David Jonathan Ross) and Special Elite (Copyright 2010 Astigmatic, Brian J. Bonislawsky) are licensed under the SIL Open Font License 1.1 (same terms as above); vendored via @fontsource.

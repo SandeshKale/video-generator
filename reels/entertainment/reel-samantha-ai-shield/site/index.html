@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Samantha AI shield</title><style>
+@font-face{font-family:BG;font-weight:400;src:url(fonts/bungee-latin-400-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:SE;font-weight:400;src:url(fonts/special-elite-latin-400-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:AN;font-weight:400;src:url(fonts/anton-latin-400-normal.woff2) format('woff2');font-display:block}
+/* "Tabloid Hoarding". Meaning-coded: hot pink = the fake / the gossip, turquoise = the real / the court, saffron = the order stamp. */
+:root{--paper:#f4ecd8;--ink:#14101a;--pk:#ff2d78;--tq:#00b8ad;--sf:#ffb000;--dim:#6d6458}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;background:var(--paper);overflow:hidden}
+canvas{position:absolute;left:0;top:0}
+#tick{position:absolute;left:0;top:150px;width:1080px;height:46px;background:var(--ink);overflow:hidden;border-bottom:4px solid var(--pk)}
+#tick span{position:absolute;left:0;top:0;white-space:nowrap;font:400 21px/46px SE;color:var(--paper);letter-spacing:.06em}
+.sc{position:absolute;inset:0;opacity:0;pointer-events:none}
+.eye{position:absolute;left:110px;top:216px;font:400 22px SE;letter-spacing:.06em;color:var(--ink);white-space:nowrap}
+.eye i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--pk);margin-right:10px}
+.h{position:absolute;left:110px;width:808px;top:256px;font:400 68px/1.02 BG;color:var(--ink);text-transform:uppercase}
+.h em{font-style:normal;display:inline-block;padding:0 12px;margin:2px 0;transform:rotate(-1.2deg)}
+.h em.k{background:var(--pk);color:var(--paper)}.h em.r{background:var(--tq);color:var(--ink)}.h em.s{background:var(--sf);color:var(--ink)}
+#cap{position:absolute;left:110px;top:1262px;width:430px;min-height:96px;background:var(--ink);border-radius:6px;padding:13px 18px;font:700 30px/1.28 Inter;color:var(--paper);box-shadow:6px 6px 0 var(--pk)}
+#cap b{color:var(--sf)}
+#caprule{position:absolute;left:110px;width:430px;top:1238px;border-top:3px dashed var(--pk)}
+#hostw{position:absolute;left:538px;top:1150px;width:380px;height:386px}
+#hostw canvas{position:absolute;left:0;top:0;width:380px;height:380px}
+#tape1,#tape2{position:absolute;width:96px;height:30px;background:rgba(255,176,0,.78);transform:rotate(-8deg);left:520px;top:1168px}
+#tape2{transform:rotate(9deg);left:860px;top:1168px}
+#end{position:absolute;left:110px;top:760px;width:808px;height:330px;opacity:0}
+#pf{position:absolute;left:0;top:30px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:6px solid var(--ink);box-shadow:0 0 0 6px var(--pk),8px 8px 0 6px var(--ink)}
+#hd{position:absolute;left:250px;top:56px;font:400 50px/1 BG;color:var(--ink)}
+#fo{position:absolute;left:250px;top:140px;padding:14px 38px 12px;background:var(--pk);color:var(--paper);font:400 44px/1 BG;letter-spacing:.04em;border:5px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transform:rotate(-2deg)}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div id="tick"><span id="tk"></span></div>
+<div id="scenes"></div>
+<div id="end"><div id="pf"></div><div id="hd">@sandeshexplains</div><div id="fo">FOLLOW</div></div>
+<div id="caprule"></div><div id="cap"></div><div id="tape1"></div><div id="tape2"></div><div id="hostw"><canvas id="avc" width="544" height="544"></canvas></div>
+<video id="hostv" muted preload="auto" src="host.webm" style="display:none"></video>
+<script src="timing.js"></script><script src="app.js"></script></body></html>
