@@ -61,3 +61,4 @@ Before delivering prompts, **run `python3 scripts/check-avatar-prompts.py <reel>
 **Known gaps in older shipped sets** (left as shipped; they don't need regenerating):
 - The tokens reel predates R11 and has no PRONUNCIATION lines; "tokenizer" came out as "Transiter".
 - Trading-reel Part 3 says "Claude" without a respelling.
+| R18 | **Emotion must fit the context (creator, 20 Oct 2026).** The avatar smiles, laughs or shows delight only where the subject is light or good news. For serious, harmful or sensitive topics (deepfakes, scams, loss, injury, court orders, tragedy) keep a composed, serious face; a faint smile is allowed only on the closing greeting or CTA. Every MOOD line must name an emotion that suits what the sentence says. |

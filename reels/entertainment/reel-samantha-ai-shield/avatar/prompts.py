@@ -12,7 +12,7 @@ IDENTITY: match the photo exactly in every frame (face shape, eyes, nose, mouth,
 FRAMING: vertical medium close-up from mid-chest up, hands visible near the lower edge when they move, eyes in the upper third, camera locked on a tripod (no zoom, pan or shake). Soft cinematic key light with gentle fill on a black background with depth. Attire: exactly as in the photo, static. Keep framing, light and attire identical across all parts.
 PERFORMANCE (expressive and playful, never over the top):
 - Gaze: steady, engaged eye contact with the lens; tiny natural eye movements that always return to the lens. Never stare, never look away.
-- Face: lively and knowing, with bright eyes, a quick sly half-smile and a short brow lift on the juicy beats, then back to warm neutral. No mugging, no cartoonish faces, no wide-eyed acting, no cheek bunching.
+- Face: lively and knowing, with bright eyes, a short brow lift on the juicy beats, then back to a serious, composed neutral. Serious topic (a person's face and voice misused): no smiling or laughing, except a faint brief smile on the last line. No mugging, no cartoonish faces, no wide-eyed acting, no cheek bunching.
 - Head and body: alive but controlled micro-movements. At most two small nods in the whole clip, on key words.
 - Hands: subtle, slightly restrained gestures: two or three small, smooth movements per clip, low near the chest, then back to rest. Open palm or a gentle 'one point' hand shape only. Natural five-finger hands, no pointing at the camera, no waving, no counting on fingers, no repeated movements.
 - Blinks: natural, roughly every 3-5 s, none in the first second.
@@ -20,7 +20,7 @@ PERFORMANCE (expressive and playful, never over the top):
 
 VOICE = "VOICE: speak in ENGLISH with a natural Indian accent. PACE: FAST AND PUNCHY: rapid, high-energy, about three and a half words per second, very short breath pauses, yet every syllable and number lands clearly; never slurred. Warm, grounded, chest-resonant; sounds close to a good microphone in a quiet room (dry, no echo or reverb). Natural pitch movement: lighter and rising on questions, a split-second pause before the most surprising number, statements ending downward. Big numbers crisp; at most one lightly stressed word per sentence. No announcer tone, no sing-song, no robotic flatness, no filler sounds."
 
-HOOK = "0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic, a confident open smile, quick, a small lean-in, still natural (no shouting, no wide-eyed acting, no head bobbing), dead-on at the lens"
+HOOK = "0-3s ENTHUSIASTIC AND ENGAGING: bright, energetic, serious and sharp, no smile, quick, a small lean-in, still natural (no shouting, no wide-eyed acting, no head bobbing), dead-on at the lens"
 T1 = "TIMING: begin speaking at 0.0 s, no lead-in. Finish by about 14.2 s at the latest (aim for about 13.5 s), every sentence fully completed; then rest silently with a relaxed closed mouth until 15 s."
 TN = "TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s at the latest (aim for about 13.5 s), every sentence fully completed; then rest silently with a relaxed closed mouth until 15 s."
 AVOID = "AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, slowing down, long pauses, any on-screen text or subtitles."
@@ -28,11 +28,11 @@ AVOID = "AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, p
 PARTS = [
     ("hook: a judge says take her face down (0–15 s)",
      "'Samantha' = 'suh-MAN-thuh', 'Prabhu' = 'PRUH-boo', 'Bombay' = 'BOM-bay', 'deepfakes' = 'DEEP-fakes'",
-     HOOK + "; 3-9s fast and incredulous, a quick brow lift on 'her face and her voice'; 9-14s crisp and satisfied, a faint smile on 'hers'.",
+     HOOK + "; 3-9s fast and incredulous, a quick brow lift on 'her face and her voice'; 9-14s crisp and firm, a small decisive nod on 'Hers'.",
      "A judge just told the internet: take her face down. Samantha Ruth Prabhu went to Bombay High Court on October first, because AI deepfakes of her face and her voice were everywhere. The interim order? Remove them. Her name, her image, her voice. Hers."),
     ("she is not alone (15–30 s)",
      "'Preity Zinta' = 'PREE-tee ZIN-tuh', 'chatbots' = 'CHAT-bots', 'Meta' = 'MEH-tuh'",
-     "0-5s teasing, a sly half-smile on 'not alone'; 5-11s quick and incredulous, one open-palm gesture low near the chest on 'two hundred seventy-five links'; 11-14s knowing, a small nod on 'same shield'.",
+     "0-5s knowing and serious, a brow lift on 'not alone'; 5-11s quick and incredulous, one open-palm gesture low near the chest on 'two hundred seventy-five links'; 11-14s grounded, a small nod on 'same shield'.",
      "And she's not alone. In July, Preity Zinta got the same order from the same court. Two hundred seventy-five links: deepfakes, morphed photos, AI chatbots pretending to be her. Google, Meta and X had to pull them. Bollywood's big names are queuing for the same shield."),
     ("what personality rights are (30–45 s)",
      "'personality' = 'per-suh-NAL-i-tee', 'interim' = 'IN-ter-im', 'December' = 'dih-SEM-ber'",
@@ -40,7 +40,7 @@ PARTS = [
      "So what is it? Personality rights. Your face, your name, your voice are yours. No AI company gets to sell them without asking. Careful though, this order is interim, not final. The next hearing is in December. The fight isn't over."),
     ("the twist + follow (45–60 s)",
      "'Sandesh' = 'sun-DAYSH', 'clone' = 'klohn'",
-     "0-5s teasing, a quick brow lift on 'needs a lawyer'; 5-10s warm and serious, a small lean-in on 'can be cloned too'; 10-14s direct and friendly, dead-on at the lens, a small nod on 'Follow'.",
+     "0-5s dry and direct, a quick brow lift on 'needs a lawyer'; 5-10s warm and serious, a small lean-in on 'can be cloned too'; 10-14s direct and warm, a faint brief smile only on 'Follow Sandesh Explains', dead-on at the lens.",
      "Here's the twist. A star needs a lawyer. You don't have one. But your voice can be cloned too, from just a few seconds of audio. Before you post that voice note, think twice. Follow Sandesh Explains."),
 ]
 

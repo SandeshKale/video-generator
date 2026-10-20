@@ -1508,3 +1508,5 @@ A physics explainer packed for density: solar neutrinos (through your thumbnail,
 ## STANDING RULE — always show the avatar prompts file in chat (user, 20 Oct 2026)
 Whenever avatar prompts are written or changed (`avatar-prompts.md`), **send the file to the user in the same reply with `SendUserFile` (display `render`)**, not just a path or a summary. Re-send it after every edit.
 
+## STANDING RULE — avatar emotion must fit the context (user, 20 Oct 2026; rule R18)
+The avatar smiles, laughs or emotes only when the moment suits it. Light or good-news lines can smile; serious, harmful or sensitive topics (scams, deepfakes, court orders, loss, tragedy) get a composed serious face, with at most a faint smile on the closing CTA. Write the MOOD line per section from what the sentence says, never from a default 'smile on the hook' template. Logged as R18 in `docs/AVATAR-PROMPT-TEMPLATE.md`.
