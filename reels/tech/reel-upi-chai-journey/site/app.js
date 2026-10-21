@@ -165,13 +165,13 @@
     var ws = CP[k][2], h = ''; ws.forEach(function (w, j) { var on = t >= w[1]; var clean = w[0].replace(/[.,:;!?"']/g, ''); h += (j ? ' ' : '') + (on ? (ACC.test(clean) ? '<b>' + w[0] + '</b>' : w[0]) : '<span style="opacity:.22">' + w[0] + '</span>') }); c.innerHTML = h; c.style.opacity = 1; sc.style.opacity = 1 }
   var eyeEl = $('eye'), upi = $('upi'), hook = $('hook'), refEl = $('ref'); hook.innerHTML = 'Where did your <em>₹20</em> go?';
   refEl.innerHTML = '<b>REMEMBER THIS ID</b>UPI REF 4096 3817 2250';
-  function phase(t) { return t < 3 ? 'PAID ₹20 · UPI · CHAI STALL' : t < 12.3 ? 'SLOWED 1,000× · ILLUSTRATION, NOT A REAL BANK' : t < T_TAP ? 'STEP 0 · YOU TAP PAY' : t < C.bank ? 'STEP 1 · THE REQUEST LEAVES YOUR APP' : t < C.switch + 1.2 ? 'STEP 2 · THE REQUEST REACHES THE SWITCH' : t < C.msg1 - .1 ? 'STEP 2 · THE SWITCH ROUTES IT' : t < C.msg2 - .1 ? 'STEP 3 · YOUR BANK DEBITS ₹20' : t < T_Y0 - .2 ? 'STEP 4 · THE SHOP\'S BANK CREDITS ₹20' : t < T_F ? 'STEP 5 · BOTH YES COME BACK' : t < C.rbi ? 'WHEN IT GETS STUCK · THE ID SAVES YOU' : t < C.save ? 'RBI TURNAROUND RULE · AS READ 20 OCT 2026' : 'SAVE THIS' }
-  function chipOn(t) { var on = [t >= T_TAP, t >= C.bank + .1, t >= C.switch - .2, t >= T_C1]; if (t >= T_Y0 && t < T_F) on = [t >= T_Y0 + 1.3, t >= T_Y0, t >= T_Y0, t >= T_Y0 - .5]; if (t >= T_F) on = [true, t >= T_F - .1, true, t >= T_F + .4]; if (t >= C.save) { on = [t >= C.save, t >= C.save + .3, t >= C.save + .6, t >= C.save + .9] } return on }
+  function phase(t) { return t < 3 ? 'PAID ₹20 · UPI · CHAI STALL' : t < 12.3 ? 'SLOWED 1,000× · ILLUSTRATION, NOT A REAL BANK' : t < T_TAP ? 'STEP 0 · YOU TAP PAY' : t < C.bank ? 'STEP 1 · THE REQUEST LEAVES YOUR APP' : t < C.switch + 1.2 ? 'STEP 2 · THE REQUEST REACHES THE SWITCH' : t < C.msg1 - .1 ? 'STEP 2 · THE SWITCH ROUTES IT' : t < C.msg2 - .1 ? 'STEP 3 · YOUR BANK DEBITS ₹20' : t < T_Y0 - .2 ? 'STEP 4 · THE SHOP\'S BANK CREDITS ₹20' : t < T_F ? 'STEP 5 · BOTH YES COME BACK' : t < C.rbi ? 'WHEN IT GETS STUCK · THE ID SAVES YOU' : t < C.save - .3 ? 'RBI TURNAROUND RULE · AS READ 20 OCT 2026' : 'LIKE · SHARE · SUBSCRIBE' }
+  function chipOn(t) { var on = [t >= T_TAP, t >= C.bank + .1, t >= C.switch - .2, t >= T_C1]; if (t >= T_Y0 && t < T_F) on = [t >= T_Y0 + 1.3, t >= T_Y0, t >= T_Y0, t >= T_Y0 - .5]; if (t >= T_F) on = [true, t >= T_F - .1, true, t >= T_F + .4]; if (t >= C.hundred + .5) { on = [t >= C.hundred + .5, t >= C.hundred + .8, t >= C.hundred + 1.1, t >= C.hundred + 1.4] } return on }
 
   // ---- seek -----------------------------------------------------------------------------------------------------------------------------------------
   // events for the score / SFX (aligned from the same constants that draw the picture)
   ev(.0, 'boom'); ev(3.0, 'whoosh'); ev(12.2, 'print'); ev(14.5, 'whoosh'); ev(T_TAP, 'tap'); ev(T_APP, 'tick'); ev(C.bank + 1.2, 'whoosh'); ev(T_SW, 'tick'); ev(T_D0, 'swish'); ev(T_YES1, 'stamp'); ev(T_C0, 'swish'); ev(T_YES2, 'stamp');
-  ev(T_Y0 - .1, 'whoosh'); ev(T_TICK, 'chime'); ev(T_F - .55, 'whoosh'); ev(T_NR, 'buzz'); ev(C.idagain, 'pop'); ev(C.five, 'print'); ev(T_REV1, 'ding'); ev(C.save, 'pop'); ev(C.follow + .1, 'pop'); ev(C.follow + .7, 'pop'); ev(C.follow + 1.3, 'pop');
+  ev(T_Y0 - .1, 'whoosh'); ev(T_TICK, 'chime'); ev(T_F - .55, 'whoosh'); ev(T_NR, 'buzz'); ev(C.idagain, 'pop'); ev(C.five, 'print'); ev(T_REV1, 'ding'); ev(C.save, 'pop'); ev(C.share, 'pop'); ev(C.follow, 'pop');
   SHK.push([T_YES1, 10], [T_YES2, 10], [T_NR, 16], [T_REV1, 10], [T_TAP, 6]);
   window.EV = EV.sort(function (a, b) { return a[0] - b[0] }); window.__reelDurationSec = END;
   window.__seek = function (t) {
@@ -214,14 +214,14 @@
     var hu = 1 - seg(t, 2.7, 3.3); hook.style.opacity = hu; hook.style.transform = 'translateY(' + (-(1 - hu) * 60) + 'px)';
     var cnt = Math.floor(t * 9282); upi.innerHTML = 'UPI PAYMENTS SINCE YOU PRESSED PLAY<br><span style="font:800 54px/1 BS;color:#f3ead6">' + cnt.toLocaleString('en-US') + '</span>'; upi.style.opacity = seg(t, 3.0, 3.5); upi.style.top = '280px';
     var ru2 = seg(t, 12.2, 12.55); refEl.style.opacity = ru2; refEl.style.top = '350px'; refEl.style.transform = 'scale(' + (1 + (t > C.idagain && t < C.five ? .12 * Math.sin((t - C.idagain) * 9) * Math.sin((t - C.idagain) * 9) : 0) + (1 - e3(ru2)) * .25) + ')';
-    var rU = seg(t, C.rbi, C.rbi + .3), rO = 1 - seg(t, C.save + .8, C.save + 1.2); rule.style.opacity = rU * rO; rule.style.transform = 'scale(' + (.9 + .1 * e3(rU)) + ')';
+    var rU = seg(t, C.rbi, C.rbi + .3), rO = 1 - seg(t, C.save - .5, C.save - .1); rule.style.opacity = rU * rO; rule.style.transform = 'scale(' + (.9 + .1 * e3(rU)) + ')';
     rule.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em;color:#8a6a1e">RBI TAT RULE · AS READ 20 OCT 2026</div><div style="font:800 62px/1 BS;margin-top:4px">' + (t >= C.five ? '5 DAYS' : 'AUTO-REVERSAL') + '</div>';
     var cU = seg(t, C.hundred - .1, C.hundred + .25); calc.style.opacity = cU * rO; calc.style.transform = 'scale(' + (.9 + .1 * e3(cU)) + ')';
     calc.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em">OR THE BANK OWES YOU</div><div style="font:800 62px/1 BS">₹100 / DAY</div>';
     var hop = hostOp(t); var hw = $('hostw'); hw.style.opacity = hop; hw.style.transform = 'translateY(' + ((1 - hop) * 80) + 'px)'; hw.style.display = hop > 0 ? 'block' : 'none';
-    var eU = seg(t, C.follow - 1.6, C.follow - 1.1); var end = $('end'); end.style.opacity = eU;
-    [['b1', 0], ['b2', .5], ['b3', 1.0]].forEach(function (b) { var u = seg(t, C.follow - 1.1 + b[1], C.follow - .8 + b[1]); var el = $(b[0]); el.style.opacity = u; el.style.transform = 'scale(' + (u < 1 ? .6 + .4 * eob(u) : 1 + .04 * Math.sin((t - C.follow) * 5 + b[1] * 4)) + ')' });
-    $('pf').style.opacity = seg(t, C.follow - 1.6, C.follow - 1.3); $('hd').style.opacity = seg(t, C.follow - 1.4, C.follow - 1.1); $('sub').style.opacity = seg(t, C.follow - .9, C.follow - .6); $('save').style.opacity = seg(t, C.follow - .5, C.follow - .2);
+    var E0 = C.save - .6, eU = seg(t, E0, E0 + .4); var end = $('end'); end.style.opacity = eU;
+    [['b1', C.save], ['b2', C.share], ['b3', C.follow]].forEach(function (b) { var u = seg(t, b[1] - .05, b[1] + .3); var el = $(b[0]); el.style.opacity = u; el.style.transform = 'scale(' + (u < 1 ? .6 + .4 * eob(u) : 1 + .05 * Math.sin((t - b[1]) * 6)) + ')' });
+    $('pf').style.opacity = seg(t, E0, E0 + .3); $('hd').style.opacity = seg(t, E0 + .1, E0 + .4); $('sub').style.opacity = seg(t, E0 + .2, E0 + .5); $('save').style.opacity = seg(t, C.follow + .3, C.follow + .6);
     cap(t); return hostSeek(t) };
   window.__ready = false;
   var waits = ['800 70px BS', '600 27px BS', '500 24px DM', '700 30px Inter'].map(function (x) { return document.fonts.load(x) })

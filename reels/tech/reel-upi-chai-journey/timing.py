@@ -22,7 +22,7 @@ PH = [
  [('पर कभी बैंक हाँ कहता है,', 'But sometimes your bank says yes,'), ('दूसरी तरफ़ से जवाब नहीं आता।', 'and the other side never answers.'),
   ('पैसे कटे, पेमेंट नहीं हुआ।', 'Money gone, nothing paid.'), ('तब वही आईडी काम आती है।', 'That is when you need that ID.'),
   ('आरबीआई नियम: पैसे पाँच दिन में लौटें,', 'RBI rule: the money must come back in five days,'), ('वरना बैंक को सौ रुपये रोज़ देने होंगे।', 'or the bank owes you a hundred rupees a day.'),
-  ('सेव करो।', 'Save this.'), ('Sandesh Explains को फ़ॉलो कीजिए।', 'Follow Sandesh Explains.')]]
+  ('लाइक, शेयर और सब्सक्राइब करिए,', 'Like, share and subscribe'), ('Sandesh Explains को।', 'to Sandesh Explains.')]]
 def frames(p):
     raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', os.path.join(RAW, f'p{p}.wav') if os.path.exists(os.path.join(RAW, f'p{p}.wav')) else os.path.join(RAW, f'p{p}.mp4'), '-map', '0:a:0', '-f', 'f32le', '-ac', '1', '-ar', '16000', '-'])
     x = np.frombuffer(raw, np.float32); n = len(x) // 320; return np.sqrt((x[:n * 320].reshape(n, 320) ** 2).mean(1))
@@ -75,9 +75,9 @@ def tk(sub, nth=1, exact=False):
 CUE = dict(chai=tk('चाय'), twenty=tk('बीस'), four=tk('चार'), crore=tk('अस्सी'), slow=tk('धीमा'), follow1=tk('फ़ॉलो'), remember=tk('याद'), idn=tk('आईडी'),
            tap=tk('पे', 1, True), request=tk('रिक्वेस्ट'), qr=tk('क्यूआर'), bank=tk('बैंक', 1), switch=tk('स्विच'), npci=tk('एनपीसीआई'), nomoney=tk('नहीं', 1), messages=tk('मैसेज', 2),
            msg1=tk('पहला'), cut=tk('काटो'), balance=tk('बैलेंस'), yes1=tk('हाँ', 1, True), msg2=tk('दूसरा'), add=tk('जोड़ो'), yes2=tk('वहाँ'), back=tk('रास्ते'), tick=tk('हरा'),
-           but=tk('कभी'), noreply=tk('जवाब'), gone=tk('कटे'), idagain=tk('आईडी', 2), rbi=tk('आरबीआई'), five=tk('पाँच'), hundred=tk('सौ'), save=tk('सेव'), follow=tk('फ़ॉलो', 2), last=TOK[-1][2])
+           but=tk('कभी'), noreply=tk('जवाब'), gone=tk('कटे'), idagain=tk('आईडी', 2), rbi=tk('आरबीआई'), five=tk('पाँच'), hundred=tk('सौ'), save=tk('लाइक'), share=tk('शेयर'), follow=tk('सब्सक्राइब'), last=TOK[-1][2])
 P = list(np.cumsum([0] + CUTS))
-S = [0, tk('आप', 1, True) if False else CUE['tap'] - .15, CUE['tap'] - .15, CUE['msg1'] - .2, CUE['but'] - .2, CUE['follow'] - 1.6]
+S = [0, CUE['tap'] - .15, CUE['tap'] - .15, CUE['msg1'] - .2, CUE['but'] - .2, CUE['follow'] - 1.6]
 raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', os.path.join(H, 'audio', 'voice.wav'), '-f', 'f32le', '-ac', '1', '-ar', '16000', '-'])
 x = np.frombuffer(raw, np.float32); n = int(len(x) / 320); env = np.sqrt((x[:n * 320].reshape(n, 320) ** 2).mean(1)); env = np.minimum(1, env / (np.percentile(env, 98) + 1e-9))
 js = 'window.TM=' + json.dumps({'END': END, 'S': [round(float(v), 3) for v in S], 'CUE': {k: round(float(v), 3) for k, v in CUE.items()}, 'CAP': SUBS, 'ENV': [int(round(float(v) * 99)) for v in env]}, ensure_ascii=False) + ';\n'
