@@ -58,7 +58,7 @@ k2 = int(.22 * SR); duck = np.clip(np.convolve(on, np.ones(k2) / k2, 'same') * 2
 music = drone * .9 + pad + pulse * (1 - .45 * duck) + tick * (1 - .6 * duck) + cta * (1 - .5 * duck) + rain
 music *= env(0, .02, t) * (1 - env(END - .5, END, t))
 music = sosfilt(butter(2, [1200, 4500], 'bandstop', fs=SR, output='sos'), music) * .85 + rain * .5
-music *= 10 ** ((4 - 14 * duck) / 20)
+music *= 10 ** ((-1 - 18 * duck) / 20)
 sfx = np.zeros(N)
 def noise_sweep(d=.38, lo=400, hi=5000, down=False):
     L = int(d * SR); x = rng.standard_normal(L); e = np.sin(np.linspace(0, np.pi, L)) ** 2; out = np.zeros(L); sg = L // 8
@@ -66,25 +66,29 @@ def noise_sweep(d=.38, lo=400, hi=5000, down=False):
         f = lo + (hi - lo) * ((7 - i) if down else i) / 7; s = slice(i * sg, (i + 1) * sg if i < 7 else L)
         out[s] = bp(x, max(80, f * .6), min(20000, f * 1.6))[s]
     return out * e
+def mix2(*xs):
+    L = max(len(x) for x in xs); o = np.zeros(L)
+    for x in xs: o[:len(x)] += x
+    return o
 def bell(f=1568, d=1.2): x = np.arange(int(d * SR)) / SR; return (np.sin(2 * np.pi * f * x) + .4 * np.sin(2 * np.pi * f * 2.76 * x)) * np.exp(-x * 4) * np.minimum(1, x * 200)
-def stamp(): x = np.arange(int(.35 * SR)) / SR; return thump(70, .35, 14) * 1.2 + lp(rng.standard_normal(len(x)), 1800) * np.exp(-x * 40) * .5
-def crack(): x = np.arange(int(.7 * SR)) / SR; return bp(rng.standard_normal(len(x)), 900, 5000) * np.exp(-x * 55) * 1.4 + thump(60, .7, 8)
-def lock(): return np.pad(click(.03, 2000), (0, 3000)) + thump(120, .2, 25) * .5 + bell(2093, .8) * .3
-def relay(): c = click(.02, 1700); o = np.zeros(int(.3 * SR)); o[:len(c)] += c; o[int(.08 * SR):int(.08 * SR) + len(c)] += c * .8; return o + thump(70, .3, 18) * .5
+def stamp(): x = np.arange(int(.35 * SR)) / SR; return mix2(thump(70, .35, 14) * 1.2, lp(rng.standard_normal(len(x)), 1800) * np.exp(-x * 40) * .5)
+def crack(): x = np.arange(int(.7 * SR)) / SR; return mix2(bp(rng.standard_normal(len(x)), 900, 5000) * np.exp(-x * 55) * 1.4, thump(60, .7, 8))
+def lock(): return mix2(click(.03, 2000), thump(120, .2, 25) * .5, bell(2093, .8) * .3)
+def relay(): c = click(.02, 1700); o = np.zeros(int(.3 * SR)); o[:len(c)] += c; o[int(.08 * SR):int(.08 * SR) + len(c)] += c * .8; return mix2(o, thump(70, .3, 18) * .5)
 def fade(): x = np.arange(int(1.2 * SR)) / SR; return np.sin(2 * np.pi * np.cumsum(900 * np.exp(-x * 1.6)) / SR) * np.exp(-x * 2.5) * .5
 def burn(): x = np.arange(int(2.2 * SR)) / SR; return hp(rng.standard_normal(len(x)), 2500) * (rng.random(len(x)) > .7) * np.exp(-x * 1.4) * .5
 def redlane(): x = np.arange(int(1.5 * SR)) / SR; return np.sign(np.sin(2 * np.pi * np.cumsum(60 + 60 * x) / SR)) * np.minimum(1, x * 3) * .4 * np.exp(-x * .8)
-def resolve(): return bell(587, 2.2) * .6 + bell(880, 2.2) * .4 + bell(1175, 2.0) * .25
+def resolve(): return mix2(bell(587, 2.2) * .6, bell(880, 2.2) * .4, bell(1175, 2.0) * .25)
 FX = dict(ping=lambda: bell(1568, 1.0), sub=lambda: thump(38, 1.2, 3) * 1.1, whoosh=lambda: noise_sweep(.5), dial=lambda: click(.015, 3200), lock=lock, relay=relay,
-          pulse=lambda: noise_sweep(.9, 300, 6000) * .6 + thump(44, .9, 4), fade=fade, tick=lambda: bell(1760, .6), key=lambda: click(.02, 1300) + thump(150, .1, 40) * .3,
-          burn=burn, stamp=stamp, swarm=lambda: noise_sweep(.5, 800, 9000), redlane=redlane, flip=lambda: click(.03, 2600) + noise_sweep(.25, 800, 5000) * .3,
-          hit=lambda: thump(40, 1.2, 4) * 1.2 + crack(), snap=crack, resolve=resolve, end=lambda: bell(1175, 1.5) * .6)
-GAIN = dict(ping=.5, sub=.7, whoosh=.38, dial=.3, lock=.55, relay=.5, pulse=.5, fade=.4, tick=.35, key=.4, burn=.4, stamp=.6, swarm=.3, redlane=.45, flip=.4, hit=.7, snap=.55, resolve=.5, end=.4)
+          pulse=lambda: mix2(noise_sweep(.9, 300, 6000) * .6, thump(44, .9, 4)), fade=fade, tick=lambda: bell(1760, .6), key=lambda: mix2(click(.02, 1300), thump(150, .1, 40) * .3),
+          burn=burn, stamp=stamp, swarm=lambda: noise_sweep(.5, 800, 9000), redlane=redlane, flip=lambda: mix2(click(.03, 2600), noise_sweep(.25, 800, 5000) * .3),
+          hit=lambda: mix2(thump(40, 1.2, 4) * 1.2, crack()), snap=crack, resolve=resolve, end=lambda: bell(1175, 1.5) * .6)
+GAIN = dict(ping=.5, sub=.7, whoosh=.38, dial=.3, lock=.55, relay=.5, pulse=.5, fade=.4, tick=.2, key=.22, burn=.4, stamp=.6, swarm=.3, redlane=.45, flip=.4, hit=.7, snap=.55, resolve=.5, end=.4)
 for at, kind in json.load(open('audio/events.json')):
     x = FX[kind]() if kind in FX else None
     if x is None: print('no sound for', kind); continue
     add(sfx, at - (.25 if kind in ('whoosh', 'pulse') else 0), x, GAIN.get(kind, .5))
-sfx *= 10 ** (-9 / 20); sfx *= 10 ** ((-14 * duck) / 20)
+sfx *= 10 ** (-11 / 20); sfx *= 10 ** ((-20 * duck) / 20)
 mix = voice + music + sfx; sf.write('audio/premix.wav', mix, SR)
 p1 = subprocess.run(['ffmpeg', '-i', 'audio/premix.wav', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=7:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
 q = json.loads(re.search(r'\{[^}]*input_i[^}]*\}', p1, re.S).group(0))
