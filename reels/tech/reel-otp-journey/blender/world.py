@@ -17,8 +17,8 @@ sc.render.resolution_x, sc.render.resolution_y = W, H; sc.render.image_settings.
 sc.view_settings.view_transform = 'AgX'; sc.view_settings.look = 'AgX - Medium High Contrast'
 w = bpy.data.worlds.new('w'); sc.world = w; w.use_nodes = True; nt = w.node_tree
 bgn = nt.nodes['Background']; tcw = nt.nodes.new('ShaderNodeTexCoord'); sepw = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(tcw.outputs['Generated'], sepw.inputs[0])
-rampw = nt.nodes.new('ShaderNodeValToRGB'); rampw.color_ramp.elements[0].position = 0.42; rampw.color_ramp.elements[0].color = (0.05, 0.34, 0.42, 1); rampw.color_ramp.elements[1].position = 0.78; rampw.color_ramp.elements[1].color = (0.004, 0.02, 0.035, 1)
-nt.links.new(sepw.outputs['Z'], rampw.inputs[0]); nt.links.new(rampw.outputs[0], bgn.inputs[0]); bgn.inputs[1].default_value = 1.6
+rampw = nt.nodes.new('ShaderNodeValToRGB'); rampw.color_ramp.elements[0].position = 0.42; rampw.color_ramp.elements[0].color = (0.012, 0.085, 0.11, 1); rampw.color_ramp.elements[1].position = 0.78; rampw.color_ramp.elements[1].color = (0.002, 0.008, 0.016, 1)
+nt.links.new(sepw.outputs['Z'], rampw.inputs[0]); nt.links.new(rampw.outputs[0], bgn.inputs[0]); bgn.inputs[1].default_value = 1.0
 vol = nt.nodes.new('ShaderNodeVolumeScatter'); vol.inputs['Density'].default_value = 0.0065; vol.inputs['Color'].default_value = (0.4, 0.65, 0.75, 1)
 if os.environ.get('FOG','0')=='1': nt.links.new(vol.outputs[0], nt.nodes['World Output'].inputs['Volume'])
 AMB = (1.0, 0.5, 0.1, 1); CY = (0.05, 0.75, 0.95, 1); RED = (1.0, 0.06, 0.08, 1); GRN = (0.2, 1.0, 0.5, 1)
@@ -53,7 +53,7 @@ def prin(name, col, r=0.5, met=0.0):
     m = bpy.data.materials.new(name); m.use_nodes = True; b = m.node_tree.nodes['Principled BSDF']; b.inputs['Base Color'].default_value = col; b.inputs['Roughness'].default_value = r; b.inputs['Metallic'].default_value = met; return m
 DIMC = (0.0, 0.32, 0.55, 1); DIMW = (0.75, 0.42, 0.16, 1)
 mat_a = windows('winA', (0.02, 0.05, 0.065, 1), DIMC, DIMW, 0.32, (0.3, 0.3, 0.27)); mat_b = windows('winB', (0.03, 0.04, 0.05, 1), DIMC, DIMC, 0.22, (0.25, 0.25, 0.22))
-amber = emit('amber', AMB, 16); cyan = emit('cyan', CY, 8); red = emit('red', RED, 14); green = emit('green', GRN, 10)
+amber = emit('amber', AMB, 6); cyan = emit('cyan', CY, 4); red = emit('red', RED, 5); green = emit('green', GRN, 5)
 roof = prin('roof', (0.03, 0.045, 0.055, 1), 0.5); wet = prin('wet', (0.01, 0.018, 0.022, 1), 0.12, 0.3); blk = prin('sil', (0.004, 0.004, 0.006, 1), 0.8)
 def box(loc, size, m):
     bpy.ops.mesh.primitive_cube_add(size=1, location=(loc[0], loc[1], loc[2] + size[2] / 2)); o = bpy.context.object; o.scale = size; o.data.materials.append(m); bpy.ops.object.transform_apply(scale=True); return o
@@ -90,9 +90,9 @@ for pts in ([(0, 11, .4), (0, 88, .4)], [(0, 11, .4), (66, 11, .4), (66, 0, .4)]
     lane(pts, cyan)
 # sun + orb + lights
 bpy.ops.object.light_add(type='SUN', rotation=(math.radians(60), 0, math.radians(30))); sun = bpy.context.object; sun.data.energy = 0.22; sun.data.color = (0.5, 0.75, 1)
-orb_mat = emit('orb', AMB, 40); bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=24, ring_count=12); orb = bpy.context.object; orb.data.materials.append(orb_mat)
+orb_mat = emit('orb', AMB, 9); bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=24, ring_count=12); orb = bpy.context.object; orb.data.materials.append(orb_mat)
 bpy.ops.object.light_add(type='POINT'); orb_l = bpy.context.object; orb_l.data.color = AMB[:3]; orb_l.data.shadow_soft_size = 1.5
-bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=16, ring_count=8); ghost = bpy.context.object; ghost.data.materials.append(emit('ghost', (0.7, 0.45, 0.25, 1), 6))
+bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=16, ring_count=8); ghost = bpy.context.object; ghost.data.materials.append(emit('ghost', (0.7, 0.45, 0.25, 1), 2.5))
 bpy.ops.object.light_add(type='POINT'); phone_l = bpy.context.object; phone_l.data.color = AMB[:3]; phone_l.data.energy = 0.6; phone_l.data.shadow_soft_size = 0.05; phone_l.location = PHB + V((0, 0, .1)) + dvec * .12
 # bank digits on the tower face
 bank_txt = txt('482917', (0, -8.5, 66), (math.pi / 2, 0, 0), 5.0, amber, 0.12); bank_l = None
@@ -113,8 +113,9 @@ def redpos(u): u = min(max(u, 0), 1); return V(tuple(rcs(u)))
 rlane = lane([tuple(redpos(i / 40)) for i in range(41)], red, 0.12)
 used_t = txt('USED', PH + V((0, 0, 0.30)) + dvec * 0.35, (math.pi / 2, 0, th), 0.06, red, 0.1); blk_t = txt('BLOCKED', PH + V((0, 0, 0.17)) + dvec * 0.35, (math.pi / 2, 0, th), 0.045, red, 0.1)
 tick = [box((0, 0, 0), (0.004, 0.004, 0.004), green), box((0, 0, 0), (0.004, 0.004, 0.004), green)]
-for i, (l_, a_, ox, oz) in enumerate([(0.022, -40, -0.011, 0.0), (0.04, 50, 0.014, 0.008)]):
-    o = tick[i]; o.dimensions = (l_, 0.004, 0.006); o.rotation_euler = (0, math.radians(a_), th); o.location = PHB + V((0, 0, 0.07)) + dvec * 0.0058 + V((ox * dvec.y * -1, ox * dvec.x, oz))
+tg_ = V((math.cos(th), math.sin(th), 0))
+for i, (l_, a_, ox, oz) in enumerate([(0.020, -45, -0.013, -0.007), (0.047, 50, 0.009, 0.004)]):
+    o = tick[i]; o.dimensions = (l_, 0.004, 0.006); o.rotation_euler = (0, math.radians(-a_), th); o.location = PHB + V((0, 0, 0.040)) + dvec * 0.0062 + tg_ * ox + V((0, 0, oz))
 # swarm of random digits (s8) + burn-out sparks (s7)
 swarm = [txt('000000', V((-45 + random.uniform(-22, 22), 15 + random.uniform(-22, 22), 55 + random.uniform(-12, 18))), (math.pi / 2, 0, random.uniform(-.6, .6)), 2.2, amber, 0.05) for _ in range(10)]
 sparks = []
@@ -127,8 +128,8 @@ def d_(k): return PH + dvec * k
 cam_k = [
  (0.0,  *(PH + dvec * 0.40 + V((0, 0, 0.09))), *(PH + V((0, 0, 0.085))), 80, 0),
  (0.9,  *(PH + dvec * 1.4 + V((0, 0, 0.5))),  *(PH + V((0, 0, 0.12))), 55, 0),
- (1.7,  *(PH + dvec * 5 + V((0, 0, 3.5))),    *(PH + V((0, 0, 0.8)).lerp(V((-20, 8, 48)), 0.3)), 35, -4),
- (2.27, *V((-44, 34, 52)), *V((-20, 0, 56)), 28, -6),
+ (1.7,  *(PH + dvec * 5 + V((0, 0, 3.5))),    *V((-30, 12, 30)), 35, -4),
+ (2.27, *V((-46, 32, 52)), *V((-14, -6, 40)), 28, -6),
  (3.4,  *V((-52, -22, 64)), *V((-4, -10, 66)), 26, -9),
  (4.69, *V((-34, -70, 54)), *V((0, -8, 68)), 24, -9),
  (6.6,  *V((-14, -42, 66)), *V((0, -8, 67)), 24, -4),
@@ -184,13 +185,13 @@ def orb_state(t):
 ghost_p = lambda t: V(120 * 0 + (-44 + (80 + 44) * min(max((t - 23.7) / 3.2, 0), 1) ** 0.8), -66 + (70 + 66) * min(max((t - 23.7) / 3.2, 0), 1) ** 0.8, 76 - 36 * min(max((t - 23.7) / 3.2, 0), 1))
 def setv(o, vis): o.hide_render = not vis; o.hide_viewport = not vis
 camd = bpy.data.cameras.new('c'); camd.dof.use_dof = True; camd.dof.aperture_fstop = 4.0; cam = bpy.data.objects.new('c', camd); sc.collection.objects.link(cam); sc.camera = cam
-def foggy(m, k=0.0085, col=(0.05, 0.27, 0.34, 1)):
+def foggy(m, k=0.0055, col=(0.01, 0.07, 0.09, 1)):
     n = m.node_tree; out = [x for x in n.nodes if x.type == 'OUTPUT_MATERIAL'][0]; src = out.inputs['Surface'].links[0].from_socket
     cd = n.nodes.new('ShaderNodeCameraData'); ex = n.nodes.new('ShaderNodeMath'); ex.operation = 'MULTIPLY'; ex.inputs[1].default_value = -k; n.links.new(cd.outputs['View Z Depth'], ex.inputs[0])
     e2 = n.nodes.new('ShaderNodeMath'); e2.operation = 'EXPONENT' if False else 'POWER'; e2.inputs[0].default_value = 2.718; n.links.new(ex.outputs[0], e2.inputs[1])
     inv = n.nodes.new('ShaderNodeMath'); inv.operation = 'SUBTRACT'; inv.inputs[0].default_value = 1.0; n.links.new(e2.outputs[0], inv.inputs[1])
-    sc_ = n.nodes.new('ShaderNodeMath'); sc_.operation = 'MULTIPLY'; sc_.inputs[1].default_value = 0.9; n.links.new(inv.outputs[0], sc_.inputs[0])
-    fe = n.nodes.new('ShaderNodeEmission'); fe.inputs[0].default_value = col; fe.inputs[1].default_value = 0.6
+    sc_ = n.nodes.new('ShaderNodeMath'); sc_.operation = 'MULTIPLY'; sc_.inputs[1].default_value = 0.8; n.links.new(inv.outputs[0], sc_.inputs[0])
+    fe = n.nodes.new('ShaderNodeEmission'); fe.inputs[0].default_value = col; fe.inputs[1].default_value = 0.45
     mx = n.nodes.new('ShaderNodeMixShader'); n.links.new(sc_.outputs[0], mx.inputs[0]); n.links.new(src, mx.inputs[1]); n.links.new(fe.outputs[0], mx.inputs[2]); n.links.new(mx.outputs[0], out.inputs['Surface'])
 for m_ in (mat_a, mat_b, roof, wet): foggy(m_)
 code = '482917'
@@ -229,7 +230,7 @@ for f in range(F0, F1 + 1):
         else: setv(o, False)
     # digit swarm (guessing is pointless)
     for i, o in enumerate(swarm):
-        if 38.9 <= t < 41.6: setv(o, True); o.data.body = ''.join(rnd.choice('0123456789') for _ in range(6))
+        if 38.9 <= t < 41.6: setv(o, True); o.data.body = ''.join(rnd.choice('0123456789') for _ in range(6)); o.rotation_euler = (cam.location - o.location).to_track_quat('Z', 'Y').to_euler()
         else: setv(o, False)
     # red lane + caller
     setv(rlane, 42.5 <= t < 53.6); rlane.data.materials[0] = red
