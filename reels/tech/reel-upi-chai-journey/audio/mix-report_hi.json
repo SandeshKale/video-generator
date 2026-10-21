@@ -1,9 +1,9 @@
 {
- "windows": 152,
- "median_250ms_db": 21.8,
+ "windows": 157,
+ "median_250ms_db": 21.4,
  "min_250ms_db": 13.7,
- "music_only_median_db": 21.8,
+ "music_only_median_db": 21.4,
  "music_only_min_db": 13.7,
  "LUFS": "-14.00",
- "TP": "-5.51"
+ "TP": "-5.63"
 }

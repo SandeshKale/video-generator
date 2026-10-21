@@ -196,7 +196,7 @@
     stamp(N.yb, G - 560, 'YES', MT, T_YES1, t, -.07); stamp(N.sb, G - 560, 'YES', MT, T_YES2, t, .06);
     if (t > T_F - .4 && t < T_F + .5) { g.save(); g.globalAlpha = seg(t, T_F - .4, T_F) * (1 - seg(t, T_F + .2, T_F + .5)); txt('REPLAY · WHEN IT GOES WRONG', N.sw, G - 760, '800 84px BS', RD, 'center', 'rgba(0,0,0,.8)'); g.restore() }
     if (t > T_NR) { var nu = 1 - seg(t, 52.2, 52.8); g.save(); g.globalAlpha = nu; stamp(N.sb, G - 560, 'NO REPLY', RD, T_NR, t, -.08, 1.05); g.restore();
-      if (t > C.gone) { g.save(); g.globalAlpha = nu * seg(t, C.gone, C.gone + .25); txt('−₹20 DEBITED · SHOP GOT ₹0', N.yb + 330, G - 690 + (1 - eo(seg(t, C.gone, C.gone + .4))) * 30, '800 64px BS', AM, 'center', 'rgba(0,0,0,.8)'); g.restore() } }
+      if (t > C.gone) { g.save(); g.globalAlpha = nu * seg(t, C.gone, C.gone + .25) * (1 - seg(t, C.rbi - .5, C.rbi - .2)); txt('−₹20 DEBITED · SHOP GOT ₹0', N.yb + 330, G - 690 + (1 - eo(seg(t, C.gone, C.gone + .4))) * 30, '800 64px BS', AM, 'center', 'rgba(0,0,0,.8)'); g.restore() } }
     if (t > T_REV1 - .2 && t < T_REV1 + 2.4) stamp(N.yb, G - 560, 'REVERSED', AM, T_REV1 - .15, t, -.06);
     if (t > C.idagain && t < C.five) { var ru = (t - C.idagain) % 1; g.save(); g.strokeStyle = AM; g.lineWidth = 8; g.globalAlpha = 1 - ru; g.beginPath(); g.arc(N.sw, PY - 40, 80 + ru * 190, 0, 7); g.stroke(); g.restore() }
     };
@@ -213,12 +213,12 @@
     eyeEl.innerHTML = '<i></i>' + phase(t); eyeEl.style.top = (t < 3.2 ? 246 : 246) + 'px';
     var hu = 1 - seg(t, 2.7, 3.3); hook.style.opacity = hu; hook.style.transform = 'translateY(' + (-(1 - hu) * 60) + 'px)';
     var cnt = Math.floor(t * 9282); upi.innerHTML = 'UPI PAYMENTS SINCE YOU PRESSED PLAY<br><span style="font:800 54px/1 BS;color:#f3ead6">' + cnt.toLocaleString('en-US') + '</span>'; upi.style.opacity = seg(t, 3.0, 3.5); upi.style.top = '280px';
-    var ru2 = seg(t, 12.2, 12.55); refEl.style.opacity = ru2; refEl.style.top = '350px'; refEl.style.transform = 'scale(' + (1 + (t > C.idagain && t < C.five ? .12 * Math.sin((t - C.idagain) * 9) * Math.sin((t - C.idagain) * 9) : 0) + (1 - e3(ru2)) * .25) + ')';
+    var ru2 = seg(t, 12.2, 12.55); refEl.style.opacity = ru2; refEl.style.top = '392px'; refEl.style.transform = 'scale(' + (1 + (t > C.idagain && t < C.five ? .12 * Math.sin((t - C.idagain) * 9) * Math.sin((t - C.idagain) * 9) : 0) + (1 - e3(ru2)) * .25) + ')';
     var rU = seg(t, C.rbi, C.rbi + .3), rO = 1 - seg(t, C.save - .5, C.save - .1); rule.style.opacity = rU * rO; rule.style.transform = 'scale(' + (.9 + .1 * e3(rU)) + ')';
     rule.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em;color:#8a6a1e">RBI TAT RULE · AS READ 20 OCT 2026</div><div style="font:800 62px/1 BS;margin-top:4px">' + (t >= C.five ? '5 DAYS' : 'AUTO-REVERSAL') + '</div>';
     var cU = seg(t, C.hundred - .1, C.hundred + .25); calc.style.opacity = cU * rO; calc.style.transform = 'scale(' + (.9 + .1 * e3(cU)) + ')';
     calc.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em">OR THE BANK OWES YOU</div><div style="font:800 62px/1 BS">₹100 / DAY</div>';
-    var hop = hostOp(t); var hw = $('hostw'); hw.style.opacity = hop; hw.style.transform = 'translateY(' + ((1 - hop) * 80) + 'px)'; hw.style.display = hop > 0 ? 'block' : 'none';
+    var hop = hostOp(t); var hw = $('hostw'); hw.style.opacity = hop; hw.style.transform = 'translateY(' + ((1 - hop) * 40) + 'px)'; hw.style.display = hop > 0 ? 'block' : 'none';
     var E0 = C.save - .6, eU = seg(t, E0, E0 + .4); var end = $('end'); end.style.opacity = eU;
     [['b1', C.save], ['b2', C.share], ['b3', C.follow]].forEach(function (b) { var u = seg(t, b[1] - .05, b[1] + .3); var el = $(b[0]); el.style.opacity = u; el.style.transform = 'scale(' + (u < 1 ? .6 + .4 * eob(u) : 1 + .05 * Math.sin((t - b[1]) * 6)) + ')' });
     $('pf').style.opacity = seg(t, E0, E0 + .3); $('hd').style.opacity = seg(t, E0 + .1, E0 + .4); $('sub').style.opacity = seg(t, E0 + .2, E0 + .5); $('save').style.opacity = seg(t, C.follow + .3, C.follow + .6);
