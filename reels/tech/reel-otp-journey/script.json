@@ -1,0 +1,16 @@
+{"sentences":[
+ {"p":1,"c":[["आपके फ़ोन पर अभी एक ओटीपी आया।","An OTP just hit your phone.","OTP"]]},
+ {"p":1,"c":[["छह अंक,","Six digits.","Six"],["दस लाख में से एक।","One in a million.","million"]]},
+ {"p":1,"c":[["बैंक का सर्वर इसे आपके इसी पेमेंट के लिए बनाता है।","The bank's server makes it for this exact payment.","exact payment"]]},
+ {"p":1,"c":[["किसी और पेमेंट पर यह नहीं चलेगा,","It won't work on any other payment,","any other"],["और कुछ ही मिनट में ख़त्म हो जाता है।","and it expires within minutes.","expires"]]},
+ {"p":2,"c":[["फिर यह एसएमएस बनकर एसएमएस गेटवे जाता है,","It becomes an SMS and hits the SMS gateway,","SMS gateway"],["वहाँ से आपकी टेलीकॉम कंपनी के कोर में,","then your telecom company's core,","core"],["और सबसे पास के टावर से हवा में आपके फ़ोन तक।","then the nearest tower, through the air, to your phone.","tower"]]},
+ {"p":2,"c":[["पूरे रास्ते में कुछ सेकंड लगते हैं,","The whole trip takes a few seconds,","few seconds"],["इसीलिए नेटवर्क कमज़ोर हो तो ओटीपी देर से आता है।","so a weak network means a late OTP.","late OTP"]]},
+ {"p":3,"c":[["आप कोड डालते हैं,","You type the code,","type"],["बैंक मिलाता है,","the bank matches it,","matches"],["पेमेंट पास।","payment passes.","passes"]]},
+ {"p":3,"c":[["एक बार इस्तेमाल हुआ तो कोड बेकार,","Used once, the code is dead,","dead"],["और कई ग़लत कोशिशों पर ट्रांज़ैक्शन ब्लॉक।","and several wrong tries block the transaction.","block"]]},
+ {"p":3,"c":[["इसलिए कोड का अंदाज़ा लगाना बेकार है।","So guessing the code is pointless.","pointless"]]},
+ {"p":3,"c":[["असली कमज़ोरी आप हैं:","The real weak link is you:","you"],["कोड बोल दिया, तो पेमेंट उसका।","say the code, and the payment is theirs.","theirs"]]},
+ {"p":4,"c":[["कोई बैंक अफ़सर बनकर जल्दी मचाए और यही कोड माँगे,","A \"bank officer\" rushes you and asks for this code,","rushes"],["तो वह आपकी पहचान नहीं,","he isn't verifying you,","isn't verifying"],["अपना पेमेंट पास करा रहा है।","he's approving his own payment.","his own payment"]]},
+ {"p":4,"c":[["असली बैंक कभी ओटीपी नहीं माँगता।","A real bank never asks for an OTP.","never"]]},
+ {"p":4,"c":[["ठगी हो जाए तो तुरंत एक-नौ-तीन-शून्य पर कॉल करिए।","Scammed? Call 1930 immediately.","1930"]]},
+ {"p":4,"c":[["लाइक, शेयर और सब्सक्राइब करिए, सैंडेश एक्सप्लेन्स को।","Like, share and subscribe to Sandesh Explains.","subscribe"]]}
+]}

@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><title>OTP journey</title><style>
+@font-face{font-family:IS;font-style:italic;src:url(fonts/instrument-serif-latin-400-italic.woff2) format('woff2');font-display:block}
+@font-face{font-family:AN;src:url(fonts/anton-latin-400-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:PM;font-weight:500;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:PM;font-weight:600;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format('woff2');font-display:block}
+/* "Monsoon Noir" 3D city. Fixed grid: y160 location tag + OTP lifetime bar · y250 chapter title · y272 headline (first 3 s) · y560-980 stamp zone · y1235 illustration label · y1270-1480 caption on a scrim · nothing below y1536.
+   Colour meaning: amber = the OTP, cyan = the network, red = the fake caller, green = approved, cream = text. */
+:root{--am:#ff9d3c;--cy:#7fe6ff;--rd:#ff3b3b;--gn:#3dff9a;--cr:#f1e8d6;--bg:#07161c}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+canvas#cv{position:absolute;left:0;top:0}
+#tag{position:absolute;left:150px;top:158px;font:600 24px/1 PM;letter-spacing:.08em;color:var(--cr);white-space:nowrap;text-shadow:0 2px 10px #000}
+#tag i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--am);margin-right:12px;box-shadow:0 0 12px currentColor}
+#hop{position:absolute;left:150px;top:196px;font:500 19px/1 PM;letter-spacing:.07em;color:var(--cy);white-space:nowrap;text-shadow:0 2px 10px #000}
+#life{position:absolute;right:162px;top:152px;width:300px;text-align:right;font:500 17px/1 PM;letter-spacing:.08em;color:var(--cr);text-shadow:0 2px 10px #000}
+#life .bar{margin-top:10px;height:12px;border:2px solid rgba(241,232,214,.7);border-radius:7px;background:rgba(0,0,0,.45);overflow:hidden}#life .bar b{display:block;height:100%;background:var(--am);box-shadow:0 0 14px var(--am)}
+#ch{position:absolute;left:150px;top:246px;font:400 88px/1 IS;font-style:italic;color:var(--cr);text-shadow:0 4px 22px #000,0 1px 3px #000;white-space:nowrap}
+#hl{position:absolute;left:150px;top:272px;width:768px;font:400 128px/1.0 AN;color:var(--cr);text-transform:uppercase;letter-spacing:.005em;text-shadow:0 5px 24px rgba(0,0,0,.75)}
+#hl em{font-style:normal;display:inline-block;background:var(--am);color:#1b1004;padding:0 16px;margin-top:6px;text-shadow:none}
+.st{position:absolute;left:150px;opacity:0;border:6px solid;padding:6px 22px 8px;font:400 84px/1 AN;letter-spacing:.04em;text-transform:uppercase;background:rgba(7,22,28,.74);text-shadow:none;transform-origin:left center}
+#rng{position:absolute;left:150px;top:214px;font:500 20px/1 PM;letter-spacing:.1em;color:var(--am);text-shadow:0 2px 10px #000;white-space:nowrap}
+#mil{position:absolute;left:150px;top:560px;font:400 70px/1 AN;letter-spacing:.03em;color:var(--cr);text-shadow:0 4px 20px #000}#mil b{color:var(--am);font-weight:400}
+#wk{position:absolute;left:150px;top:1160px;border-radius:30px;padding:10px 22px;font:600 22px/1 PM;letter-spacing:.08em;color:#1b1004;background:var(--am);opacity:0}
+#ill{position:absolute;left:150px;width:768px;top:1236px;text-align:right;font:500 17px/1 PM;letter-spacing:.08em;color:rgba(127,230,255,.85);text-shadow:0 2px 8px #000;white-space:nowrap}
+#cap{position:absolute;left:150px;top:1272px;width:768px;min-height:150px;padding:20px 24px 22px;font:700 48px/1.18 Inter;color:var(--cr);background:linear-gradient(90deg,rgba(4,14,18,.86),rgba(4,14,18,.72));border-left:6px solid var(--am);text-shadow:0 2px 8px rgba(0,0,0,.6)}
+#cap b{color:var(--am);font-weight:700}#cap.r{border-left-color:var(--rd)}#cap.r b{color:var(--rd)}
+#endc{position:absolute;left:150px;top:540px;width:768px;height:620px;opacity:0}
+#pf{position:absolute;left:34px;top:150px;width:220px;height:220px;border-radius:50%;background:url(profile.jpg) center/cover;border:7px solid var(--cr);box-shadow:0 0 0 7px var(--am),0 12px 30px rgba(0,0,0,.6)}
+#hd{position:absolute;left:290px;top:176px;font:400 72px/1 AN;color:var(--cr);letter-spacing:.02em}
+#sub{position:absolute;left:290px;top:262px;font:500 21px/1.35 PM;color:var(--am);letter-spacing:.08em;width:470px}
+.btn{position:absolute;top:430px;height:96px;width:226px;border-radius:48px;font:400 50px/90px AN;text-align:center;letter-spacing:.05em;border:5px solid var(--cr);color:#1b1004;background:var(--cr);opacity:0}
+#b1{left:24px}#b2{left:271px;background:var(--am)}#b3{left:518px;background:var(--rd);color:var(--cr)}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div id="tag"></div><div id="hop"></div><div id="life"></div><div id="rng"></div>
+<div id="hl"></div><div id="ch"></div><div id="mil"></div>
+<div class="st" id="s1"></div><div class="st" id="s2"></div><div id="wk">WEAK SIGNAL → LATE OTP</div>
+<div id="ill">ILLUSTRATION · NOT A REAL BANK, PERSON OR PHONE</div><div id="cap"></div>
+<div id="endc"><div id="pf"></div><div id="hd">@sandeshexplains</div><div id="sub">NEVER SHARE YOUR OTP<br>NO BANK ASKS · CALL 1930</div><div class="btn" id="b1">LIKE</div><div class="btn" id="b2">SHARE</div><div class="btn" id="b3">SUBSCRIBE</div></div>
+<video id="wv" muted preload="auto" src="world.webm" style="display:none"></video>
+<script src="timing.js"></script><script src="app.js"></script></body></html>
