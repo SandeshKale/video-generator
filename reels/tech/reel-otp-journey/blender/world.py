@@ -185,7 +185,9 @@ def orb_state(t):
     if 46.4 <= t <= 52.5:
         u = (t - 46.4) / (52.5 - 46.4); u = u * u * (3 - 2 * u); p = redpos(1 - u); return p + V((0, 0, 0.0)), 0.8 if u > .02 else 0.01
     return None, 0
-ghost_p = lambda t: V(120 * 0 + (-44 + (80 + 44) * min(max((t - 23.7) / 3.2, 0), 1) ** 0.8), -66 + (70 + 66) * min(max((t - 23.7) / 3.2, 0), 1) ** 0.8, 76 - 36 * min(max((t - 23.7) / 3.2, 0), 1))
+def ghost_p(t):
+    u = min(max((t - 23.7) / 3.2, 0), 1) ** 0.8
+    return V((-44 + 124 * u, -66 + 136 * u, 76 - 36 * u))
 def setv(o, vis): o.hide_render = not vis; o.hide_viewport = not vis
 camd = bpy.data.cameras.new('c'); camd.dof.use_dof = True; camd.dof.aperture_fstop = 4.0; cam = bpy.data.objects.new('c', camd); sc.collection.objects.link(cam); sc.camera = cam
 def foggy(m, k=0.0055, col=(0.01, 0.07, 0.09, 1)):
