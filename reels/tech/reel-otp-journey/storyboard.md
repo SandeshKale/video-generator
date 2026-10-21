@@ -64,3 +64,23 @@ Blender 3D city (primary) · extruded 3D digits and web curves · cut-out avatar
 
 ## What happens after you approve
 1. Revise the storyboard per your notes. 2. Read the primary sources for the ledger. 3. Final Hindi script + 4 avatar prompts (0 FAIL check). 4. 20-frame Blender render test and report the cost. 5. A 3-frame look mockup for approval. 6. Only then the full build, validation and render.
+
+---
+
+# REVISION v2 (user: faster, denser, no generic lines): this dialogue replaces the Voice column above
+
+Dropped: "let's follow it back", "we're slowing it down", "just imagine", all throat-clearing. The slow-down factor stays as an on-screen label only (build rule), never spoken. Every sentence carries a fact. FAST mode: 4 parts x 45-48 words (~3.1 w/s), 188 words, still ends at about 60 s. Shot times below shift slightly (the camera acts on the words); shot order is unchanged.
+
+| Part | Time | Hindi line (draft) | Facts carried | Shots |
+|---|---|---|---|---|
+| 1 | 0-15 | आपके फ़ोन पर अभी एक OTP आया। छह अंक, दस लाख में से एक। बैंक का सर्वर इसे आपके इसी पेमेंट के लिए बनाता है। किसी और पेमेंट पर यह नहीं चलेगा, और कुछ ही मिनट में ख़त्म हो जाता है। | 6 digits = 1 in 1,000,000 (maths); made per payment (verify); expires in minutes (bank-specific, no exact number spoken) | 1-4 (phone, bank tower, number wheel, perch 1 on "ख़त्म") |
+| 2 | 15-30 | फिर यह SMS बनकर SMS गेटवे जाता है, वहाँ से आपकी टेलीकॉम कंपनी के कोर में, और सबसे पास के टावर से हवा में आपके फ़ोन तक। पूरे रास्ते में कुछ सेकंड लगते हैं, इसीलिए नेटवर्क कमज़ोर हो तो OTP देर से आता है। | 4 hops: gateway > telecom core > tower > phone; seconds; weak network = late OTP (general, verify) | 5 (the long swing over the fibre river to the tower) |
+| 3 | 30-45 | आप कोड डालते हैं, बैंक मिलाता है, पेमेंट पास। एक बार इस्तेमाल हुआ तो कोड बेकार, और कई ग़लत कोशिशों पर ट्रांज़ैक्शन ब्लॉक। इसलिए कोड का अंदाज़ा लगाना बेकार है। असली कमज़ोरी आप हैं: कोड बोल दिया, तो पेमेंट उसका। | single use; wrong attempts blocked (verify); the weak link is the person | 6-7 (tower perch short, dive to phone, tick, code burns out) |
+| 4 | 45-60 | कोई बैंक अफ़सर बनकर जल्दी मचाए और यही कोड माँगे, तो वह आपकी पहचान नहीं, अपना पेमेंट पास करा रहा है। असली बैंक कभी OTP नहीं माँगता। ठगी हो जाए तो तुरंत एक-नौ-तीन-शून्य पर कॉल करिए। लाइक, शेयर और सब्सक्राइब करिए, Sandesh Explains को। | urgency tactic; "your OTP approves THEIR payment"; no bank asks; national cybercrime helpline 1930 (verify on the official site); CTA | 8-9 (red caller, perch 3, end card) |
+
+Changes vs v1:
+- The host perches now signpost without filler: perch 1 sits on "ख़त्म हो जाता है" (the expiry), perch 2 is shortened to a 2 s cut-in on "टावर", perch 3 holds the warning plus the CTA.
+- New concrete content: the 4 hops by name, the "weak network = late OTP" effect, single use, blocked after wrong attempts, the helpline.
+- Cut: the "no human saw it" claim, the "slowed 100x" speech, every "let's"/"imagine" opener.
+
+Still to verify first-hand before the script is locked: OTP validity and attempt limits (bank or RBI pages), "made per payment", the 1930 helpline wording, and "no bank asks for OTP" (an RBI/bank awareness page).
