@@ -154,7 +154,7 @@
   // ---- DOM: HUD, tracker chips, captions, rule cards, end card, host --------------------------------------------------------------------------------
   var CH = $('chips'), chips = []; ['1 YOUR APP', '2 YOUR BANK', '3 SWITCH', '4 SHOP BANK'].forEach(function (n, i) { var d = document.createElement('div'); d.className = 'chip'; d.style.left = (150 + i * 195) + 'px'; d.textContent = n; CH.appendChild(d); chips.push(d) });
   var rule = document.createElement('div'); rule.style.cssText = 'position:absolute;left:150px;top:610px;width:360px;opacity:0;background:#f3ead6;color:#0a0f2e;border-radius:6px;padding:14px 20px 12px;box-shadow:0 12px 30px rgba(0,0,0,.55);transform-origin:0 0'; document.body.appendChild(rule);
-  var calc = document.createElement('div'); calc.style.cssText = 'position:absolute;left:150px;top:790px;width:360px;opacity:0;background:#ffb03a;color:#0a0f2e;border-radius:6px;padding:12px 20px 10px;box-shadow:0 12px 30px rgba(0,0,0,.55);transform-origin:0 0'; document.body.appendChild(calc);
+  var calc = document.createElement('div'); calc.style.cssText = 'position:absolute;left:150px;top:820px;width:360px;opacity:0;background:#ffb03a;color:#0a0f2e;border-radius:6px;padding:12px 20px 10px;box-shadow:0 12px 30px rgba(0,0,0,.55);transform-origin:0 0'; document.body.appendChild(calc);
   var vid = $('hostv'), avc = $('avc'), hx = avc.getContext('2d'), lastF = -1;
   function hostSeek(t) { if (!vid.duration) return Promise.resolve(); var fr = Math.floor(t * 24); if (fr === lastF) return Promise.resolve(); lastF = fr; var ft = Math.min((fr + .5) / 24, vid.duration - .02);
     return new Promise(function (res) { var dn = function () { vid.removeEventListener('seeked', dn); hx.clearRect(0, 0, 544, 544); hx.drawImage(vid, 0, 0, 544, 544); res() }; vid.addEventListener('seeked', dn); vid.currentTime = ft }) }
@@ -214,8 +214,8 @@
     var hu = 1 - seg(t, 2.7, 3.3); hook.style.opacity = hu; hook.style.transform = 'translateY(' + (-(1 - hu) * 60) + 'px)';
     var cnt = Math.floor(t * 9282); upi.innerHTML = 'UPI PAYMENTS SINCE YOU PRESSED PLAY<br><span style="font:800 54px/1 BS;color:#f3ead6">' + cnt.toLocaleString('en-US') + '</span>'; upi.style.opacity = seg(t, 3.0, 3.5); upi.style.top = '280px';
     var ru2 = seg(t, 12.2, 12.55); refEl.style.opacity = ru2; refEl.style.top = '392px'; refEl.style.transform = 'scale(' + (1 + (t > C.idagain && t < C.five ? .12 * Math.sin((t - C.idagain) * 9) * Math.sin((t - C.idagain) * 9) : 0) + (1 - e3(ru2)) * .25) + ')';
-    var rU = seg(t, C.rbi, C.rbi + .3), rO = 1 - seg(t, C.save - .5, C.save - .1); rule.style.opacity = rU * rO; rule.style.transform = 'scale(' + (.9 + .1 * e3(rU)) + ')';
-    rule.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em;color:#8a6a1e">RBI TAT RULE · AS READ 20 OCT 2026</div><div style="font:800 62px/1 BS;margin-top:4px">' + (t >= C.five ? '5 DAYS' : 'AUTO-REVERSAL') + '</div>';
+    var rU = seg(t, C.rbi, C.rbi + .3), rO = 1 - seg(t, C.save - 1.1, C.save - .75); rule.style.opacity = rU * rO; rule.style.transform = 'scale(' + (.9 + .1 * e3(rU)) + ')';
+    rule.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em;color:#8a6a1e">RBI TAT RULE · AS READ 20 OCT 2026</div><div style="font:800 62px/1 BS;margin-top:4px">' + (t >= C.five ? '5 DAYS' : 'REVERSAL') + '</div>';
     var cU = seg(t, C.hundred - .1, C.hundred + .25); calc.style.opacity = cU * rO; calc.style.transform = 'scale(' + (.9 + .1 * e3(cU)) + ')';
     calc.innerHTML = '<div style="font:500 20px DM;letter-spacing:.1em">OR THE BANK OWES YOU</div><div style="font:800 62px/1 BS">₹100 / DAY</div>';
     var hop = hostOp(t); var hw = $('hostw'); hw.style.opacity = hop; hw.style.transform = 'translateY(' + ((1 - hop) * 40) + 'px)'; hw.style.display = hop > 0 ? 'block' : 'none';

@@ -246,5 +246,12 @@
   "host": "avatar",
   "length": "47-60s",
   "cta": "follow"
+ },
+ "reel-upi-chai-journey": {
+  "genre": "explainer",
+  "company": "npci",
+  "voice": "avatar-hi",
+  "host": "avatar",
+  "length": "<=60s"
  }
 }
