@@ -32,3 +32,8 @@ Contact sheet of the camera path before the full render; `check.mjs`-style safe-
 
 ## Limits stated honestly
 The city is procedural boxes (not photoreal); the world is rendered at 540x960, 12 fps and interpolated to 60 fps. Kokoro Hindi reads flatter than a human; pronunciation of ओटीपी/एसएमएस/सैंडेश should be heard once.
+
+## Result (21 Oct 2026)
+`reel-hi.mp4`: 66.0 s, 1080x1920 @ 60 fps, share encode 15 MB (the 698 MB CRF-18 master is not committed). World: 793 Blender frames (Cycles, 540x960, 12 fps, seeded) motion-interpolated to 60 fps (`blender/assemble.sh`, `site/world.webm`), seeked per frame by the page.
+Validated: contact sheets of the page at 16 times and of the final MP4 at 15 times (incl. the 33 s slice join, seamless); `change-cadence` 0 stretches over 2 s (longest 1.00 s); headline visible on frame 0, voice starts at 0.00 s; end card (photo, @sandeshexplains, LIKE/SHARE/SUBSCRIBE) held 3.9 s; mix -14.8 LUFS / -1.5 dBTP, voice over music + SFX median 24.4 dB, min 14.3 dB (voiced 250 ms windows). Not validated: no `check.mjs` overlap lint was written for this page (layout judged on frames), voice and mix not auditioned by ear.
+Known weaknesses: procedural box city (not photoreal); 12 fps source interpolated (slight edge warp in the fastest swings); some captions sit over bright windows (scrim helps); Kokoro Hindi is flatter than a human read; "FAKE CALLER" tag is briefly crossed by a lit window at ~52 s.
