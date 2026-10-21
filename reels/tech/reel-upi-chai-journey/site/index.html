@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"><title>UPI chai journey</title><style>
+@font-face{font-family:BS;font-weight:800;src:url(fonts/big-shoulders-display-latin-800-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:BS;font-weight:600;src:url(fonts/big-shoulders-display-latin-600-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:DM;font-weight:500;src:url(fonts/dm-mono-latin-500-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Inter;font-weight:700;src:url(fonts/inter-latin-700-normal.woff2) format('woff2');font-display:block}
+/* "Night Bazaar Ledger". Meaning-coded: amber = the money packet, mint = the UPI lane / infrastructure, red = no reply / loss, cream = receipts. */
+:root{--bg:#0a0f2e;--am:#ffb03a;--mt:#2de2c0;--rd:#ff4057;--cr:#f3ead6;--ink:#0a0f2e}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;background:var(--bg);overflow:hidden}
+canvas#cv{position:absolute;left:0;top:0}
+#hud{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.chip{position:absolute;top:168px;height:54px;width:184px;border-radius:27px;border:3px solid rgba(243,234,214,.35);color:rgba(243,234,214,.6);font:600 27px/48px BS;letter-spacing:.06em;text-align:center;text-transform:uppercase;background:rgba(10,15,46,.55)}
+.chip.on{border-color:var(--mt);color:var(--ink);background:var(--mt)}
+#eye{position:absolute;left:150px;top:246px;font:500 24px DM;letter-spacing:.08em;color:var(--cr);white-space:nowrap;text-shadow:0 2px 8px #000}
+#eye i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--am);margin-right:12px;vertical-align:-1px}
+#hook{position:absolute;left:150px;top:290px;width:820px;font:800 104px/.96 BS;color:var(--am);text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 6px 26px rgba(0,0,0,.65),0 0 44px rgba(255,176,58,.35);transform-origin:0 0}
+#hook em{font-style:normal;color:var(--cr)}
+#ref{position:absolute;left:150px;top:318px;padding:10px 16px 8px;background:var(--cr);color:var(--ink);font:500 24px/1.1 DM;border-radius:4px;box-shadow:0 8px 20px rgba(0,0,0,.5);letter-spacing:.04em;transform-origin:0 0}
+#ref b{display:block;font:600 19px DM;color:#8a6a1e;letter-spacing:.12em}
+#upi{position:absolute;right:170px;top:246px;font:500 22px DM;color:var(--mt);letter-spacing:.06em;text-align:right;text-shadow:0 2px 8px #000}
+#cap{position:absolute;left:150px;top:1418px;width:768px;min-height:56px;text-align:center;font:800 54px/1.05 BS;color:var(--cr);letter-spacing:.01em;text-shadow:0 3px 14px rgba(0,0,0,.9),0 0 3px #000}
+#cap b{color:var(--am);font-weight:800}
+#scrim{position:absolute;left:0;top:1370px;width:1080px;height:170px;background:linear-gradient(to bottom,rgba(8,12,38,0),rgba(8,12,38,.72) 40%,rgba(8,12,38,.72) 70%,rgba(8,12,38,0))}
+#hostw{position:absolute;left:540px;top:1030px;width:380px;height:380px;opacity:0;transform-origin:50% 100%}
+#hostw canvas{position:absolute;left:0;top:0;width:380px;height:380px;filter:drop-shadow(0 0 14px rgba(255,176,58,.35)) drop-shadow(10px 0 0 rgba(255,176,58,.25))}
+#end{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0;background:radial-gradient(ellipse at 50% 52%,rgba(8,12,38,.94),rgba(8,12,38,.85) 70%)}
+#pf{position:absolute;left:150px;top:640px;width:230px;height:230px;border-radius:50%;background:url(profile.jpg) center/cover;border:7px solid var(--cr);box-shadow:0 0 0 7px var(--am),0 12px 30px rgba(0,0,0,.6)}
+#hd{position:absolute;left:410px;top:664px;font:800 70px/1 BS;color:var(--cr);letter-spacing:.01em}
+#sub{position:absolute;left:410px;top:752px;font:500 26px DM;color:var(--mt);letter-spacing:.1em}
+.btn{position:absolute;top:930px;height:104px;width:238px;border-radius:52px;font:800 52px/96px BS;text-align:center;letter-spacing:.04em;border:5px solid var(--cr);color:var(--ink);background:var(--cr);box-shadow:0 10px 26px rgba(0,0,0,.5)}
+#b1{left:150px}#b2{left:410px;background:var(--am)}#b3{left:670px;background:var(--rd);color:var(--cr)}
+#save{position:absolute;left:150px;top:1080px;width:768px;text-align:center;font:500 26px DM;color:var(--cr);letter-spacing:.08em}
+</style></head><body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div id="hud"><div id="chips"></div><div id="eye"></div><div id="upi"></div><div id="hook"></div><div id="ref"></div></div>
+<div id="scrim"></div><div id="hostw"><canvas id="avc" width="544" height="544"></canvas></div><div id="cap"></div>
+<div id="end"><div id="pf"></div><div id="hd">@sandeshexplains</div><div id="sub">SAVE THE STUCK-PAYMENT RULE</div><div class="btn" id="b1">LIKE</div><div class="btn" id="b2">SHARE</div><div class="btn" id="b3">SUBSCRIBE</div><div id="save">REF + 5 DAYS + ₹100/DAY · RBI TAT RULE, AS READ 20 OCT 2026</div></div>
+<video id="hostv" muted preload="auto" src="host.webm" style="display:none"></video>
+<video id="dust" muted preload="auto" src="dust-particles.webm" style="display:none"></video>
+<script src="timing.js"></script><script src="app.js"></script></body></html>

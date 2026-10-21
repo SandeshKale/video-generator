@@ -28,7 +28,7 @@
 | आरबीआई | R-B-I |
 | आईडी | I-D |
 | Sandesh | sun-DAYSH |
-| सेव | save |
+| सब्सक्राइब | sub-SKRIBE |
 
 
 ## Part 1 of 4 — hook: आपके बीस रुपये (0–15 s)
@@ -114,11 +114,11 @@ PERFORMANCE (natural and curious):
 - Blinks: natural, roughly every 3-5 s, none in the first second.
 - Mouth: crisp, accurate lip sync at a brisk speaking rate; clear consonants; do not over-articulate.
 VOICE: speak in HINDI (everyday spoken Hindi; English words like UPI, QR, PIN, NPCI, RBI, app, bank, request, balance said as Indians say them). PACE: FAST AND PUNCHY: brisk, high-energy, clear, very short breath pauses, yet every syllable and number lands clearly; never slurred. Warm, grounded, chest-resonant; sounds close to a good microphone in a quiet room (dry, no echo or reverb). Natural pitch movement: lighter and rising on questions, a split-second pause before the most surprising number, statements ending downward, with at most one lightly stressed word per sentence. Big numbers crisp. No announcer tone, no sing-song, no robotic flatness, no filler sounds.
-PRONUNCIATION: 'आरबीआई' = 'R-B-I', 'आईडी' = 'I-D', 'Sandesh' = 'sun-DAYSH', 'सेव' = 'save'
-MOOD BY SECTION: 0-5s concerned and serious, no smile, a brow lift on 'जवाब नहीं आता'; 5-10s direct and grounded, a small nod on 'वही आईडी'; 10-14s warm and direct, a faint brief smile only on 'फ़ॉलो कीजिए', dead-on at the lens.
-SCRIPT: "पर कभी बैंक हाँ कहता है, दूसरी तरफ़ से जवाब नहीं आता। पैसे कटे, पेमेंट नहीं हुआ। तब वही आईडी काम आती है। आरबीआई नियम: पैसे पाँच दिन में लौटें, वरना बैंक को सौ रुपये रोज़ देने होंगे। सेव करो। Sandesh Explains को फ़ॉलो कीजिए।"
+PRONUNCIATION: 'आरबीआई' = 'R-B-I', 'आईडी' = 'I-D', 'Sandesh' = 'sun-DAYSH', 'सब्सक्राइब' = 'sub-SKRIBE'
+MOOD BY SECTION: 0-5s concerned and serious, no smile, a brow lift on 'जवाब नहीं आता'; 5-10s direct and grounded, a small nod on 'वही आईडी'; 10-14s warm and direct, a faint brief smile only on 'सब्सक्राइब करिए', dead-on at the lens.
+SCRIPT: "पर कभी बैंक हाँ कहता है, दूसरी तरफ़ से जवाब नहीं आता। पैसे कटे, पेमेंट नहीं हुआ। तब वही आईडी काम आती है। आरबीआई नियम: पैसे पाँच दिन में लौटें, वरना बैंक को सौ रुपये रोज़ देने होंगे। लाइक, शेयर और सब्सक्राइब करिए, Sandesh Explains को।"
 TIMING: begin speaking at about 0.3 s. Finish by about 14.2 s at the latest (aim for about 13.5 s), every sentence fully completed; then rest silently with a relaxed closed mouth until 15 s.
 AVOID: morphing, identity drift, flicker, jaw drop, teeth distortion, plastic skin, exaggerated expressions, glitchy lip sync, slowing down, long pauses, any on-screen text or subtitles.
 ```
 
-3464 characters · 45 words
+3491 characters · 46 words

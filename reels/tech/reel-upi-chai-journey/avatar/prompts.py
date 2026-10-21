@@ -37,9 +37,9 @@ PARTS = [
      "0-5s clear and steady, one open palm low near the chest on 'बीस रुपये काटो'; 5-10s steady, a small nod on 'हाँ कहता है'; 10-14s light and satisfied, a faint smile on 'हरा टिक'.",
      "पहला मैसेज आपके बैंक को: बीस रुपये काटो। बैंक बैलेंस और पिन चेक करता है, और हाँ कहता है। दूसरा मैसेज चायवाले के बैंक को: बीस रुपये जोड़ो। वहाँ से भी हाँ। दोनों हाँ उसी रास्ते लौटती हैं, और आपके फ़ोन पर हरा टिक आता है।"),
     ("दिक़्क़त और फ़ॉलो (45–60 s)",
-     "'आरबीआई' = 'R-B-I', 'आईडी' = 'I-D', 'Sandesh' = 'sun-DAYSH', 'सेव' = 'save'",
-     "0-5s concerned and serious, no smile, a brow lift on 'जवाब नहीं आता'; 5-10s direct and grounded, a small nod on 'वही आईडी'; 10-14s warm and direct, a faint brief smile only on 'फ़ॉलो कीजिए', dead-on at the lens.",
-     "पर कभी बैंक हाँ कहता है, दूसरी तरफ़ से जवाब नहीं आता। पैसे कटे, पेमेंट नहीं हुआ। तब वही आईडी काम आती है। आरबीआई नियम: पैसे पाँच दिन में लौटें, वरना बैंक को सौ रुपये रोज़ देने होंगे। सेव करो। Sandesh Explains को फ़ॉलो कीजिए।"),
+     "'आरबीआई' = 'R-B-I', 'आईडी' = 'I-D', 'Sandesh' = 'sun-DAYSH', 'सब्सक्राइब' = 'sub-SKRIBE'",
+     "0-5s concerned and serious, no smile, a brow lift on 'जवाब नहीं आता'; 5-10s direct and grounded, a small nod on 'वही आईडी'; 10-14s warm and direct, a faint brief smile only on 'सब्सक्राइब करिए', dead-on at the lens.",
+     "पर कभी बैंक हाँ कहता है, दूसरी तरफ़ से जवाब नहीं आता। पैसे कटे, पेमेंट नहीं हुआ। तब वही आईडी काम आती है। आरबीआई नियम: पैसे पाँच दिन में लौटें, वरना बैंक को सौ रुपये रोज़ देने होंगे। लाइक, शेयर और सब्सक्राइब करिए, Sandesh Explains को।"),
 ]
 
 INTRO = """# Avatar prompts: "आपके बीस रुपये कहाँ गए?" (UPI chai journey) — **Hindi voice only** (fast, R17)
