@@ -13,7 +13,7 @@ V = mathutils.Vector
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene; sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = SAMP; sc.cycles.use_denoising = True
 sc.cycles.max_bounces = 3; sc.cycles.diffuse_bounces = 2; sc.cycles.glossy_bounces = 2; sc.cycles.volume_bounces = 0; sc.cycles.volume_step_rate = 3.0; sc.cycles.volume_max_steps = 24
-sc.render.resolution_x, sc.render.resolution_y = W, H; sc.render.image_settings.file_format = 'PNG'; sc.render.use_persistent_data = True
+sc.render.resolution_x, sc.render.resolution_y = W, H; sc.render.image_settings.file_format = 'PNG'; sc.render.use_persistent_data = True; sc.render.threads_mode = 'FIXED'; sc.render.threads = int(os.environ.get('THREADS', '4'))
 sc.view_settings.view_transform = 'AgX'; sc.view_settings.look = 'AgX - Medium High Contrast'
 w = bpy.data.worlds.new('w'); sc.world = w; w.use_nodes = True; nt = w.node_tree
 bgn = nt.nodes['Background']; tcw = nt.nodes.new('ShaderNodeTexCoord'); sepw = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(tcw.outputs['Generated'], sepw.inputs[0])
@@ -42,7 +42,10 @@ def windows(name, base, la, lb, density, scale):
         c = n.nodes.new('ShaderNodeMath'); c.operation = 'MULTIPLY'; n.links.new(a.outputs[0], c.inputs[0]); n.links.new(b.outputs[0], c.inputs[1]); return c
     bz = band('Z'); bxy = n.nodes.new('ShaderNodeMath'); bxy.operation = 'MULTIPLY'; bxa = band('X'); bya = band('Y'); mx = n.nodes.new('ShaderNodeMath'); mx.operation = 'MAXIMUM'
     n.links.new(bxa.outputs[0], mx.inputs[0]); n.links.new(bya.outputs[0], mx.inputs[1]); n.links.new(bz.outputs[0], bxy.inputs[0]); n.links.new(mx.outputs[0], bxy.inputs[1])
-    mask = n.nodes.new('ShaderNodeMath'); mask.operation = 'MULTIPLY'; n.links.new(thr.outputs[0], mask.inputs[0]); n.links.new(bxy.outputs[0], mask.inputs[1])
+    gn = n.nodes.new('ShaderNodeNewGeometry'); gs = n.nodes.new('ShaderNodeSeparateXYZ'); n.links.new(gn.outputs['Normal'], gs.inputs[0])
+    ga = n.nodes.new('ShaderNodeMath'); ga.operation = 'ABSOLUTE'; n.links.new(gs.outputs['Z'], ga.inputs[0]); gl = n.nodes.new('ShaderNodeMath'); gl.operation = 'LESS_THAN'; gl.inputs[1].default_value = 0.5; n.links.new(ga.outputs[0], gl.inputs[0])
+    thr2 = n.nodes.new('ShaderNodeMath'); thr2.operation = 'MULTIPLY'; n.links.new(thr.outputs[0], thr2.inputs[0]); n.links.new(gl.outputs[0], thr2.inputs[1])
+    mask = n.nodes.new('ShaderNodeMath'); mask.operation = 'MULTIPLY'; n.links.new(thr2.outputs[0], mask.inputs[0]); n.links.new(bxy.outputs[0], mask.inputs[1])
     pick = n.nodes.new('ShaderNodeMath'); pick.operation = 'GREATER_THAN'; pick.inputs[1].default_value = 0.5; n.links.new(wn.outputs['Value'], pick.inputs[0])
     mc = n.nodes.new('ShaderNodeMix'); mc.data_type = 'RGBA'; mc.inputs[6].default_value = la; mc.inputs[7].default_value = lb; n.links.new(pick.outputs[0], mc.inputs[0])
     em = n.nodes.new('ShaderNodeEmission'); em.inputs[1].default_value = 1.7; n.links.new(mc.outputs[2], em.inputs[0])
@@ -53,8 +56,8 @@ def prin(name, col, r=0.5, met=0.0):
     m = bpy.data.materials.new(name); m.use_nodes = True; b = m.node_tree.nodes['Principled BSDF']; b.inputs['Base Color'].default_value = col; b.inputs['Roughness'].default_value = r; b.inputs['Metallic'].default_value = met; return m
 DIMC = (0.0, 0.32, 0.55, 1); DIMW = (0.75, 0.42, 0.16, 1)
 mat_a = windows('winA', (0.02, 0.05, 0.065, 1), DIMC, DIMW, 0.32, (0.3, 0.3, 0.27)); mat_b = windows('winB', (0.03, 0.04, 0.05, 1), DIMC, DIMC, 0.22, (0.25, 0.25, 0.22))
-amber = emit('amber', AMB, 6); cyan = emit('cyan', CY, 4); red = emit('red', RED, 5); green = emit('green', GRN, 5)
-roof = prin('roof', (0.03, 0.045, 0.055, 1), 0.5); wet = prin('wet', (0.01, 0.018, 0.022, 1), 0.12, 0.3); blk = prin('sil', (0.004, 0.004, 0.006, 1), 0.8)
+amber = emit('amber', AMB, 6); cyan = emit('cyan', CY, 4); red = emit('red', (1.0, 0.02, 0.03, 1), 2.5); green = emit('green', GRN, 5)
+roof = prin('roof', (0.09, 0.125, 0.15, 1), 0.38); wet = prin('wet', (0.01, 0.018, 0.022, 1), 0.12, 0.3); blk = prin('sil', (0.004, 0.004, 0.006, 1), 0.8)
 def box(loc, size, m):
     bpy.ops.mesh.primitive_cube_add(size=1, location=(loc[0], loc[1], loc[2] + size[2] / 2)); o = bpy.context.object; o.scale = size; o.data.materials.append(m); bpy.ops.object.transform_apply(scale=True); return o
 bpy.ops.mesh.primitive_plane_add(size=300, location=(0, 0, 0)); bpy.context.object.data.materials.append(wet)
@@ -89,8 +92,8 @@ def lane(pts, m, r=0.35):
 for pts in ([(0, 11, .4), (0, 88, .4)], [(0, 11, .4), (66, 11, .4), (66, 0, .4)], [(66, 11, .4), (66, -55, .4), (-33, -55, .4)], [(33, -33, .4), (33, 11, .4)], [(-33, 11, .4), (55, 11, .4), (55, 57, .4)], [(-33, 11, .4), (-55, 11, .4), (-55, 44, .4)]):
     lane(pts, cyan)
 # sun + orb + lights
-bpy.ops.object.light_add(type='SUN', rotation=(math.radians(60), 0, math.radians(30))); sun = bpy.context.object; sun.data.energy = 0.22; sun.data.color = (0.5, 0.75, 1)
-orb_mat = emit('orb', AMB, 9); bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=24, ring_count=12); orb = bpy.context.object; orb.data.materials.append(orb_mat)
+bpy.ops.object.light_add(type='SUN', rotation=(math.radians(60), 0, math.radians(30))); sun = bpy.context.object; sun.data.energy = 0.7; sun.data.color = (0.5, 0.75, 1)
+orb_mat = emit('orb', AMB, 2.2); bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=24, ring_count=12); orb = bpy.context.object; orb.data.materials.append(orb_mat)
 bpy.ops.object.light_add(type='POINT'); orb_l = bpy.context.object; orb_l.data.color = AMB[:3]; orb_l.data.shadow_soft_size = 1.5
 bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, segments=16, ring_count=8); ghost = bpy.context.object; ghost.data.materials.append(emit('ghost', (0.7, 0.45, 0.25, 1), 2.5))
 bpy.ops.object.light_add(type='POINT'); phone_l = bpy.context.object; phone_l.data.color = AMB[:3]; phone_l.data.energy = 0.6; phone_l.data.shadow_soft_size = 0.05; phone_l.location = PHB + V((0, 0, .1)) + dvec * .12
