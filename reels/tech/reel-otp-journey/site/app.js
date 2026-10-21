@@ -52,7 +52,7 @@
       var ct = ''; var co = 0; for (var c = 0; c < CHAP.length; c++) { var cc = pulse(t, CHAP[c][0], CHAP[c][0] + 2.6, .3, .5); if (cc > 0) { ct = CHAP[c][1]; co = cc } }
       $('ch').textContent = ct; $('ch').style.opacity = co; $('ch').style.transform = 'translateY(' + ((1 - co) * 14) + 'px)';
       // headline in the first seconds, then the 1-in-a-million counter
-      var h = pulse(t, 0, 3.3, .01, .3); $('hl').style.opacity = h; if (h > 0) $('hl').innerHTML = 'This code dies<br>in <em>minutes</em>';
+      var h = ease((3.3 - t) / .3); $('hl').style.opacity = h; if (h > 0) $('hl').innerHTML = 'This code dies<br>in <em>minutes</em>';
       var mp = pulse(t, 3.15, 4.6, .2, .3); $('mil').style.opacity = mp; if (mp > 0) $('mil').innerHTML = '<b>1</b> IN 1,000,000';
       // stamps
       stampEl($('s1'), t, 32.3, 34.6, 'Matched ✔', '#3dff9a'); $('s1').style.top = '640px';
