@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset=utf-8><style>
+@font-face{font-family:IS;font-style:italic;src:url(../../../../assets/fonts/instrument-serif/instrument-serif-latin-400-italic.woff2)}@font-face{font-family:Inter;font-weight:700;src:url(../../../../assets/fonts/inter/inter-latin-700-normal.woff2)}@font-face{font-family:PM;font-weight:500;src:url(../../../../assets/fonts/ibm-plex-mono/ibm-plex-mono-latin-500-normal.woff2)}
+*{margin:0;box-sizing:border-box}body{background:#05141a}
+.f{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.f img{position:absolute;inset:0;width:100%;height:100%;filter:saturate(1.15) contrast(1.08)}
+.f:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.55));}
+.rain{position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 22px,rgba(180,230,255,.10) 22px 23px,transparent 23px 61px);opacity:.7}
+.tag{position:absolute;left:150px;top:160px;font:500 24px/1 PM,monospace;color:#f1e8d6;letter-spacing:.08em}
+.tag i{display:inline-block;width:14px;height:14px;border-radius:50%;background:#ff9d3c;margin-right:12px}
+.clk{position:absolute;right:170px;top:150px;font:700 54px/1 Inter,sans-serif;color:#ff9d3c;text-shadow:0 0 18px #ff9d3c88}
+.ch{position:absolute;left:150px;top:250px;font:400 84px/1 IS,'Instrument Serif',serif;font-style:italic;color:#f1e8d6;text-shadow:0 4px 20px #000}
+.cap{position:absolute;left:150px;top:1240px;width:520px;font:700 44px/1.2 Inter,sans-serif;color:#f1e8d6;text-shadow:0 3px 14px #000}.cap b{color:#ff9d3c}
+.rule{position:absolute;left:150px;top:1215px;width:520px;border-top:4px dashed #ff9d3c}
+.lab{position:absolute;right:170px;bottom:420px;font:500 20px PM,monospace;color:#7fe6ff;letter-spacing:.1em}
+.red{color:#ff3b3b}
+</style></head><body>
+<div class=f id=a><img src=bank.png><div class=rain></div><div class=tag><i></i>BANK SERVER</div><div class=clk>04:52</div><div class=ch>I · The code</div><div class=rule></div><div class=cap>The bank's server makes it for <b>this exact payment</b>.</div><div class=lab>ILLUSTRATION</div></div>
+<div class=f id=b><img src=road.png><div class=rain></div><div class=tag><i style="background:#7fe6ff"></i>TELECOM CORE › TOWER</div><div class=clk>04:41</div><div class=ch>II · The road</div><div class=rule></div><div class=cap>Tower to your phone, through the air: <b>a few seconds</b>.</div><div class=lab>ILLUSTRATION</div></div>
+<div class=f id=c><img src=ask.png><div class=rain></div><div class=tag><i style="background:#ff3b3b"></i><span class=red>FAKE CALLER</span></div><div class=clk>04:07</div><div class=ch>IV · The ask</div><div class=rule style="border-color:#ff3b3b"></div><div class=cap>He isn't verifying you. He's approving <b style="color:#ff3b3b">his own payment</b>.</div><div class=lab>ILLUSTRATION · NOT A REAL PERSON</div></div>
+</body></html>
