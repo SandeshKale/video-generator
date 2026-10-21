@@ -58,7 +58,7 @@ k2 = int(.22 * SR); duck = np.clip(np.convolve(on, np.ones(k2) / k2, 'same') * 2
 music = drone * .9 + pad + pulse * (1 - .45 * duck) + tick * (1 - .6 * duck) + cta * (1 - .5 * duck) + rain
 music *= env(0, .02, t) * (1 - env(END - .5, END, t))
 music = sosfilt(butter(2, [1200, 4500], 'bandstop', fs=SR, output='sos'), music) * .85 + rain * .5
-music *= 10 ** ((-1 - 18 * duck) / 20)
+music *= 10 ** ((-3 - 18 * duck) / 20)
 sfx = np.zeros(N)
 def noise_sweep(d=.38, lo=400, hi=5000, down=False):
     L = int(d * SR); x = rng.standard_normal(L); e = np.sin(np.linspace(0, np.pi, L)) ** 2; out = np.zeros(L); sg = L // 8
