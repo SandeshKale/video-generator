@@ -111,6 +111,7 @@ def setv(o, v): o.hide_render = not v; o.hide_viewport = not v
 code = '482917'; rng_ = random.Random(2)
 FR = [int(x) for x in os.environ['FRAMES'].split(',')] if os.environ.get('FRAMES') else range(F0, F1 + 1)
 for f in FR:
+    if os.path.exists(os.path.join(OUTD, 'f%04d.png' % f)): continue
     t = f / FPSV; rnd = random.Random(f * 977 + 3)
     k = cams(t); pos = V((float(k[0]), float(k[1]), float(k[2]))); tgt = V((float(k[3]), float(k[4]), float(k[5])))
     sh = 0.01 if t < 2 else 0.12; pos += V((math.sin(t * 7.1), math.sin(t * 5.3 + 1), math.sin(t * 6.2 + 2))) * sh

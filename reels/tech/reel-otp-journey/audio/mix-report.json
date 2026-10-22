@@ -1,7 +1,7 @@
 {
- "windows": 169,
- "median_250ms_db": 24.4,
- "min_250ms_db": 14.3,
- "LUFS": "-14.79",
- "TP": "-1.47"
+ "windows": 165,
+ "median_250ms_db": 22.4,
+ "min_250ms_db": 11.8,
+ "LUFS": "-14.95",
+ "TP": "-1.48"
 }
