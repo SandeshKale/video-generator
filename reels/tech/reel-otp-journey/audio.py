@@ -45,10 +45,10 @@ pulse = np.zeros(N)
 def beat_train(a0, a1, bpm, g):
     a = a0; b = 60 / bpm
     while a < a1: add(pulse, a, thump(46, .32, 12) * g); add(pulse, a + .16, thump(52, .25, 14) * g * .6); a += b
-beat_train(C['a_bank'], C['a_type'] - .4, 84, .5); beat_train(C['a_type'], C['a_guess'] + 2, 56, .35); beat_train(C['a_you'], C['own_end'] + .6, 112, .6); beat_train(C['a_never'] + .3, C['a_cta'], 60, .3)
+beat_train(C['a_bank'], C['a_type'] - .4, 84, .5); beat_train(C['a_type'], C['a_guess'] + 2, 56, .35); beat_train(C['a_you'], C['own_end'] + .6, 112, .3); beat_train(C['a_never'] + .3, C['a_cta'], 60, .3)
 # tense ticking in the scam chapter
 tick = np.zeros(N); a = C['a_rush']
-while a < C['own_end'] + .3: add(tick, a, click(.02, 3800), .10); a += 60 / 112 / 2
+while a < C['own_end'] + .3: add(tick, a, click(.02, 3800), .05); a += 60 / 112 / 2
 # CTA lift: warm plucked arpeggio after the last word of the CTA starts (kept soft, in the bed)
 cta = np.zeros(N); mel = [62, 66, 69, 74, 69, 66]; a = C['a_cta'] + .2; j = 0
 while a < END - .2:
@@ -58,7 +58,7 @@ k2 = int(.22 * SR); duck = np.clip(np.convolve(on, np.ones(k2) / k2, 'same') * 2
 music = drone * .9 + pad + pulse * (1 - .45 * duck) + tick * (1 - .6 * duck) + cta * (1 - .5 * duck) + rain
 music *= env(0, .02, t) * (1 - env(END - .5, END, t))
 music = sosfilt(butter(2, [1200, 4500], 'bandstop', fs=SR, output='sos'), music) * .85 + rain * .5
-music *= 10 ** ((-3 - 18 * duck) / 20)
+music *= 10 ** ((-4.5 - 18 * duck) / 20)
 sfx = np.zeros(N)
 def noise_sweep(d=.38, lo=400, hi=5000, down=False):
     L = int(d * SR); x = rng.standard_normal(L); e = np.sin(np.linspace(0, np.pi, L)) ** 2; out = np.zeros(L); sg = L // 8
