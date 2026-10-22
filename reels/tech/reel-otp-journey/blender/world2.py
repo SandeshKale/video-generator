@@ -66,6 +66,10 @@ sparks = []
 for i in range(40):
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=8, ring_count=4); o = bpy.context.object; o.data.materials.append(amber)
     sparks.append((o, V((random.uniform(-1, 1), random.uniform(-1, 1), random.uniform(.2, 1.6))).normalized() * random.uniform(2, 7), random.uniform(.6, 1.0)))
+def torus_mesh(obj, R, r, nu=64, nv=8):
+    vs = [(( R + r * math.cos(b)) * math.cos(a), (R + r * math.cos(b)) * math.sin(a), r * math.sin(b)) for a in [2 * math.pi * i / nu for i in range(nu)] for b in [2 * math.pi * j / nv for j in range(nv)]]
+    fs = [(i * nv + j, i * nv + (j + 1) % nv, ((i + 1) % nu) * nv + (j + 1) % nv, ((i + 1) % nu) * nv + j) for i in range(nu) for j in range(nv)]
+    me = obj.data; me.clear_geometry(); me.from_pydata(vs, [], fs); me.update()
 # ---------- timeline ----------
 def spl(keys):
     ts = np.array([k[0] for k in keys], dtype=float); vs = np.array([k[1:] for k in keys], dtype=float); f = PchipInterpolator(ts, vs, axis=0)
@@ -93,7 +97,7 @@ def chase(t0, t1, step, side, back, up, lens, rollamp, lead=0.5, lag=0.7):
     while tt <= t1 + 1e-6:
         p, s = tokpos(tt - lag); q, _ = tokpos(tt + lead); sd = side * math.sin(tt * 1.7)
         add(tt, p + V((sd, -back, up)), q + V((0, 2, 1.2)), lens, rollamp * math.sin(tt * 1.7 + 1)); tt += step
-chase(a_gate + 0.2, a_tow + 0.6, 0.4, 7, 16, 8, 28, 7)
+add(a_gate + 0.4, (8, -36, 26), (-6, 14, 30), 28, 4); chase(a_gate + 1.1, a_tow + 0.6, 0.4, 7, 23, 11, 27, 6)
 add(tow_end + 0.1, (34, 140, 40), (tx, ty, 46), 26, 4); add(a_air + 0.5, (38, 150, 52), (tx, ty, 56), 26, 4)
 chase(a_air + 1.6, a_late + 1.6, 0.5, 9, 14, 8, 26, 6, 0.6, 0.9)
 add(a_type - 0.5, (HX - 6, HY - 20, 33), V((HX, HY, 30)), 30, 0); add(a_type, (HX, HY - 14, 30.5), V((HX, HY, SCZ)), 32, 0); add(a_pass + 0.7, (HX, HY - 9.5, 29.8), V((HX, HY, SCZ)), 30, 0)
@@ -143,7 +147,7 @@ for f in FR:
     # tower pulse rings
     for i, r_ in enumerate(pulse_rings):
         u = (t - tow_end - i * 0.45) / 1.7
-        if 0 <= u <= 1 and t < a_air + 0.8: setv(r_, True); sc_r = 2.0 + u * 55; r_.scale = (sc_r,) * 3; r_.location = (tx, ty, 54)
+        if 0 <= u <= 1 and t < a_air + 0.8: setv(r_, True); sc_r = 2.0 + u * 55; torus_mesh(r_, sc_r, 0.3 + 0.012 * sc_r); r_.scale = (1, 1, 1); r_.location = (tx, ty, 54)
         else: setv(r_, False)
     setv(beacon_s, t >= a_1930); beacon_s.rotation_euler = (cam.location - beacon_s.location).to_track_quat('Z', 'Y').to_euler()
     # phone screen
