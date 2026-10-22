@@ -35,7 +35,7 @@ box((bx, by - 9.5, 15.2), (27, 3.2, 1.2), brass)
 bpy.ops.mesh.primitive_cone_add(vertices=3, radius1=14, radius2=14, depth=3.2, location=(bx, by - 9.5, 18.4), rotation=(math.pi / 2, 0, math.pi / 2)); pd = bpy.context.object; pd.scale = (1, 0.42, 1); pd.data.materials.append(brass)
 cyl((bx, by - 8.3, 6.0), 4.2, 0.8, steel, rot=(math.pi / 2, 0, 0), v=48); tor((bx, by - 8.8, 6.0), 4.2, 0.35, warm, rot=(math.pi / 2, 0, 0))
 cyl((bx, by - 9.0, 6.0), 1.0, 0.6, brass, rot=(math.pi / 2, 0, 0))
-sign('BANK', (bx, by - 11.3, 18.2), 2.0, signm); plight((bx, by - 14, 6), (1.0, 0.6, 0.2), 14000, 3)
+sign('BANK', (bx, by - 12.2, 15.2), 1.5, signm); plight((bx, by - 14, 6), (1.0, 0.6, 0.2), 14000, 3)
 # ---- 2 SMS GATEWAY: sorting hall, conveyor, scanner arch, envelopes ----
 gx, gy = STN['gate']
 box((gx, gy, 0), (26, 18, 0.8), slate); box((gx, gy + 3, 0.8), (24, 12, 7), steel); box((gx, gy - 5.5, 0.8), (24, 0.8, 7), steel)
