@@ -15,7 +15,7 @@ def K(si, ci, ab): return TM['sentences'][si]['clauses'][ci][ab]
 a_bank = K(2, 0, 'a'); a_gate = K(4, 0, 'a'); a_core = K(4, 1, 'a'); a_tow = K(4, 2, 'a'); tow_end = K(4, 2, 'b'); a_air = K(5, 0, 'a'); a_late = K(5, 1, 'a')
 a_type = K(6, 0, 'a'); a_match = K(6, 1, 'a'); a_pass = K(6, 2, 'a'); a_dead = K(7, 0, 'a'); a_block = K(7, 1, 'a'); a_guess = K(8, 0, 'a'); guess_end = K(8, 0, 'b')
 a_you = K(9, 0, 'a'); a_theirs = K(9, 1, 'a'); a_rush = K(10, 0, 'a'); a_isnt = K(10, 1, 'a'); a_own = K(10, 2, 'a'); own_end = K(10, 2, 'b'); a_never = K(11, 0, 'a'); a_1930 = K(12, 0, 'a'); a_cta = K(13, 0, 'a')
-END = 66.0; FPSV = FPS
+END = TM['dur'] + 3.0; FPSV = FPS
 # ---- extra materials / objects ----
 ringm = emit('ringm', (1.0, 0.42, 0.06, 1), 0.6)
 for r_ in pulse_rings: r_.data.materials[0] = ringm; r_.rotation_euler = (0, 0, 0)

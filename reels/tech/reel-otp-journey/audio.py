@@ -6,7 +6,7 @@ import numpy as np, soundfile as sf, subprocess, json, re, os
 from scipy.signal import butter, sosfilt
 H = os.path.dirname(os.path.abspath(__file__)); os.chdir(H)
 SR = 48000; V = 'hi'; UI = '../../../assets/sfx/uisfx/sounds/'
-TMJ = json.loads(open('site/timing.js', encoding='utf8').read().split('=', 1)[1].rstrip(';\n')); END = TMJ['END']
+TMJ = json.loads(open('site/timing.js', encoding='utf8').read().split('=', 1)[1].rstrip(';\n')); END = TMJ['END']; C = TMJ['CUE']
 subprocess.check_call(['ffmpeg', '-v', 'error', '-y', '-i', 'audio/voice.wav', '-af',
  'highpass=f=85,equalizer=f=260:t=q:w=1.2:g=-2,equalizer=f=3200:t=q:w=1:g=2.5,equalizer=f=9000:t=h:w=0.7:g=1.5,acompressor=threshold=-21dB:ratio=3:attack=8:release=140:makeup=4,alimiter=limit=0.9',
  '-ar', str(SR), '-ac', '1', 'audio/voice_fx.wav'])
@@ -28,29 +28,29 @@ def click(d=.03, f=2200):
 def thump(f=50, d=.7, dec=6):
     x = np.arange(int(d * SR)) / SR; return np.sin(2 * np.pi * np.cumsum(f + 90 * np.exp(-x * 40)) / SR) * np.exp(-x * dec)
 # chords per section (root first): chapters start at 4.7 / 13.7 / 30.2 / 45.5 ; calm 56.3 ; CTA 60.1
-SEC = [(0, 4.7, [38, 50, 53, 57]), (4.7, 13.7, [38, 50, 53, 57]), (13.7, 30.2, [34, 46, 50, 53]), (30.2, 45.5, [31, 43, 46, 50]), (45.5, 56.3, [38, 50, 53, 56]), (56.3, 60.1, [38, 50, 54, 57]), (60.1, END + 1, [38, 50, 54, 57])]
+SEC = [(0, C['a_bank'], [38, 50, 53, 57]), (C['a_bank'], C['a_gate'], [38, 50, 53, 57]), (C['a_gate'], C['a_type'] - .4, [34, 46, 50, 53]), (C['a_type'] - .4, C['a_you'], [31, 43, 46, 50]), (C['a_you'], C['a_never'], [38, 50, 53, 56]), (C['a_never'], C['a_cta'], [38, 50, 54, 57]), (C['a_cta'], END + 1, [38, 50, 54, 57])]
 drone = np.zeros(N); pad = np.zeros(N)
 for a0, a1, ch in SEC:
-    g_ = gate(a0, a1, .5); f0 = mtf(ch[0])
+    g_ = gate(a0, a1, .5); f0 = mtf(ch[0]); scam = abs(a0 - C['a_you']) < .01
     drone += (np.sin(2 * np.pi * f0 * t) + .5 * np.sin(2 * np.pi * 2 * f0 * t + .4) + .3 * np.sin(2 * np.pi * 3 * f0 * t)) * g_ * .20
     for m in ch[1:]:
-        f = mtf(m); det = 1.0 if a0 != 45.5 else 1.012      # a slightly detuned pad in the scam chapter
+        f = mtf(m); det = 1.012 if scam else 1.0      # a slightly detuned pad in the scam chapter
         pad += (np.sin(2 * np.pi * f * t + .3 * np.sin(t * .5 + m)) + .2 * np.sin(2 * np.pi * 2 * f * det * t)) * g_ * .06
 drone = lp(drone, 220); pad = lp(pad, 1000)
 # rain bed
 rain = bp(rng.standard_normal(N), 2500, 9000) * .06 + lp(rng.standard_normal(N), 500) * .03
-rain *= 1 - .6 * env(56, 63, t)
+rain *= 1 - .6 * env(C['a_1930'], C['a_1930'] + 7, t)
 # heartbeat pulse
 pulse = np.zeros(N)
 def beat_train(a0, a1, bpm, g):
     a = a0; b = 60 / bpm
     while a < a1: add(pulse, a, thump(46, .32, 12) * g); add(pulse, a + .16, thump(52, .25, 14) * g * .6); a += b
-beat_train(4.7, 29.7, 84, .5); beat_train(30.2, 41.6, 56, .35); beat_train(41.9, 53.5, 112, .6); beat_train(56.3, 60.1, 60, .3)
+beat_train(C['a_bank'], C['a_type'] - .4, 84, .5); beat_train(C['a_type'], C['a_guess'] + 2, 56, .35); beat_train(C['a_you'], C['own_end'] + .6, 112, .6); beat_train(C['a_never'] + .3, C['a_cta'], 60, .3)
 # tense ticking in the scam chapter
-tick = np.zeros(N); a = 45.5
-while a < 53.4: add(tick, a, click(.02, 3800), .10); a += 60 / 112 / 2
+tick = np.zeros(N); a = C['a_rush']
+while a < C['own_end'] + .3: add(tick, a, click(.02, 3800), .10); a += 60 / 112 / 2
 # CTA lift: warm plucked arpeggio after the last word of the CTA starts (kept soft, in the bed)
-cta = np.zeros(N); mel = [62, 66, 69, 74, 69, 66]; a = 60.3; j = 0
+cta = np.zeros(N); mel = [62, 66, 69, 74, 69, 66]; a = C['a_cta'] + .2; j = 0
 while a < END - .2:
     x = np.arange(int(.45 * SR)) / SR; fq = mtf(mel[j % 6]); add(cta, a, (np.sin(2 * np.pi * fq * x) + .3 * np.sin(2 * np.pi * 2 * fq * x)) * np.exp(-x * 5), .12); a += .32; j += 1
 act = np.abs(voice); kk = int(.1 * SR); sm = np.convolve(act, np.ones(kk) / kk, 'same'); on = (sm > 0.01).astype(float)

@@ -11,17 +11,16 @@
 canvas#cv{position:absolute;left:0;top:0}
 #tag{position:absolute;left:150px;top:158px;font:600 24px/1 PM;letter-spacing:.08em;color:var(--cr);white-space:nowrap;text-shadow:0 2px 10px #000}
 #tag i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--am);margin-right:12px;box-shadow:0 0 12px currentColor}
-#hop{position:absolute;left:150px;top:196px;font:500 19px/1 PM;letter-spacing:.07em;color:var(--cy);white-space:nowrap;text-shadow:0 2px 10px #000}
 #life{position:absolute;right:162px;top:152px;width:300px;text-align:right;font:500 17px/1 PM;letter-spacing:.08em;color:var(--cr);text-shadow:0 2px 10px #000}
 #life .bar{margin-top:10px;height:12px;border:2px solid rgba(241,232,214,.7);border-radius:7px;background:rgba(0,0,0,.45);overflow:hidden}#life .bar b{display:block;height:100%;background:var(--am);box-shadow:0 0 14px var(--am)}
-#ch{position:absolute;left:150px;top:246px;font:400 88px/1 IS;font-style:italic;color:var(--cr);text-shadow:0 4px 22px #000,0 1px 3px #000;white-space:nowrap}
+#trk{position:absolute;right:162px;top:150px;display:flex;gap:8px;align-items:center}#trk span{width:36px;height:36px;border-radius:50%;border:3px solid rgba(241,232,214,.4);font:600 18px/30px PM;text-align:center;color:rgba(241,232,214,.6);background:rgba(4,14,18,.6)}#trk span.on{background:var(--am);border-color:var(--am);color:#1b1004}#trk span.done{border-color:var(--cy);color:var(--cy)}#trk em{font:600 17px/1 PM;font-style:normal;letter-spacing:.1em;color:var(--cr);margin-left:6px;text-shadow:0 2px 8px #000}
+#gu{position:absolute;left:150px;top:560px;font:400 76px/1 AN;letter-spacing:.03em;color:var(--cr);text-shadow:0 4px 20px #000;opacity:0}#gu b{color:var(--am);font-weight:400}#gu small{display:block;margin-top:10px;font:600 20px/1 PM;letter-spacing:.12em;color:var(--cy)}
 #hl{position:absolute;left:150px;top:272px;width:768px;font:400 128px/1.0 AN;color:var(--cr);text-transform:uppercase;letter-spacing:.005em;text-shadow:0 5px 24px rgba(0,0,0,.75)}
 #hl em{font-style:normal;display:inline-block;background:var(--am);color:#1b1004;padding:0 16px;margin-top:6px;text-shadow:none}
 .st{position:absolute;left:150px;opacity:0;border:6px solid;padding:6px 22px 8px;font:400 84px/1 AN;letter-spacing:.04em;text-transform:uppercase;background:rgba(7,22,28,.74);text-shadow:none;transform-origin:left center}
-#rng{position:absolute;left:150px;top:214px;font:500 20px/1 PM;letter-spacing:.1em;color:var(--am);text-shadow:0 2px 10px #000;white-space:nowrap}
 #mil{position:absolute;left:150px;top:560px;font:400 70px/1 AN;letter-spacing:.03em;color:var(--cr);text-shadow:0 4px 20px #000}#mil b{color:var(--am);font-weight:400}
 #wk{position:absolute;left:150px;top:1160px;border-radius:30px;padding:10px 22px;font:600 22px/1 PM;letter-spacing:.08em;color:#1b1004;background:var(--am);opacity:0}
-#ill{position:absolute;left:150px;width:768px;top:1236px;text-align:right;font:500 17px/1 PM;letter-spacing:.08em;color:rgba(127,230,255,.85);text-shadow:0 2px 8px #000;white-space:nowrap}
+#ill{position:absolute;left:150px;width:768px;top:196px;text-align:right;font:500 17px/1 PM;letter-spacing:.08em;color:rgba(127,230,255,.85);text-shadow:0 2px 8px #000;white-space:nowrap}
 #cap{position:absolute;left:150px;top:1272px;width:768px;min-height:150px;padding:20px 24px 22px;font:700 48px/1.18 Inter;color:var(--cr);background:linear-gradient(90deg,rgba(4,14,18,.86),rgba(4,14,18,.72));border-left:6px solid var(--am);text-shadow:0 2px 8px rgba(0,0,0,.6)}
 #cap b{color:var(--am);font-weight:700}#cap.r{border-left-color:var(--rd)}#cap.r b{color:var(--rd)}
 #endc{position:absolute;left:150px;top:540px;width:768px;height:620px;opacity:0}
@@ -32,8 +31,8 @@ canvas#cv{position:absolute;left:0;top:0}
 #b1{left:0;width:190px}#b2{left:204px;width:220px;background:var(--am)}#b3{left:438px;width:330px;background:var(--rd);color:var(--cr)}
 </style></head><body>
 <canvas id="cv" width="1080" height="1920"></canvas>
-<div id="tag"></div><div id="hop"></div><div id="life"></div><div id="rng"></div>
-<div id="hl"></div><div id="ch"></div><div id="mil"></div>
+<div id="tag"></div><div id="trk"></div>
+<div id="hl"></div><div id="mil"></div><div id="gu"></div>
 <div class="st" id="s1"></div><div class="st" id="s2"></div><div id="wk">WEAK SIGNAL → LATE OTP</div>
 <div id="ill">ILLUSTRATION · NOT A REAL BANK, PERSON OR PHONE</div><div id="cap"></div>
 <div id="endc"><div id="pf"></div><div id="hd">@sandeshexplains</div><div id="sub">NEVER SHARE YOUR OTP<br>NO BANK ASKS · CALL 1930</div><div class="btn" id="b1">LIKE</div><div class="btn" id="b2">SHARE</div><div class="btn" id="b3">SUBSCRIBE</div></div>
