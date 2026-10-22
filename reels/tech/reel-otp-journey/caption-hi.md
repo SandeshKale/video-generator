@@ -1,6 +1,6 @@
 # Caption (Hindi voice-over, English on screen): "Your OTP lived minutes." (OTP journey)
 
-**Before posting:** (1) How long an OTP stays valid, how many wrong tries are allowed, and "made for this payment" are typical bank behaviour and differ by bank; the reel says "a few minutes" and "several wrong tries" and shows no exact number. (2) The route SMS gateway, telecom core, tower, phone is a simplified path, labelled ILLUSTRATION. (3) The helpline 1930 and "never share your OTP / genuine banks don't ask" come from RBI's public-awareness press release (rbi.org.in, prid=53185, Jan 2022), PIB Fact Check and the I4C portal (cybercrime.gov.in); re-open them the day you post. (4) The voice is AI text-to-speech (Hindi) and the city is a 3D illustration, not a real place.
+**Before posting:** (1) How long an OTP stays valid, how many wrong tries are allowed, and "made for this payment" are typical bank behaviour and differ by bank; the reel says "a few minutes" and "several wrong tries" and shows no exact number. (2) The route SMS gateway, telecom core, tower, phone is a simplified path, labelled ILLUSTRATION. (3) The helpline 1930 and "never share your OTP / genuine banks don't ask" come from RBI's public-awareness press release (rbi.org.in, prid=53185, Jan 2022), PIB Fact Check and the I4C portal (cybercrime.gov.in); re-open them the day you post. (4) The voice is AI text-to-speech (Hindi, OmniVoice) and the city is a 3D illustration, not a real place.
 
 ## Instagram caption
 Comment "OTP" 👇 aur ye us insaan ko bhejiye jo phone par "bank se bol raha hoon" sunkar code bata deta hai.
@@ -35,7 +35,7 @@ Paste line: `#OTP #ScamAlert #CyberSecurity #DigitalIndia #SandeshExplains`
 - The end card shows **@sandeshexplains** (no underscore); make it match the live handle before posting.
 - Spoken CTA and end card: **like, share and subscribe** (Hindi-reel / YouTube rule).
 - The code 482917, the "fake caller" silhouette and the city are made up. Nothing refers to a real bank, agency or number except the national helpline 1930.
-- Not auditioned by ear: listen once for "ओटीपी", "एसएमएस गेटवे", "ट्रांज़ैक्शन" and "सैंडेश एक्सप्लेन्स". Kokoro's Hindi is flatter than a human read.
+- Not auditioned by ear: listen once for "ओटीपी", "एसएमएस गेटवे", "ट्रांज़ैक्शन" and "सैंडेश एक्सप्लेन्स". The AI voice is still not a human read.
 
 ## YouTube Shorts
 | Field | Value |
