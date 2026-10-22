@@ -83,7 +83,7 @@ FX = dict(ping=lambda: bell(1568, 1.0), sub=lambda: thump(38, 1.2, 3) * 1.1, who
           pulse=lambda: mix2(noise_sweep(.9, 300, 6000) * .6, thump(44, .9, 4)), fade=fade, tick=lambda: bell(1760, .6), key=lambda: mix2(click(.02, 1300), thump(150, .1, 40) * .3),
           burn=burn, stamp=stamp, swarm=lambda: noise_sweep(.5, 800, 9000), redlane=redlane, flip=lambda: mix2(click(.03, 2600), noise_sweep(.25, 800, 5000) * .3),
           hit=lambda: mix2(thump(40, 1.2, 4) * 1.2, crack()), snap=crack, resolve=resolve, end=lambda: bell(1175, 1.5) * .6)
-GAIN = dict(ping=.5, sub=.7, whoosh=.38, dial=.3, lock=.55, relay=.5, pulse=.5, fade=.4, tick=.2, key=.22, burn=.4, stamp=.6, swarm=.3, redlane=.45, flip=.4, hit=.7, snap=.55, resolve=.5, end=.4)
+GAIN = dict(ping=.5, sub=.7, whoosh=.38, dial=.3, lock=.55, relay=.5, pulse=.5, fade=.4, tick=.2, key=.22, burn=.4, stamp=.6, swarm=.18, redlane=.2, flip=.4, hit=.7, snap=.55, resolve=.5, end=.4)
 for at, kind in json.load(open('audio/events.json')):
     x = FX[kind]() if kind in FX else None
     if x is None: print('no sound for', kind); continue
