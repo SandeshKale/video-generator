@@ -51,9 +51,9 @@
       var mp = pulse(t, C.million, C.a_bank - .1, .2, .3); $('mil').style.opacity = mp; if (mp > 0) $('mil').innerHTML = '<b>1</b> IN 1,000,000';
       var gp = pulse(t, C.a_guess + .2, C.a_you - .1, .3, .4); $('gu').style.opacity = gp; if (gp > 0) $('gu').innerHTML = '<b>1</b> IN 1,000,000<small>EVERY CELL = ONE POSSIBLE CODE</small>';
       // stamps
-      var s1 = $('s1'), s2 = $('s2'); s1.style.top = '700px'; s2.style.top = '700px';
-      stampEl(s1, t, C.a_match + .3, C.a_guess - .3, 'Matched ✔', '#3dff9a');
-      if (t >= C.a_dead + .4 && t < C.a_guess - .1) stampEl(s2, t, C.a_dead + .4, C.a_guess - .1, t < C.a_block + .4 ? 'Used once' : 'Blocked after wrong tries', '#ff3b3b');
+      var s1 = $('s1'), s2 = $('s2'); s1.style.top = '520px'; s2.style.top = '520px';
+      stampEl(s1, t, C.a_match + .3, C.a_dead + .1, 'Matched ✔', '#3dff9a');
+      if (t >= C.a_dead + .4 && t < C.a_guess - .1) stampEl(s2, t, C.a_dead + .4, C.a_guess - .1, t < C.a_block + .4 ? 'Used once' : 'Blocked', '#ff3b3b');
       else if (t >= C.a_rush + .6 && t < C.a_isnt + .6) stampEl(s2, t, C.a_rush + .6, C.a_isnt + .6, 'Your payment', '#f1e8d6');
       else if (t >= C.a_isnt + .6 && t < C.a_never - .1) stampEl(s2, t, C.a_isnt + .6, C.a_never - .1, 'Their payment', '#ff3b3b');
       else if (t >= C.a_never && t < C.a_1930 - .2) stampEl(s2, t, C.a_never, C.a_1930 - .2, 'No bank asks', '#ff9d3c');
