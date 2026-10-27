@@ -81,7 +81,7 @@ E('path', { d: 'M797 224 V520', stroke: LINE, 'stroke-width': 3, fill: 'none', '
 var pg = CARD(svg, 802, 130, 510, 446, 'POSTGRESQL 17 · EVERY BUSINESS RULE LIVES HERE', MINT, PANEL2); SII(pg, 'postgresql', 1274, 133, 22, MINT);
 var tb = E('g', {}); R(tb, 814, 164, 240, 130, { fill: PANEL, stroke: LINE, 'stroke-width': 1.5 }); B(1050); T(tb, 826, 187, 'TABLES · 33 · RLS ON ALL', 14.5, MINT, 'RM', 700, 'start', .2);
 var tiles = []; for (var ti = 0; ti < 33; ti++) { var tx = 826 + (ti % 11) * 19.2, ty = 198 + Math.floor(ti / 11) * 19; tiles.push(R(tb, tx, ty, 16, 16, { fill: '#26306a', rx: 4 })); }
-B(1050); T(tb, 826, 272, 'coupon · coupon_event · …', 14.5, MUTE, 'IN', 500); T(tb, 826, 288, 'app_user · pin_attempt · …', 14.5, MUTE, 'IN', 500);
+B(1050); T(tb, 826, 272, 'coupon: 15 L rows · events …', 14.5, MUTE, 'IN', 500); T(tb, 826, 288, 'indexed: code · serial · status', 14.5, MUTE, 'IN', 500);
 var fn = E('g', {}); R(fn, 1064, 164, 236, 130, { fill: PANEL, stroke: LINE, 'stroke-width': 1.5 }); B(1296); T(fn, 1076, 187, 'FUNCTIONS · 134 DEFINER', 14.5, MINT, 'RM', 700, 'start', .1);
 CLIP('fnclip', 1068, 196, 228, 96); var fnList = E('g', { 'clip-path': 'url(#fnclip)' }, fn), fnIn = E('g', {}, fnList);
 var FNS = ['public_lookup', 'pin_login_check', 'set_user_pin', 'validate_coupon', 'activate_range', 'block_range', 'dashboard_stats', 'reverse_redemption', 'expire_coupons', 'reconcile_all', 'assert_role', 'register_app_user'], fnHi = R(fnIn, 1070, 0, 224, 22, { fill: SAF, opacity: 0, rx: 5 });
@@ -132,7 +132,7 @@ var sc = CARD(svg, 912, 632, 322, 260, 'SECURITY CONTROLS', ROSE);
 var SEC = ['RLS on all 33 tables', 'SECURITY DEFINER · pinned path', 'peppered HMAC + bcrypt PINs', 'rate limits: login · lookup · scan', 'CORS: one origin · strict schemas', 'add-only audit · weekly review', 'gitleaks + dependency audit'], secI = [];
 SEC.forEach(function (s, i) { var y = 664 + i * 31.5; secI.push(PHI(sc, 'shield-check', 926, y + 3, 22, GREY)); B(1228); T(sc, 954, y + 20, s, 16, TXT, 'IN', 500); });
 var ag = CARD(svg, 1244, 632, 332, 260, 'AT A GLANCE', MINT);
-var GL = [['1000', 'coupons loaded', SAF], ['33', 'tables · RLS', MINT], ['134', 'DB functions', SKY], ['27', 'RLS policies', ROSE], ['10', 'edge functions', LIL], ['17', 'migrations', MUTE], ['183 d', 'device login', MINT], ['96 KB', 'dealer JS gz', SAF]], glN = [];
+var GL = [['15 L', 'coupons (1.5 M)', SAF], ['33', 'tables · RLS', MINT], ['134', 'DB functions', SKY], ['27', 'RLS policies', ROSE], ['10', 'edge functions', LIL], ['17', 'migrations', MUTE], ['183 d', 'device login', MINT], ['96 KB', 'dealer JS gz', SAF]], glN = [];
 GL.forEach(function (c, i) { var x = 1260 + (i % 2) * 158, y = 664 + Math.floor(i / 2) * 44; B(x + 150); glN.push(T(ag, x, y + 19, c[0], 23, c[2], 'SO', 800)); T(ag, x, y + 39, c[1], 14.5, MUTE, 'IN', 500); });
 B(1570); T(ag, 1260, 852, 'code = 12 symbols + 1 Luhn mod-32 check', 14.5, MUTE, 'IN', 500);
 var cells = []; for (var ci = 0; ci < 13; ci++) cells.push(R(ag, 1260 + ci * 23.5, 860, 20, 20, { fill: ci === 12 ? SAF : '#26306a', rx: 4 }));
@@ -174,7 +174,7 @@ PK(LIL, 6, toPWA(3, 278).concat([[500, 278], [517, 278], [517, 380], [790, 380],
 PK(SAF, 6, [[1300, 520], [1318, 520], [1318, 330], [1332, 330]], 10.9, 11.7, 'dump');
 PK(MINT, 6, [[1500, 607], [1200, 607], [700, 607], [392, 607], [392, 584]], 10.0, 11.2, 'deploy');
 var chipsN = []; function CHIP(w, col, s) { var g = E('g', { opacity: 0, class: 'pk' }); R(g, -w / 2, -17, w, 25, { fill: PANEL2, stroke: col, 'stroke-width': 2, rx: 12.5 }); E('text', { x: 0, y: 1, fill: col, 'font-family': 'RM', 'font-weight': 700, 'font-size': 14.5, 'text-anchor': 'middle' }, g, s); return g; }
-var chActive = CHIP(86, MINT, 'ACTIVE'), chValid = CHIP(98, SAF, 'Validated'), chFail = CHIP(160, ROSE, '401 LOGIN_FAILED'), chSame = CHIP(98, LIL, 'same result'), chRec = CHIP(116, MINT, '0 issues ✓'), chBoard = CHIP(102, MINT, 'valid: 1');
+var chActive = CHIP(86, MINT, 'ACTIVE'), chValid = CHIP(98, SAF, 'Validated'), chFail = CHIP(160, ROSE, '401 LOGIN_FAILED'), chSame = CHIP(98, LIL, 'same result'), chRec = CHIP(190, MINT, '15 L rows · 0 issues ✓'), chBoard = CHIP(102, MINT, 'valid: 1');
 var tokMain = E('g', {}); E('circle', { r: 11, fill: SAF, opacity: .3, filter: 'url(#glow)' }, tokMain); E('circle', { r: 6.5, fill: SAF }, tokMain);
 var tokG = [MINT, ROSE, ROSE, LIL].map(function (c) { var g = E('g', { opacity: 0 }); E('circle', { r: 5.5, fill: c }, g); return g; });
 

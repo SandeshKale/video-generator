@@ -6,7 +6,7 @@ Post it as a native GIF upload. Only the first ~200 characters show before "see 
 
 We put every rule of a coupon platform in the database, and kept the app thin on purpose.
 
-The client prints physical coupons with a QR code. Four groups touch them: anyone can scan one to check it's genuine, dealers log in with a 4-digit PIN to validate it, distributors onboard dealers, and HQ watches and controls it all live. Payments and credit notes stay on paper. That boundary kept the system small enough to get right.
+The client prints physical coupons with a QR code, 15 lakh (1.5 million) of them. Four groups touch them: anyone can scan one to check it's genuine, dealers log in with a 4-digit PIN to validate it, distributors onboard dealers, and HQ watches and controls it all live. Payments and credit notes stay on paper. That boundary kept the system small enough to get right.
 
 Follow one coupon through the GIF:
 
@@ -16,7 +16,9 @@ Follow one coupon through the GIF:
 4. HQ sees it on the dashboard, and an admin can reverse it with a reason. Every edge of the lifecycle is a trigger-enforced state machine, so the app can't skip one.
 5. Around it: daily expiry, a daily reconciliation that should find zero issues, weekly and monthly encrypted backups, and a CI pipeline that fails the build if the dealer bundle goes past its 100 KB budget.
 
-The numbers behind it: 33 tables with row-level security on all of them, 134 database functions, 27 policies, 10 edge functions, 17 migrations. The dealer entry bundle is 96.3 KB gzipped, and the nightly e2e suite runs on 2G and flaky-network profiles, because that's where dealers actually are.
+The numbers behind it: 15 lakh coupon rows, indexed on code, serial and status, 33 tables with row-level security on all of them, 134 database functions, 27 policies, 10 edge functions, 17 migrations. The dealer entry bundle is 96.3 KB gzipped, and the nightly e2e suite runs on 2G and flaky-network profiles, because that's where dealers actually are.
+
+Coupons arrive by lot: a bulk import loads 1,000 rows in one transaction (so 15 lakh is about 1,500 lots), and every label PDF is decoded and matched back to the database before it prints. The daily reconciliation compares counters, rows and events across all 15 lakh and is expected to find zero issues.
 
 Two things we chose not to build: messaging (the code is there, switched off, so no OTP and no outbound messages) and payments.
 
@@ -30,7 +32,7 @@ Where do you draw the line between app logic and database logic?
 
 We put every rule of a coupon platform in the database and kept the app thin.
 
-Physical coupons with a QR code. The public checks authenticity. Dealers validate with a PIN. Distributors onboard dealers. HQ sees everything live. Payments stay on paper.
+15 lakh physical coupons with a QR code. The public checks authenticity. Dealers validate with a PIN. Distributors onboard dealers. HQ sees everything live. Payments stay on paper.
 
 How it works: one RPC per action, 33 tables with RLS on all of them, 134 security-definer functions, trigger-enforced state machines, and one identical 401 for every failed login. The dealer entry bundle is 96.3 KB gzipped, tested on 2G.
 
@@ -48,9 +50,9 @@ Where do you draw the line between app logic and database logic?
 - Bottom left, the coupon lifecycle: the amber token moves ACTIVE → REDEEMED on validate and back on an admin reverse. Smaller dots walk the other edges (activate, cron expiry, block, hold) for other coupons.
 - The clock in the database is pg_cron: 19:30 expiry, 20:30 reconciliation ("0 issues"), Sunday cleanup.
 
-📎 Source: the platform's own technical architecture one-pager. All numbers come from it: 1000 coupons loaded so far, 33 tables, 134 functions, 27 policies, 10 edge functions, 17 migrations, 183-day device login, 96.3 KB dealer entry against a 100 KB gate.
+📎 Source: the platform's own technical architecture one-pager. The design numbers come from it: 33 tables, 134 functions, 27 policies, 10 edge functions, 17 migrations, 183-day device login, 96.3 KB dealer entry against a 100 KB gate. The volume is 15 lakh (1.5 million) coupons, and the lot size of 1,000 rows per import transaction is also from the one-pager.
 
-Caveats: this is a design write-up, not a benchmark. The platform is early (1000 coupons loaded), the animation is schematic, and the coupon code and flows are illustrative.
+Caveats: this is a design write-up, not a benchmark, and I have no latency figures to quote at 15 lakh rows. The animation is schematic, and the coupon code and flows are illustrative.
 
 ## Alt text (LinkedIn limit 1000 characters)
-Architecture diagram of a coupon validation platform, animated. On the left, five clients: public scanner, dealer, distributor, HQ staff and label printer. In the centre, a PWA on Vercel and a Supabase project with edge functions, PostgREST, GoTrue auth and a PostgreSQL 17 database whose 33 tables all have row-level security. On the right, GitHub Actions, backups, monitoring, a dormant messaging API and DNS. Glowing dots show one coupon's day: a public scan, a dealer's seven-step PIN login, a validate call that moves the coupon from ACTIVE to REDEEMED, an HQ dashboard read and an admin reversal. Panels along the bottom show the coupon lifecycle, the login steps, security controls and key numbers.
+Architecture diagram of a coupon validation platform, animated. On the left, five clients: public scanner, dealer, distributor, HQ staff and label printer. In the centre, a PWA on Vercel and a Supabase project with edge functions, PostgREST, GoTrue auth and a PostgreSQL 17 database whose 33 tables all have row-level security and which holds 1.5 million coupons. On the right, GitHub Actions, backups, monitoring, a dormant messaging API and DNS. Glowing dots show one coupon's day: a public scan, a dealer's seven-step PIN login, a validate call that moves the coupon from ACTIVE to REDEEMED, an HQ dashboard read and an admin reversal. Panels along the bottom show the coupon lifecycle, the login steps, security controls and key numbers.
