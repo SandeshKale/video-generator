@@ -1,4 +1,4 @@
-# LinkedIn copy: "Every coupon rule lives in the database" (horizontal GIF `coupon-platform.gif`, 1600×900, 12 s loop, 120 frames, 4.6 MB)
+# LinkedIn copy: "Every coupon rule lives in the database" (horizontal GIF `coupon-platform.gif`, 1600×900, 26 s loop, 156 frames, 4.7 MB)
 
 Post it as a native GIF upload. Only the first ~200 characters show before "see more", so the hook carries the post. Client and brand names are left out on purpose (the source one-pager omits them too).
 
@@ -44,9 +44,10 @@ Where do you draw the line between app logic and database logic?
 #SoftwareArchitecture #PostgreSQL #Supabase #SystemDesign #PWA #Security #Serverless #CaseStudy
 
 ## First comment (how to read the GIF, sources, caveats)
-📌 How to read the GIF (12-second loop):
+📌 How to read the GIF (26-second loop, seven steps):
+- The bar at the top names the current step and the seven circles track it. Everything the step doesn't use is dimmed, so just follow the bright parts: 1 public scan, 2 dealer login, 3 validate, 4 HQ live view, 5 admin reverse, 6 nightly jobs, 7 CI to deploy.
 - Left: the five clients. Centre: Vercel (the PWA, routes, bundle budgets) and the Supabase project (edge functions, PostgREST, GoTrue, PostgreSQL 17). Right: GitHub Actions, backup store, monitoring, a dormant messaging API and DNS.
-- A saffron dot is one request. Watch the "PIN login" list: each of its 7 steps lights up as the request passes it. The "Security controls" list lights each control at the moment it is used.
+- A glowing dot with a tail is one request. During step 2, watch the "PIN login" list: each of its 7 checks lights up as the request passes it. The "Security controls" list lights each control at the moment it is used.
 - Bottom left, the coupon lifecycle: the amber token moves ACTIVE → REDEEMED on validate and back on an admin reverse. Smaller dots walk the other edges (activate, cron expiry, block, hold) for other coupons.
 - The clock in the database is pg_cron: 19:30 expiry, 20:30 reconciliation ("0 issues"), Sunday cleanup.
 
@@ -55,4 +56,4 @@ Where do you draw the line between app logic and database logic?
 Caveats: this is a design write-up, not a benchmark, and I have no latency figures to quote at 15 lakh rows. The animation is schematic, and the coupon code and flows are illustrative.
 
 ## Alt text (LinkedIn limit 1000 characters)
-Architecture diagram of a coupon validation platform, animated. On the left, five clients: public scanner, dealer, distributor, HQ staff and label printer. In the centre, a PWA on Vercel and a Supabase project with edge functions, PostgREST, GoTrue auth and a PostgreSQL 17 database whose 33 tables all have row-level security and which holds 1.5 million coupons. On the right, GitHub Actions, backups, monitoring, a dormant messaging API and DNS. Glowing dots show one coupon's day: a public scan, a dealer's seven-step PIN login, a validate call that moves the coupon from ACTIVE to REDEEMED, an HQ dashboard read and an admin reversal. Panels along the bottom show the coupon lifecycle, the login steps, security controls and key numbers.
+Architecture diagram of a coupon validation platform, animated. On the left, five clients: public scanner, dealer, distributor, HQ staff and label printer. In the centre, a PWA on Vercel and a Supabase project with edge functions, PostgREST, GoTrue auth and a PostgreSQL 17 database whose 33 tables all have row-level security and which holds 1.5 million coupons. On the right, GitHub Actions, backups, monitoring, a dormant messaging API and DNS. Glowing dots show one coupon's day: a public scan, a dealer's seven-step PIN login, a validate call that moves the coupon from ACTIVE to REDEEMED, an HQ dashboard read and an admin reversal. A top bar names each of the seven steps while unrelated parts dim. Panels along the bottom show the coupon lifecycle, the login steps, security controls and key numbers.

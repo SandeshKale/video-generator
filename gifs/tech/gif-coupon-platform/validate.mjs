@@ -4,8 +4,8 @@ import { chromium } from 'playwright';
 const b = await chromium.launch({ executablePath: undefined }); const p = await b.newPage({ viewport: { width: 1600, height: 900 } });
 await p.goto('file://' + new URL('./index.html', import.meta.url).pathname); await p.waitForTimeout(800);
 const seen = new Map(); let moving = 0, prev = '';
-for (let i = 0; i < 120; i++) {
-  const t = i / 10;
+for (let i = 0; i < 104; i++) {
+  const t = i * 0.25;
   const r = await p.evaluate((t) => { window.__seek(t);
     const vis = (e) => { for (let n = e; n && n.tagName !== 'svg'; n = n.parentNode) if (n.getAttribute && n.getAttribute('opacity') === '0') return false; return true; };
     const tx = [...document.querySelectorAll('text')].filter((e) => e.textContent.trim() && vis(e) && !e.classList.contains('pk') && !e.closest('.pk') && !(e.closest('[clip-path]') && (()=>{const r=e.getBoundingClientRect(); const m=e.closest('[clip-path]').getAttribute('clip-path'); const c=document.querySelector('#'+m.slice(5,-1)+' rect').getBoundingClientRect?null:null; const cr=document.querySelector('#'+m.slice(5,-1)+' rect'); const x=+cr.getAttribute('x'),y=+cr.getAttribute('y'),w=+cr.getAttribute('width'),h=+cr.getAttribute('height'); return r.bottom>y+h+1||r.top<y-1||r.right>x+w+1||r.left<x-1;})())).map((e) => { const r = e.getBoundingClientRect(); return { s: e.textContent, x: r.left, y: r.top, r: r.right, b: r.bottom, fs: +e.getAttribute('font-size') }; });
@@ -17,5 +17,5 @@ for (let i = 0; i < 120; i++) {
   r.out.forEach((o) => { if (!seen.has(o)) seen.set(o, []); seen.get(o).push(t); }); if (r.sig !== prev) moving++; prev = r.sig;
 }
 for (const [k, ts] of seen) console.log(k, '@', ts[0].toFixed(1), '..', ts[ts.length - 1].toFixed(1), `(${ts.length})`);
-console.log(seen.size ? seen.size + ' findings' : 'no text findings', '· changing frames', moving, '/120');
+console.log(seen.size ? seen.size + ' findings' : 'no text findings', '· changing frames', moving, '/104');
 await b.close();

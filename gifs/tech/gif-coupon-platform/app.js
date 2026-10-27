@@ -4,7 +4,7 @@
 // while CI gates deploy. Every motion is a real step of the system. window.__seek(t) is a pure function of t.
 (function () {
 'use strict';
-var NS = 'http://www.w3.org/2000/svg', DUR = 12, OFF = 5.4;
+var NS = 'http://www.w3.org/2000/svg', DUR = 26, OFF = 13.6;
 var BG = '#0a0b1f', DOT = '#171a3c', PANEL = '#111331', PANEL2 = '#171a3d', LINE = '#2c3068', TXT = '#eef0ff', MUTE = '#a3a9d9', DIM = '#6f76b0', GREY = '#5a5f8f',
   SAF = '#ffb02e', SKY = '#3ec6ff', MINT = '#35e8b0', ROSE = '#ff5d8f', LIL = '#a78bfa';
 var svg = document.getElementById('s'), FIT = [];
@@ -34,12 +34,10 @@ E('rect', { width: 1600, height: 900, fill: BG }); E('rect', { width: 1600, heig
 
 // header: title + tech-chip marquee
 B(1060); var tl = T(svg, 28, 50, 'Every coupon rule lives in the ', 38, TXT, 'SO', 800, 'start', -.8); E('tspan', { fill: SAF }, tl, 'database.');
-B(1060); T(svg, 30, 80, 'COUPON VALIDATION PLATFORM · QR → PIN → VALIDATE → HQ LIVE · PAYMENTS STAY ON PAPER', 15.5, MUTE, 'RM', 500, 'start', .2);
-CLIP('chipclip', 1090, 12, 486, 66);
-var CH = ['React 19', 'TypeScript strict', 'Vite', 'TanStack Query', 'PWA', 'Vercel', 'Supabase', 'PostgreSQL 17', 'PostgREST', 'GoTrue', 'Deno 2', 'pg_cron', 'pgTAP', 'Vitest', 'Playwright', 'k6'];
-var chipsA = E('g', { 'clip-path': 'url(#chipclip)' }), rowA = E('g', {}, chipsA), rowB = E('g', {}, chipsA), CHW = [];
-(function () { var xa = 0, xb = 0; CH.forEach(function (s, i) { var w = s.length * 9.4 + 24, row = i % 2 ? rowB : rowA, x = i % 2 ? xb : xa; R(row, x, i % 2 ? 46 : 14, w, 26, { fill: PANEL2, stroke: LINE, 'stroke-width': 1.5, rx: 13 }); E('text', { x: x + 12, y: i % 2 ? 65 : 33, fill: TXT, 'font-family': 'RM', 'font-weight': 500, 'font-size': 15.5 }, row, s); if (i % 2) xb += w + 10; else xa += w + 10; }); CHW = [xa, xb]; })();
-var rowA2 = rowA.cloneNode(true), rowB2 = rowB.cloneNode(true); chipsA.appendChild(rowA2); chipsA.appendChild(rowB2);
+var capG = E('g', {}); var capNum = E('circle', { cx: 42, cy: 72, r: 13, fill: SAF }, capG), capN = E('text', { x: 42, y: 78, fill: BG, 'font-family': 'SO', 'font-weight': 800, 'font-size': 17, 'text-anchor': 'middle' }, capG, '1');
+var capT = E('text', { x: 66, y: 78, fill: TXT, 'font-family': 'IN', 'font-weight': 700, 'font-size': 18.5 }, capG, ''), capS = E('tspan', { fill: SAF, 'font-family': 'RM', 'font-weight': 700, 'font-size': 17 }, capT, ''), capD = E('tspan', { fill: TXT, 'font-family': 'IN', 'font-weight': 500 }, capT, '');
+var trk = []; for (var ti_ = 0; ti_ < 7; ti_++) { var tg_ = E('g', {}); E('circle', { cx: 1196 + ti_ * 54, cy: 34, r: 19, fill: PANEL2, stroke: LINE, 'stroke-width': 2 }, tg_); var tt_ = E('text', { x: 1196 + ti_ * 54, y: 40, fill: MUTE, 'font-family': 'SO', 'font-weight': 800, 'font-size': 17, 'text-anchor': 'middle' }, tg_, String(ti_ + 1)); trk.push({ c: tg_.firstChild, t: tt_ }); E('line', { x1: 1196 + ti_ * 54 + 19, y1: 34, x2: 1196 + ti_ * 54 + 35, y2: 34, stroke: LINE, 'stroke-width': 2 }, tg_); }
+E('text', { x: 1576, y: 72, fill: DIM, 'font-family': 'RM', 'font-weight': 700, 'font-size': 14.5, 'text-anchor': 'end', 'letter-spacing': 1.5 }, svg, 'ONE COUPON, ONE DAY');
 
 // ---------- column A · clients ----------
 var CL = [['Public', 'scan QR · no login', 'qr-code', SAF], ['Dealer', 'PIN · validates', 'storefront', SKY], ['Distributor', 'onboards dealers', 'truck', LIL], ['HQ staff', 'MFA · live board', 'chart-bar', MINT], ['Label printer', 'lot → 50×25 mm QR', 'printer', MUTE]];
@@ -111,8 +109,7 @@ var dn = CARD(svg, 1332, 516, 244, 68, 'DNS · DOMAIN', SKY); B(1570); T(dn, 134
 
 // ---------- ticker (CI gates) ----------
 R(svg, 24, 592, 1552, 30, { fill: '#0d0f2a', stroke: LINE, 'stroke-width': 1.5, rx: 8 }); CLIP('tkclip', 30, 594, 1540, 26);
-var tk = E('g', { 'clip-path': 'url(#tkclip)' }), tkIn = E('g', {}, tk), TKS = 'CI GATES ▸ ESLINT 0 WARNINGS · TSC STRICT · VITEST shared 100% · web lib ≥ 95% · PGTAP on a fresh DB · SQLFLUFF · KNIP · AXE · PLAYWRIGHT on 2G + flaky profiles · STRYKER nightly · k6 load vs staging · MANUAL APPROVAL · SMOKE · ROLLBACK = VERCEL INSTANT PROMOTE ▸ ';
-var tkT1 = E('text', { x: 30, y: 613, fill: MUTE, 'font-family': 'RM', 'font-weight': 500, 'font-size': 15.5 }, tkIn, TKS), tkT2 = E('text', { x: 30, y: 613, fill: MUTE, 'font-family': 'RM', 'font-weight': 500, 'font-size': 15.5 }, tkIn, TKS);
+B(1568); var tkHi = R(svg, 24, 594, 150, 26, { fill: MINT, opacity: 0, rx: 8 }); T(svg, 36, 613, 'CI GATES ▸ ESLINT 0 WARNINGS · TSC STRICT · VITEST 100% · PGTAP · AXE · PLAYWRIGHT 2G · STRYKER · k6 LOAD · MANUAL APPROVAL · SMOKE · ROLLBACK = INSTANT PROMOTE', 15.5, MUTE, 'RM', 500, 'start', .1);
 
 // ---------- bottom panels ----------
 var lc = CARD(svg, 24, 632, 476, 260, 'COUPON LIFECYCLE', SAF);
@@ -140,86 +137,106 @@ var cells = []; for (var ci = 0; ci < 13; ci++) cells.push(R(ag, 1260 + ci * 23.
 // auto-fit pass (after fonts are in): shrink anything that would cross its card, log what had to go below 14.5
 function fitAll() { var bad = []; FIT.forEach(function (f) { var e = f[0], mw = f[1]; if (mw <= 0) return; var L = e.getComputedTextLength(); if (L > mw) { var s = f[2] * mw / L; if (s < 14.5) bad.push(e.textContent + ' (' + Math.round(s * 10) / 10 + ')'); e.setAttribute('font-size', Math.max(12, s)); } }); window.__fitBad = bad; }
 
-// ---------- moving parts ----------
-var legs = [];
-function PK(col, r, pts, a, b, label, lblcol) { r = (r || 7) + 1.5; var g = E('g', { opacity: 0 }); E('circle', { r: r + 8, fill: col, opacity: .25, filter: 'url(#glow)' }, g); E('circle', { r: r, fill: col }, g); E('circle', { r: r * .45, fill: '#ffffff', opacity: .85 }, g); var lab = label ? E('text', { class: 'pk', x: 0, y: -13, fill: lblcol || col, 'font-family': 'RM', 'font-weight': 700, 'font-size': 14.5, 'text-anchor': 'middle', stroke: BG, 'stroke-width': 4, 'paint-order': 'stroke', 'stroke-linejoin': 'round' }, g, label) : null; legs.push({ g: g, pts: pts, a: a, b: b }); return g; }
+// ---------- focus: everything the current step does not use is dimmed ----------
+var REG = { head: [0, 0, 1600, 96], pub: [24, 104, 232, 86], dealer: [24, 200, 232, 86], dist: [24, 296, 232, 86], hq: [24, 392, 232, 86], printer: [24, 488, 232, 86], pwa: [280, 152, 220, 140], routes: [280, 302, 220, 112], budget: [280, 424, 220, 152],
+  edge: [534, 130, 256, 188], rest: [534, 326, 256, 112], gotrue: [534, 446, 256, 130], tables: [814, 164, 240, 130], funcs: [1064, 164, 236, 130], integ: [814, 302, 240, 130], cron: [1064, 302, 236, 130], ext: [814, 440, 486, 128],
+  gh: [1332, 104, 244, 144], bk: [1332, 256, 244, 94], se: [1332, 358, 244, 82], tick: [24, 592, 1552, 30], life: [24, 632, 476, 260], pin: [510, 632, 392, 260], sec: [912, 632, 322, 260], glance: [1244, 632, 332, 260] };
+var STEPS = [
+  { a: 0, b: 4.4, s: 'PUBLIC SCAN', d: 'anyone can check a coupon · the database answers with its state only', reg: ['head', 'pub', 'printer', 'pwa', 'routes', 'rest', 'funcs', 'tables', 'life', 'sec'] },
+  { a: 4.4, b: 11, s: 'DEALER LOGIN', d: 'seven checks run before a session exists · any failure gives the same error', reg: ['head', 'dealer', 'pwa', 'edge', 'gotrue', 'funcs', 'integ', 'ext', 'pin', 'sec', 'tables'] },
+  { a: 11, b: 16.2, s: 'VALIDATE', d: 'one RPC: lock the row, move ACTIVE → REDEEMED, write the event', reg: ['head', 'dealer', 'pwa', 'rest', 'funcs', 'integ', 'tables', 'life', 'sec'] },
+  { a: 16.2, b: 19.2, s: 'HQ LIVE VIEW', d: 'HQ reads the same rows · a repeat validate returns the same result', reg: ['head', 'dealer', 'hq', 'pwa', 'rest', 'funcs', 'life', 'routes'] },
+  { a: 19.2, b: 21.6, s: 'ADMIN REVERSE', d: 'HQ can undo a validation, with a reason · it is logged, add-only', reg: ['head', 'hq', 'pwa', 'rest', 'funcs', 'tables', 'life', 'sec', 'routes'] },
+  { a: 21.6, b: 24.0, s: 'NIGHTLY JOBS', d: '19:30 expiry · 20:30 reconciliation · encrypted backup', reg: ['head', 'cron', 'integ', 'funcs', 'life', 'bk', 'se', 'tables'] },
+  { a: 24.0, b: 26, s: 'CI → DEPLOY', d: 'every gate must pass before a release reaches Vercel', reg: ['head', 'gh', 'tick', 'budget', 'ext', 'glance', 'pwa'] }];
+var fmask = E('mask', { id: 'fm', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: 1600, height: 900 }, df); E('rect', { x: 0, y: 0, width: 1600, height: 900, fill: '#fff' }, fmask);
+var holes = {}; for (var rk in REG) { var rr = REG[rk]; holes[rk] = E('rect', { x: rr[0] - 3, y: rr[1] - 3, width: rr[2] + 6, height: rr[3] + 6, rx: 12, fill: '#000', opacity: 0 }, fmask); }
+E('rect', { x: 0, y: 0, width: 1600, height: 900, fill: BG, opacity: .56, mask: 'url(#fm)' });
+function envStep(u, a, b) { var e = 0; [-DUR, 0, DUR].forEach(function (k) { e = Math.max(e, sm((u - k - a + .35) / .55) * (1 - sm((u - k - b + .35) / .55))); }); return e; }
+
+// ---------- moving parts (drawn above the focus layer) ----------
+var legs = [], TRN = 7, FPS = 6;   // FPS = the GIF's frame rate: the comet tail spans exactly what the packet moved since the previous frame, so slow-fps motion still reads as motion
 function pathLen(pts) { var L = 0; for (var i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
-function place(leg, p) { if (p <= 0 || p >= 1) { leg.g.setAttribute('opacity', 0); return; } var pts = leg.pts, d = sm(p) * pathLen(pts), i = 1, sl;
-  while (i < pts.length - 1 && d > (sl = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]))) { d -= sl; i++; }
-  var a = pts[i - 1], b = pts[i], s = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, q = clamp(d / s, 0, 1); leg.g.setAttribute('transform', 'translate(' + lerp(a[0], b[0], q) + ',' + lerp(a[1], b[1], q) + ')'); leg.g.setAttribute('opacity', Math.min(1, p * 8, (1 - p) * 8)); }
+function posAt(pts, p) { var d = sm(clamp(p, 0, 1)) * pathLen(pts), i = 1, sl; while (i < pts.length - 1 && d > (sl = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]))) { d -= sl; i++; }
+  var a = pts[i - 1], b = pts[i], s = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, q = clamp(d / s, 0, 1); return [lerp(a[0], b[0], q), lerp(a[1], b[1], q)]; }
+function PK(col, r, pts, a, b, label) { r = (r || 7) + 2; var tr = []; for (var k = 0; k < TRN; k++) tr.push(E('circle', { r: r * (.82 - k * .08), fill: col, opacity: 0 }));
+  var g = E('g', { opacity: 0 }); E('circle', { r: r + 9, fill: col, opacity: .28, filter: 'url(#glow)' }, g); E('circle', { r: r, fill: col }, g); E('circle', { r: r * .42, fill: '#ffffff', opacity: .9 }, g);
+  if (label) E('text', { class: 'pk', x: 0, y: -r - 8, fill: col, 'font-family': 'RM', 'font-weight': 700, 'font-size': 15.5, 'text-anchor': 'middle', stroke: BG, 'stroke-width': 4, 'paint-order': 'stroke', 'stroke-linejoin': 'round' }, g, label);
+  legs.push({ g: g, tr: tr, pts: pts, a: a, b: b }); return g; }
+function place(leg, p) { if (p <= 0 || p >= 1) { leg.g.setAttribute('opacity', 0); leg.tr.forEach(function (t_) { t_.setAttribute('opacity', 0); }); return; }
+  var q = posAt(leg.pts, p); leg.g.setAttribute('transform', 'translate(' + q[0] + ',' + q[1] + ')'); var f = Math.min(1, p * 6, (1 - p) * 6); leg.g.setAttribute('opacity', f);
+  var dp = 1.6 / ((leg.b - leg.a) * FPS); leg.tr.forEach(function (t_, k) { var pp = p - (k + 1) / TRN * dp * 1.15 - .004 * (k + 1); if (pp <= 0) { t_.setAttribute('opacity', 0); return; } var z = posAt(leg.pts, pp); t_.setAttribute('cx', z[0]); t_.setAttribute('cy', z[1]); t_.setAttribute('opacity', f * (.62 - k * .08)); }); }
 var DBY = 224, FNX = 1064;
 function toPWA(i, y) { return [[250, CY[i]], [262, CY[i]], [262, y], [284, y]]; }
 function pwaToRest(y) { return [[500, y], [517, y], [517, 380], [534, 380]]; }
 function restToDb() { return [[790, 380], [797, 380], [797, DBY], [FNX, DBY]]; }
 function dbToClient(i, y) { return [[FNX, DBY], [797, DBY], [797, 380], [790, 380], [534, 380], [517, 380], [517, y], [500, y], [284, y], [262, y], [262, CY[i]], [250, CY[i]]]; }
-// 1 label printed → public scan → lookup (state only) → state returns
-PK(MUTE, 7, [[256, CY[4]], [262, CY[4]], [262, CY[0]], [256, CY[0]]], 0, .8, 'label');
-PK(SAF, 7, toPWA(0, 200), .5, 1.0, 'scan'); PK(SAF, 6, pwaToRest(200), 1.0, 1.35); PK(SAF, 6, restToDb(), 1.35, 1.8, 'lookup');
-PK(MINT, 6, dbToClient(0, 200), 1.9, 2.6, 'ACTIVE');
-// 2 dealer login: PIN → PWA → edge → DB (HMAC) → fail bounce → GoTrue → JWT back
-PK(SKY, 7, toPWA(1, 226), 2.2, 2.75, 'PIN'); PK(SKY, 6, [[500, 226], [517, 226], [517, 232], [534, 232]], 2.75, 3.1);
-PK(SKY, 6, [[790, 232], [797, 232], [797, DBY], [FNX, DBY]], 3.4, 3.95, 'HMAC');
-PK(ROSE, 6, [[534, 252], [640, 252], [534, 252]], 3.9, 4.4);
-PK(LIL, 6, [[534, 290], [517, 290], [517, 510], [534, 510]], 4.3, 4.85, 'link');
-PK(LIL, 7, [[534, 530], [517, 530], [517, 226], [284, 226], [262, 226], [262, CY[1]], [250, CY[1]]], 4.9, 5.6, 'JWT');
-// 3 validate: dealer → PWA → RPC → DB → state edge; response back
-PK(SAF, 7, toPWA(1, 252), 5.35, 5.8, 'validate'); PK(SAF, 6, pwaToRest(252), 5.8, 6.05); PK(SAF, 6, restToDb(), 6.05, 6.5);
-PK(MINT, 7, dbToClient(1, 252), 6.85, 7.65, 'Validated');
-// 4 replay (idempotent) → same result
-PK(SAF, 6, toPWA(1, 252).concat([[500, 252], [517, 252], [517, 380], [790, 380], [797, 380], [797, DBY], [FNX, DBY]]), 7.9, 8.8, 'again');
-// 5 HQ board reads it live, later reverses
-PK(MINT, 6, toPWA(3, 278).concat([[500, 278], [517, 278], [517, 380], [790, 380], [797, 380], [797, DBY], [FNX, DBY]]), 7.1, 8.0, 'board');
-PK(LIL, 6, toPWA(3, 278).concat([[500, 278], [517, 278], [517, 380], [790, 380], [797, 380], [797, DBY], [FNX, DBY]]), 8.9, 9.8, 'reverse');
-// 6 backup dump + CI deploy
-PK(SAF, 6, [[1300, 520], [1318, 520], [1318, 330], [1332, 330]], 10.9, 11.7, 'dump');
-PK(MINT, 6, [[1500, 607], [1200, 607], [700, 607], [392, 607], [392, 584]], 10.0, 11.2, 'deploy');
-var chipsN = []; function CHIP(w, col, s) { var g = E('g', { opacity: 0, class: 'pk' }); R(g, -w / 2, -17, w, 25, { fill: PANEL2, stroke: col, 'stroke-width': 2, rx: 12.5 }); E('text', { x: 0, y: 1, fill: col, 'font-family': 'RM', 'font-weight': 700, 'font-size': 14.5, 'text-anchor': 'middle' }, g, s); return g; }
+function fullTrip(i, y) { return toPWA(i, y).concat([[500, y], [517, y], [517, 380], [790, 380], [797, 380], [797, DBY], [FNX, DBY]]); }
+// step 1 · public scan
+PK(MUTE, 7, [[256, CY[4]], [262, CY[4]], [262, CY[0]], [256, CY[0]]], 0, 1.0, 'label');
+PK(SAF, 7, toPWA(0, 200), .9, 1.9, 'scan'); PK(SAF, 6, pwaToRest(200), 1.9, 2.5); PK(SAF, 6, restToDb(), 2.5, 3.2, 'lookup');
+PK(MINT, 7, dbToClient(0, 200), 3.3, 4.3, 'state');
+// step 2 · dealer login, one PIN step every .9 s (1: send · 3: hash check · 4: wrong PIN bounces · 5: session link · 6: JWT back)
+PK(SKY, 7, toPWA(1, 226), 4.5, 5.1, 'PIN'); PK(SKY, 6, [[500, 226], [517, 226], [517, 232], [534, 232]], 5.1, 5.55);
+PK(SKY, 6, [[790, 232], [797, 232], [797, DBY], [FNX, DBY]], 6.4, 7.3, 'HMAC');
+PK(ROSE, 6, [[540, 254], [700, 254], [540, 254]], 7.3, 8.1);
+PK(LIL, 6, [[534, 290], [517, 290], [517, 510], [534, 510]], 8.2, 9.0, 'link');
+PK(LIL, 7, [[534, 530], [517, 530], [517, 226], [284, 226], [262, 226], [262, CY[1]], [250, CY[1]]], 9.1, 10.5, 'JWT');
+// step 3 · validate
+PK(SAF, 8, toPWA(1, 252), 11.0, 11.9, 'validate'); PK(SAF, 7, pwaToRest(252), 11.9, 12.5); PK(SAF, 7, restToDb(), 12.5, 13.3);
+PK(MINT, 8, dbToClient(1, 252), 14.4, 15.5, 'Validated');
+// step 4 · replay (same result) + HQ board
+PK(SAF, 6, fullTrip(1, 252), 16.3, 17.5, 'again'); PK(MINT, 6, fullTrip(3, 278), 17.0, 18.5, 'board');
+// step 5 · admin reverse
+PK(LIL, 7, fullTrip(3, 278), 19.2, 20.5, 'reverse');
+// step 6/7 · backup + deploy
+PK(SAF, 6, [[1300, 520], [1318, 520], [1318, 330], [1332, 330]], 23.0, 24.0, 'dump');
+PK(MINT, 7, [[1500, 607], [700, 607], [392, 607], [392, 584]], 24.2, 25.8, 'deploy');
+function CHIP(w, col, s) { var g = E('g', { opacity: 0, class: 'pk' }); R(g, -w / 2, -17, w, 25, { fill: PANEL2, stroke: col, 'stroke-width': 2, rx: 12.5 }); E('text', { x: 0, y: 1, fill: col, 'font-family': 'RM', 'font-weight': 700, 'font-size': 14.5, 'text-anchor': 'middle' }, g, s); return g; }
 var chActive = CHIP(86, MINT, 'ACTIVE'), chValid = CHIP(98, SAF, 'Validated'), chFail = CHIP(160, ROSE, '401 LOGIN_FAILED'), chSame = CHIP(98, LIL, 'same result'), chRec = CHIP(190, MINT, '15 L rows · 0 issues ✓'), chBoard = CHIP(102, MINT, 'valid: 1');
-var tokMain = E('g', {}); E('circle', { r: 11, fill: SAF, opacity: .3, filter: 'url(#glow)' }, tokMain); E('circle', { r: 6.5, fill: SAF }, tokMain);
+var tokMain = E('g', {}); E('circle', { r: 12, fill: SAF, opacity: .3, filter: 'url(#glow)' }, tokMain); E('circle', { r: 7.5, fill: SAF }, tokMain); E('circle', { r: 3, fill: '#fff', opacity: .9 }, tokMain);
 var tokG = [MINT, ROSE, ROSE, LIL].map(function (c) { var g = E('g', { opacity: 0 }); E('circle', { r: 5.5, fill: c }, g); return g; });
 
 window.__seek = function (t) {
   var u = (t + OFF) % DUR;
-  var cx1 = -((t * 22) % (CHW[0] || 1)), cx2 = -((t * 17) % (CHW[1] || 1));
-  rowA.setAttribute('transform', 'translate(' + (1090 + cx1) + ',0)'); rowA2.setAttribute('transform', 'translate(' + (1090 + cx1 + CHW[0]) + ',0)'); rowB.setAttribute('transform', 'translate(' + (1090 + cx2) + ',0)'); rowB2.setAttribute('transform', 'translate(' + (1090 + cx2 + CHW[1]) + ',0)');
-  var tkw = tkT1.getComputedTextLength() || 1; tkIn.setAttribute('transform', 'translate(' + (-((t * 60) % tkw)) + ',0)'); tkT2.setAttribute('x', 30 + tkw);
-  bus1.setAttribute('stroke-dashoffset', -u * 40);
-  clientG.forEach(function (c, i) { var a = i === 0 ? bell(u, .3, 2.7) : i === 1 ? bell(u, 2.1, 8.9) : i === 3 ? bell(u, 7.0, 10.0) : i === 4 ? bell(u, 0, .9) : 0; c.ring.setAttribute('opacity', .35 + .65 * a); c.ring.setAttribute('r', 6 + 3 * a); });
-  swDot.setAttribute('opacity', .6 + .4 * Math.sin(u * 5));
-  var rIdx = u < 2.1 ? 0 : u < 6.9 ? 1 : u < 10.2 ? 3 : 0; rtHi.setAttribute('y', 308 + rIdx * 26); rtHi.setAttribute('opacity', .2 + .12 * Math.sin(u * 6));
-  budF.forEach(function (b, i) { b.setAttribute('opacity', .72 + .28 * Math.sin(u * 3 + i)); });
-  // tables: shimmer + the ones touched by the current step glow
-  tiles.forEach(function (tl_, i) { var v = Math.max(0, Math.sin(u * 2.2 + hash(i) * 12)), hot = (i === 0 && u > 6.2 && u < 7.6) || (i === 1 && u > 6.5 && u < 7.8) || (i === 4 && u > 3.5 && u < 4.4) || (i === 12 && u > 9.3 && u < 10.2) || (i === 20 && u > 10.8 && u < 11.8);
+  // step bookkeeping: caption, tracker, focus
+  var cur = 0; STEPS.forEach(function (st, i) { if (u >= st.a && u < st.b) cur = i; });
+  capN.textContent = String(cur + 1); capS.textContent = STEPS[cur].s + '  '; capD.textContent = STEPS[cur].d;
+  trk.forEach(function (k, i) { var on = i === cur, done = i < cur; k.c.setAttribute('fill', on ? SAF : PANEL2); k.c.setAttribute('stroke', on ? SAF : done ? MINT : LINE); k.t.setAttribute('fill', on ? BG : done ? MINT : MUTE); });
+  for (var rk2 in holes) { var w = 0; STEPS.forEach(function (st) { if (st.reg.indexOf(rk2) >= 0) w = Math.max(w, envStep(u, st.a, st.b)); }); holes[rk2].setAttribute('opacity', w); }
+  bus1.setAttribute('stroke-dashoffset', -u * 14);
+  clientG.forEach(function (c, i) { var a = i === 0 ? bell(u, 0, 4.4) : i === 1 ? bell(u, 4.4, 16.6) : i === 3 ? bell(u, 16.4, 21.8) : i === 4 ? bell(u, 0, 1.2) : 0; c.ring.setAttribute('opacity', .35 + .65 * a); c.ring.setAttribute('r', 6 + 3 * a); });
+  swDot.setAttribute('opacity', .6 + .4 * Math.sin(u * 2));
+  var rIdx = u < 4.4 ? 0 : u < 16.2 ? 1 : u < 21.6 ? 3 : 0; rtHi.setAttribute('y', 308 + rIdx * 26); rtHi.setAttribute('opacity', .22 + .08 * Math.sin(u * 3));
+  tiles.forEach(function (tl_, i) { var v = Math.max(0, Math.sin(u * 1.1 + hash(i) * 12)), hot = ((i === 0 || i === 1) && u > 13.4 && u < 15.4) || (i === 4 && u > 6.4 && u < 8.2) || (i === 12 && u > 20.4 && u < 21.9) || (i === 20 && u > 23.4 && u < 24.6) || (i === 2 && u > 2.6 && u < 3.4);
     tl_.setAttribute('fill', hot ? SAF : '#26306a'); tl_.setAttribute('opacity', hot ? 1 : .5 + .5 * v); });
-  var hrs = 19.5 + (u - 10.4) * 2, ha = (hrs / 24) * 2 * Math.PI - Math.PI / 2; hand.setAttribute('x2', CX + 28 * Math.cos(ha)); hand.setAttribute('y2', CYY + 28 * Math.sin(ha));
-  var pts = []; for (var xi = 0; xi < 48; xi++) { var xx = 1346 + xi * 4.6, p2 = ((xi + t * 20) % 24) / 24, yy = 404 + (p2 > .45 && p2 < .5 ? -18 : p2 > .5 && p2 < .55 ? 12 : 0); pts.push(xx + ',' + yy); } ecg.setAttribute('points', pts.join(' '));
-  ghDots.forEach(function (d, i) { d.setAttribute('opacity', .25 + .75 * Math.max(0, Math.sin(u * 2.4 - i * .8))); });
-  // security rows light up exactly when their control is exercised
-  var secT = [[6.0, 7.3], [5.9, 7.0], [3.4, 4.2], [2.7, 3.3], [2.2, 2.8], [6.3, 7.2], [10.0, 11.4]];
-  secT.forEach(function (s, i) { var a = bell(u, s[0] - .25, s[1] + .35); secI[i].setAttribute('fill', a > .05 ? MINT : GREY); secI[i].setAttribute('opacity', .5 + .5 * a); });
-  // PIN steps, one every .5 s while the dealer logs in
-  var step = u >= 2.4 && u < 5.9 ? Math.min(6, Math.floor((u - 2.4) / .5)) : -1; pinHi.setAttribute('y', 664 + Math.max(0, step) * 31.5 + 1); pinHi.setAttribute('opacity', step < 0 ? 0 : .22);
+  var hrs = 19.5 + (u - 22.6) * (24 / DUR), ha = (hrs / 24) * 2 * Math.PI - Math.PI / 2; hand.setAttribute('x2', CX + 28 * Math.cos(ha)); hand.setAttribute('y2', CYY + 28 * Math.sin(ha));
+  var pts = []; for (var xi = 0; xi < 48; xi++) { var xx = 1346 + xi * 4.6, p2 = ((xi + t * 8) % 24) / 24, yy = 404 + (p2 > .45 && p2 < .5 ? -18 : p2 > .5 && p2 < .55 ? 12 : 0); pts.push(xx + ',' + yy); } ecg.setAttribute('points', pts.join(' '));
+  ghDots.forEach(function (d, i) { d.setAttribute('opacity', u >= 24 && u < 26 ? .3 + .7 * (i <= Math.floor((u - 24) / .4) ? 1 : 0) : .3); });
+  // security rows light up exactly while their control is exercised
+  var secT = [[[2.5, 3.4], [13.0, 14.4]], [[12.6, 14.2]], [[6.4, 7.3]], [[5.5, 6.4], [2.5, 3.2]], [[4.5, 5.6], [11, 12]], [[14.2, 15.4], [20.6, 21.8]], [[24.0, 25.8]]];
+  secT.forEach(function (ws, i) { var a = 0; ws.forEach(function (w_) { a = Math.max(a, bell(u, w_[0] - .3, w_[1] + .3)); }); secI[i].setAttribute('fill', a > .05 ? MINT : GREY); secI[i].setAttribute('opacity', .5 + .5 * a); });
+  var step = u >= 4.5 && u < 11.0 ? Math.min(6, Math.floor((u - 4.5) / .9)) : -1; pinHi.setAttribute('y', 664 + Math.max(0, step) * 31.5 + 1); pinHi.setAttribute('opacity', step < 0 ? 0 : .26);
   pinN.forEach(function (n, i) { n.setAttribute('fill', i === step ? '#ffffff' : TXT); });
-  // lifecycle: token on its edges; ghost tokens (other coupons) walk the remaining edges
-  var inRed = u >= 6.55 && u < 9.1; nodeG.ACT.setAttribute('fill', inRed ? PANEL2 : 'rgba(53,232,176,.16)'); nodeG.RED.setAttribute('fill', inRed ? 'rgba(255,176,46,.22)' : PANEL2); nodeG.EXP.setAttribute('fill', bell(u, 10.2, 12) > .1 ? 'rgba(255,93,143,.2)' : PANEL2); nodeG.BLK.setAttribute('fill', bell(u, 11.0, 12.6) > .1 ? 'rgba(255,93,143,.2)' : PANEL2);
+  // lifecycle
+  var inRed = u >= 14.0 && u < 21.2; nodeG.ACT.setAttribute('fill', inRed ? PANEL2 : 'rgba(53,232,176,.16)'); nodeG.RED.setAttribute('fill', inRed ? 'rgba(255,176,46,.22)' : PANEL2); nodeG.EXP.setAttribute('fill', bell(u, 22.4, 24.6) > .1 ? 'rgba(255,93,143,.2)' : PANEL2); nodeG.BLK.setAttribute('fill', bell(u, 23.0, 25.2) > .1 ? 'rgba(255,93,143,.2)' : PANEL2);
   var TOK = -42, tx = N.ACT[0] + TOK, ty = N.ACT[1];
-  if (u >= 6.1 && u < 6.7) { tx = lerp(N.ACT[0], N.RED[0], sm(seg(u, 6.1, 6.7))) + TOK; } else if (u >= 6.7 && u < 9.1) { tx = N.RED[0] + TOK; } else if (u >= 9.1 && u < 9.8) { var q2 = sm(seg(u, 9.1, 9.8)); tx = lerp(N.RED[0], N.ACT[0], q2) + TOK; ty = N.ACT[1] - 52 * Math.sin(Math.PI * q2); }
+  if (u >= 13.4 && u < 14.3) { tx = lerp(N.ACT[0], N.RED[0], sm(seg(u, 13.4, 14.3))) + TOK; } else if (u >= 14.3 && u < 20.6) { tx = N.RED[0] + TOK; } else if (u >= 20.6 && u < 21.5) { var q2 = sm(seg(u, 20.6, 21.5)); tx = lerp(N.RED[0], N.ACT[0], q2) + TOK; ty = N.ACT[1] - 52 * Math.sin(Math.PI * q2); }
   tokMain.setAttribute('transform', 'translate(' + tx + ',' + ty + ')');
   function ghost(el, a, b, p0, p1) { var q = seg(u, p0, p1); if (q <= 0 || q >= 1) { el.setAttribute('opacity', 0); return; } var e = sm(q); el.setAttribute('opacity', Math.min(1, q * 8, (1 - q) * 8)); el.setAttribute('transform', 'translate(' + (lerp(N[a][0], N[b][0], e) - 42) + ',' + lerp(N[a][1], N[b][1], e) + ')'); }
-  ghost(tokG[0], 'GEN', 'ACT', .3, 1.3); ghost(tokG[1], 'ACT', 'EXP', 10.2, 11.0); ghost(tokG[2], 'GEN', 'BLK', 11.0, 11.8); ghost(tokG[3], 'RED', 'HLD', 3.4, 4.4);
-  // packets
+  ghost(tokG[0], 'GEN', 'ACT', .6, 1.8); ghost(tokG[1], 'ACT', 'EXP', 22.4, 23.3); ghost(tokG[2], 'GEN', 'BLK', 23.0, 24.0); ghost(tokG[3], 'RED', 'HLD', 16.6, 17.8);
   legs.forEach(function (l) { place(l, seg(u, l.a, l.b)); });
-  // edge function / postgrest / gotrue / db function highlights
-  efHi.setAttribute('opacity', seg(u, 2.8, 3.1) * (1 - seg(u, 4.8, 5.0)) * .28); rl.setAttribute('width', 150 * bell(u, 2.7, 4.0) * .85);
-  prHi.setAttribute('opacity', Math.min(1, bell(u, 1.0, 1.5) + bell(u, 5.8, 6.1) + bell(u, 7.1, 7.5) + bell(u, 7.9, 8.4) + bell(u, 9.0, 9.4)));
-  gtHi.setAttribute('opacity', bell(u, 4.3, 5.0));
-  var fIdx = [[1.5, 2.2, 0], [3.4, 4.1, 1], [6.1, 7.0, 3], [7.9, 8.8, 3], [8.1, 8.9, 6], [9.4, 10.1, 7], [10.2, 10.8, 8], [10.9, 11.6, 9]].filter(function (a) { return u >= a[0] && u < a[1]; }), fi = fIdx.length ? fIdx[fIdx.length - 1][2] : -1, lastFi = fi >= 0 ? fi : (u < 1.5 ? 0 : 3);
-  fnIn.setAttribute('transform', 'translate(0,' + (-clamp(lastFi - 1, 0, 8) * 24) + ')'); fnHi.setAttribute('y', 196 + lastFi * 24 + 0); fnHi.setAttribute('opacity', fi >= 0 ? .25 + .1 * Math.sin(u * 8) : 0);
-  lockIc.setAttribute('opacity', .35 + .65 * bell(u, 6.0, 6.8)); recB.forEach(function (b, i) { b.setAttribute('width', 66 * (1 - .09 * Math.abs(Math.sin(u * 2.6 + i)))); });
-  tapT.textContent = 'pgTAP · ok ' + (1000 + Math.floor(u * 40)) + ' assertions';
-  // result chips
-  function chip(g, x, y, a, b) { var o = seg(u, a, a + .25) * (1 - seg(u, b - .25, b)); g.setAttribute('opacity', o); g.setAttribute('transform', 'translate(' + x + ',' + y + ')'); }
-  chip(chActive, 202, 104 + 30, 2.3, 3.4); chip(chFail, 636, 248, 3.95, 5.0); chip(chValid, 202, 200 + 30, 7.4, 8.4); chip(chSame, 202, 200 + 30, 8.8, 9.7); chip(chBoard, 202, 392 + 30, 8.1, 9.0); chip(chRec, 1190, 340, 10.9, 12.0);
+  // component highlights
+  efHi.setAttribute('opacity', (seg(u, 4.5, 4.8) * (1 - seg(u, 9.0, 9.4))) * .28); rl.setAttribute('width', 150 * seg(u, 5.5, 6.4) * (1 - seg(u, 7.4, 8.0)) * .85);
+  prHi.setAttribute('opacity', Math.min(1, bell(u, 1.9, 3.3) + bell(u, 11.8, 13.4) + bell(u, 16.4, 18.0) + bell(u, 19.6, 20.8)));
+  gtHi.setAttribute('opacity', bell(u, 8.2, 9.4));
+  var FW = [[2.5, 3.4, 0], [6.4, 7.3, 1], [13.0, 14.4, 3], [16.8, 18.6, 6], [20.4, 21.8, 7], [22.4, 23.3, 8], [23.4, 24.4, 9]], fi = -1, last = 0; FW.forEach(function (w_) { if (u >= w_[0] - .1) last = w_[2]; if (u >= w_[0] && u < w_[1]) fi = w_[2]; });
+  fnIn.setAttribute('transform', 'translate(0,' + (-clamp(last - 1, 0, 8) * 24) + ')'); fnHi.setAttribute('y', 196 + last * 24); fnHi.setAttribute('opacity', fi >= 0 ? .3 : 0);
+  lockIc.setAttribute('opacity', .35 + .65 * bell(u, 12.6, 14.6)); recB.forEach(function (b, i) { b.setAttribute('width', 66 * (1 - .09 * Math.abs(Math.sin(u * 1.3 + i)))); });
+  tapT.textContent = 'pgTAP · ok ' + (1000 + Math.floor(u * 20)) + ' assertions';
+  tkHi.setAttribute('opacity', .22 * bell(u, 24.0, 26)); tkHi.setAttribute('x', lerp(1420, 330, sm(seg(u, 24.2, 25.8))));
+  function chip(g, x, y, a, b) { var o = seg(u, a, a + .3) * (1 - seg(u, b - .3, b)); g.setAttribute('opacity', o); g.setAttribute('transform', 'translate(' + x + ',' + y + ')'); }
+  chip(chActive, 202, 134, 3.9, 5.0); chip(chFail, 636, 248, 7.4, 8.6); chip(chValid, 202, 230, 15.2, 16.3); chip(chSame, 202, 230, 17.4, 18.6); chip(chBoard, 202, 422, 18.4, 19.4); chip(chRec, 1182, 340, 23.4, 24.6);
 };
 window.__reelDurationSec = DUR; window.__ready = false;
 Promise.all(['800 20px SO', '700 20px SO', '500 20px RM', '700 20px RM', '500 20px IN', '700 20px IN'].map(function (f) { return document.fonts.load(f).catch(function () {}); })).then(function () { fitAll(); window.__seek(0); window.__ready = true; });
