@@ -1,7 +1,7 @@
 {
  "title": "The clock that broke India's GPS",
  "format": "reel, Hinglish voice-over only",
- "version": 6,
+ "version": 7,
  "sentences": [
   {
    "id": "h1",
@@ -55,9 +55,9 @@
    "id": "i2",
    "g": "g4",
    "beat": "idea",
-   "A": "Satellite आपको जगह नहीं बताता। बस एक सिग्नल भेजता है, जिसमें समय लिखा होता है: इस पल भेजा।",
-   "B": "सैटेलाइट आपको जगह नहीं बताता। बस एक सिग्नल भेजता है, जिसमें समय लिखा होता है: इस पल भेजा।",
-   "cap": "Satellite aapko jagah nahi batata. Bas ek signal bhejta hai, jismein samay likha hota hai: is pal bheja."
+   "A": "Satellite आपको जगह नहीं बताता। वो सिर्फ़ समय बताता है: इस पल भेजा।",
+   "B": "सैटेलाइट आपको जगह नहीं बताता। वो सिर्फ़ समय बताता है, इस पल भेजा।",
+   "cap": "Satellite aapko jagah nahi batata. Wo sirf samay batata hai, is pal bheja."
   },
   {
    "id": "i3",
@@ -183,9 +183,9 @@
    "id": "y4",
    "g": "g13b",
    "beat": "payoff",
-   "A": "जिस देश ने सोचा था कि सिग्नल अपना हो, उसे पता चला कि असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
-   "B": "जिस देश ने सोचा था कि सिग्नल अपना हो, उसे पता चला कि असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
-   "cap": "Jis desh ne socha tha ki signal apna ho, use pata chala ki asli nirbharta ghadi mein thi. Aur chauthi ghadi, ab apni hai."
+   "A": "जिस देश ने सिग्नल अपना बनाया, उसकी असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
+   "B": "जिस देश ने सिग्नल अपना बनाया, उसकी असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
+   "cap": "Jis desh ne signal apna banaya, uski asli nirbharta ghadi mein thi. Aur chauthi ghadi, ab apni hai."
   },
   {
    "id": "c1",

@@ -70,7 +70,7 @@ var pu = (t - tP) % 1.2; cc.style.boxShadow = '0 0 ' + (50 + 30 * Math.sin(t * 5
 })();
 /* ===== 3 SIGNAL: a satellite only says "I sent this at this moment" ===== */
 (function () {
-var s = scene(2), el = s.el, tSend = PT('i2', 'बस एक'), tMoment = PT('i2', 'इस पल');
+var s = scene(2), el = s.el, tSend = PT('i2', 'वो सिर्फ़'), tMoment = PT('i2', 'इस पल');
 var g = svg(el, ''); graticule(g, 1000);
 var sat = satImg(el, 330, 400, 560);
 var dial0 = dial(g, 880, 300, 90);
