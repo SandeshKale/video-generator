@@ -1,0 +1,132 @@
+<!doctype html><meta charset="utf-8"><title>Itna jaldi kaise - mockup v2 (Neon Dispatch)</title>
+<style>
+@font-face{font-family:'Antonio';font-weight:700;src:url('../../../../assets/fonts/antonio/antonio-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:'JetBrains Mono';font-weight:600;src:url('../../../../assets/fonts/jetbrains-mono/jetbrains-mono-latin-700-normal.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('../../../../assets/fonts/inter/inter-latin-800-normal.woff2');font-display:block}
+:root{--ink:#05060c;--ink2:#0d1020;--ord:#ff6a1a;--fen:#7b4dff;--stk:#c6ff1a;--alr:#ff2d7a;--off:#eef0fa}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink);font-family:Inter,sans-serif;color:var(--off)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.mono{font:600 28px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.chip{position:absolute;display:flex;align-items:center;gap:14px;padding:12px 22px;border:2px solid currentColor;border-radius:10px;background:rgba(5,6,12,.72);backdrop-filter:blur(2px)}
+.chip i{width:14px;height:14px;border-radius:50%;background:currentColor;box-shadow:0 0 16px 3px currentColor}
+.big{position:absolute;color:#f4f5ff;font:700 150px/0.92 'Antonio',sans-serif;text-transform:uppercase;color:var(--off);text-shadow:0 6px 30px rgba(0,0,0,.7)}
+.trk{position:absolute;right:150px;top:150px;display:flex;gap:12px}
+.pg{width:62px;height:62px;border-radius:10px;border:3px solid rgba(238,240,250,.35);font:700 34px 'Antonio';display:flex;align-items:center;justify-content:center;color:rgba(238,240,250,.5);background:rgba(5,6,12,.6)}
+.scrim{position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(180deg,rgba(5,6,12,.85),transparent)}.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,transparent 42%,rgba(0,0,0,.78) 100%)}
+#cap{position:absolute;left:150px;width:768px;top:1338px;text-align:center;font:800 54px/1.22 Inter;text-shadow:0 3px 14px rgba(0,0,0,.9)}
+#cap span.pill{display:inline-block;padding:14px 30px 18px;border-radius:22px;background:rgba(5,6,12,.78);border:2px solid rgba(238,240,250,.14)}
+#cap b{background:var(--stk);color:#0b0f00;padding:0 12px;border-radius:10px;font-weight:800}
+.glass{position:absolute;border:2px solid rgba(238,240,250,.25);background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.02));border-radius:18px;backdrop-filter:blur(3px)}
+.src{text-shadow:0 2px 8px #000;position:absolute;left:150px;font:600 22px 'JetBrains Mono';letter-spacing:.1em;color:rgba(238,240,250,.62);text-transform:uppercase}
+</style>
+<div id="stage">
+  <!-- ============ A: HOOK (family: NASA Black Marble + HUD stopwatch) ============ -->
+  <div id="sA" class="scene">
+    <div id="mapA" style="position:absolute;left:0;top:640px;width:1080px;height:700px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 86%,transparent)">
+      <img id="indiaImg" src="india-night.jpg" style="position:absolute;left:0;top:-120px;width:1080px;filter:brightness(1.9) contrast(1.15) saturate(1.5);transform-origin:50% 50%">
+      <svg id="pinsA" viewBox="0 0 1080 700" style="position:absolute;inset:0"></svg>
+    </div>
+    <svg id="clockA" viewBox="0 0 1080 700" style="position:absolute;left:0;top:190px;width:1080px;height:700px"></svg>
+    <div id="slash" style="position:absolute;left:120px;top:500px;width:840px;height:34px;background:var(--alr);box-shadow:0 0 50px 10px rgba(255,45,122,.55);transform:rotate(-9deg) scaleX(0);transform-origin:0 50%"></div>
+    <div class="chip mono" id="chipA" style="left:150px;top:150px;color:var(--ord);font-size:24px"><i></i>reported · reuters · 13 jan 2026</div>
+    <div class="vig"></div>
+  </div>
+  <!-- ============ B: DECISION 1 (family: Blender city + HUD geofence) ============ -->
+  <div id="sB" class="scene">
+    <img id="plateB" src="plate-city.png" style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:50% 55%">
+    <svg id="hudB" viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+    <div class="big" id="hB" style="left:150px;top:200px;font-size:170px">One fence</div>
+    <div class="trk" id="trkB"></div>
+    <div class="chip mono" id="tagB" style="left:150px;top:1140px;color:var(--fen);font-size:24px"><i></i>2-3 km fence · CBRE</div>
+    <div class="vig"></div>
+  </div>
+  <!-- ============ C: DECISION 2 (family: Blender aisle + HUD bar chart + ray cast) ============ -->
+  <div id="sC" class="scene">
+    <img id="plateC" src="plate-aisle.png" style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:50% 60%">
+    <svg id="hudC" viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+    <div class="scrim"></div><div class="big" id="hC" style="left:150px;top:200px;font-size:170px">Stocked<br>first</div>
+    <div class="trk" id="trkC"></div>
+    <div class="vig"></div>
+    <div class="src" style="top:1266px">illustrative forecast · not company data</div>
+  </div>
+  <div id="cap"></div>
+</div>
+<script>
+var $=function(i){return document.getElementById(i)};
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function ease(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3)}
+function bk(x){x=clamp(x,0,1);var c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)}
+var NS='http://www.w3.org/2000/svg';
+function mk(p,tag,at){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);p.appendChild(e);return e}
+// ---------- A ----------
+var CITIES=[['DELHI',77.2,28.6],['MUMBAI',72.9,19.1],['KOLKATA',88.4,22.6],['HYDERABAD',78.5,17.4],['BENGALURU',77.6,13.0],['CHENNAI',80.3,13.1]];
+function xy(lon,lat){return [(lon-66)/33*1080,(38-lat)/34*1112-120+0]}
+var pins=[];(function(){var s=$('pinsA');CITIES.forEach(function(c,i){var p=xy(c[1],c[2]);var g=mk(s,'g',{});
+  var r1=mk(g,'circle',{cx:p[0],cy:p[1],r:10,fill:'none',stroke:'#ff6a1a','stroke-width':4});var r2=mk(g,'circle',{cx:p[0],cy:p[1],r:10,fill:'none',stroke:'#ff6a1a','stroke-width':3});
+  var d=mk(g,'circle',{cx:p[0],cy:p[1],r:11,fill:'#ff6a1a'});var h=mk(g,'circle',{cx:p[0],cy:p[1],r:26,fill:'#ff6a1a',opacity:.25});pins.push({p:p,r1:r1,r2:r2,d:d,h:h})})})();
+var clk=$('clockA');var cx=540,cy=330,R=250;
+mk(clk,'circle',{cx:cx,cy:cy,r:R+34,fill:'rgba(5,6,12,.55)'});
+for(var i=0;i<60;i++){var a=i/60*Math.PI*2-Math.PI/2,r0=R+12,r1=R+(i%5?20:34);mk(clk,'line',{x1:cx+Math.cos(a)*r0,y1:cy+Math.sin(a)*r0,x2:cx+Math.cos(a)*r1,y2:cy+Math.sin(a)*r1,stroke:i%5?'rgba(238,240,250,.35)':'#eef0fa','stroke-width':i%5?3:5})}
+mk(clk,'circle',{cx:cx,cy:cy,r:R,fill:'none',stroke:'rgba(255,106,26,.22)','stroke-width':26});
+var arc=mk(clk,'circle',{cx:cx,cy:cy,r:R,fill:'none',stroke:'#ff6a1a','stroke-width':26,'stroke-linecap':'round','transform':'rotate(-90 '+cx+' '+cy+')','stroke-dasharray':(2*Math.PI*R)+' '+(2*Math.PI*R)});
+var num=mk(clk,'text',{x:cx,y:cy+110,'text-anchor':'middle',fill:'#eef0fa','font-family':'Antonio','font-weight':700,'font-size':330});num.textContent='10';
+var mn=mk(clk,'text',{x:cx,y:cy+175,'text-anchor':'middle',fill:'#ff6a1a','font-family':'JetBrains Mono','font-weight':600,'font-size':40,'letter-spacing':'12'});mn.textContent='MIN';
+function renderA(t){
+  var L=2*Math.PI*R;arc.setAttribute('stroke-dashoffset',L*(1-clamp(1-t/3.2*.0-(t%1.6)/1.6,0,1)*0+0)*0);
+  var prog=clamp(((t*0.62)%1),0,1);arc.setAttribute('stroke-dashoffset',L*prog);
+  var sl=ease((t-1.25)/.28);$('slash').style.transform='rotate(-9deg) scaleX('+sl+')';
+  num.setAttribute('opacity',1-.62*ease((t-1.45)/.3));
+  var s=1.06+t*0.012;$('indiaImg').style.transform='scale('+s+')';
+  pins.forEach(function(q,i){var t0=0.15+i*.28,u=t-t0;var on=u>=0;var k=on?bk(u/.35):0;q.d.setAttribute('r',11*k);q.h.setAttribute('r',26*k);q.h.setAttribute('opacity',on?.28:0);
+    var ph=((u*1.1)%1+1)%1;q.r1.setAttribute('r',10+ph*70);q.r1.setAttribute('opacity',on?(1-ph)*.9:0);var ph2=((u*1.1+.5)%1+1)%1;q.r2.setAttribute('r',10+ph2*70);q.r2.setAttribute('opacity',on?(1-ph2)*.9:0)});
+  $('chipA').style.opacity=ease(t/.2);
+}
+// ---------- B ----------
+var hb=$('hudB');var ROW=[];
+function ell(cx,cy,rx,ry,col,sw,id){return mk(hb,'ellipse',{cx:cx,cy:cy,rx:rx,ry:ry,fill:'none',stroke:col,'stroke-width':sw,id:id})}
+var fenceEl=ell(540,1010,430,236,'#7b4dff',7,'fenceB');var fence2=ell(540,1010,430,236,'rgba(123,77,255,.0)',0,'f2');
+var fill=mk(hb,'ellipse',{cx:540,cy:1010,rx:430,ry:236,fill:'rgba(123,77,255,.16)'});
+var scan=mk(hb,'ellipse',{cx:540,cy:1010,rx:10,ry:6,fill:'none',stroke:'#c6ff1a','stroke-width':6});
+var pinG=mk(hb,'g',{});var pr=mk(pinG,'circle',{cx:130,cy:880,r:14,fill:'none',stroke:'#ff6a1a','stroke-width':5});
+var path=mk(hb,'path',{d:'M130 880 C 260 700, 420 760, 520 960',fill:'none',stroke:'#ff6a1a','stroke-width':5,'stroke-dasharray':'14 12'});
+var pk=mk(hb,'circle',{cx:0,cy:0,r:14,fill:'#ff6a1a'});var PL=path.getTotalLength();
+var lblYou=mk(hb,'g',{});mk(lblYou,'rect',{x:60,y:770,width:150,height:54,rx:10,fill:'rgba(5,6,12,.78)',stroke:'#ff6a1a','stroke-width':3});var ty=mk(lblYou,'text',{x:135,y:808,'text-anchor':'middle',fill:'#ff6a1a','font-family':'JetBrains Mono','font-weight':600,'font-size':26,'letter-spacing':'4'});ty.textContent='YOU';
+var lblSt=mk(hb,'g',{});mk(lblSt,'rect',{x:600,y:1100,width:180,height:54,rx:10,fill:'rgba(5,6,12,.78)',stroke:'#7b4dff','stroke-width':3});var ts=mk(lblSt,'text',{x:690,y:1138,'text-anchor':'middle',fill:'#b9a3ff','font-family':'JetBrains Mono','font-weight':600,'font-size':26,'letter-spacing':'4'});ts.textContent='STORE';
+['1','2','3'].forEach(function(n,i){var d=document.createElement('div');d.className='pg';d.id='pgB'+i;d.textContent=n;$('trkB').appendChild(d)});
+function renderB(t){
+  $('plateB').style.transform='scale('+(1.0+t*.018)+') translate('+(-t*3)+'px,'+(-t*2)+'px)';
+  var Lf=fenceEl.getTotalLength?fenceEl.getTotalLength():2400;fenceEl.setAttribute('stroke-dasharray',Lf);fenceEl.setAttribute('stroke-dashoffset',Lf*(1-ease((t-.3)/1.0)));
+  fill.setAttribute('opacity',ease((t-.9)/.6));
+  var sp=((t-.5)/1.1);var s=clamp(sp,0,1);scan.setAttribute('rx',10+420*s);scan.setAttribute('ry',6+230*s);scan.setAttribute('opacity',sp>0&&sp<1?1-s:0);
+  var u=ease((t-1.2)/.9);var pt=path.getPointAtLength(PL*u);pk.setAttribute('cx',pt.x);pk.setAttribute('cy',pt.y);pk.setAttribute('opacity',u>0&&u<1?1:0);path.setAttribute('opacity',ease((t-1.1)/.3)*.9);
+  var ph=(t*1.1)%1;pr.setAttribute('r',14+ph*60);pr.setAttribute('opacity',(1-ph)*.9);
+  lblYou.setAttribute('opacity',ease((t-.2)/.3));lblSt.setAttribute('opacity',ease((t-1.6)/.3));
+  $('tagB').style.opacity=ease((t-1.9)/.3);$('hB').style.opacity=ease(t/.25);$('hB').style.transform='translateY('+(1-ease(t/.35))*40+'px)';
+  for(var i=0;i<3;i++){var e=$('pgB'+i);var on=i==0;e.style.background=on?'#7b4dff':'rgba(5,6,12,.6)';e.style.color=on?'#fff':'rgba(238,240,250,.5)';e.style.borderColor=on?'#7b4dff':'rgba(238,240,250,.35)'}
+}
+// ---------- C ----------
+var hc=$('hudC');
+var panel=mk(hc,'rect',{x:150,y:880,width:540,height:370,rx:20,fill:'rgba(5,6,12,.62)',stroke:'rgba(198,255,26,.5)','stroke-width':3});
+var bars=[],vals=[.28,.34,.3,.4,.36,.46,.95,.5,.44,.82,.4,.36];
+for(var i=0;i<12;i++){bars.push(mk(hc,'rect',{x:182+i*41,y:1220,width:30,height:0,rx:5,fill:i==6||i==9?'#ff2d7a':'#c6ff1a'}))}
+var lab1=mk(hc,'text',{x:182,y:922,fill:'#c6ff1a','font-family':'JetBrains Mono','font-weight':600,'font-size':24,'letter-spacing':'3'});lab1.textContent='DEMAND · THIS PIN CODE';
+var lab2=mk(hc,'text',{x:182+6*41-132,y:990,fill:'#ff2d7a','font-family':'JetBrains Mono','font-weight':600,'font-size':22,'letter-spacing':'2'});lab2.textContent='FESTIVAL';
+var lab3=mk(hc,'text',{x:182+9*41+34,y:1022,fill:'#ff2d7a','font-family':'JetBrains Mono','font-weight':600,'font-size':22,'letter-spacing':'2'});lab3.textContent='MATCH';
+var beam=mk(hc,'polygon',{points:'0,0',fill:'rgba(198,255,26,.18)'});
+['1','2','3'].forEach(function(n,i){var d=document.createElement('div');d.className='pg';d.id='pgC'+i;d.textContent=n;$('trkC').appendChild(d)});
+function renderC(t){
+  $('plateC').style.transform='scale('+(1.0+t*.03)+')';
+  bars.forEach(function(b,i){var u=ease((t-.5-i*.06)/.55);var h=vals[i]*230*u;b.setAttribute('y',1220-h);b.setAttribute('height',h)});
+  var pk=ease((t-1.5)/.4);lab2.setAttribute('opacity',pk);lab3.setAttribute('opacity',ease((t-1.8)/.4));panel.setAttribute('opacity',ease(t/.3));lab1.setAttribute('opacity',ease((t-.2)/.3));
+  var bx=(t*0.5)%1;var x=150+bx*540;beam.setAttribute('points',(x-30)+',880 '+(x+30)+',880 '+(x+70)+',1250 '+(x-70)+',1250');beam.setAttribute('opacity',.8);
+  $('hC').style.opacity=ease(t/.25);$('hC').style.transform='translateY('+(1-ease(t/.35))*40+'px)';
+  for(var i=0;i<3;i++){var e=$('pgC'+i);var on=i==1;e.style.background=on?'#c6ff1a':'rgba(5,6,12,.6)';e.style.color=on?'#0b0f00':'rgba(238,240,250,.5)';e.style.borderColor=on?'#c6ff1a':'rgba(238,240,250,.35)'}
+}
+// ---------- captions (roman Hinglish) ----------
+var CAPS={A:[['Blinkit aur Zepto se kaha gaya, ',.0],['das minute bolna band karo.',1.3]],B:[['Pehla, kaun sa store. Har dark store ka ',0],['ek ghera hai, jise geofence kehte hain.',1.5]],C:[['Doosra, shelf par kya rakhna hai. ',0],['Pehle se forecast hota hai.',1.5]]};
+var KEY={A:'minute',B:'geofence',C:'forecast'};
+function cap(sc,t){var parts=CAPS[sc],txt='';parts.forEach(function(p){if(t>=p[1])txt+=p[0]});var k=KEY[sc];txt=txt.replace(k,'<b>'+k+'</b>');$('cap').innerHTML=txt?'<span class="pill">'+txt+'</span>':''}
+window.__mock=function(sc,t){['A','B','C'].forEach(function(s){$('s'+s).style.display=s==sc?'block':'none'});({A:renderA,B:renderB,C:renderC})[sc](t);cap(sc,t)};
+window.__ready=false;Promise.all(['700 40px Antonio','600 24px "JetBrains Mono"','800 50px Inter'].map(function(f){return document.fonts.load(f)})).then(function(){window.__ready=true});
+</script>
