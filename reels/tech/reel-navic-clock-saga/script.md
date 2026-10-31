@@ -1,6 +1,6 @@
 # "The clock that broke India's GPS" — NavIC (Hinglish voice-over only, target 95–110 s)
 
-Status: **script v2 + fact ledger + story gate (self-reviewed), voice plan; mockup not built yet** (CLAUDE.md: mock up 3 scenes from 3 families and get approval before the full build).
+Status: **built and rendered (118.7 s). Voice: cloned OmniVoice takes, one per breath group, coverage gate; y4 rewritten after dropped words. Mockup approved 31 Oct; independent cold read declined by the creator.**
 Method: `docs/STORYTELLING-GUIDE.md`. Topic search and alternatives: `insights/next-reel-topic-2026-10-31.md`. Voice: the same cloned voice as `reel-quick-commerce-itna-jaldi` (creator: "keep that one throughout"), pipeline in `docs/HINGLISH-VOICEOVER-GUIDE.md`.
 
 ## Why this reel (evidence block)

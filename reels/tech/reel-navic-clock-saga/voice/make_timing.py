@@ -35,7 +35,7 @@ for s in sents:
     toks = S[s['id']]['cap'].split(); w = [max(2, len(re.sub(r'[^A-Za-z0-9]', '', t))) + 1 for t in toks]; tot = sum(w); t0, t1 = s['t0'], s['t1'] + .05; acc = 0
     for t, ww in zip(toks, w):
         cap.append(dict(w=t, t0=round(t0 + (t1 - t0) * acc / tot, 3), t1=round(t0 + (t1 - t0) * (acc + ww) / tot, 3), s=s['id'])); acc += ww
-end = groups[-1]['end'] + 0.45
+end = groups[-1]['end'] + 2.3
 BT = {x['id']: x['B'] for x in SL}
 json.dump(dict(words=words, sentences=sents, cap=cap, groups=groups, end=end, provisional=prov, B=BT), open(A + '/words.json', 'w'), ensure_ascii=False, indent=1)
 os.makedirs(R + '/site', exist_ok=True)

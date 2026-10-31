@@ -267,5 +267,12 @@
   "voice": "synth-clone",
   "host": "no",
   "length": "46-60s"
+ },
+ "reel-navic-clock-saga": {
+  "genre": "explainer",
+  "company": "isro",
+  "voice": "synth-clone",
+  "host": "no",
+  "length": "76s+"
  }
 }

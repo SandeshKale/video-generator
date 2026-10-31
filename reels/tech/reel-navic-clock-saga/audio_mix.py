@@ -35,8 +35,12 @@ def whoosh(dur=.5, up=True):
     return (y * np.sin(np.linspace(0, np.pi, n))**1.5 * 3.0).astype('float32')
 # ---------------- SFX ----------------
 sfx = np.zeros(N, 'float32')
+WD = json.load(open(A + '/words.json'))['words']
 for e in ev['ev']:
     t, k = e['t'], e['k']
+    if k in ('whoosh', 'pop', 'ping', 'buzz'):                                   # soft cues never sit on top of a word's tail
+        for w in WD:
+            if w[1] + .03 < t < w[2]: t = w[2] + .03; break
     if k in ('slam', 'thud'): t += .25
     if k == 'ping': put(sfx, sm(tone(1320, .35, dec=.12) * .3, tone(1980, .25, dec=.08) * .12), t)
     elif k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .4, tone(55, .8, dec=.3) * .35), t)

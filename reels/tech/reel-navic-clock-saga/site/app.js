@@ -269,7 +269,7 @@ ev(tC, 'pop'); ev(tSd, 'whoosh'); ev(tL, 'pop'); ev(tSh, 'pop'); ev(tSb, 'pop');
 E(el, 'vig', '');
 s.r = function (t) {
 rays.forEach(function (p, i) { var a = i / 12 * Math.PI * 2 + t * .08, a2 = a + .18; p.setAttribute('points', '540,500 ' + (540 + Math.cos(a) * 1600) + ',' + (500 + Math.sin(a) * 1600) + ' ' + (540 + Math.cos(a2) * 1600) + ',' + (500 + Math.sin(a2) * 1600)); });
-show(big, t, B[13] + .05, { d: .4, y: 40 }); show(sc, t, tC + .5, { d: .3, y: 10 }); show(pf, t, tSd, { d: .4, y: 0, s: .5 }); show(hn, t, tSd + .1, { d: .35, y: 20 }); show(sub, t, tSd + .25, { d: .35, y: 14 }); btn.forEach(function (b) { show(b.e, t, b.t - .05, { d: .32, y: 0, s: .5 }); });
+show(big, t, B[13] + .05, { d: .4, y: 40 }); show(sc, t, tC + .5, { d: .3, y: 10 }); show(pf, t, tC + 1.2, { d: .4, y: 0, s: .5 }); show(hn, t, tC + 1.35, { d: .35, y: 20 }); show(sub, t, tC + 1.5, { d: .35, y: 14 }); pf.style.boxShadow = '0 0 0 ' + (6 + 3 * Math.sin(t * 5)) + 'px ' + AMB + ',0 0 ' + (50 + 20 * Math.sin(t * 5)) + 'px 8px rgba(255,176,32,.5)'; btn.forEach(function (b, i) { show(b.e, t, b.t - .05, { d: .32, y: 0, s: .5 }); if (t > tSb + .3) { var k = Math.max(0, Math.sin((t - tSb) * 3.2 - i * .9)); b.e.style.boxShadow = '0 0 ' + (24 * k) + 'px ' + (4 * k) + 'px rgba(244,239,227,' + (.28 * k) + ')'; } });
 };
 })();
 /* ===== persistent layers: caption rig, flash, ambient sweep, grain ===== */
