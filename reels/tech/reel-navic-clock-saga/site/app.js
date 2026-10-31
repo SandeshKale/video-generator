@@ -27,7 +27,7 @@ function dial(p, cx, cy, r) { var g = S(p, 'g', {}); var face = S(g, 'circle', {
 return { g: g, set: function (ang, ok) { h.setAttribute('transform', 'rotate(' + ang + ' ' + cx + ' ' + cy + ')'); var col = ok ? AMB : 'rgba(244,239,227,.28)'; face.setAttribute('stroke', ok ? AMB : 'rgba(244,239,227,.3)'); h.setAttribute('stroke', col); hub.setAttribute('fill', col); x1.setAttribute('opacity', ok ? 0 : 1); x2.setAttribute('opacity', ok ? 0 : 1); } }; }
 /* ---- scene boundaries sit in the silences between voice groups ---- */
 var END = TM.end;
-var B = [0, T0('p1') - .05, T1('p3') + .45, T1('i2') + .4, T1('i5') + .5, T1('i6') + .5, T1('b2') + .4, T1('b4') + .4, T1('d2') + .45, T0('t1') - .1, T0('t3') - .1, T1('t3') + .45, T1('y3') + .3, T1('y4') + .5, END];
+var B = [0, T0('p1') - .05, T0('i1') - .12, T1('i2') + .4, T1('i5') + .5, T1('i6') + .5, T1('b2') + .4, T1('b4') + .4, T1('d2') + .45, T0('t1') - .1, T0('t3') - .1, T1('t3') + .45, T1('y3') + .3, T1('y4') + .5, END];
 var DUR = END, TR = .3, scenes = [];
 var FL = [AMB, SKY, SKY, AMB, SKY, RED, RED, RED, SKY, AMB, AMB, SKY, AMB, SKY];
 function scene(i) { var el = E(ST, 'scene', ''); var o = { i: i, t0: B[i], t1: B[i + 1], el: el }; scenes.push(o); return o; }
@@ -46,9 +46,9 @@ var t4 = PT('h1', 'चार'), t3 = T0('h2') + .25, tq = T0('h3'), tq2 = PT('h3
 E(el, 'vig', '');
 s.r = function (t) {
 err.setAttribute('r', 240 + 12 * Math.sin(t * 3)); err.setAttribute('stroke-dashoffset', -t * 30); var ph = (t * .9) % 1; halo.setAttribute('r', 16 + ph * 60); halo.setAttribute('opacity', 1 - ph);
-sats.forEach(function (e, i) { var u = eo((t - .05 * i) / .3); if (e.tagName === 'circle') e.setAttribute('opacity', .4 + .5 * Math.abs(Math.sin(t * 4))); else e.style.opacity = u; });
-rays.forEach(function (r, i) { r.setAttribute('opacity', i < 3 ? .9 * eo(t / .3) : .35 + .35 * Math.sin(t * 5)); });
-show(n4, t, Math.min(t4, .05) - .05, { d: .3, y: 40, s: .6 }); show(l4, t, Math.min(t4, .05), { d: .25, y: 20 }); show(n3, t, t3, { d: .3, y: 40, s: .6 }); show(l3, t, t3 + .1, { d: .25, y: 20 }); show(tg, t, -.1, { d: .2, y: 0 }); show(q1, t, tq, { d: .3, y: 20 }); show(q2, t, tq2, { d: .3, y: 20 }); show(src, t, 1.5, { d: .3, y: 10 });
+sats.forEach(function (e, i) { var u = eo((t + .4 - .05 * i) / .3); if (e.tagName === 'circle') e.setAttribute('opacity', .4 + .5 * Math.abs(Math.sin(t * 4))); else e.style.opacity = u; });
+rays.forEach(function (r, i) { r.setAttribute('opacity', i < 3 ? .9 * eo((t + .4) / .3) : .35 + .35 * Math.sin(t * 5)); });
+show(n4, t, -.5, { d: .3, y: 40, s: .6 }); show(l4, t, -.45, { d: .25, y: 20 }); show(n3, t, t3, { d: .3, y: 40, s: .6 }); show(l3, t, t3 + .1, { d: .25, y: 20 }); show(tg, t, -.5, { d: .2, y: 0 }); show(q1, t, tq, { d: .3, y: 20 }); show(q2, t, tq2, { d: .3, y: 20 }); show(src, t, 1.5, { d: .3, y: 10 });
 };
 })();
 /* ===== 2 PLANT: NavIC and the promised clock ===== */
@@ -58,7 +58,7 @@ var bg = img(el, 'img/earth-a.png', 'position:absolute;left:0;top:0;width:1080px
 var g = svg(el, ''); S(g, 'ellipse', { cx: 540, cy: 820, rx: 520, ry: 250, transform: 'rotate(-16 540 820)', fill: 'none', stroke: 'rgba(85,184,255,.7)', 'stroke-width': 4, 'stroke-dasharray': '10 12' });
 var SP = [[170, 700], [800, 560], [940, 980]], sats = SP.map(function (p, i) { var im = satImg(el, p[0], p[1], 210); return im; }), rings = SP.map(function (p) { return S(g, 'circle', { cx: p[0], cy: p[1], r: 30, fill: 'none', stroke: SKY, 'stroke-width': 3 }); });
 var nw = satImg(el, 560, 330, 280, 'filter:drop-shadow(0 0 24px rgba(255,176,32,.8))');
-var hd = E(el, 'big', 'left:150px;top:190px;font-size:170px', 'NavIC'), tg = E(el, 'tag', 'left:150px;top:380px;color:' + SKY + ';font-size:22px', 'illustrative orbits'), cc = E(el, 'abs', 'left:150px;top:1060px;width:190px;height:190px;border-radius:50%;border:5px solid ' + AMB + ';background:rgba(3,20,23,.85);display:flex;align-items:center;justify-content:center;box-shadow:0 0 50px rgba(255,176,32,.55)', ico('clock', 110, AMB, 1.5)), tl = E(el, 'tag', 'left:380px;top:1120px;color:' + AMB + ';font-size:22px', 'made by hand · first time'), tw = E(el, 'tag', 'left:380px;top:1180px;color:' + IVO + ';font-size:22px', 'what it can\'t do yet: at the end');
+var hd = E(el, 'big', 'left:150px;top:190px;font-size:170px', 'NavIC'), tg = E(el, 'tag', 'left:150px;top:380px;color:' + SKY + ';font-size:22px', 'illustrative orbits'), cc = E(el, 'abs', 'left:150px;top:1060px;width:190px;height:190px;border-radius:50%;border:5px solid ' + AMB + ';background:rgba(3,20,23,.85);display:flex;align-items:center;justify-content:center;box-shadow:0 0 50px rgba(255,176,32,.55)', ico('clock', 110, AMB, 1.5)), tl = E(el, 'tag', 'left:380px;top:1120px;color:' + AMB + ';font-size:22px', 'made by hand · first time'), tw = E(el, 'tag', 'left:380px;top:1180px;color:' + IVO + ';font-size:20px', 'what it can\'t do yet → end');
 var tNew = T0('p3') + .2; ev(tNew, 'whoosh'); ev(tP, 'pop');
 E(el, 'vig', '');
 s.r = function (t) {
@@ -70,20 +70,20 @@ var pu = (t - tP) % 1.2; cc.style.boxShadow = '0 0 ' + (50 + 30 * Math.sin(t * 5
 })();
 /* ===== 3 SIGNAL: a satellite only says "I sent this at this moment" ===== */
 (function () {
-var s = scene(2), el = s.el, tSend = PT('i2', 'वो बस'), tMoment = PT('i2', 'इस पल');
+var s = scene(2), el = s.el, tSend = PT('i2', 'बस एक'), tMoment = PT('i2', 'इस पल');
 var g = svg(el, ''); graticule(g, 1000);
 var sat = satImg(el, 330, 400, 560);
 var dial0 = dial(g, 880, 300, 90);
 var dot = S(g, 'circle', { cx: 760, cy: 1000, r: 18, fill: IVO }), ph = S(g, 'circle', { cx: 760, cy: 1000, r: 18, fill: 'none', stroke: IVO, 'stroke-width': 3 });
-var waves = [0, 1, 2, 3].map(function () { return S(g, 'circle', { cx: 330, cy: 420, r: 10, fill: 'none', stroke: SKY, 'stroke-width': 4 }); }), pk = E(el, 'tag', 'left:0;top:0;color:' + AMB, 'sent at 10:00:00.000 000');
-var hd = E(el, 'big', 'left:150px;top:560px;font-size:120px', 'Only a<br>timestamp'), t4 = E(el, 'tag', 'left:150px;top:140px;color:' + SKY + ';font-size:22px', 'why four? step 1');
+var waves = [0, 1, 2, 3].map(function () { return S(g, 'circle', { cx: 330, cy: 420, r: 10, fill: 'none', stroke: SKY, 'stroke-width': 4 }); }), pk = E(el, 'tag', 'left:0;top:0;color:' + AMB, 't = 10:00:00.000');
+var hd = E(el, 'big', 'left:150px;top:1130px;font-size:90px', 'Only a timestamp'), t4 = E(el, 'tag', 'left:150px;top:140px;color:' + SKY + ';font-size:22px', 'why four? step 1');
 var tPh = E(el, 'mono', 'left:640px;top:1040px;color:' + IVO + ';font-size:26px', 'your phone');
 ev(tSend, 'whoosh'); ev(tSend + 1.0, 'ping');
 E(el, 'vig', '');
 s.r = function (t) {
 var u0 = B[2]; sat.style.opacity = eo((t - u0) / .35); dial0.set((t - u0) * 70, 1); dial0.g.setAttribute('opacity', eo((t - u0 - .1) / .3));
 waves.forEach(function (w, i) { var x = ((t - tSend) * .55 + i * .25); if (t < tSend) x = -1; var f = x % 1; w.setAttribute('r', 10 + f * 520); w.setAttribute('opacity', x < 0 ? 0 : (1 - f) * .85); });
-var f = clamp((t - tSend) / 1.0), px = 330 + (760 - 330) * eo(f), py = 420 + (1000 - 420) * eo(f); pk.style.left = (px - 120) + 'px'; pk.style.top = (py - 20) + 'px'; pk.style.opacity = t < tSend ? 0 : (f >= 1 ? 1 - clamp((t - tSend - 1.0) / .4) * .5 : 1);
+var f = clamp((t - tSend) / 1.0), px = 330 + (760 - 330) * eo(f), py = 420 + (1000 - 420) * eo(f); pk.style.left = (px - 150) + 'px'; pk.style.top = (py - 20) + 'px'; pk.style.opacity = t < tSend ? 0 : (f >= 1 ? 1 - clamp((t - tSend - 1.0) / .4) * .5 : 1);
 var pu = (t * .9) % 1; ph.setAttribute('r', 18 + pu * 60); ph.setAttribute('opacity', 1 - pu);
 show(hd, t, B[2] + .15, { d: .35, y: 30 }); show(t4, t, B[2] + .05, { d: .3, y: 0 }); show(tPh, t, B[2] + .3, { d: .3, y: 10 });
 };
@@ -117,8 +117,8 @@ var er = S(g, 'circle', { cx: DOT[0], cy: DOT[1], r: 240, fill: 'rgba(255,176,32
 var dot = S(g, 'circle', { cx: DOT[0], cy: DOT[1], r: 16, fill: IVO }), halo = S(g, 'circle', { cx: DOT[0], cy: DOT[1], r: 16, fill: 'none', stroke: IVO, 'stroke-width': 3 });
 var rays = [], sats = [], dials = [];
 SATP.forEach(function (p, i) { rays.push(S(g, 'line', { x1: p[0], y1: p[1], x2: DOT[0], y2: DOT[1], stroke: SKY, 'stroke-width': 4 })); sats.push(satImg(el, p[0], p[1], 230)); dials.push(dial(g, p[0], p[1] - 100, 38)); });
-var pc = E(el, 'abs', 'left:700px;top:1120px;width:90px;height:90px;border-radius:50%;border:4px solid ' + RED + ';background:rgba(3,20,23,.85);display:flex;align-items:center;justify-content:center', ico('clock', 54, RED, 1.6)), tp = E(el, 'tag', 'left:620px;top:1230px;color:' + RED + ';font-size:20px', 'phone clock: unknown');
-var hd = E(el, 'big', 'left:150px;top:190px;font-size:116px', 'The fourth ray<br>fixes the clock'), t4 = E(el, 'tag', 'left:150px;top:1290px;color:' + AMB + ';font-size:26px', '4th ray = the clock'), t1 = E(el, 'tag', 'left:150px;top:1230px;color:' + SKY + ';font-size:22px', '3 rays: a ring, not a point');
+var pc = E(el, 'abs', 'left:700px;top:1120px;width:90px;height:90px;border-radius:50%;border:4px solid ' + RED + ';background:rgba(3,20,23,.85);display:flex;align-items:center;justify-content:center', ico('clock', 54, RED, 1.6)), tp = E(el, 'tag', 'left:640px;top:1230px;color:' + RED + ';font-size:20px', 'phone clock?');
+var hd = E(el, 'big', 'left:150px;top:190px;font-size:116px', 'The fourth ray<br>fixes the clock'), t4 = E(el, 'tag', 'left:150px;top:1215px;color:' + AMB + ';font-size:26px', '4th ray = the clock'), t1 = E(el, 'tag', 'left:150px;top:1230px;color:' + SKY + ';font-size:22px', '3 rays: a ring, not a point');
 var ta = [t3, t3 + .35, t3 + .7, tFour]; ev(ta[0], 'ping'); ev(ta[1], 'ping'); ev(ta[2], 'ping'); ev(tNo, 'buzz'); ev(tFour, 'slam');
 E(el, 'vig', '');
 s.r = function (t) {
@@ -149,9 +149,9 @@ show(hd, t, B[5] + .02, { d: .3, y: 30 }); show(yr, t, tY, { d: .3, y: 10 }); sh
 var s = scene(6), el = s.el, tR = PT('b3', 'पर अगस्त'), tV = PT('b4', 'पर इंजन');
 var g = svg(el, ''); graticule(g, 1000);
 var rk = img(el, 'img/rocket.png', 'position:absolute;left:150px;top:150px;width:400px;height:800px;transform-origin:50% 90%');
-var tg1 = E(el, 'tag', 'left:560px;top:230px;color:' + RED, 'aug 2017 · IRNSS-1H'), tg2 = E(el, 'tag', 'left:560px;top:290px;color:' + RED + ';font-size:22px', 'did not separate');
+var tg1 = E(el, 'tag', 'left:540px;top:230px;color:' + RED, 'aug 2017 · IRNSS-1H'), tg2 = E(el, 'tag', 'left:540px;top:290px;color:' + RED + ';font-size:22px', 'did not separate');
 var orb = S(g, 'ellipse', { cx: 700, cy: 1000, rx: 330, ry: 140, fill: 'none', stroke: 'rgba(85,184,255,.6)', 'stroke-width': 4, 'stroke-dasharray': '10 12' }), wr = S(g, 'ellipse', { cx: 700, cy: 1070, rx: 250, ry: 80, fill: 'none', stroke: RED, 'stroke-width': 5 }), st = satImg(el, 520, 1100, 210);
-var h2 = E(el, 'big', 'left:150px;top:960px;font-size:100px', ''); var q2 = E(el, 'tag', 'left:560px;top:790px;color:' + AMB, 'jan 2025 · NVS-02'), q3 = E(el, 'tag', 'left:560px;top:850px;color:' + RED + ';font-size:22px', 'thruster valve · wrong orbit');
+var h2 = E(el, 'big', 'left:150px;top:960px;font-size:100px', ''); var q2 = E(el, 'tag', 'left:560px;top:790px;color:' + AMB, 'jan 2025 · NVS-02'), q3 = E(el, 'tag', 'left:560px;top:850px;color:' + RED + ';font-size:22px', 'valve · wrong orbit');
 var earth = S(g, 'circle', { cx: 700, cy: 1000, r: 70, fill: '#0b3a52', stroke: SKY, 'stroke-width': 3 });
 ev(tR, 'whoosh'); ev(tR + 1.0, 'thud'); ev(tV, 'thud');
 E(el, 'vig', '');
@@ -201,7 +201,7 @@ var s = scene(9), el = s.el, tB = PT('t1', 'ख़ुद'), tA = PT('t2', 'अ�
 var g = svg(el, ''); graticule(g, 900);
 var sat = satImg(el, 540, 640, 760);
 var d = dial(g, 540, 1110, 140), glow = S(g, 'circle', { cx: 540, cy: 1110, r: 190, fill: 'none', stroke: AMB, 'stroke-width': 4, opacity: .6 });
-var hd = E(el, 'big', 'left:150px;top:190px;font-size:116px', 'Our own<br>clock'), a1 = E(el, 'tag', 'left:150px;top:850px;color:' + AMB, 'Ahmedabad · Space Applications Centre'), a2 = E(el, 'tag', 'left:150px;top:910px;color:' + SKY + ';font-size:22px', 'rubidium atomic clock · first flew 2023 · NVS-01');
+var hd = E(el, 'big', 'left:150px;top:190px;font-size:116px', 'Our own<br>clock'), a1 = E(el, 'tag', 'left:150px;top:850px;color:' + AMB, 'Ahmedabad · Space Applications Centre'), a2 = E(el, 'tag', 'left:150px;top:910px;color:' + SKY + ';font-size:22px', 'rubidium clock · NVS-01 · 2023');
 ev(tB, 'neon'); ev(tA, 'ping'); ev(tN, 'pop');
 E(el, 'vig', '');
 s.r = function (t) {
@@ -230,7 +230,7 @@ var s = scene(11), el = s.el, tCnt = PT('y1', 'गिनती'), tFour = PT('y1
 var bg = img(el, 'img/earth-b.png', 'position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 40%;opacity:.9');
 var g = svg(el, ''); var sockets = []; for (var i = 0; i < 4; i++) { var cx = 210 + i * 220; S(g, 'rect', { x: cx - 80, y: 300, width: 160, height: 130, rx: 16, fill: 'rgba(3,20,23,.85)', stroke: i < 3 ? SKY : AMB, 'stroke-width': 5, 'stroke-dasharray': i < 3 ? '0' : '10 8' }); sockets.push({ x: cx, im: i < 3 ? satImg(el, cx, 365, 150) : satImg(el, cx, 365, 150, 'filter:drop-shadow(0 0 20px rgba(255,176,32,.9))') }); }
 var tr = S(g, 'ellipse', { cx: 600, cy: 1000, rx: 420, ry: 170, transform: 'rotate(-14 600 1000)', fill: 'none', stroke: AMB, 'stroke-width': 5, 'stroke-dasharray': '12 10' }), sl = S(g, 'circle', { cx: 970, cy: 880, r: 26, fill: 'none', stroke: IVO, 'stroke-width': 4, 'stroke-dasharray': '6 6' }), mv = satImg(el, 400, 1060, 170);
-var cnt = E(el, 'big', 'left:150px;top:480px;font-size:260px;color:' + AMB, '3'), cl = E(el, 'mono', 'left:340px;top:640px;color:' + IVO + ';font-size:34px', 'working'), nt = E(el, 'tag', 'left:150px;top:760px;color:' + RED + ';font-size:36px', 'not yet live'), c1 = E(el, 'tag', 'left:150px;top:1230px;color:' + IVO + ';font-size:22px', '☐ reach its slot'), c2 = E(el, 'tag', 'left:430px;top:1230px;color:' + IVO + ';font-size:22px', '☐ switch on');
+var cnt = E(el, 'big', 'left:150px;top:480px;font-size:260px;color:' + AMB, '3'), cl = E(el, 'mono', 'left:340px;top:640px;color:' + IVO + ';font-size:34px', 'working'), nt = E(el, 'tag', 'left:150px;top:760px;color:' + RED + ';font-size:36px', 'not yet live'), c1 = E(el, 'tag', 'left:150px;top:1230px;color:' + IVO + ';font-size:22px', '☐ reach its slot'), c2 = E(el, 'tag', 'left:480px;top:1230px;color:' + IVO + ';font-size:22px', '☐ switch on');
 ev(tCnt, 'tick'); ev(tFour, 'slam'); ev(tNot, 'drop');
 E(el, 'vig', '');
 s.r = function (t) {
@@ -260,7 +260,7 @@ show(hd, t, B[12] + .1, { d: .35, y: 30 }); show(cc, t, tF, { d: .35, y: 0, s: .
 (function () {
 var s = scene(13), el = s.el, tC = T0('c1'), tSd = PT('c2', 'संदेश'), tL = PT('c2', 'लाइक'), tSh = PT('c2', 'शेयर'), tSb = PT('c2', 'सब्सक्राइब');
 var g = svg(el, ''); graticule(g, 700); var rays = []; for (var i = 0; i < 12; i++) rays.push(S(g, 'polygon', { fill: i % 2 ? 'rgba(255,176,32,.06)' : 'rgba(85,184,255,.08)' }));
-var big = E(el, 'big', 'left:150px;top:200px;font-size:190px;color:' + AMB, 'Send this<br>to them'); var sc = E(el, 'tag', 'left:150px;top:560px;color:' + IVO + ';font-size:26px;text-transform:none', 'the friend who says "no tech of our own"');
+var big = E(el, 'big', 'left:150px;top:200px;font-size:190px;color:' + AMB, 'Send this<br>to them'); var sc = E(el, 'tag', 'left:150px;top:560px;color:' + IVO + ';font-size:22px;text-transform:none', 'for the "no tech of our own" friend');
 var pf = E(el, 'abs', 'left:150px;top:760px;width:210px;height:210px;border-radius:50%;border:8px solid ' + IVO + ';box-shadow:0 0 0 6px ' + AMB + ',0 0 60px 8px rgba(255,176,32,.5);overflow:hidden'); img(pf, 'img/profile.jpg', 'width:100%;height:100%;object-fit:cover');
 var hn = E(el, 'abs', 'left:395px;top:790px;font:800 72px/1 "Big Shoulders Display";letter-spacing:.02em;color:' + IVO + ';white-space:nowrap', '@sandeshexplains'), sub = E(el, 'mono', 'left:395px;top:880px;color:' + AMB + ';font-size:26px', 'Sandesh Explains');
 var row = E(el, 'abs', 'left:150px;top:1050px;display:flex;gap:14px');

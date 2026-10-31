@@ -1,7 +1,7 @@
 {
  "title": "The clock that broke India's GPS",
  "format": "reel, Hinglish voice-over only",
- "version": 2,
+ "version": 6,
  "sentences": [
   {
    "id": "h1",
@@ -45,19 +45,19 @@
   },
   {
    "id": "i1",
-   "g": "g4",
+   "g": "g3",
    "beat": "idea",
    "A": "पहले समझो, चार क्यों।",
-   "B": "पहले समझो, चार क्यों।",
-   "cap": "Pehle samjho, chaar kyon."
+   "B": "चलो पहले समझें, चार क्यों।",
+   "cap": "Chalo pehle samjhein, chaar kyon."
   },
   {
    "id": "i2",
    "g": "g4",
    "beat": "idea",
-   "A": "Satellite आपको अपनी जगह नहीं बताता। वो बस एक सिग्नल भेजता है: मैंने इसे इस पल भेजा।",
-   "B": "सैटेलाइट आपको अपनी जगह नहीं बताता। वो बस एक सिग्नल भेजता है: मैंने इसे इस पल भेजा।",
-   "cap": "Satellite aapko apni jagah nahi batata. Wo bas ek signal bhejta hai: maine ise is pal bheja."
+   "A": "Satellite आपको जगह नहीं बताता। बस एक सिग्नल भेजता है, जिसमें समय लिखा होता है: इस पल भेजा।",
+   "B": "सैटेलाइट आपको जगह नहीं बताता। बस एक सिग्नल भेजता है, जिसमें समय लिखा होता है: इस पल भेजा।",
+   "cap": "Satellite aapko jagah nahi batata. Bas ek signal bhejta hai, jismein samay likha hota hai: is pal bheja."
   },
   {
    "id": "i3",
