@@ -1,0 +1,2942 @@
+[
+ {
+  "file": "assets/models/kenney/city/building-garage.glb",
+  "family": "kenney/city",
+  "name": "building-garage",
+  "tris": 196,
+  "size_xyz_m": [
+   1.0,
+   0.55,
+   1.0
+  ],
+  "kb": 19,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/building-small-a.glb",
+  "family": "kenney/city",
+  "name": "building-small-a",
+  "tris": 452,
+  "size_xyz_m": [
+   1.0,
+   0.95,
+   1.0
+  ],
+  "kb": 33,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/building-small-b.glb",
+  "family": "kenney/city",
+  "name": "building-small-b",
+  "tris": 600,
+  "size_xyz_m": [
+   1.0,
+   1.626,
+   1.0
+  ],
+  "kb": 40,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/building-small-c.glb",
+  "family": "kenney/city",
+  "name": "building-small-c",
+  "tris": 834,
+  "size_xyz_m": [
+   1.0,
+   1.75,
+   1.0
+  ],
+  "kb": 53,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/building-small-d.glb",
+  "family": "kenney/city",
+  "name": "building-small-d",
+  "tris": 448,
+  "size_xyz_m": [
+   1.0,
+   1.0,
+   1.05
+  ],
+  "kb": 32,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/grass-trees-tall.glb",
+  "family": "kenney/city",
+  "name": "grass-trees-tall",
+  "tris": 472,
+  "size_xyz_m": [
+   1.072,
+   0.76,
+   1.006
+  ],
+  "kb": 37,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/grass-trees.glb",
+  "family": "kenney/city",
+  "name": "grass-trees",
+  "tris": 380,
+  "size_xyz_m": [
+   1.0,
+   0.636,
+   1.0
+  ],
+  "kb": 31,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/grass.glb",
+  "family": "kenney/city",
+  "name": "grass",
+  "tris": 30,
+  "size_xyz_m": [
+   1.0,
+   0.06,
+   1.0
+  ],
+  "kb": 9,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/pavement-fountain.glb",
+  "family": "kenney/city",
+  "name": "pavement-fountain",
+  "tris": 152,
+  "size_xyz_m": [
+   1.0,
+   0.536,
+   1.0
+  ],
+  "kb": 16,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/pavement.glb",
+  "family": "kenney/city",
+  "name": "pavement",
+  "tris": 20,
+  "size_xyz_m": [
+   1.0,
+   0.06,
+   1.0
+  ],
+  "kb": 8,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/road-corner.glb",
+  "family": "kenney/city",
+  "name": "road-corner",
+  "tris": 126,
+  "size_xyz_m": [
+   1.0,
+   0.06,
+   1.0
+  ],
+  "kb": 14,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/road-intersection.glb",
+  "family": "kenney/city",
+  "name": "road-intersection",
+  "tris": 154,
+  "size_xyz_m": [
+   1.0,
+   0.05,
+   1.0
+  ],
+  "kb": 15,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/road-split.glb",
+  "family": "kenney/city",
+  "name": "road-split",
+  "tris": 100,
+  "size_xyz_m": [
+   1.0,
+   0.05,
+   1.0
+  ],
+  "kb": 12,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/road-straight-lightposts.glb",
+  "family": "kenney/city",
+  "name": "road-straight-lightposts",
+  "tris": 190,
+  "size_xyz_m": [
+   1.0,
+   0.55,
+   1.0
+  ],
+  "kb": 18,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/city/road-straight.glb",
+  "family": "kenney/city",
+  "name": "road-straight",
+  "tris": 54,
+  "size_xyz_m": [
+   1.0,
+   0.05,
+   1.0
+  ],
+  "kb": 10,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-City-Builder",
+  "note": "flat-shaded low-poly"
+ },
+ {
+  "file": "assets/models/kenney/racing/decoration-empty.glb",
+  "family": "kenney/racing",
+  "name": "decoration-empty",
+  "tris": 596,
+  "size_xyz_m": [
+   10.164,
+   4.938,
+   10.0
+  ],
+  "kb": 43,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/decoration-forest.glb",
+  "family": "kenney/racing",
+  "name": "decoration-forest",
+  "tris": 2006,
+  "size_xyz_m": [
+   10.0,
+   5.329,
+   10.0
+  ],
+  "kb": 133,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/decoration-tents.glb",
+  "family": "kenney/racing",
+  "name": "decoration-tents",
+  "tris": 1900,
+  "size_xyz_m": [
+   10.0,
+   4.2,
+   10.0
+  ],
+  "kb": 119,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/vehicle-motorcycle.glb",
+  "family": "kenney/racing",
+  "name": "vehicle-motorcycle",
+  "tris": 960,
+  "size_xyz_m": [
+   1.09,
+   1.266,
+   2.435
+  ],
+  "kb": 70,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/vehicle-truck-green.glb",
+  "family": "kenney/racing",
+  "name": "vehicle-truck-green",
+  "tris": 1104,
+  "size_xyz_m": [
+   1.5,
+   1.4,
+   2.903
+  ],
+  "kb": 77,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/vehicle-truck-purple.glb",
+  "family": "kenney/racing",
+  "name": "vehicle-truck-purple",
+  "tris": 814,
+  "size_xyz_m": [
+   1.5,
+   1.3,
+   2.8
+  ],
+  "kb": 60,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/vehicle-truck-red.glb",
+  "family": "kenney/racing",
+  "name": "vehicle-truck-red",
+  "tris": 946,
+  "size_xyz_m": [
+   1.5,
+   1.3,
+   2.8
+  ],
+  "kb": 69,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/kenney/racing/vehicle-truck-yellow.glb",
+  "family": "kenney/racing",
+  "name": "vehicle-truck-yellow",
+  "tris": 989,
+  "size_xyz_m": [
+   1.5,
+   1.55,
+   2.8
+  ],
+  "kb": 70,
+  "license": "CC0",
+  "source": "https://github.com/KenneyNL/Starter-Kit-Racing",
+  "note": "flat-shaded low-poly vehicles/scenery"
+ },
+ {
+  "file": "assets/models/polyhaven/Barrel_01.glb",
+  "family": "polyhaven",
+  "name": "Barrel_01",
+  "tris": 2682,
+  "size_xyz_m": [
+   0.563,
+   0.88,
+   0.563
+  ],
+  "kb": 199,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/Barrel_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/Camera_01.glb",
+  "family": "polyhaven",
+  "name": "Camera_01",
+  "tris": 26987,
+  "size_xyz_m": [
+   0.214,
+   0.078,
+   0.263
+  ],
+  "kb": 1177,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/Camera_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/CashRegister_01.glb",
+  "family": "polyhaven",
+  "name": "CashRegister_01",
+  "tris": 9927,
+  "size_xyz_m": [
+   0.6,
+   0.621,
+   0.624
+  ],
+  "kb": 653,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/CashRegister_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/CheeseBox_01.glb",
+  "family": "polyhaven",
+  "name": "CheeseBox_01",
+  "tris": 884,
+  "size_xyz_m": [
+   0.24,
+   0.066,
+   0.107
+  ],
+  "kb": 116,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/CheeseBox_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/CoffeeCart_01.glb",
+  "family": "polyhaven",
+  "name": "CoffeeCart_01",
+  "tris": 27659,
+  "size_xyz_m": [
+   2.168,
+   1.718,
+   1.073
+  ],
+  "kb": 1097,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/CoffeeCart_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/Megaphone_01.glb",
+  "family": "polyhaven",
+  "name": "Megaphone_01",
+  "tris": 15814,
+  "size_xyz_m": [
+   0.371,
+   0.3,
+   0.228
+  ],
+  "kb": 501,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/Megaphone_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/Shelf_01.glb",
+  "family": "polyhaven",
+  "name": "Shelf_01",
+  "tris": 182,
+  "size_xyz_m": [
+   1.003,
+   2.08,
+   0.257
+  ],
+  "kb": 110,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/Shelf_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/Television_01.glb",
+  "family": "polyhaven",
+  "name": "Television_01",
+  "tris": 1918,
+  "size_xyz_m": [
+   0.6,
+   0.457,
+   0.471
+  ],
+  "kb": 192,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/Television_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/WetFloorSign_01.glb",
+  "family": "polyhaven",
+  "name": "WetFloorSign_01",
+  "tris": 228,
+  "size_xyz_m": [
+   0.3,
+   0.63,
+   0.359
+  ],
+  "kb": 74,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/WetFloorSign_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/barrel_03.glb",
+  "family": "polyhaven",
+  "name": "barrel_03",
+  "tris": 1473,
+  "size_xyz_m": [
+   0.634,
+   0.93,
+   0.639
+  ],
+  "kb": 142,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/barrel_03",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/boombox.glb",
+  "family": "polyhaven",
+  "name": "boombox",
+  "tris": 10168,
+  "size_xyz_m": [
+   0.724,
+   0.47,
+   0.186
+  ],
+  "kb": 679,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/boombox",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/brass_pan_01.glb",
+  "family": "polyhaven",
+  "name": "brass_pan_01",
+  "tris": 4340,
+  "size_xyz_m": [
+   0.191,
+   0.053,
+   0.45
+  ],
+  "kb": 186,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/brass_pan_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/brass_pot_01.glb",
+  "family": "polyhaven",
+  "name": "brass_pot_01",
+  "tris": 3760,
+  "size_xyz_m": [
+   0.302,
+   0.291,
+   0.302
+  ],
+  "kb": 160,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/brass_pot_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/brass_pot_02.glb",
+  "family": "polyhaven",
+  "name": "brass_pot_02",
+  "tris": 3344,
+  "size_xyz_m": [
+   0.367,
+   0.109,
+   0.302
+  ],
+  "kb": 151,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/brass_pot_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/cardboard_box_01.glb",
+  "family": "polyhaven",
+  "name": "cardboard_box_01",
+  "tris": 16952,
+  "size_xyz_m": [
+   0.387,
+   0.342,
+   0.516
+  ],
+  "kb": 465,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/cardboard_box_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/cement_bag.glb",
+  "family": "polyhaven",
+  "name": "cement_bag",
+  "tris": 844,
+  "size_xyz_m": [
+   0.462,
+   0.18,
+   0.7
+  ],
+  "kb": 82,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/cement_bag",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/classic_laptop.glb",
+  "family": "polyhaven",
+  "name": "classic_laptop",
+  "tris": 14450,
+  "size_xyz_m": [
+   0.652,
+   0.543,
+   0.486
+  ],
+  "kb": 656,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/classic_laptop",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/compost_bags.glb",
+  "family": "polyhaven",
+  "name": "compost_bags",
+  "tris": 18708,
+  "size_xyz_m": [
+   1.847,
+   0.768,
+   0.946
+  ],
+  "kb": 597,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/compost_bags",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/concrete_road_barrier.glb",
+  "family": "polyhaven",
+  "name": "concrete_road_barrier",
+  "tris": 60928,
+  "size_xyz_m": [
+   1.545,
+   0.831,
+   0.639
+  ],
+  "kb": 1438,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/concrete_road_barrier",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/desk_lamp_arm_01.glb",
+  "family": "polyhaven",
+  "name": "desk_lamp_arm_01",
+  "tris": 24102,
+  "size_xyz_m": [
+   0.202,
+   0.893,
+   0.614
+  ],
+  "kb": 895,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/desk_lamp_arm_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/electric_stove.glb",
+  "family": "polyhaven",
+  "name": "electric_stove",
+  "tris": 13914,
+  "size_xyz_m": [
+   0.503,
+   0.859,
+   0.648
+  ],
+  "kb": 879,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/electric_stove",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/fire_hydrant.glb",
+  "family": "polyhaven",
+  "name": "fire_hydrant",
+  "tris": 86316,
+  "size_xyz_m": [
+   0.875,
+   0.799,
+   0.318
+  ],
+  "kb": 2111,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/fire_hydrant",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/hand_truck.glb",
+  "family": "polyhaven",
+  "name": "hand_truck",
+  "tris": 13220,
+  "size_xyz_m": [
+   0.593,
+   1.403,
+   0.693
+  ],
+  "kb": 655,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/hand_truck",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/industrial_pastic_container.glb",
+  "family": "polyhaven",
+  "name": "industrial_pastic_container",
+  "tris": 7118,
+  "size_xyz_m": [
+   0.476,
+   0.423,
+   0.631
+  ],
+  "kb": 445,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/industrial_pastic_container",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/industrial_storage_cart.glb",
+  "family": "polyhaven",
+  "name": "industrial_storage_cart",
+  "tris": 18902,
+  "size_xyz_m": [
+   1.603,
+   1.377,
+   1.103
+  ],
+  "kb": 747,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/industrial_storage_cart",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/metal_office_desk.glb",
+  "family": "polyhaven",
+  "name": "metal_office_desk",
+  "tris": 6898,
+  "size_xyz_m": [
+   2.0,
+   0.788,
+   0.947
+  ],
+  "kb": 323,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/metal_office_desk",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/metal_trash_can.glb",
+  "family": "polyhaven",
+  "name": "metal_trash_can",
+  "tris": 13960,
+  "size_xyz_m": [
+   1.847,
+   0.906,
+   0.556
+  ],
+  "kb": 647,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/metal_trash_can",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/modern_ceiling_lamp_01.glb",
+  "family": "polyhaven",
+  "name": "modern_ceiling_lamp_01",
+  "tris": 5602,
+  "size_xyz_m": [
+   0.432,
+   0.952,
+   0.432
+  ],
+  "kb": 206,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/modern_ceiling_lamp_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/modular_street_seating.glb",
+  "family": "polyhaven",
+  "name": "modular_street_seating",
+  "tris": 25156,
+  "size_xyz_m": [
+   4.34,
+   0.95,
+   0.77
+  ],
+  "kb": 1282,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/modular_street_seating",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/painted_wooden_shelves.glb",
+  "family": "polyhaven",
+  "name": "painted_wooden_shelves",
+  "tris": 524,
+  "size_xyz_m": [
+   0.511,
+   1.125,
+   0.367
+  ],
+  "kb": 114,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/painted_wooden_shelves",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/plastic_bottle_gallon.glb",
+  "family": "polyhaven",
+  "name": "plastic_bottle_gallon",
+  "tris": 13728,
+  "size_xyz_m": [
+   0.166,
+   0.274,
+   0.126
+  ],
+  "kb": 353,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/plastic_bottle_gallon",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/plastic_crate_01.glb",
+  "family": "polyhaven",
+  "name": "plastic_crate_01",
+  "tris": 18320,
+  "size_xyz_m": [
+   0.298,
+   0.264,
+   0.408
+  ],
+  "kb": 975,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/plastic_crate_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/plastic_crate_02.glb",
+  "family": "polyhaven",
+  "name": "plastic_crate_02",
+  "tris": 5840,
+  "size_xyz_m": [
+   0.506,
+   0.254,
+   0.406
+  ],
+  "kb": 588,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/plastic_crate_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/plastic_crate_03.glb",
+  "family": "polyhaven",
+  "name": "plastic_crate_03",
+  "tris": 21740,
+  "size_xyz_m": [
+   0.481,
+   0.266,
+   0.265
+  ],
+  "kb": 1028,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/plastic_crate_03",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/pot_enamel_01.glb",
+  "family": "polyhaven",
+  "name": "pot_enamel_01",
+  "tris": 11416,
+  "size_xyz_m": [
+   0.263,
+   0.178,
+   0.18
+  ],
+  "kb": 332,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/pot_enamel_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/power_box_01.glb",
+  "family": "polyhaven",
+  "name": "power_box_01",
+  "tris": 21272,
+  "size_xyz_m": [
+   0.463,
+   0.503,
+   0.402
+  ],
+  "kb": 864,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/power_box_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/security_camera_01.glb",
+  "family": "polyhaven",
+  "name": "security_camera_01",
+  "tris": 13571,
+  "size_xyz_m": [
+   0.17,
+   0.286,
+   0.554
+  ],
+  "kb": 822,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/security_camera_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/steel_frame_shelves_01.glb",
+  "family": "polyhaven",
+  "name": "steel_frame_shelves_01",
+  "tris": 4348,
+  "size_xyz_m": [
+   10.974,
+   21.405,
+   5.021
+  ],
+  "kb": 214,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/steel_frame_shelves_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/steel_frame_shelves_02.glb",
+  "family": "polyhaven",
+  "name": "steel_frame_shelves_02",
+  "tris": 4348,
+  "size_xyz_m": [
+   0.593,
+   2.142,
+   0.502
+  ],
+  "kb": 220,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/steel_frame_shelves_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/steel_frame_shelves_03.glb",
+  "family": "polyhaven",
+  "name": "steel_frame_shelves_03",
+  "tris": 8396,
+  "size_xyz_m": [
+   2.351,
+   2.312,
+   0.721
+  ],
+  "kb": 420,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/steel_frame_shelves_03",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/street_lamp_01.glb",
+  "family": "polyhaven",
+  "name": "street_lamp_01",
+  "tris": 30610,
+  "size_xyz_m": [
+   0.704,
+   3.871,
+   0.386
+  ],
+  "kb": 1049,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/street_lamp_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/street_lamp_02.glb",
+  "family": "polyhaven",
+  "name": "street_lamp_02",
+  "tris": 20338,
+  "size_xyz_m": [
+   0.386,
+   1.675,
+   0.807
+  ],
+  "kb": 834,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/street_lamp_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/tea_set_01.glb",
+  "family": "polyhaven",
+  "name": "tea_set_01",
+  "tris": 40296,
+  "size_xyz_m": [
+   0.918,
+   0.165,
+   0.484
+  ],
+  "kb": 1003,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/tea_set_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/television_02.glb",
+  "family": "polyhaven",
+  "name": "television_02",
+  "tris": 2310,
+  "size_xyz_m": [
+   0.4,
+   0.411,
+   0.35
+  ],
+  "kb": 167,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/television_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/tool_cart.glb",
+  "family": "polyhaven",
+  "name": "tool_cart",
+  "tris": 29394,
+  "size_xyz_m": [
+   1.273,
+   0.965,
+   0.754
+  ],
+  "kb": 1009,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/tool_cart",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/utility_box_01.glb",
+  "family": "polyhaven",
+  "name": "utility_box_01",
+  "tris": 4404,
+  "size_xyz_m": [
+   0.52,
+   1.12,
+   0.432
+  ],
+  "kb": 235,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/utility_box_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/utility_box_02.glb",
+  "family": "polyhaven",
+  "name": "utility_box_02",
+  "tris": 6268,
+  "size_xyz_m": [
+   0.92,
+   1.12,
+   0.432
+  ],
+  "kb": 293,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/utility_box_02",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/vintage_electric_kettle.glb",
+  "family": "polyhaven",
+  "name": "vintage_electric_kettle",
+  "tris": 14838,
+  "size_xyz_m": [
+   0.321,
+   0.305,
+   0.249
+  ],
+  "kb": 896,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/vintage_electric_kettle",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/wicker_basket_01.glb",
+  "family": "polyhaven",
+  "name": "wicker_basket_01",
+  "tris": 22276,
+  "size_xyz_m": [
+   0.383,
+   0.117,
+   0.295
+  ],
+  "kb": 724,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/wicker_basket_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/polyhaven/wooden_bowl_01.glb",
+  "family": "polyhaven",
+  "name": "wooden_bowl_01",
+  "tris": 14122,
+  "size_xyz_m": [
+   0.313,
+   0.094,
+   0.309
+  ],
+  "kb": 389,
+  "license": "CC0",
+  "source": "https://polyhaven.com/a/wooden_bowl_01",
+  "note": "PBR scans, 512 px textures"
+ },
+ {
+  "file": "assets/models/procedural/cell_tower.glb",
+  "family": "procedural",
+  "name": "cell_tower",
+  "tris": 2156,
+  "size_xyz_m": [
+   4.799,
+   18.628,
+   4.26
+  ],
+  "kb": 173,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/delivery_bag.glb",
+  "family": "procedural",
+  "name": "delivery_bag",
+  "tris": 892,
+  "size_xyz_m": [
+   0.43,
+   0.49,
+   0.441
+  ],
+  "kb": 63,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/delivery_scooter.glb",
+  "family": "procedural",
+  "name": "delivery_scooter",
+  "tris": 2964,
+  "size_xyz_m": [
+   1.69,
+   1.29,
+   0.8
+  ],
+  "kb": 209,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/gas_stove_with_pot.glb",
+  "family": "procedural",
+  "name": "gas_stove_with_pot",
+  "tris": 3088,
+  "size_xyz_m": [
+   0.815,
+   0.342,
+   0.47
+  ],
+  "kb": 225,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/map_pin.glb",
+  "family": "procedural",
+  "name": "map_pin",
+  "tris": 1370,
+  "size_xyz_m": [
+   0.32,
+   0.46,
+   0.32
+  ],
+  "kb": 99,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/milk_pouch.glb",
+  "family": "procedural",
+  "name": "milk_pouch",
+  "tris": 1556,
+  "size_xyz_m": [
+   0.17,
+   0.238,
+   0.061
+  ],
+  "kb": 112,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/server_rack.glb",
+  "family": "procedural",
+  "name": "server_rack",
+  "tris": 5496,
+  "size_xyz_m": [
+   0.62,
+   2.02,
+   1.01
+  ],
+  "kb": 482,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/procedural/smartphone.glb",
+  "family": "procedural",
+  "name": "smartphone",
+  "tris": 2646,
+  "size_xyz_m": [
+   0.073,
+   0.147,
+   0.015
+  ],
+  "kb": 185,
+  "license": "CC0 (own work)",
+  "source": "assets/models/procedural/build_props.py",
+  "note": "EM_* materials are emissive"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building1_Large.glb",
+  "family": "quaternius/buildings",
+  "name": "Building1_Large",
+  "tris": 41788,
+  "size_xyz_m": [
+   7.991,
+   4.671,
+   2.744
+  ],
+  "kb": 1642,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building1_Small.glb",
+  "family": "quaternius/buildings",
+  "name": "Building1_Small",
+  "tris": 16620,
+  "size_xyz_m": [
+   3.747,
+   4.663,
+   2.744
+  ],
+  "kb": 657,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building2_Large.glb",
+  "family": "quaternius/buildings",
+  "name": "Building2_Large",
+  "tris": 15072,
+  "size_xyz_m": [
+   5.716,
+   5.918,
+   2.219
+  ],
+  "kb": 542,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building2_Small.glb",
+  "family": "quaternius/buildings",
+  "name": "Building2_Small",
+  "tris": 5160,
+  "size_xyz_m": [
+   3.584,
+   4.968,
+   2.486
+  ],
+  "kb": 189,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building3_Big.glb",
+  "family": "quaternius/buildings",
+  "name": "Building3_Big",
+  "tris": 7004,
+  "size_xyz_m": [
+   4.705,
+   5.677,
+   4.391
+  ],
+  "kb": 330,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building3_Small.glb",
+  "family": "quaternius/buildings",
+  "name": "Building3_Small",
+  "tris": 5242,
+  "size_xyz_m": [
+   3.052,
+   5.677,
+   4.396
+  ],
+  "kb": 263,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/Building4.glb",
+  "family": "quaternius/buildings",
+  "name": "Building4",
+  "tris": 9740,
+  "size_xyz_m": [
+   4.644,
+   5.487,
+   3.856
+  ],
+  "kb": 353,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/House1.glb",
+  "family": "quaternius/buildings",
+  "name": "House1",
+  "tris": 28354,
+  "size_xyz_m": [
+   2.557,
+   3.179,
+   3.87
+  ],
+  "kb": 1174,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/buildings/House2.glb",
+  "family": "quaternius/buildings",
+  "name": "House2",
+  "tris": 19714,
+  "size_xyz_m": [
+   3.644,
+   2.926,
+   3.084
+  ],
+  "kb": 818,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/buildings.html",
+  "note": "coloured"
+ },
+ {
+  "file": "assets/models/quaternius/cars/Cop.glb",
+  "family": "quaternius/cars",
+  "name": "Cop",
+  "tris": 3232,
+  "size_xyz_m": [
+   1.778,
+   1.239,
+   3.73
+  ],
+  "kb": 170,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/NormalCar1.glb",
+  "family": "quaternius/cars",
+  "name": "NormalCar1",
+  "tris": 2954,
+  "size_xyz_m": [
+   1.807,
+   1.177,
+   4.221
+  ],
+  "kb": 154,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/NormalCar2.glb",
+  "family": "quaternius/cars",
+  "name": "NormalCar2",
+  "tris": 3124,
+  "size_xyz_m": [
+   1.638,
+   1.146,
+   3.31
+  ],
+  "kb": 164,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/SUV.glb",
+  "family": "quaternius/cars",
+  "name": "SUV",
+  "tris": 3294,
+  "size_xyz_m": [
+   2.111,
+   1.528,
+   4.209
+  ],
+  "kb": 171,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/SportsCar.glb",
+  "family": "quaternius/cars",
+  "name": "SportsCar",
+  "tris": 3078,
+  "size_xyz_m": [
+   1.805,
+   1.155,
+   3.969
+  ],
+  "kb": 159,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/SportsCar2.glb",
+  "family": "quaternius/cars",
+  "name": "SportsCar2",
+  "tris": 3148,
+  "size_xyz_m": [
+   1.872,
+   1.203,
+   3.927
+  ],
+  "kb": 165,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cars/Taxi.glb",
+  "family": "quaternius/cars",
+  "name": "Taxi",
+  "tris": 3278,
+  "size_xyz_m": [
+   1.807,
+   1.31,
+   4.221
+  ],
+  "kb": 169,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/AC.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "AC",
+  "tris": 946,
+  "size_xyz_m": [
+   1.038,
+   0.686,
+   0.771
+  ],
+  "kb": 36,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/AC_Side.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "AC_Side",
+  "tris": 924,
+  "size_xyz_m": [
+   1.615,
+   0.851,
+   0.771
+  ],
+  "kb": 30,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/AC_Stacked.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "AC_Stacked",
+  "tris": 776,
+  "size_xyz_m": [
+   0.67,
+   1.006,
+   0.511
+  ],
+  "kb": 74,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Antenna_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Antenna_1",
+  "tris": 88,
+  "size_xyz_m": [
+   0.402,
+   1.656,
+   0.063
+  ],
+  "kb": 5,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Antenna_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Antenna_2",
+  "tris": 412,
+  "size_xyz_m": [
+   0.617,
+   0.731,
+   0.657
+  ],
+  "kb": 13,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Cable_Long.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Cable_Long",
+  "tris": 768,
+  "size_xyz_m": [
+   0.288,
+   2.506,
+   0.132
+  ],
+  "kb": 14,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Cable_Small.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Cable_Small",
+  "tris": 384,
+  "size_xyz_m": [
+   0.172,
+   0.95,
+   0.122
+  ],
+  "kb": 8,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Cable_Thick.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Cable_Thick",
+  "tris": 384,
+  "size_xyz_m": [
+   0.546,
+   1.64,
+   0.386
+  ],
+  "kb": 8,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Computer.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Computer",
+  "tris": 1008,
+  "size_xyz_m": [
+   0.47,
+   1.008,
+   0.629
+  ],
+  "kb": 34,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Computer_Large.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Computer_Large",
+  "tris": 2356,
+  "size_xyz_m": [
+   1.294,
+   2.382,
+   0.69
+  ],
+  "kb": 145,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Door.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Door",
+  "tris": 324,
+  "size_xyz_m": [
+   0.69,
+   1.162,
+   0.102
+  ],
+  "kb": 19,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Fence.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Fence",
+  "tris": 160,
+  "size_xyz_m": [
+   0.692,
+   1.256,
+   0.051
+  ],
+  "kb": 12,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Light_Square.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Light_Square",
+  "tris": 148,
+  "size_xyz_m": [
+   0.272,
+   0.495,
+   0.272
+  ],
+  "kb": 10,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Light_Street_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Light_Street_1",
+  "tris": 526,
+  "size_xyz_m": [
+   0.176,
+   2.866,
+   0.672
+  ],
+  "kb": 17,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Light_Street_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Light_Street_2",
+  "tris": 664,
+  "size_xyz_m": [
+   1.351,
+   2.649,
+   1.186
+  ],
+  "kb": 22,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Pipe_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Pipe_1",
+  "tris": 224,
+  "size_xyz_m": [
+   2.442,
+   0.212,
+   0.556
+  ],
+  "kb": 6,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Pipe_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Pipe_2",
+  "tris": 192,
+  "size_xyz_m": [
+   4.625,
+   0.212,
+   0.552
+  ],
+  "kb": 5,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Pipe_Corner.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Pipe_Corner",
+  "tris": 304,
+  "size_xyz_m": [
+   2.0,
+   0.212,
+   2.326
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Pipe_Corner_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Pipe_Corner_2",
+  "tris": 304,
+  "size_xyz_m": [
+   1.154,
+   0.212,
+   3.943
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_1x1_Empty.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_1x1_Empty",
+  "tris": 76,
+  "size_xyz_m": [
+   0.81,
+   0.224,
+   0.772
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_2x1_Empty.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_2x1_Empty",
+  "tris": 76,
+  "size_xyz_m": [
+   1.893,
+   0.224,
+   0.772
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_2x2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_2x2",
+  "tris": 9934,
+  "size_xyz_m": [
+   3.309,
+   3.835,
+   2.158
+  ],
+  "kb": 506,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_2x2_Empty.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_2x2_Empty",
+  "tris": 76,
+  "size_xyz_m": [
+   1.893,
+   0.224,
+   1.854
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_4x1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_4x1",
+  "tris": 4316,
+  "size_xyz_m": [
+   3.863,
+   2.806,
+   1.73
+  ],
+  "kb": 212,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_4x1_Empty.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_4x1_Empty",
+  "tris": 76,
+  "size_xyz_m": [
+   3.863,
+   0.224,
+   0.978
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_4x2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_4x2",
+  "tris": 12060,
+  "size_xyz_m": [
+   5.321,
+   6.158,
+   2.713
+  ],
+  "kb": 518,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_4x4.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_4x4",
+  "tris": 13328,
+  "size_xyz_m": [
+   4.468,
+   3.758,
+   3.904
+  ],
+  "kb": 570,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Platform_4x4_Empty.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Platform_4x4_Empty",
+  "tris": 76,
+  "size_xyz_m": [
+   3.863,
+   0.224,
+   3.894
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Rail_Corner.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Rail_Corner",
+  "tris": 368,
+  "size_xyz_m": [
+   0.594,
+   0.237,
+   0.682
+  ],
+  "kb": 9,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Rail_Corner_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Rail_Corner_2",
+  "tris": 368,
+  "size_xyz_m": [
+   1.722,
+   0.237,
+   0.682
+  ],
+  "kb": 9,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Rail_Long.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Rail_Long",
+  "tris": 256,
+  "size_xyz_m": [
+   2.293,
+   0.237,
+   0.061
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Rail_Short.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Rail_Short",
+  "tris": 256,
+  "size_xyz_m": [
+   1.254,
+   0.237,
+   0.061
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_1",
+  "tris": 52,
+  "size_xyz_m": [
+   1.294,
+   0.462,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_2",
+  "tris": 52,
+  "size_xyz_m": [
+   1.294,
+   0.462,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_3.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_3",
+  "tris": 52,
+  "size_xyz_m": [
+   1.272,
+   0.455,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_4.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_4",
+  "tris": 52,
+  "size_xyz_m": [
+   0.506,
+   1.272,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_1",
+  "tris": 124,
+  "size_xyz_m": [
+   1.092,
+   0.727,
+   1.191
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_2",
+  "tris": 124,
+  "size_xyz_m": [
+   1.092,
+   0.727,
+   1.683
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_3.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_3",
+  "tris": 124,
+  "size_xyz_m": [
+   1.092,
+   0.727,
+   1.683
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_3_Fenced.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_3_Fenced",
+  "tris": 332,
+  "size_xyz_m": [
+   1.109,
+   0.727,
+   1.693
+  ],
+  "kb": 61,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_Hazard.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_Hazard",
+  "tris": 124,
+  "size_xyz_m": [
+   1.092,
+   0.201,
+   1.208
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_Small1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_Small1",
+  "tris": 124,
+  "size_xyz_m": [
+   0.569,
+   0.727,
+   0.609
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Corner_Small2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Corner_Small2",
+  "tris": 124,
+  "size_xyz_m": [
+   0.569,
+   0.727,
+   0.609
+  ],
+  "kb": 52,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Small_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Small_1",
+  "tris": 52,
+  "size_xyz_m": [
+   0.48,
+   0.462,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Small_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Small_2",
+  "tris": 52,
+  "size_xyz_m": [
+   0.48,
+   0.462,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Sign_Small_3.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Sign_Small_3",
+  "tris": 52,
+  "size_xyz_m": [
+   0.48,
+   0.462,
+   0.062
+  ],
+  "kb": 50,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Support.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Support",
+  "tris": 60,
+  "size_xyz_m": [
+   0.686,
+   0.401,
+   0.292
+  ],
+  "kb": 4,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Support_Long.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Support_Long",
+  "tris": 524,
+  "size_xyz_m": [
+   1.11,
+   3.561,
+   0.088
+  ],
+  "kb": 21,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Support_Short.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Support_Short",
+  "tris": 288,
+  "size_xyz_m": [
+   1.11,
+   2.214,
+   0.088
+  ],
+  "kb": 12,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/TV_1.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "TV_1",
+  "tris": 312,
+  "size_xyz_m": [
+   1.203,
+   1.375,
+   0.41
+  ],
+  "kb": 68,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/TV_2.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "TV_2",
+  "tris": 336,
+  "size_xyz_m": [
+   0.806,
+   1.212,
+   0.345
+  ],
+  "kb": 70,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/TV_3.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "TV_3",
+  "tris": 554,
+  "size_xyz_m": [
+   0.734,
+   2.378,
+   0.631
+  ],
+  "kb": 80,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/cyberpunk/Tank.glb",
+  "family": "quaternius/cyberpunk",
+  "name": "Tank",
+  "tris": 1392,
+  "size_xyz_m": [
+   0.569,
+   0.831,
+   0.619
+  ],
+  "kb": 57,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/cyberpunkgamekit.html",
+  "note": ""
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/Ambulance.glb",
+  "family": "quaternius/publictransport",
+  "name": "Ambulance",
+  "tris": 1646,
+  "size_xyz_m": [
+   2.838,
+   2.914,
+   5.717
+  ],
+  "kb": 77,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/Bicycle.glb",
+  "family": "quaternius/publictransport",
+  "name": "Bicycle",
+  "tris": 2976,
+  "size_xyz_m": [
+   1.494,
+   3.295,
+   5.828
+  ],
+  "kb": 155,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/Bus.glb",
+  "family": "quaternius/publictransport",
+  "name": "Bus",
+  "tris": 1530,
+  "size_xyz_m": [
+   4.086,
+   1.676,
+   1.745
+  ],
+  "kb": 73,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/SchoolBus.glb",
+  "family": "quaternius/publictransport",
+  "name": "SchoolBus",
+  "tris": 1782,
+  "size_xyz_m": [
+   4.608,
+   2.193,
+   1.879
+  ],
+  "kb": 83,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/SquareFrameBicycle.glb",
+  "family": "quaternius/publictransport",
+  "name": "SquareFrameBicycle",
+  "tris": 1160,
+  "size_xyz_m": [
+   0.531,
+   1.033,
+   1.701
+  ],
+  "kb": 61,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/Taxi.glb",
+  "family": "quaternius/publictransport",
+  "name": "Taxi",
+  "tris": 1614,
+  "size_xyz_m": [
+   1.836,
+   1.453,
+   3.793
+  ],
+  "kb": 101,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/TrafficCone.glb",
+  "family": "quaternius/publictransport",
+  "name": "TrafficCone",
+  "tris": 140,
+  "size_xyz_m": [
+   1.0,
+   1.262,
+   1.0
+  ],
+  "kb": 8,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/TrafficLight.glb",
+  "family": "quaternius/publictransport",
+  "name": "TrafficLight",
+  "tris": 842,
+  "size_xyz_m": [
+   0.207,
+   1.868,
+   0.145
+  ],
+  "kb": 47,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/TrafficSign1.glb",
+  "family": "quaternius/publictransport",
+  "name": "TrafficSign1",
+  "tris": 104,
+  "size_xyz_m": [
+   0.106,
+   1.515,
+   0.465
+  ],
+  "kb": 6,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/TrafficSign2.glb",
+  "family": "quaternius/publictransport",
+  "name": "TrafficSign2",
+  "tris": 88,
+  "size_xyz_m": [
+   0.459,
+   1.485,
+   0.125
+  ],
+  "kb": 6,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/TrafficSign3.glb",
+  "family": "quaternius/publictransport",
+  "name": "TrafficSign3",
+  "tris": 106,
+  "size_xyz_m": [
+   1.345,
+   1.471,
+   0.111
+  ],
+  "kb": 7,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/publictransport/Train.glb",
+  "family": "quaternius/publictransport",
+  "name": "Train",
+  "tris": 712,
+  "size_xyz_m": [
+   2.126,
+   2.199,
+   7.017
+  ],
+  "kb": 34,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/publictransport.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/Bank.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "Bank",
+  "tris": 12582,
+  "size_xyz_m": [
+   4.008,
+   2.923,
+   4.244
+  ],
+  "kb": 631,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/Flat.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "Flat",
+  "tris": 2122,
+  "size_xyz_m": [
+   2.168,
+   3.167,
+   2.144
+  ],
+  "kb": 100,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/Flat2.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "Flat2",
+  "tris": 2084,
+  "size_xyz_m": [
+   2.168,
+   3.167,
+   1.892
+  ],
+  "kb": 127,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/Hospital.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "Hospital",
+  "tris": 4240,
+  "size_xyz_m": [
+   4.098,
+   4.745,
+   3.461
+  ],
+  "kb": 263,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/House.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "House",
+  "tris": 4282,
+  "size_xyz_m": [
+   1.222,
+   1.415,
+   1.716
+  ],
+  "kb": 278,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/House2.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "House2",
+  "tris": 2000,
+  "size_xyz_m": [
+   1.255,
+   1.343,
+   1.443
+  ],
+  "kb": 97,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/House3.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "House3",
+  "tris": 3958,
+  "size_xyz_m": [
+   1.255,
+   1.987,
+   1.435
+  ],
+  "kb": 226,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/House4.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "House4",
+  "tris": 2048,
+  "size_xyz_m": [
+   2.164,
+   1.343,
+   1.436
+  ],
+  "kb": 99,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/House5.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "House5",
+  "tris": 2624,
+  "size_xyz_m": [
+   2.164,
+   1.343,
+   2.19
+  ],
+  "kb": 145,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/simplebuildings/Shop.glb",
+  "family": "quaternius/simplebuildings",
+  "name": "Shop",
+  "tris": 1454,
+  "size_xyz_m": [
+   2.477,
+   1.395,
+   1.8
+  ],
+  "kb": 95,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/simplebuildings.html",
+  "note": "CLAY: untextured, tint in scene"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Sign_NoParking.glb",
+  "family": "quaternius/streets",
+  "name": "Sign_NoParking",
+  "tris": 244,
+  "size_xyz_m": [
+   0.027,
+   0.539,
+   0.139
+  ],
+  "kb": 13,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Sign_Stop.glb",
+  "family": "quaternius/streets",
+  "name": "Sign_Stop",
+  "tris": 300,
+  "size_xyz_m": [
+   0.023,
+   0.538,
+   0.138
+  ],
+  "kb": 15,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Sign_Triangle.glb",
+  "family": "quaternius/streets",
+  "name": "Sign_Triangle",
+  "tris": 60,
+  "size_xyz_m": [
+   0.035,
+   0.534,
+   0.155
+  ],
+  "kb": 5,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_3Way.glb",
+  "family": "quaternius/streets",
+  "name": "Street_3Way",
+  "tris": 672,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 29,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_3Way_2.glb",
+  "family": "quaternius/streets",
+  "name": "Street_3Way_2",
+  "tris": 188,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 9,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_4Way.glb",
+  "family": "quaternius/streets",
+  "name": "Street_4Way",
+  "tris": 896,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 37,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_4Way_2.glb",
+  "family": "quaternius/streets",
+  "name": "Street_4Way_2",
+  "tris": 232,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 11,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Bridge.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Bridge",
+  "tris": 1412,
+  "size_xyz_m": [
+   2.0,
+   0.766,
+   2.0
+  ],
+  "kb": 44,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Bridge_Ramp.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Bridge_Ramp",
+  "tris": 1618,
+  "size_xyz_m": [
+   2.0,
+   0.764,
+   2.0
+  ],
+  "kb": 49,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Bridge_Underpass.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Bridge_Underpass",
+  "tris": 1084,
+  "size_xyz_m": [
+   2.0,
+   0.766,
+   2.0
+  ],
+  "kb": 35,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Bridge_Water.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Bridge_Water",
+  "tris": 1412,
+  "size_xyz_m": [
+   2.0,
+   0.766,
+   2.0
+  ],
+  "kb": 44,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Bridge_WaterRamp.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Bridge_WaterRamp",
+  "tris": 1104,
+  "size_xyz_m": [
+   2.0,
+   0.764,
+   2.0
+  ],
+  "kb": 39,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Curve.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Curve",
+  "tris": 290,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 14,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Deadend.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Deadend",
+  "tris": 308,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 11,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Elevated.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Elevated",
+  "tris": 394,
+  "size_xyz_m": [
+   2.0,
+   0.58,
+   2.0
+  ],
+  "kb": 14,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Elevated_Ramp.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Elevated_Ramp",
+  "tris": 364,
+  "size_xyz_m": [
+   2.0,
+   0.582,
+   2.001
+  ],
+  "kb": 14,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Empty.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Empty",
+  "tris": 12,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 1,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Empty_Water.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Empty_Water",
+  "tris": 44,
+  "size_xyz_m": [
+   2.0,
+   0.121,
+   2.0
+  ],
+  "kb": 2,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Street_Straight.glb",
+  "family": "quaternius/streets",
+  "name": "Street_Straight",
+  "tris": 356,
+  "size_xyz_m": [
+   2.0,
+   0.25,
+   2.0
+  ],
+  "kb": 13,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Streetlight_Double.glb",
+  "family": "quaternius/streets",
+  "name": "Streetlight_Double",
+  "tris": 2486,
+  "size_xyz_m": [
+   0.132,
+   1.1,
+   0.316
+  ],
+  "kb": 122,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Streetlight_Single.glb",
+  "family": "quaternius/streets",
+  "name": "Streetlight_Single",
+  "tris": 1028,
+  "size_xyz_m": [
+   0.132,
+   1.09,
+   0.132
+  ],
+  "kb": 53,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/Streetlight_Triple.glb",
+  "family": "quaternius/streets",
+  "name": "Streetlight_Triple",
+  "tris": 2796,
+  "size_xyz_m": [
+   0.132,
+   1.09,
+   0.316
+  ],
+  "kb": 137,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/TrafficLight.glb",
+  "family": "quaternius/streets",
+  "name": "TrafficLight",
+  "tris": 352,
+  "size_xyz_m": [
+   0.123,
+   0.871,
+   0.09
+  ],
+  "kb": 24,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ },
+ {
+  "file": "assets/models/quaternius/streets/TrafficLight_2.glb",
+  "family": "quaternius/streets",
+  "name": "TrafficLight_2",
+  "tris": 398,
+  "size_xyz_m": [
+   0.123,
+   1.134,
+   0.671
+  ],
+  "kb": 26,
+  "license": "CC0",
+  "source": "https://quaternius.com/packs/modularstreets.html",
+  "note": "coloured, snap-together road tiles"
+ }
+]

@@ -116,6 +116,9 @@ video-generator/
 ├── docs/                     Reference notes (MOTION-*, ANIMATION-RESOURCES, OPUS-VIDEOS, DESIGN-POLISH, AVATAR-PROMPT-TEMPLATE)
 ├── scripts/                  render.mjs (generic renderer), static-server.mjs, ig_insights.py, checkers
 ├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library (see assets/ATTRIBUTION.md)
+│   ├── models/               196 CC0 .glb props (city, streets, vehicles, shelving, kitchen, server rack, phone, tower…) + loader/preview tools — see assets/models/README.md
+│   ├── ui-kit/               generic app-UI screens (SVG/PNG, 2 themes) for phone screens/insets
+│   └── animations/hud-parts/ t-driven geofence/grid-cell/ray-cast/bar-chart/glow-card SVG parts
 ├── insights/                 Instagram performance data, reports, caption/hashtag templates
 ├── account/                  Account (@sandesh_explains) setup material and profile images
 ├── package.json / bun.lock   Root deps (Bun-managed): playwright, gsap
@@ -1530,3 +1533,11 @@ A client case study from a one-page architecture PDF (names omitted): a physical
 - **Pitfalls:** Red Hat Mono is ~0.62 em wide: use Inter for sentences and mono only for names/headers; Devanagari/Kannada are not vendored for Inter (use English language codes); a spinning dial must be continuous across the loop (hand = f(u) with a constant rate, not a ramp that wraps); 64 palette colours kept it at 4.6 MB, 96 gave 5.2 MB.
 - Next GIF: vertical 4:5 with a new palette.
 - **Feedback + fix (27 Oct 2026): "the coupon moves too fast to follow".** A 12 s loop with every event inside it was unreadable even though lint was clean. Fix = readability, not just slowness: (1) a **7-step timeline** (3-5 s each) with a live caption + numbered tracker in the header, (2) a **focus layer** (an SVG mask dims every card the current step does not use, regions ease in/out), (3) the long request/response paths got **>= 1 s each and a comet tail** whose length equals what the dot moved since the previous frame (`FPS` constant in app.js must match the GIF fps), (4) ambient motion that costs bytes (tech-chip marquee, scrolling ticker) was removed to pay for the longer loop: 26 s at 6 fps, 48 colours, 4.7 MB (8 fps would have been 6 MB). Rule: a LinkedIn GIF must carry **one thing to follow per moment**; the story step is named on screen.
+
+## Asset family — 3D models (`assets/models/`, added 31 Oct 2026)
+The 3D family now has a library, not just HDRIs: **196 CC0 `.glb` props** (Poly Haven scans, Quaternius streets/buildings/cars/cyberpunk, Kenney low-poly kits, and our own procedural server rack, smartphone with a texturable `screen`, delivery scooter, stove + pot, milk pouch, cell tower, map pin). Use them for the Blender family in the asset-variety rule: `from load_model import place` (`assets/models/tools/load_model.py`), then pick by `previews/*.jpg` and size by `INDEX.json`.
+- **Scales differ per pack** (Quaternius street tile 2 m, Kenney 1 m, Poly Haven real metres): always pass `height=` to `place()`; never eyeball.
+- **The 2017 Quaternius packs (simple buildings, public transport) are untextured clay**: tint them to the reel's palette. FBX imports of the 2019 Quaternius buildings come in fully transparent: convert from the OBJ.
+- **Poly Haven needs a descriptive `User-Agent`** (Python's default gets 403); `kenney.nl` is blocked here but his GitHub starter kits clone fine; Sketchfab models need a login and per-model licences, so they are not vendored (see README for the routes that worked).
+- Phone screen content comes from `assets/ui-kit/screens/<theme>/*.png` (generic UI, no real brands). Motion-graphics parts (geofence, grid cells, ray-cast dots, bar chart, glow card) are in `assets/animations/hud-parts/hud.js` and are pure functions of `t`.
+- Not yet used in any reel: the first reel that uses them should note which props worked and which needed tinting/rescaling here.

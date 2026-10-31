@@ -19,3 +19,4 @@ reels/tech/reel-ai-reads-tokens/audio/*.wav
 reels/wellness-productivity/*/out/
 reels/wellness-productivity/*/shots/
 reels/wellness-productivity/*/sheet*.png
+assets/models/.families.md
