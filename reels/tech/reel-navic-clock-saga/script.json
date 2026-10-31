@@ -1,0 +1,207 @@
+{
+ "title": "The clock that broke India's GPS",
+ "format": "reel, Hinglish voice-over only",
+ "version": 2,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "A": "भारत का अपना GPS आपकी जगह बता सकता है, पर एक शर्त पर: चार satellite चाहिए।",
+   "B": "भारत का अपना जीपीएस आपकी जगह बता सकता है, पर एक शर्त पर: चार सैटेलाइट चाहिए।",
+   "cap": "Bharat ka apna GPS aapki jagah bata sakta hai, par ek shart par: chaar satellite chahiye."
+  },
+  {
+   "id": "h2",
+   "g": "g1",
+   "beat": "hook",
+   "A": "और इस वक़्त, उसके पास सिर्फ़ तीन हैं।",
+   "B": "और इस वक़्त, उसके पास सिर्फ़ तीन हैं।",
+   "cap": "Aur is waqt, uske paas sirf teen hain."
+  },
+  {
+   "id": "h3",
+   "g": "g2",
+   "beat": "hook",
+   "A": "चार क्यों? और बाक़ी गए कहाँ?",
+   "B": "चार क्यों? और बाक़ी गए कहाँ?",
+   "cap": "Chaar kyon? Aur baaki gaye kahaan?"
+  },
+  {
+   "id": "p1",
+   "g": "g2",
+   "beat": "plant",
+   "A": "NavIC, भारत का अपना navigation system, ताकि हमें किसी और देश के सिग्नल पर, निर्भर न रहना पड़े।",
+   "B": "नाविक, भारत का अपना नेविगेशन सिस्टम, ताकि हमें किसी और देश के सिग्नल पर, निर्भर न रहना पड़े।",
+   "cap": "NavIC, Bharat ka apna navigation system, taaki hamein kisi aur desh ke signal par, nirbhar na rehna pade."
+  },
+  {
+   "id": "p3",
+   "g": "g3",
+   "beat": "plant",
+   "A": "30 अक्टूबर की रात, ISRO ने एक और satellite भेजा। उसमें एक चीज़ भारत ने पहली बार अपने हाथ से बनाई। पर वो अभी क्या नहीं कर सकता, ये आख़िर में।",
+   "B": "तीस अक्टूबर की रात, इसरो ने एक और सैटेलाइट भेजा। उसमें एक चीज़ भारत ने पहली बार अपने हाथ से बनाई। पर वो अभी क्या नहीं कर सकता, ये आख़िर में।",
+   "cap": "30 October ki raat, ISRO ne ek aur satellite bheja. Usmein ek cheez Bharat ne pehli baar apne haath se banayi. Par wo abhi kya nahi kar sakta, ye aakhir mein."
+  },
+  {
+   "id": "i1",
+   "g": "g4",
+   "beat": "idea",
+   "A": "पहले समझो, चार क्यों।",
+   "B": "पहले समझो, चार क्यों।",
+   "cap": "Pehle samjho, chaar kyon."
+  },
+  {
+   "id": "i2",
+   "g": "g4",
+   "beat": "idea",
+   "A": "Satellite आपको अपनी जगह नहीं बताता। वो बस एक सिग्नल भेजता है: मैंने इसे इस पल भेजा।",
+   "B": "सैटेलाइट आपको अपनी जगह नहीं बताता। वो बस एक सिग्नल भेजता है: मैंने इसे इस पल भेजा।",
+   "cap": "Satellite aapko apni jagah nahi batata. Wo bas ek signal bhejta hai: maine ise is pal bheja."
+  },
+  {
+   "id": "i3",
+   "g": "g5",
+   "beat": "idea",
+   "A": "आपका फ़ोन देखता है, सिग्नल आने में कितना वक़्त लगा। और रोशनी एक नैनोसेकंड में, सिर्फ़ तीस सेंटीमीटर चलती है।",
+   "B": "आपका फ़ोन देखता है, सिग्नल आने में कितना वक़्त लगा। और रोशनी एक नैनोसेकंड में, सिर्फ़ तीस सेंटीमीटर चलती है।",
+   "cap": "Aapka phone dekhta hai, signal aane mein kitna waqt laga. Aur roshni ek nanosecond mein, sirf tees centimetre chalti hai."
+  },
+  {
+   "id": "i5",
+   "g": "g5",
+   "beat": "idea",
+   "A": "यानी घड़ी में एक माइक्रोसेकंड की गड़बड़, और आपका फ़ोन आपको तीन सौ मीटर दूर बता देगा।",
+   "B": "यानी घड़ी में एक माइक्रोसेकंड की गड़बड़, और आपका फ़ोन आपको तीन सौ मीटर दूर बता देगा।",
+   "cap": "Yaani ghadi mein ek microsecond ki gadbad, aur aapka phone aapko teen sau metre door bata dega."
+  },
+  {
+   "id": "i6",
+   "g": "g6",
+   "beat": "idea",
+   "A": "तीन satellite से जगह निकल जाती, अगर आपके फ़ोन की घड़ी बिलकुल सही होती। वो नहीं है। इसलिए चौथा satellite, सिर्फ़ आपके फ़ोन की घड़ी ठीक करता है।",
+   "B": "तीन सैटेलाइट से जगह निकल जाती, अगर आपके फ़ोन की घड़ी बिलकुल सही होती। वो नहीं है। इसलिए चौथा सैटेलाइट, सिर्फ़ आपके फ़ोन की घड़ी ठीक करता है।",
+   "cap": "Teen satellite se jagah nikal jaati, agar aapke phone ki ghadi bilkul sahi hoti. Wo nahi hai. Isliye chautha satellite, sirf aapke phone ki ghadi theek karta hai."
+  },
+  {
+   "id": "b1",
+   "g": "g7",
+   "beat": "but",
+   "A": "अब सोचो, अगर satellite की अपनी घड़ी ही बिगड़ जाए?",
+   "B": "अब सोचो, अगर सैटेलाइट की अपनी घड़ी ही बिगड़ जाए?",
+   "cap": "Ab socho, agar satellite ki apni ghadi hi bigad jaaye?"
+  },
+  {
+   "id": "b2",
+   "g": "g7",
+   "beat": "but",
+   "A": "यही हुआ। 2016 से शुरू होकर, पहले NavIC satellite की तीनों atomic clock बंद हो गईं। ये घड़ियाँ विदेश से मँगाई गई थीं।",
+   "B": "यही हुआ। दो हज़ार सोलह से शुरू होकर, पहले नाविक सैटेलाइट की तीनों एटॉमिक क्लॉक बंद हो गईं। ये घड़ियाँ विदेश से मँगाई गई थीं।",
+   "cap": "Yahi hua. 2016 se shuru hokar, pehle NavIC satellite ki teeno atomic clock band ho gayeen. Ye ghadiyaan videsh se mangayi gayi thi."
+  },
+  {
+   "id": "b3",
+   "g": "g8",
+   "beat": "but",
+   "A": "तो एक और satellite भेजा गया। पर अगस्त 2017 में, वो रॉकेट से अलग ही नहीं हुआ।",
+   "B": "तो एक और सैटेलाइट भेजा गया। पर अगस्त दो हज़ार सत्रह में, वो रॉकेट से अलग ही नहीं हुआ।",
+   "cap": "To ek aur satellite bheja gaya. Par August 2017 mein, wo rocket se alag hi nahi hua."
+  },
+  {
+   "id": "b4",
+   "g": "g8",
+   "beat": "but",
+   "A": "फिर 2025 में NVS-02 गया, पर इंजन का वाल्व ख़राब हुआ, और वो सही orbit तक पहुँचा ही नहीं।",
+   "B": "फिर दो हज़ार पच्चीस में एनवीएस-ज़ीरो-दो गया, पर इंजन का वाल्व ख़राब हुआ, और वो सही ऑर्बिट तक पहुँचा ही नहीं।",
+   "cap": "Phir 2025 mein NVS-02 gaya, par engine ka valve kharab hua, aur wo sahi orbit tak pahuncha hi nahi."
+  },
+  {
+   "id": "d1",
+   "g": "g9",
+   "beat": "dark",
+   "A": "और 13 मार्च 2026 को, IRNSS-1F की घड़ी भी रुक गई। ISRO ने ख़ुद लिखा: procured atomic clock stopped functioning।",
+   "B": "और तेरह मार्च दो हज़ार छब्बीस को, आईआरएनएसएस-वन-एफ़ की घड़ी भी रुक गई। इसरो ने ख़ुद लिखा: ख़रीदी हुई एटॉमिक क्लॉक ने काम करना बंद कर दिया।",
+   "cap": "Aur 13 March 2026 ko, IRNSS-1F ki ghadi bhi ruk gayi. ISRO ne khud likha: kharidi hui atomic clock ne kaam karna band kar diya."
+  },
+  {
+   "id": "d2",
+   "g": "g9",
+   "beat": "dark",
+   "A": "संसद में सरकार ने कहा: कम से कम चार चाहिए। और ठीक से navigation देने वाले, सिर्फ़ तीन बचे।",
+   "B": "संसद में सरकार ने कहा: कम से कम चार चाहिए। और ठीक से नेविगेशन देने वाले, सिर्फ़ तीन बचे।",
+   "cap": "Sansad mein sarkar ne kaha: kam se kam chaar chahiye. Aur theek se navigation dene wale, sirf teen bache."
+  },
+  {
+   "id": "d3",
+   "g": "g10",
+   "beat": "dark",
+   "A": "ध्यान रहे: आपके फ़ोन का नक़्शा चलता रहा, क्योंकि फ़ोन कई सिस्टम साथ इस्तेमाल करता है। रुका, NavIC का अकेले खड़े होना।",
+   "B": "ध्यान रहे: आपके फ़ोन का नक़्शा चलता रहा, क्योंकि फ़ोन कई सिस्टम साथ इस्तेमाल करता है। रुका, नाविक का अकेले खड़े होना।",
+   "cap": "Dhyaan rahe: aapke phone ka naqsha chalta raha, kyonki phone kai system saath istemaal karta hai. Ruka, NavIC ka akele khade hona."
+  },
+  {
+   "id": "t1",
+   "g": "g10",
+   "beat": "turn",
+   "A": "तो भारत ने वही किया, जो पहले नहीं किया था: अपनी घड़ी ख़ुद बनाई।",
+   "B": "तो भारत ने वही किया, जो पहले नहीं किया था: अपनी घड़ी ख़ुद बनाई।",
+   "cap": "To Bharat ne wahi kiya, jo pehle nahi kiya tha: apni ghadi khud banayi."
+  },
+  {
+   "id": "t2",
+   "g": "g11",
+   "beat": "turn",
+   "A": "अहमदाबाद में बनी देसी rubidium atomic clock, पहली बार 2023 में NVS-01 पर उड़ी।",
+   "B": "अहमदाबाद में बनी देसी रुबिडियम एटॉमिक क्लॉक, पहली बार दो हज़ार तेईस में एनवीएस-ज़ीरो-वन पर उड़ी।",
+   "cap": "Ahmedabad mein bani desi rubidium atomic clock, pehli baar 2023 mein NVS-01 par udi."
+  },
+  {
+   "id": "t3",
+   "g": "g11",
+   "beat": "turn",
+   "A": "30 अक्टूबर की रात, GSLV-F18 ने NVS-03 को उड़ाया। उसमें वही देसी घड़ी है, और एक नया L1 signal।",
+   "B": "तीस अक्टूबर की रात, जीएसएलवी-एफ़-अठारह ने एनवीएस-ज़ीरो-तीन को उड़ाया। उसमें वही देसी घड़ी है, और एक नया एल-वन सिग्नल।",
+   "cap": "30 October ki raat, GSLV-F18 ne NVS-03 ko udaya. Usmein wahi desi ghadi hai, aur ek naya L1 signal."
+  },
+  {
+   "id": "y1",
+   "g": "g12",
+   "beat": "payoff",
+   "A": "अब गिनती। तीन चालू, और NVS-03 अपनी जगह पहुँचा, तो चार। यानी NavIC फिर से, अकेले आपकी जगह बता पाएगा।",
+   "B": "अब गिनती। तीन चालू, और एनवीएस-ज़ीरो-तीन अपनी जगह पहुँचा, तो चार। यानी नाविक फिर से, अकेले आपकी जगह बता पाएगा।",
+   "cap": "Ab ginti. Teen chaalu, aur NVS-03 apni jagah pahuncha, to chaar. Yaani NavIC phir se, akele aapki jagah bata paayega."
+  },
+  {
+   "id": "y3",
+   "g": "g13",
+   "beat": "payoff",
+   "A": "पर अभी नहीं। NVS-03 अभी transfer orbit में है। उसे अपनी जगह तक पहुँचना है, और चालू होना है।",
+   "B": "पर अभी नहीं। एनवीएस-ज़ीरो-तीन अभी ट्रांसफ़र ऑर्बिट में है। उसे अपनी जगह तक पहुँचना है, और चालू होना है।",
+   "cap": "Par abhi nahi. NVS-03 abhi transfer orbit mein hai. Use apni jagah tak pahunchna hai, aur chaalu hona hai."
+  },
+  {
+   "id": "y4",
+   "g": "g13b",
+   "beat": "payoff",
+   "A": "जिस देश ने सोचा था कि सिग्नल अपना हो, उसे पता चला कि असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
+   "B": "जिस देश ने सोचा था कि सिग्नल अपना हो, उसे पता चला कि असली निर्भरता घड़ी में थी। और चौथी घड़ी, अब अपनी है।",
+   "cap": "Jis desh ne socha tha ki signal apna ho, use pata chala ki asli nirbharta ghadi mein thi. Aur chauthi ghadi, ab apni hai."
+  },
+  {
+   "id": "c1",
+   "g": "g14",
+   "beat": "cta",
+   "A": "कोई कहे भारत के पास अपनी technology नहीं, तो उसे ये भेजिए।",
+   "B": "कोई कहे भारत के पास अपनी टेक्नोलॉजी नहीं, तो उसे ये भेजिए।",
+   "cap": "Koi kahe Bharat ke paas apni technology nahi, to use ye bhejiye."
+  },
+  {
+   "id": "c2",
+   "g": "g14",
+   "beat": "cta",
+   "A": "Sandesh Explains को, like, share और subscribe करना।",
+   "B": "संदेश एक्सप्लेन्स को, लाइक, शेयर और सब्सक्राइब करना।",
+   "cap": "Sandesh Explains ko, like, share aur subscribe karna."
+  }
+ ]
+}
