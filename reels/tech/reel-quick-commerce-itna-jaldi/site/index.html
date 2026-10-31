@@ -1,0 +1,30 @@
+<!doctype html><meta charset="utf-8"><title>Itna jaldi kaise? - Neon Dispatch</title>
+<style>
+@font-face{font-family:'Antonio';font-weight:700;src:url('fonts/antonio-700.woff2');font-display:block}
+@font-face{font-family:'JetBrains Mono';font-weight:700;src:url('fonts/jbmono-700.woff2');font-display:block}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url('fonts/jbmono-500.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('fonts/inter-800.woff2');font-display:block}
+:root{--ink:#05060c;--ink2:#0d1020;--ord:#ff6a1a;--fen:#7b4dff;--stk:#c6ff1a;--alr:#ff2d7a;--off:#eef0fa}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink);font-family:Inter,sans-serif;color:var(--off)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden;background:var(--ink)}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.mono{font:700 26px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.chip{position:absolute;display:flex;align-items:center;gap:14px;padding:12px 22px;border:3px solid currentColor;border-radius:12px;background:rgba(5,6,12,.78);white-space:nowrap}
+.chip i{display:block;width:14px;height:14px;border-radius:50%;background:currentColor;box-shadow:0 0 16px 3px currentColor}
+.big{position:absolute;font:700 170px/0.92 'Antonio',sans-serif;text-transform:uppercase;color:#f4f5ff;text-shadow:0 6px 30px rgba(0,0,0,.75);white-space:nowrap}
+.blk{display:inline-block;padding:0 18px;transform:skewX(-6deg)}
+.trk{position:absolute;right:162px;top:150px;display:flex;gap:12px}
+.pg{width:62px;height:62px;border-radius:10px;border:3px solid rgba(238,240,250,.35);font:700 34px 'Antonio';display:flex;align-items:center;justify-content:center;color:rgba(238,240,250,.5);background:rgba(5,6,12,.6)}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,transparent 42%,rgba(0,0,0,.78) 100%);pointer-events:none}
+.scrim{position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(180deg,rgba(5,6,12,.88),transparent)}
+.src{position:absolute;left:150px;font:700 21px 'JetBrains Mono';letter-spacing:.1em;color:rgba(238,240,250,.7);text-transform:uppercase;text-shadow:0 2px 8px #000;white-space:nowrap}
+.glass{position:absolute;border:2px solid rgba(238,240,250,.26);background:rgba(8,10,22,.7);border-radius:20px}
+.ico{position:absolute;display:block}
+#cap{z-index:20;position:absolute;left:150px;width:768px;top:1338px;text-align:center}
+#flash{z-index:21;position:absolute;inset:0;pointer-events:none;opacity:0}
+#sweep{z-index:22;position:absolute;left:-300px;top:0;width:260px;height:1920px;pointer-events:none;mix-blend-mode:screen;opacity:.16;background:linear-gradient(90deg,transparent,rgba(123,77,255,.9),rgba(255,106,26,.7),transparent);transform:skewX(-14deg)}
+#grain{z-index:23;position:absolute;inset:0;pointer-events:none;opacity:.05;background:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 3px)}
+</style>
+<div id="stage"></div>
+<script src="phone.js"></script><script src="timing.js"></script><script src="icons.js"></script><script src="dots.js"></script><script src="hud.js"></script><script src="captions.js"></script><script src="app.js"></script>
