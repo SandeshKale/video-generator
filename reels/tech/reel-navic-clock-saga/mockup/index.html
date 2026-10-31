@@ -1,0 +1,98 @@
+<!doctype html><meta charset="utf-8"><title>NavIC - mockup (Ground Station)</title>
+<style>
+@font-face{font-family:'Big Shoulders Display';font-weight:800;src:url('../../../../assets/fonts/big-shoulders-display/big-shoulders-display-latin-800-normal.woff2');font-display:block}
+@font-face{font-family:'IBM Plex Mono';font-weight:600;src:url('../../../../assets/fonts/ibm-plex-mono/ibm-plex-mono-latin-600-normal.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('../../../../assets/fonts/inter/inter-latin-800-normal.woff2');font-display:block}
+:root{--bg:#031417;--bg2:#071f24;--amb:#ffb020;--sky:#55b8ff;--red:#ff4a3d;--ivo:#f4efe3}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--ivo)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.mono{position:absolute;font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+.big{position:absolute;font:800 200px/.86 'Big Shoulders Display',sans-serif;text-transform:uppercase;color:var(--ivo)}
+.scope{position:absolute;background:rgba(3,20,23,.82);border:3px solid rgba(85,184,255,.55);clip-path:polygon(0 24px,24px 0,calc(100% - 24px) 0,100% 24px,100% calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,0 calc(100% - 24px))}
+.tag{position:absolute;padding:10px 20px;border:3px solid currentColor;background:rgba(3,20,23,.86);white-space:nowrap;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+#cap{position:absolute;left:150px;width:768px;top:1338px;text-align:center;font:800 54px/1.22 Inter;text-shadow:0 3px 14px rgba(0,0,0,.9)}
+#cap span.pill{display:inline-block;padding:14px 30px 18px;border-radius:22px;background:rgba(3,20,23,.82);border:2px solid rgba(244,239,227,.14)}
+#cap b{background:var(--amb);color:#1a1000;padding:0 12px;border-radius:10px}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,0,0,.7) 100%);pointer-events:none}
+</style>
+<div id="stage">
+  <!-- A: HOOK (HUD family) -->
+  <div id="sA" class="scene">
+    <svg id="gA" viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+    <div class="tag mono" id="tA1" style="left:150px;top:150px;color:var(--sky);font-size:24px">NavIC · India's own GPS</div>
+    <div class="big" id="n4" style="left:150px;top:230px;color:var(--amb);font-size:330px">4</div>
+    <div class="mono" id="l4" style="left:170px;top:560px;color:var(--amb);font-size:40px">needed</div>
+    <div class="big" id="n3" style="left:560px;top:230px;color:var(--red);font-size:330px">3</div>
+    <div class="mono" id="l3" style="left:580px;top:560px;color:var(--red);font-size:40px">working now</div>
+    <div class="tag mono" id="tA2" style="left:150px;top:1290px;color:var(--ivo);font-size:22px">sources: Parliament replies via The Week, 2026</div>
+    <div class="vig"></div>
+  </div>
+  <!-- B: PROOF OBJECT (four-ray solve) -->
+  <div id="sB" class="scene">
+    <svg id="gB" viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+    <div class="big" id="hB" style="left:150px;top:190px;font-size:120px">The fourth ray<br>fixes the clock</div>
+    <div class="tag mono" id="tB1" style="left:150px;top:1290px;color:var(--amb);font-size:28px">1 ns = 30 cm</div>
+    <div class="tag mono" id="tB2" style="left:560px;top:1290px;color:var(--red);font-size:28px;text-transform:none">1 µs = 300 m</div>
+    <div class="vig"></div>
+  </div>
+  <!-- C: EARTH (Blender family) -->
+  <div id="sC" class="scene">
+    <img id="earth" src="earth.png" style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:50% 45%">
+    <svg id="gC" viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+    <div class="big" id="hC" style="left:150px;top:190px;font-size:170px">NavIC</div>
+    <div class="tag mono" id="tC1" style="left:150px;top:380px;color:var(--sky);font-size:24px">illustrative orbits</div>
+    <div class="vig"></div>
+  </div>
+  <div id="cap"></div>
+</div>
+<script>
+var NS='http://www.w3.org/2000/svg';function $(i){return document.getElementById(i)}
+function mk(p,t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+function cl(x,a,b){return Math.max(a==null?0:a,Math.min(b==null?1:b,x))}
+function eo(x){x=cl(x);return 1-Math.pow(1-x,3)}
+function bk(x){x=cl(x);var c=1.7;return Math.max(0,1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2))}
+var SKY='#55b8ff',AMB='#ffb020',RED='#ff4a3d',IVO='#f4efe3';
+function graticule(g){for(var i=-2;i<14;i++){mk(g,'line',{x1:i*100,y1:0,x2:i*100-240,y2:1920,stroke:'rgba(85,184,255,.10)','stroke-width':2})}
+ for(var j=0;j<24;j++){mk(g,'line',{x1:0,y1:j*90,x2:1080,y2:j*90,stroke:'rgba(85,184,255,.08)','stroke-width':2})}
+ [180,320,470,640].forEach(function(r){mk(g,'circle',{cx:540,cy:1090,r:r,fill:'none',stroke:'rgba(85,184,255,.14)','stroke-width':2,'stroke-dasharray':'6 10'})})}
+// ---------- A ----------
+var gA=$('gA');graticule(gA);
+var DOT=[540,1090];
+var errA=mk(gA,'circle',{cx:DOT[0],cy:DOT[1],r:300,fill:'rgba(255,74,61,.12)',stroke:RED,'stroke-width':5,'stroke-dasharray':'14 10'});
+var dotA=mk(gA,'circle',{cx:DOT[0],cy:DOT[1],r:16,fill:IVO});var haloA=mk(gA,'circle',{cx:DOT[0],cy:DOT[1],r:16,fill:'none',stroke:IVO,'stroke-width':3});
+var SATA=[[190,780],[540,700],[890,780],[1000,980]],rays=[],sats=[];
+SATA.forEach(function(p,i){var on=i<3;var r=mk(gA,'line',{x1:p[0],y1:p[1],x2:DOT[0],y2:DOT[1],stroke:on?SKY:AMB,'stroke-width':on?4:3,'stroke-dasharray':on?'0':'10 12'});
+ var g=mk(gA,'g',{});mk(g,'circle',{cx:p[0],cy:p[1],r:34,fill:'#031417',stroke:on?SKY:AMB,'stroke-width':5,'stroke-dasharray':on?'0':'8 8'});mk(g,'rect',{x:p[0]-14,y:p[1]-14,width:28,height:28,fill:on?SKY:'none',stroke:on?'none':AMB,'stroke-width':3});
+ sats.push({g:g,r:r,on:on})});
+function renderA(t){errA.setAttribute('r',230+12*Math.sin(t*3));errA.setAttribute('stroke-dashoffset',-t*30);
+ var ph=(t*.9)%1;haloA.setAttribute('r',16+ph*60);haloA.setAttribute('opacity',1-ph);
+ sats.forEach(function(s,i){var u=eo((t-.15*i)/.4);s.g.setAttribute('opacity',u);s.r.setAttribute('opacity',s.on?u*.9:(.35+.35*Math.sin(t*5)))});
+ [['n4',0],['l4',.1],['n3',.5],['l3',.6],['tA1',0],['tA2',1.2]].forEach(function(c){var e=$(c[0]);var u=bk((t-c[1])/.35);e.style.opacity=cl((t-c[1])/.2);e.style.transform='translateY('+(1-u)*30+'px)'})}
+// ---------- B ----------
+var gB=$('gB');graticule(gB);
+var errB=mk(gB,'circle',{cx:DOT[0],cy:DOT[1],r:230,fill:'rgba(255,176,32,.10)',stroke:AMB,'stroke-width':5});
+var dotB=mk(gB,'circle',{cx:DOT[0],cy:DOT[1],r:16,fill:IVO});
+var SATB=[[190,760],[540,660],[890,760],[1000,960]],rb=[],sb=[];
+SATB.forEach(function(p,i){var r=mk(gB,'line',{x1:p[0],y1:p[1],x2:DOT[0],y2:DOT[1],stroke:SKY,'stroke-width':4});var g=mk(gB,'g',{});mk(g,'circle',{cx:p[0],cy:p[1],r:36,fill:'#031417',stroke:SKY,'stroke-width':5});
+ var f=mk(g,'circle',{cx:p[0],cy:p[1]-62,r:30,fill:'#031417',stroke:AMB,'stroke-width':4});var h=mk(g,'line',{x1:p[0],y1:p[1]-62,x2:p[0],y2:p[1]-84,stroke:AMB,'stroke-width':5,'stroke-linecap':'round'});rb.push(r);sb.push({g:g,h:h,x:p[0],y:p[1]-62})});
+var RAD=[230,180,95,10];
+function renderB(t){var R=230,k;
+ for(k=0;k<4;k++){var u=eo((t-(.8+k*1.1))/.6);rb[k].setAttribute('opacity',u);rb[k].setAttribute('stroke-dasharray',u<1?'6 8':'0');sb[k].g.setAttribute('opacity',eo((t-(.6+k*1.1))/.3));
+  sb[k].h.setAttribute('transform','rotate('+(t*60*(k+1))+' '+sb[k].x+' '+sb[k].y+')')}
+ var rr=230;for(k=0;k<4;k++){var u2=eo((t-(1.2+k*1.1))/.7);rr=rr+(RAD[k]-rr)*u2}
+ var bloom=eo((t-6.0)/.8);rr=rr+(250-rr)*bloom;var col=bloom>0.5?RED:AMB;errB.setAttribute('r',Math.max(rr,8));errB.setAttribute('stroke',col);errB.setAttribute('fill',bloom>0.5?'rgba(255,74,61,.14)':'rgba(255,176,32,.10)');
+ sb[3].h.setAttribute('stroke',bloom>.5?RED:AMB);
+ [['hB',0],['tB1',3.5],['tB2',6.2]].forEach(function(c){var e=$(c[0]);var u=bk((t-c[1])/.35);e.style.opacity=cl((t-c[1])/.2);e.style.transform='translateY('+(1-u)*30+'px)'})}
+// ---------- C ----------
+var gC=$('gC');
+function ell(cx,cy,rx,ry,rot,col,sw,da){return mk(gC,'ellipse',{cx:cx,cy:cy,rx:rx,ry:ry,transform:'rotate('+rot+' '+cx+' '+cy+')',fill:'none',stroke:col,'stroke-width':sw,'stroke-dasharray':da||'0'})}
+ell(540,900,520,260,-18,'rgba(85,184,255,.65)',4,'10 12');
+var SC=[[150,760,'#55b8ff'],[760,610,'#55b8ff'],[930,1010,'#55b8ff'],[380,1090,'#ffb020']],sc=[];
+SC.forEach(function(p,i){var g=mk(gC,'g',{});mk(g,'circle',{cx:p[0],cy:p[1],r:22,fill:'#031417',stroke:p[2],'stroke-width':5});mk(g,'rect',{x:p[0]-9,y:p[1]-9,width:18,height:18,fill:p[2]});var h=mk(g,'circle',{cx:p[0],cy:p[1],r:22,fill:'none',stroke:p[2],'stroke-width':3});sc.push({g:g,h:h})});
+function renderC(t){$('earth').style.transform='scale('+(1.0+t*.012)+')';sc.forEach(function(s,i){var u=eo((t-.2*i)/.4);s.g.setAttribute('opacity',u);var ph=((t*.8+i*.25)%1);s.h.setAttribute('r',22+ph*40);s.h.setAttribute('opacity',(1-ph)*.8)});
+ [['hC',0],['tC1',.6]].forEach(function(c){var e=$(c[0]);var u=bk((t-c[1])/.35);e.style.opacity=cl((t-c[1])/.2);e.style.transform='translateY('+(1-u)*30+'px)'})}
+var CAPS={A:'Bharat ka apna GPS ... <b>chaar</b> satellite chahiye.',B:'Teen se jagah nikal jaati, agar <b>ghadi</b> sahi hoti.',C:'<b>NavIC</b>, Bharat ka apna navigation system.'};
+window.__mock=function(s,t){['A','B','C'].forEach(function(x){$('s'+x).style.display=x==s?'block':'none'});({A:renderA,B:renderB,C:renderC})[s](t);$('cap').innerHTML='<span class="pill">'+CAPS[s]+'</span>'};
+window.__ready=false;Promise.all(['800 40px "Big Shoulders Display"','600 24px "IBM Plex Mono"','800 50px Inter'].map(function(f){return document.fonts.load(f)})).then(function(){var im=$('earth');return im.decode?im.decode().catch(function(){}):0}).then(function(){window.__ready=true});
+</script>
