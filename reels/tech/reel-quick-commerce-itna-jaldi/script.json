@@ -1,7 +1,7 @@
 {
  "title": "Itna jaldi kaise? (quick-commerce, Hinglish)",
  "format": "A = mixed script (Hindi in Devanagari, English terms in Latin): the master. B = all-Devanagari respelling for tools that mispronounce Latin. Numbers are written the way they should be spoken (pauney teen hazaar, ikkees hazaar karod).",
- "version": "v2 (trimmed from 284 to ~185 words)",
+ "version": 3,
  "sentences": [
   {
    "id": "h1",
@@ -39,11 +39,18 @@
    "cap": "Aapka order usi store ko jaata hai, jiske ghere mein aap hon."
   },
   {
-   "id": "d2",
+   "id": "d2a",
    "beat": "shelf",
-   "A": "दूसरा, shelf पर क्या रखना है। ये हर PIN code के हिसाब से, पहले से forecast होता है, त्योहार और cricket match के साथ।",
-   "B": "दूसरा, शेल्फ पर क्या रखना है। ये हर पिन कोड के हिसाब से, पहले से फ़ोरकास्ट होता है, त्योहार और क्रिकेट मैच के साथ।",
-   "cap": "Doosra, shelf par kya rakhna hai. Ye har PIN code ke hisaab se, pehle se forecast hota hai, tyohaar aur cricket match ke saath."
+   "A": "दूसरा, shelf पर क्या रखना है।",
+   "B": "दूसरा, शेल्फ पर क्या रखना है।",
+   "cap": "Doosra, shelf par kya rakhna hai."
+  },
+  {
+   "id": "d2b",
+   "beat": "shelf",
+   "A": "ये हर PIN code के लिए, पहले ही forecast हो जाता है, त्योहार और cricket match के साथ।",
+   "B": "ये हर पिन कोड के लिए, पहले ही फ़ोरकास्ट हो जाता है, त्योहार और क्रिकेट मैच के साथ।",
+   "cap": "Ye har PIN code ke liye, pehle hi forecast ho jaata hai, tyohaar aur cricket match ke saath."
   },
   {
    "id": "d3a",
@@ -60,11 +67,18 @@
    "cap": "Rider andar aata hi nahi, bas apna bag scan karta hai, aur nikal jaata hai."
   },
   {
-   "id": "w1",
+   "id": "w1a",
    "beat": "why",
-   "A": "तो दस minute का वादा, सिर्फ़ marketing नहीं था। Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की।",
-   "B": "तो दस मिनट का वादा, सिर्फ़ मार्केटिंग नहीं था। रॉयटर्स के मुताबिक, चिंता राइडर की स्पीड की थी, और देर होने पर, कम पे की।",
-   "cap": "Toh das minute ka vaada, sirf marketing nahi tha. Reuters ke mutabik, chinta rider ki speed ki thi, aur der hone par, kam pay ki."
+   "A": "तो दस minute का वादा, सिर्फ़ marketing नहीं था।",
+   "B": "तो दस मिनट का वादा, सिर्फ़ मार्केटिंग नहीं था।",
+   "cap": "Toh das minute ka vaada, sirf marketing nahi tha."
+  },
+  {
+   "id": "w1b",
+   "beat": "why",
+   "A": "Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की।",
+   "B": "रॉयटर्स के मुताबिक, चिंता राइडर की स्पीड की थी, और देर होने पर, कम पे की।",
+   "cap": "Reuters ke mutabik, chinta rider ki speed ki thi, aur der hone par, kam pay ki."
   },
   {
    "id": "w2",

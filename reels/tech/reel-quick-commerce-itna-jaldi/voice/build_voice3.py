@@ -18,8 +18,8 @@ torch.set_num_threads(4)
 H = os.path.dirname(os.path.abspath(__file__)); R = os.path.dirname(H); SPEED = float(sys.argv[1]) if len(sys.argv) > 1 else 1.18
 S = {s['id']: s for s in json.load(open(os.path.join(R, 'script.json')))['sentences']}; OUT = os.path.join(R, 'audio'); TK = OUT + '/takes3'; os.makedirs(TK, exist_ok=True)
 SR = 24000
-GROUPS = [('g1', ['h1']), ('g2', ['h2', 'p1']), ('g3', ['d1a', 'd1b']), ('g4', ['d2']), ('g5', ['d3a', 'd3b']), ('g6', ['w1']), ('g7', ['w2', 's1']), ('g8', ['c1', 'c2'])]
-GAP = {'g1': 0.5, 'g2': 0.9, 'g3': 0.9, 'g4': 0.9, 'g5': 0.9, 'g6': 0.6, 'g7': 0.85, 'g8': 0.0}   # designed silence after each group (filled with room tone)
+GROUPS = [('g1', ['h1']), ('g2', ['h2', 'p1']), ('g3', ['d1a', 'd1b']), ('g4', ['d2a', 'd2b']), ('g5', ['d3a', 'd3b']), ('g6', ['w1a', 'w1b']), ('g7', ['w2', 's1']), ('g8', ['c1', 'c2'])]
+GAP = {'g1': 0.6, 'g2': 1.1, 'g3': 1.1, 'g4': 1.1, 'g5': 1.1, 'g6': 0.8, 'g7': 1.0, 'g8': 0.0}   # designed silence after each group (filled with room tone)
 MERGE = {'ट':'त','ठ':'थ','ड':'द','ढ':'ध','ष':'स','श':'स','ण':'न','ञ':'न','ङ':'न','ज़':'ज','फ़':'फ','क़':'क','ख़':'ख','ग़':'ग','ड़':'र','ढ़':'र','ऑ':'ओ','ऐ':'ए','औ':'ओ','ई':'इ','ऊ':'उ','आ':'अ'}
 def skel(t):
     t = re.sub(r'[़्ँंःा-ौ॑-॔।,.?!\'"’‘ \-]', '', t); return ''.join(MERGE.get(c, c) for c in t)
@@ -62,19 +62,19 @@ for gi, (gid, ids) in enumerate(GROUPS):
         qc[gid] = dict(score=100, f0=round(REF_F0), tdist=1.0, dur=round(len(ref)/SR, 2), words=[(x[0], round(x[1], 3), round(x[2], 3)) for x in w]); json.dump(qc, open(qp, 'w'), ensure_ascii=False, indent=1)
     if gid in qc and os.path.exists(wp): continue
     text = ' '.join(S[i]['B'] for i in ids); best = None
-    for tr in range(6):
+    for tr in range(10 if gid in RETRY else 6):
         t0 = time.time(); a = gen(text, 2000 + 41*gi + tr); words = transcribe(a); tx = ''.join(w[0] for w in words)
         ratio = fuzz.ratio(skel(text), skel(tx)); terms = [t for t in TERMS if skel(t) in skel(text)]
         hit = float(np.mean([fuzz.partial_ratio(skel(t), skel(tx)) for t in terms])) if terms else 100.0
         f0 = f0med(a); td = sim(timbre(a), REF_T)
         # flow check: no internal gap > 0.7 s (sentence boundaries get the model's own ~0.4-0.6 s), rate in band
         mg = longest_silence(a); rate = len(words) / max(0.1, (words[-1][2] - words[0][1])) if words else 0
-        ok_flow = mg <= 0.75 and 2.3 <= rate <= 6.2
+        cov = len(skel(tx)) / max(1, len(skel(text))); ok_flow = mg <= 0.75 and 2.3 <= rate <= 6.2 and 0.93 <= cov <= 1.08
         pit = max(0.0, 100 - 3.0*abs(f0 - REF_F0)); tim = max(0.0, min(100.0, (td - 0.80) / 0.20 * 100))
-        score = 0.30*ratio + 0.10*hit + 0.30*pit + 0.20*tim + (10 if ok_flow else 0)
-        print(gid, tr, f'ratio {ratio:.0f} terms {hit:.0f} f0 {f0:.0f} sim {td:.3f} longest-silence {mg:.2f} rate {rate:.1f} dur {len(a)/SR:.2f}s score {score:.1f} ({time.time()-t0:.0f}s)', flush=True)
+        score = 0.30*ratio + 0.10*hit + 0.30*pit + 0.20*tim + (10 if ok_flow else 0) - (30 if cov < 0.9 else 0)
+        print(gid, tr, f'ratio {ratio:.0f} terms {hit:.0f} f0 {f0:.0f} sim {td:.3f} longest-silence {mg:.2f} rate {rate:.1f} cov {cov:.2f} dur {len(a)/SR:.2f}s score {score:.1f} ({time.time()-t0:.0f}s)', flush=True)
         if best is None or score > best[0]: best = (score, a, words, ratio, hit, f0, td, mg)
-        if ratio >= 93 and hit >= 90 and abs(f0 - REF_F0) <= 8 and td >= 0.93 and ok_flow: break
+        if ratio >= 93 and hit >= 85 and abs(f0 - REF_F0) <= 10 and td >= 0.93 and ok_flow: break
     sf.write(wp, best[1], SR)
     qc[gid] = dict(score=round(best[0], 1), ratio=round(best[3], 1), terms=round(best[4], 1), f0=round(best[5]), sim=round(best[6], 3), longest_silence=round(best[7], 2), dur=round(len(best[1])/SR, 2), words=[(w[0], round(w[1], 3), round(w[2], 3)) for w in best[2]])
     json.dump(qc, open(qp, 'w'), ensure_ascii=False, indent=1)

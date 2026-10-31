@@ -1,6 +1,6 @@
 # "Itna jaldi kaise?" — how quick commerce really works (Hinglish, ~62 s)
 
-Status: **script v2 + voice plan; visual mockup not built yet** (CLAUDE.md: mock up 3 scenes in 3 families and get approval before the full build).
+Status: **script v3 (sentences d2 and w1 split into a/b), voice v3, visual mockup v2 sent for approval** (CLAUDE.md: mock up 3 scenes in 3 families and get approval before the full build).
 Voice-over only, no avatar. Hinglish: Hindi grammar in Devanagari, English terms in Latin (master text in `script.json`, field `A`; all-Devanagari respelling in `B`).
 Research it rests on: `insights/india-topics-research-2026-10-31.md` (pick C) and `docs/HINGLISH-VOICEOVER-GUIDE.md`.
 
@@ -41,19 +41,27 @@ Voice line IDs match `script.json`. Pause marks: `,` ≈ short, `।` ≈ senten
 | 3.2–6.2 | h2 | फिर भी दूध उतनी ही जल्दी आता है। कैसे? | milk pouch drops onto a doorstep; city at dusk behind; slip keeps printing | Blender (milk pouch, city), GSAP drop |
 | 6.2–13 | p1 | राइडर की speed नहीं, असली खेल order करने से पहले हो चुका होता है। तीन फ़ैसले, और तीनों, आपके tap से पहले। | scooter rushes, then freezes mid-street; the slip splits into three tabs (STORE · SHELF · PACK), tracker appears | Blender (scooter, streets), HUD tracker |
 | 13–22 | d1a, d1b | पहला, कौन सा store। हर dark store का नक्शे पर एक घेरा है, जिसे **geofence** कहते हैं। आपका order उसी store को जाता है, जिसके घेरे में आप हों। | top-down city; polygons draw themselves around stores; your phone dot sits in exactly one; "2–3 km (CBRE)" tag | HUD geofence, Kenney/Quaternius city, phone UI |
-| 22–31 | d2 | दूसरा, shelf पर क्या रखना है। ये हर PIN code के हिसाब से, पहले से forecast होता है, त्योहार और cricket match के साथ। | Blender aisle with steel shelves; per-PIN forecast bars spike on a festival and a match marker (ILLUSTRATIVE); fast-movers slide to the dispatch end | Blender (shelves, crates), HUD barChart |
+| 22–31 | d2a, d2b | दूसरा, shelf पर क्या रखना है। ये हर PIN code के हिसाब से, पहले से forecast होता है, त्योहार और cricket match के साथ। | Blender aisle with steel shelves; per-PIN forecast bars spike on a festival and a match marker (ILLUSTRATIVE); fast-movers slide to the dispatch end | Blender (shelves, crates), HUD barChart |
 | 31–42 | d3a | तीसरा, packing। Packer के handheld पर, हर item का bin दिखता है। Barcode scan होता है, और अंडे? सबसे आख़िर में। | handheld UI lights bins in route order; scan beam per item; eggs tile glides last | smartphone/handheld UI kit, HUD rayCast, Phosphor icons |
 | 42–49 | d3b | राइडर अंदर आता ही नहीं, बस अपना bag scan करता है, और निकल जाता है। | pigeonhole grid (colour-coded cells light), scooter at the door scans the bag, slip torn off | HUD gridCells, Blender scooter, delivery bag |
-| 49–56 | w1, w2 | तो दस minute का वादा, सिर्फ़ marketing नहीं था। Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की। अब Blinkit खुद को, Groceries and more कहता है। घड़ी बदली, system नहीं। | typographic quote strip from the report; the slip's "10 MIN" line replaced by "GROCERIES & MORE"; clock stamp fades | typographic, caption rig |
+| 49–56 | w1a, w1b, w2 | तो दस minute का वादा, सिर्फ़ marketing नहीं था। Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की। अब Blinkit खुद को, Groceries and more कहता है। घड़ी बदली, system नहीं। | typographic quote strip from the report; the slip's "10 MIN" line replaced by "GROCERIES & MORE"; clock stamp fades | typographic, caption rig |
 | 56–61 | s1 | अकेले Blinkit के, पौने तीन हज़ार dark stores हैं। तीन महीनों में, orders की value, करीब इक्कीस हज़ार करोड़ रुपये। | counters: 2,751 stores (+308), ₹20,940 cr (+79.3%); bar rises; source line Eternal Q2 FY27 | HUD barChart/counters |
 | 61–64 | c1, c2 | क्या दस minute का वादा, वापस आना चाहिए? कमेंट में बताओ। Sandesh Explains को, like, share और subscribe करना। | end card held ≥ 2.5 s: profile photo, @sandeshexplains, LIKE · SHARE · SUBSCRIBE, comment question | branded CTA, audio |
 
 **Families used: 9** (Blender 3D, HUD data objects, phone/handheld UI kit, city packs, Phosphor icons, GSAP entrances, caption rig/kinetic type, footage overlay (dust on the CTA only), Kenney/synth audio). Audit: no scene is photo+panel+text only; the Blender and HUD families alternate with typographic scenes; no family appears in more than 4 scenes.
 Safe zones: captions ≤ 2 lines above y ≈ 1270 for content, caption band reserved, bottom 20% and right 15% empty.
 
-## Visual identity (to be mocked up, not decided)
-Must differ from: navy/amber (rundown-ios), cyan/magenta (loop-method), indigo/magenta/mint (suncatcher), graphite+aluminium (trading), cream/terracotta (apple-camera), store-white/amber/magenta (shopping-agent), ink/orange/lime (adobe), newsprint (tokens), violet (sheets), banknote cream/navy (synthid), umber/amber (diary), enamel tiles (battery), plum/gold (king), cloud-chamber (reel-04), midnight indigo/saffron (coupon GIF).
-Proposed direction for the mockup: **"Cold-chain & thermal receipt"** — frost-white and refrigerated-aisle blue-grey ground, a single saturated **price-tag vermilion** for the *reported order*, **pigeonhole** primary-colour cells (blue/yellow/green) as the three-decision code, and thermal-paper cream for the slip; a condensed grotesque for headlines (a face not yet used in a reel; chosen at mockup time) + a receipt mono. Three alternatives will be shown in the mockup step so the creator can choose.
+## Visual identity — v2 "Neon Dispatch" (creator feedback 31 Oct 2026: less text, more visuals from the asset library; dark, vivid, vibrant palette)
+Ground ink-black `#05060c`. Colours are meaning-coded and used nowhere else: **order orange `#ff6a1a`** (your order, the ETA, the scooter), **ultraviolet `#7b4dff`** (the store and its geofence), **acid lime `#c6ff1a`** (stock, forecast, the pack), **hot pink `#ff2d7a`** (alerts: the strike on "10 MIN", demand spikes). Fonts: Antonio 700 (2-3 word headlines), JetBrains Mono (HUD labels), Inter 800 (Roman Hinglish captions, lime highlight on the key word). Text per scene = a 2-3 word headline + the caption; everything else is picture.
+Visual-first scene plan (families in brackets; every scene a different primary family):
+1. Hook: NASA Black Marble India night-lights, six city pings, a big stopwatch ring that a pink slash strikes through [space imagery + SVG HUD].
+2. Fence: Blender neon city diorama (Kenney city blocks, delivery scooter, map pin), violet geofence ring draws itself, order dot travels to the store [Blender 3D + HUD geofence].
+3. Shelf: vivid dark-store aisle (Poly Haven shelves, emissive packs, coloured strips), lime forecast bars with festival/match spikes, scan beam [Blender 3D + HUD barChart/rayCast].
+4. Pack: handheld/phone 3D with scan beam, bins lighting in route order, eggs last [smartphone model + HUD rayCast].
+5. Door: pigeonhole wall of glowing cells, scooter scans the bag at the shutter [HUD gridCells + Blender scooter].
+6. Quote/tagline swap and the counters scene: Reuters line, "Groceries & more", 2,751 stores / ₹20,940 cr as odometers over the city night plate [typographic HUD + space plate].
+7. End card: profile photo, @sandeshexplains, LIKE · SHARE · SUBSCRIBE [branded CTA].
+The approved-for-review mockup is `mockup2/` (scenes 1-3); the earlier light "thermal receipt" direction was rejected and removed.
 
 ## Voice plan (details and measurements in the guide)
 - Engine: OmniVoice (local, Hindi) with a **locked voice** (clone prompt from the first accepted take) and **phoneme-tagged brand names**; the creator's avatar clips remain the alternative (same pronunciation table, `B` text).
