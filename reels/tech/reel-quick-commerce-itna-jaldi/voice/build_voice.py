@@ -42,11 +42,13 @@ def gen(text, seed):
 qc = {}; qp = os.path.join(OUT, 'qc.json')
 if os.path.exists(qp): qc = json.load(open(qp))
 cands = {}
+RETRY = [x for x in os.environ.get('RETRY','').split(',') if x]   # re-roll these ids with fresh seeds (pitch outliers)
+for x in RETRY: qc.pop(x, None)
 for i, s in enumerate(S):
     sid, text = s['id'], s['B']; wp = f'{OUT}/takes/{sid}.wav'
     if sid in qc and os.path.exists(wp): continue
     best = None
-    for tr in range(3):
+    for tr in (range(3, 9) if sid in RETRY else range(3)):
         t0 = time.time(); a = gen(text, 1000 + 37*i + tr); words = transcribe(a); tx = ''.join(w[0] for w in words)
         ratio = fuzz.ratio(skel(text), skel(tx)); terms = [t for t in TERMS if skel(t) in skel(text)]; hit = float(np.mean([fuzz.partial_ratio(skel(t), skel(tx)) for t in terms])) if terms else 100.0
         f0, sd = f0med(a); q = text.strip().endswith('?') or '? ' in text

@@ -7,79 +7,92 @@
    "id": "h1",
    "beat": "hook",
    "A": "Blinkit और Zepto से कहा गया, दस minute बोलना बंद करो।",
-   "B": "ब्लिंकिट और ज़ेप्टो से कहा गया, दस मिनट बोलना बंद करो।"
+   "B": "ब्लिंकिट और ज़ेप्टो से कहा गया, दस मिनट बोलना बंद करो।",
+   "cap": "Blinkit aur Zepto se kaha gaya, das minute bolna band karo."
   },
   {
    "id": "h2",
    "beat": "hook",
    "A": "फिर भी दूध उतनी ही जल्दी आता है। कैसे?",
-   "B": "फिर भी दूध उतनी ही जल्दी आता है। कैसे?"
+   "B": "फिर भी दूध उतनी ही जल्दी आता है। कैसे?",
+   "cap": "Phir bhi doodh utni hi jaldi aata hai. Kaise?"
   },
   {
    "id": "p1",
    "beat": "premise",
    "A": "राइडर की speed नहीं, असली खेल order करने से पहले हो चुका होता है। तीन फ़ैसले, और तीनों, आपके tap से पहले।",
-   "B": "राइडर की स्पीड नहीं, असली खेल ऑर्डर करने से पहले हो चुका होता है। तीन फ़ैसले, और तीनों, आपके टैप से पहले।"
+   "B": "राइडर की स्पीड नहीं, असली खेल ऑर्डर करने से पहले हो चुका होता है। तीन फ़ैसले, और तीनों, आपके टैप से पहले।",
+   "cap": "Rider ki speed nahi, asli khel order karne se pehle ho chuka hota hai. Teen faisle, aur teeno, aapke tap se pehle."
   },
   {
    "id": "d1a",
    "beat": "store",
    "A": "पहला, कौन सा store। हर dark store का नक्शे पर एक घेरा है, जिसे geofence कहते हैं।",
-   "B": "पहला, कौन सा स्टोर। हर डार्क स्टोर का नक्शे पर एक घेरा है, जिसे जियोफेंस कहते हैं।"
+   "B": "पहला, कौन सा स्टोर। हर डार्क स्टोर का नक्शे पर एक घेरा है, जिसे जियोफेंस कहते हैं।",
+   "cap": "Pehla, kaun sa store. Har dark store ka naqshe par ek ghera hai, jise geofence kehte hain."
   },
   {
    "id": "d1b",
    "beat": "store",
    "A": "आपका order उसी store को जाता है, जिसके घेरे में आप हों।",
-   "B": "आपका ऑर्डर उसी स्टोर को जाता है, जिसके घेरे में आप हों।"
+   "B": "आपका ऑर्डर उसी स्टोर को जाता है, जिसके घेरे में आप हों।",
+   "cap": "Aapka order usi store ko jaata hai, jiske ghere mein aap hon."
   },
   {
    "id": "d2",
    "beat": "shelf",
    "A": "दूसरा, shelf पर क्या रखना है। ये हर PIN code के हिसाब से, पहले से forecast होता है, त्योहार और cricket match के साथ।",
-   "B": "दूसरा, शेल्फ पर क्या रखना है। ये हर पिन कोड के हिसाब से, पहले से फ़ोरकास्ट होता है, त्योहार और क्रिकेट मैच के साथ।"
+   "B": "दूसरा, शेल्फ पर क्या रखना है। ये हर पिन कोड के हिसाब से, पहले से फ़ोरकास्ट होता है, त्योहार और क्रिकेट मैच के साथ।",
+   "cap": "Doosra, shelf par kya rakhna hai. Ye har PIN code ke hisaab se, pehle se forecast hota hai, tyohaar aur cricket match ke saath."
   },
   {
    "id": "d3a",
    "beat": "pick",
    "A": "तीसरा, packing। Packer के handheld पर, हर item का bin दिखता है। Barcode scan होता है, और अंडे? सबसे आख़िर में।",
-   "B": "तीसरा, पैकिंग। पैकर के हैंडहेल्ड पर, हर आइटम का बिन दिखता है। बारकोड स्कैन होता है, और अंडे? सबसे आख़िर में।"
+   "B": "तीसरा, पैकिंग। पैकर के हैंडहेल्ड पर, हर आइटम का बिन दिखता है। बारकोड स्कैन होता है, और अंडे? सबसे आख़िर में।",
+   "cap": "Teesra, packing. Packer ke handheld par, har item ka bin dikhta hai. Barcode scan hota hai, aur ande? Sabse aakhir mein."
   },
   {
    "id": "d3b",
    "beat": "pick",
    "A": "राइडर अंदर आता ही नहीं, बस अपना bag scan करता है, और निकल जाता है।",
-   "B": "राइडर अंदर आता ही नहीं, बस अपना बैग स्कैन करता है, और निकल जाता है।"
+   "B": "राइडर अंदर आता ही नहीं, बस अपना बैग स्कैन करता है, और निकल जाता है।",
+   "cap": "Rider andar aata hi nahi, bas apna bag scan karta hai, aur nikal jaata hai."
   },
   {
    "id": "w1",
    "beat": "why",
    "A": "तो दस minute का वादा, सिर्फ़ marketing नहीं था। Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की।",
-   "B": "तो दस मिनट का वादा, सिर्फ़ मार्केटिंग नहीं था। रॉयटर्स के मुताबिक, चिंता राइडर की स्पीड की थी, और देर होने पर, कम पे की।"
+   "B": "तो दस मिनट का वादा, सिर्फ़ मार्केटिंग नहीं था। रॉयटर्स के मुताबिक, चिंता राइडर की स्पीड की थी, और देर होने पर, कम पे की।",
+   "cap": "Toh das minute ka vaada, sirf marketing nahi tha. Reuters ke mutabik, chinta rider ki speed ki thi, aur der hone par, kam pay ki."
   },
   {
    "id": "w2",
    "beat": "why",
    "A": "अब Blinkit खुद को, Groceries and more कहता है। घड़ी बदली, system नहीं।",
-   "B": "अब ब्लिंकिट खुद को, ग्रोसरीज़ एंड मोर कहता है। घड़ी बदली, सिस्टम नहीं।"
+   "B": "अब ब्लिंकिट खुद को, ग्रोसरीज़ एंड मोर कहता है। घड़ी बदली, सिस्टम नहीं।",
+   "cap": "Ab Blinkit khud ko, Groceries and more kehta hai. Ghadi badli, system nahi."
   },
   {
    "id": "s1",
    "beat": "scale",
    "A": "अकेले Blinkit के, पौने तीन हज़ार dark stores हैं। तीन महीनों में, orders की value, करीब इक्कीस हज़ार करोड़ रुपये।",
-   "B": "अकेले ब्लिंकिट के, पौने तीन हज़ार डार्क स्टोर्स हैं। तीन महीनों में, ऑर्डर्स की वैल्यू, करीब इक्कीस हज़ार करोड़ रुपये।"
+   "B": "अकेले ब्लिंकिट के, पौने तीन हज़ार डार्क स्टोर्स हैं। तीन महीनों में, ऑर्डर्स की वैल्यू, करीब इक्कीस हज़ार करोड़ रुपये।",
+   "cap": "Akele Blinkit ke, paune teen hazaar dark stores hain. Teen mahino mein, orders ki value, kareeb ikkees hazaar crore rupaye."
   },
   {
    "id": "c1",
    "beat": "cta",
    "A": "क्या दस minute का वादा, वापस आना चाहिए? कमेंट में बताओ।",
-   "B": "क्या दस मिनट का वादा, वापस आना चाहिए? कमेंट में बताओ।"
+   "B": "क्या दस मिनट का वादा, वापस आना चाहिए? कमेंट में बताओ।",
+   "cap": "Kya das minute ka vaada, wapas aana chahiye? Comment mein batao."
   },
   {
    "id": "c2",
    "beat": "cta",
    "A": "Sandesh Explains को, like, share और subscribe करना।",
-   "B": "संदेश एक्सप्लेन्स को, लाइक, शेयर और सब्सक्राइब करना।"
+   "B": "संदेश एक्सप्लेन्स को, लाइक, शेयर और सब्सक्राइब करना।",
+   "cap": "Sandesh Explains ko, like, share aur subscribe karna."
   }
  ]
 }

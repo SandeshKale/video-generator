@@ -180,3 +180,22 @@ Intelligibility did not fall up to 1.2. The model's natural articulation is ≈ 
 - Indian English consonants (ICPhS 2019 v/w status): https://assta.org/proceedings/ICPhS2019/papers/ICPhS_1431.pdf
 - Indic Parler-TTS model card: https://huggingface.co/ai4bharat/indic-parler-tts ; Hinglish TTS project: https://github.com/harrrshall/hinglish-tts
 - OmniVoice (k2-fsa; inline phoneme/non-verbal syntax, `speed`, `duration`): package source read locally.
+
+## 9. Results on the first reel (`reel-quick-commerce-itna-jaldi`, voice draft v2, 31 Oct 2026)
+Pipeline: `reels/tech/reel-quick-commerce-itna-jaldi/voice/build_voice.py 1.18` (OmniVoice voice design, all-Devanagari text `B`, up to 3 seeds per sentence, Whisper skeleton round-trip, pitch-aware pick, clause/sentence pause injection). `RETRY=id,id` re-rolls chosen lines with 6 fresh seeds.
+
+| Measure | Reference | Draft | Verdict |
+|---|---|---|---|
+| Runtime | 160 s | 68.0 s (208 words) | as planned (62-68 s) |
+| Silence share | 31% | **32%** | matches |
+| Pauses ≥ 0.4 s | ~every 3 s (50 in 160 s ≈ 21 per 68 s) | 16 (7 mid + 9 long) | a little sparse; add mid pauses only if it sounds rushed |
+| Overall rate | 3.45 w/s | 3.05 w/s | slower; fine for a numbers-heavy explainer |
+| Articulation rate | ~5.0 w/s | 4.5 w/s | clear but not rushed |
+| Round-trip match (skeleton) | n/a | 93-100% per line, terms 83-100% | `d3a`/`d3b` terms 83-85% (pigeonhole/handheld) – listen to these first |
+| Pitch median | 112 Hz | 128 Hz (p10 97 – p90 185) | higher than the reference, in a natural male range |
+
+**Known weaknesses (not fixable by numbers):**
+1. **Voice drift between takes.** Voice design gives a slightly different timbre/pitch per sentence (take medians 92–144 Hz). Re-rolling `d1a` fixed one outlier; `w1` (a long, reflective line) stays low (92 Hz) on every seed, and `c1` is 105 Hz. A clone prompt locked the voice but lowered accuracy (81–96%), so it was not used. If the creator hears the jump, options: (a) re-roll more seeds, (b) the creator's avatar clips with the same `B` text, (c) a one-off ±2 semitone pitch-match of outlier takes.
+2. **Nothing was auditioned by ear** (no audio playback here). Whisper and pitch tracking cannot judge warmth, emphasis, or whether a loanword sounds Indian-English or foreign.
+3. English words are written in Devanagari (`B`), e.g. "जेप्टो", so they come out Indian-accented; if one sounds off, fix it in the pronunciation table and re-roll that sentence only (takes are cached per id).
+4. The OmniVoice default speed 1.18 was tuned on three sentences; a full listen may want 1.12–1.15.

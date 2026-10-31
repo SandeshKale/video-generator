@@ -1,0 +1,93 @@
+[
+ {
+  "id": "h1",
+  "start": 0.0,
+  "end": 3.131,
+  "clauses_cut": 1,
+  "text": "Blinkit और Zepto से कहा गया, दस minute बोलना बंद करो।"
+ },
+ {
+  "id": "h2",
+  "start": 3.581,
+  "end": 5.412,
+  "clauses_cut": 0,
+  "text": "फिर भी दूध उतनी ही जल्दी आता है। कैसे?"
+ },
+ {
+  "id": "p1",
+  "start": 6.362,
+  "end": 12.333,
+  "clauses_cut": 1,
+  "text": "राइडर की speed नहीं, असली खेल order करने से पहले हो चुका होता है। तीन फ़ैसले, और तीनों, आपके tap से पहले।"
+ },
+ {
+  "id": "d1a",
+  "start": 13.183,
+  "end": 17.793,
+  "clauses_cut": 1,
+  "text": "पहला, कौन सा store। हर dark store का नक्शे पर एक घेरा है, जिसे geofence कहते हैं।"
+ },
+ {
+  "id": "d1b",
+  "start": 18.643,
+  "end": 21.72,
+  "clauses_cut": 1,
+  "text": "आपका order उसी store को जाता है, जिसके घेरे में आप हों।"
+ },
+ {
+  "id": "d2",
+  "start": 22.62,
+  "end": 29.296,
+  "clauses_cut": 2,
+  "text": "दूसरा, shelf पर क्या रखना है। ये हर PIN code के हिसाब से, पहले से forecast होता है, त्योहार और cricket match के साथ।"
+ },
+ {
+  "id": "d3a",
+  "start": 30.196,
+  "end": 36.567,
+  "clauses_cut": 2,
+  "text": "तीसरा, packing। Packer के handheld पर, हर item का bin दिखता है। Barcode scan होता है, और अंडे? सबसे आख़िर में।"
+ },
+ {
+  "id": "d3b",
+  "start": 37.267,
+  "end": 41.235,
+  "clauses_cut": 1,
+  "text": "राइडर अंदर आता ही नहीं, बस अपना bag scan करता है, और निकल जाता है।"
+ },
+ {
+  "id": "w1",
+  "start": 42.185,
+  "end": 48.217,
+  "clauses_cut": 2,
+  "text": "तो दस minute का वादा, सिर्फ़ marketing नहीं था। Reuters के मुताबिक, चिंता rider की speed की थी, और देर होने पर, कम pay की।"
+ },
+ {
+  "id": "w2",
+  "start": 48.767,
+  "end": 52.711,
+  "clauses_cut": 1,
+  "text": "अब Blinkit खुद को, Groceries and more कहता है। घड़ी बदली, system नहीं।"
+ },
+ {
+  "id": "s1",
+  "start": 53.661,
+  "end": 60.011,
+  "clauses_cut": 1,
+  "text": "अकेले Blinkit के, पौने तीन हज़ार dark stores हैं। तीन महीनों में, orders की value, करीब इक्कीस हज़ार करोड़ रुपये।"
+ },
+ {
+  "id": "c1",
+  "start": 60.861,
+  "end": 63.869,
+  "clauses_cut": 1,
+  "text": "क्या दस minute का वादा, वापस आना चाहिए? कमेंट में बताओ।"
+ },
+ {
+  "id": "c2",
+  "start": 64.669,
+  "end": 67.955,
+  "clauses_cut": 2,
+  "text": "Sandesh Explains को, like, share और subscribe करना।"
+ }
+]
