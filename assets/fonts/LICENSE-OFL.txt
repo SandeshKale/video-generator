@@ -32,6 +32,8 @@ Fonts vendored in this folder:
 - roboto/roboto-latin-{500,700,900}-normal.woff2 (@fontsource/roboto, OFL-1.1 per the package; caption face alternative, added 31 Oct 2026)
 - archivo/archivo-latin-{600,700,800,900}-normal.woff2 (@fontsource/archivo, OFL-1.1; caption/headline face, added 31 Oct 2026)
 - inter/inter-latin-800-normal.woff2 (@fontsource/inter, OFL; Inter ExtraBold for captions, added 31 Oct 2026)
+- antonio/antonio-latin-{600,700}-normal.woff2 (@fontsource/antonio, OFL-1.1; condensed headlines, reel-quick-commerce-itna-jaldi, 31 Oct 2026)
+- cutive-mono/cutive-mono-latin-400-normal.woff2 (@fontsource/cutive-mono, OFL-1.1; thermal-receipt mono, reel-quick-commerce-itna-jaldi, 31 Oct 2026)
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
 @fontsource/jetbrains-mono, @fontsource/space-grotesk,
