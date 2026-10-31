@@ -42,7 +42,8 @@ if what == 'sat':      # procedural navigation-satellite stand-in: gold-foil bus
         box((.12, .12, .12), (sx * .56, 0, 0), fr); box((.5, .06, .06), (sx * .85, 0, 0), fr)
         for k in range(3): box((.9, .03, 1.1), (sx * (1.55 + k * .98), 0, 0), pan); box((.9, .035, .03), (sx * (1.55 + k * .98), 0, .0), fr)
     cone(.05, .5, .35, (0, 0, .78), fr); cyl(.025, .5, (0, 0, 1.15), fr, 16); box((.5, .5, .08), (0, 0, -.64), dk); cone(.22, .05, .3, (0, .2, -.9), dk)
-    camera((4.2, -7.5, 3.0), (0, 0, 0), 38, 1400, 1000); rim((0, 0, 0), 5.0)
+    _yaw = math.radians(float(os.environ.get('YAW', 0))); _R = math.hypot(4.2, 7.5); _a0 = math.atan2(-7.5, 4.2) + _yaw; _W, _H = (int(os.environ.get('SW', 1400)), int(os.environ.get('SH', 1000)))
+    camera((_R * math.cos(_a0), _R * math.sin(_a0), 3.0), (0, 0, 0), float(os.environ.get('LENS', 38)), _W, _H); rim((0, 0, 0), 5.0)
 elif what == 'rocket':
     wh = mat('wh', (230, 232, 238), .35, .1); dk = mat('dk', (40, 48, 58), .5, .6); org = mat('org', (255, 120, 40), .5)
     cyl(.5, 6.0, (0, 0, 3.0), wh); cone(.5, .12, 1.4, (0, 0, 6.7), wh); cyl(.52, .25, (0, 0, 6.0), dk); cyl(.48, .18, (0, 0, 1.0), org)
