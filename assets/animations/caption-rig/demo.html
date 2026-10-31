@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><title>Caption rig demo</title>
+<style>
+@font-face{font-family:'Inter';font-weight:800;src:url('../../fonts/inter/inter-latin-800-normal.woff2');font-display:block}
+@font-face{font-family:'Archivo';font-weight:900;src:url('../../fonts/archivo/archivo-latin-900-normal.woff2');font-display:block}
+html,body{margin:0;background:#0a0d1c}#stage{position:relative;width:1080px;height:1920px;background:radial-gradient(circle at 50% 30%,#2a2f5a,#0a0d1c 70%)}
+#cap{position:absolute;left:150px;width:768px;top:1180px;text-align:center}
+</style><div id="stage"><div id="cap"></div></div>
+<script src="captions.js"></script>
+<script>
+var TXT="A black hole this big could swallow our whole solar system. Free to watch, billion of years old, and it never stops growing.".split(' ');
+var WORDS=[],t=.2; TXT.forEach(function(w){var d=.18+.03*w.length; WORDS.push({w:w,t0:t,t1:t+d}); t+=d+(/[.,]$/.test(w)?.25:.03);});
+window.__reelDurationSec = Math.ceil(t+1);
+Promise.all([document.fonts.load('800 64px Inter'),document.fonts.load('900 64px Archivo')]).then(function(){
+  window.__seek=function(t){document.getElementById('cap').innerHTML=CAP.html(t,WORDS,{fs:56,width:768,lines:2,keywords:{black:'#c9b8ff',free:'#ffc9a8',billion:'#c9b8ff'}});};
+  window.__seek(0); window.__ready=true;});
+</script>

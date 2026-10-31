@@ -29,6 +29,9 @@ Fonts vendored in this folder:
 - architects-daughter/architects-daughter-latin-400-normal.woff2 (@fontsource/architects-daughter, OFL; posts/tech/togaf-notes)
 - anybody/anybody-latin-standard-normal.woff2 (@fontsource-variable/anybody, OFL, variable wght+wdth; reels/science/reel-04-shot-right-now)
 - fira-code/fira-code-latin-{500,600}-normal.woff2 (@fontsource/fira-code, OFL; reels/science/reel-04-shot-right-now)
+- roboto/roboto-latin-{500,700,900}-normal.woff2 (@fontsource/roboto, OFL-1.1 per the package; caption face alternative, added 31 Oct 2026)
+- archivo/archivo-latin-{600,700,800,900}-normal.woff2 (@fontsource/archivo, OFL-1.1; caption/headline face, added 31 Oct 2026)
+- inter/inter-latin-800-normal.woff2 (@fontsource/inter, OFL; Inter ExtraBold for captions, added 31 Oct 2026)
 
 Extracted from the @fontsource/poppins, @fontsource/inter,
 @fontsource/jetbrains-mono, @fontsource/space-grotesk,

@@ -118,7 +118,9 @@ video-generator/
 ├── assets/                   Curated third-party icon/illustration/logo/photo/animation/font library (see assets/ATTRIBUTION.md)
 │   ├── models/               196 CC0 .glb props (city, streets, vehicles, shelving, kitchen, server rack, phone, tower…) + loader/preview tools — see assets/models/README.md
 │   ├── ui-kit/               generic app-UI screens (SVG/PNG, 2 themes) for phone screens/insets
-│   └── animations/hud-parts/ t-driven geofence/grid-cell/ray-cast/bar-chart/glow-card SVG parts
+│   ├── animations/hud-parts/ t-driven geofence/grid-cell/ray-cast/bar-chart/glow-card SVG parts
+│   ├── animations/caption-rig/ word-by-word highlighted captions (yellow chip + keyword tints), pure function of t
+│   └── space/                NASA/ESO/Hubble imagery, Black/Blue Marble Earth maps, star maps, black-hole loops + a Blender Earth (assets/space/README.md has the credit lines)
 ├── insights/                 Instagram performance data, reports, caption/hashtag templates
 ├── account/                  Account (@sandesh_explains) setup material and profile images
 ├── package.json / bun.lock   Root deps (Bun-managed): playwright, gsap
@@ -1541,3 +1543,9 @@ The 3D family now has a library, not just HDRIs: **196 CC0 `.glb` props** (Poly 
 - **Poly Haven needs a descriptive `User-Agent`** (Python's default gets 403); `kenney.nl` is blocked here but his GitHub starter kits clone fine; Sketchfab models need a login and per-model licences, so they are not vendored (see README for the routes that worked).
 - Phone screen content comes from `assets/ui-kit/screens/<theme>/*.png` (generic UI, no real brands). Motion-graphics parts (geofence, grid cells, ray-cast dots, bar chart, glow card) are in `assets/animations/hud-parts/hud.js` and are pure functions of `t`.
 - Not yet used in any reel: the first reel that uses them should note which props worked and which needed tinting/rescaling here.
+
+## Asset family — space, Earth and captions (added 31 Oct 2026)
+`assets/space/` holds NASA SVS black-hole loops/stills (public domain), NASA Blue Marble/Black Marble/cloud maps, star maps, 10 ESO/Hubble photos, and `blender/earth.py` (day/night Earth with real city lights, clouds, atmosphere rim; test frame checked). `assets/models/nasa/` has satellites/dishes (units differ wildly: always `place(height=)`). `assets/animations/caption-rig/captions.js` is the standard highlighted-caption component (`CAP.html(t, words, opts)`; ≤2 lines, scrim, off-white, Inter 800; load the font before `__ready`).
+- **Credit rules:** ESO and ESA/Hubble images are **CC BY 4.0: show the credit line from `assets/space/images/CREDITS.json` on screen and in the caption**. NASA: acknowledge NASA, never imply endorsement, **never show the NASA logos**.
+- **Gotchas found while building:** the NASA night-lights image has a dim blue land/ocean underlay, so a naive emission turns the dark side into fake daylight (threshold it); a Blender `Layer Weight → Fresnel` atmosphere glowed across the whole disc, use `|N·view|` for the limb instead; NASA GLBs re-exported through Blender grow ~4× (copy the originals); the Poly Haven and SVS downloads need a descriptive `User-Agent`/plain `http://` URLs; `git clone --filter=blob:none` + `sparse-checkout` is the way to pull a few folders from a huge repo (a plain `git ls-tree -l` on a blobless clone downloads everything).
+- Login-gated or blocked items and their steps: `docs/ASSET-LOGIN-STEPS.md` Part B (Pexels/Pixabay/Vecteezy/Videezy, Solar System Scope, Google Earth Studio, Sketchfab/CGTrader satellites, audio libraries, SF Pro/Helvetica Now).

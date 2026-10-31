@@ -19,7 +19,7 @@ def render_one(path, out, cell, spp):
     w = bpy.data.worlds.new('w'); sc.world = w; w.use_nodes = True
     bg = w.node_tree.nodes['Background']; bg.inputs[0].default_value = (0.55, 0.58, 0.62, 1); bg.inputs[1].default_value = 1.0
     cam = bpy.data.objects.new('c', bpy.data.cameras.new('c')); sc.collection.objects.link(cam); sc.camera = cam
-    cam.data.lens = 50; d = r * 3.1
+    cam.data.lens = 50; d = r * 3.1; cam.data.clip_start = d / 1000; cam.data.clip_end = d * 4
     cam.location = ctr + mathutils.Vector((d * 0.62, -d * 0.62, d * 0.38))     # Blender is Z-up after import
     cam.rotation_euler = (ctr - cam.location).to_track_quat('-Z', 'Y').to_euler()
     for loc, e in (((3, -4, 6), 3.0), ((-4, 2, 3), 1.2)):

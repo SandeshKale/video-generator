@@ -20,3 +20,6 @@ reels/wellness-productivity/*/out/
 reels/wellness-productivity/*/shots/
 reels/wellness-productivity/*/sheet*.png
 assets/models/.families.md
+
+__pycache__/
+*.pyc

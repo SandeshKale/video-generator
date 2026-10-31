@@ -345,6 +345,336 @@
   "note": "flat-shaded low-poly vehicles/scenery"
  },
  {
+  "file": "assets/models/nasa/70-meter-dish.glb",
+  "family": "nasa",
+  "name": "70-meter-dish",
+  "tris": 14852,
+  "size_xyz_m": [
+   91.565,
+   85.539,
+   91.315
+  ],
+  "kb": 2164,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/deep-space-climate-observatory-dscovr-triana.glb",
+  "family": "nasa",
+  "name": "deep-space-climate-observatory-dscovr-triana",
+  "tris": 8786,
+  "size_xyz_m": [
+   266.371,
+   96.408,
+   102.54
+  ],
+  "kb": 109,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/deep-space-network-34-meter.glb",
+  "family": "nasa",
+  "name": "deep-space-network-34-meter",
+  "tris": 31842,
+  "size_xyz_m": [
+   34.025,
+   36.792,
+   33.97
+  ],
+  "kb": 2835,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/deep-space-network-70-meter.glb",
+  "family": "nasa",
+  "name": "deep-space-network-70-meter",
+  "tris": 33136,
+  "size_xyz_m": [
+   70.073,
+   72.927,
+   70.073
+  ],
+  "kb": 1823,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/geostationary-operational-environmental-satellites.glb",
+  "family": "nasa",
+  "name": "geostationary-operational-environmental-satellites",
+  "tris": 40935,
+  "size_xyz_m": [
+   0.134,
+   0.122,
+   0.111
+  ],
+  "kb": 327,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/hubble-space-telescope-a.glb",
+  "family": "nasa",
+  "name": "hubble-space-telescope-a",
+  "tris": 7672,
+  "size_xyz_m": [
+   458.247,
+   525.489,
+   501.306
+  ],
+  "kb": 1655,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/james-webb-space-telescope-a.glb",
+  "family": "nasa",
+  "name": "james-webb-space-telescope-a",
+  "tris": 493785,
+  "size_xyz_m": [
+   28.363,
+   12.033,
+   14.773
+  ],
+  "kb": 4599,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/landsat-8.glb",
+  "family": "nasa",
+  "name": "landsat-8",
+  "tris": 85364,
+  "size_xyz_m": [
+   4.97,
+   10.037,
+   12.259
+  ],
+  "kb": 761,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-body-1.glb",
+  "family": "nasa",
+  "name": "satellite-kit-body-1",
+  "tris": 320,
+  "size_xyz_m": [
+   0.02,
+   0.06,
+   0.02
+  ],
+  "kb": 2,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-body-2.glb",
+  "family": "nasa",
+  "name": "satellite-kit-body-2",
+  "tris": 1032,
+  "size_xyz_m": [
+   0.012,
+   0.026,
+   0.059
+  ],
+  "kb": 5,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-body-3.glb",
+  "family": "nasa",
+  "name": "satellite-kit-body-3",
+  "tris": 656,
+  "size_xyz_m": [
+   0.022,
+   0.063,
+   0.025
+  ],
+  "kb": 4,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-radio-1.glb",
+  "family": "nasa",
+  "name": "satellite-kit-radio-1",
+  "tris": 748,
+  "size_xyz_m": [
+   0.047,
+   0.146,
+   0.044
+  ],
+  "kb": 8,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-radio-2.glb",
+  "family": "nasa",
+  "name": "satellite-kit-radio-2",
+  "tris": 764,
+  "size_xyz_m": [
+   0.062,
+   0.041,
+   0.035
+  ],
+  "kb": 8,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-radio-3.glb",
+  "family": "nasa",
+  "name": "satellite-kit-radio-3",
+  "tris": 788,
+  "size_xyz_m": [
+   0.085,
+   0.058,
+   0.045
+  ],
+  "kb": 8,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-wings-1.glb",
+  "family": "nasa",
+  "name": "satellite-kit-wings-1",
+  "tris": 216,
+  "size_xyz_m": [
+   0.09,
+   0.002,
+   0.099
+  ],
+  "kb": 4,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-wings-2.glb",
+  "family": "nasa",
+  "name": "satellite-kit-wings-2",
+  "tris": 536,
+  "size_xyz_m": [
+   0.259,
+   0.002,
+   0.03
+  ],
+  "kb": 7,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/satellite-kit-wings-3.glb",
+  "family": "nasa",
+  "name": "satellite-kit-wings-3",
+  "tris": 1072,
+  "size_xyz_m": [
+   0.259,
+   0.002,
+   0.259
+  ],
+  "kb": 14,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/tall-dish-dish.glb",
+  "family": "nasa",
+  "name": "tall-dish-dish",
+  "tris": 12861,
+  "size_xyz_m": [
+   915.653,
+   1044.0,
+   913.153
+  ],
+  "kb": 1358,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/tall-dish-post.glb",
+  "family": "nasa",
+  "name": "tall-dish-post",
+  "tris": 506,
+  "size_xyz_m": [
+   170.0,
+   1095.0,
+   170.0
+  ],
+  "kb": 238,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/tall-dish-turntable.glb",
+  "family": "nasa",
+  "name": "tall-dish-turntable",
+  "tris": 452,
+  "size_xyz_m": [
+   36.288,
+   43.5,
+   35.2
+  ],
+  "kb": 49,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/tracking-and-data-relay-satellites-tdrs-a.glb",
+  "family": "nasa",
+  "name": "tracking-and-data-relay-satellites-tdrs-a",
+  "tris": 2964,
+  "size_xyz_m": [
+   0.887,
+   0.449,
+   0.468
+  ],
+  "kb": 94,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/transiting-exoplanet-survey-satellite-tess-a.glb",
+  "family": "nasa",
+  "name": "transiting-exoplanet-survey-satellite-tess-a",
+  "tris": 18314,
+  "size_xyz_m": [
+   37.1,
+   18.266,
+   15.969
+  ],
+  "kb": 201,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
   "file": "assets/models/polyhaven/Barrel_01.glb",
   "family": "polyhaven",
   "name": "Barrel_01",

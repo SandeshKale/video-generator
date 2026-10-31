@@ -2,7 +2,7 @@
 
 Web-ready `.glb` props for Blender (`bpy`) reel scenes and for three.js/WebGL pages. Everything here is **CC0 / public domain** — no attribution
 required, commercial use fine (the channel is monetised) — and every file is listed with its source in `INDEX.json`.
-Added Oct 2026 from the creator's source list (low-poly city, scooter, server rack, phone, warehouse shelving, kitchen props, UI, fonts).
+Added Oct 2026 (and the `nasa/` family 31 Oct) from the creator's source lists (low-poly city, scooter, server rack, phone, warehouse shelving, kitchen props, UI, fonts).
 
 ## Use it
 
@@ -22,6 +22,7 @@ place('procedural/cell_tower', loc=(14, -14, 0), height=22, emission=(1, .2, .2,
 * Colours: the 2019 Quaternius buildings, streets, Kenney kits and Poly Haven props carry their own colours/textures. The **2017 Quaternius packs
   (simple buildings, public transport) are clay** — their colours lived in legacy Blender-Internal materials that no current importer reads, so
   `tint` them (a house with emissive windows in the reel's accent colour reads as designed, not as unfinished).
+* **NASA models** (`nasa/`, 22 files: DSN 34 m and 70 m dishes, tall dish, TDRS, GOES, DSCOVR, Landsat 8, TESS, Hubble, JWST, and the modular Satellite Kit parts) are the originals from `github.com/nasa/NASA-3D-Resources` (already GLB; re-exporting inflated them 4×). Their **units differ wildly** (Hubble ≈ 460 units, satellite kit ≈ 0.06): always `place(..., height=)`. The pink tall-dish parts are NASA's placeholder colour; recolour them. No NASA logo goes on screen.
 * Procedural props (`procedural/build_props.py`) are our own geometry: `server_rack` (40 U, LED strips), `smartphone` (iPhone-15-Pro-style titanium
   frame, Dynamic Island, 3 lenses; the **`screen`** quad has a 0..1 UV — put a UI frame from `assets/ui-kit/` on it), `delivery_scooter` (+ top box),
   `delivery_bag`, `gas_stove_with_pot`, `milk_pouch`, `cell_tower` (lattice, 3 sector panels, dish, beacon), `map_pin`.
@@ -41,6 +42,7 @@ place('procedural/cell_tower', loc=(14, -14, 0), height=22, emission=(1, .2, .2,
 | `quaternius/cars` Quaternius Realistic Cars (2018) | 7 | 1152 | CC0 | https://quaternius.com/packs/cars.html |  |
 | `quaternius/cyberpunk` Quaternius Cyberpunk Game Kit | 53 | 3380 | CC0 | https://quaternius.com/packs/cyberpunkgamekit.html |  |
 | `procedural` Procedural (this repo) | 8 | 1548 | CC0 (own work) | assets/models/procedural/build_props.py | EM_* materials are emissive |
+| `nasa` nasa | 22 | 16273 | NASA (free to use, credit NASA, no endorsement) · NASA | https://github.com/nasa/NASA-3D-Resources | added with ingest.py |
 
 ## Rebuilding / adding packs
 

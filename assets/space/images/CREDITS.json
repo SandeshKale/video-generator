@@ -1,0 +1,112 @@
+{
+ "milky-way-panorama-eso": {
+  "id": "eso0932a",
+  "title": "The Milky Way panorama",
+  "credit": "ESO/S. Brunier",
+  "license": "CC BY 4.0",
+  "source": "https://www.eso.org/public/images/eso0932a/",
+  "size": [
+   4096,
+   2048
+  ]
+ },
+ "m87-black-hole-eht": {
+  "id": "eso1907a",
+  "title": "First Image of a Black Hole",
+  "credit": "EHT Collaboration",
+  "license": "CC BY 4.0",
+  "source": "https://www.eso.org/public/images/eso1907a/",
+  "size": [
+   3000,
+   1747
+  ]
+ },
+ "milky-way-centre-vista-mosaic": {
+  "id": "eso1242a",
+  "title": "VISTA gigapixel mosaic of the central parts of the Milky Way",
+  "credit": "ESO/VVV Survey/D. Minniti Acknowledgement: Ignacio Toledo, Martin Kornmesser",
+  "license": "CC BY 4.0",
+  "source": "https://www.eso.org/public/images/eso1242a/",
+  "size": [
+   3600,
+   2711
+  ]
+ },
+ "hubble-extreme-deep-field": {
+  "id": "heic1214a",
+  "title": "The Hubble eXtreme Deep Field",
+  "credit": "NASA, ESA, G. Illingworth, D. Magee, and P. Oesch (University of California, Santa Cruz), R. Bouwens (Leiden University), and the HUDF09 Team",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic1214a/",
+  "size": [
+   2382,
+   2078
+  ]
+ },
+ "hubble-ultra-deep-field": {
+  "id": "heic0406a",
+  "title": "Hubble sees galaxies galore",
+  "credit": "NASA, ESA, and S. Beckwith (STScI) and the HUDF Team",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic0406a/",
+  "size": [
+   3000,
+   3000
+  ]
+ },
+ "pillars-of-creation-hubble": {
+  "id": "heic1501a",
+  "title": "New view of the Pillars of Creation \u2014 visible",
+  "credit": "NASA, ESA/Hubble and the Hubble Heritage Team",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic1501a/",
+  "size": [
+   2492,
+   2600
+  ]
+ },
+ "sombrero-galaxy-hubble": {
+  "id": "opo0328a",
+  "title": "Hubble mosaic of the majestic Sombrero Galaxy",
+  "credit": "NASA/ESA and The Hubble Heritage Team (STScI/AURA)",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/opo0328a/",
+  "size": [
+   3200,
+   1793
+  ]
+ },
+ "pinwheel-galaxy-hubble": {
+  "id": "heic0602a",
+  "title": "Largest ever galaxy portrait - stunning HD image of Pinwheel Galaxy",
+  "credit": "Image: European Space Agency & NASA Acknowledgements: Project Investigators for the original Hubble data: K.D. Kuntz (GSFC), F. Bresolin (University of Hawaii), J. Trauger (JPL), J. Mould (NOAO), and Y.-H. Chu (University of Illinois, Urbana) Image processing: Davide De Martin (ESA/Hubble) CFHT image: Canada-France-Hawaii Telescope/J.-C. Cuillandre/Coelum NOAO image: George Jacoby, Bruce Bohannan, Mark Hanna/NOAO/AURA/NSF",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic0602a/",
+  "size": [
+   3200,
+   2501
+  ]
+ },
+ "orion-nebula-hubble": {
+  "id": "heic0601a",
+  "title": "Hubble's sharpest view of the Orion Nebula",
+  "credit": "NASA, ESA, M. Robberto (Space Telescope Science Institute/ESA) and the Hubble Space Telescope Orion Treasury Project Team",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic0601a/",
+  "size": [
+   3200,
+   3200
+  ]
+ },
+ "omega-centauri-hubble": {
+  "id": "heic0809a",
+  "title": "The majestic globular Omega Centauri",
+  "credit": "NASA, ESA and the Hubble Heritage Team (STScI/AURA) Acknowlegement: A. Cool (San Francisco State Univ.) and J. Anderson (STScI)",
+  "license": "CC BY 4.0",
+  "source": "https://esahubble.org/images/heic0809a/",
+  "size": [
+   3000,
+   2737
+  ]
+ }
+}
