@@ -1,0 +1,4 @@
+url: https://www.solarsystemscope.com/textures/
+author: Solar System Scope (INOVE)
+license: Attribution 4.0 International (CC BY 4.0)
+checked: 2026-10-31

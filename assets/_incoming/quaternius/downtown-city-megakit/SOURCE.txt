@@ -1,0 +1,4 @@
+url: https://quaternius.itch.io/downtown-city-megakit
+author: Quaternius
+license: Creative Commons Zero v1.0 Universal (CC0)
+checked: 2026-10-31
