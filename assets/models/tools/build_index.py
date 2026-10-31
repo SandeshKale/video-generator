@@ -52,7 +52,11 @@ def main():
     for path in sorted(glob.glob(ROOT + '/**/*.glb', recursive=True)):
         rel = os.path.relpath(path, ROOT); d = os.path.dirname(rel); name = os.path.basename(rel)[:-4]
         fam = FAMILIES.get(d)
-        if not fam: print('unclassified', rel); continue
+        if not fam:                                             # user-added family: assets/models/<family>/CREDITS.json (written by ingest.py)
+            cp = os.path.join(os.path.dirname(path), 'CREDITS.json')
+            if not os.path.exists(cp): print('unclassified (no CREDITS.json)', rel); continue
+            c = json.load(open(cp)); fam = (d, c['license'] + (' · ' + c['author'] if c.get('author') else ''), c.get('url', ''), 'added with ingest.py')
+            FAMILIES[d] = fam
         tris, size = glb_info(path)
         recs.append(dict(file='assets/models/' + rel, family=d, name=name, tris=tris, size_xyz_m=size, kb=os.path.getsize(path) // 1024,
                          license=fam[1], source=fam[2].format(name=name), note=fam[3]))
