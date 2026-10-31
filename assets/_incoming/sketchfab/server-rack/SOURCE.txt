@@ -1,0 +1,4 @@
+url:     https://sketchfab.com/3d-models/server-rack-low-poly-458b456d8a064517bd7f1fcdeba78304
+author:  PolyDavid
+license: CC BY 4.0 (CC Attribution, as shown on Sketchfab)
+checked: 2026-10-31

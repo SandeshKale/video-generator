@@ -1,0 +1,4 @@
+url:     https://sketchfab.com/3d-models/low-poly-delivery-electric-scooter-16a3330edde14cb7b56626ede007067f
+author:  ramdom_sp
+license: CC BY 4.0 (CC Attribution, as shown on Sketchfab)
+checked: 2026-10-31

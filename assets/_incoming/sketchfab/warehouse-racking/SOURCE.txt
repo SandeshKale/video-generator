@@ -1,0 +1,4 @@
+url:     https://sketchfab.com/3d-models/warehouse-storage-racking-fbx-low-poly-free-17cf3c10ae774006a0b93b79fbfdf109
+author:  Lady Lion Studios
+license: CC BY 4.0 (CC Attribution, as shown on Sketchfab)
+checked: 2026-10-31

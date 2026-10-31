@@ -1,0 +1,4 @@
+url:     https://sketchfab.com/3d-models/of-planes-and-satellites-db8f1c8cba3b464993e216acbf4a69b9
+author:  Loïc Norgeot
+license: CC BY 4.0 (CC Attribution, as shown on Sketchfab)
+checked: 2026-10-31
