@@ -1,0 +1,4 @@
+url: https://www.figma.com/community/file/1352761962360670057/food-delivery-mobile-app-ui-kit
+author: Vlad Solomakha
+license: CC BY 4.0
+checked: 2026-10-31
