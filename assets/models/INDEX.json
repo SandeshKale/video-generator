@@ -600,6 +600,36 @@
   "note": "added with ingest.py"
  },
  {
+  "file": "assets/models/nasa/solar-dynamics-observatory.glb",
+  "family": "nasa",
+  "name": "solar-dynamics-observatory",
+  "tris": 272770,
+  "size_xyz_m": [
+   37.017,
+   30.747,
+   37.034
+  ],
+  "kb": 486,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/suomi-npp.glb",
+  "family": "nasa",
+  "name": "suomi-npp",
+  "tris": 4024,
+  "size_xyz_m": [
+   2.569,
+   4.183,
+   8.959
+  ],
+  "kb": 2230,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
   "file": "assets/models/nasa/tall-dish-dish.glb",
   "family": "nasa",
   "name": "tall-dish-dish",
@@ -640,6 +670,21 @@
    35.2
   ],
   "kb": 49,
+  "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
+  "source": "https://github.com/nasa/NASA-3D-Resources",
+  "note": "added with ingest.py"
+ },
+ {
+  "file": "assets/models/nasa/terra.glb",
+  "family": "nasa",
+  "name": "terra",
+  "tris": 117120,
+  "size_xyz_m": [
+   13621.761,
+   10276.638,
+   26053.83
+  ],
+  "kb": 2100,
   "license": "NASA (free to use, credit NASA, no endorsement) \u00b7 NASA",
   "source": "https://github.com/nasa/NASA-3D-Resources",
   "note": "added with ingest.py"
