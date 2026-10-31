@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>The clock that broke India's GPS - Ground Station</title>
+<style>
+@font-face{font-family:'Big Shoulders Display';font-weight:800;src:url('fonts/bigshoulders-800.woff2');font-display:block}
+@font-face{font-family:'IBM Plex Mono';font-weight:600;src:url('fonts/plexmono-600.woff2');font-display:block}
+@font-face{font-family:'IBM Plex Mono';font-weight:700;src:url('fonts/plexmono-700.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('fonts/inter-800.woff2');font-display:block}
+:root{--bg:#031417;--amb:#ffb020;--sky:#55b8ff;--red:#ff4a3d;--ivo:#f4efe3}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--ivo)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden;background:var(--bg)}
+.abs{position:absolute}.fill{position:absolute;inset:0}
+.mono{position:absolute;font:700 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.big{position:absolute;font:800 170px/.88 'Big Shoulders Display',sans-serif;text-transform:uppercase;color:var(--ivo);text-shadow:0 6px 30px rgba(0,0,0,.75);white-space:nowrap}
+.tag{position:absolute;padding:10px 20px;border:3px solid currentColor;background:rgba(3,20,23,.88);white-space:nowrap;font:700 24px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.scope{position:absolute;background:rgba(3,20,23,.86);border:3px solid rgba(85,184,255,.55);clip-path:polygon(0 24px,24px 0,calc(100% - 24px) 0,100% 24px,100% calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,0 calc(100% - 24px))}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,0,0,.72) 100%);pointer-events:none}
+.src{position:absolute;left:150px;font:700 21px 'IBM Plex Mono';letter-spacing:.1em;color:rgba(244,239,227,.72);text-transform:uppercase;text-shadow:0 2px 8px #000;white-space:nowrap}
+#cap{z-index:20;position:absolute;left:150px;width:768px;top:1338px;text-align:center}
+#flash{z-index:21;position:absolute;inset:0;pointer-events:none;opacity:0}
+#sweep{z-index:22;position:absolute;left:-300px;top:0;width:240px;height:1920px;pointer-events:none;mix-blend-mode:screen;opacity:.13;background:linear-gradient(90deg,transparent,rgba(85,184,255,.9),rgba(255,176,32,.6),transparent);transform:skewX(-14deg)}
+#grain{z-index:23;position:absolute;inset:0;pointer-events:none;opacity:.05;background:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 3px)}
+</style>
+<div id="stage"></div>
+<script src="satdim.js"></script><script src="phone.js"></script><script src="timing.js"></script><script src="icons.js"></script><script src="hud.js"></script><script src="captions.js"></script><script src="app.js"></script>
