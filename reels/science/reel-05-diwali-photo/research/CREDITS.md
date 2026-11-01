@@ -1,0 +1,4 @@
+# Image credits (reel-05-diwali-photo)
+- `nasa-eo-79682-india-2012-11-12.jpg` (4218 x 4218): "NASA Earth Observatory image by Jesse Allen and Robert Simmon, using VIIRS Day-Night Band data from the Suomi National Polar-orbiting Partnership (Suomi NPP)". Data acquired 12 Nov 2012, published 15 Nov 2012 ("South Asian Night Lights", caption by Adam Voiland). Brightened by NASA. NASA imagery is generally public domain; show the credit line on screen and in the caption; never imply NASA endorsement; never show NASA logos.
+  Source page: https://science.nasa.gov/earth/earth-observatory/south-asian-night-lights-79682/
+- The viral multi-colour composite is NOT used as a file (licence of that specific file not confirmed). It is re-created for illustration from NASA's 2012 image and labelled "re-created for illustration".
