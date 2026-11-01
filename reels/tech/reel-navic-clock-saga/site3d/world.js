@@ -290,6 +290,8 @@ function mkPhone(sz) { var g = new THREE.Group(), c = document.createElement('ca
   g.userData.draw = function (lines) { x.fillStyle = '#04181d'; x.fillRect(0, 0, 256, 512); lines.forEach(function (l) { x.fillStyle = l.col || '#f4efe3'; x.font = '700 ' + (l.fs || 30) + 'px "IBM Plex Mono"'; x.textAlign = 'center'; x.fillText(l.t, 128, l.y); }); tx.needsUpdate = true; };
   g.scale.setScalar(sz || 1); return g; }
 function ringDisc(r, col, op) { var g = new THREE.Group(), ring = new THREE.Mesh(new THREE.RingGeometry(r * .985, r, 96), new THREE.MeshBasicMaterial({ color: col, side: THREE.DoubleSide, transparent: true, opacity: .95, depthWrite: false })), disc = new THREE.Mesh(new THREE.CircleGeometry(r, 96), new THREE.MeshBasicMaterial({ color: col, side: THREE.DoubleSide, transparent: true, opacity: op == null ? .16 : op, depthWrite: false })); ring.rotation.x = disc.rotation.x = -Math.PI / 2; g.add(ring); g.add(disc); return g; }
+function pulses(g, t, a, b, col, n, sp, sz, amp) { for (var k = 0; k < n; k++) { var ph = (t * sp + k / n) % 1, q = glw(col, sz, Math.sin(Math.PI * ph) * (amp || .9)); q.position.copy(a.clone().lerp(b, ph)); g.add(q); } }
+function radar(g, t, c, col, r0, r1, n, sp) { for (var k = 0; k < n; k++) { var ph = (t * sp + k / n) % 1, rr = r0 + (r1 - r0) * ph, m = new THREE.Mesh(new THREE.RingGeometry(rr * .96, rr, 64), new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: (1 - ph) * .7, depthWrite: false, side: THREE.DoubleSide })); m.position.copy(c); g.add(m); } }
 /* cues for the new scenes */
 var tCut = PT('i3', 'रोशनी'), tArr = T0('i3') + .6, tGp = PT('i3', 'कितना');
 var cC2 = T0('i6') + .1, cC3 = PT('i6', 'जगह'), cC4 = tNo, cC5 = i6[3];
@@ -308,6 +310,7 @@ function sceneA(t) { gA.visible = true; clr(dynA); var u = t - B[2];
   phA.position.set(0, -3.1, 0); phA.rotation.x = -.35; phA.userData.draw([{ t: 'PHONE CLOCK', y: 80, fs: 26, col: '#ffb020' }, { t: arrived ? '10:00:00.120' : '10:00:00.000', y: 230, fs: 34, col: arrived ? '#ff4a3d' : '#f4efe3' }, { t: arrived ? 'signal arrived' : 'listening...', y: 330, fs: 24, col: '#55b8ff' }]);
   dialS.position.set(-2.9, 5.2, 0); dialS.userData.draw(t * 20, true); dialP.position.set(2.8, -3.0, .6); dialP.userData.draw(t * 20 + (arrived ? 43 : 0), true);
   var sp = new V3(0, 4.7, 0), pp = new V3(0, -1.7, 0);
+  radar(dynA, t, new V3(0, 5.2, 0), AMB, .5, 2.4, 3, .55); if (arrived) pulses(dynA, t, sp, pp, SKY, 3, .7, 1.1, .8);
   Lp(dynA, t, B[2] + .2, lab('SATELLITE CLOCK 10:00:00.000', AMB, .52, { fs: 40, bg: true }), 0, 6.45, 0, 3.6);
   var f = clamp((t - tSend) / (tArr - tSend)), pk = sp.clone().lerp(pp, eio(f));
   if (t >= tSend) { dynA.add(bar(sp, pk, SKY, .04, .8)); var cube = new THREE.Mesh(new THREE.BoxGeometry(.7, .7, .7), new THREE.MeshStandardMaterial({ color: 0xffb020, emissive: 0xff8a10, emissiveIntensity: 1.4, metalness: .4, roughness: .3 })); cube.position.copy(pk); cube.rotation.set(.5 + t, .7 + t * .6, 0); dynA.add(cube); var g = glw(AMB, 2.6, .8); g.position.copy(pk); dynA.add(g);
@@ -355,7 +358,7 @@ function sceneC(t) { gC.visible = true; clr(dynC); var u = t - B[4]; camO(OFF.C,
   shells.forEach(function (s, i) { s.visible = i < n; s.position.copy(CS[i]); s.scale.setScalar((rad[i] + delta) * (.35 + .65 * eo((t - tt0[i]) / .9))); });
   var Rv = 2.5; slabC.visible = phC.visible = true; var g0 = glw(SKY, 1.0, 1); g0.position.copy(PHC); if (t < cC4 || t > cC5 + 2.2) dynC.add(g0);
   var TT = function (t0, txt, col, y) { Lp(dynC, t, t0, lab(txt, col, .34, { fs: 32, bg: true, center: true }), 0, y, 2, 1.8); };
-  Lp(dynC, t, B[4], lab('simplified: only the patch near you is drawn', 0x8fa8b0, .16, { fs: 26 }), 0, .8, 2.4, 1.8);
+  Lp(dynC, t, B[4], lab('simplified: patch near you', 0x8fa8b0, .17, { fs: 26 }), .9, 1.1, 2.0, 1.6);
   if (t < cC2) TT(B[4], 'signal 1: you are somewhere\non this sphere', SKY, 4.5); else if (t < cC3) TT(cC2, 'signals 1 + 2: you are\non this circle', IVO, 4.5); else if (t < cC4) TT(cC3, '3 signals + a perfect clock:\none place only = YOU', MINT, 4.5); else if (t < cC5) TT(cC4, 'clock off: every distance\nis too long by the SAME amount', RED, 4.5); else TT(cC5, '4th signal: find the\nshared error', AMB, 4.5);
   if (n >= 2) { var a12 = arc(CS[0], CS[1], rad[0] + delta, rad[1] + delta, Rv); if (a12.length > 3) dynC.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(a12), a12.length, .03, 6, false), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: eo((t - cC2) / .6) }))); }
   if (n >= 3) { var tp = tri(CS[0], CS[1], CS[2], rad[0] + delta, rad[1] + delta, rad[2] + delta), pa = tp[0].distanceTo(PHC) < tp[1].distanceTo(PHC) ? tp[0] : tp[1], pb = pa === tp[0] ? tp[1] : tp[0];
@@ -379,15 +382,17 @@ function sceneD(t) { gD.visible = true; clr(dynD); dMode('gate'); var u = t - B[
   Lp(dynD, t, B[7] + .5, lab('WORKING ' + cnt + ' / NEED 4', fail && t > tFail + .3 ? RED : MINT, .8, { fs: 52, bg: true, font: '800 62px "Big Shoulders Display"' }), 0, 4.9, 0, 2.7);
   if (fail) Lp(dynD, t, tFail, lab('13 MAR 2026 · IRNSS-1F clock stops', RED, .42, { fs: 30, bg: true }), 0, 4.25, 0, 2.7);
   if (t >= tQuote) Lp(dynD, t, tQuote, lab('ISRO: "procured on-board atomic clock\nstopped functioning"', AMB, .62, { fs: 30, bg: true, center: true }), 0, 3.5, 0, 2.7);
+  var phc = new V3(0, .3, 3.3); dSats.forEach(function (q, i) { if (t < B[7] + .3) return; var a = new V3(SOCK[i][0], 1.5, SOCK[i][1]), on = (i == 3 && fail) ? Math.max(0, 1 - (t - tFail) / .8) * (.5 + .5 * Math.sin(t * 30)) : 1; if (on > .02) { dynD.add(bar(a, phc, SKY, .018, .35 * on)); pulses(dynD, t + i * .17, a, phc, SKY, 2, .5, .45, .9 * on); } });
   var pr = fail ? eo((t - tFail - .8) / 1.4) : 0, r = .22 + .78 * pr, col = pr > .02 ? RED : SKY; var pg = new THREE.Group(); pg.add(ringDisc(r, col, .2)); var ph = mkPhone(.3); ph.rotation.x = -Math.PI / 2; ph.position.y = .1; pg.add(ph); ph.userData.draw([{ t: 'NavIC', y: 250, fs: 40 }]); pg.position.set(0, .05, 3.3); dynD.add(pg);
   if (t < tPar) Lp(dynD, t, B[7] + .8, lab(pr > .3 ? 'your position: wide again' : 'your position: sharp', pr > .3 ? RED : SKY, .34, { fs: 28 }), 0, .2, 4.7, 2.7); else Lp(dynD, t, tPar, lab('PARLIAMENT: ≥ 4 needed · 3 left', AMB, .4, { fs: 30, bg: true }), 0, .2, 4.7, 2.7); }
 function sceneBars(t) { gD.visible = true; clr(dynD); dMode('bars'); camO(OFF.D, new V3(0, 4.6, 16.5), new V3(0, 2.2, 0), 46); var u = t - B[8], h = [3.0, 2.8, 2.6, 2.9, .1];
-  barM.forEach(function (m, i) { m.scale.y = i < 4 ? h[i] * eo((u - .1 * i) / .8) + .001 : .1; m.position.set(-2.4 + i * 1.2, 0, 0); });
-  var nm = ['GPS', 'GLONASS', 'GALILEO', 'BEIDOU', 'NavIC alone']; nm.forEach(function (s, i) { Lp(dynD, t, B[8] + .2 + .1 * i, lab(s, i == 4 ? RED : SKY, .34, { fs: 24, center: true }), -2.4 + i * 1.2, (i < 4 ? h[i] : .1) + .55, 0, 2.7); });
+  barM.forEach(function (m, i) { m.scale.y = i < 4 ? h[i] * eo((u - .1 * i) / .8) * (1 + .035 * Math.sin(t * 2.4 + i * 1.3)) + .001 : .1 + .04 * Math.abs(Math.sin(t * 5)); m.position.set(-2.4 + i * 1.2, 0, 0); });
+  var nm = ['GPS', 'GLONASS', 'GALILEO', 'BEIDOU', 'NavIC alone']; nm.forEach(function (s, i) { Lp(dynD, t, B[8] + .2 + .1 * i, lab(s, i == 4 ? RED : SKY, .34, { fs: 24, center: true }), -2.4 + i * 1.2, (i < 4 ? h[i] + .55 : 1.1), 0, 2.7); });
   Lp(dynD, t, B[8] + .2, lab('your phone map: still running', SKY, .5, { fs: 34, bg: true }), 0, 6.4, 0, 2.9); Lp(dynD, t, tSys, lab('it uses several systems at once', 0xc8d4d8, .38, { fs: 28 }), 0, 5.8, 0, 2.9); Lp(dynD, t, tRk, lab('NavIC standing alone: below 4 = paused', RED, .4, { fs: 28, bg: true }), 0, 4.9, 0, 2.9); }
 function sceneFinal(t) { gD.visible = true; clr(dynD); dMode('final'); var u = t - B[12]; camO(OFF.D, new V3(Math.sin(u * .1) * .8, 7.4, 14.8), new V3(0, .05, 1.5), 50);
   dSats.forEach(function (s, i) { s.visible = i < 3; s.position.set(SOCK[i][0], 1.5, SOCK[i][1]); s.rotation.set(-.3, .5 + t * .3, 0); s.userData.halo.material.opacity = .5; });
   dLamp.forEach(function (l, i) { l.material.color.setHex(i == 3 ? 0xffb020 : MINT); }); ghostRing.position.set(SOCK[3][0], .5 + .05 * Math.sin(t * 3), SOCK[3][1]); ghostRing.material.opacity = .7 + .3 * Math.sin(t * 4);
+  var phc = new V3(0, .3, 3.3); [0, 1, 2].forEach(function (i) { var a = new V3(SOCK[i][0], 1.5, SOCK[i][1]); dynD.add(bar(a, phc, SKY, .018, .3)); pulses(dynD, t + i * .17, a, phc, SKY, 2, .5, .45, .85); }); pulses(dynD, t, new V3(SOCK[3][0], 1.3, SOCK[3][1]), phc, AMB, 2, .35, .4, .5);
   var k = eo((t - tF) / .8); ownDial.position.set(SOCK[3][0], 1.3 + .1 * Math.sin(t * 2), SOCK[3][1]); ownDial.scale.setScalar(.6 + .4 * k); ownDial.rotation.set(0, 0, 0); ownDial.userData.draw(t * 60, true);
   Lp(dynD, t, B[12] + .2, lab('WORKING 3 / NEED 4', RED, .8, { fs: 52, bg: true, font: '800 62px "Big Shoulders Display"' }), 0, 4.9, 0, 2.7);
   Lp(dynD, t, B[12] + .8, lab('NVS-03: in transfer orbit\nNOT YET LIVE', RED, .5, { fs: 30, bg: true, center: true }), 0, 4.25, 0, 2.7);
