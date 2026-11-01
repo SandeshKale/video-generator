@@ -1,0 +1,22 @@
+# NavIC v4 — "expert sketcher" storyboard (1 Nov 2026, for approval before any build)
+
+Rule applied: `CLAUDE.md` "2-second rule REMOVED; explainers sketched in logical order". Same voice, same timing (`audio/words.json`), same 3D world and camera language. Only the *pictures* change: each scene answers one question and is **built in the order it is spoken**; earlier steps stay on screen.
+Verdict on v3 scenes: KEEP = four-ray error disc, clock dials, launch ladder, rubidium clock. REDESIGN = the rest (Earth + labels).
+
+| # | Time | Question the scene answers | Build order (each step lands on its word) | Replaces |
+|---|---|---|---|---|
+| 1 | 0–8 | Why does India's GPS need four satellites? | phone dot + wide red error ring (0 s) → 4 sockets above it, 3 filled, 1 empty and pulsing ("सिर्फ़ तीन") → ring stays wide → "?" on the empty socket ("चार क्यों?") | keep, add the 4 sockets |
+| 2 | 8–19 | What is NavIC, and what is the promise? | zoom out from the dot to a **flat sketch map of India**: the 7 NavIC satellites as dots with a fixed footprint ring over India only (the real design: regional) → a "other countries' signal" dashed arrow crossed out ("निर्भर न रहना") → 30 Oct rocket ghost + a hand-made clock icon planted in the corner ("अपने हाथ से") | Earth + labels |
+| 3a | 19–31 | What does a satellite actually send? | one satellite, one **timestamp packet** "sent at 10:00:00.000" flying down as a pulse → phone clock reads "10:00:00.0001" → the **travel time** is the measured gap, drawn as a ruler between sent/received ("सिर्फ़ समय बताता है") | dark city blocks |
+| 3b | 31–35 | Why does a tiny time error matter? | number line: 1 ns = 30 cm (a hand-span), 1 µs = 300 m (three football pitches, to scale on a street) — the ruler *grows* as the clock error ticks up; the dot drifts 300 m off the real position | glowing dot + ruler |
+| 3c | 35–42 | Why is the fourth satellite needed? | the proven four-ray solve, but built stepwise: ray 1 → big **sphere/ring** of possible places; ray 2 → ring intersects into two points; ray 3 → one point *if the phone clock were perfect*; add "phone clock error" bubble → three rays miss together; ray 4 → collapses to a dot, **"4th ray fixes the clock"** card | keep, add the intermediate rings |
+| 4 | 43–51 | What goes wrong inside the satellite? | satellite cut-away with its **three clocks** (primary, 2 spares) → dated stamps 2016 → each dial stops, a spare takes over, then none ("तीनों बंद") → "bought abroad" tag with the origin arrow | keep (dials), add the spare logic |
+| 5 | 51–61 | What happened to the rescue attempts? | **timeline strip** 2016 → 2017 → 2025 as a horizontal track: launch 1 (shroud stays on, separation arrow with an X) → launch 2 (orbit line drawn to the target, ends short at the wrong height, valve icon) → one line per failure, each answered by the next | rocket cut + orbit rings |
+| 6 | 61–79 | Why does that mean "three, not four"? | **ledger board**: 7 slots, each a satellite icon: working (green) / stopped (red). 13 Mar 2026 flips IRNSS-1F red → counter "WORKING 3 / NEED 4" → the error ring over the phone widens again; silence beat; then a **second layer** appears: "your phone map" bar stays full because it also uses GPS/others, while the NavIC-only bar is empty ("फ़ोन कई सिस्टम") | clock X, quote card, Earth shot |
+| 7 | 79–94 | What did India build, and what does it change? | rubidium clock built up part by part (vapour cell → rings → housing) with the "THIS IS CALLED" card after it exists → year track 2023 (NVS-01) → 30 Oct launch ladder → satellite in transfer orbit with the new L1 signal tag | keep clock + launch |
+| 8 | 94–110 | Does NavIC stand alone again, and when? | the same ledger board from scene 6: 3 green + 1 dashed slot ("NVS-03") → dashed orbit from transfer orbit to its slot with a **progress marker** and a switch icon labelled "NOT YET LIVE" → the opening phone dot returns, ring tightens only as far as the data allows (stays dashed) | Earth shot, counters |
+| 9 | 111–118.7 | CTA | unchanged end card | keep |
+
+**What carries a scene when the voice is slow (no filler):** the thing being explained moves — a pulse travelling a ray, a clock hand, a counter, a marker progressing along an orbit — plus slow camera drift. No sweeps, no decorative swaps.
+
+**Mockup plan (approval gate):** render 4 stills each for scenes 3a/3b, 3c and 6 (build steps 1…n) and show them before any full re-render. Full re-render only after approval (~10 min).
