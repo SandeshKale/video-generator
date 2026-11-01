@@ -16,9 +16,11 @@ html,body{margin:0;background:#000}
 .card .k{font:700 15px 'IBM Plex Mono';letter-spacing:.22em;color:var(--amb);text-transform:uppercase}
 .card .t{font:800 46px/1.05 'Big Shoulders Display';color:var(--ivo);text-transform:uppercase;margin-top:4px}
 .card .s{font:700 18px 'IBM Plex Mono';letter-spacing:.06em;color:rgba(244,239,227,.8);margin-top:4px}
+.ask{position:absolute;left:150px;width:768px;box-sizing:border-box;padding:16px 24px;border:3px solid #ffb020;background:rgba(3,20,23,.9);border-radius:10px;font:800 40px/1.15 Inter,sans-serif;color:#f4efe3;letter-spacing:-.01em}
+.scope{position:absolute;background:rgba(3,20,23,.88);border:3px solid rgba(85,184,255,.6);padding:16px 24px;box-sizing:border-box;clip-path:polygon(0 18px,18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px))}
 #cap{position:absolute;z-index:20;left:150px;width:768px;top:1338px;text-align:center}
 #flash{position:absolute;z-index:21;inset:0;pointer-events:none;opacity:0}
 #vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,transparent 52%,rgba(0,0,0,.55) 100%)}
 </style>
 <div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div id="vig"></div><div class="ov" id="ov"></div><div id="cap"></div><div id="flash"></div></div>
-<script src="three.min.js"></script><script src="timing.js"></script><script src="captions.js"></script><script src="world.js"></script>
+<script src="three.min.js"></script><script src="timing.js"></script><script src="captions.js"></script><script src="icons.js"></script><script src="world.js"></script>
