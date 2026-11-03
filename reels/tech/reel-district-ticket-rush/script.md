@@ -61,7 +61,7 @@ NavIC v4: continuous 3D world, sketch-order explainer scenes, 3D labels, two lin
 | n2 | Atthais per second? Itna toh ek chhota server bhi sambhal le. To dikkat kahan thi? | number |
 | n3 | Dikkat bechne mein nahi thi, dikkat thi sabka ek saath, ek hi pal, ek hi seat ke liye aana. Isko solve karne ke paanch tareeke hain. Teesra sabse hoshiyaar hai. | number |
 | s1a | Pehla tareeka: bheed ko ek saath aane hi mat do. Registration pehle: 27 September raat gyarah baje tak. | step 1 |
-| s1b | Phir pre-sale, poore achhatees ghante, aur woh bhi sirf registered logon ke liye. Booking ka link? WhatsApp pe. | step 1 |
+| s1b | Phir pre-sale, poore adtalis ghante, aur woh bhi sirf registered logon ke liye. Booking ka link? WhatsApp pe. | step 1 |
 | s1c | Taylor Swift ke tickets pe Ticketmaster ne khud maana tha: sale ko lambe time mein baantna chahiye tha. | step 1 |
 | q1 | Par pre-sale khulte hi, jo aaye, woh ek saath aaye. To doosra tareeka: virtual waiting room. | but + step 2 |
 | q2 | Aap booking page pe nahi, ek line mein ho. Aapko number mila: aapke aage baarah hazaar paanch sau unsath. | step 2 |

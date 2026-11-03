@@ -1,0 +1,215 @@
+{
+ "title": "12,569 log aapke aage the",
+ "format": "1080x1920 hinglish explainer",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "A": "Samay Raina ke tickets ek ghante se kam mein ek lakh se zyada bik gaye, District app pe, BookMyShow pe nahi.",
+   "B": "समय रैना के टिकट एक घंटे से कम में एक लाख से ज़्यादा बिक गए, डिस्ट्रिक्ट ऐप पे, बुकमायशो पे नहीं।",
+   "cap": "Samay Raina ke tickets ek ghante se kam mein ek lakh se zyada bik gaye, District app pe, BookMyShow pe nahi."
+  },
+  {
+   "id": "h2",
+   "g": "g1",
+   "beat": "hook",
+   "A": "Aur Samay ne screenshot dala: aapke aage 12,569 log. Intezaar, lagbhag das minute.",
+   "B": "और समय ने स्क्रीनशॉट डाला: आपके आगे बारह हज़ार पाँच सौ उनहत्तर लोग। इंतज़ार, लगभग दस मिनट।",
+   "cap": "Aur Samay ne screenshot dala: aapke aage 12,569 log. Intezaar, lagbhag das minute."
+  },
+  {
+   "id": "h3",
+   "g": "g2",
+   "beat": "hook",
+   "A": "Yeh crash nahi tha. Yeh system design tha. Toh ek lakh log ek saath aaye, app tooti kyun nahi? Aur ek seat do logon ko kaise nahi mili?",
+   "B": "ये क्रैश नहीं था। ये सिस्टम डिज़ाइन था। तो एक लाख लोग एक साथ आए, ऐप टूटी क्यों नहीं? और एक सीट दो लोगों को कैसे नहीं मिली?",
+   "cap": "Yeh crash nahi tha. Yeh system design tha. Toh ek lakh log ek saath aaye, app tooti kyun nahi? Aur ek seat do logon ko kaise nahi mili?"
+  },
+  {
+   "id": "n1",
+   "g": "g3",
+   "beat": "number",
+   "A": "Pehle ek chhota math. Ek lakh tickets, ek ghanta. Yaani lagbhag 28 tickets har second.",
+   "B": "पहले एक छोटा मैथ। एक लाख टिकट, एक घंटा। यानी लगभग अट्ठाईस टिकट हर सेकंड।",
+   "cap": "Pehle ek chhota math. Ek lakh tickets, ek ghanta. Yaani lagbhag 28 tickets har second."
+  },
+  {
+   "id": "n2",
+   "g": "g3",
+   "beat": "number",
+   "A": "28 per second? Itna toh ek chhota server bhi sambhal le. To dikkat kahan thi?",
+   "B": "अट्ठाईस पर सेकंड? इतना तो एक छोटा सा सर्वर भी सँभाल ले। तो दिक्कत कहाँ थी?",
+   "cap": "28 per second? Itna toh ek chhota server bhi sambhal le. To dikkat kahan thi?"
+  },
+  {
+   "id": "n3",
+   "g": "g4",
+   "beat": "number",
+   "A": "Dikkat bechne mein nahi thi, dikkat thi sabka ek saath, ek hi pal, ek hi seat ke liye aana. Isko solve karne ke paanch tareeke hain. Teesra sabse hoshiyaar hai.",
+   "B": "दिक्कत बेचने में नहीं थी, दिक्कत थी सबका एक साथ, एक ही पल, एक ही सीट के लिए आना। इसको सॉल्व करने के पाँच तरीके हैं। तीसरा सबसे होशियार है।",
+   "cap": "Dikkat bechne mein nahi thi, dikkat thi sabka ek saath, ek hi pal, ek hi seat ke liye aana. Isko solve karne ke paanch tareeke hain. Teesra sabse hoshiyaar hai."
+  },
+  {
+   "id": "s1a",
+   "g": "g5",
+   "beat": "step1",
+   "A": "Pehla tareeka: bheed ko ek saath aane hi mat do. Registration pehle: 27 September raat gyarah baje tak.",
+   "B": "पहला तरीका: भीड़ को एक साथ आने ही मत दो। रजिस्ट्रेशन पहले: सत्ताईस सितंबर रात ग्यारह बजे तक।",
+   "cap": "Pehla tareeka: bheed ko ek saath aane hi mat do. Registration pehle: 27 September raat gyarah baje tak."
+  },
+  {
+   "id": "s1b",
+   "g": "g5",
+   "beat": "step1",
+   "A": "Phir pre-sale, poore 48 ghante, aur woh bhi sirf registered logon ke liye. Booking ka link? WhatsApp pe.",
+   "B": "फिर प्री-सेल, पूरे अड़तालीस घंटे, और वो भी सिर्फ़ रजिस्टर्ड लोगों के लिए। बुकिंग का लिंक? व्हाट्सऐप पे।",
+   "cap": "Phir pre-sale, poore 48 ghante, aur woh bhi sirf registered logon ke liye. Booking ka link? WhatsApp pe."
+  },
+  {
+   "id": "s1c",
+   "g": "g6",
+   "beat": "step1",
+   "A": "Taylor Swift ke tickets pe Ticketmaster ne khud maana tha: sale ko lambe time mein baantna chahiye tha.",
+   "B": "टेलर स्विफ़्ट के टिकट पे टिकटमास्टर ने ख़ुद माना था: सेल को लंबे टाइम में बाँटना चाहिए था।",
+   "cap": "Taylor Swift ke tickets pe Ticketmaster ne khud maana tha: sale ko lambe time mein baantna chahiye tha."
+  },
+  {
+   "id": "q1",
+   "g": "g7",
+   "beat": "step2",
+   "A": "Par pre-sale khulte hi, jo aaye, woh ek saath aaye. To doosra tareeka: virtual waiting room.",
+   "B": "पर प्री-सेल खुलते ही, जो आए, वो एक साथ आए। तो दूसरा तरीका: वर्चुअल वेटिंग रूम।",
+   "cap": "Par pre-sale khulte hi, jo aaye, woh ek saath aaye. To doosra tareeka: virtual waiting room."
+  },
+  {
+   "id": "q2",
+   "g": "g7",
+   "beat": "step2",
+   "A": "Aap booking page pe nahi, ek line mein ho. Aapko number mila: aapke aage 12,569 log.",
+   "B": "आप बुकिंग पेज पे नहीं, एक लाइन में हो। आपको नंबर मिला: आपके आगे बारह हज़ार पाँच सौ उनहत्तर लोग।",
+   "cap": "Aap booking page pe nahi, ek line mein ho. Aapko number mila: aapke aage 12,569 log."
+  },
+  {
+   "id": "q3",
+   "g": "g8",
+   "beat": "step2",
+   "A": "Line pehle aao pehle paao ki hoti hai. Cloudflare ke docs kehte hain: aapke browser mein ek cookie, jisme likha hota hai aap line mein kab aaye.",
+   "B": "लाइन पहले आओ पहले पाओ की होती है। क्लाउडफ़्लेयर के डॉक्स कहते हैं: आपके ब्राउज़र में एक कुकी, जिसमें लिखा होता है आप लाइन में कब आए।",
+   "cap": "Line pehle aao pehle paao ki hoti hai. Cloudflare ke docs kehte hain: aapke browser mein ek cookie, jisme likha hota hai aap line mein kab aaye."
+  },
+  {
+   "id": "q4",
+   "g": "g9",
+   "beat": "step2",
+   "A": "Aur woh das minute? Screenshot ka math: 12,569 ko 600 second se baanto, to har second lagbhag 21 log andar jaate hain.",
+   "B": "और वो दस मिनट? स्क्रीनशॉट का मैथ: बारह हज़ार पाँच सौ उनहत्तर को छह सौ सेकंड से बाँटो, तो हर सेकंड लगभग इक्कीस लोग अंदर जाते हैं।",
+   "cap": "Aur woh das minute? Screenshot ka math: 12,569 ko 600 second se baanto, to har second lagbhag 21 log andar jaate hain."
+  },
+  {
+   "id": "q5",
+   "g": "g9",
+   "beat": "reversal",
+   "A": "Yaani queue aapko rokne ke liye nahi, server ko bachane ke liye hai. Yeh bug nahi, system ka kaam hai.",
+   "B": "यानी क्यू आपको रोकने के लिए नहीं, सर्वर को बचाने के लिए है। ये बग नहीं, सिस्टम का काम है।",
+   "cap": "Yaani queue aapko rokne ke liye nahi, server ko bachane ke liye hai. Yeh bug nahi, system ka kaam hai."
+  },
+  {
+   "id": "t1",
+   "g": "g10",
+   "beat": "but",
+   "A": "Ab aap andar aaye. Seat chuni. Magar usi pal ek aur insaan ne bhi wahi seat chuni. Ab?",
+   "B": "अब आप अंदर आए। सीट चुनी। मगर उसी पल एक और इंसान ने भी वही सीट चुनी। अब?",
+   "cap": "Ab aap andar aaye. Seat chuni. Magar usi pal ek aur insaan ne bhi wahi seat chuni. Ab?"
+  },
+  {
+   "id": "t2",
+   "g": "g10",
+   "beat": "step3",
+   "A": "Dono ko confirmed bol diya, to jhagda. Isliye seat pe hold lagta hai. Redis mein ek hi command: SET seat NX EX.",
+   "B": "दोनों को कन्फ़र्म्ड बोल दिया, तो झगड़ा। इसलिए सीट पे होल्ड लगता है। रेडिस में एक ही कमांड: सेट सीट एन एक्स ई एक्स।",
+   "cap": "Dono ko confirmed bol diya, to jhagda. Isliye seat pe hold lagta hai. Redis mein ek hi command: SET seat NX EX."
+  },
+  {
+   "id": "t3",
+   "g": "g11",
+   "beat": "step3",
+   "A": "NX ka matlab: sirf tab set karo jab pehle se na ho. Pehle ko OK mila, doosre ko nil: seat abhi kisi aur ke paas hai.",
+   "B": "एन एक्स का मतलब: सिर्फ़ तब सेट करो जब पहले से ना हो। पहले को ओके मिला, दूसरे को निल: सीट अभी किसी और के पास है।",
+   "cap": "NX ka matlab: sirf tab set karo jab pehle se na ho. Pehle ko OK mila, doosre ko nil: seat abhi kisi aur ke paas hai."
+  },
+  {
+   "id": "t4",
+   "g": "g12",
+   "beat": "step3",
+   "A": "Hold ke saath timer bhi. Agar aap payment nahi kar paaye, seat apne aap chhoot jaati hai. Isliye seat map mein seats gayab hoti hain, aur wapas bhi aa jaati hain.",
+   "B": "होल्ड के साथ टाइमर भी। अगर आप पेमेंट नहीं कर पाए, सीट अपने आप छूट जाती है। इसलिए सीट मैप में सीटें ग़ायब होती हैं, और वापस भी आ जाती हैं।",
+   "cap": "Hold ke saath timer bhi. Agar aap payment nahi kar paaye, seat apne aap chhoot jaati hai. Isliye seat map mein seats gayab hoti hain, aur wapas bhi aa jaati hain."
+  },
+  {
+   "id": "p1",
+   "g": "g13",
+   "beat": "but",
+   "A": "Ab paisa. Aapne pay dabaya, network atka, aapne phir dabaya. Kya do baar paisa katega?",
+   "B": "अब पैसा। आपने पे दबाया, नेटवर्क अटका, आपने फिर दबाया। क्या दो बार पैसा कटेगा?",
+   "cap": "Ab paisa. Aapne pay dabaya, network atka, aapne phir dabaya. Kya do baar paisa katega?"
+  },
+  {
+   "id": "p2",
+   "g": "g13",
+   "beat": "step4",
+   "A": "Nahi, kyunki har payment ke saath ek idempotency key jaati hai. Same key, same jawab, ek hi charge. Stripe ke docs yahi kehte hain.",
+   "B": "नहीं, क्योंकि हर पेमेंट के साथ एक आइडेम्पोटेंसी की जाती है। सेम की, सेम जवाब, एक ही चार्ज। स्ट्राइप के डॉक्स यही कहते हैं।",
+   "cap": "Nahi, kyunki har payment ke saath ek idempotency key jaati hai. Same key, same jawab, ek hi charge. Stripe ke docs yahi kehte hain."
+  },
+  {
+   "id": "p3",
+   "g": "g14",
+   "beat": "step4",
+   "A": "District ne 50 percent abhi, baaki baad mein wala option bhi diya. Matlab system ko ek aur halat yaad rakhni padti hai: aadha paid.",
+   "B": "डिस्ट्रिक्ट ने पचास परसेंट अभी, बाकी बाद में वाला ऑप्शन भी दिया। मतलब सिस्टम को एक और हालत याद रखनी पड़ती है: आधा पेड।",
+   "cap": "District ne 50 percent abhi, baaki baad mein wala option bhi diya. Matlab system ko ek aur halat yaad rakhni padti hai: aadha paid."
+  },
+  {
+   "id": "p4",
+   "g": "g14",
+   "beat": "step4",
+   "A": "Aur seat tabhi pakki, jab payment confirm ho. Warna hold chhoot jaata hai.",
+   "B": "और सीट तभी पक्की, जब पेमेंट कन्फ़र्म हो। वरना होल्ड छूट जाता है।",
+   "cap": "Aur seat tabhi pakki, jab payment confirm ho. Warna hold chhoot jaata hai."
+  },
+  {
+   "id": "e1",
+   "g": "g15",
+   "beat": "step5",
+   "A": "Ab bots. Ticketmaster ne kaha unhe pehle se teen guna bot traffic mila. Isliye link sirf registered logon ko, aur rate limits.",
+   "B": "अब बॉट्स। टिकटमास्टर ने कहा उन्हें पहले से तीन गुना बॉट ट्रैफ़िक मिला। इसलिए लिंक सिर्फ़ रजिस्टर्ड लोगों को, और रेट लिमिट्स।",
+   "cap": "Ab bots. Ticketmaster ne kaha unhe pehle se teen guna bot traffic mila. Isliye link sirf registered logon ko, aur rate limits."
+  },
+  {
+   "id": "r1",
+   "g": "g16",
+   "beat": "honest",
+   "A": "Ek zaroori baat: District ne apna design public nahi kiya. Jo main dikha raha hoon, woh screenshot ne dikhaya aur woh jo industry mein aam hai. Do lakh tickets, chaalis crore wali baatein, abhi tak unverified hain.",
+   "B": "एक ज़रूरी बात: डिस्ट्रिक्ट ने अपना डिज़ाइन पब्लिक नहीं किया। जो मैं दिखा रहा हूँ, वो स्क्रीनशॉट ने दिखाया और वो जो इंडस्ट्री में आम है। दो लाख टिकट, चालीस करोड़ वाली बातें, अभी तक अनवेरिफ़ाइड हैं।",
+   "cap": "Ek zaroori baat: District ne apna design public nahi kiya. Jo main dikha raha hoon, woh screenshot ne dikhaya aur woh jo industry mein aam hai. Do lakh tickets, chaalis crore wali baatein, abhi tak unverified hain."
+  },
+  {
+   "id": "r2",
+   "g": "g17",
+   "beat": "reframe",
+   "A": "To agli baar line mein dikhe aapke aage baarah hazaar, gussa mat karna. Wahi line aapki seat bacha rahi hai.",
+   "B": "तो अगली बार लाइन में दिखे आपके आगे बारह हज़ार, ग़ुस्सा मत करना। वही लाइन आपकी सीट बचा रही है।",
+   "cap": "To agli baar line mein dikhe aapke aage baarah hazaar, gussa mat karna. Wahi line aapki seat bacha rahi hai."
+  },
+  {
+   "id": "cta",
+   "g": "g18",
+   "beat": "cta",
+   "A": "Yeh us dost ko bhejiye jo kehta hai app crash ho gayi. Like, share aur subscribe karein, Sandesh Explains.",
+   "B": "ये उस दोस्त को भेजिए जो कहता है ऐप क्रैश हो गई। लाइक, शेयर और सब्सक्राइब करें, संदेश एक्सप्लेन्स को।",
+   "cap": "Yeh us dost ko bhejiye jo kehta hai app crash ho gayi. Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}
