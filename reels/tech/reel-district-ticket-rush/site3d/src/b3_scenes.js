@@ -16,18 +16,18 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
   g.add(LY); g.add(LO);
   var a = SC[4], t1 = S0('t1'), t2 = S0('t2'), t3 = S0('t3'), t4 = S0('t4'), tOK = WS('t3', 'के', .45), tNil = WS('t3', 'निल', .75), tExp = WS('t4', 'छुट', .55);
   var A0 = fr([0, 2, 8], 42, 36, 0, 38, 800), A1 = fr([sp.x, sp.y, sp.z], 15, 24, 0, 38, 1090); lock(4, 'locked wide', a, A0); sh(4, 'crane down', t1 + 1.6, t1 + 5.2, A0, A1);
-  PLM(g, tm, A1, 540, 690, 15, 700); PL(g, CH, A1, 540, 340, 14, 210); PL(g, CN, A1, 540, 340, 14, 210); PL(g, CT, A1, 540, 340, 14, 210); PL(g, LB, A1, 540, 1185, 14, 64); PL(g, LH, A1, 540, 1255, 14, 50); LB.userData.p0 = null;
+  PLM(g, tm, A1, 540, 625, 15, 700); PL(g, CH, A1, 540, 340, 14, 210); PL(g, CN, A1, 540, 340, 14, 210); PL(g, CT, A1, 540, 340, 14, 210); PL(g, LB, A1, 540, 1185, 14, 64); PL(g, LH, A1, 540, 1255, 14, 50); LB.userData.p0 = null;
   var enter = new V3(-9, 13, 34), arc = new V3(-6, 17, 24), arc2 = new V3(8, 16, 26), en2 = new V3(11, 13, 36);
   SCN[4] = function (t) { g.visible = true;
     var held = t >= tOK && t < tExp, u1 = clamp((t - (t1 + .6)) / 1.4), u2 = clamp((t - (t1 + 1.9)) / 1.3);
     pos.forEach(function (p, i) { var h = hash(i * 7 + 3), c = 0; if (i === tidx) { c = held ? AMB : SLATE; } else if (h < .38) c = 0x6fa81f; else { var cyc = (t * .5 + hash(i + 11) * 20) % 14; c = (cyc < 3.2 && hash(i + 17) < (t > t4 - 2 ? .5 : .22)) ? AMB : SLATE; } col.setHex(c); im.setColorAt(i, col); }); im.instanceColor.needsUpdate = true;
-    var hv1 = sp.clone().add(new V3(-1.5, 1.6, .6)), hv2 = sp.clone().add(new V3(1.5, 1.6, .6));
+    var hv1 = sp.clone().add(new V3(-1.5, 1.15, .6)), hv2 = sp.clone().add(new V3(1.5, 1.15, .6));
     var p1 = bez(enter, arc, hv1, eo3(u1)), p2 = bez(en2, arc2, hv2, eo3(u2)); if (t >= tOK) { var uu = clamp((t - tOK) / .5); p1 = hv1.clone().lerp(sp.clone().add(new V3(0, .9, 0)), eo3(uu)); } if (t >= tNil) { var vv = clamp((t - tNil) / 1.0); p2 = hv2.clone().add(new V3(2.2 * eo3(vv), 1.0 * eo3(vv), 1.4 * eo3(vv))); }
     if (t >= tExp) { var ex = clamp((t - tExp) / 1.0); p1 = sp.clone().add(new V3(0, .9 + 2.0 * eo3(ex), 0)); }
     TK.position.copy(p1); TK.rotation.set(-.3, .5, 0); TK.scale.setScalar(.3 * (t >= tExp ? 1 - .9 * clamp((t - tExp - .4) / 1.2) : 1)); TK2.position.copy(p2); TK2.rotation.set(-.3, -.5, 0); TK2.scale.setScalar(.3 * (t >= tNil + 1 ? 1 - clamp((t - tNil - 1) / 1.0) : 1)); TK.setCol(held ? AMB : CYN);
     TK.visible = t > t1 + .6 && !(t > tExp + 1.6); TK2.visible = t > t1 + 1.9 && t < tNil + 2.2;
     setBar(link1, TK.position, sp); setBar(link2, TK2.position, sp); link1.visible = TK.visible && t < tOK; link2.visible = TK2.visible && t < tNil;
-    LY.position.copy(TK.position).add(new V3(0, .75, 0)); LO.position.copy(TK2.position).add(new V3(0, .75, 0)); put(LY, t, t1 + 1.4, .3, tExp + 1.4); put(LO, t, t1 + 2.6, .3, tNil + 2);
+    LY.position.copy(TK.position).add(new V3(0, -.55, .3)); LO.position.copy(TK2.position).add(new V3(0, -.55, .3)); put(LY, t, t1 + 1.4, .3, tExp + 1.4); put(LO, t, t1 + 2.6, .3, tNil + 2);
     var tTy = WS('t2', 'रेडिस', .6), lines = [['> SET seat:B14 you NX EX 300', IVO, tTy, 2.2], ['OK', LIME, tOK, .15], ['> SET seat:B14 other NX EX 300', IVO, tOK + .5, 1.6], ['(nil)', RED, tNil, .15], ['# key expires \u2192 seat free', AMB, tExp - .6, 1.3]];
     var rem = held ? 1 - (t - tOK) / (tExp - tOK) : (t >= tExp ? 0 : 1), sec = Math.round(300 * clamp(rem)); tm.draw(lines, t, t >= tOK - .2 && t < tExp + 1.2 ? ['TTL ' + Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2) + ' \u00b7 TIMER SPED UP', AMB] : null); tm.visible = t > tTy - .4;
     halo.material.opacity = held ? .8 : (t > tExp ? Math.max(0, .8 - (t - tExp)) : 0); ring.visible = t >= tOK && t < tExp + .2; if (ring.visible) { ring.geometry.dispose(); ring.geometry = new THREE.RingGeometry(.95, 1.15, 56, 1, 0, Math.max(.05, 6.283 * rem)); }
