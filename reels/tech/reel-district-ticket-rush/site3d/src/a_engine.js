@@ -19,7 +19,7 @@ var key = new THREE.DirectionalLight(0xbfd8ff, 1.15); key.position.set(8, 16, 10
 var rim = new THREE.DirectionalLight(0xff2d78, .9); rim.position.set(-10, 6, -12); S.add(rim);
 var TM = window.TM, TMs = {}; TM.sentences.forEach(function (s) { TMs[s.id] = s; });
 function S0(id) { return TMs[id].t0; } function S1(id) { return TMs[id].t1; } function SP(id, f) { var s = TMs[id]; return s.t0 + (s.t1 - s.t0) * f; }
-function WS(id, sub, f) { var s = TMs[id]; for (var k = s.k0; k <= s.k1; k++) if (TM.words[k][0].indexOf(sub) >= 0) return TM.words[k][1]; return SP(id, f == null ? .5 : f); }
+window.__ws = {}; function WS(id, sub, f) { var s = TMs[id]; for (var k = s.k0; k <= s.k1; k++) if (TM.words[k][0].replace(/[,.?।]/g, '') === sub || (sub.length > 2 && TM.words[k][0].indexOf(sub) >= 0)) { window.__ws[id + '|' + sub] = [TM.words[k][0], +TM.words[k][1].toFixed(2), +s.t0.toFixed(2), +s.t1.toFixed(2)]; return TM.words[k][1]; } window.__ws[id + '|' + sub] = ['MISS', +SP(id, f == null ? .5 : f).toFixed(2), +s.t0.toFixed(2), +s.t1.toFixed(2)]; return SP(id, f == null ? .5 : f); }
 var END = TM.end;
 /* ---- authored camera shots: named move, from/to pose, start/end time, ease; locked off between shots; no drift ---- */
 var CAMS = {};

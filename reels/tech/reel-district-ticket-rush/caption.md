@@ -1,14 +1,14 @@
 # caption.md — "12,569 log aapke aage" (Samay Raina ticket sale, system design explainer, Hinglish, ~2 min 50 s)
 
-## 1. Instagram caption (paste as is, ≈700 characters)
+## 1. Instagram caption (paste as is, ≈690 characters)
 Yeh us dost ko bhejiye jo kehta hai "app crash ho gayi" 👇
 
-Samay Raina ke tickets ek ghante se kam mein 1 lakh+ bike (reported), District app pe. Samay ne "aapke aage 12,569 log" ka screenshot dala. Yeh crash nahi tha, yeh system design tha. 1 lakh / 3,600 s = sirf ~28 tickets per second, to dikkat bechne mein nahi, sabke ek saath aane mein thi. 5 tareeke: 1) sale ko 48 ghante mein baanto (registration, pre-sale, WhatsApp link) 2) virtual waiting room: line se ~21 log/second andar 3) seat par hold (Redis SET NX EX) 4) idempotency key: do tap, ek charge 5) bots par rate limit.
+Samay Raina ke 1 lakh+ tickets 1 ghante se kam mein bike (reported), District pe. "Aapke aage 12,569 log" crash nahi, system design tha: ~28 tickets/second ka math, 48 ghante ka pre-sale, waiting room (~21 log/s), Redis seat hold, idempotency key, bots par rate limit.
 
-Catch: District ne apna design public nahi kiya. Jo screenshot ne dikhaya, woh dikhaya; baaki "aam tareeka" hai (vendor docs). "2 lakh tickets / Rs 40 crore" abhi unverified hai, use nahi kiya.
+Catch: District ka design public nahi hai; baaki aam tareeka (vendor docs). "2 lakh / Rs 40 cr" unverified, use nahi kiya.
 
-🔊 Voice: meri awaaz ka AI clone (no avatar). Script, research aur edit mere hain. Visuals illustrative.
-Sources: Cloudflare Waiting Room, Redis SET, Stripe idempotent requests docs (read 3 Nov 2026); eventfaqs, Siasat, Storyboard18 (reported); Ticketmaster Senate testimony as reported (Jan 2023).
+🔊 Meri awaaz ka AI clone (no avatar). Script, research, edit mere hain. Visuals illustrative.
+Sources: Cloudflare, Redis, Stripe docs (3 Nov 2026); eventfaqs, Siasat (reported).
 
 #SamayRaina #SystemDesign #TicketSale #TechExplained #SandeshExplains
 

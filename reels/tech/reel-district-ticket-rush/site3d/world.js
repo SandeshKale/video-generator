@@ -19,7 +19,7 @@ var key = new THREE.DirectionalLight(0xbfd8ff, 1.15); key.position.set(8, 16, 10
 var rim = new THREE.DirectionalLight(0xff2d78, .9); rim.position.set(-10, 6, -12); S.add(rim);
 var TM = window.TM, TMs = {}; TM.sentences.forEach(function (s) { TMs[s.id] = s; });
 function S0(id) { return TMs[id].t0; } function S1(id) { return TMs[id].t1; } function SP(id, f) { var s = TMs[id]; return s.t0 + (s.t1 - s.t0) * f; }
-function WS(id, sub, f) { var s = TMs[id]; for (var k = s.k0; k <= s.k1; k++) if (TM.words[k][0].indexOf(sub) >= 0) return TM.words[k][1]; return SP(id, f == null ? .5 : f); }
+window.__ws = {}; function WS(id, sub, f) { var s = TMs[id]; for (var k = s.k0; k <= s.k1; k++) if (TM.words[k][0].replace(/[,.?।]/g, '') === sub || (sub.length > 2 && TM.words[k][0].indexOf(sub) >= 0)) { window.__ws[id + '|' + sub] = [TM.words[k][0], +TM.words[k][1].toFixed(2), +s.t0.toFixed(2), +s.t1.toFixed(2)]; return TM.words[k][1]; } window.__ws[id + '|' + sub] = ['MISS', +SP(id, f == null ? .5 : f).toFixed(2), +s.t0.toFixed(2), +s.t1.toFixed(2)]; return SP(id, f == null ? .5 : f); }
 var END = TM.end;
 /* ---- authored camera shots: named move, from/to pose, start/end time, ease; locked off between shots; no drift ---- */
 var CAMS = {};
@@ -139,8 +139,8 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
   var tA = S0('h2'), tB = S0('h3'), tC = S1('h3') - 2.0, A0 = fr([0, 2.6, 0], 16.4, 3, 0), A1 = fr([0, 2.6, 0], 14.0, 3, 0), A2 = fr([0, 3.0, 0], 20, 8, 0);
   lock(0, 'locked wide', 0, A0); sh(0, 'push-in', tA, tA + 2.6, A0, A1); sh(0, 'pull-back', tB + 1.2, tB + 4.2, A1, A2);
   SCN[0] = function (t) { g.visible = true; var ahead = 12569 - 21 * t; P.draw('queue', fmt(ahead), .26 + .004 * t, t); P.rotation.y = 0;
-    put(L1, t, -1, .3, S0('h2') - .1); put(L2, t, WS('h1', 'घंटे', .4), .35, S0('h2') - .1); put(D1, t, WS('h1', 'डिस्ट्रिक्ट', .75), .35, S0('h3') + .2); put(D2, t, WS('h1', 'बुकमायशो', .85), .35, S0('h3') + .2);
-    put(SS, t, S0('h2') + .1, .4, S0('h3')); var tc = WS('h3', 'क्रैश', .0), ts = WS('h3', 'सिस्टम', .3); put(CR, t, tc, .3, ts); put(SD, t, ts, .35); put(Q1, t, WS('h3', 'टूटी', .5), .35); put(Q2, t, WS('h3', 'सीट', .75), .35);
+    put(L1, t, -1, .3, S0('h2') - .1); put(L2, t, WS('h1', 'घंटे', .4), .35, S0('h2') - .1); put(D1, t, WS('h1', 'दिस्ट्रिक्ट', .75), .35, S0('h3') + .2); put(D2, t, WS('h1', 'बुक्माइशो', .85), .35, S0('h3') + .2);
+    put(SS, t, S0('h2') + .1, .4, S0('h3')); var tc = WS('h3', 'क्रैश', .0), ts = WS('h3', 'system', .3); put(CR, t, tc, .3, ts); put(SD, t, ts, .35); put(Q1, t, WS('h3', 'तुटी', .5), .35); put(Q2, t, WS('h3', 'सीट', .75), .35);
     var u = clamp((t - tC) / 2.0); TK.visible = u > 0; if (u > 0) { TK.setCol(CYN); TK.position.set(0, 2.6 + .6 * eo3(u), .2 + 3.2 * eo3(u)); TK.rotation.set(-.1, .35 * eo3(u), .1); TK.scale.setScalar(.35 + .9 * eo3(u)); } }; })();
 
 /* ===== S2 the math, then the stampede (the crowd is 9,000 figures standing for 1 lakh) ===== */
@@ -152,7 +152,7 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
   var a = SC[1], tS = WS('n3', 'सबका', .3), A0 = fr([0, 2, 8], 40, 24, 0, 38, 930), A1 = fr([0, 1.5, 10], 34, 7, 0, 38, 880);
   PL(g, E1, A0, 540, 300, 36, 84); PL(g, E2, A0, 540, 405, 36, 84); PL(g, E3, A0, 540, 530, 36, 112); PL(g, LS, A0, 540, 880, 36, 70); PL(g, RK, A0, 700, 640, 36, 62); PL(g, RKX, A1, 540, 740, 34, 74); PL(g, CD, A1, 540, 430, 34, 250);
   lock(1, 'locked high', a, A0); sh(1, 'crane-out', tS - .2, tS + 3.4, A0, A1);
-  SCN[1] = function (t) { g.visible = true; put(E1, t, WS('n1', 'लाख', .45), .35, tS - .3); put(E2, t, WS('n1', 'घंटा', .6), .35, tS - .3); put(E3, t, WS('n1', 'अट्ठाईस', .85), .45, tS - .3); put(LS, t, WS('n1', 'यानी', .75) + .2, .4, tS); put(RK, t, WS('n2', 'सर्वर', .5), .4, tS); put(RKX, t, tS + 1.6, .4);
+  SCN[1] = function (t) { g.visible = true; put(E1, t, WS('n1', 'लाग', .45), .35, tS - .3); put(E2, t, WS('n1', 'घंटा', .6), .35, tS - .3); put(E3, t, WS('n1', 'अथाइस', .85), .45, tS - .3); put(LS, t, WS('n1', 'यानी', .75) + .2, .4, tS); put(RK, t, WS('n2', 'सर्वर', .5), .4, tS); put(RKX, t, tS + 1.6, .4);
     put(CD, t, WS('n3', 'एक', .35) + 1.5, .5, WS('n3', 'पाँच', .6) + .5);
     line.update(function (i, o) { var z = ((t * 3.2 + i * 1.3) % 40); o.z = 40 - z; o.x = Math.sin(i * 7.1) * .12; o.y = z < 40 ? brow(i, t) : 0; o.ry = Math.PI; o.s = o.z < -3 ? 0 : 1; });
     var tt = t - tS; cr.visible = t >= WS('n3', 'सबका', .3) - 3.0; if (cr.visible) { cr.update(function (i, o) { var sx = (hash(i) - .5) * 52, sz = 26 + hash(i + 1) * 62, gx = (hash(i + 2) - .5) * 13, gz = 3 + hash(i + 3) * 17, dl = hash(i + 4) * 2.2, u = clamp((tt - dl + 1.6) / 3.0); var e = eo3(u); o.x = lerp(sx, gx, e); o.z = lerp(sz, gz, e); o.ry = Math.PI + (hash(i + 5) - .5) * .5; o.y = u > 0 && u < 1 ? brow(i, t) : 0; o.s = .9 + hash(i + 6) * .25; }); }
@@ -177,7 +177,7 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
     cc.update(function (i, o) { var xslot = -.6 + 9 * hash(i + 3), dly = tb - 1.0 + (xslot + .6) / 9 * 7.5, xs = -6.4 + hash(i + 5) * .8, u = clamp((t - dly) / 2.6); var x = lerp(xs, xslot, eo3(u)), arrived = rate * (t - tReg + 4) - 17 - hash(i + 0) * 22 > -6.6;
       o.x = x; o.z = lerp(1.0 + hash(i + 7) * .8, -.3 + hash(i + 1) * 2.2, eo3(u)); o.y = u > 0 && u < 1 ? brow(i, t) : 0; o.ry = u > 0 && u < 1 ? Math.PI / 2 : Math.PI; o.s = (arrived && t >= tReg) ? .95 : 0; });
     cols.forEach(function (cb, k) { var u = clamp((t - (tb - .6 + k * .7)) / .9); cb.visible = u > 0; cb.scale.y = Math.max(.01, 2.3 * eo3(u) * (.92 + .16 * hash(k + 5))); });
-    put(LA, t, a + .6, .4, tb - .5); put(LB, t, tb + .2, .4); put(LC2, t, tb + 2.4, .4); put(WA, t, WS('s1b', 'व्हाट्सऐप', .9), .4, tc - .3); put(SPR, t, tb + 3.4, .45, tc - .3); put(PS, t, WS('s1b', 'प्री', .1), .5, WS('s1b', 'बुकिंग', .6)); put(TMQ, t, WS('s1c', 'टिकटमास्टर', .2), .5); AS.visible = t < WS('s1b', 'प्री', .1) - .1;
+    put(LA, t, a + .6, .4, tb - .5); put(LB, t, tb + .2, .4); put(LC2, t, tb + 2.4, .4); put(WA, t, WS('s1b', 'वाटसेब', .9), .4, tc - .3); put(SPR, t, tb + 3.4, .45, tc - .3); put(PS, t, WS('s1b', 'प्री', .1), .5, WS('s1b', 'बुकिंग', .6)); put(TMQ, t, WS('s1c', 'टिकेटमास्टर', .2), .5); AS.visible = t < WS('s1b', 'प्री', .1) - .1;
     arch.children[2].material.emissiveIntensity = 1.4 + .5 * Math.sin(t * 5); }; })();
 
 /* ===== S4 the virtual waiting room: a serpentine line, a valve admitting ~21/s, a live dashboard ===== */
@@ -200,7 +200,7 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
   SCN[3] = function (t) { g.visible = true; var tf = tq2 + 1.0, ahead = 12569 - 21 * Math.max(0, t - tq2);
     cr.update(function (i, o) { var sx = (hash(i) - .5) * 11, sz = 3 + hash(i + 1) * 9, v = 1.1, s = .75 * i - v * Math.max(0, t - tf) + .2, pp = { x: 0, z: 0, ry: 0 }; path(s, pp); var u = sstep((t - (tq2 - .2 + hash(i + 2) * .8)) / 2.0); o.x = lerp(sx, pp.x, u); o.z = lerp(sz, pp.z, u); o.ry = lerp(hash(i + 4) * 6.28, pp.ry, u); o.y = brow(i, t) * (u > .3 ? 1 : 0); o.s = (s < -6) ? 0 : (.9 + hash(i + 6) * .15); });
     drawDash(fmt(t < tq2 ? 12569 : ahead), t < tq4 - 1 ? '—' : '~21', fmt(0 + Math.floor(t * 3.2)), fmt(Math.floor(t * 1.1)), t); dash.visible = t >= WS('q2', 'आगे', .5);
-    put(CV, t, WS('q1', 'वेटिंग', .8), .5, WS('q2', 'आप', .2)); put(FG, t, tq2 + 2.4, .4); put(CF, t, WS('q3', 'पहले', .15), .5, tq4 - .2); put(RT, t, WS('q4', 'सेकंड', .5), .45, tq5 - .1); put(EQ, t, WS('q4', 'बाँटो', .5), .45, tq5 - .1); put(BG, t, WS('q5', 'बग', .75) - 1.5, .35, WS('q5', 'बग', .75) + .6); put(OK, t, Math.max(WS('q5', 'काम', .9), WS('q5', 'बग', .75) + .7), .45);
+    put(CV, t, WS('q1', 'वेटिंग', .8), .5, WS('q2', 'आप', .2)); put(FG, t, tq2 + 2.4, .4); put(CF, t, WS('q3', 'पहले', .15), .5, tq4 - .2); put(RT, t, WS('q4', 'सेंट', .5), .45, tq5 - .1); put(EQ, t, WS('q4', 'बांटो', .5), .45, tq5 - .1); put(BG, t, WS('q5', 'बग', .75) - 1.5, .35, WS('q5', 'बग', .75) + .6); put(OK, t, Math.max(WS('q5', 'काम', .9), WS('q5', 'बग', .75) + .7), .45);
     var f = [0, 2, 5]; [T1, T2, T3].forEach(function (l, j) { var pp = { x: 0, z: 0, ry: 0 }; path(.75 * f[j] - 1.1 * Math.max(0, t - tf) + .2, pp); l.position.set(pp.x + 2.1, 2.9, pp.z); put(l, t, WS('q3', 'कुकी', .5) + j * .5, .35, tq4 - .2); });
     var pp2 = { x: 0, z: 0, ry: 0 }; path(.75 * (N - 1) - 1.1 * Math.max(0, t - tf) + .2, pp2); YOU.position.set(pp2.x, 2.5, pp2.z); put(YOU, t, tq2 + 2.6, .35); TK.visible = YOU.visible; if (TK.visible) { TK.setCol(CYN); TK.position.set(pp2.x, 1.9, pp2.z); TK.rotation.set(-.5, 0, 0); TK.scale.setScalar(.3); } }; })();
 /* Part B3: scenes 5-9 */
@@ -219,7 +219,7 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
   var LB = lab('SEAT B14', IVO, .46, { font: '400 46px Bungee', bg: true }), LY = lab('AAP', CYN, .3, { fs: 34, bg: true, noClamp: true }), LO = lab('DOOSRA', MAG, .3, { fs: 34, bg: true, noClamp: true }), LH = lab('HOLD: PAISA NAHI \u2192 SEAT WAPAS', AMB, .36, { fs: 38, bg: true }),
     CH = card('HOLD (LOCK)', 'ek seat par ek waqt mein\nek hi owner', AMB, 1.2), CN = card('NX', 'only if it does not exist\n(pehle koi nahi, tab hi set)', CYN, 1.2), CT = card('TTL \u00b7 EXPIRE', 'timer khatam, hold khud chhoot', LIME, 1.2);
   g.add(LY); g.add(LO);
-  var a = SC[4], t1 = S0('t1'), t2 = S0('t2'), t3 = S0('t3'), t4 = S0('t4'), tOK = WS('t3', 'ओके', .45), tNil = WS('t3', 'निल', .75), tExp = WS('t4', 'छूट', .55);
+  var a = SC[4], t1 = S0('t1'), t2 = S0('t2'), t3 = S0('t3'), t4 = S0('t4'), tOK = WS('t3', 'के', .45), tNil = WS('t3', 'निल', .75), tExp = WS('t4', 'छुट', .55);
   var A0 = fr([0, 2, 8], 42, 36, 0, 38, 800), A1 = fr([sp.x, sp.y, sp.z], 15, 24, 0, 38, 1090); lock(4, 'locked wide', a, A0); sh(4, 'crane down', t1 + 1.6, t1 + 5.2, A0, A1);
   PLM(g, tm, A1, 540, 690, 15, 700); PL(g, CH, A1, 540, 340, 14, 210); PL(g, CN, A1, 540, 340, 14, 210); PL(g, CT, A1, 540, 340, 14, 210); PL(g, LB, A1, 540, 1185, 14, 64); PL(g, LH, A1, 540, 1255, 14, 50); LB.userData.p0 = null;
   var enter = new V3(-9, 13, 34), arc = new V3(-6, 17, 24), arc2 = new V3(8, 16, 26), en2 = new V3(11, 13, 36);
@@ -237,7 +237,7 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
     var rem = held ? 1 - (t - tOK) / (tExp - tOK) : (t >= tExp ? 0 : 1), sec = Math.round(300 * clamp(rem)); tm.draw(lines, t, t >= tOK - .2 && t < tExp + 1.2 ? ['TTL ' + Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2) + ' \u00b7 TIMER SPED UP', AMB] : null); tm.visible = t > tTy - .4;
     halo.material.opacity = held ? .8 : (t > tExp ? Math.max(0, .8 - (t - tExp)) : 0); ring.visible = t >= tOK && t < tExp + .2; if (ring.visible) { ring.geometry.dispose(); ring.geometry = new THREE.RingGeometry(.95, 1.15, 56, 1, 0, Math.max(.05, 6.283 * rem)); }
     pulse.material.opacity = t >= tExp ? Math.max(0, .9 - (t - tExp) * 1.2) : 0; pulse.scale.setScalar(2 + 5 * clamp((t - tExp) / .9));
-    put(LB, t, t1 + .3, .4); put(CH, t, WS('t2', 'होल्ड', .5) + .2, .5, tTy - .2); put(CN, t, WS('t3', 'एक्स', .0) - .1, .5, tOK - .3); put(CT, t, WS('t4', 'टाइमर', .15), .5, WS('t4', 'पेमेंट', .45)); put(LH, t, WS('t4', 'पेमेंट', .45) + .2, .45); }; })();
+    put(LB, t, t1 + .3, .4); put(CH, t, WS('t2', 'होल', .5) + .2, .5, tTy - .2); put(CN, t, WS('t3', 'NX', .0) - .1, .5, tOK - .3); put(CT, t, WS('t4', 'टाइमर', .15), .5, WS('t4', 'पेमेंट', .45)); put(LH, t, WS('t4', 'पेमेंट', .45) + .2, .45); }; })();
 
 /* ===== S6 payment: one key, one charge (phone <-> server across a wire, key store ledger, lost reply, retry, seat state chain) ===== */
 (function () { var g = grp(), A = fr([0, 6, 0], 21, 0, 0, 38, 761), W3 = function (px, py) { return unp(A, px, py, 21); };
@@ -251,7 +251,7 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
   var r1 = Panel(300, 180, 1.5), r2 = Panel(300, 180, 1.5); function drawR(p, n) { var x = p.ctx; x.fillStyle = '#e9e4d6'; x.fillRect(0, 0, 300, 180); x.fillStyle = '#15181f'; x.font = '400 26px "Cutive Mono"'; x.textAlign = 'left'; x.fillText('RECEIPT #' + n, 16, 38); x.fillText('\u20b91,299 \u00b7 Seat B14', 16, 80); x.fillStyle = '#a3261c'; x.font = '400 30px Bungee'; x.fillText('KEY a9f3-77c2', 16, 140); p.tex.needsUpdate = true; } drawR(r1, 1); drawR(r2, 2); var pr1 = W3(290, 1045), pr2 = W3(470, 1070); g.add(r1); g.add(r2);
   var chain = Panel(760, 200, 4.3); chain.position.copy(W3(540, 1045)); g.add(chain);
   function drawChain(stage, t) { var x = chain.ctx; x.fillStyle = 'rgba(7,8,12,.94)'; x.fillRect(0, 0, 760, 200); x.strokeStyle = HEX(IVO); x.lineWidth = 5; x.strokeRect(2.5, 2.5, 755, 195); x.font = '400 26px Bungee'; x.fillStyle = 'rgba(242,244,255,.6)'; x.textAlign = 'left'; x.fillText('SEAT STATE \u00b7 ILLUSTRATIVE', 20, 38); var st = [['FREE', SLATE], ['HELD', AMB], ['HALF PAID', MAG], ['CONFIRMED', LIME]]; st.forEach(function (s, i) { var x0 = 20 + i * 184, on = stage >= i; x.fillStyle = on ? HEX(s[1]) : '#1a1e30'; x.fillRect(x0, 70, 172, 100); x.fillStyle = on ? '#07080c' : 'rgba(242,244,255,.45)'; x.font = '400 26px Bungee'; x.textAlign = 'center'; x.fillText(s[0], x0 + 86, 128); if (i < 3) { x.fillStyle = 'rgba(242,244,255,.6)'; x.fillText('\u25b8', x0 + 178, 122); } }); chain.tex.needsUpdate = true; }
-  var a = SC[5], p1 = S0('p1'), p2 = S0('p2'), p3 = S0('p3'), p4 = S0('p4'), tTap1 = WS('p1', 'दबाया', .35), tBrk = WS('p1', 'अटका', .6), tTap2 = WS('p1', 'फिर', .75), tOne = WS('p2', 'एक', .75), tKey = WS('p2', 'आइडेम्पोटेंसी', .35);
+  var a = SC[5], p1 = S0('p1'), p2 = S0('p2'), p3 = S0('p3'), p4 = S0('p4'), tTap1 = WS('p1', 'दबाया', .35), tBrk = WS('p1', 'कटका', .6), tTap2 = WS('p1', 'फिर', .75), tOne = WS('p2', 'चार', .8), tKey = WS('p2', 'आइडम', .35);
   lock(5, 'locked', a, A); sh(5, 'slow push', p3, p3 + 5, A, fr([0, 6, 0], 19.5, 0, 0, 38, 761));
   SCN[5] = function (t) { g.visible = true; var paid = t >= tTap2 + 1.6; ph.draw('pay', paid ? 1 : 0, t > tBrk && !paid ? 1 : 0, t);
     leds.forEach(function (l, k) { l.material.color.setHex(hash(k + Math.floor(t * 6)) > .3 ? LIME : 0x14301a); });
@@ -272,7 +272,7 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
   lock(6, 'locked plan view', a, A0); sh(6, 'push-in', S0('e1') + 3.5, S0('e1') + 6.5, A0, A1);
   SCN[6] = function (t) { g.visible = true; var tb = S0('e1'); for (var i = 0; i < N; i++) { var p = ((t - tb + hash(i) * 6) * .22) % 1, z, y = .25 + Math.abs(Math.sin((t + hash(i)) * 5)) * .25, x = (hash(i + 1) - .5) * 9.6; if (p < .6) z = 11 - 9.6 * eo3(p / .6); else z = 1.4 + 3.2 * sstep((p - .6) / .4); if (Math.abs(x) < .45) x = x < 0 ? -.8 : .8; m4.makeTranslation(x, y, z); bots.setMatrixAt(i, m4); } bots.instanceMatrix.needsUpdate = true;
     for (i = 0; i < 14; i++) { var u = ((t * .3 + i / 14) % 1), z2 = lerp(11, -5.5, u); m4.makeTranslation(0, .3, z2); ok.setMatrixAt(i, m4); } ok.instanceMatrix.needsUpdate = true;
-    put(BX, t, WS('e1', 'बॉट्स', .0) + .3, .4); put(TMQ, t, WS('e1', 'टिकटमास्टर', .2), .5, WS('e1', 'लिंक', .6)); put(PADL, t, WS('e1', 'लिंक', .6), .4); put(RG, t, WS('e1', 'रजिस्टर्ड', .65), .4); put(RL, t, WS('e1', 'रेट', .85), .5); }; })();
+    put(BX, t, WS('e1', 'BOT', .0) + .3, .4); put(TMQ, t, WS('e1', 'Ticketmaster', .2), .5, WS('e1', 'लिंक', .6)); put(PADL, t, WS('e1', 'लिंक', .6), .4); put(RG, t, WS('e1', 'रजिस्टर', .65), .4); put(RL, t, WS('e1', 'रेट', .85), .5); }; })();
 
 /* ===== S8 what is real: WE CAN SEE vs COMMONLY BUILT, with the unverified claim struck off ===== */
 (function () { var g = grp(), A = fr([0, 6, 0], 17.5, 0, 0, 38, 761), W3 = function (px, py) { return unp(A, px, py, 17.5); }, wpp = 2 * 17.5 * Math.tan(19 * Math.PI / 180) / H, pa = Panel(840, 420, 756 * wpp), pb = Panel(840, 420, 756 * wpp), st = Panel(840, 130, 756 * wpp);
@@ -281,10 +281,10 @@ function bez(a, b, c, u) { var x = (1 - u) * (1 - u), y = 2 * (1 - u) * u, z = u
   function draw(p, title, col, rows, t0, t) { var x = p.ctx; x.fillStyle = 'rgba(7,8,12,.95)'; x.fillRect(0, 0, 840, 420); x.strokeStyle = HEX(col); x.lineWidth = 7; x.strokeRect(3.5, 3.5, 833, 413); x.fillStyle = HEX(col); x.fillRect(0, 0, 840, 66); x.fillStyle = '#07080c'; x.font = '400 36px Bungee'; x.textAlign = 'left'; x.fillText(title, 24, 46); x.font = '600 38px Inter'; rows.forEach(function (r, i) { if (t < t0 + i * .75) return; var u = clamp((t - t0 - i * .75) / .35); x.globalAlpha = u; x.fillStyle = HEX(col); x.fillText('\u25aa', 24, 130 + i * 72); x.fillStyle = HEX(IVO); x.fillText(r, 66, 130 + i * 72); x.globalAlpha = 1; }); p.tex.needsUpdate = true; }
   var a = SC[7]; lock(7, 'locked', a, A);
   SCN[7] = function (t) { g.visible = true; var r1 = S0('r1'); put(HD, t, r1 + .1, .4);
-    draw(pa, 'WE CAN SEE', CYN, ['Registration \u2192 48 h pre-sale', 'WhatsApp booking link', '\u201c12,569 fans ahead\u201d screenshot', '50% pay-now option'], WS('r1', 'स्क्रीनशॉट', .5) - 2.8, t);
+    draw(pa, 'WE CAN SEE', CYN, ['Registration \u2192 48 h pre-sale', 'WhatsApp booking link', '\u201c12,569 fans ahead\u201d screenshot', '50% pay-now option'], WS('r1', 'स्क्रीन्शॉट', .5) - 2.8, t);
     draw(pb, 'COMMONLY BUILT (DOCS)', AMB, ['Waiting room (Cloudflare)', 'Redis SET NX EX hold', 'Idempotency keys (Stripe)', 'Rate limits + bot checks'], WS('r1', 'इंडस्ट्री', .5) - 1.6, t);
-    var x = st.ctx; x.fillStyle = 'rgba(7,8,12,.95)'; x.fillRect(0, 0, 840, 130); x.strokeStyle = HEX(RED); x.lineWidth = 6; x.strokeRect(3, 3, 834, 124); x.fillStyle = 'rgba(242,244,255,.8)'; x.font = '600 36px Inter'; x.textAlign = 'left'; x.fillText('2 lakh tickets \u00b7 \u20b940 crore', 28, 52); x.fillStyle = HEX(RED); x.font = '400 40px Bungee'; x.fillText('UNVERIFIED \u2014 NOT USED', 28, 106); var k = clamp((t - WS('r1', 'अनवेरिफ़ाइड', .93) + .9) / .5); x.strokeStyle = HEX(RED); x.lineWidth = 8; x.beginPath(); x.moveTo(20, 40); x.lineTo(20 + 560 * k, 40); x.stroke(); st.tex.needsUpdate = true;
-    pa.visible = t > r1 + 1.5; pb.visible = t > WS('r1', 'इंडस्ट्री', .5) - 2.2; st.visible = t > WS('r1', 'दो', .8) - .4; }; })();
+    var x = st.ctx; x.fillStyle = 'rgba(7,8,12,.95)'; x.fillRect(0, 0, 840, 130); x.strokeStyle = HEX(RED); x.lineWidth = 6; x.strokeRect(3, 3, 834, 124); x.fillStyle = 'rgba(242,244,255,.8)'; x.font = '600 36px Inter'; x.textAlign = 'left'; x.fillText('2 lakh tickets \u00b7 \u20b940 crore', 28, 52); x.fillStyle = HEX(RED); x.font = '400 40px Bungee'; x.fillText('UNVERIFIED \u2014 NOT USED', 28, 106); var k = clamp((t - WS('r1', 'अन्वेरिफाईड', .93) + .9) / .5); x.strokeStyle = HEX(RED); x.lineWidth = 8; x.beginPath(); x.moveTo(20, 40); x.lineTo(20 + 560 * k, 40); x.stroke(); st.tex.needsUpdate = true;
+    pa.visible = t > r1 + 1.5; pb.visible = t > WS('r1', 'इंडस्ट्री', .5) - 2.2; st.visible = t > WS('r1', 'दोलाक', .8) - .4; }; })();
 
 /* ===== S9 the reframe: the same phone as frame 0, the queue now reads "seat protected", the token lands ===== */
 (function () { var g = grp(), P = Phone(); P.position.set(0, 2.6, 0); g.add(P); var fc = Crowd(1600, 'mag', 5); fc.update(function (i, o) { o.x = (hash(i) - .5) * 62; o.z = -16 - hash(i + 1) * 36; o.ry = hash(i + 2) * 6.28; }); g.add(fc); g.add(put3(glow('m', 26, .2), 0, 6, -14)); g.add(put3(glow('l', 20, .14), 0, 3, -10));
@@ -311,15 +311,15 @@ var tCta = S0('cta');
 /* sound events (the audio script reads window.EV through tools/events.mjs, so SFX land on the same words as the picture) */
 var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
 (function () { var tb;
-  ev(WS('h1', 'घंटे', .4), 'pop'); ev(WS('h1', 'डिस्ट्रिक्ट', .75), 'pop'); ev(S0('h2') + .1, 'pop'); ev(WS('h3', 'क्रैश', .0), 'slam'); ev(WS('h3', 'सिस्टम', .3), 'ping'); ev(WS('h3', 'टूटी', .5), 'pop'); ev(WS('h3', 'सीट', .75), 'pop'); ev(S1('h3') - 2.0, 'whoosh');
-  ev(WS('n1', 'लाख', .45), 'pop'); ev(WS('n1', 'घंटा', .6), 'pop'); ev(WS('n1', 'अट्ठाईस', .85), 'ping'); ev(WS('n2', 'सर्वर', .5), 'ping'); var tS = WS('n3', 'सबका', .3); ev(tS - 2.2, 'rumble'); ev(tS + 1.6, 'buzz'); ev(WS('n3', 'एक', .35) + 1.5, 'card');
-  tb = S0('s1b'); ev(SC[2] + .6, 'pop'); for (var k = 0; k < 10; k++) ev(tb - .6 + k * .7 + .3, 'tick'); ev(WS('s1b', 'व्हाट्सऐप', .9), 'ping'); ev(WS('s1b', 'प्री', .1), 'card'); ev(WS('s1c', 'टिकटमास्टर', .2), 'pop');
-  ev(WS('q1', 'वेटिंग', .8), 'card'); ev(WS('q2', 'आगे', .5), 'ping'); ev(WS('q3', 'पहले', .15), 'card'); for (k = 0; k < 3; k++) ev(WS('q3', 'कुकी', .5) + k * .5, 'tick'); ev(WS('q4', 'सेकंड', .5), 'ping'); ev(WS('q4', 'बाँटो', .5), 'pop'); ev(WS('q5', 'बग', .75) - 1.5, 'slam'); ev(Math.max(WS('q5', 'काम', .9), WS('q5', 'बग', .75) + .7), 'ping');
-  var tTy = WS('t2', 'रेडिस', .6); ev(WS('t2', 'होल्ड', .5) + .2, 'card'); for (k = 0; k < 14; k++) ev(tTy + k * .15, 'tick'); ev(WS('t3', 'एक्स', .0) - .1, 'card'); ev(WS('t3', 'ओके', .45), 'ping'); ev(WS('t3', 'निल', .75), 'buzz'); ev(WS('t4', 'टाइमर', .15), 'card'); ev(WS('t4', 'छूट', .55), 'drop');
-  var t1x = WS('p1', 'दबाया', .35); ev(t1x, 'tick'); ev(WS('p1', 'अटका', .6), 'buzz'); ev(WS('p1', 'फिर', .75), 'tick'); ev(WS('p1', 'फिर', .75) + 1.1, 'ping'); ev(WS('p2', 'आइडेम्पोटेंसी', .35), 'card'); ev(WS('p2', 'एक', .75), 'slam'); ev(S0('p3'), 'pop'); ev(S0('p4'), 'ping');
-  var tE = S0('e1'); ev(WS('e1', 'बॉट्स', .0) + .3, 'buzz'); ev(WS('e1', 'टिकटमास्टर', .2), 'pop'); ev(WS('e1', 'रेट', .85), 'card');
-  var r1 = S0('r1'); ev(r1 + .1, 'pop'); for (k = 0; k < 4; k++) ev(WS('r1', 'स्क्रीनशॉट', .5) - 2.8 + k * .75, 'tick'); for (k = 0; k < 4; k++) ev(WS('r1', 'इंडस्ट्री', .5) - 1.6 + k * .75, 'tick'); ev(WS('r1', 'अनवेरिफ़ाइड', .93) - .4, 'slam');
-  ev(WS('r2', 'सीट', .85) + 1.0, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर', .6), 'ping'); ev(WS('cta', 'सब्सक्राइब', .75), 'ping'); })();
+  ev(WS('h1', 'घंटे', .4), 'pop'); ev(WS('h1', 'दिस्ट्रिक्ट', .75), 'pop'); ev(S0('h2') + .1, 'pop'); ev(WS('h3', 'क्रैश', .0), 'slam'); ev(WS('h3', 'system', .3), 'ping'); ev(WS('h3', 'तुटी', .5), 'pop'); ev(WS('h3', 'सीट', .75), 'pop'); ev(S1('h3') - 2.0, 'whoosh');
+  ev(WS('n1', 'लाग', .45), 'pop'); ev(WS('n1', 'घंटा', .6), 'pop'); ev(WS('n1', 'अथाइस', .85), 'ping'); ev(WS('n2', 'सर्वर', .5), 'ping'); var tS = WS('n3', 'सबका', .3); ev(tS - 2.2, 'rumble'); ev(tS + 1.6, 'buzz'); ev(WS('n3', 'एक', .35) + 1.5, 'card');
+  tb = S0('s1b'); ev(SC[2] + .6, 'pop'); for (var k = 0; k < 10; k++) ev(tb - .6 + k * .7 + .3, 'tick'); ev(WS('s1b', 'वाटसेब', .9), 'ping'); ev(WS('s1b', 'प्री', .1), 'card'); ev(WS('s1c', 'टिकेटमास्टर', .2), 'pop');
+  ev(WS('q1', 'वेटिंग', .8), 'card'); ev(WS('q2', 'आगे', .5), 'ping'); ev(WS('q3', 'पहले', .15), 'card'); for (k = 0; k < 3; k++) ev(WS('q3', 'कुकी', .5) + k * .5, 'tick'); ev(WS('q4', 'सेंट', .5), 'ping'); ev(WS('q4', 'बांटो', .5), 'pop'); ev(WS('q5', 'बग', .75) - 1.5, 'slam'); ev(Math.max(WS('q5', 'काम', .9), WS('q5', 'बग', .75) + .7), 'ping');
+  var tTy = WS('t2', 'रेडिस', .6); ev(WS('t2', 'होल', .5) + .2, 'card'); for (k = 0; k < 14; k++) ev(tTy + k * .15, 'tick'); ev(WS('t3', 'NX', .0) - .1, 'card'); ev(WS('t3', 'के', .45), 'ping'); ev(WS('t3', 'निल', .75), 'buzz'); ev(WS('t4', 'टाइमर', .15), 'card'); ev(WS('t4', 'छुट', .55), 'drop');
+  var t1x = WS('p1', 'दबाया', .35); ev(t1x, 'tick'); ev(WS('p1', 'कटका', .6), 'buzz'); ev(WS('p1', 'फिर', .75), 'tick'); ev(WS('p1', 'फिर', .75) + 1.1, 'ping'); ev(WS('p2', 'आइडम', .35), 'card'); ev(WS('p2', 'चार', .8), 'slam'); ev(S0('p3'), 'pop'); ev(S0('p4'), 'ping');
+  var tE = S0('e1'); ev(WS('e1', 'BOT', .0) + .3, 'buzz'); ev(WS('e1', 'Ticketmaster', .2), 'pop'); ev(WS('e1', 'रेट', .85), 'card');
+  var r1 = S0('r1'); ev(r1 + .1, 'pop'); for (k = 0; k < 4; k++) ev(WS('r1', 'स्क्रीन्शॉट', .5) - 2.8 + k * .75, 'tick'); for (k = 0; k < 4; k++) ev(WS('r1', 'इंडस्ट्री', .5) - 1.6 + k * .75, 'tick'); ev(WS('r1', 'अन्वेरिफाईड', .93) - .4, 'slam');
+  ev(WS('r2', 'सीट', .85) + 1.0, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब', .75), 'ping'); })();
 EVL.sort(function (a, b) { return a.t - b.t; });
 
 window.__reelDurationSec = END; window.EV = EVL; window.__B = SC; window.__SC = SC; window.__ready = false;
@@ -333,7 +333,7 @@ window.__seek = function (t) {
   /* end card */
   var ue = function (x) { return clamp((t - x) / .35); }, ec = sc === 8 && t >= tCta - .1;
   [pf, hn, hs].forEach(function (x, i) { var u = ec ? ue(tCta + .1 + i * .25) : 0; x.style.display = u > 0 ? 'block' : 'none'; x.style.opacity = u; x.style.transform = 'translateY(' + ((1 - eo3(u)) * 24) + 'px)'; });
-  var bt = [WS('cta', 'लाइक', .45), WS('cta', 'शेयर', .6), WS('cta', 'सब्सक्राइब', .75)]; btns.forEach(function (b, i) { var u = ec ? ue(bt[i] - .1) : 0; b.style.display = u > 0 ? 'flex' : 'none'; b.style.opacity = u; var pulse = u >= 1 ? 1 + .04 * Math.max(0, Math.sin((t - bt[i]) * 5)) * Math.exp(-(t - bt[i]) * .3) : .85 + .15 * eo3(u); b.style.transform = 'scale(' + pulse.toFixed(3) + ')'; });
+  var bt = [WS('cta', 'लाइक', .45), WS('cta', 'शेर', .6), WS('cta', 'सब्स्क्राइब', .75)]; btns.forEach(function (b, i) { var u = ec ? ue(bt[i] - .1) : 0; b.style.display = u > 0 ? 'flex' : 'none'; b.style.opacity = u; var pulse = u >= 1 ? 1 + .04 * Math.max(0, Math.sin((t - bt[i]) * 5)) * Math.exp(-(t - bt[i]) * .3) : .85 + .15 * eo3(u); b.style.transform = 'scale(' + pulse.toFixed(3) + ')'; });
   /* dips (hide the cut) */
   var dip = 0; dipAt.forEach(function (d) { dip = Math.max(dip, 1 - clamp(Math.abs(t - d) / .16)); }); flash.style.background = '#07080c'; flash.style.opacity = dip * .96;
   capEl.innerHTML = CAP.html(t, TM.cap, CAPOPT);

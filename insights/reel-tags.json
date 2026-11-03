@@ -274,5 +274,12 @@
   "voice": "synth-clone",
   "host": "no",
   "length": "76s+"
+ },
+ "reel-district-ticket-rush": {
+  "genre": "explainer",
+  "company": "district",
+  "voice": "synth-clone",
+  "host": "no",
+  "length": "152s"
  }
 }

@@ -22,8 +22,8 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
   var tA = S0('h2'), tB = S0('h3'), tC = S1('h3') - 2.0, A0 = fr([0, 2.6, 0], 16.4, 3, 0), A1 = fr([0, 2.6, 0], 14.0, 3, 0), A2 = fr([0, 3.0, 0], 20, 8, 0);
   lock(0, 'locked wide', 0, A0); sh(0, 'push-in', tA, tA + 2.6, A0, A1); sh(0, 'pull-back', tB + 1.2, tB + 4.2, A1, A2);
   SCN[0] = function (t) { g.visible = true; var ahead = 12569 - 21 * t; P.draw('queue', fmt(ahead), .26 + .004 * t, t); P.rotation.y = 0;
-    put(L1, t, -1, .3, S0('h2') - .1); put(L2, t, WS('h1', 'घंटे', .4), .35, S0('h2') - .1); put(D1, t, WS('h1', 'डिस्ट्रिक्ट', .75), .35, S0('h3') + .2); put(D2, t, WS('h1', 'बुकमायशो', .85), .35, S0('h3') + .2);
-    put(SS, t, S0('h2') + .1, .4, S0('h3')); var tc = WS('h3', 'क्रैश', .0), ts = WS('h3', 'सिस्टम', .3); put(CR, t, tc, .3, ts); put(SD, t, ts, .35); put(Q1, t, WS('h3', 'टूटी', .5), .35); put(Q2, t, WS('h3', 'सीट', .75), .35);
+    put(L1, t, -1, .3, S0('h2') - .1); put(L2, t, WS('h1', 'घंटे', .4), .35, S0('h2') - .1); put(D1, t, WS('h1', 'दिस्ट्रिक्ट', .75), .35, S0('h3') + .2); put(D2, t, WS('h1', 'बुक्माइशो', .85), .35, S0('h3') + .2);
+    put(SS, t, S0('h2') + .1, .4, S0('h3')); var tc = WS('h3', 'क्रैश', .0), ts = WS('h3', 'system', .3); put(CR, t, tc, .3, ts); put(SD, t, ts, .35); put(Q1, t, WS('h3', 'तुटी', .5), .35); put(Q2, t, WS('h3', 'सीट', .75), .35);
     var u = clamp((t - tC) / 2.0); TK.visible = u > 0; if (u > 0) { TK.setCol(CYN); TK.position.set(0, 2.6 + .6 * eo3(u), .2 + 3.2 * eo3(u)); TK.rotation.set(-.1, .35 * eo3(u), .1); TK.scale.setScalar(.35 + .9 * eo3(u)); } }; })();
 
 /* ===== S2 the math, then the stampede (the crowd is 9,000 figures standing for 1 lakh) ===== */
@@ -35,7 +35,7 @@ function brow(i, t) { return Math.abs(Math.sin(6.283 * (t * 1.7 + hash(i + 51)))
   var a = SC[1], tS = WS('n3', 'सबका', .3), A0 = fr([0, 2, 8], 40, 24, 0, 38, 930), A1 = fr([0, 1.5, 10], 34, 7, 0, 38, 880);
   PL(g, E1, A0, 540, 300, 36, 84); PL(g, E2, A0, 540, 405, 36, 84); PL(g, E3, A0, 540, 530, 36, 112); PL(g, LS, A0, 540, 880, 36, 70); PL(g, RK, A0, 700, 640, 36, 62); PL(g, RKX, A1, 540, 740, 34, 74); PL(g, CD, A1, 540, 430, 34, 250);
   lock(1, 'locked high', a, A0); sh(1, 'crane-out', tS - .2, tS + 3.4, A0, A1);
-  SCN[1] = function (t) { g.visible = true; put(E1, t, WS('n1', 'लाख', .45), .35, tS - .3); put(E2, t, WS('n1', 'घंटा', .6), .35, tS - .3); put(E3, t, WS('n1', 'अट्ठाईस', .85), .45, tS - .3); put(LS, t, WS('n1', 'यानी', .75) + .2, .4, tS); put(RK, t, WS('n2', 'सर्वर', .5), .4, tS); put(RKX, t, tS + 1.6, .4);
+  SCN[1] = function (t) { g.visible = true; put(E1, t, WS('n1', 'लाग', .45), .35, tS - .3); put(E2, t, WS('n1', 'घंटा', .6), .35, tS - .3); put(E3, t, WS('n1', 'अथाइस', .85), .45, tS - .3); put(LS, t, WS('n1', 'यानी', .75) + .2, .4, tS); put(RK, t, WS('n2', 'सर्वर', .5), .4, tS); put(RKX, t, tS + 1.6, .4);
     put(CD, t, WS('n3', 'एक', .35) + 1.5, .5, WS('n3', 'पाँच', .6) + .5);
     line.update(function (i, o) { var z = ((t * 3.2 + i * 1.3) % 40); o.z = 40 - z; o.x = Math.sin(i * 7.1) * .12; o.y = z < 40 ? brow(i, t) : 0; o.ry = Math.PI; o.s = o.z < -3 ? 0 : 1; });
     var tt = t - tS; cr.visible = t >= WS('n3', 'सबका', .3) - 3.0; if (cr.visible) { cr.update(function (i, o) { var sx = (hash(i) - .5) * 52, sz = 26 + hash(i + 1) * 62, gx = (hash(i + 2) - .5) * 13, gz = 3 + hash(i + 3) * 17, dl = hash(i + 4) * 2.2, u = clamp((tt - dl + 1.6) / 3.0); var e = eo3(u); o.x = lerp(sx, gx, e); o.z = lerp(sz, gz, e); o.ry = Math.PI + (hash(i + 5) - .5) * .5; o.y = u > 0 && u < 1 ? brow(i, t) : 0; o.s = .9 + hash(i + 6) * .25; }); }
