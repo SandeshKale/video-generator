@@ -115,3 +115,20 @@ Cuts: at most two dips (before 5 and before 8); everything else is a continuous 
 
 ## 12. Schedule (no deadline: the news is a month old; quality first)
 Approve script/identity → write the full voice script + generate cloned-voice takes (CPU, long) → mockup stills in parallel → build + lints → render in 2 slices → frame review → cover + caption → send.
+
+## 13. Camera shot list (authored; locked off between shots; no drift)  — implemented in `site3d/src/*_scenes.js` via `shot()` / `lock()`
+| Scene | Move | From -> to | Ease | Motivation (cue) |
+|---|---|---|---|---|
+| 1 hook | locked wide, then **push-in** | d 16.4 -> 14.0 on the phone | in-out | h2 "aapke aage 12,569": the viewer reads the number |
+| 1 | **pull-back + tilt up** | d 14 -> 20, pitch 3 -> 8 deg | in-out | h3 "app tooti kyun nahi": the whole crowd behind the phone; the token leaves the screen |
+| 2 math | locked high | d 40, pitch 24 | - | the equation builds on n1 words, the thin 28/s line walks in |
+| 2 | **crane-out** | d 40 -> 34, pitch 24 -> 7 | in-out | n3 "sabka ek saath": the stampede arrives at eye level |
+| 3 spread | locked, then **truck right** along the 48 h ruler | x -4 -> +4 | in-out | s1b "pre-sale, poore 48 ghante" |
+| 4 waiting room | locked high, **dolly to the gate** | d 30 -> 22, pitch 40 -> 44 | in-out | q3-q4: the line shortens at ~21 a second |
+| 4 | **crane up** | d 22 -> 34, pitch 44 -> 56 | in-out | q5 "yeh bug nahi, system ka kaam hai": the whole line in one view |
+| 5 seat hold | locked wide, **crane down** into the bowl | d 42 -> 15, pitch 36 -> 24 | in-out | t1 "ek aur insaan ne bhi wahi seat chuni" |
+| 6 payment | locked, **slow push** | d 21 -> 19.5 | in-out | p3 "aadha paid" |
+| 7 bots | locked plan view, **push-in** | d 22 -> 18 | in-out | e1 rate limits |
+| 8 honest | locked | - | - | r1: the two lists build row by row |
+| 9 reframe | locked, **pull-back** | d 16.4 -> 22 | in-out | cta: the phone rises to make room for the end card |
+Cuts: 8 dips (scene boundaries), about one per 19 s; no two scenes share a set. Through-line object: the glowing ticket token (S1 emerges from the screen, S4 above the viewer's place in the line, S5 "AAP" token, S9 lands and turns lime).

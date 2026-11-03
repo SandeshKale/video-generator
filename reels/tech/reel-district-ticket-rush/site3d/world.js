@@ -308,7 +308,21 @@ var CAPOPT = { fs: 54, width: 768, lines: 2, chip: '#f2f4ff', chipInk: '#07080c'
 function sceneAt(t) { var k = 0; for (var i = 0; i < SC.length - 1; i++) if (t >= SC[i]) k = i; return k; }
 var dipAt = SC.slice(1, 9);
 var tCta = S0('cta');
-window.__reelDurationSec = END; window.EV = []; window.__SC = SC; window.__ready = false;
+/* sound events (the audio script reads window.EV through tools/events.mjs, so SFX land on the same words as the picture) */
+var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
+(function () { var tb;
+  ev(WS('h1', 'घंटे', .4), 'pop'); ev(WS('h1', 'डिस्ट्रिक्ट', .75), 'pop'); ev(S0('h2') + .1, 'pop'); ev(WS('h3', 'क्रैश', .0), 'slam'); ev(WS('h3', 'सिस्टम', .3), 'ping'); ev(WS('h3', 'टूटी', .5), 'pop'); ev(WS('h3', 'सीट', .75), 'pop'); ev(S1('h3') - 2.0, 'whoosh');
+  ev(WS('n1', 'लाख', .45), 'pop'); ev(WS('n1', 'घंटा', .6), 'pop'); ev(WS('n1', 'अट्ठाईस', .85), 'ping'); ev(WS('n2', 'सर्वर', .5), 'ping'); var tS = WS('n3', 'सबका', .3); ev(tS - 2.2, 'rumble'); ev(tS + 1.6, 'buzz'); ev(WS('n3', 'एक', .35) + 1.5, 'card');
+  tb = S0('s1b'); ev(SC[2] + .6, 'pop'); for (var k = 0; k < 10; k++) ev(tb - .6 + k * .7 + .3, 'tick'); ev(WS('s1b', 'व्हाट्सऐप', .9), 'ping'); ev(WS('s1b', 'प्री', .1), 'card'); ev(WS('s1c', 'टिकटमास्टर', .2), 'pop');
+  ev(WS('q1', 'वेटिंग', .8), 'card'); ev(WS('q2', 'आगे', .5), 'ping'); ev(WS('q3', 'पहले', .15), 'card'); for (k = 0; k < 3; k++) ev(WS('q3', 'कुकी', .5) + k * .5, 'tick'); ev(WS('q4', 'सेकंड', .5), 'ping'); ev(WS('q4', 'बाँटो', .5), 'pop'); ev(WS('q5', 'बग', .75) - 1.5, 'slam'); ev(Math.max(WS('q5', 'काम', .9), WS('q5', 'बग', .75) + .7), 'ping');
+  var tTy = WS('t2', 'रेडिस', .6); ev(WS('t2', 'होल्ड', .5) + .2, 'card'); for (k = 0; k < 14; k++) ev(tTy + k * .15, 'tick'); ev(WS('t3', 'एक्स', .0) - .1, 'card'); ev(WS('t3', 'ओके', .45), 'ping'); ev(WS('t3', 'निल', .75), 'buzz'); ev(WS('t4', 'टाइमर', .15), 'card'); ev(WS('t4', 'छूट', .55), 'drop');
+  var t1x = WS('p1', 'दबाया', .35); ev(t1x, 'tick'); ev(WS('p1', 'अटका', .6), 'buzz'); ev(WS('p1', 'फिर', .75), 'tick'); ev(WS('p1', 'फिर', .75) + 1.1, 'ping'); ev(WS('p2', 'आइडेम्पोटेंसी', .35), 'card'); ev(WS('p2', 'एक', .75), 'slam'); ev(S0('p3'), 'pop'); ev(S0('p4'), 'ping');
+  var tE = S0('e1'); ev(WS('e1', 'बॉट्स', .0) + .3, 'buzz'); ev(WS('e1', 'टिकटमास्टर', .2), 'pop'); ev(WS('e1', 'रेट', .85), 'card');
+  var r1 = S0('r1'); ev(r1 + .1, 'pop'); for (k = 0; k < 4; k++) ev(WS('r1', 'स्क्रीनशॉट', .5) - 2.8 + k * .75, 'tick'); for (k = 0; k < 4; k++) ev(WS('r1', 'इंडस्ट्री', .5) - 1.6 + k * .75, 'tick'); ev(WS('r1', 'अनवेरिफ़ाइड', .93) - .4, 'slam');
+  ev(WS('r2', 'सीट', .85) + 1.0, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर', .6), 'ping'); ev(WS('cta', 'सब्सक्राइब', .75), 'ping'); })();
+EVL.sort(function (a, b) { return a.t - b.t; });
+
+window.__reelDurationSec = END; window.EV = EVL; window.__B = SC; window.__SC = SC; window.__ready = false;
 window.__seek = function (t) {
   t = Math.max(0, Math.min(END - .001, t)); var sc = sceneAt(t);
   G.forEach(function (g) { g.visible = false; }); TK.visible = TK2.visible = false; LBL.forEach(function (l) { l.visible = false; });

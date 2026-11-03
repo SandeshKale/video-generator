@@ -80,7 +80,7 @@ for gi, (gid, ids) in enumerate(GROUPS):
         score = 0.30*ratio + 0.10*hit + 0.30*pit + 0.20*tim + (10 if ok_flow else 0) - (30 if cov < 0.9 else 0)
         print(gid, tr, f'ratio {ratio:.0f} terms {hit:.0f} f0 {f0:.0f} sim {td:.3f} longest-silence {mg:.2f} rate {rate:.1f} cov {cov:.2f} dur {len(a)/SR:.2f}s score {score:.1f} ({time.time()-t0:.0f}s)', flush=True)
         if best is None or score > best[0]: best = (score, a, words, ratio, hit, f0, td, mg)
-        if ratio >= 93 and hit >= 85 and abs(f0 - REF_F0) <= 10 and td >= 0.93 and ok_flow: break
+        if ratio >= 88 and hit >= 80 and abs(f0 - REF_F0) <= 12 and td >= 0.90 and ok_flow and cov >= 0.93: break
     sf.write(wp, best[1], SR)
     qc[gid] = dict(score=round(best[0], 1), ratio=round(best[3], 1), terms=round(best[4], 1), f0=round(best[5]), sim=round(best[6], 3), longest_silence=round(best[7], 2), dur=round(len(best[1])/SR, 2), words=[(w[0], round(w[1], 3), round(w[2], 3)) for w in best[2]])
     json.dump(qc, open(qp, 'w'), ensure_ascii=False, indent=1)
