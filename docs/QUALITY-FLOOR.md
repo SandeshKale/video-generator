@@ -35,3 +35,6 @@ The checkpoint is `reels/tech/reel-navic-clock-saga` v4 (the 3D-world film with 
 
 ## Raised 2 Nov 2026 (v4)
 Explainer scenes must follow row 6b with **every object and label in the 3D world** (no DOM panels except the header strip, captions and CTA), `label-lint` 0 findings alongside `overlay-lint`, and an ambient explanatory motion layer (pulses along the mechanism, radar rings, live bars) wherever a hold exceeds ~3 s.
+
+## Camera rule (3 Nov 2026)
+Row 2 is tightened: the camera moves only in **authored shots** (named move, from/to pose, timed to a word or event, eased) and is **locked off** between shots. No idle sway, no constant creep. Humans, when needed, are voxel/brick/mocap 3D figures (see CLAUDE.md).
