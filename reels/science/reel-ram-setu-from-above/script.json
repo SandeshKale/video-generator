@@ -1,0 +1,127 @@
+{
+ "title": "Ram Setu from above",
+ "format": "1080x1920",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "B": "रामायण फ़िल्म दिवाली पे आ रही है, और उसका सबसे मशहूर सेट पीस समंदर के ऊपर एक पुल है। पर असली समंदर में एक असली रेत-पट्टी है, और उसका निन्यानवे दशमलव नौ आठ परसेंट हिस्सा पानी के नीचे है।",
+   "A": "Ramayana film Diwali pe aa rahi hai (reported), aur uska sabse mashhoor set piece samundar ke upar ek pul hai. Par asli samundar mein ek asli ret-patti hai, aur uska 99.98 percent hissa paani ke neeche hai.",
+   "cap": "Ramayana film Diwali pe aa rahi hai (reported), aur uska sabse mashhoor set piece samundar ke upar ek pul hai. Par asli samundar mein ek asli ret-patti hai, aur uska 99.98 percent hissa paani ke neeche hai."
+  },
+  {
+   "id": "h2",
+   "g": "g1",
+   "beat": "hook",
+   "B": "सैटेलाइट ने उसे नापा है। तो सवाल ये है: एक सैटेलाइट असल में क्या बता सकता है, और क्या नहीं?",
+   "A": "Satellite ne use naapa hai. To sawaal yeh hai: ek satellite asal mein kya bata sakta hai, aur kya nahi?",
+   "cap": "Satellite ne use naapa hai. To sawaal yeh hai: ek satellite asal mein kya bata sakta hai, aur kya nahi?"
+  },
+  {
+   "id": "p1",
+   "g": "g2",
+   "beat": "plant",
+   "B": "ऊपर से देखो तो रामेश्वरम और मन्नार के बीच एक हल्की सी पट्टी दिखती है। यूरोप के सेंटिनल टू सैटेलाइट की तस्वीर में भी यही पट्टी दिखती है।",
+   "A": "Upar se dekho to Rameswaram aur Mannar ke beech ek halki si patti dikhti hai. Europe ke Sentinel-2 satellite ki tasveer mein bhi yahi patti dikhti hai.",
+   "cap": "Upar se dekho to Rameswaram aur Mannar ke beech ek halki si patti dikhti hai. Europe ke Sentinel-2 satellite ki tasveer mein bhi yahi patti dikhti hai."
+  },
+  {
+   "id": "b1",
+   "g": "g3",
+   "beat": "but",
+   "B": "पर ये पट्टी ज़्यादातर पानी के नीचे है। स्टडी के मुताबिक समंदर की सतह के ऊपर सिर्फ़ शून्य दशमलव शून्य दो परसेंट है।",
+   "A": "Par yeh patti zyadatar paani ke neeche hai. Study ke mutabik samundar ki satah ke upar sirf 0.02 percent hai.",
+   "cap": "Par yeh patti zyadatar paani ke neeche hai. Study ke mutabik samundar ki satah ke upar sirf 0.02 percent hai."
+  },
+  {
+   "id": "b2",
+   "g": "g3",
+   "beat": "but",
+   "B": "तो पानी के नीचे का नक्शा बनता कैसे है? लेज़र से।",
+   "A": "To paani ke neeche ka naksha banta kaise hai? Laser se.",
+   "cap": "To paani ke neeche ka naksha banta kaise hai? Laser se."
+  },
+  {
+   "id": "m1",
+   "g": "g4",
+   "beat": "mech",
+   "B": "नासा का आइसैट टू सैटेलाइट हरे लेज़र की किरणें नीचे फेंकता है। रोशनी समंदर की तली तक जाती है और लौटती है, लगभग चालीस मीटर गहराई तक।",
+   "A": "NASA ka ICESat-2 satellite hare laser ki kirnein neeche phenkta hai. Roshni samundar ki tali tak jaati hai aur lautti hai, lagbhag chalis meter gehrai tak.",
+   "cap": "NASA ka ICESat-2 satellite hare laser ki kirnein neeche phenkta hai. Roshni samundar ki tali tak jaati hai aur lautti hai, lagbhag chalis meter gehrai tak."
+  },
+  {
+   "id": "m2",
+   "g": "g5",
+   "beat": "mech",
+   "B": "इसरो के वैज्ञानिकों ने दो हज़ार अठारह से दो हज़ार तेईस तक का डेटा लिया: लगभग दो लाख फ़ोटॉन, और दस मीटर की रेज़ोल्यूशन का नक्शा।",
+   "A": "ISRO ke vaigyanikon ne 2018 se 2023 tak ka data liya: lagbhag do lakh photon, aur dus meter ki resolution ka naksha.",
+   "cap": "ISRO ke vaigyanikon ne 2018 se 2023 tak ka data liya: lagbhag do lakh photon, aur dus meter ki resolution ka naksha."
+  },
+  {
+   "id": "l1",
+   "g": "g6",
+   "beat": "but",
+   "B": "अब एक अजीब बात। कहीं अड़तालीस किलोमीटर लिखा मिलता है, कहीं उनतीस। स्टडी ने धनुषकोडी से तलाईमन्नार तक की शोल्स की ज़ंजीर नापी: लगभग उनतीस किलोमीटर।",
+   "A": "Ab ek ajeeb baat. Kahin 48 kilometre likha milta hai, kahin 29. Study ne Dhanushkodi se Talaimannar tak ki shoals ki zanjeer naapi: lagbhag 29 kilometre.",
+   "cap": "Ab ek ajeeb baat. Kahin 48 kilometre likha milta hai, kahin 29. Study ne Dhanushkodi se Talaimannar tak ki shoals ki zanjeer naapi: lagbhag 29 kilometre."
+  },
+  {
+   "id": "l2",
+   "g": "g7",
+   "beat": "but",
+   "B": "शायद नंबर इसलिए अलग हैं कि नापने के छोर अलग हैं। ये मेरी समझ है, किसी सोर्स ने ये नहीं कहा।",
+   "A": "Shayad number isliye alag hain ki naapne ke chhor alag hain. Yeh meri samajh hai, kisi source ne yeh nahi kaha.",
+   "cap": "Shayad number isliye alag hain ki naapne ke chhor alag hain. Yeh meri samajh hai, kisi source ne yeh nahi kaha."
+  },
+  {
+   "id": "r1",
+   "g": "g8",
+   "beat": "therefore",
+   "B": "नक्शा और कुछ दिखाता है। ज़ंजीर के दोनों तरफ़ लगभग डेढ़ किलोमीटर तक तल बहुत ऊबड़-खाबड़ है, और गहराई अचानक बदलती है।",
+   "A": "Naksha aur kuch dikhata hai. Zanjeer ke dono taraf lagbhag dedh kilometre tak tal bahut ubad-khabad hai, aur gehrai achanak badalti hai.",
+   "cap": "Naksha aur kuch dikhata hai. Zanjeer ke dono taraf lagbhag dedh kilometre tak tal bahut ubad-khabad hai, aur gehrai achanak badalti hai."
+  },
+  {
+   "id": "r2",
+   "g": "g9",
+   "beat": "therefore",
+   "B": "ढाल भी दोनों तरफ़ एक जैसी नहीं। स्टडी कहती है कि मन्नार की खाड़ी से ज़्यादा मिट्टी आती है, पाल्क स्ट्रेट से कम। यानी समंदर ने इसे आकार दिया है।",
+   "A": "Dhaal bhi dono taraf ek jaisi nahi. Study kehti hai ki Mannar ki khaadi se zyada mitti aati hai, Palk Strait se kam. Yaani samundar ne ise aakaar diya hai.",
+   "cap": "Dhaal bhi dono taraf ek jaisi nahi. Study kehti hai ki Mannar ki khaadi se zyada mitti aati hai, Palk Strait se kam. Yaani samundar ne ise aakaar diya hai."
+  },
+  {
+   "id": "j1",
+   "g": "g9",
+   "beat": "therefore",
+   "B": "नक्शा ये भी दिखाता है कि ये धनुषकोडी और तलाईमन्नार का समंदर के नीचे का सिलसिला है।",
+   "A": "Naksha yeh bhi dikhata hai ki yeh Dhanushkodi aur Talaimannar ka samundar ke neeche ka silsila hai.",
+   "cap": "Naksha yeh bhi dikhata hai ki yeh Dhanushkodi aur Talaimannar ka samundar ke neeche ka silsila hai."
+  },
+  {
+   "id": "e1",
+   "g": "g10",
+   "beat": "honest",
+   "B": "एक ज़रूरी बात: ये स्टडी आकार, गहराई और मात्रा नापती है, लगभग एक घन किलोमीटर। ये नहीं बताती कि इसे किसने बनाया, और किसी कहानी की बात भी नहीं करती।",
+   "A": "Ek zaroori baat: yeh study aakaar, gehrai aur matra naapti hai, lagbhag ek ghan kilometre. Yeh nahi batati ki ise kisne banaya, aur kisi kahani ki baat bhi nahi karti.",
+   "cap": "Ek zaroori baat: yeh study aakaar, gehrai aur matra naapti hai, lagbhag ek ghan kilometre. Yeh nahi batati ki ise kisne banaya, aur kisi kahani ki baat bhi nahi karti."
+  },
+  {
+   "id": "f1",
+   "g": "g11",
+   "beat": "reframe",
+   "B": "तो फ़िल्म देखते वक़्त याद रखना: पुल कहानी का है, पर रेत-पट्टी असली है। लगभग उनतीस किलोमीटर, निन्यानवे दशमलव नौ आठ परसेंट पानी के नीचे, लेज़र से नापी हुई।",
+   "A": "To film dekhte waqt yaad rakhna: pul kahani ka hai, par ret-patti asli hai. Lagbhag 29 kilometre, 99.98 percent paani ke neeche, laser se naapi hui.",
+   "cap": "To film dekhte waqt yaad rakhna: pul kahani ka hai, par ret-patti asli hai. Lagbhag 29 kilometre, 99.98 percent paani ke neeche, laser se naapi hui."
+  },
+  {
+   "id": "cta",
+   "g": "g12",
+   "beat": "cta",
+   "B": "ये उस दोस्त को भेजिए जो हर बात पर बहस करता है। लाइक, शेयर और सब्सक्राइब करें, संदेश एक्सप्लेन्स को।",
+   "A": "Yeh us dost ko bhejiye jo har baat par bahas karta hai. Like, share aur subscribe karein, Sandesh Explains.",
+   "cap": "Yeh us dost ko bhejiye jo har baat par bahas karta hai. Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}
