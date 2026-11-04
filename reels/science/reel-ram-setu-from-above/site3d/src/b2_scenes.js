@@ -42,8 +42,8 @@ var F = { h: '400 120px "Archivo Black"', h2: '400 54px "Archivo Black"', m: '60
   lock(6, 'locked top-down', a, DA);
   SCN[6] = function (t) { gD.visible = true; var e1 = S0('e1'); drawPanel(pnM, 'MEASURED', ORG, ['Aakaar (shape)', 'Gehrai (depth)', 'Matra: ~1 km3', 'Ubad-khabad crest'], e1 + .8, t, false); drawPanel(pnN, 'NOT MEASURED', CHALK, ['Kisne banaya?', 'Koi kahani?'], WS('e1', 'किस', .45) - .6, t, true); put(T1, t, a + .5, .4); }; })();
 /* ---- S7 lift-out + end card ---- */
-(function () { var A0 = fr([sx, 0, sz], 70, 86, 0, 38, 520), A1 = fr([sx + 4, 4, sz - 3], 140, 88, 0, 38, 520), a = SC[7], cta = S0('cta');
+(function () { var A0 = fr([sx, 2, sz - 2], 70, 80, 0, 38, 560), A1 = fr([sx, 2, sz - 4], 92, 82, 0, 38, 600), a = SC[7], cta = S0('cta');
   var C1 = lbl(gA, '~29 km', ORG, 80, A0, 300, 420, 70, { font: '400 70px "Archivo Black"', bg: true }), C2 = lbl(gA, '99.98% SUBMERGED', CHALK, 54, A0, 700, 520, 70, { font: F.m, bg: true }), C3 = lbl(gA, 'LASER-MAPPED · 10 m', TURQ, 54, A0, 540, 620, 70, { font: F.m, bg: true });
   lock(7, 'locked', a, A0); sh(7, 'crane-up', a + 3.0, a + 9, A0, A1);
   SCN[7] = function (t) { gA.visible = true; var u = clamp((t - a) / (SC[8] - a)); satA.position.set(sx - 26 + u * 40, 14.6, sz - 5 + u * 4); var bx = satA.position.x, bz = satA.position.z; setBar(beamA, new V3(bx, 13.4, bz), new V3(bx, 1.2, bz)); glowA.position.set(bx, 1.3, bz); var p = (t * .8) % 1; ringA2.scale.setScalar(1 + p * 1.6); ringA2.material.opacity = .5 * (1 - p);
-    put(C1, t, WS('f1', 'उनतीस', .5), .4); put(C2, t, WS('f1', 'निन्यानवे', .75), .4); put(C3, t, WS('f1', 'लेज़र', .9), .4); }; })();
+    put(C1, t, WS('f1', 'उन्स|उनतीस', .5), .4); put(C2, t, WS('f1', 'निन्यानवे', .75), .4); put(C3, t, WS('f1', 'लेज़र', .9), .4); }; })();

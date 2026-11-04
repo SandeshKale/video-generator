@@ -19,7 +19,6 @@ var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
 EVL.sort(function (a, b) { return a.t - b.t; });
 var tCta = S0('cta');
 /* sound events (the audio script reads window.EV through tools/events.mjs, so SFX land on the same words as the picture) */
-var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
 
 window.__reelDurationSec = END; window.EV = EVL; window.__B = SC; window.__ready = false;
 window.__seek = function (t) {
