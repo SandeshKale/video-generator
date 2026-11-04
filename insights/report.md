@@ -12,7 +12,7 @@ Fetched 2026-10-12T15:18:09+00:00 · 6 followers · 21 reels analysed (19 older 
 | 6 | 2026-09-23 | 285 | 1.54 | 1 | 0 | 0.4% | 4.0 |  | 24% | 3.967 | ? (0.42) | 🔁 The engineers writing the best AI tools stopped prompting. |
 | 7 | 2026-09-23 | 243 | 1.31 | 2 | 0 | 0.8% | 4.6 |  | 24% | 4.391 | ? (0.34) | Most people still picture an AI agent as a smarter chatbot.  |
 | 8 | 2026-09-22 | 269 | 1.45 | 1 | 0 | 0.4% | 0.0 |  | 38% | 6.427 | ? (0.29) | 🤖 Meet Jev — the AI that refuses to write a single word. Her |
-| 9 | 2026-09-24 | 238 | 1.29 | 1 | 0 | 0.4% | 0.0 |  | 25% | 3.63 | ? (0.35) | Anthropic just quietly rewrote the pricing playbook for fron |
+| 9 | 2026-09-24 | 238 | 1.29 | 1 | 0 | 0.4% | 0.0 |  | 25% | 3.63 | ? (0.41) | Anthropic just quietly rewrote the pricing playbook for fron |
 | 10 | 2026-10-08 | 202 | 1.09 | 2 | 0 | 1.0% | 0.0 |  | 20% | 5.171 | reel-hyundai-atlas-strike (1.00) | Workers at Hyundai just went on strike. Partly over a robot. |
 | 11 | 2026-09-25 | 185 | 1.00 | 2 | 0 | 1.1% | 0.0 |  | 32% | 6.199 | reel-claude-price-war (1.00) | OpenAI just cut GPT-6 prices in half. On paper, that's the s |
 | 12 | 2026-10-09 | 172 | 0.93 | 2 | 0 | 1.2% | 0.0 |  | 19% | 5.397 | reel-ai-rich-upsell (1.00) | Ask an AI assistant to book your flight. If it thinks you're |
