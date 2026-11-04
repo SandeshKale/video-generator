@@ -15,7 +15,7 @@ var dipAt = SC.slice(1, 8);
 var tCta = S0('cta');
 /* sound events */
 var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
-(function () { ev(SP('h1', .9), 'slam'); ev(S0('h2') + .3, 'pop'); ev(SC[1] + 1, 'pop'); ev(S0('p1') + 1.8, 'ping'); ev(WS('b1', 'शून्य', .55), 'slam'); ev(S0('b2') + .1, 'card'); ev(SC[3] + 1, 'whoosh'); for (var k = 0; k < 14; k++) ev(SC[3] + 1 + k * .5, 'tick'); ev(S0('m2') + .2, 'pop'); ev(SC[4] + 2, 'pop'); ev(S0('l2') + .2, 'card'); ev(S0('r1') + .5, 'pop'); ev(S0('r2'), 'ping'); ev(S0('e1') + .8, 'tick'); ev(S0('e1') + 1.5, 'tick'); ev(S0('f1') + 1, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेर|शेयर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब', .75), 'ping'); })();
+(function () { ev(WS('h1', 'निन्यानवे', .9), 'slam'); ev(S0('h2') + .3, 'pop'); ev(SC[1] + 1, 'pop'); ev(S0('p1') + 1.8, 'ping'); ev(WS('b1', 'शुन्य|दश्मलव', .55), 'slam'); ev(S0('b2') + .1, 'card'); ev(SC[3] + 1, 'whoosh'); for (var k = 0; k < 14; k++) ev(SC[3] + 1 + k * .5, 'tick'); ev(S0('m2') + .2, 'pop'); ev(SC[4] + 2, 'pop'); ev(S0('l2') + .2, 'card'); ev(S0('r1') + .5, 'pop'); ev(S0('r2'), 'ping'); ev(S0('e1') + .8, 'tick'); ev(S0('e1') + 1.5, 'tick'); ev(S0('f1') + 1, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब', .75), 'ping'); })();
 EVL.sort(function (a, b) { return a.t - b.t; });
 var tCta = S0('cta');
 /* sound events (the audio script reads window.EV through tools/events.mjs, so SFX land on the same words as the picture) */
