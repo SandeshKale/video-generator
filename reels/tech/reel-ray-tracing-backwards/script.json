@@ -1,0 +1,135 @@
+{
+ "title": "Light ulti chalti hai (ray tracing)",
+ "format": "1080x1920",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "B": "इस गेम के पडल में एक बिल्डिंग दिख रही है जो स्क्रीन पर है ही नहीं। ये कैसे मुमकिन है? जवाब एक उल्टी सोच में है: रोशनी को उल्टा चलाना।",
+   "A": "Is game ke puddle mein ek building dikh rahi hai jo screen par hai hi nahi. Yeh kaise mumkin hai? Jawab ek ulti soch mein hai: roshni ko ulta chalana.",
+   "cap": "Is game ke puddle mein ek building dikh rahi hai jo screen par hai hi nahi. Yeh kaise mumkin hai? Jawab ek ulti soch mein hai: roshni ko ulta chalana."
+  },
+  {
+   "id": "p1",
+   "g": "g2",
+   "beat": "nature",
+   "B": "असली दुनिया में एक बल्ब से रोशनी की अरबों किरणें निकलती हैं। ज़्यादातर दीवारों में खो जाती हैं। बहुत कम ही आँख तक पहुँचती हैं।",
+   "A": "Asli duniya mein ek bulb se roshni ki arbon kirnein nikalti hain. Zyadatar deewaron mein kho jaati hain. Bahut kam hi aankh tak pahunchti hain.",
+   "cap": "Asli duniya mein ek bulb se roshni ki arbon kirnein nikalti hain. Zyadatar deewaron mein kho jaati hain. Bahut kam hi aankh tak pahunchti hain."
+  },
+  {
+   "id": "p2",
+   "g": "g2",
+   "beat": "nature",
+   "B": "कंप्यूटर के लिए ये बड़ा नुकसान है: अरबों किरणें बनाओ, और काम की सिर्फ़ चंद।",
+   "A": "Computer ke liye yeh bada nuksaan hai: arbon kirnein banao, aur kaam ki sirf chand.",
+   "cap": "Computer ke liye yeh bada nuksaan hai: arbon kirnein banao, aur kaam ki sirf chand."
+  },
+  {
+   "id": "r1",
+   "g": "g3",
+   "beat": "flip",
+   "B": "रे ट्रेसिंग उल्टा करता है। आँख से, हर पिक्सल से, एक किरण बाहर की तरफ़ भेजो। इसे प्राइमरी रे कहते हैं।",
+   "A": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo. Ise primary ray kehte hain.",
+   "cap": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo. Ise primary ray kehte hain."
+  },
+  {
+   "id": "r2",
+   "g": "g3",
+   "beat": "flip",
+   "B": "किरण किसी चीज़ से टकराती है और एक ही सवाल पूछती है: तुम क्या हो, और तुम्हारा रंग क्या है?",
+   "A": "Kiran kisi cheez se takrati hai aur ek hi sawaal puchti hai: tum kya ho, aur tumhara rang kya hai?",
+   "cap": "Kiran kisi cheez se takrati hai aur ek hi sawaal puchti hai: tum kya ho, aur tumhara rang kya hai?"
+  },
+  {
+   "id": "b1",
+   "g": "g4",
+   "beat": "reflect",
+   "B": "अगर चीज़ शीशे जैसी है तो किरण उछलकर दूसरी किरण बनती है। वही किरण पीछे खड़ी बिल्डिंग तक जाती है, इसीलिए पडल में वो दिखती है, चाहे स्क्रीन पर न हो।",
+   "A": "Agar cheez sheeshe jaisi hai to kiran uchhal kar doosri kiran banti hai. Wahi kiran peeche khadi building tak jaati hai, isliye puddle mein woh dikhti hai, chahe screen par na ho.",
+   "cap": "Agar cheez sheeshe jaisi hai to kiran uchhal kar doosri kiran banti hai. Wahi kiran peeche khadi building tak jaati hai, isliye puddle mein woh dikhti hai, chahe screen par na ho."
+  },
+  {
+   "id": "s1",
+   "g": "g5",
+   "beat": "shadow",
+   "B": "फिर एक किरण रोशनी की तरफ़ जाती है। रास्ते में कुछ आया तो छाया, नहीं आया तो रोशनी। शैडो भी एक सवाल है।",
+   "A": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni. Shadow bhi ek sawaal hai.",
+   "cap": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni. Shadow bhi ek sawaal hai."
+  },
+  {
+   "id": "v1",
+   "g": "g6",
+   "beat": "bvh",
+   "B": "पर सीन में करोड़ों ट्रायंगल होते हैं। हर किरण सब चेक करे तो एक फ़्रेम भी न बने।",
+   "A": "Par scene mein karodon triangles hote hain. Har kiran sab check kare to ek frame bhi na bane.",
+   "cap": "Par scene mein karodon triangles hote hain. Har kiran sab check kare to ek frame bhi na bane."
+  },
+  {
+   "id": "v2",
+   "g": "g6",
+   "beat": "bvh",
+   "B": "इसलिए कंप्यूटर डिब्बे के अंदर डिब्बे बनाता है, जिसे बी वी एच कहते हैं। दस करोड़ ट्रायंगल में भी लगभग सत्ताईस बार डिब्बे चेक करके जवाब मिल जाता है, ये आदर्श हिसाब है।",
+   "A": "Isliye computer dibbe ke andar dibbe banata hai, jise BVH kehte hain. Das crore triangles mein bhi lagbhag sattais baar dibbe check karke jawab mil jata hai, yeh ideal hisaab hai.",
+   "cap": "Isliye computer dibbe ke andar dibbe banata hai, jise BVH kehte hain. Das crore triangles mein bhi lagbhag sattais baar dibbe check karke jawab mil jata hai, yeh ideal hisaab hai."
+  },
+  {
+   "id": "y1",
+   "g": "g7",
+   "beat": "history",
+   "B": "आइडिया नया नहीं है। उन्नीस सौ अड़सठ में आर्थर एपल ने पहला वर्ज़न लिखा। उन्नीस सौ उन्यासी-अस्सी में टर्नर व्हिटेड ने उछलती और शीशे से गुज़रती किरणें जोड़ीं। दो हज़ार छह में पिक्सार की फ़िल्म कार्स का एक फ़्रेम बनाने में औसतन सत्रह घंटे लगे।",
+   "A": "Idea naya nahi hai. 1968 mein Arthur Appel ne pehla version likha. 1979-80 mein Turner Whitted ne uchhalti aur sheeshe se guzarti kirnein judin. 2006 mein Pixar ki film Cars ka ek frame banane mein ausatan satrah ghante lage.",
+   "cap": "Idea naya nahi hai. 1968 mein Arthur Appel ne pehla version likha. 1979-80 mein Turner Whitted ne uchhalti aur sheeshe se guzarti kirnein judin. 2006 mein Pixar ki film Cars ka ek frame banane mein ausatan satrah ghante lage."
+  },
+  {
+   "id": "y2",
+   "g": "g8",
+   "beat": "hardware",
+   "B": "फिर दो हज़ार अठारह में एनवीडिया ने आर टी एक्स कार्ड दिखाया, जिसमें इसी काम के लिए अलग हार्डवेयर है। कंपनी का दावा: दस अरब किरणें प्रति सेकंड तक।",
+   "A": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai. Company ka daawa: das arab kirnein prati second tak.",
+   "cap": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai. Company ka daawa: das arab kirnein prati second tak."
+  },
+  {
+   "id": "m1",
+   "g": "g9",
+   "beat": "hardware",
+   "B": "मैथ करो। फ़ुल एच डी स्क्रीन, साठ फ़्रेम प्रति सेकंड, यानी लगभग साढ़े बारह करोड़ पिक्सल हर सेकंड। दावा सही मानो तो काग़ज़ पर लगभग अस्सी किरणें हर पिक्सल के लिए।",
+   "A": "Math karo. Full HD screen, saath frame prati second, yaani lagbhag saadhe bara crore pixel har second. Daawa sahi maano to kaagaz par lagbhag assi kirnein har pixel ke liye.",
+   "cap": "Math karo. Full HD screen, saath frame prati second, yaani lagbhag saadhe bara crore pixel har second. Daawa sahi maano to kaagaz par lagbhag assi kirnein har pixel ke liye."
+  },
+  {
+   "id": "n1",
+   "g": "g10",
+   "beat": "noise",
+   "B": "पर असली गेम में बहुत कम किरणें मिलती हैं, इसलिए तस्वीर दाने-दाने वाली बनती है। फिर एक डीनॉइज़र उस शोर को साफ़ करता है।",
+   "A": "Par asli game mein bahut kam kirnein milti hain, isliye tasveer daane-daane wali banti hai. Phir ek denoiser us shor ko saaf karta hai.",
+   "cap": "Par asli game mein bahut kam kirnein milti hain, isliye tasveer daane-daane wali banti hai. Phir ek denoiser us shor ko saaf karta hai."
+  },
+  {
+   "id": "e1",
+   "g": "g11",
+   "beat": "limit",
+   "B": "तो जो आप देखते हो, वो कुछ असली किरणें हैं और बाकी अंदाज़ा। और ज़्यादातर गेम अब भी पुराने तरीक़े के साथ मिलाकर बनते हैं।",
+   "A": "To jo aap dekhte ho, woh kuch asli kirnein hain aur baaki andaza. Aur zyadatar game ab bhi purane tareeke ke saath mila kar bante hain.",
+   "cap": "To jo aap dekhte ho, woh kuch asli kirnein hain aur baaki andaza. Aur zyadatar game ab bhi purane tareeke ke saath mila kar bante hain."
+  },
+  {
+   "id": "f1",
+   "g": "g12",
+   "beat": "end",
+   "B": "अगली बार पडल में पीछे की बिल्डिंग दिखे, तो याद रखना: किसी ने आँख से एक किरण उल्टी भेजी और पिक्सल ने पूछा, मेरे पीछे क्या है?",
+   "A": "Agli baar puddle mein peeche ki building dikhe, to yaad rakhna: kisi ne aankh se ek kiran ulti bheji aur pixel ne poocha, mere peeche kya hai?",
+   "cap": "Agli baar puddle mein peeche ki building dikhe, to yaad rakhna: kisi ne aankh se ek kiran ulti bheji aur pixel ne poocha, mere peeche kya hai?"
+  },
+  {
+   "id": "cta",
+   "g": "g12",
+   "beat": "cta",
+   "B": "ये उस दोस्त को भेजिए जो कहता है ग्राफ़िक्स सिर्फ़ जी पी यू का खेल है। लाइक, शेयर और सब्सक्राइब करिए, संदेश एक्सप्लेन्स को।",
+   "A": "Yeh us dost ko bhejiye jo kehta hai graphics sirf GPU ka khel hai. Like, share aur subscribe karein, Sandesh Explains.",
+   "cap": "Yeh us dost ko bhejiye jo kehta hai graphics sirf GPU ka khel hai. Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}
