@@ -64,7 +64,7 @@ var gG = grp(new THREE.Group()), GP = {};
   GP.l1 = e.lab('RT CORE · BVH + TRIANGLE TESTS', K.SAGE, .42); GP.l1.position.set(0, 2.6, 0); gG.add(GP.l1);
   GP.e1 = e.lab('1920 × 1080 × 60', K.CHALK, .66, { fs: 56 }); GP.e1.position.set(0, 4.2, 1.2); gG.add(GP.e1); GP.e2 = e.lab('= 124.4 MILLION PIXELS / SEC', K.ICE, .52, { fs: 44 }); GP.e2.position.set(0, 3.4, 1.2); gG.add(GP.e2);
   GP.e3 = e.lab('10 B ÷ 124.4 M ≈ 80 RAYS / PIXEL', K.SAGE, .56, { fs: 46 }); GP.e3.position.set(0, 2.5, 1.2); gG.add(GP.e3); GP.e4 = e.lab('ON PAPER · AT THE CLAIMED PEAK', K.COR, .4, { fs: 38 }); GP.e4.position.set(0, 1.7, 1.4); gG.add(GP.e4); })();
-var tC = WS('y2', 'अरब|दस', .8), tM1 = WS('m1', 'फ़ुल|फुल|फ्ल', .15), tM2 = WS('m1', 'करोड़|करोर', .62), tM3 = WS('m1', 'अस्सी|अस्सि|अससी', .92);
+var tC = WS('y2b', 'अरब|दस', .8), tM1 = WS('m1', 'फ़ुल|फुल|फ्ल', .15), tM2 = WS('m1', 'करोड़|करोर', .62), tM3 = WS('m1', 'अस्सी|अस्सि|अससी', .92);
 e.shot(7, 'orbit the card', SC[7], tC + 2.4, [-6.5, 3.6, 7.5], [0, .9, 0], 44, [5.8, 3.4, 7.4], [0, 1.1, 0], 44, 'io');
 e.shot(7, 'rise to the math', tM1 - .5, tM1 + 1.6, [5.8, 3.4, 7.4], [0, 1.1, 0], 44, [0, 3.2, 10.2], [0, 1.3, 0], 46, 'io');
 SCN[7] = function (t) { gG.visible = true; bg(t); GP.fans.forEach(function (f, i) { f.rotation.y = t * (i ? 6 : -6); }); var pulse = .5 + .5 * Math.sin(t * 5); GP.die.material.color.copy(new THREE.Color(0x76b900).multiplyScalar(1.8 + pulse * 1.2)); GP.dg.material.opacity = .55 + pulse * .3;

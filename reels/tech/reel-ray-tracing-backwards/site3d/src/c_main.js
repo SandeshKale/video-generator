@@ -19,12 +19,12 @@ var DIPS = [1, 2, 5, 6, 7, 8, 9, 10].map(function (k) { return SC[k]; }), tCta =
 var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
 (function () { ev(.1, 'slam'); ev(3.4, 'ping'); DIPS.forEach(function (d) { ev(d - .1, 'whoosh'); });
   var t1 = SC[1] + .2; for (var i = 0; i < 8; i++) ev(t1 + i * .4, 'tick'); ev(WS('p1', 'आँख|आंख|पहुँचती', .8), 'ping'); ev(WS('p2', 'नुकसान|बड़ा', .4), 'buzz');
-  var t2 = SC[2]; ev(t2 + .2, 'pop'); ev(t2 + .9, 'pop'); ev(WS('r1', 'बाहर|तरफ़|भेजो', .65), 'whoosh'); ev(WS('r1', 'प्राइमरी', .9), 'card'); ev(S0('r2') + .2, 'ping');
+  var t2 = SC[2]; ev(t2 + .2, 'pop'); ev(t2 + .9, 'pop'); ev(WS('r1', 'बाहर|तरफ़|भेजो', .65), 'whoosh'); ev(WS('r1b', 'प्राइमरी', .9), 'card'); ev(S0('r2') + .2, 'ping');
   ev(SC[3] + .3, 'pop'); ev(WS('b1', 'उछलकर|उछल', .25), 'whoosh'); ev(WS('b1', 'उछलकर|उछल', .25) + 1.0, 'pop'); ev(WS('b1', 'पडल|पुडल|पड्डल|पडल्', .8), 'ping');
   ev(SC[4] + .1, 'pop'); ev(SC[4] + .3, 'card'); ev(WS('s1', 'छाया', .45), 'buzz'); ev(WS('s1', 'रोशनी', .8), 'ping');
   var v2 = S0('v2'); for (var k = 0; k < 8; k++) ev(S0('v1') + .8 + k * .4, 'tick'); ev(v2 + .2, 'card'); for (var L = 0; L <= 6; L++) ev(v2 + 1.0 + L * .85, 'pop'); ev(v2 + 7.0, 'ping');
   ev(WS('y1', 'अड़सठ|अडसठ', .12), 'pop'); ev(WS('y1', 'व्हिटेड|विटेड|टर्नर', .4), 'pop'); ev(WS('y1', 'कार्स|कारस', .8), 'pop'); for (var m = 0; m < 6; m++) ev(WS('y1', 'कार्स|कारस', .8) + .8 + m * .35, 'tick'); ev(WS('y1', 'सत्रह|सतरह', .93) + 1.4, 'pop');
-  ev(WS('y2', 'अरब|दस', .8), 'card'); for (var n = 0; n < 6; n++) ev(WS('y2', 'अरब|दस', .8) + n * .15, 'tick'); ev(WS('m1', 'फ़ुल|फुल', .15), 'pop'); ev(WS('m1', 'करोड़', .62), 'pop'); ev(WS('m1', 'अस्सी', .92), 'ping');
+  ev(WS('y2b', 'अरब|दस', .8), 'card'); for (var n = 0; n < 6; n++) ev(WS('y2b', 'अरब|दस', .8) + n * .15, 'tick'); ev(WS('m1', 'फ़ुल|फुल', .15), 'pop'); ev(WS('m1', 'करोड़', .62), 'pop'); ev(WS('m1', 'अस्सी', .92), 'ping');
   var n1 = S0('n1'); ev(n1 + .1, 'pop'); ev(WS('n1', 'दाने|दाना', .3), 'pop'); ev(WS('n1', 'दाने|दाना', .3) + 1, 'pop'); var dn = WS('n1', 'डीनॉइज़र|डिनोइज़र|डीनोइज़र', .72); ev(dn + .15, 'card'); ev(dn + .7, 'whoosh'); ev(dn + 1.6, 'ping');
   ev(WS('e1', 'असली|असल', .45), 'ping'); ev(WS('e1', 'अंदाज़ा|अंदाजा', .8), 'pop'); ev(WS('e1', 'पुराने', .4), 'whoosh');
   var f1 = WS('f1', 'उल्टी|उल्टा', .45); ev(f1, 'whoosh'); ev(f1 + 1.0, 'whoosh'); ev(f1 + 2.5, 'ping'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्सक्राइब|सबस्क्राइब', .75), 'ping'); })();

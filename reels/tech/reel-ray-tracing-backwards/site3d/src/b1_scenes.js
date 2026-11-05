@@ -76,7 +76,7 @@ SCN[1] = function (t) { gN.visible = true; S.fog = new THREE.FogExp2(0x07080b, .
   var n = Math.floor(Math.min(NR, Math.max(0, (t - t0) / 3.2 * NR))); ud.c1.draw(n); ud.c2.draw(t >= tHit ? 4 : 0, NR); ud.c1.visible = t > t0 + .2; ud.c2.visible = t > t0 + .2; put(ud.l1, t, t0, .4); put(ud.l2, t, t0 + .3, .4); put(ud.l3, t, tW, .4); };
 function benchBase(t) { gB.visible = true; S.fog = new THREE.FogExp2(0x07080b, .028); S.background = new THREE.Color(0x07080b); }
 function setRays(P1, P2) { e.setRay(bn.rayP, bn.eStart, bn.eStart.clone().lerp(bn.P, P1)); bn.rayP.visible = P1 > 0; bn.ah1.visible = P1 >= 1; bn.ah1.position.copy(bn.P.clone().sub(bn.d.clone().multiplyScalar(.2))); e.orient(bn.ah1, bn.d); }
-SCN[2] = function (t) { benchBase(t); var t0 = SC[2], tPix = WS('r1', 'पिक्सल|पिक्सेल', .5), tPR = WS('r1', 'प्राइमरी|प्राइमरी', .9), tH = S0('r2');
+SCN[2] = function (t) { benchBase(t); var t0 = SC[2], tPix = WS('r1', 'पिक्सल|पिक्सेल', .5), tPR = WS('r1b', 'प्राइमरी', .9), tH = S0('r2');
   bn.g.children.forEach(function (c) { if (c.userData && c.userData.keep) return; });
   /* stage: eye first, then the pixel grid, then the ray */
   bn.eye.visible = t >= t0 + .15; var ue = clamp((t - t0 - .15) / .5); bn.eye.scale.setScalar(eo3(ue) || .001);

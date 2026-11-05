@@ -31,13 +31,21 @@
    "id": "r1",
    "g": "g3",
    "beat": "flip",
-   "B": "रे ट्रेसिंग उल्टा करता है। आँख से, हर पिक्सल से, एक किरण बाहर की तरफ़ भेजो। इसे प्राइमरी रे कहते हैं।",
-   "A": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo. Ise primary ray kehte hain.",
-   "cap": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo. Ise primary ray kehte hain."
+   "B": "रे ट्रेसिंग उल्टा करता है। आँख से, हर पिक्सल से, एक किरण बाहर की तरफ़ भेजो।",
+   "A": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo.",
+   "cap": "Ray tracing ulta karta hai. Aankh se, har pixel se, ek kiran bahar ki taraf bhejo."
+  },
+  {
+   "id": "r1b",
+   "g": "g3b",
+   "beat": "flip",
+   "B": "इसे प्राइमरी रे कहते हैं।",
+   "A": "Ise primary ray kehte hain.",
+   "cap": "Ise primary ray kehte hain."
   },
   {
    "id": "r2",
-   "g": "g3",
+   "g": "g3b",
    "beat": "flip",
    "B": "किरण किसी चीज़ से टकराती है और एक ही सवाल पूछती है: तुम क्या हो, और तुम्हारा रंग क्या है?",
    "A": "Kiran kisi cheez se takrati hai aur ek hi sawaal puchti hai: tum kya ho, aur tumhara rang kya hai?",
@@ -55,9 +63,17 @@
    "id": "s1",
    "g": "g5",
    "beat": "shadow",
-   "B": "फिर एक किरण रोशनी की तरफ़ जाती है। रास्ते में कुछ आया तो छाया, नहीं आया तो रोशनी। शैडो भी एक सवाल है।",
-   "A": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni. Shadow bhi ek sawaal hai.",
-   "cap": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni. Shadow bhi ek sawaal hai."
+   "B": "फिर एक किरण रोशनी की तरफ़ जाती है। रास्ते में कुछ आया तो छाया, नहीं आया तो रोशनी।",
+   "A": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni.",
+   "cap": "Phir ek kiran roshni ki taraf jaati hai. Raaste mein kuch aaya to chhaya, nahi aaya to roshni."
+  },
+  {
+   "id": "s1b",
+   "g": "g5b",
+   "beat": "shadow",
+   "B": "शैडो भी एक सवाल है।",
+   "A": "Shadow bhi ek sawaal hai.",
+   "cap": "Shadow bhi ek sawaal hai."
   },
   {
    "id": "v1",
@@ -87,9 +103,17 @@
    "id": "y2",
    "g": "g8",
    "beat": "hardware",
-   "B": "फिर दो हज़ार अठारह में एनवीडिया ने आर टी एक्स कार्ड दिखाया, जिसमें इसी काम के लिए अलग हार्डवेयर है। कंपनी का दावा: दस अरब किरणें प्रति सेकंड तक।",
-   "A": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai. Company ka daawa: das arab kirnein prati second tak.",
-   "cap": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai. Company ka daawa: das arab kirnein prati second tak."
+   "B": "फिर दो हज़ार अठारह में एनवीडिया ने आर टी एक्स कार्ड दिखाया, जिसमें इसी काम के लिए अलग हार्डवेयर है।",
+   "A": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai.",
+   "cap": "Phir 2018 mein NVIDIA ne RTX card dikhaya, jisme isi kaam ke liye alag hardware hai."
+  },
+  {
+   "id": "y2b",
+   "g": "g8b",
+   "beat": "hardware",
+   "B": "कंपनी का दावा: दस अरब किरणें प्रति सेकंड तक।",
+   "A": "Company ka daawa: das arab kirnein prati second tak.",
+   "cap": "Company ka daawa: das arab kirnein prati second tak."
   },
   {
    "id": "m1",
