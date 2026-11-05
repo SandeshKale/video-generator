@@ -50,7 +50,7 @@ for e in ev['ev']:
     elif k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .4, tone(55, .8, dec=.3) * .35), t)
     elif k == 'pop': put(sfx, tone(500, .2, f1=1100, dec=.07) * .3, t)
     elif k == 'card': put(sfx, sm(tone(660, .22, f1=1320, dec=.08) * .26, noise(.06, 3000, 9000) * dec_n(.06, .02) * .25), t)
-    elif k == 'tick': put(sfx, noise(.02, 3000, 9000) * dec_n(.02, .006) * .5, t)
+    elif k == 'tick': put(sfx, noise(.02, 3000, 9000) * dec_n(.02, .006) * .22, t)
     elif k == 'buzz': put(sfx, sm(tone(110, .5, 'saw', dec=.3) * .2, tone(113, .5, 'saw', dec=.3) * .2), t)
     elif k == 'drop': put(sfx, tone(900, .35, f1=250, dec=.14) * .4, t)
     elif k == 'whoosh': put(sfx, whoosh(.5, True) * .5, t - .25)

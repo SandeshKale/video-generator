@@ -53,17 +53,17 @@ e.shot(0, 'crane-down + tilt', 0, 3.6, [3, 10, 17], [0, 11, -40], 46, [.4, 1.35,
 e.shot(0, 'push-in', Math.max(4.2, tHook - .6), Math.max(6.4, tHook + 1.8), [.4, 1.35, 7.4], [.1, -2.9, -3.2], 44, [.3, .95, 5.5], [.1, -3.2, -3.6], 44, 'io');
 var tOrb = SC[1];
 e.shot(1, 'orbit', tOrb, tOrb + 6.5, [-8, 10.5, 15], [0, 1.0, 0], 52, [7, 10.5, 15.5], [0, 1.0, 0], 52, 'io');
-var tPush = WS('p1', 'आँख|आंख|पहुँचती', .8) - .4;
+var tPush = WS('p1', 'आख|आँख|आंख|पहुछ', .8) - .4;
 e.shot(1, 'push-in to the eye', tPush, tPush + 2.6, [7, 10.5, 15.5], [0, 1.0, 0], 52, [2.4, 4.4, 11.8], [0, 1.6, 5.5], 44, 'io');
 var tRay = WS('r1', 'बाहर|तरफ़|भेजो', .65);
 e.shot(2, 'plan view', SC[2], SC[2] + 1, PA.p, PA.l, 50, PA.p, PA.l, 50, 'io');
-var BP = bn.E0.clone().add(bn.d.clone().multiplyScalar(.5)).add(new V3(7.6, 6.6, 1.2)), BL = bn.P.clone().add(new V3(0, .2, -.3));
+var BP = bn.E0.clone().add(bn.d.clone().multiplyScalar(.5)).add(new V3(10.6, 9.0, 1.6)), BL = bn.P.clone().add(new V3(0, .2, -.3));
 e.shot(2, 'dolly with the ray', tRay - .2, tRay + 2.4, PA.p, PA.l, 50, [BP.x, BP.y, BP.z], [BL.x, BL.y, BL.z], 44, 'io');
-var tR3 = SC[3], tRefl = WS('b1', 'उछलकर|उछल', .25), CPp = bn.P.clone().add(new V3(-8.6, 6.6, 6.6)), CLp = bn.P.clone().add(bn.rEnd).multiplyScalar(.5);
+var tR3 = SC[3], tRefl = WS('b1', 'उचलकर|उचल|उछल', .25), CPp = bn.P.clone().add(new V3(-11.5, 9.0, 8.8)), CLp = bn.P.clone().add(bn.rEnd).multiplyScalar(.5);
 e.shot(3, 'orbit to the bounce', tR3 + .1, tR3 + 1.8, [BP.x, BP.y, BP.z], [BL.x, BL.y, BL.z], 44, [CPp.x, CPp.y, CPp.z], [CLp.x, CLp.y, CLp.z], 46, 'io');
 var tBld = WS('b1', 'बिल्डिंग', .55), tPud = WS('b1', 'पडल|पुडल|पड्डल|पडल्', .8);
 e.shot(3, 'pull-back to the building', tBld - .3, tBld + 2.2, [CPp.x, CPp.y, CPp.z], [CLp.x, CLp.y, CLp.z], 46, PA.p, PA.l, 50, 'io');
-var SP0 = bn.P.clone().add(bn.Lp).multiplyScalar(.5), TP = SP0.clone().add(new V3(-9.6, 6.4, 9.6));
+var SP0 = bn.P.clone().add(bn.Lp).multiplyScalar(.5), TP = SP0.clone().add(new V3(-12.5, 8.4, 12.6));
 e.shot(4, 'truck along the shadow ray', SC[4] + .1, SC[4] + 2.6, PA.p, PA.l, 50, [TP.x, TP.y, TP.z], [SP0.x, SP0.y, SP0.z], 46, 'io');
 /* ================= scene functions ================= */
 SCN[0] = function (t) { (window.__r10 || []).forEach(function (o) { o.visible = false; }); gS.visible = true; tower.visible = true; S.fog = new THREE.FogExp2(0x0a0e1a, .011); S.background = new THREE.Color(0x0a0e1a); pm.uniforms.uT.value = t; };
@@ -72,7 +72,7 @@ SCN[1] = function (t) { gN.visible = true; S.fog = new THREE.FogExp2(0x07080b, .
     var ex = LP.x + d.x * ln, ey = LP.y + d.y * ln, ez = LP.z + d.z * ln; R.pos[j] = LP.x; R.pos[j + 1] = LP.y; R.pos[j + 2] = LP.z; R.pos[j + 3] = ex; R.pos[j + 4] = ey; R.pos[j + 5] = ez;
     var a = special ? 0 : (u > 0 ? .55 : 0); var r = lerp(1, 1, w) * a, g2 = lerp(.62, .24, w) * a, b2 = lerp(.28, .2, w) * a; var fade = 1 - w * .45; R.col[j] = r * fade; R.col[j + 1] = g2 * fade; R.col[j + 2] = b2 * fade; R.col[j + 3] = r * fade * .3; R.col[j + 4] = g2 * fade * .3; R.col[j + 5] = b2 * fade * .3; }
   for (var q = 0; q < NR; q++) { R.ep[q * 3] = R.pos[q * 6 + 3]; R.ep[q * 3 + 1] = R.pos[q * 6 + 4]; R.ep[q * 3 + 2] = R.pos[q * 6 + 5]; var uu = clamp((t - (t0 + (q / NR) * 3.2)) / .5), c0 = q < 4 ? 0 : (uu >= 1 ? 1 : 0); R.ec[q * 3] = c0 * lerp(1, 1, w) * (1 - w * .4); R.ec[q * 3 + 1] = c0 * lerp(.7, .26, w) * (1 - w * .4); R.ec[q * 3 + 2] = c0 * lerp(.3, .2, w) * (1 - w * .4); } R.eg.attributes.position.needsUpdate = true; R.eg.attributes.color.needsUpdate = true; R.geo.attributes.position.needsUpdate = true; R.geo.attributes.color.needsUpdate = true;
-  var tHit = WS('p1', 'आँख|आंख|पहुँचती', .8); ud.hot.forEach(function (r, i) { var u = clamp((t - (tHit - .4 + i * .08)) / .6); r.visible = u > 0; if (u > 0) e.setRay(r, LP, LP.clone().add(R.dirs[i].clone().multiplyScalar((EY.distanceTo(LP) - .9) * u))); });
+  var tHit = WS('p1', 'आख|आँख|आंख|पहुछ', .8); ud.hot.forEach(function (r, i) { var u = clamp((t - (tHit - .4 + i * .08)) / .6); r.visible = u > 0; if (u > 0) e.setRay(r, LP, LP.clone().add(R.dirs[i].clone().multiplyScalar((EY.distanceTo(LP) - .9) * u))); });
   var n = Math.floor(Math.min(NR, Math.max(0, (t - t0) / 3.2 * NR))); ud.c1.draw(n); ud.c2.draw(t >= tHit ? 4 : 0, NR); ud.c1.visible = t > t0 + .2; ud.c2.visible = t > t0 + .2; put(ud.l1, t, t0, .4); put(ud.l2, t, t0 + .3, .4); put(ud.l3, t, tW, .4); };
 function benchBase(t) { gB.visible = true; S.fog = new THREE.FogExp2(0x07080b, .028); S.background = new THREE.Color(0x07080b); }
 function setRays(P1, P2) { e.setRay(bn.rayP, bn.eStart, bn.eStart.clone().lerp(bn.P, P1)); bn.rayP.visible = P1 > 0; bn.ah1.visible = P1 >= 1; bn.ah1.position.copy(bn.P.clone().sub(bn.d.clone().multiplyScalar(.2))); e.orient(bn.ah1, bn.d); }
@@ -83,20 +83,20 @@ SCN[2] = function (t) { benchBase(t); var t0 = SC[2], tPix = WS('r1', 'पिक
   var ug = clamp((t - (t0 + .8)) / .6); bn.plane.visible = ug > 0; bn.lines.material.opacity = .6 * ug; bn.glassP.material.opacity = .07 * ug; bn.hot.visible = t >= tPix - .6; bn.hot.scale.setScalar(1 + .25 * Math.max(0, Math.sin((t - tPix) * 6)) * clamp(1 - (t - tPix) / 2));
   bn.chrome.visible = true; bn.lamp.visible = false; bn.lampGl.visible = false; bn.rayS.visible = false; bn.ah3.visible = false; bn.blk.visible = false; bn.sw.visible = false; bn.bld.visible = false; bn.crown.visible = false; bn.rayR.visible = false; bn.rayN.visible = false; bn.ah2.visible = false; bn.hit.visible = t >= tRay + 1.2;
   var p1 = clamp((t - tRay) / 1.3); setRays(sstep(p1)); bn.hit.material.opacity = clamp((t - tRay - 1.2) / .3); bn.hit.scale.setScalar(1.5 + .3 * Math.sin(t * 5));
-  put(bl.l1, t, tPR - .5, .4); put(bl.l4, t, tPix, .4); put(cardP, t, tPR, .5, tH + 2.8); put(bl.l7, t, tH + .2, .4); bn.hot.material.color.set(K.HOT).multiplyScalar(3); bn.hot.material.color.copy(new THREE.Color(K.HOT).multiplyScalar(3)); };
+  put(bl.l1, t, tPR - .5, .4, tPR + .05); put(bl.l4, t, tPix, .4, tPR - .05); put(cardP, t, tPR, .5, tH + 2.8); put(bl.l7, t, tH + .2, .4); bn.hot.material.color.set(K.HOT).multiplyScalar(3); bn.hot.material.color.copy(new THREE.Color(K.HOT).multiplyScalar(3)); };
 SCN[3] = function (t) { benchBase(t); var t0 = SC[3]; bn.eye.visible = true; bn.eye.scale.setScalar(1); bn.plane.visible = true; bn.lines.material.opacity = .6; bn.glassP.material.opacity = .07; bn.hot.visible = true; bn.lamp.visible = false; bn.lampGl.visible = false; bn.rayS.visible = false; bn.ah3.visible = false; bn.blk.visible = false; bn.sw.visible = false;
   setRays(1); bn.hit.visible = true; bn.hit.material.opacity = 1; bn.hit.scale.setScalar(1.5);
   var un = clamp((t - t0) / .5); bn.rayN.visible = un > 0; e.setRay(bn.rayN, bn.P, bn.P.clone().add(bn.n.clone().multiplyScalar(1.7 * sstep(un))));
   var ur = clamp((t - tRefl) / 1.5); e.setRay(bn.rayR, bn.P, bn.P.clone().lerp(bn.rEnd, sstep(ur))); bn.rayR.visible = ur > 0; bn.ah2.visible = ur >= 1; bn.ah2.position.copy(bn.rEnd); e.orient(bn.ah2, bn.Rd);
   var ub = clamp((t - (tRefl + .9)) / .6); bn.bld.visible = ub > 0; bn.crown.visible = ub > 0; bn.bld.scale.setScalar(eo3(ub) || .001); bn.crown.scale.setScalar(eo3(ub) || .001); bn.bld.position.y = 2.7 * (eo3(ub) || .001); bn.crown.position.y = 5.5 * (eo3(ub) || .001);
-  put(bl.l2, t, t0 + .4, .4); put(bl.l3, t, tRefl + .5, .4); put(bl.l5, t, tBld, .4); put(bl.l8, t, tPud, .4); var up = sstep(clamp((t - tPud) / .8)); bn.hot.material.color.copy(new THREE.Color(K.HOT).multiplyScalar(3).lerp(new THREE.Color(K.TUNG).multiplyScalar(3.4), up)); };
-SCN[4] = function (t) { benchBase(t); var t0 = SC[4], tBl = WS('s1', 'छाया|छाया,', .45), tCl = WS('s1', 'रोशनी|रोशनी।|रोशनी,', .8); bn.eye.visible = true; bn.eye.scale.setScalar(1); bn.plane.visible = true; bn.lines.material.opacity = .6; bn.glassP.material.opacity = .07; bn.hot.visible = true; setRays(1); bn.hit.visible = true; bn.hit.material.opacity = 1;
+  put(bl.l2, t, t0 + .4, .4, tRefl + .3); put(bl.l3, t, tRefl + .5, .4, tPud - .1); put(bl.l5, t, tBld, .4); put(bl.l8, t, tPud, .4); var up = sstep(clamp((t - tPud) / .8)); bn.hot.material.color.copy(new THREE.Color(K.HOT).multiplyScalar(3).lerp(new THREE.Color(K.TUNG).multiplyScalar(3.4), up)); };
+SCN[4] = function (t) { benchBase(t); var t0 = SC[4], tBl = WS('s1', 'चाये|छाया', .45), tCl = WS('s1', 'रोश्णी|रोशनी', .8, true); bn.eye.visible = true; bn.eye.scale.setScalar(1); bn.plane.visible = true; bn.lines.material.opacity = .6; bn.glassP.material.opacity = .07; bn.hot.visible = true; setRays(1); bn.hit.visible = true; bn.hit.material.opacity = 1;
   bn.rayN.visible = true; bn.rayR.visible = true; bn.ah2.visible = true; bn.bld.visible = true; bn.crown.visible = true; bn.bld.scale.setScalar(1); bn.crown.scale.setScalar(1); bn.bld.position.y = 2.7; bn.crown.position.y = 5.5; bn.hot.material.color.copy(new THREE.Color(K.TUNG).multiplyScalar(3.4));
   var ul = clamp((t - t0) / .5); bn.lamp.visible = bn.lampGl.visible = ul > 0; bn.lamp.scale.setScalar(eo3(ul) || .001); bn.lampGl.scale.set(4.6 * eo3(ul) || .01, 4.6 * eo3(ul) || .01, 1);
   var mid = bn.P.clone().lerp(bn.Lp, .52), us = clamp((t - (t0 + .5)) / 1.0), ub = clamp((t - (tBl - .5)) / .6), ua = clamp((t - (tCl - .1)) / .8), blocked = t >= tBl - .1 && t < tCl - .1;
   var bpos = mid.clone().add(new V3(0, 2.8 * (1 - eo3(ub)) + 2.8 * eo3(ua), 0)); bn.blk.visible = t >= tBl - .6 && ua < 1; bn.blk.position.copy(bpos); bn.blk.rotation.y = 0; var endPt = blocked ? mid.clone().add(new V3(0, -.05, 0)) : bn.Lp; var dir2 = endPt.clone().sub(bn.P);
   var reach = blocked ? clamp((t - (tBl - .1)) / .01) : 1; var fullU = sstep(us); var e2 = bn.P.clone().lerp(blocked ? mid : bn.Lp, blocked ? 1 : fullU); if (!blocked && t < tBl - .1) e2 = bn.P.clone().lerp(bn.Lp, fullU); e.setRay(bn.rayS, bn.P, e2); bn.rayS.visible = us > 0; bn.ah3.visible = us >= 1 && !blocked; bn.ah3.position.copy(bn.Lp.clone().sub(bn.Lp.clone().sub(bn.P).normalize().multiplyScalar(.5))); e.orient(bn.ah3, bn.Lp.clone().sub(bn.P));
   bn.rayS.material.color.copy(new THREE.Color(blocked ? K.COR : K.VIO).multiplyScalar(2.2)); var lit = t >= tCl; bn.hot.material.color.copy(new THREE.Color(K.TUNG).multiplyScalar(lit || t < tBl ? 3.4 : .5)); bn.lampGl.material.opacity = .95; bn.hit.material.opacity = lit || t < tBl ? 1 : .25;
-  put(bl.l6, t, t0 + .8, .4); put(cardS, t, t0 + .2, .5, tBl + 1.2); put(bl.l9, t, tBl + .1, .4, tCl); put(bl.l10, t, tCl + .1, .4); };
+  put(bl.l6, t, t0 + 2.4, .4); put(cardS, t, t0 + .2, .5, t0 + 2.2); put(bl.l9, t, tBl + .1, .4, tCl); put(bl.l10, t, tCl + .1, .4); };
 window.__gS = gS; window.__tower = tower; window.__pm = pm;
 })();
