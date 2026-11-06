@@ -22,7 +22,11 @@ GROUPS = []
 for x in SL:
     if not GROUPS or GROUPS[-1][0] != x['g']: GROUPS.append((x['g'], []))
     GROUPS[-1][1].append(x['id'])
-GAP = {'g1': 1.0, 'g2': 1.0, 'g3': 0.8, 'g4': 0.8, 'g5': 0.9, 'g6': 0.9, 'g7': 1.1, 'g8': 0.7, 'g9': 0.9, 'g10': 1.0, 'g11': 1.0, 'g12': 0.0, 'g3': .45, 'g5': .45, 'g8': .45, 'g3b': .9, 'g5b': .9, 'g8b': .9}
+GAP = {}
+import sys as _s; _s.path.insert(0, '/home/user/video-generator/scripts'); import pause_rules as _PR
+_OV = json.load(open(os.path.join(R, 'script.json'))).get('pause_after', {})
+for _g, _ids in GROUPS: GAP[_g] = _PR.gap_for([S[i]['B'] for i in _ids], _OV.get(_ids[-1]))
+GAP[GROUPS[-1][0]] = 0.0; GAP[GROUPS[0][0]] = max(GAP[GROUPS[0][0]], 1.0)
 for _g, _ in GROUPS: GAP.setdefault(_g, 0.9)
 MERGE = {'ट':'त','ठ':'थ','ड':'द','ढ':'ध','ष':'स','श':'स','ण':'न','ञ':'न','ङ':'न','ज़':'ज','फ़':'फ','क़':'क','ख़':'ख','ग़':'ग','ड़':'र','ढ़':'र','ऑ':'ओ','ऐ':'ए','औ':'ओ','ई':'इ','ऊ':'उ','आ':'अ'}
 def skel(t):
