@@ -52,14 +52,13 @@ Jokes (≥2× needed, keep the best): the "Venmo links rejected" line, "kiraya b
 | t2 | Do billionaire ek hi bill par ek saath swipe karein to double payment. Isliye ek bill, ek hold. Aur bill par aapka naam, pata, account number: public deck matlab ghar ka address Instagram par. |
 | t3 | Scale: Forbes ke hisaab se 3,428 billionaire. Sirf Amrika me chaudah million logon par hazaar dollar se upar ka medical karz. Rough hisaab: har billionaire ke hisse chaar hazaar bill. Boredom khatam, ungli khatam. |
 | f1 | Ab paisa. UK ke OnlyBills me ek se dus pound flat, phir dus percent fee. Tax? Amrika me unnis hazaar dollar saalana per vyakti. India me non-relative se pachaas hazaar se upar ka gift, lene waale par tax. Billionaire ka daan, aapki tax slip. Yeh meri samajh hai, CA se poochna. |
-| f2 | Ek pyara hisaab: Forbes ke number me sabse upar, lagbhag 839 billion dollar. Das-barah sau dollar ka rent uske liye utna hai jitna crorepati ke liye do paise. Do paise ke liye itna drama. |
+| f2 | Ek pyara hisaab: Forbes ke number me sabse upar, lagbhag 839 billion dollar. Pandrah sau dollar ka rent uske liye utna hai jitna crorepati ke liye do paise. Do paise ke liye itna drama. |
 | f3 | Poora Amrika ka medical karz, kam se kam 220 billion, billionaires ki 20 trillion ke lagbhag ek percent. Paisa kam nahi: plumbing kam hai. |
 | m1 | Naitikta. Is app me aapka bill aapki dating profile hai, aur swipe left matlab kisi ka kiraya "next". Kiraya bharega ya nahi, ab billionaire ke mood par. |
 | e1 | Ethics. Crowdfunding ki studies me dikhta hai ki paisa sirf need se nahi, network aur "deserving" dikhne se bhi milta hai. GoFundMe ke sirf aath percent medical campaign goal tak pahunche. Ise swipe-able bana do to gareebi ka For You page ready. |
 | c1 | Toh sachchi baat: seedha biller ko pay karna cash dene se behtar hai. Aur karz asli hai, tabhi ek jhooth-mooth tweet itna chala. Problem swipe nahi: hum daan ko bhi content banana chahte hain. |
 | cta | Yeh us dost ko bhejiye jo har viral tweet par bharosa kar leta hai. Like, share aur subscribe karein, Sandesh Explains. |
-Check the "1,500 dollar" line: f2 says "das-barah sau dollar" in the draft; **fix to "pandrah sau dollar" in the Devanagari master** (matches the on-screen $1,500).
-~395 words, ~140 s at 2.8 w/s. Trim candidates: t3 second sentence, f3, t2 last sentence; target ≤ 125 s.
+~436 words, about 155 s at 2.8 w/s: **too long**. Cut to about 340 words (about 120 s) before the Devanagari master: drop the second sentence of t3, merge f2 and f3 into one money beat, shorten r2 (keep "zero results" and the two dates), cut the last sentence of t2.
 
 ## 5. Facts ledger
 See `research/sources.md`. Anything vendor-claimed is on screen as "PER THEIR SITE". Derived numbers show their formula. India tax is tier B and flagged "OUR READING · ASK A CA". **Never on screen:** that Musk tweeted/announced/funded; user, volume or funding numbers for any prototype; any moral prescription.
