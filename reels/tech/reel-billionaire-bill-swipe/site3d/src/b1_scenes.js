@@ -82,7 +82,7 @@ SCN[3] = function (t) { var g = gT; g.visible = true; B.bgc(.008); var t0 = SC[3
   T.x.visible = xf > -1.5; T.gate.material.opacity = .45 + .5 * (xf > -2 && xf < 0 ? 1 : 0);
   var tv = SC[3] + L * .72, xv = 6 + (t - tv) * 5; T.venmo.visible = t > tv; var kv = clamp((t - tv - .6) / .8); T.venmo.position.set(Math.min(xv, 8.5) + kv * 2, .85 + kv * 2.5 * (1 - kv) * 2, -kv * 6); T.venmo.rotation.set(0, 0, kv * 4); T.vx.visible = t > tv + .5;
   T.beam.position.z = 1.5 * Math.sin(t * 5); T.hu.userData.head.rotation.y = .3 * Math.sin(t * 1.4); T.hu.userData.armR.rotation.x = -.4 + .3 * Math.sin(t * 4);
-  T.l.forEach(function (l, i) { put(l, t, SC[3] + .2 + i * L * .17, .4); }); put(T.cap, t, SC[3] + L * .55, .4); };
+  var cxr = T.real.position.x, bi = 0, bd = 99; [-6, -.5, 4.6, 10].forEach(function (sx, k) { if (Math.abs(cxr - sx) < bd) { bd = Math.abs(cxr - sx); bi = k; } }); T.l.forEach(function (l, i) { put(l, t, SC[3] + .2, .4); if (i !== bi) l.visible = false; }); put(T.cap, t, SC[3] + L * .55, .4); if (bi !== 3) T.cap.visible = false; };
 e.shot(3, 'follow the belt', SC[3], S1('t1') + .2, [-8.6, 6.4, 11.5], [-5.4, 1.8, 0], 46, [13.4, 6.4, 11.5], [9.2, 1.8, 0], 46, 'io');
 /* ===== scene 4: tech lens 2 - double swipe + privacy ===== */
 var gD = grp(new THREE.Group()), D = {};

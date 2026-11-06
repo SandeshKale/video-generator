@@ -234,7 +234,7 @@ SCN[3] = function (t) { var g = gT; g.visible = true; B.bgc(.008); var t0 = SC[3
   T.x.visible = xf > -1.5; T.gate.material.opacity = .45 + .5 * (xf > -2 && xf < 0 ? 1 : 0);
   var tv = SC[3] + L * .72, xv = 6 + (t - tv) * 5; T.venmo.visible = t > tv; var kv = clamp((t - tv - .6) / .8); T.venmo.position.set(Math.min(xv, 8.5) + kv * 2, .85 + kv * 2.5 * (1 - kv) * 2, -kv * 6); T.venmo.rotation.set(0, 0, kv * 4); T.vx.visible = t > tv + .5;
   T.beam.position.z = 1.5 * Math.sin(t * 5); T.hu.userData.head.rotation.y = .3 * Math.sin(t * 1.4); T.hu.userData.armR.rotation.x = -.4 + .3 * Math.sin(t * 4);
-  T.l.forEach(function (l, i) { put(l, t, SC[3] + .2 + i * L * .17, .4); }); put(T.cap, t, SC[3] + L * .55, .4); };
+  var cxr = T.real.position.x, bi = 0, bd = 99; [-6, -.5, 4.6, 10].forEach(function (sx, k) { if (Math.abs(cxr - sx) < bd) { bd = Math.abs(cxr - sx); bi = k; } }); T.l.forEach(function (l, i) { put(l, t, SC[3] + .2, .4); if (i !== bi) l.visible = false; }); put(T.cap, t, SC[3] + L * .55, .4); if (bi !== 3) T.cap.visible = false; };
 e.shot(3, 'follow the belt', SC[3], S1('t1') + .2, [-8.6, 6.4, 11.5], [-5.4, 1.8, 0], 46, [13.4, 6.4, 11.5], [9.2, 1.8, 0], 46, 'io');
 /* ===== scene 4: tech lens 2 - double swipe + privacy ===== */
 var gD = grp(new THREE.Group()), D = {};
@@ -305,9 +305,9 @@ var gR = grp(new THREE.Group()), R7 = {};
   R7.two = e.dyn(1.0, 900, 260, K.GOLD, function (x, a) { x.fillStyle = '#2a0f2e'; x.font = '600 26px "Geist Mono"'; x.fillText('FOR SOMEONE WORTH ₹1 CRORE', 32, 54); x.font = '900 52px Unbounded'; x.fillText('SAME SHARE =', 32, 124); x.fillStyle = '#e03131'; x.font = '900 82px Unbounded'; x.fillText('≈ ' + (1.8 * a).toFixed(1) + ' PAISE', 32, 214); }); R7.two.position.set(0, 5.4, 4); gR.add(R7.two);
   R7.dot = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, .02, 12), GM()); R7.dot.position.set(-1.0, .05, 3.2); gR.add(R7.dot); R7.dl = e.lab('2 PAISE', K.RED, .42, { fs: 34 }); R7.dl.position.set(-1.0, 1.2, 3.2); gR.add(R7.dl); })();
 SCN[7] = function (t) { var g = gR; g.visible = true; B.bgc(.006); var L = S1('f2') - SC[7], ta = SC[7] + .4, tb = SC[7] + L * .38, tc = SC[7] + L * .66;
-  R7.tk.forEach(function (l, i) { put(l, t, ta + i * .25, .35); }); put(R7.rent, t, ta + .5, .4); put(R7.top, t, tb - .6, .4); put(R7.tl, t, tb - .4, .4);
+  R7.tk.forEach(function (l, i) { put(l, t, ta + i * .25, .35); if (t > tb + .6) l.visible = false; }); put(R7.rent, t, ta + .5, .4); put(R7.top, t, tb - .6, .4); put(R7.tl, t, tb - .4, .4);
   var u = clamp((t - tb) / .9); R7.br.visible = u > 0; R7.br.scale.y = Math.max(.01, (R7.y2 - R7.y1) * eo3(u)); R7.br.position.y = R7.y1 + (R7.y2 - R7.y1) * eo3(u) / 2 * 1.0; R7.br.scale.set(1, Math.max(.01, (R7.y2 - R7.y1) * eo3(u)), 1); R7.br.position.y = R7.y1;
-  put(R7.div, t, tb + .8, .4); R7.top.userData.head.rotation.y = .5 * Math.sin(t * 1.3);
+  put(R7.div, t, tb + .8, .4, tc - .1); R7.top.userData.head.rotation.y = .5 * Math.sin(t * 1.3);
   R7.two.draw(sw(tc, tc + 1.4, t)); put(R7.two, t, tc, .4); R7.dot.visible = t > tc + 1.2; put(R7.dl, t, tc + 1.4, .35); };
 e.shot(7, 'pedestal up the ruler', SC[7], SC[7] + (S1('f2') - SC[7]) * .62, [.5, 2.6, 15], [0, 3.0, 0], 46, [.5, 8.6, 16], [0, 8.0, 0], 46, 'io');
 e.shot(7, 'drop to the dot', SC[7] + (S1('f2') - SC[7]) * .64, S1('f2') + .2, [.5, 8.6, 16], [0, 8.0, 0], 46, [.5, 4.2, 14], [0, 3.0, 2], 44, 'io');
@@ -388,10 +388,10 @@ var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
   var L3 = S1('t1') - SC[3]; for (var k = 0; k < 4; k++) ev(SC[3] + .2 + k * L3 * .17, 'tick'); ev(SC[3] + L3 * .45, 'buzz'); ev(SC[3] + L3 * .88, 'ping');
   var L4 = S1('t2') - SC[4]; ev(SC[4] + 1.4, 'whoosh'); ev(SC[4] + 1.7, 'slam'); ev(SC[4] + L4 * .5 + .3, 'pop'); for (var m = 0; m < 3; m++) ev(SC[4] + L4 * .65 + m * .3, 'tick');
   ev(SC[5] + .5, 'ping'); ev(SC[5] + 1.0, 'tick'); ev(SC[5] + 1.4, 'tick'); ev(SC[5] + (S1('t3') - SC[5]) * .5 + 1.4, 'ping');
-  for (var s = 0; s < 10; s++) ev(SC[6] + .3 + s * .18 + .3, 'tick'); ev(SC[6] + 2.7, 'pop'); ev(S0('f1b') + .4, 'pop'); ev(SP('f1b', .72), 'buzz');
+  for (var s = 0; s < 10; s++) ev(SC[6] + .3 + s * .18 + .3, 'tick'); ev(SC[6] + 2.7, 'pop'); ev(S0('f1b') + .4, 'pop'); 
   var L7 = S1('f2') - SC[7]; for (var q = 0; q < 4; q++) ev(SC[7] + .4 + q * .25, 'tick'); ev(SC[7] + L7 * .38 + .8, 'whoosh'); ev(SC[7] + L7 * .66 + 1.4, 'ping');
   ev(SC[8] + .5, 'whoosh'); ev(SC[8] + 1.2, 'pop'); ev(SC[8] + 2.4, 'ping');
-  var L9 = S1('m1') - SC[9]; [.38, .6, .8].forEach(function (f) { ev(SC[9] + L9 * f, 'whoosh'); ev(SC[9] + L9 * f + .3, 'buzz'); });
+  var L9 = S1('m1') - SC[9]; [.38, .6, .8].forEach(function (f) { ev(SC[9] + L9 * f, 'whoosh');  });
   var L10 = S1('e1') - SC[10]; ev(SC[10] + L10 * .22, 'pop'); ev(SC[10] + L10 * .45 + .5, 'tick'); ev(SC[10] + L10 * .8, 'buzz');
   var L11 = S1('c1') - SC[11]; ev(SC[11] + L11 * .3, 'whoosh'); ev(SC[11] + L11 * .3 + 1.3, 'slam'); ev(SC[11] + L11 * .3 + 1.5, 'ping');
   ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब|सब्सक्राइब', .75), 'ping'); })();

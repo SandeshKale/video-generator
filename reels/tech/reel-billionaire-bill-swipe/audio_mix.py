@@ -46,6 +46,9 @@ for e in ev['ev']:
         for w in WD:
             if w[1] + .03 < t < w[2]: t = w[2] + .03; break
     if k in ('slam',): t += .25
+    if k in ('whoosh', 'tick', 'pop', 'ping', 'buzz', 'card', 'drop'):
+        w0 = t - .25 if k == 'whoosh' else t; w1 = w0 + (.5 if k == 'whoosh' else .1)
+        if any(min(w1, w[2]) - max(w0, w[1]) > .08 for w in WD): continue
     if k == 'ping': put(sfx, sm(tone(1320, .35, dec=.12) * .3, tone(1980, .25, dec=.08) * .12), t)
     elif k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .4, tone(55, .8, dec=.3) * .35), t)
     elif k == 'pop': put(sfx, tone(500, .2, f1=1100, dec=.07) * .3, t)
@@ -55,7 +58,7 @@ for e in ev['ev']:
     elif k == 'drop': put(sfx, tone(900, .35, f1=250, dec=.14) * .4, t)
     elif k == 'whoosh': put(sfx, whoosh(.5, True) * .5, t - .25)
     elif k == 'rumble': put(sfx, sm(noise(2.4, 40, 500) * np.sin(np.linspace(0, np.pi, int(2.4*SR)))**1.2 * 1.1, tone(48, 2.4, 'saw', a=.5, dec=1.6) * .22), t)
-for tb in B[1:-1]: put(sfx, whoosh(.4, True) * .28, tb - .5); put(sfx, tone(80, .3, f1=45, dec=.1) * .3, tb)
+for tb in B[1:-1]: put(sfx, whoosh(.4, True) * .1, tb - .5); put(sfx, tone(80, .3, f1=45, dec=.1) * .3, tb)
 # ---------------- score ----------------
 BPM = 112; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); root = 55.0 * 2 ** (np.array([3, 0, 8, 10]) / 12)       # C, Am, F, G (one bar each)
 sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2

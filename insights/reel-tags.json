@@ -295,5 +295,12 @@
   "voice": "synth-clone",
   "host": "no",
   "length": "108s"
+ },
+ "reel-billionaire-bill-swipe": {
+  "genre": "comedy-explainer",
+  "company": "none",
+  "voice": "synth-clone",
+  "host": "no",
+  "length": 106
  }
 }

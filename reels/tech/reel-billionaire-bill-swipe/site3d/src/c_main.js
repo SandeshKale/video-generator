@@ -24,10 +24,10 @@ var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
   var L3 = S1('t1') - SC[3]; for (var k = 0; k < 4; k++) ev(SC[3] + .2 + k * L3 * .17, 'tick'); ev(SC[3] + L3 * .45, 'buzz'); ev(SC[3] + L3 * .88, 'ping');
   var L4 = S1('t2') - SC[4]; ev(SC[4] + 1.4, 'whoosh'); ev(SC[4] + 1.7, 'slam'); ev(SC[4] + L4 * .5 + .3, 'pop'); for (var m = 0; m < 3; m++) ev(SC[4] + L4 * .65 + m * .3, 'tick');
   ev(SC[5] + .5, 'ping'); ev(SC[5] + 1.0, 'tick'); ev(SC[5] + 1.4, 'tick'); ev(SC[5] + (S1('t3') - SC[5]) * .5 + 1.4, 'ping');
-  for (var s = 0; s < 10; s++) ev(SC[6] + .3 + s * .18 + .3, 'tick'); ev(SC[6] + 2.7, 'pop'); ev(S0('f1b') + .4, 'pop'); ev(SP('f1b', .72), 'buzz');
+  for (var s = 0; s < 10; s++) ev(SC[6] + .3 + s * .18 + .3, 'tick'); ev(SC[6] + 2.7, 'pop'); ev(S0('f1b') + .4, 'pop'); 
   var L7 = S1('f2') - SC[7]; for (var q = 0; q < 4; q++) ev(SC[7] + .4 + q * .25, 'tick'); ev(SC[7] + L7 * .38 + .8, 'whoosh'); ev(SC[7] + L7 * .66 + 1.4, 'ping');
   ev(SC[8] + .5, 'whoosh'); ev(SC[8] + 1.2, 'pop'); ev(SC[8] + 2.4, 'ping');
-  var L9 = S1('m1') - SC[9]; [.38, .6, .8].forEach(function (f) { ev(SC[9] + L9 * f, 'whoosh'); ev(SC[9] + L9 * f + .3, 'buzz'); });
+  var L9 = S1('m1') - SC[9]; [.38, .6, .8].forEach(function (f) { ev(SC[9] + L9 * f, 'whoosh');  });
   var L10 = S1('e1') - SC[10]; ev(SC[10] + L10 * .22, 'pop'); ev(SC[10] + L10 * .45 + .5, 'tick'); ev(SC[10] + L10 * .8, 'buzz');
   var L11 = S1('c1') - SC[11]; ev(SC[11] + L11 * .3, 'whoosh'); ev(SC[11] + L11 * .3 + 1.3, 'slam'); ev(SC[11] + L11 * .3 + 1.5, 'ping');
   ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब|सब्सक्राइब', .75), 'ping'); })();
