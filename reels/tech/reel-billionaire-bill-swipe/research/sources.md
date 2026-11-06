@@ -15,6 +15,11 @@
 | **OnlyBills (iPhone, only-bills.com)**: says App Store launch 11 Nov 2026; money never passes through the app; sources conflict on verification | only-bills.com | B |
 | **Bored Billionaire** (boredbillionaire.org) presents itself as an independent implementation; no KYC/fee/launch details found | its own blog | C for anything beyond "exists" |
 | SugarBill, A Little Help (Kasala): described only as early/waitlist | IBTimes UK | C |
+## First-hand reads (6 Nov 2026, after approval) — tier upgrades
+- **paymybillionaires.com (read):** patrons pay the biller on the biller's own site, "Never the person posting, and never us"; a person checks each bill, each payment link and the details before payment; US companies and USD only; no fee; "Venmo, Cash App and Zelle links get thrown out"; "An offer isn't a payment"; gift-tax paperwork is the giver's job; not affiliated with Elon Musk, X or any billionaire. **Tier A for what the site claims.**
+- **paymybilly.com/faq (read):** the app is an interactive demo, "no money is moving yet"; a pilot of up to 100 people is next, no date; planned limits one bill per month up to $1,000. **Tier A (own FAQ).**
+- **onlybills.co (read):** supporters pay "£1 flat up to £10, then 10%" on top of the gift (a £1 gift costs £2, a £20 gift £22); posting is free; a human checks every bill; **payments go person-to-person**, the site "doesn't verify how money is used" (so it differs from Pay My Billionaires, which pays the biller). **Tier A (own site).**
+- **KFF Health News, 12 Feb 2024 (read):** GoFundMe says medical expenses are the most common category; "roughly a third of the funds" are illness/injury related (company estimate, possibly an undercount); a 2017 University of Washington study: medical campaigns averaged about **40% of their target**. **The "8% reach goal" figure (Northeastern, via a radio summary) is replaced by this first-hand 40% figure in the script.**
 ## Money and scale
 | Fact | Source | Tier |
 |---|---|---|

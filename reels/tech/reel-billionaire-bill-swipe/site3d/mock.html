@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>Billionaire swipe mockup</title>
+<style>
+@font-face{font-family:'Unbounded';font-weight:900;src:url('fonts/unbounded-900.woff2');font-display:block}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url('fonts/instrument-italic.woff2');font-display:block}
+@font-face{font-family:'Geist Mono';font-weight:600;src:url('fonts/geist-600.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:600;src:url('fonts/inter-600.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('fonts/inter-800.woff2');font-display:block}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#ffe3dc;font-family:Inter,sans-serif;color:#2a0f2e}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#hdr{position:absolute;left:150px;top:150px;width:760px}
+#eb{font:600 24px 'Geist Mono';letter-spacing:.14em;color:#e03131;display:flex;align-items:center;gap:14px}
+#eb i{display:inline-block;width:16px;height:16px;border-radius:50%;background:#e03131}
+#hl{font:900 62px/1.02 Unbounded;letter-spacing:-.02em;margin-top:14px;color:#2a0f2e}
+#hl b{font-weight:900;background:#e8b53a;color:#2a0f2e;padding:0 10px;border-radius:6px}
+#cap{position:absolute;left:150px;width:768px;top:1338px;text-align:center;font:800 46px/1.18 Inter}
+#cap span{background:rgba(42,15,46,.9);color:#fff7ee;padding:4px 14px;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#cap em{font-style:normal;color:#e8b53a}
+#src{position:absolute;left:150px;top:1296px;width:768px;font:600 21px 'Geist Mono';letter-spacing:.06em;color:rgba(42,15,46,.7)}
+</style>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div id="hdr"><div id="eb"><i></i><span id="ebt"></span></div><div id="hl"></div></div><div id="src"></div><div id="cap"></div></div>
+<script>window.__ready=false;
+Promise.all(['900 40px Unbounded','italic 400 40px "Instrument Serif"','600 30px Inter','800 30px Inter','600 30px "Geist Mono"'].map(function(f){return document.fonts.load(f)})).then(function(){
+  var L=['three.min.js','src/a_engine.js','src/m_mock.js'],i=0;(function nx(){if(i>=L.length)return;var s=document.createElement('script');s.src=L[i++];s.onload=nx;document.body.appendChild(s)})()})</script>

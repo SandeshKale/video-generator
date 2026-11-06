@@ -1,0 +1,127 @@
+{
+ "title": "Billionaire ka right swipe",
+ "format": "1080x1920",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "B": "ब्रेकिंग न्यूज़: अरबपति बोर हो रहे हैं। सॉल्यूशन? आपका बिजली का बिल, डेटिंग ऐप की तरह, राइट स्वाइप।",
+   "A": "Breaking news: billionaires bore ho rahe hain. Solution? Aapka bijli ka bill, dating app ki tarah, right swipe.",
+   "cap": "Breaking news: billionaires bore ho rahe hain. Solution? Aapka bijli ka bill, dating app ki tarah, right swipe."
+  },
+  {
+   "id": "p1",
+   "g": "g2",
+   "beat": "plain",
+   "B": "आइडिया सिंपल है: बिल अपलोड करो, अरबपति राइट स्वाइप करे, बिल पे।",
+   "A": "Idea simple hai: bill upload karo, billionaire swipe right kare, bill pay.",
+   "cap": "Idea simple hai: bill upload karo, billionaire swipe right kare, bill pay."
+  },
+  {
+   "id": "r1",
+   "g": "g2",
+   "beat": "myth",
+   "B": "एक छोटी सी दिक्कत: ये एलन मस्क ने ट्वीट किया ही नहीं।",
+   "A": "Ek chhoti si dikkat: yeh Elon Musk ne tweet kiya hi nahi.",
+   "cap": "Ek chhoti si dikkat: yeh Elon Musk ne tweet kiya hi nahi."
+  },
+  {
+   "id": "r2",
+   "g": "g3",
+   "beat": "myth",
+   "B": "लीड स्टोरीज़ ने उनके अकाउंट पर बोर्ड बिलियनेयर्स सर्च किया: ज़ीरो रिज़ल्ट। आइडिया एक आम एक्स यूज़र का था।",
+   "A": "Lead Stories ne unke account par bored billionaires search kiya: zero results. Idea ek aam X user ka tha.",
+   "cap": "Lead Stories ne unke account par bored billionaires search kiya: zero results. Idea ek aam X user ka tha."
+  },
+  {
+   "id": "t1",
+   "g": "g4",
+   "beat": "tech",
+   "B": "टेक्नोलॉजी। बिल असली है? ऐप बिल पढ़ता है, बिलर से मैच करता है, इंसान से चेक करवाता है। पे माय बिलियनेयर्स पैसा सीधा बिलर को देता है; वेन्मो के लिंक बाहर।",
+   "A": "Technology. Bill asli hai? App bill padhta hai, biller se match karta hai, insaan se check karwata hai. Pay My Billionaires paisa seedha biller ko deta hai; Venmo ke links bahar.",
+   "cap": "Technology. Bill asli hai? App bill padhta hai, biller se match karta hai, insaan se check karwata hai. Pay My Billionaires paisa seedha biller ko deta hai; Venmo ke links bahar."
+  },
+  {
+   "id": "t2",
+   "g": "g5",
+   "beat": "tech",
+   "B": "दो अरबपति एक ही बिल पर स्वाइप करें तो डबल पेमेंट, इसलिए एक बिल, एक होल्ड। और बिल पर नाम, पता, अकाउंट नंबर: पब्लिक डेक मतलब घर का एड्रेस इंस्टाग्राम पर।",
+   "A": "Do billionaire ek hi bill par swipe karein to double payment, isliye ek bill, ek hold. Aur bill par naam, pata, account number: public deck matlab ghar ka address Instagram par.",
+   "cap": "Do billionaire ek hi bill par swipe karein to double payment, isliye ek bill, ek hold. Aur bill par naam, pata, account number: public deck matlab ghar ka address Instagram par."
+  },
+  {
+   "id": "t3",
+   "g": "g6",
+   "beat": "scale",
+   "B": "फ़ोर्ब्स: तीन हज़ार चार सौ अट्ठाईस अरबपति। अमेरिका में चौदह मिलियन लोगों पर हज़ार डॉलर से ऊपर का मेडिकल कर्ज़। मतलब हर अरबपति के हिस्से लगभग चार हज़ार बिल।",
+   "A": "Forbes: teen hazaar chaar sau athaais billionaire. Amrika me chaudah million logon par hazaar dollar se upar ka medical karz. Matlab har billionaire ke hisse lagbhag chaar hazaar bill.",
+   "cap": "Forbes: teen hazaar chaar sau athaais billionaire. Amrika me chaudah million logon par hazaar dollar se upar ka medical karz. Matlab har billionaire ke hisse lagbhag chaar hazaar bill."
+  },
+  {
+   "id": "f1",
+   "g": "g7",
+   "beat": "money",
+   "B": "अब पैसा। यूके के ओनलीबिल्स में सपोर्टर एक से दस पाउंड फ्लैट, फिर दस परसेंट फ़ीस देता है।",
+   "A": "Ab paisa. UK ke OnlyBills me supporter ek se dus pound flat, phir dus percent fee deta hai.",
+   "cap": "Ab paisa. UK ke OnlyBills me supporter ek se dus pound flat, phir dus percent fee deta hai."
+  },
+  {
+   "id": "f1b",
+   "g": "g7b",
+   "beat": "money",
+   "B": "भारत में नॉन-रिलेटिव से साल में पचास हज़ार से ऊपर का गिफ्ट, लेने वाले पर टैक्स, मेरी समझ से; सीए से पूछना। अरबपति का दान, आपकी टैक्स स्लिप।",
+   "A": "India me non-relative se saal me pachaas hazaar se upar ka gift, lene waale par tax, meri samajh se; CA se poochna. Billionaire ka daan, aapki tax slip.",
+   "cap": "India me non-relative se saal me pachaas hazaar se upar ka gift, lene waale par tax, meri samajh se; CA se poochna. Billionaire ka daan, aapki tax slip."
+  },
+  {
+   "id": "f2",
+   "g": "g8",
+   "beat": "money",
+   "B": "एक प्यारा हिसाब: फ़ोर्ब्स के नंबर में सबसे ऊपर का आदमी लगभग आठ सौ उनतालीस बिलियन डॉलर; पंद्रह सौ डॉलर का रेंट उसके लिए उतना, जितना करोड़पति के लिए दो पैसे।",
+   "A": "Ek pyara hisaab: Forbes ke number me sabse upar ka aadmi lagbhag aath sau untaalis billion dollar; pandrah sau dollar ka rent uske liye utna, jitna crorepati ke liye do paise.",
+   "cap": "Ek pyara hisaab: Forbes ke number me sabse upar ka aadmi lagbhag aath sau untaalis billion dollar; pandrah sau dollar ka rent uske liye utna, jitna crorepati ke liye do paise."
+  },
+  {
+   "id": "f3",
+   "g": "g9",
+   "beat": "money",
+   "B": "और पूरे अमेरिका का मेडिकल कर्ज़, अरबपतियों की दौलत का लगभग एक परसेंट। पैसा कम नहीं, प्लंबिंग कम है।",
+   "A": "Aur poore Amrika ka medical karz, billionaires ki daulat ka lagbhag ek percent. Paisa kam nahi, plumbing kam hai.",
+   "cap": "Aur poore Amrika ka medical karz, billionaires ki daulat ka lagbhag ek percent. Paisa kam nahi, plumbing kam hai."
+  },
+  {
+   "id": "m1",
+   "g": "g10",
+   "beat": "moral",
+   "B": "नैतिकता। इस ऐप में आपका बिल आपकी डेटिंग प्रोफ़ाइल है, और स्वाइप लेफ़्ट मतलब किसी का किराया नेक्स्ट। किराया भरेगा या नहीं, अरबपति के मूड पर।",
+   "A": "Naitikta. Is app me aapka bill aapki dating profile hai, aur swipe left matlab kisi ka kiraya next. Kiraya bharega ya nahi, billionaire ke mood par.",
+   "cap": "Naitikta. Is app me aapka bill aapki dating profile hai, aur swipe left matlab kisi ka kiraya next. Kiraya bharega ya nahi, billionaire ke mood par."
+  },
+  {
+   "id": "e1",
+   "g": "g11",
+   "beat": "ethics",
+   "B": "एथिक्स। मेडिकल क्राउडफंडिंग में पैसा सिर्फ़ ज़रूरत से नहीं, नेटवर्क और डिज़र्विंग दिखने से भी मिलता है, और कैंपेन औसतन टारगेट का लगभग चालीस परसेंट ही जुटाता है। स्वाइप-एबल बना दो तो ग़रीबी का फ़ॉर यू पेज रेडी।",
+   "A": "Ethics. Medical crowdfunding me paisa sirf need se nahi, network aur deserving dikhne se bhi milta hai, aur campaign ausatan target ka lagbhag chalis percent hi jutata hai. Swipe-able bana do to gareebi ka For You page ready.",
+   "cap": "Ethics. Medical crowdfunding me paisa sirf need se nahi, network aur deserving dikhne se bhi milta hai, aur campaign ausatan target ka lagbhag chalis percent hi jutata hai. Swipe-able bana do to gareebi ka For You page ready."
+  },
+  {
+   "id": "c1",
+   "g": "g12",
+   "beat": "toast",
+   "B": "तो सच्ची बात: सीधा बिलर को पे करना कैश से बेहतर है। कर्ज़ असली है, इसलिए झूठे ट्वीट ने इतना चलाया। प्रॉब्लम स्वाइप नहीं: हम दान को भी कंटेंट बनाना चाहते हैं।",
+   "A": "Toh sachchi baat: seedha biller ko pay karna cash se behtar hai. Karz asli hai, isliye jhoothe tweet ne itna chalaya. Problem swipe nahi: hum daan ko bhi content banana chahte hain.",
+   "cap": "Toh sachchi baat: seedha biller ko pay karna cash se behtar hai. Karz asli hai, isliye jhoothe tweet ne itna chalaya. Problem swipe nahi: hum daan ko bhi content banana chahte hain."
+  },
+  {
+   "id": "cta",
+   "g": "g13",
+   "beat": "cta",
+   "B": "ये उस दोस्त को भेजिए जो हर वायरल ट्वीट पर भरोसा कर लेता है। लाइक, शेयर और सब्सक्राइब करिए, संदेश एक्सप्लेन्स को।",
+   "A": "Yeh us dost ko bhejiye jo har viral tweet par bharosa kar leta hai. Like, share aur subscribe karein, Sandesh Explains.",
+   "cap": "Yeh us dost ko bhejiye jo har viral tweet par bharosa kar leta hai. Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}
