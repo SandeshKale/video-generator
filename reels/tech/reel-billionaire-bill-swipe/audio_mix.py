@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for 'Light ulti chalti hai' (Optical Bench score: warm pad, glass plucks, ray-tick hats).  python3 audio_mix.py   -> audio/final.wav (48 kHz) + audio/mix-report.json
+"""Score + SFX + mix for 'Billionaire ka right swipe' (Swipe Deck score: marimba plucks, shaker, wood-block claps, warm pad).  python3 audio_mix.py   -> audio/final.wav (48 kHz) + audio/mix-report.json
 The score is a stage groove that gains a voice per step (kick+pad hook, bass on the math, pluck on step 1, hats+clap on the waiting room, lock motif on the seat hold),
 drops out on the lost payment reply, glitches at the bots, strips to a pad for the honest part and resolves to major on the last line.
 SFX come from the page's own event list (audio/events.json). Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, voice over music+SFX median >= 19 dB, min >= 13 dB."""
@@ -57,23 +57,23 @@ for e in ev['ev']:
     elif k == 'rumble': put(sfx, sm(noise(2.4, 40, 500) * np.sin(np.linspace(0, np.pi, int(2.4*SR)))**1.2 * 1.1, tone(48, 2.4, 'saw', a=.5, dec=1.6) * .22), t)
 for tb in B[1:-1]: put(sfx, whoosh(.4, True) * .28, tb - .5); put(sfx, tone(80, .3, f1=45, dec=.1) * .3, tb)
 # ---------------- score ----------------
-BPM = 100; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); root = 55.0 * 2 ** (np.array([5, 1, 8, 3]) / 12)       # Dm, Bb, F, C (one bar each)
+BPM = 112; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); root = 55.0 * 2 ** (np.array([3, 0, 8, 10]) / 12)       # C, Am, F, G (one bar each)
 sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2
 def voices(t):
-    s = sc_of(t); v = dict(kick=s in (7, 10), pad=True, bass=s in (2, 3, 4, 7, 10), pluck=s in (2, 3, 4, 6, 10), hat=s in (5, 8, 10), lock=s in (1, 5, 7, 10))
+    s = sc_of(t); v = dict(kick=s in (0, 5, 8, 11), pad=True, bass=s in (1, 2, 3, 4, 5, 6, 7, 8, 11), pluck=s in (0, 1, 3, 4, 6, 7, 10, 11), hat=s in (5, 6, 7, 8, 11), lock=s in (2, 4, 7, 10, 11))
     if s == 9: v.update(kick=False, bass=False, pluck=False, hat=False, lock=False)        # the honest part: pad only
     return v
 i = 0; t = 0.0
 while t < DUR:
-    bar = int(i // 16) % 4; s16 = i % 16; V = voices(t); late = sc_of(t) == 10
+    bar = int(i // 16) % 4; s16 = i % 16; V = voices(t); late = sc_of(t) == 11
     if V['kick'] and s16 % 4 == 0: put(music, tone(120, .25, f1=40, dec=.08) * (.7), t)
     if V['bass'] and s16 % 2 == 0 and s16 % 8 != 6: put(music, tone(root[bar] * (1 if s16 % 8 else 2), step * 1.8, 'saw', dec=.09) * .09, t)
-    if V['pluck'] and s16 % 2 == 0: put(music, tone(root[bar] * 8 * 2 ** ([0, 7, 12, 7, 15, 12, 7, 3][(s16 // 2) % 8] / 12), step * 1.6, dec=.07) * .1, t)
+    if V['pluck'] and s16 % 2 == 0: put(music, tone(root[bar] * 8 * 2 ** ([0, 4, 7, 4, 12, 9, 7, 4][(s16 // 2) % 8] / 12), step * 1.6, dec=.07) * .11, t)
     if V['hat'] and s16 % 2 == 1: put(music, noise(.04, 6000, 12000) * dec_n(.04, .012) * .22, t)
     if V['hat'] and s16 in (4, 12): put(music, noise(.12, 1200, 5000) * dec_n(.12, .04) * .3, t)                                     # clap
     if V['lock'] and s16 in (0, 6): put(music, sm(tone(root[bar] * 8, .9, dec=.35) * .12, tone(root[bar] * 12, .9, dec=.25) * .06), t)
     if V['pad'] and s16 == 0 and bar % 2 == 0:
-        q = (0, 4, 7) if late else (0, 3, 7)                                                    # the last scene resolves minor -> major
+        q = (0, 4, 7) if (late or sc_of(t) != 9) else (0, 3, 7)                                                    # the last scene resolves minor -> major
         for qq in q: put(music, tone(root[bar] * 4 * 2 ** (qq / 12), beat * 7.6, 'saw', a=.7, dec=3.2) * .035, t)
     if V['pad'] and s16 == 0: put(music, tone(root[bar], beat * 3.9, dec=2.5) * .2, t)
     i += 1; t = i * step

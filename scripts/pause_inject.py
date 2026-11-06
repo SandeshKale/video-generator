@@ -19,7 +19,7 @@ groups = {}
 for s in S: groups.setdefault(s['g'], []).append(s)
 rng_seed = 0; report = []; NEWQ = json.loads(json.dumps(qc))
 def noise_like(n, floor, seed):
-    rng = np.random.default_rng(seed); x = rng.standard_normal(n).astype('float32'); sos = butter(2, [120 / (SR / 2), 3500 / (SR / 2)], btype='band', output='sos'); x = sosfilt(sos, x).astype('float32')
+    rng = np.random.default_rng(seed); x = rng.standard_normal(n).astype('float32'); sos = butter(2, [100 / (SR / 2), 1800 / (SR / 2)], btype='band', output='sos'); x = sosfilt(sos, x).astype('float32')
     return x / (np.sqrt((x ** 2).mean()) + 1e-9) * floor
 for gid, ids in groups.items():
     if gid not in qc: continue
@@ -49,14 +49,24 @@ for gid, ids in groups.items():
     for j, kind, tgt in sorted(bnd, key=lambda b: -b[0]):
         w0, w1 = W[j], W[j + 1]; gap = max(0.0, w1[1] - w0[2]); tgt = PR.jitter(hash((gid, j)) & 0xffff, tgt); add = tgt - gap
         if add < .06: report.append((gid, j, kind, round(gap, 2), 0, 'ok')); continue
-        lo = int(max(0, (w0[2] - .09)) * SR); hi = int(min(len(a), (w1[1] + .05) * SR)); hi = max(hi, lo + int(.06 * SR))
-        seg = env[lo:hi]; cut = lo + int(np.argmin(seg)); 
-        if env[cut] > 60 * floor: report.append((gid, j, kind, round(gap, 2), 0, 'skip(no valley)')); continue
-        n = int(add * SR); N = noise_like(n, floor * .9, hash((gid, j)) & 0xffff); f = int(.02 * SR)
+        # cut only inside genuine silence: a run >= 50 ms where the 10 ms envelope stays under 5x the take's floor, searched around the word gap
+        lo = int(max(0, (w0[2] - .05)) * SR); hi = int(min(len(a), (w1[1] + .05) * SR)); hi = max(hi, lo + int(.06 * SR))
+        fr2 = int(.005 * SR); e5 = np.sqrt(np.convolve(a ** 2, np.ones(fr2) / fr2, 'same'))
+        thr = max(10 * floor, 8e-4); quiet = e5[lo:hi] < thr; best = None; i = 0
+        while i < len(quiet):
+            if quiet[i]:
+                k = i
+                while k < len(quiet) and quiet[k]: k += 1
+                if (k - i) >= int(.03 * SR) and (best is None or (k - i) > best[1] - best[0]): best = (i, k)
+                i = k
+            else: i += 1
+        if best is None: report.append((gid, j, kind, round(gap, 2), 0, 'skip(no silence)')); continue
+        cut = lo + (best[0] + best[1]) // 2; runlvl = float(np.sqrt((a[lo + best[0]: lo + best[1]] ** 2).mean()))
+        n = int(add * SR); f = int(.012 * SR)
+        N = noise_like(n, min(runlvl, floor * 1.5) * .8, hash((gid, j)) & 0xffff)
         N[:f] *= np.sin(np.linspace(0, np.pi / 2, f)) ** 2; N[-f:] *= np.cos(np.linspace(0, np.pi / 2, f)) ** 2
-        A1 = out[:cut + int(round(0))].copy(); B1 = out[cut:].copy(); 
-        # in `out` earlier cuts (later in time) were already applied; cut is in raw coordinates and later regions are untouched before this point
-        A1[-f:] *= np.cos(np.linspace(0, np.pi / 2, f)) ** 1; B1[:f] *= np.sin(np.linspace(0, np.pi / 2, f)) ** 1
+        A1 = out[:cut].copy(); B1 = out[cut:].copy()
+        A1[-f:] *= np.cos(np.linspace(0, np.pi / 2, f)); B1[:f] *= np.sin(np.linspace(0, np.pi / 2, f))
         out = np.concatenate([A1, N, B1]); shifts.append((cut / SR, add)); report.append((gid, j, kind, round(gap, 2), round(add, 2), 'inserted'))
     # shift word times: every word whose start >= cut moves by the sum of insertions at cuts before it
     shifts.sort(); NW = []

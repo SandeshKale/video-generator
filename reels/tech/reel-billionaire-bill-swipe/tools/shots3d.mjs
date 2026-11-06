@@ -5,7 +5,7 @@ const mime = { '.html': 'text/html', '.js': 'text/javascript', '.jpg': 'image/jp
 const srv = http.createServer((q, r) => { const f = join(root, q.url === '/' ? 'index.html' : decodeURIComponent(q.url.split('?')[0])); try { const d = fs.readFileSync(f); r.writeHead(200, { 'content-type': mime[path.extname(f)] || 'application/octet-stream' }); r.end(d); } catch { r.writeHead(404); r.end(); } }).listen(8793);
 const b = await chromium.launch({ args: ['--no-sandbox', '--force-color-profile=srgb'] }); const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
 p.on('pageerror', e => console.log('PAGEERR', e.message)); p.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') console.log('CONSOLE', m.text().slice(0, 200)); });
-await p.goto('http://127.0.0.1:8793/'); await p.waitForFunction('window.__ready===true', null, { timeout: 20000 });
+await p.goto('http://127.0.0.1:8793/'); await p.waitForFunction('window.__ready===true', null, { timeout: 90000 });
 
 const t0 = Date.now();
 for (const a of process.argv.slice(2)) { const t = Number(a); await p.evaluate(t => window.__seek(t), t); await p.screenshot({ path: `/tmp/scr/qcr/f_${a}.png` }); }

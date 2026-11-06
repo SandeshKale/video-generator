@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>Billionaire ka right swipe</title>
+<style>
+@font-face{font-family:'Unbounded';font-weight:900;src:url('fonts/unbounded-900.woff2');font-display:block}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url('fonts/instrument-italic.woff2');font-display:block}
+@font-face{font-family:'Geist Mono';font-weight:600;src:url('fonts/geist-600.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:600;src:url('fonts/inter-600.woff2');font-display:block}
+@font-face{font-family:'Inter';font-weight:800;src:url('fonts/inter-800.woff2');font-display:block}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#ffe3dc;font-family:Inter,sans-serif;color:#2a0f2e}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.ov{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.ov>div{position:absolute}
+#cap{position:absolute;z-index:20;left:150px;width:768px;top:1338px;text-align:center}
+#flash{position:absolute;z-index:21;inset:0;pointer-events:none;opacity:0}
+</style>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div class="ov" id="ov"></div><div id="cap"></div><div id="flash"></div></div>
+<script>window.__ready=false;</script><script src="three.min.js"></script><script src="timing.js"></script><script src="captions.js"></script><script src="icons.js"></script>
+<script>Promise.all(['900 40px Unbounded','italic 400 40px "Instrument Serif"','600 30px Inter','800 30px Inter','600 30px "Geist Mono"'].map(function(f){return document.fonts.load(f)})).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s)})</script>
