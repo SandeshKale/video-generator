@@ -1,4 +1,4 @@
-# caption.md — "Light ulti chalti hai" (how ray tracing works, Hinglish, ~1 min 55 s)
+# caption.md — "Light ulti chalti hai" (how ray tracing works, Hinglish, ~2 min 2 s)
 
 ## 1. Instagram caption (paste as is, ≈620 characters)
 Yeh us dost ko bhejiye jo kehta hai "graphics sirf GPU ka khel hai" 👇
