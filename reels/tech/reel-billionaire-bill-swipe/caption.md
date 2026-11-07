@@ -1,4 +1,4 @@
-# caption.md — "Billionaire ka right swipe" (fake tweet, real nerve; Hinglish, ~1 min 46 s)
+# caption.md — "Billionaire ka right swipe" (fake tweet, real nerve; Hinglish, ~2 min 5 s)
 
 ## 1. Instagram caption (paste as is)
 Yeh us dost ko bhejiye jo har viral tweet par bharosa kar leta hai 👇
