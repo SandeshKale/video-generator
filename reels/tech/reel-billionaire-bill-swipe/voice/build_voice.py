@@ -72,19 +72,19 @@ for gi, (gid, ids) in enumerate(GROUPS):
         qc[gid] = dict(score=100, f0=round(REF_F0), tdist=1.0, dur=round(len(ref)/SR, 2), words=[(x[0], round(x[1], 3), round(x[2], 3)) for x in w]); json.dump(qc, open(qp, 'w'), ensure_ascii=False, indent=1)
     if gid in qc and os.path.exists(wp): continue
     text = ' '.join(S[i]['B'] for i in ids); best = None
-    for tr in range(10 if gid in RETRY else 6):
+    for tr in range(10 if gid in RETRY else 7):
         t0 = time.time(); a = gen(text, 2000 + 41*gi + tr); words = transcribe(a); tx = ''.join(w[0] for w in words)
         ratio = fuzz.ratio(skel(text), skel(tx)); terms = [t for t in TERMS if skel(t) in skel(text)]
         hit = float(np.mean([fuzz.partial_ratio(skel(t), skel(tx)) for t in terms])) if terms else 100.0
         f0 = f0med(a); td = sim(timbre(a), REF_T)
         # flow check: no internal gap > 0.7 s (sentence boundaries get the model's own ~0.4-0.6 s), rate in band
         mg = longest_silence(a); rate = len(words) / max(0.1, (words[-1][2] - words[0][1])) if words else 0
-        cov = len(skel(tx)) / max(1, len(skel(text))); ok_flow = mg <= 0.75 and 2.3 <= rate <= 6.2 and 0.93 <= cov <= 1.08
+        cov = len(skel(tx)) / max(1, len(skel(text))); ok_flow = mg <= 0.75 and 2.2 <= rate <= 3.8 and 0.95 <= cov <= 1.06
         pit = max(0.0, 100 - 3.0*abs(f0 - REF_F0)); tim = max(0.0, min(100.0, (td - 0.80) / 0.20 * 100))
         score = 0.30*ratio + 0.10*hit + 0.30*pit + 0.20*tim + (10 if ok_flow else 0) - (30 if cov < 0.9 else 0)
         print(gid, tr, f'ratio {ratio:.0f} terms {hit:.0f} f0 {f0:.0f} sim {td:.3f} longest-silence {mg:.2f} rate {rate:.1f} cov {cov:.2f} dur {len(a)/SR:.2f}s score {score:.1f} ({time.time()-t0:.0f}s)', flush=True)
         if best is None or score > best[0]: best = (score, a, words, ratio, hit, f0, td, mg)
-        if ratio >= 88 and hit >= 80 and abs(f0 - REF_F0) <= 12 and td >= 0.90 and ok_flow and cov >= 0.93: break
+        if ratio >= 90 and hit >= 80 and abs(f0 - REF_F0) <= 12 and td >= 0.90 and ok_flow and cov >= 0.93: break
     sf.write(wp, best[1], SR)
     qc[gid] = dict(score=round(best[0], 1), ratio=round(best[3], 1), terms=round(best[4], 1), f0=round(best[5]), sim=round(best[6], 3), longest_silence=round(best[7], 2), dur=round(len(best[1])/SR, 2), words=[(w[0], round(w[1], 3), round(w[2], 3)) for w in best[2]])
     json.dump(qc, open(qp, 'w'), ensure_ascii=False, indent=1)
