@@ -46,7 +46,7 @@ for e in ev['ev']:
         for w in WD:
             if w[1] + .03 < t < w[2]: t = w[2] + .03; break
     if k in ('slam',): t += .25
-    if k in ('whoosh', 'tick', 'pop', 'ping', 'buzz', 'card', 'drop'):
+    if k in ('whoosh', 'tick', 'pop', 'ping', 'buzz', 'card', 'drop', 'slam'):
         w0 = t - .25 if k == 'whoosh' else t; w1 = w0 + (.5 if k == 'whoosh' else .1)
         if any(min(w1, w[2]) - max(w0, w[1]) > .08 for w in WD): continue
     if k == 'ping': put(sfx, sm(tone(1320, .35, dec=.12) * .3, tone(1980, .25, dec=.08) * .12), t)

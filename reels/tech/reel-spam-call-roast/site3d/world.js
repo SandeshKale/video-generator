@@ -268,7 +268,7 @@ SCN[0] = SCN[1] = SCN[2] = SCN[3] = SCN[4] = SCN[5] = SCN[6] = SCN[7] = function
   N.wk.forEach(function (p, i) { var u = (((t - tr1) * .12 + i / 7) % 1 + 1) % 1; p.visible = t > tr1 - .4 && t < tw1 + 2; p.position.set(lerp(34, -34, u), 0, 19.6 + (i % 2) * 1.2); p.rotation.y = -Math.PI / 2; p.userData.armR.rotation.x = Math.sin(t * 6 + i) * .4; });
   N.b1.visible = N.b2.visible = t > tr2 - .2 && t < tw1 + 1; var bu1 = sw(tr2, tr2 + 1.8, t), bu2 = sw(tr2 + .3, tr2 + 2.1, t); N.b1.scale.y = Math.max(.02, 8.1 * bu1); N.b1.position.y = N.b1.scale.y * .5; N.b2.scale.y = Math.max(.02, 7.9 * bu2); N.b2.position.y = N.b2.scale.y * .5; N.p1.draw(bu1); N.p2.draw(bu2); put(N.p1, t, tr2, .35, tw1); put(N.p2, t, tr2 + .3, .35, tw1); put(N.cl, t, tr2 + 1.2, .35, tw1); put(N.sh, t, tr1 + 1.2, .35, tr2);
   /* the watchman (w1-w2) */
-  put(G.tag, t, tw1 + .2, .35, tw2 + 1.5); G.guard.userData.head.rotation.y = .4 * Math.sin(t * 1.1); G.guard.userData.armR.rotation.x = -.5 * sw(tw1 + 1, tw1 + 2, t); B.slam(G.st, clamp((t - tw2 - .3) / .8), 10, 6.4, 1); G.st.position.set(7.4, G.st.position.y, 13.4); put(G.cd, t, tw2 + 1.3, .4, tf1 - .1);
+  put(G.tag, t, tw1 + .2, .35, tw2 + 1.5); G.guard.userData.head.rotation.y = .4 * Math.sin(t * 1.1); G.guard.userData.armR.rotation.x = -.5 * sw(tw1 + 1, tw1 + 2, t); B.slam(G.st, clamp((t - tw2 - .3) / .8), 10, 6.4, 1); G.st.position.set(7.4, G.st.position.y, 13.4); put(G.cd, t, tw2 + 1.3, .4, tf1 - .1); if (t > S0('x1')) { G.st.visible = false; }
   /* fraud (f1-f2) */
   F.ag.forEach(function (a, j) { var u = clamp((t - tf1 - j * 1.1) / 2.2); a.visible = t > tf1 && t < tf2 + 2.6; a.position.set(lerp(-16 - j * 4, 0, sstep(u)) * (1 - u) + 0 * u, 0, lerp(17, 7.6 + j * 1.2, sstep(u))); a.position.x = lerp(-9 + j * 4, j * 3 - 3, sstep(u)); a.rotation.y = 0; a.userData.armR.rotation.x = -.8 + Math.sin(t * 7 + j) * .3; }); F.c1.draw(770 * sw(tf2, tf2 + 1.6, t)); put(F.c1, t, tf2, .4, tx1 - .2);
   /* the entrance (x1-x5) */
@@ -280,15 +280,15 @@ function V(a) { return new V3(a[0], a[1], a[2]); }
 function mv(pA, lA, fA, pB, lB, fB, o) { o = o || {}; return function (u) { var k = sstep(u), p = V(pA).lerp(V(pB), k); p.y += (o.up || 0) * Math.sin(Math.PI * k); p.x += (o.side || 0) * Math.sin(Math.PI * k); return { p: p, l: V(lA).lerp(V(lB), k), f: lerp(fA, fB, k) }; }; }
 function orb(c, r, a0, a1, h0, h1, lA, lB, f) { return function (u) { var k = sstep(u), a = lerp(a0, a1, k) * Math.PI / 180; return { p: new V3(c[0] + r * Math.sin(a), lerp(h0, h1, k), c[2] + r * Math.cos(a)), l: V(lA).lerp(V(lB), k), f: f }; }; }
 var th2 = S0('h2'), th3 = S0('h3');
-e.follow(0, 'dolly in on the doorbell, slight arc', 0, th2 + .2, mv([-9, 4.2, 26], [1, 3.2, 5], 40, [4.5, 3.4, 17.5], [.6, 2.8, 4.2], 36, { side: 1.5, up: .4 }));
-e.follow(0, 'crane up and pull back to the colony', th3 + .3, S0('a1') + 2.6, mv([4.5, 3.4, 17.5], [.6, 2.8, 4.2], 36, [26, 19, 46], [4, 2, 8], 44, { up: 8, side: -4 }));
+e.follow(0, 'dolly in on the doorbell, slight arc', 0, th2 + .2, mv([-9, 4.2, 26], [1, 3.2, 5], 40, [3.4, 3.9, 21], [.6, 2.8, 4.2], 38, { side: 1.5, up: .4 }));
+e.follow(0, 'crane up and pull back to the colony', th3 + .3, S0('a1') + 2.6, mv([3.4, 3.9, 21], [.6, 2.8, 4.2], 38, [26, 19, 46], [4, 2, 8], 44, { up: 8, side: -4 }));
 e.follow(0, 'slow high orbit over the house', S0('a1') + 2.6, S0('t1') - .4, orb([4, 0, 10], 40, 38, -12, 17, 21, [3, 3, 8], [6, 3, 10], 42));
 e.follow(0, 'swoop down to the lane gate', S0('t1') - .4, S0('t1') + 2.2, mv([37, 21, 36], [6, 3, 10], 42, [16, 6.5, 33], [14, 4, 12], 40, { side: 3, up: 3 }));
 e.follow(0, 'truck along the lane', S0('t1') + 2.2, S0('r1') - .1, mv([16, 6.5, 33], [14, 4, 12], 40, [26, 4.5, 31], [13, 3, 12], 42, { side: -2 }));
 e.follow(0, 'hold at the junction', S0('r1') - .1, S0('r2') - .3, mv([26, 4.5, 31], [13, 3, 12], 42, [24, 4.5, 30], [13, 3, 12], 42, {}));
 e.follow(0, 'crane up to the bars', S0('r2') - .3, S0('w1') - .2, mv([24, 4.5, 30], [13, 3, 12], 42, [34, 12, 28], [24, 4, 10], 42, { up: 4, side: 2 }));
-e.follow(0, 'swing across to the watchman hut', S0('w1') - .2, S0('f1') - .3, mv([34, 12, 28], [24, 4, 10], 42, [-4, 6, 22], [7.4, 3.8, 12.2], 40, { up: 3, side: -6 }));
-e.follow(0, 'push to the door as the callers come', S0('f1') - .3, S0('f2') + 2.2, mv([-4, 6, 22], [7.4, 3.8, 12.2], 40, [-4, 4, 28], [1.5, 3, 8], 40, { side: -2 }));
+e.follow(0, 'swing across to the watchman hut', S0('w1') - .2, S0('f1') - .3, mv([34, 12, 28], [24, 4, 10], 42, [-6, 7.5, 32], [6.5, 3.4, 12.2], 42, { up: 3, side: -6 }));
+e.follow(0, 'push to the door as the callers come', S0('f1') - .3, S0('f2') + 2.2, mv([-6, 7.5, 32], [6.5, 3.4, 12.2], 42, [-4, 4, 28], [1.5, 3, 8], 40, { side: -2 }));
 e.follow(0, 'dolly along the road to gate 1', S0('f2') + 2.2, S0('x2') + .2, mv([-4, 4, 28], [1.5, 3, 8], 40, [0, 6.8, 37], [-9, 5, 17], 40, { up: 1.5 }));
 e.follow(0, 'look back along the report pipe', S0('x2') + .2, S0('x3') - .2, mv([0, 6.8, 37], [-9, 5, 17], 40, [8, 10, 38], [-5, 12, 22], 44, { up: 2 }));
 e.follow(0, 'tracking move to gate 2', S0('x3') - .2, S0('x4') - .2, mv([8, 10, 38], [-5, 12, 22], 44, [-8, 6.8, 38], [-18, 5.4, 17], 40, { side: -3 }));
