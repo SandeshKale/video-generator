@@ -302,5 +302,12 @@
   "voice": "synth-clone",
   "host": "no",
   "length": 106
+ },
+ "reel-spam-call-roast": {
+  "genre": "comedy-explainer",
+  "company": "general",
+  "voice": "synth-clone",
+  "host": "no",
+  "length": "93s"
  }
 }
