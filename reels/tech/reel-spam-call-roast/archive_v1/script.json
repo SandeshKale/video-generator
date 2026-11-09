@@ -1,0 +1,175 @@
+{
+ "title": "Loan ne aapko dhoondha",
+ "format": "1080x1920",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "h1",
+   "B": "दो बजकर सैंतालीस मिनट। मीटिंग में हो। अननोन नंबर।",
+   "A": "Do bajkar saintalis minute. Meeting mein ho. Unknown number.",
+   "cap": "Do bajkar saintalis minute. Meeting mein ho. Unknown number."
+  },
+  {
+   "id": "h2",
+   "g": "g1",
+   "beat": "h2",
+   "B": "उठाया: सर, लोन चाहिए? आपने लोन माँगा ही नहीं था।",
+   "A": "Uthaya: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha.",
+   "cap": "Uthaya: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha."
+  },
+  {
+   "id": "h3",
+   "g": "g2",
+   "beat": "h3",
+   "B": "लोन ने आपको ढूँढा।",
+   "A": "Loan ne aapko dhoondha.",
+   "cap": "Loan ne aapko dhoondha."
+  },
+  {
+   "id": "s1",
+   "g": "g3",
+   "beat": "s1",
+   "B": "पिछले साल भारत में स्पैम कॉल: चालीस एक अरब से ज़्यादा।",
+   "A": "Pichle saal India mein spam calls: 41 arab se zyada.",
+   "cap": "Pichle saal India mein spam calls: 41 arab se zyada."
+  },
+  {
+   "id": "s2",
+   "g": "g3",
+   "beat": "s2",
+   "B": "ट्रूकॉलर के अपने यूज़र्स को लगभग बयालीस अरब।",
+   "A": "Truecaller ke apne users ko lagbhag 42 arab.",
+   "cap": "Truecaller ke apne users ko lagbhag 42 arab."
+  },
+  {
+   "id": "s3",
+   "g": "g4",
+   "beat": "s3",
+   "B": "रफ़ मैथ्स: हर यूज़र को महीने के दस। इससे कम तो मेरी ईएमआई की याद आती है।",
+   "A": "Rough maths: har user ko mahine ke das. Isse kam to meri EMI ki yaad aati hai.",
+   "cap": "Rough maths: har user ko mahine ke das. Isse kam to meri EMI ki yaad aati hai."
+  },
+  {
+   "id": "t1",
+   "g": "g5",
+   "beat": "t1",
+   "B": "सरकार ने कहा: टेलीमार्केटर एक अलग गली में रहेंगे। टेलीमार्केटिंग के लिए चौदह सौ, सर्विस वालों के लिए सोलह सौ।",
+   "A": "Sarkar ne kaha: telemarketer alag gali mein rahenge. Telemarketing ke liye 1400, service wale 1600.",
+   "cap": "Sarkar ne kaha: telemarketer alag gali mein rahenge. Telemarketing ke liye 1400, service wale 1600."
+  },
+  {
+   "id": "t2",
+   "g": "g5",
+   "beat": "t2",
+   "B": "ताकि पता चले: यह दुकान है।",
+   "A": "Taaki pata chale: yeh dukaan hai.",
+   "cap": "Taaki pata chale: yeh dukaan hai."
+  },
+  {
+   "id": "r1",
+   "g": "g6",
+   "beat": "r1",
+   "B": "पर अब वही गली सबसे बदनाम है।",
+   "A": "Par ab wahi gali sabse badnaam hai.",
+   "cap": "Par ab wahi gali sabse badnaam hai."
+  },
+  {
+   "id": "r2",
+   "g": "g6",
+   "beat": "r2",
+   "B": "आठ महीने में चौदह सौ की इक्यासी परसेंट कॉल इग्नोर हुईं, सोलह सौ की उन्यासी।",
+   "A": "Aath mahine mein 1400 ki 81 percent calls ignore hui, 1600 ki 79.",
+   "cap": "Aath mahine mein 1400 ki 81 percent calls ignore hui, 1600 ki 79."
+  },
+  {
+   "id": "r3",
+   "g": "g7",
+   "beat": "r3",
+   "B": "और ट्रूकॉलर उस गली को स्पैम बोल भी नहीं सकता। बोल सकता है: फ़्रीक्वेंटली ब्लॉक्ड। यानी स्पैम का सभ्य नाम।",
+   "A": "Aur Truecaller us gali ko spam bol bhi nahi sakta. Bol sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam.",
+   "cap": "Aur Truecaller us gali ko spam bol bhi nahi sakta. Bol sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam."
+  },
+  {
+   "id": "f1",
+   "g": "g8",
+   "beat": "f1",
+   "B": "और जो सच में फ्रॉड है, वह भी बोलता है: बैंक, पुलिस, पेमेंट ऐप।",
+   "A": "Aur jo sach mein fraud hai, woh bhi bolta hai: bank, police, payment app.",
+   "cap": "Aur jo sach mein fraud hai, woh bhi bolta hai: bank, police, payment app."
+  },
+  {
+   "id": "f2",
+   "g": "g8",
+   "beat": "f2",
+   "B": "सात सौ सत्तर करोड़ फ्रॉड कॉल।",
+   "A": "770 crore fraud calls.",
+   "cap": "770 crore fraud calls."
+  },
+  {
+   "id": "f3",
+   "g": "g9",
+   "beat": "f3",
+   "B": "एक कॉल का औसत डेढ़ मिनट। ब्लॉकिंग से रोज़ लगभग दो सौ सैंतालीस साल का समय बचा। रोज़।",
+   "A": "Ek call ka average dedh minute. Blocking se roz lagbhag 247 saal ka time bacha. Roz.",
+   "cap": "Ek call ka average dedh minute. Blocking se roz lagbhag 247 saal ka time bacha. Roz."
+  },
+  {
+   "id": "d1",
+   "g": "g10",
+   "beat": "d1",
+   "B": "मेरे घर में हर अननोन कॉल पापा के लिए बात करने का मौक़ा है। और स्कैमर को वही चाहिए: कोई जो फ़ोन रखना न जाने।",
+   "A": "Mere ghar mein har unknown call papa ke liye baat karne ka mauka hai. Aur scammer ko wahi chahiye: koi jo phone rakhna na jaane.",
+   "cap": "Mere ghar mein har unknown call papa ke liye baat karne ka mauka hai. Aur scammer ko wahi chahiye: koi jo phone rakhna na jaane."
+  },
+  {
+   "id": "x1",
+   "g": "g11",
+   "beat": "x1",
+   "B": "अठारह सितंबर को ट्राई ने कहा: स्पैम रिपोर्ट करवाने वाले ऐप, वो रिपोर्ट्स टेलीकॉम के प्लेटफ़ॉर्म को भेजेंगे।",
+   "A": "18 September ko TRAI ne kaha: spam report karwane wale apps woh reports telecom ke platform ko bhejenge.",
+   "cap": "18 September ko TRAI ne kaha: spam report karwane wale apps woh reports telecom ke platform ko bhejenge."
+  },
+  {
+   "id": "x2",
+   "g": "g11",
+   "beat": "x2",
+   "B": "बिना बताए रोबोकॉल सीधे स्पैम।",
+   "A": "Bina bataye robocall seedha spam.",
+   "cap": "Bina bataye robocall seedha spam."
+  },
+  {
+   "id": "x3",
+   "g": "g12",
+   "beat": "x3",
+   "B": "और मशीन की कॉल पर पाँच पैसे प्रति मिनट तक चार्ज। स्पैम के लिए भी अब कॉल रेट।",
+   "A": "Aur machine ki call par 5 paise per minute tak charge. Spam ke liye bhi ab call rate.",
+   "cap": "Aur machine ki call par 5 paise per minute tak charge. Spam ke liye bhi ab call rate."
+  },
+  {
+   "id": "x4",
+   "g": "g13",
+   "beat": "x4",
+   "B": "पर काम करेगा? अभी कोई नहीं जानता। ट्रूकॉलर इसे एंटी-कॉम्पिटिटिव बोलता है।",
+   "A": "Par kaam karega? Abhi koi nahi jaanta. Truecaller ise anti-competitive bolta hai.",
+   "cap": "Par kaam karega? Abhi koi nahi jaanta. Truecaller ise anti-competitive bolta hai."
+  },
+  {
+   "id": "c1",
+   "g": "g14",
+   "beat": "c1",
+   "B": "तो अगली बार लोन चाहिए आए, याद रखना: उस लोन को अब डिक्लेयर करना पड़ेगा।",
+   "A": "Toh agli baar \"loan chahiye?\" aaye, yaad rakhna: us loan ko ab declare karna padega.",
+   "cap": "Toh agli baar \"loan chahiye?\" aaye, yaad rakhna: us loan ko ab declare karna padega."
+  },
+  {
+   "id": "cta",
+   "g": "g15",
+   "beat": "cta",
+   "B": "ये उस दोस्त को भेजिए जो कहता है, मैं तो कभी उठाता ही नहीं। लाइक, शेयर और सब्सक्राइब करिए, संदेश एक्सप्लेन्स को।",
+   "A": "Yeh us dost ko bhejiye jo kehta hai \"main to kabhi uthata hi nahi\". Like, share aur subscribe karein, Sandesh Explains.",
+   "cap": "Yeh us dost ko bhejiye jo kehta hai \"main to kabhi uthata hi nahi\". Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}

@@ -1,23 +1,23 @@
 {
  "title": "Loan ne aapko dhoondha",
  "format": "1080x1920",
- "version": 1,
+ "version": 2,
  "sentences": [
   {
    "id": "h1",
    "g": "g1",
    "beat": "h1",
-   "B": "दो बजकर सैंतालीस मिनट। मीटिंग में हो। अननोन नंबर।",
-   "A": "Do bajkar saintalis minute. Meeting mein ho. Unknown number.",
-   "cap": "Do bajkar saintalis minute. Meeting mein ho. Unknown number."
+   "B": "दोपहर के दो बजकर सैंतालीस मिनट। आप घर में हो। दरवाज़े की घंटी बजती है।",
+   "A": "Dopahar ke do bajkar saintalis minute. Aap ghar mein ho. Darwaze ki ghanti bajti hai.",
+   "cap": "Dopahar ke do bajkar saintalis minute. Aap ghar mein ho. Darwaze ki ghanti bajti hai."
   },
   {
    "id": "h2",
    "g": "g1",
    "beat": "h2",
-   "B": "उठाया: सर, लोन चाहिए? आपने लोन माँगा ही नहीं था।",
-   "A": "Uthaya: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha.",
-   "cap": "Uthaya: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha."
+   "B": "बाहर एक आदमी: सर, लोन चाहिए? आपने लोन माँगा ही नहीं था।",
+   "A": "Bahar ek aadmi: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha.",
+   "cap": "Bahar ek aadmi: \"Sir, loan chahiye?\" Aapne loan maanga hi nahi tha."
   },
   {
    "id": "h3",
@@ -28,144 +28,144 @@
    "cap": "Loan ne aapko dhoondha."
   },
   {
-   "id": "s1",
+   "id": "a1",
    "g": "g3",
-   "beat": "s1",
-   "B": "पिछले साल भारत में स्पैम कॉल: चालीस एक अरब से ज़्यादा।",
-   "A": "Pichle saal India mein spam calls: 41 arab se zyada.",
-   "cap": "Pichle saal India mein spam calls: 41 arab se zyada."
+   "beat": "a1",
+   "B": "समझ लो, आपका फ़ोन नंबर आपके घर की घंटी है। कोई भी बजा सकता है।",
+   "A": "Samajh lo, aapka phone number aapke ghar ki ghanti hai. Koi bhi baja sakta hai.",
+   "cap": "Samajh lo, aapka phone number aapke ghar ki ghanti hai. Koi bhi baja sakta hai."
   },
   {
-   "id": "s2",
+   "id": "a2",
    "g": "g3",
-   "beat": "s2",
-   "B": "ट्रूकॉलर के अपने यूज़र्स को लगभग बयालीस अरब।",
-   "A": "Truecaller ke apne users ko lagbhag 42 arab.",
-   "cap": "Truecaller ke apne users ko lagbhag 42 arab."
+   "beat": "a2",
+   "B": "ट्रूकॉलर के अपने यूज़र्स की घंटी पिछले साल लगभग बयालीस अरब बार बजी।",
+   "A": "Truecaller ke apne users ki ghanti pichle saal lagbhag 42 arab baar baji.",
+   "cap": "Truecaller ke apne users ki ghanti pichle saal lagbhag 42 arab baar baji."
   },
   {
-   "id": "s3",
+   "id": "a3",
    "g": "g4",
-   "beat": "s3",
-   "B": "रफ़ मैथ्स: हर यूज़र को महीने के दस। इससे कम तो मेरी ईएमआई की याद आती है।",
-   "A": "Rough maths: har user ko mahine ke das. Isse kam to meri EMI ki yaad aati hai.",
-   "cap": "Rough maths: har user ko mahine ke das. Isse kam to meri EMI ki yaad aati hai."
+   "beat": "a3",
+   "B": "यानी महीने के लगभग दस बार, मेरे रफ़ हिसाब से।",
+   "A": "Yaani mahine ke lagbhag das baar, mere rough hisaab se.",
+   "cap": "Yaani mahine ke lagbhag das baar, mere rough hisaab se."
   },
   {
    "id": "t1",
    "g": "g5",
    "beat": "t1",
-   "B": "सरकार ने कहा: टेलीमार्केटर एक अलग गली में रहेंगे। टेलीमार्केटिंग के लिए चौदह सौ, सर्विस वालों के लिए सोलह सौ।",
-   "A": "Sarkar ne kaha: telemarketer alag gali mein rahenge. Telemarketing ke liye 1400, service wale 1600.",
-   "cap": "Sarkar ne kaha: telemarketer alag gali mein rahenge. Telemarketing ke liye 1400, service wale 1600."
+   "B": "सरकार ने सोचा: सारे सेल्समैन एक ही गली में खड़े हो जाएँ। उस गली का नंबर चौदह सौ, और सर्विस वालों का सोलह सौ।",
+   "A": "Sarkar ne socha: saare salesman ek hi gali mein khade ho jaayein. Us gali ka number 1400, aur service walon ka 1600.",
+   "cap": "Sarkar ne socha: saare salesman ek hi gali mein khade ho jaayein. Us gali ka number 1400, aur service walon ka 1600."
   },
   {
    "id": "t2",
    "g": "g5",
    "beat": "t2",
-   "B": "ताकि पता चले: यह दुकान है।",
-   "A": "Taaki pata chale: yeh dukaan hai.",
-   "cap": "Taaki pata chale: yeh dukaan hai."
+   "B": "अब घंटी बजे, तो पता चलेगा: यह गली से आया है, यानी दुकान।",
+   "A": "Ab ghanti baje, to pata chalega: yeh gali se aaya hai, yaani dukaan.",
+   "cap": "Ab ghanti baje, to pata chalega: yeh gali se aaya hai, yaani dukaan."
   },
   {
    "id": "r1",
    "g": "g6",
    "beat": "r1",
-   "B": "पर अब वही गली सबसे बदनाम है।",
-   "A": "Par ab wahi gali sabse badnaam hai.",
-   "cap": "Par ab wahi gali sabse badnaam hai."
+   "B": "पर हम भी चालाक हैं। जिस गली का नाम ही दुकान, वहाँ से घंटी आए तो हम दरवाज़ा खोलते ही नहीं।",
+   "A": "Par hum bhi chalaak hain. Jis gali ka naam hi dukaan, wahan se ghanti aaye to hum darwaza kholte hi nahi.",
+   "cap": "Par hum bhi chalaak hain. Jis gali ka naam hi dukaan, wahan se ghanti aaye to hum darwaza kholte hi nahi."
   },
   {
    "id": "r2",
    "g": "g6",
    "beat": "r2",
-   "B": "आठ महीने में चौदह सौ की इक्यासी परसेंट कॉल इग्नोर हुईं, सोलह सौ की उन्यासी।",
-   "A": "Aath mahine mein 1400 ki 81 percent calls ignore hui, 1600 ki 79.",
-   "cap": "Aath mahine mein 1400 ki 81 percent calls ignore hui, 1600 ki 79."
+   "B": "ट्रूकॉलर के सीईओ के मुताबिक आठ महीने में चौदह सौ की इक्यासी परसेंट घंटियाँ इग्नोर हुईं, और सोलह सौ की उन्यासी।",
+   "A": "Truecaller ke CEO ke mutabik aath mahine mein 1400 ki 81 percent ghantiyan ignore hui, aur 1600 ki 79.",
+   "cap": "Truecaller ke CEO ke mutabik aath mahine mein 1400 ki 81 percent ghantiyan ignore hui, aur 1600 ki 79."
   },
   {
-   "id": "r3",
+   "id": "w1",
    "g": "g7",
-   "beat": "r3",
-   "B": "और ट्रूकॉलर उस गली को स्पैम बोल भी नहीं सकता। बोल सकता है: फ़्रीक्वेंटली ब्लॉक्ड। यानी स्पैम का सभ्य नाम।",
-   "A": "Aur Truecaller us gali ko spam bol bhi nahi sakta. Bol sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam.",
-   "cap": "Aur Truecaller us gali ko spam bol bhi nahi sakta. Bol sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam."
+   "beat": "w1",
+   "B": "और मोहल्ले का चौकीदार, ट्रूकॉलर, उस गली को स्पैम बोल भी नहीं सकता।",
+   "A": "Aur mohalle ka chowkidaar, Truecaller, us gali ko spam bol bhi nahi sakta.",
+   "cap": "Aur mohalle ka chowkidaar, Truecaller, us gali ko spam bol bhi nahi sakta."
+  },
+  {
+   "id": "w2",
+   "g": "g7",
+   "beat": "w2",
+   "B": "बस इतना लिख सकता है: फ़्रीक्वेंटली ब्लॉक्ड। यानी स्पैम का सभ्य नाम।",
+   "A": "Bas itna likh sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam.",
+   "cap": "Bas itna likh sakta hai: \"Frequently Blocked\". Yaani spam ka sabhya naam."
   },
   {
    "id": "f1",
    "g": "g8",
    "beat": "f1",
-   "B": "और जो सच में फ्रॉड है, वह भी बोलता है: बैंक, पुलिस, पेमेंट ऐप।",
-   "A": "Aur jo sach mein fraud hai, woh bhi bolta hai: bank, police, payment app.",
-   "cap": "Aur jo sach mein fraud hai, woh bhi bolta hai: bank, police, payment app."
+   "B": "कुछ घंटियाँ तो सीधा धोखा होती हैं: बैंक, पुलिस, पेमेंट ऐप बनकर।",
+   "A": "Kuch ghantiyan to seedha dhokha hoti hain: bank, police, payment app bankar.",
+   "cap": "Kuch ghantiyan to seedha dhokha hoti hain: bank, police, payment app bankar."
   },
   {
    "id": "f2",
    "g": "g8",
    "beat": "f2",
-   "B": "सात सौ सत्तर करोड़ फ्रॉड कॉल।",
-   "A": "770 crore fraud calls.",
-   "cap": "770 crore fraud calls."
-  },
-  {
-   "id": "f3",
-   "g": "g9",
-   "beat": "f3",
-   "B": "एक कॉल का औसत डेढ़ मिनट। ब्लॉकिंग से रोज़ लगभग दो सौ सैंतालीस साल का समय बचा। रोज़।",
-   "A": "Ek call ka average dedh minute. Blocking se roz lagbhag 247 saal ka time bacha. Roz.",
-   "cap": "Ek call ka average dedh minute. Blocking se roz lagbhag 247 saal ka time bacha. Roz."
-  },
-  {
-   "id": "d1",
-   "g": "g10",
-   "beat": "d1",
-   "B": "मेरे घर में हर अननोन कॉल पापा के लिए बात करने का मौक़ा है। और स्कैमर को वही चाहिए: कोई जो फ़ोन रखना न जाने।",
-   "A": "Mere ghar mein har unknown call papa ke liye baat karne ka mauka hai. Aur scammer ko wahi chahiye: koi jo phone rakhna na jaane.",
-   "cap": "Mere ghar mein har unknown call papa ke liye baat karne ka mauka hai. Aur scammer ko wahi chahiye: koi jo phone rakhna na jaane."
+   "B": "सात सौ सत्तर करोड़ ऐसी घंटियाँ, ट्रूकॉलर के हिसाब से।",
+   "A": "Sat sau sattar crore aisi ghantiyan, Truecaller ke hisaab se.",
+   "cap": "Sat sau sattar crore aisi ghantiyan, Truecaller ke hisaab se."
   },
   {
    "id": "x1",
-   "g": "g11",
+   "g": "g9",
    "beat": "x1",
-   "B": "अठारह सितंबर को ट्राई ने कहा: स्पैम रिपोर्ट करवाने वाले ऐप, वो रिपोर्ट्स टेलीकॉम के प्लेटफ़ॉर्म को भेजेंगे।",
-   "A": "18 September ko TRAI ne kaha: spam report karwane wale apps woh reports telecom ke platform ko bhejenge.",
-   "cap": "18 September ko TRAI ne kaha: spam report karwane wale apps woh reports telecom ke platform ko bhejenge."
+   "B": "अठारह सितंबर को ट्राई ने मोहल्ले के गेट पर तीन नियम लगाए।",
+   "A": "Atharah September ko TRAI ne mohalle ke gate par teen niyam lagaye.",
+   "cap": "Atharah September ko TRAI ne mohalle ke gate par teen niyam lagaye."
   },
   {
    "id": "x2",
-   "g": "g11",
+   "g": "g9",
    "beat": "x2",
-   "B": "बिना बताए रोबोकॉल सीधे स्पैम।",
-   "A": "Bina bataye robocall seedha spam.",
-   "cap": "Bina bataye robocall seedha spam."
+   "B": "एक: चौकीदार के पास जो शिकायतें आती हैं, वो टेलीकॉम के प्लेटफ़ॉर्म को भी भेजनी होंगी।",
+   "A": "Ek: chowkidaar ke paas jo shikayatein aati hain, woh telecom ke platform ko bhi bhejni hongi.",
+   "cap": "Ek: chowkidaar ke paas jo shikayatein aati hain, woh telecom ke platform ko bhi bhejni hongi."
   },
   {
    "id": "x3",
-   "g": "g12",
+   "g": "g10",
    "beat": "x3",
-   "B": "और मशीन की कॉल पर पाँच पैसे प्रति मिनट तक चार्ज। स्पैम के लिए भी अब कॉल रेट।",
-   "A": "Aur machine ki call par 5 paise per minute tak charge. Spam ke liye bhi ab call rate.",
-   "cap": "Aur machine ki call par 5 paise per minute tak charge. Spam ke liye bhi ab call rate."
+   "B": "दो: रोबोट से आई कॉल बिना बताए आई, तो सीधे स्पैम।",
+   "A": "Do: robot se aayi call bina bataye aayi, to seedhe spam.",
+   "cap": "Do: robot se aayi call bina bataye aayi, to seedhe spam."
   },
   {
    "id": "x4",
-   "g": "g13",
+   "g": "g10",
    "beat": "x4",
+   "B": "तीन: मशीन की कॉल पर पाँच पैसे प्रति मिनट तक का टोल।",
+   "A": "Teen: machine ki call par paanch paise per minute tak ka toll.",
+   "cap": "Teen: machine ki call par paanch paise per minute tak ka toll."
+  },
+  {
+   "id": "x5",
+   "g": "g11",
+   "beat": "x5",
    "B": "पर काम करेगा? अभी कोई नहीं जानता। ट्रूकॉलर इसे एंटी-कॉम्पिटिटिव बोलता है।",
    "A": "Par kaam karega? Abhi koi nahi jaanta. Truecaller ise anti-competitive bolta hai.",
    "cap": "Par kaam karega? Abhi koi nahi jaanta. Truecaller ise anti-competitive bolta hai."
   },
   {
    "id": "c1",
-   "g": "g14",
+   "g": "g12",
    "beat": "c1",
-   "B": "तो अगली बार लोन चाहिए आए, याद रखना: उस लोन को अब डिक्लेयर करना पड़ेगा।",
-   "A": "Toh agli baar \"loan chahiye?\" aaye, yaad rakhna: us loan ko ab declare karna padega.",
-   "cap": "Toh agli baar \"loan chahiye?\" aaye, yaad rakhna: us loan ko ab declare karna padega."
+   "B": "तो अगली बार दरवाज़े पर लोन चाहिए सुनाई दे, याद रखना: उस लोन को अब अपना नाम बताना पड़ेगा।",
+   "A": "Toh agli baar darwaze par \"loan chahiye?\" sunai de, yaad rakhna: us loan ko ab apna naam batana padega.",
+   "cap": "Toh agli baar darwaze par \"loan chahiye?\" sunai de, yaad rakhna: us loan ko ab apna naam batana padega."
   },
   {
    "id": "cta",
-   "g": "g15",
+   "g": "g13",
    "beat": "cta",
    "B": "ये उस दोस्त को भेजिए जो कहता है, मैं तो कभी उठाता ही नहीं। लाइक, शेयर और सब्सक्राइब करिए, संदेश एक्सप्लेन्स को।",
    "A": "Yeh us dost ko bhejiye jo kehta hai \"main to kabhi uthata hi nahi\". Like, share aur subscribe karein, Sandesh Explains.",

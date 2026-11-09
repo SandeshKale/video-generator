@@ -157,128 +157,146 @@ B.sign = function (txt, col, w, h, fs, tcol) { return B.plane(w, h, B.tcv(512, M
 B.callScreen = function (title, sub, col) { return B.tcv(540, 1100, function (x) { x.fillStyle = '#10183d'; x.fillRect(0, 0, 540, 1100); x.fillStyle = col || '#ff8a1f'; x.beginPath(); x.arc(270, 330, 130, 0, 6.283); x.fill(); x.fillStyle = '#0b1230'; x.font = '700 150px "Chakra Petch"'; x.textAlign = 'center'; x.fillText('?', 270, 385); x.fillStyle = '#f4ecd8'; x.font = '700 58px "Chakra Petch"'; x.fillText(title, 270, 600); x.font = '600 30px "DM Mono"'; x.fillText(sub, 270, 660); x.fillStyle = '#ff4d5e'; x.beginPath(); x.arc(150, 900, 70, 0, 6.283); x.fill(); x.fillStyle = '#3de0a8'; x.beginPath(); x.arc(390, 900, 70, 0, 6.283); x.fill(); x.fillStyle = '#0b1230'; x.font = '700 70px Inter'; x.fillText('✕', 150, 925); x.fillText('✆', 390, 925); }); };
 B.bgc = function (fog) { e.S.background = new THREE.Color(K.BLUSH); e.S.fog = new THREE.FogExp2(K.BLUSH, fog == null ? .014 : fog); };
 })();
-/* Part B1 (spam call): scenes 0-3 (hook, 41.7 billion, the 1400/1600 street, the reversal) */
+/* Part B1 (spam call v2): ONE continuous 3D colony ("mohalla") the camera travels through. Your house + doorbell, the marked lane (1400/1600), the watchman hut, the entrance gates. Pure function of t. */
 (function () {
 var e = E, S = e.S, V3 = e.V3, clamp = e.clamp, lerp = e.lerp, hash = e.hash, sstep = e.sstep, eo3 = e.eo3, ei3 = e.ei3, put = e.put, B = window.B, K = B.K, M = B.M, GM = B.GM, S0 = window.S0, S1 = window.S1, SP = window.SP, WS = window.WS;
-var SC = window.SC = [0, S0('s1'), S0('t1'), S0('r1'), S0('f1'), S0('d1'), S0('x1'), S0('c1')];
+var SC = window.SC = [0, S0('a1'), S0('t1'), S0('r1'), S0('w1'), S0('f1'), S0('x1'), S0('c1')];
 window.GR = []; window.SCN = [];
-function grp(g) { g.visible = false; S.add(g); GR.push(g); return g; }
 function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 function sw(a, b, t) { return sstep((t - a) / Math.max(.001, b - a)); }
-window.fmt = fmt; window.grp = grp; window.sw = sw;
-function dm(d) { return d; }
-/* ===== scene 0: the hook ===== */
-var gA = grp(new THREE.Group()), A = {};
-(function () { B.floor(gA, 0, 40);
-  var desk = new THREE.Mesh(new THREE.BoxGeometry(9, .5, 3.6), M(0x2b3678, { roughness: .5 })); desk.position.set(0, 1.9, 0); gA.add(desk); [-4, 4].forEach(function (x) { var l = new THREE.Mesh(new THREE.BoxGeometry(.4, 1.9, 3), M(0x2b3678)); l.position.set(x, .95, 0); gA.add(l); });
-  A.user = B.voxel(false, K.CORAL); A.user.position.set(-2.8, 2.15, -.4); A.user.scale.setScalar(1.15); A.user.rotation.y = .35; gA.add(A.user);
-  var lap = new THREE.Mesh(new THREE.BoxGeometry(2.2, .12, 1.5), M(0x7f89c8)); lap.position.set(-2.8, 2.2, 1.0); gA.add(lap); var lscr = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.4, .1), M(0x7f89c8)); lscr.position.set(-2.8, 2.9, .3); lscr.rotation.x = -.15; gA.add(lscr);
-  A.ph = B.phone(B.callScreen('UNKNOWN', '+91 ·····  · 2:47 PM')); A.ph.position.set(2.3, 4.6, .4); A.ph.scale.setScalar(.62); A.ph.rotation.y = -.2; gA.add(A.ph);
-  A.rings = [0, 1, 2].map(function () { var r = new THREE.Mesh(new THREE.TorusGeometry(1, .06, 10, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.8), transparent: true, depthWrite: false })); r.position.set(2.3, 4.6, .8); gA.add(r); return r; });
-  A.agent = B.agent(K.GOLD); A.agent.position.set(4.6, 2.15, 1.5); A.agent.scale.setScalar(.9); A.agent.rotation.y = -.5; gA.add(A.agent);
-  A.card = B.card('LOAN · PRE-APPROVED', '₹5,00,000', 'NOBODY ASKED', { subcol: '#ff4d5e' }); A.card.scale.setScalar(.8); gA.add(A.card);
-  A.l1 = e.lab('YOU · IN A MEETING', K.CORAL, .5, { fs: 40 }); A.l1.position.set(-2.8, 6.3, 0); gA.add(A.l1); A.l2 = e.lab('"SIR, LOAN CHAHIYE?"', K.GOLD, .6, { fs: 44 }); A.l2.position.set(4.2, 6.6, 1); gA.add(A.l2); A.l3 = e.lab('LOAN NE AAPKO DHOONDHA', K.RED, .56, { fs: 40 }); A.l3.position.set(0, 8.6, 1); gA.add(A.l3); })();
-SCN[0] = function (t) { var g = gA; g.visible = true; B.bgc(.014); var t2 = S0('h2'), t3 = S0('h3');
-  A.rings.forEach(function (r, i) { var u = ((t * 1.1 + i / 3) % 1); r.scale.setScalar(.4 + u * 1.8); r.material.opacity = (1 - u) * .8; }); A.ph.position.x = 2.3 + .05 * Math.sin(t * 38) * (t < t3 ? 1 : .0); A.ph.rotation.z = .04 * Math.sin(t * 36) * (t < t3 ? 1 : 0);
-  put(A.agent, t, t2 - .1, .4); A.agent.userData.head.rotation.z = .1 * Math.sin(t * 5); A.agent.userData.armR.rotation.x = -1.2 + .3 * Math.sin(t * 6);
-  var u = clamp((t - t3) / 1.3); A.card.visible = t > t3 - .05; A.card.position.set(lerp(4.4, -2.4, eo3(u)), lerp(4.4, 4.6, u) + 2.2 * Math.sin(u * 3.14), lerp(1.8, .9, u)); A.card.rotation.set(0, 0, (1 - u) * -.5 + .08 * Math.sin(t * 3));
-  A.user.userData.head.rotation.y = lerp(.0, -.6, sw(t2, t2 + .4, t)); A.user.userData.armR.rotation.x = -.6 * sw(t3, t3 + .8, t);
-  put(A.l1, t, .5, .35, t2 + .3); put(A.l2, t, t2 + .2, .35); put(A.l3, t, t3 + .8, .35); };
-e.shot(0, 'push on the ringing phone', 0, 2.4, [3.4, 7.2, 22], [.2, 3.9, 0], 44, [1.0, 6.0, 17.5], [.4, 4.0, 0], 44, 'io');
-e.shot(0, 'hold', 2.4, S0('h3') - .3, [1.0, 6.0, 17.5], [.4, 4.0, 0], 44, [1.0, 6.0, 17.5], [.4, 4.0, 0], 44, 'io');
-e.shot(0, 'swing to the user', S0('h3') - .3, S0('h3') + 1.8, [1.0, 6.0, 17.5], [.4, 4.0, 0], 44, [-.4, 5.6, 16.5], [-.8, 3.9, 0], 44, 'io');
-/* ===== scene 1: 41.7 billion ===== */
-var gC = grp(new THREE.Group()), C = {};
-(function () { B.floor(gC, 0, 60); var cols = 40, rows = 25, N = cols * rows; C.N = N; C.cols = cols; C.im = new THREE.InstancedMesh(new THREE.BoxGeometry(.5, .8, .2), M(0xffffff, { roughness: .5 }), N); C.im.frustumCulled = false; gC.add(C.im); C.im.setColorAt(0, new THREE.Color(1, 1, 1));
-  C.c1 = e.dyn(.95, 860, 200, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('SPAM CALLS IN INDIA, 2025 (PER TRUECALLER REPORT)', 28, 52); x.font = '700 76px "Chakra Petch"'; x.fillText((a).toFixed(1) + ' BILLION', 28, 140); x.fillStyle = '#7a4a10'; x.font = '600 22px "DM Mono"'; x.fillText('4,168 CRORE · 1 DOT = 40 MILLION · NOT TO SCALE', 28, 182); }); C.c1.position.set(0, 10.8, 3); gC.add(C.c1);
-  C.c2 = e.dyn(.8, 860, 170, K.CORAL, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('ITS USERS ALONE ≈ 42 B · 350 M+ USERS', 28, 50); x.font = '700 64px "Chakra Petch"'; x.fillText('≈ ' + Math.round(10 * a) + ' / USER / MONTH', 28, 126); x.fillStyle = '#a02838'; x.font = '600 22px "DM Mono"'; x.fillText('OUR ROUGH MATH · SELF-SELECTED USERS', 28, 156); }); C.c2.position.set(0, 1.4, 6); gC.add(C.c2);
-  C.mer = e.lab('EMI SE KAM YAAD AATA HAI', K.RED, .46, { fs: 36 }); C.mer.position.set(0, 12.5, 3); gC.add(C.mer); })();
-SCN[1] = function (t) { var g = gC; g.visible = true; B.bgc(.01); var L = S1('s2') - SC[1], u = sw(SC[1] + .3, SC[1] + L * .55, t), lit = Math.floor(u * 1042), m = new THREE.Matrix4(), N = C.N, cols = C.cols, col = new THREE.Color();
-  for (var i = 0; i < N; i++) { var x = (i % cols - cols / 2 + .5) * .62, y = (Math.floor(i / cols)) * .95 + .6, on = i < lit; m.makeTranslation(x, y + (on ? .06 * Math.sin(t * 3 + i * .3) : 0), 0); C.im.setMatrixAt(i, m); col.set(on ? K.GOLD : 0x28326e); if (on && hash(i + 5) < .06) col.set(K.RED); C.im.setColorAt(i, col); } C.im.instanceMatrix.needsUpdate = true; C.im.instanceColor.needsUpdate = true;
-  C.c1.draw(41.7 * u); put(C.c1, t, SC[1] + .2, .3); put(C.mer, t, S0('s3') + .8, .35); var t3 = S0('s3'); C.c2.draw(sw(t3 + .3, t3 + 1.8, t)); put(C.c2, t, t3 + .2, .35); };
-e.shot(1, 'rise along the dot wall', SC[1], S0('s3') - .3, [0, 3.2, 28], [0, 5.0, 0], 46, [0, 9.5, 33], [0, 9.0, 0], 46, 'io');
-e.shot(1, 'drop to the per-user line', S0('s3') - .3, S1('s3') + .3, [0, 9.5, 33], [0, 9.0, 0], 46, [0, 6.2, 30], [0, 6.5, 0], 46, 'io');
-/* ===== scenes 2 + 3: the street (built twice: the promise, then the catch) ===== */
-function street(withDoors) { var g = new THREE.Group(); B.floor(g, 0, 60); var s = {}; var road = new THREE.Mesh(new THREE.BoxGeometry(24, .08, 5), M(0x2a3470)); road.position.set(0, .06, 3.2); g.add(road);
-  function shop(x, col, label) { var b = new THREE.Mesh(new THREE.BoxGeometry(3.6, 4.2, 3), M(0x1f2858)); b.position.set(x, 2.1, -1.4); g.add(b); var aw = new THREE.Mesh(new THREE.BoxGeometry(4.0, .35, 1.6), M(col)); aw.position.set(x, 4.2, .1); g.add(aw); var door = new THREE.Mesh(new THREE.BoxGeometry(1.3, 2.6, .2), M(0x0b1230)); door.position.set(x, 1.3, .15); g.add(door); var sg = B.sign(label, '#' + col.toString(16).padStart(6, '0'), 3.2, 1.2, 120); sg.position.set(x, 5.3, .2); g.add(sg); return { b: b, door: door, sign: sg }; }
-  s.a = shop(-2.3, K.GOLD, '1400'); s.b = shop(2.3, K.GREEN, '1600'); s.g = g; return s; }
-var gS = grp(new THREE.Group()), SS = street(); gS.add(SS.g); SS.g.parent.remove(SS.g); gS.add(SS.g);
-SS.ag = []; for (var i = 0; i < 6; i++) { var a = B.agent(K.GOLD); a.scale.setScalar(.7); SS.g.add(a); SS.ag.push(a); }
-SS.l1 = e.lab('TELEMARKETING', K.GOLD, .5, { fs: 40 }); SS.l1.position.set(-2.3, 7.2, 0); SS.g.add(SS.l1); SS.l2 = e.lab('SERVICE + TRANSACTIONS', K.GREEN, .5, { fs: 36 }); SS.l2.position.set(2.3, 8.0, 0); SS.g.add(SS.l2); SS.l3 = e.card('1400 · 1600', 'business-only number series:\nyou can tell a company is calling', K.GOLD, 1.7); SS.l3.position.set(0, 9.4, 2); SS.g.add(SS.l3);
-SCN[2] = function (t) { var g = gS; g.visible = true; B.bgc(.01); var L = S1('t2') - SC[2];
-  SS.ag.forEach(function (a, i) { var u = clamp(((t - SC[2] - .4 - i * .5) / 2.2)); a.visible = u > 0 && u < 1; a.position.set(lerp(-8, -2.3, u), .15, 3.3 - .15 * i); a.rotation.y = Math.PI / 2 + .1; a.userData.armR.rotation.x = Math.sin(t * 8 + i) * .5; });
-  put(SS.l1, t, SC[2] + .4, .35, S0('t2')); put(SS.l2, t, S0('t1') + L * .45, .35, S0('t2')); put(SS.l3, t, S0('t2') + .2, .35); };
-e.shot(2, 'truck along the street', SC[2], S1('t2') + .3, [-4, 6.4, 20], [-2, 3.4, 0], 46, [2, 6.4, 20], [1.4, 3.6, 0], 46, 'io');
-var gR = grp(new THREE.Group()), RR = street(); gR.add(RR.g);
-RR.sh = [RR.a, RR.b].map(function (sp, i) { var sh = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.8, .2), M(0x59608f, { metalness: .6, roughness: .4 })); sh.position.set(i ? 2.3 : -2.3, 4.4, .3); RR.g.add(sh); return sh; });
-RR.walk = []; for (var j = 0; j < 7; j++) { var p = B.voxel(false, j % 2 ? K.CREAM : K.CORAL); p.scale.setScalar(.7); RR.g.add(p); RR.walk.push(p); }
-RR.b1 = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1, .8), M(K.GOLD)); RR.b2 = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1, .8), M(K.GREEN)); RR.b1.position.set(-2.3, .5, 5.6); RR.b2.position.set(2.3, .5, 5.6); RR.g.add(RR.b1); RR.g.add(RR.b2);
-RR.p1 = e.dyn(.7, 520, 150, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 24px "DM Mono"'; x.fillText('1400 · CALLS IGNORED', 22, 46); x.font = '700 64px "Chakra Petch"'; x.fillText(Math.round(81 * a) + '%', 22, 118); }); RR.p1.position.set(-2.1, 7.2, 2); RR.g.add(RR.p1);
-RR.p2 = e.dyn(.7, 520, 150, K.GREEN, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 24px "DM Mono"'; x.fillText('1600 · CALLS IGNORED', 22, 46); x.font = '700 64px "Chakra Petch"'; x.fillText(Math.round(79 * a) + '%', 22, 118); }); RR.p2.position.set(2.1, 7.2, 2); RR.g.add(RR.p2);
-RR.st = B.stamp('FREQUENTLY\nBLOCKED', '#ff4d5e', 4.4, 1.5, 96); RR.g.add(RR.st); RR.cl = e.lab("TRUECALLER CEO'S CLAIM · 8 MONTHS", K.RED, .46, { fs: 34 }); RR.cl.position.set(0, 10.0, 0); RR.g.add(RR.cl); RR.cd = e.card('FREQUENTLY BLOCKED', 'the label Truecaller may use:\nit cannot say "spam" for these series', K.RED, 1.7); RR.cd.position.set(0, 9.6, 2); RR.g.add(RR.cd);
-SCN[3] = function (t) { var g = gR; g.visible = true; B.bgc(.01); var L = S1('r3') - SC[3], t2 = S0('r2'), t3 = S0('r3');
-  RR.sh.forEach(function (sh, i) { var u = sw(SC[3] + .3 + i * .3, SC[3] + 1.1 + i * .3, t); sh.position.y = lerp(7.2, 1.45, u); sh.scale.y = 1; });
-  RR.walk.forEach(function (p, i) { var u = ((t * .13 + i / 7) % 1); p.position.set(lerp(-9, 9, u), .15, 3.4 + (i % 2) * .8); p.rotation.y = Math.PI / 2; p.userData.armR.rotation.x = Math.sin(t * 6 + i) * .4; p.visible = true; });
-  RR.p1.draw(sw(t2, t2 + 1.6, t)); RR.p2.draw(sw(t2 + .3, t2 + 1.9, t)); put(RR.p1, t, t2, .35, t3 + 1.3); put(RR.p2, t, t2 + .3, .35, t3 + 1.3); RR.b1.scale.y = .2 + 3.2 * sw(t2, t2 + 1.6, t) * .81; RR.b2.scale.y = .2 + 3.2 * sw(t2 + .3, t2 + 1.9, t) * .79; RR.b1.position.y = .5 * RR.b1.scale.y; RR.b2.position.y = .5 * RR.b2.scale.y;
-  B.slam(RR.st, clamp((t - t3 - .6) / .8), 6.5, 3.8, 1); RR.st.position.x = 0; RR.st.position.z = 2.4; put(RR.cl, t, t2 + 1.2, .35, t3 + .2); put(RR.cd, t, t3 + 1.4, .4); };
-e.shot(3, 'locked on the shuttered street', SC[3], S0('r2') - .2, [0, 6.4, 22], [0, 3.4, 0], 46, [0, 6.4, 22], [0, 3.4, 0], 46, 'io');
-e.shot(3, 'push on the bars', S0('r2') - .2, S1('r3') + .3, [0, 6.4, 22], [0, 3.4, 0], 46, [0, 6.4, 17], [0, 3.8, 0], 44, 'io');
-})();
-/* Part B2 (spam call): scenes 4-7 (fraud, who picks up, the 18 Sep fix, declared) */
-(function () {
-var e = E, S = e.S, V3 = e.V3, clamp = e.clamp, lerp = e.lerp, hash = e.hash, sstep = e.sstep, eo3 = e.eo3, ei3 = e.ei3, put = e.put, B = window.B, K = B.K, M = B.M, GM = B.GM, S0 = window.S0, S1 = window.S1, SP = window.SP, WS = window.WS, SC = window.SC, grp = window.grp, sw = window.sw, SCN = window.SCN;
-/* ===== scene 4: fraud ===== */
-var gF = grp(new THREE.Group()), F = {};
-(function () { B.floor(gF, 0, 60); var cn = new THREE.Mesh(new THREE.BoxGeometry(5, 1.6, 1.6), M(0x2b3678)); cn.position.set(-2.4, .8, 0); gF.add(cn);
-  F.fr = B.agent(K.RED); F.fr.position.set(-2.4, 1.6, -.4); F.fr.scale.setScalar(1.15); gF.add(F.fr);
-  F.sg = [['BANK', '#3de0a8'], ['POLICE', '#6a7bff'], ['PAY APP', '#ff8a1f']].map(function (a) { var s = B.sign(a[0], a[1], 3.0, 1.1, 120); s.position.set(-2.4, 5.6, .6); gF.add(s); return s; });
-  F.c1 = e.dyn(.78, 760, 170, K.RED, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('FRAUD CALLS IDENTIFIED, 2025', 28, 52); x.font = '700 70px "Chakra Petch"'; x.fillText(fmt(a) + ' CRORE', 28, 132); x.fillStyle = '#a02838'; x.font = '600 22px "DM Mono"'; x.fillText('PER TRUECALLER REPORT', 28, 160); }); F.c1.position.set(0, 7.6, 1); gF.add(F.c1);
-  F.sw = new THREE.Group(); F.sw.position.set(2.4, 3.4, .6); F.sw.scale.setScalar(.8); var ring = new THREE.Mesh(new THREE.TorusGeometry(1.5, .12, 12, 60), M(K.CREAM)); F.sw.add(ring); F.hand = new THREE.Mesh(new THREE.BoxGeometry(.1, 1.3, .1), M(K.RED)); F.hand.geometry.translate(0, .65, 0); F.sw.add(F.hand); gF.add(F.sw);
-  F.l1 = e.lab('1.8 MIN PER CALL (AVG)', K.CREAM, .42, { fs: 34 }); F.l1.position.set(2.4, 1.4, 1); gF.add(F.l1);
-  F.yr = new THREE.InstancedMesh(new THREE.BoxGeometry(.26, .26, .26), M(K.GOLD), 247); F.yr.frustumCulled = false; gF.add(F.yr);
-  F.c2 = e.dyn(.74, 820, 160, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('BLOCKING SAVES 21.7 LAKH HOURS / DAY', 28, 50); x.font = '700 62px "Chakra Petch"'; x.fillText('≈ ' + Math.round(247 * a) + ' YEARS / DAY', 28, 124); x.fillStyle = '#7a4a10'; x.font = '600 22px "DM Mono"'; x.fillText('÷ 8,766 H/YEAR · OUR ARITHMETIC', 28, 150); }); F.c2.position.set(0, 10.2, 1); gF.add(F.c2); })();
-SCN[4] = function (t) { var g = gF; g.visible = true; B.bgc(.01); var t1 = S0('f1'), t2 = S0('f2'), t3 = S0('f3'), L = S1('f1') - t1;
-  F.sg.forEach(function (s, i) { var a = t1 + .3 + i * L * .28; s.visible = t > a && t < a + L * .28; s.scale.setScalar(eo3((t - a) * 4) + .01); }); F.fr.userData.head.rotation.z = .12 * Math.sin(t * 4); F.fr.userData.armR.rotation.x = -1.3 + .3 * Math.sin(t * 7);
-  F.c1.draw(770 * sw(t2, t2 + 1.2, t)); put(F.c1, t, t2, .35); put(F.sw, t, t3, .35); F.hand.rotation.z = -clamp((t - t3) / 3) * 6.283 * 1.8 / 2 * 2 * .0 - (t - t3) * 2.1; put(F.l1, t, t3 + .3, .3);
-  var m = new THREE.Matrix4(), u = sw(t3 + 1.0, t3 + 3.2, t), n = Math.floor(u * 247); for (var i = 0; i < 247; i++) { var cx = (i % 19 - 9) * .32 - 2.6, cy = Math.floor(i / 19) * .32 + 2.0 + .0; m.makeTranslation(i < n ? cx : -99, i < n ? cy : -99, 2.2); F.yr.setMatrixAt(i, m); } F.yr.instanceMatrix.needsUpdate = true; F.c2.draw(u); put(F.c2, t, t3 + .8, .35); };
-e.shot(4, 'locked on the counter', SC[4], S0('f3') - .2, [0, 5.6, 15], [0, 3.6, 0], 46, [0, 5.6, 15], [0, 3.6, 0], 46, 'io');
-e.shot(4, 'rise to the years', S0('f3') - .2, S1('f3') + .3, [0, 5.6, 15], [0, 3.6, 0], 46, [0, 6.8, 16], [0, 5.2, 0], 46, 'io');
-/* ===== scene 5: who picks up ===== */
-var gU = grp(new THREE.Group()), U = {};
-(function () { B.floor(gU, 0, 60); U.un = B.voxel(false, K.CREAM); U.un.position.set(-1.8, 0, 0); U.un.scale.setScalar(1.5); gU.add(U.un); var hair = new THREE.Mesh(new THREE.BoxGeometry(.66, .14, .64), M(0xdddddd)); hair.position.set(0, .34, 0); U.un.userData.head.add(hair);
-  U.ph = new THREE.Mesh(new THREE.BoxGeometry(.28, .5, .06), M(0x10183d)); U.ph.position.set(.62, 2.5, .3); U.un.add(U.ph);
-  U.sc = B.agent(K.RED); U.sc.position.set(6.0, 0, -1); U.sc.scale.setScalar(1.2); U.sc.rotation.y = -.9; gU.add(U.sc);
-  U.cable = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, 1, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.6) })); gU.add(U.cable);
-  U.bub = ['HELLO? HAAN BOLO', 'ARRE BETA, KAUN?', 'AAP KAUN BOL RAHE?'].map(function (tx, i) { var l = e.lab(tx, K.CREAM, .5, { fs: 38 }); l.position.set(-1.8 + (i % 2) * 1.6, 5.6 + i * 1.1, 1); gU.add(l); return l; });
-  U.l = e.lab('PAPA PICKS UP. EVERY TIME.', K.GOLD, .56, { fs: 40 }); U.l.position.set(0, 9.6, 1); gU.add(U.l); U.l2 = e.lab('OPINION · NOT A STATISTIC', K.CREAM, .4, { fs: 32 }); U.l2.position.set(0, 1.0, 3.6); gU.add(U.l2); })();
-SCN[5] = function (t) { var g = gU, L = S1('d1') - SC[5]; g.visible = true; B.bgc(.012); U.un.userData.head.rotation.z = .08 * Math.sin(t * 2); U.un.userData.armR.rotation.x = -1.2;
-  var pa = new V3(-1.2, 2.6, .3), pb = new V3(5.6, 2.4, -.8), d = pb.clone().sub(pa); U.cable.position.copy(pa); U.cable.scale.set(1, d.length(), 1); U.cable.quaternion.setFromUnitVectors(new V3(0, 1, 0), d.normalize()); U.cable.visible = t > SC[5] + L * .45;
-  U.bub.forEach(function (l, i) { put(l, t, SC[5] + .6 + i * L * .17, .35); }); put(U.l, t, SC[5] + L * .5, .35); put(U.l2, t, SC[5] + L * .6, .3); U.sc.userData.armR.rotation.x = -1 + .3 * Math.sin(t * 6); };
-e.shot(5, 'locked wide', SC[5], S1('d1') + .3, [1.6, 6.0, 15.5], [1.6, 3.6, 0], 46, [1.6, 6.0, 14.5], [1.6, 3.8, 0], 46, 'io');
-/* ===== scene 6: the 18 Sep fix ===== */
-var gT = grp(new THREE.Group()), T = {};
-(function () { B.floor(gT, 0, 60); T.box = new THREE.Mesh(new THREE.BoxGeometry(3.4, 3.6, 3), M(0x2b3678)); T.box.position.set(2.7, 1.8, -1.6); gT.add(T.box); T.bs = B.sign('TELCO\nPLATFORM', '#6a7bff', 3.0, 1.5, 110); T.bs.position.set(2.7, 2.2, .0); gT.add(T.bs);
-  T.rep = []; for (var i = 0; i < 8; i++) { var c = B.card('', '', '', {}); c.scale.setScalar(.35); gT.add(c); T.rep.push(c); }
-  T.app = B.phone(B.callScreen('FLAGGED', 'SPAM · USER REPORT', '#ff4d5e')); T.app.scale.setScalar(.5); T.app.position.set(-3.2, 2.6, 0); gT.add(T.app);
-  T.l1 = e.lab('APPS MUST SHARE USER SPAM REPORTS', K.GREEN, .5, { fs: 34 }); T.l1.position.set(0, 7.8, 0); gT.add(T.l1); T.cd = e.card('A2P CALL', 'application-to-person: a machine dials,\nnot a person. Declare it in advance.', K.GREEN, 1.7); T.cd.position.set(0, 9.0, 2); gT.add(T.cd);
-  T.bar = new THREE.Group(); T.bar.position.set(-.6, 0, 2.4); var post = new THREE.Mesh(new THREE.BoxGeometry(.4, 3, .4), M(K.CREAM)); post.position.set(-1.4, 1.5, 0); T.bar.add(post); T.arm = new THREE.Mesh(new THREE.BoxGeometry(3, .2, .2), M(K.RED)); T.arm.geometry.translate(1.5, 0, 0); T.arm.position.set(-1.4, 3.0, 0); T.bar.add(T.arm); gT.add(T.bar);
-  T.rb = B.voxel(false, K.GOLD); T.rb.scale.setScalar(.7); gT.add(T.rb); var ant = new THREE.Mesh(new THREE.BoxGeometry(.06, .5, .06), M(K.RED)); ant.position.set(0, .5, 0); T.rb.userData.head.add(ant);
-  T.pr = e.dyn(.7, 700, 150, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('UNDECLARED ROBOCALL = SPAM', 24, 46); x.font = '700 60px "Chakra Petch"'; x.fillText('≤ 5 PAISE / MIN', 24, 120); }); T.pr.position.set(-.4, 5.4, 2.4); gT.add(T.pr);
-  T.q = B.sign('?', '#f4ecd8', 2, 2, 260); T.q.position.set(1.6, 4.2, 3.0); gT.add(T.q); T.td = e.lab('TRUECALLER CALLS IT ANTI-COMPETITIVE', K.RED, .44, { fs: 32 }); T.td.position.set(0, 9.0, 0); gT.add(T.td); })();
-SCN[6] = function (t) { var g = gT, t1 = S0('x1'), t2 = S0('x2'), t3 = S0('x3'), t4 = S0('x4'); g.visible = true; B.bgc(.012); put(T.l1, t, t1 + .4, .35, t2 - .1); put(T.cd, t, t2, .4, t3 + .2);
-  T.rep.forEach(function (c, i) { var a = t1 + .8 + i * .35, u = clamp((t - a) / 1.0); c.visible = u > 0 && u < 1; c.position.set(lerp(-2.8, 2.4, eo3(u)), lerp(2.6, 2.4, u) + 1.4 * Math.sin(u * 3.14), 1.0); c.rotation.z = .5 * Math.sin(u * 6); });
-  put(T.pr, t, t3, .4); var arm = sw(t3 + .6, t3 + 1.6, t) * 1.2; T.arm.rotation.z = arm; var ru = clamp((t - t2 + .4) / 2.4); T.rb.visible = t > t2 - .4; T.rb.position.set(lerp(-6, 6, ru), .1, 3.6); T.rb.rotation.y = Math.PI / 2; T.rb.userData.armR.rotation.x = Math.sin(t * 7) * .4;
-  put(T.q, t, t4, .4); T.q.rotation.z = .1 * Math.sin(t * 3); put(T.td, t, t4 + 1.2, .35); };
-e.shot(6, 'truck from the app to the platform', SC[6], S0('x3') - .3, [0, 5.8, 17], [0, 3.0, 0], 46, [0, 5.8, 17], [0, 3.0, 0], 46, 'io');
-e.shot(6, 'pull to the toll booth', S0('x3') - .3, S1('x4') + .3, [0, 5.8, 17], [0, 3.0, 0], 46, [0, 5.4, 14.5], [0, 3.2, 1], 44, 'io');
-/* ===== scene 7: the toast ===== */
-var gZ = grp(new THREE.Group()), Z = {};
-(function () { B.floor(gZ, 0, 40); var scr = B.callScreen('UNKNOWN', '+91 ·····  · DECLARED', '#3de0a8'); Z.ph = B.phone(scr); Z.ph.position.set(0, 4.3, 0); Z.ph.scale.setScalar(.95); gZ.add(Z.ph);
-  Z.tag = B.stamp('DECLARED', '#3de0a8', 4.6, 1.5, 110); gZ.add(Z.tag); Z.l = e.lab('AB LOAN KO BHI DECLARE KARNA PADEGA', K.GREEN, .5, { fs: 34 }); Z.l.position.set(0, 9.4, 1); gZ.add(Z.l);
-  Z.rings = [0, 1, 2].map(function () { var r = new THREE.Mesh(new THREE.TorusGeometry(1, .05, 10, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GREEN).multiplyScalar(1.6), transparent: true, depthWrite: false })); r.position.set(0, 4.3, .8); gZ.add(r); return r; }); })();
-SCN[7] = function (t) { var g = gZ, L = S1('c1') - SC[7]; g.visible = true; B.bgc(.012); Z.rings.forEach(function (r, i) { var u = ((t * .7 + i / 3) % 1); r.scale.setScalar(.8 + u * 3.6); r.material.opacity = (1 - u) * .7; }); B.slam(Z.tag, clamp((t - SC[7] - L * .5) / .8), 9, 4.4, 1); Z.tag.position.z = 1.2; Z.tag.rotation.z = -.12; put(Z.l, t, SC[7] + .5, .35); };
-e.shot(7, 'pull back from the phone', SC[7], S0('cta') - .3, [0, 5.2, 12], [0, 4.4, 0], 42, [0, 6.0, 20], [0, 2.6, 0], 44, 'io');
-e.shot(7, 'hold for the end card', S0('cta') - .3, S0('cta') + 30, [0, 6.0, 20], [0, 2.6, 0], 44, [0, 6.0, 20], [0, 2.6, 0], 44, 'io');
+window.fmt = fmt; window.sw = sw;
+var W = new THREE.Group(); S.add(W); GR.push(W);
+function add(o, x, y, z) { o.position.set(x, y, z); W.add(o); return o; }
+function box(w, h, d, col, o) { return new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(col, o)); }
+/* ---------- sky, ground, roads ---------- */
+(function () { var sky = new THREE.Mesh(new THREE.SphereGeometry(300, 32, 20), new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, vertexShader: 'varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}', fragmentShader: 'varying vec3 vP;void main(){float h=clamp(normalize(vP).y,0.,1.);vec3 hor=vec3(.98,.5,.22),mid=vec3(.20,.18,.45),top=vec3(.03,.05,.16);vec3 c=mix(hor,mid,smoothstep(0.,.18,h));c=mix(c,top,smoothstep(.12,.7,h));float st=step(.9985,fract(sin(dot(floor(vP.xz*.35+vP.y*.2),vec2(12.9,78.2)))*43758.5));c+=st*smoothstep(.25,.6,h);gl_FragColor=vec4(c,1.);}' })); W.add(sky);
+  var g = new THREE.Mesh(new THREE.CircleGeometry(120, 64), M(0x1a2a58, { roughness: .95, envMapIntensity: .4 })); g.rotation.x = -Math.PI / 2; W.add(g);
+  add(box(130, .08, 7, 0x2e3a78, { roughness: .8 }), -15, .05, 17); for (var i = 0; i < 22; i++) add(box(1.6, .02, .25, 0xf4ecd8), -62 + i * 5.5, .1, 17);
+  add(box(6, .08, 36, 0x34417f, { roughness: .8 }), 14, .06, -2); add(box(2.6, .06, 14, 0x55609b), 0, .08, 10.2);
+  W.laneEdge = [-3, 3].map(function (dx) { var m = new THREE.Mesh(new THREE.BoxGeometry(.25, .12, 34), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(2.2), transparent: true, opacity: 0 })); add(m, 14 + dx, .16, -2); return m; }); })();
+/* ---------- trees and lamp posts (foreground parallax) ---------- */
+(function () { function tree(x, z, s) { var t = new THREE.Group(); var tr = box(.5, 2, .5, 0x4a3a2a); tr.position.y = 1; t.add(tr); for (var i = 0; i < 3; i++) { var c = new THREE.Mesh(new THREE.ConeGeometry(2.2 - i * .5, 2.6, 7), M(0x1d6a62, { roughness: .8 })); c.position.y = 2.6 + i * 1.5; t.add(c); } t.scale.setScalar(s); return add(t, x, 0, z); }
+  [[-6, 7, .8], [6, 6, .9], [24, 2, .9], [-20, 8, .8], [-34, 10, .9], [28, -10, .9], [-12, 34, 1.0], [34, 30, 1.0], [-46, 28, 1.0], [10, 36, 1.0]].forEach(function (a) { tree(a[0], a[1], a[2]); });
+  function lamp(x, z) { var p = box(.22, 6.4, .22, 0x2a2f55); add(p, x, 3.2, z); var h = new THREE.Mesh(new THREE.SphereGeometry(.4, 12, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(3) })); add(h, x, 6.6, z); var gl = e.glow('t', 6, .9); gl.position.set(x, 6.6, z); W.add(gl); }
+  for (var i = -5; i <= 2; i++) if (i !== 0) lamp(i * 9 + 4, 13.2); [-2, -10, 6].forEach(function (z) { lamp(10.6, z); }); })();
+/* ---------- your house ---------- */
+var H = {};
+(function () { var g = new THREE.Group(); W.add(g); H.g = g; var body = box(8.4, 5.2, 7, 0x5a6bb5, { roughness: .7 }); body.position.set(0, 2.6, 0); g.add(body);
+  var roof = new THREE.Mesh(new THREE.CylinderGeometry(0, 6.6, 3.2, 4), M(0xb5541a, { roughness: .8 })); roof.rotation.y = Math.PI / 4; roof.position.set(0, 6.8, 0); roof.scale.set(1.12, 1, .96); g.add(roof);
+  [-2.9, 2.9].forEach(function (x) { var w = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.5), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.5) })); w.position.set(x, 3.2, 3.52); g.add(w); H[x < 0 ? 'wl' : 'wr'] = w; });
+  var fr = box(2.0, 3.5, .3, 0x1b1f40); fr.position.set(0, 1.75, 3.5); g.add(fr); var inner = box(1.7, 3.2, .1, 0xffc27a); inner.position.set(0, 1.6, 3.4); inner.material = new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.1) }); g.add(inner);
+  H.door = new THREE.Group(); H.door.position.set(-.85, 0, 3.7); var dm = box(1.7, 3.2, .16, 0xc86a2a, { roughness: .6 }); dm.position.set(.85, 1.6, 0); H.door.add(dm); g.add(H.door);
+  var plate = box(.8, 1.15, .14, 0xf4ecd8); plate.position.set(2.4, 2.4, 3.65); g.add(plate); H.btn = new THREE.Mesh(new THREE.CylinderGeometry(.22, .22, .12, 20), M(K.GOLD, { emissive: K.GOLD, emissiveIntensity: .6 })); H.btn.rotation.x = Math.PI / 2; H.btn.position.set(2.4, 2.6, 3.76); g.add(H.btn); var d2 = new THREE.Mesh(new THREE.PlaneGeometry(.55, .22), new THREE.MeshBasicMaterial({ color: 0x0b1230 })); d2.position.set(2.4, 2.1, 3.73); g.add(d2);
+  H.rings = [0, 1, 2].map(function () { var r = new THREE.Mesh(new THREE.TorusGeometry(1, .05, 10, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(2), transparent: true, depthWrite: false })); r.position.set(2.4, 2.6, 3.9); g.add(r); return r; });
+  H.light = new THREE.PointLight(0xffb060, 40, 18, 1.6); H.light.position.set(0, 2.8, 6.5); g.add(H.light); var pg = e.glow('t', 7, .55); pg.position.set(0, 3, 5); g.add(pg);
+  H.user = B.voxel(false, K.CORAL); H.user.position.set(0, 0, 2.2); H.user.scale.setScalar(1.05); g.add(H.user);
+  H.lb = e.lab('DOORBELL = YOUR PHONE NUMBER', K.GOLD, .5, { fs: 36 }); H.lb.position.set(2.4, 5.6, 4.2); g.add(H.lb); })();
+/* ---------- the salesman at your door + other callers ---------- */
+var SM = {};
+(function () { SM.sm = B.agent(K.GOLD); SM.sm.scale.setScalar(1.0); W.add(SM.sm); SM.case = box(.9, .6, .3, 0xf4ecd8); SM.case.position.set(.6, 1.0, .4); SM.sm.add(SM.case); var tex = B.plane(.8, .5, B.tcv(256, 160, function (x) { x.fillStyle = '#f4ecd8'; x.fillRect(0, 0, 256, 160); x.fillStyle = '#0b1230'; x.font = '700 64px "Chakra Petch"'; x.textAlign = 'center'; x.fillText('LOAN', 128, 104); })); tex.position.set(0, 0, .17); SM.case.add(tex);
+  SM.say = e.lab('"SIR, LOAN CHAHIYE?"', K.GOLD, .6, { fs: 44 }); SM.say.position.set(0, 7.6, 7); W.add(SM.say); SM.nm = e.lab('LOAN NE AAPKO DHOONDHA', K.RED, .5, { fs: 40 }); SM.nm.position.set(0, 8.8, 7); W.add(SM.nm);
+  SM.badge = B.stamp('DECLARED', '#3de0a8', 3.0, 1.0, 100); SM.badge.position.set(0, 4.2, 7); W.add(SM.badge); })();
+/* ---------- the rain of calls (1 dot = 35 million) ---------- */
+var RN = {};
+(function () { var N = 1200; RN.N = N; RN.im = new THREE.InstancedMesh(new THREE.BoxGeometry(.5, .8, .15), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.8) }), N); RN.im.frustumCulled = false; W.add(RN.im); RN.o = []; for (var i = 0; i < N; i++) { var a = hash(i) * 6.283, r = 22 + hash(i + 3) * 40; RN.o.push([Math.cos(a) * r + 6, 4 + hash(i + 7) * 20, Math.sin(a) * r * .7 + 14]); }
+  RN.c1 = e.dyn(.95, 860, 200, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('TRUECALLER USERS · RINGS IN 2025', 28, 52); x.font = '700 76px "Chakra Petch"'; x.fillText('≈ ' + Math.round(a) + ' BILLION', 28, 140); x.fillStyle = '#7a4a10'; x.font = '600 22px "DM Mono"'; x.fillText('1 BOX = 35 MILLION RINGS · NOT TO SCALE', 28, 182); }); RN.c1.position.set(2.4, 11, 4); W.add(RN.c1);
+  RN.c2 = e.dyn(.8, 860, 170, K.CORAL, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('42 B ÷ 350 M+ USERS ÷ 12', 28, 50); x.font = '700 64px "Chakra Petch"'; x.fillText('≈ ' + Math.round(10 * a) + ' RINGS / MONTH', 28, 126); x.fillStyle = '#a02838'; x.font = '600 22px "DM Mono"'; x.fillText('OUR ROUGH MATH · SELF-SELECTED USERS', 28, 156); }); RN.c2.position.set(2.4, 11, 4); W.add(RN.c2);
+  RN.cd = e.card('SPAM CALL', 'a ring you did not ask for:\nnobody invited it', K.RED, 1.7); RN.cd.position.set(2.4, 14.5, 6); W.add(RN.cd); })();
+/* ---------- the marked lane (gali) ---------- */
+var L = {};
+(function () { var gate = new THREE.Group(); W.add(gate); L.gate = gate;
+  [11, 17].forEach(function (x) { var p = box(.6, 6, .6, 0xf4ecd8); p.position.set(x, 3, 14.5); gate.add(p); }); var beam = box(7.4, .8, .8, 0x2b3678); beam.position.set(14, 6.4, 14.5); gate.add(beam);
+  L.s14 = B.sign('1400', '#ff8a1f', 3.2, 1.3, 130); L.s14.position.set(12.2, 5.1, 14.95); gate.add(L.s14); L.s16 = B.sign('1600', '#3de0a8', 3.2, 1.3, 130); L.s16.position.set(15.8, 5.1, 14.95); gate.add(L.s16);
+  L.booths = []; for (var i = 0; i < 5; i++) [[11, 0xb5601a], [17, 0x1e8f72]].forEach(function (a, k) { var b = new THREE.Group(); var bx = box(3.2, 3.4, 3.2, a[0] === 11 ? 0x7a4a22 : 0x1a5c52); bx.position.y = 1.7; b.add(bx); var aw = box(3.6, .3, 1.6, a[1]); aw.position.set(a[0] === 11 ? 1.4 : -1.4, 3.3, 0); b.add(aw); var win = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 1.1), new THREE.MeshBasicMaterial({ color: new THREE.Color(a[1]).multiplyScalar(1.4) })); win.position.set(a[0] === 11 ? 1.62 : -1.62, 2.2, 0); win.rotation.y = a[0] === 11 ? Math.PI / 2 : -Math.PI / 2; b.add(win); b.position.set(a[0] === 11 ? 10.4 : 17.6, 0, 8 - i * 6.6); W.add(b); L.booths.push(b); });
+  L.ag = []; for (var j = 0; j < 8; j++) { var a = B.agent(K.GOLD); a.scale.setScalar(.8); W.add(a); L.ag.push(a); }
+  L.cd = e.card('1400 · 1600 GALI', 'a marked street only for sellers:\nyou can tell a shop is calling', K.GOLD, 1.7); L.cd.position.set(14, 11.5, 12); W.add(L.cd);
+  L.l1 = e.lab('1400 = TELEMARKETING', K.GOLD, .46, { fs: 34 }); L.l1.position.set(11, 8.8, 14.5); W.add(L.l1); L.l2 = e.lab('1600 = SERVICE', K.GREEN, .46, { fs: 34 }); L.l2.position.set(17, 8.0, 14.5); W.add(L.l2); })();
+/* ---------- neighbours (doors that close) and walkers ---------- */
+var N = {};
+(function () { N.h = [-14, -26].map(function (x, i) { var g = new THREE.Group(); var b = box(7, 4.6, 6, i ? 0x4f7a8f : 0x7a5aa8, { roughness: .7 }); b.position.y = 2.3; g.add(b); var r = new THREE.Mesh(new THREE.CylinderGeometry(0, 5.4, 2.8, 4), M(0x6a2e2e)); r.rotation.y = Math.PI / 4; r.position.y = 6; g.add(r); var w = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 1.3), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.3) })); w.position.set(-2.4, 3, 3.02); g.add(w); var door = new THREE.Group(); door.position.set(-.8, 0, 3.1); var d = box(1.6, 3, .14, 0xc86a2a); d.position.set(.8, 1.5, 0); door.add(d); var inn = box(1.6, 3, .1, 0xffc27a); inn.material = new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GOLD).multiplyScalar(1.1) }); inn.position.set(0, 1.5, 3.04); g.add(inn); g.add(door); g.position.set(x, 0, 0); W.add(g); return { g: g, door: door }; });
+  N.wk = []; for (var i = 0; i < 7; i++) { var p = B.voxel(false, i % 2 ? K.CREAM : K.CORAL); p.scale.setScalar(.85); W.add(p); N.wk.push(p); }
+  N.b1 = box(2, 1, 1.6, K.GOLD); N.b2 = box(2, 1, 1.6, K.GREEN); N.b1.position.set(23, .5, 10); N.b2.position.set(27, .5, 10); W.add(N.b1); W.add(N.b2);
+  N.p1 = e.dyn(.7, 520, 150, K.GOLD, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 24px "DM Mono"'; x.fillText('1400 · RINGS IGNORED', 22, 46); x.font = '700 64px "Chakra Petch"'; x.fillText(Math.round(81 * a) + '%', 22, 118); }); N.p1.position.set(23, 12, 10); W.add(N.p1);
+  N.p2 = e.dyn(.7, 520, 150, K.GREEN, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 24px "DM Mono"'; x.fillText('1600 · RINGS IGNORED', 22, 46); x.font = '700 64px "Chakra Petch"'; x.fillText(Math.round(79 * a) + '%', 22, 118); }); N.p2.position.set(27, 13.4, 10); W.add(N.p2);
+  N.cl = e.lab("TRUECALLER CEO'S CLAIM · 8 MONTHS", K.RED, .44, { fs: 32 }); N.cl.position.set(25, 15.4, 10); W.add(N.cl); N.sh = e.lab('NOBODY OPENS THE DOOR', K.CREAM, .46, { fs: 34 }); N.sh.position.set(-20, 8.6, 4); W.add(N.sh); })();
+/* ---------- the watchman ---------- */
+var G = {};
+(function () { var g = new THREE.Group(); W.add(g); var hut = box(3.4, 3.4, 3.2, 0x2a7a6a); hut.position.y = 1.7; g.add(hut); var rf = box(4.2, .4, 4, 0x1b4a42); rf.position.y = 3.6; g.add(rf); var win = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.2), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GREEN).multiplyScalar(1.4) })); win.position.set(0, 2.2, 1.62); g.add(win); g.position.set(7.4, 0, 12.2); G.g = g;
+  G.guard = B.voxel(false, K.GREEN); G.guard.position.set(7.4, 0, 14.6); G.guard.scale.setScalar(.95); G.guard.rotation.y = .2; W.add(G.guard); var cap = box(.8, .3, .8, 0x0b1230); cap.position.set(0, .45, 0); G.guard.userData.head.add(cap);
+  G.tag = e.lab('TRUECALLER = THE CHOWKIDAAR', K.GREEN, .46, { fs: 34 }); G.tag.position.set(7.4, 7.6, 12.2); W.add(G.tag);
+  G.st = B.stamp('FREQUENTLY\nBLOCKED', '#ff4d5e', 4.4, 1.5, 96); W.add(G.st);
+  G.cd = e.card('FREQUENTLY BLOCKED', 'the label Truecaller may use:\nit cannot say "spam" for 1400 / 1600', K.RED, 1.7); G.cd.position.set(7.4, 10.6, 12.2); W.add(G.cd); })();
+/* ---------- fraud ---------- */
+var F = {};
+(function () { F.ag = [['BANK', 0x3de0a8], ['POLICE', 0x6a7bff], ['PAY APP', 0xff8a1f]].map(function (a) { var p = B.agent(K.RED); p.scale.setScalar(1.0); W.add(p); var s = B.sign(a[0], '#' + a[1].toString(16).padStart(6, '0'), 2.6, 1.0, 100); s.position.set(0, 4.6, 0); p.add(s); var m = box(1.0, .42, .1, 0x0b1230); m.position.set(0, 2.1, .33); p.userData.head.add(m); m.position.y = -.1; return p; });
+  F.c1 = e.dyn(.78, 760, 170, K.RED, function (x, a) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('FRAUD CALLS IDENTIFIED, 2025', 28, 52); x.font = '700 70px "Chakra Petch"'; x.fillText(fmt(a) + ' CRORE', 28, 132); x.fillStyle = '#a02838'; x.font = '600 22px "DM Mono"'; x.fillText('PER TRUECALLER REPORT', 28, 160); }); F.c1.position.set(3.4, 9.6, 8); W.add(F.c1); })();
+/* ---------- the entrance: three rules as three gates + telco tower ---------- */
+var X = {};
+(function () { X.tw = new THREE.Group(); var mast = new THREE.Mesh(new THREE.CylinderGeometry(.35, .7, 22, 8), M(0xc9d2ff, { metalness: .6, roughness: .35 })); mast.position.y = 11; X.tw.add(mast); var base = box(5, 1.4, 5, 0x2b3678); base.position.y = .7; X.tw.add(base); [6, 10, 14].forEach(function (y, i) { var d = new THREE.Mesh(new THREE.CylinderGeometry(.01, 1.4, .5, 16), M(0xf4ecd8)); d.position.set(i % 2 ? 1.1 : -1.1, y + 2, 0); d.rotation.z = i % 2 ? -.8 : .8; X.tw.add(d); }); var tip = new THREE.Mesh(new THREE.SphereGeometry(.5, 12, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.CORAL).multiplyScalar(2.4) })); tip.position.y = 22.4; X.tw.add(tip); X.tw.position.set(-14, 0, 34); W.add(X.tw);
+  X.ts = B.sign('TELCO\nPLATFORM', '#6a7bff', 5, 2.4, 120); X.ts.position.set(-14, 5.4, 36.6); W.add(X.ts);
+  var curve = new THREE.CatmullRomCurve3([new V3(7.4, 3.8, 12.2), new V3(-2, 15, 20), new V3(-14, 17, 28), new V3(-14, 14, 34)]); X.curve = curve; X.pipe = new THREE.Mesh(new THREE.TubeGeometry(curve, 60, .14, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(K.GREEN).multiplyScalar(1.8), transparent: true, opacity: 0 })); W.add(X.pipe);
+  X.rep = []; for (var i = 0; i < 6; i++) { var c = B.card('', '', '', {}); c.scale.setScalar(.45); W.add(c); X.rep.push(c); }
+  function arch(x, col, label) { var g = new THREE.Group(); [-3.6, 3.6].forEach(function (dz) { var p = box(.6, 6, .6, 0xf4ecd8); p.position.set(0, 3, dz); g.add(p); }); var b = box(.8, .8, 8.4, col); b.position.set(0, 6.4, 0); g.add(b); g.position.set(x, 0, 17); W.add(g); var s = B.sign(label, '#' + col.toString(16).padStart(6, '0'), 3.4, 1.2, 96); s.position.set(x, 8.2, 17); s.rotation.y = 0; W.add(s); return g; }
+  X.a1 = arch(-8, K.GREEN, '1 · REPORT'); X.a2 = arch(-18, K.CORAL, '2 · DECLARE'); X.a3 = arch(-28, K.GOLD, '3 · TOLL');
+  X.arm = box(7, .35, .35, K.RED); X.arm.geometry.translate(3.5, 0, 0); X.arm.position.set(-28, 3.4, 20.4); W.add(X.arm); var pl = box(.5, 3.4, .5, 0xf4ecd8); pl.position.set(-28.2, 1.7, 20.4); W.add(pl);
+  X.rb = B.voxel(false, K.GOLD); X.rb.scale.setScalar(1.0); var ant = box(.1, .9, .1, K.RED); ant.position.set(0, .7, 0); X.rb.userData.head.add(ant); W.add(X.rb);
+  X.pr = e.dyn(.7, 700, 150, K.GOLD, function (x) { x.fillStyle = '#0b1230'; x.font = '600 26px "DM Mono"'; x.fillText('ROBOT CALL TOLL', 24, 46); x.font = '700 60px "Chakra Petch"'; x.fillText('≤ 5 PAISE / MIN', 24, 120); }); X.pr.position.set(-28, 12.6, 17); W.add(X.pr);
+  X.c1 = e.card('A2P CALL', 'application-to-person: a machine dials,\nnot a person. Declare it in advance.', K.CORAL, 1.7); X.c1.position.set(-18, 13.6, 17); W.add(X.c1);
+  X.q = B.sign('?', '#f4ecd8', 2.6, 2.6, 260); X.q.position.set(-18, 12, 24); W.add(X.q); X.td = e.lab('TRUECALLER CALLS IT ANTI-COMPETITIVE', K.RED, .44, { fs: 32 }); X.td.position.set(-18, 8.4, 24); W.add(X.td); })();
+/* ---------- per-frame world state (all pure functions of t) ---------- */
+var P_PATH = function (u) { return new V3(0, 0, lerp(17, 5.2, u)); };
+SCN[0] = SCN[1] = SCN[2] = SCN[3] = SCN[4] = SCN[5] = SCN[6] = SCN[7] = function (t) { W.visible = true; S.background = new THREE.Color(0x0d1433); S.fog = new THREE.FogExp2(0x1a2150, .0055);
+  var th1 = S0('h1'), th2 = S0('h2'), th3 = S0('h3'), ta1 = S0('a1'), ta2 = S0('a2'), ta3 = S0('a3'), tt1 = S0('t1'), tt2 = S0('t2'), tr1 = S0('r1'), tr2 = S0('r2'), tw1 = S0('w1'), tw2 = S0('w2'), tf1 = S0('f1'), tf2 = S0('f2'), tx1 = S0('x1'), tx2 = S0('x2'), tx3 = S0('x3'), tx4 = S0('x4'), tx5 = S0('x5'), tc1 = S0('c1'), tcta = S0('cta');
+  /* doorbell + door */
+  var ringing = (t < th2 + .6) || (t > ta1 && t < tt1 + .5) || (t > tf1 && t < tf2 + 3), flick = ringing ? 1 : 0;
+  H.rings.forEach(function (r, i) { var u = ((t * 1.3 + i / 3) % 1); r.scale.setScalar(.4 + u * 2.2); r.material.opacity = flick * (1 - u) * .9; }); H.btn.scale.z = 1 + (ringing ? .5 * Math.sin(t * 18) : 0);
+  var doorU = sw(th2 - .5, th2 + .1, t) * (1 - sw(tc1 + 3.5, tc1 + 4.5, t) * 0); H.door.rotation.y = -1.7 * doorU; H.user.visible = doorU > .2 || t > th2; H.user.userData.head.rotation.y = .3 * Math.sin(t * 1.3) - .15 * sw(th3, th3 + .5, t); H.user.userData.armR.rotation.x = -.6 * sw(th3, th3 + .8, t);
+  H.light.intensity = 30 + 12 * doorU; H.wl.material.color.setScalar(1); put(H.lb, t, th1 + .8, .4, th2 + .2);
+  /* the salesman: walks up the path, delivers the line, leaves; at the end he comes back declared */
+  var wu = sw(th1 + .2, th2 - .3, t), leave = sw(th3 + 1.2, ta1 + 1.6, t), back = sw(tc1 + .2, tc1 + 2.6, t); var smz = lerp(17, 7.4, wu); if (t > th3) smz = lerp(7.4, 17, leave); if (t > tc1 - .5) smz = lerp(17, 7.4, back);
+  SM.sm.position.set(0, 0, smz); SM.sm.rotation.y = (t > th3 && t < tc1 - .5) ? Math.PI : 0; SM.sm.visible = !(t > ta1 + 1.6 && t < tc1 - .5); SM.sm.userData.armR.rotation.x = -.4 + .3 * Math.sin(t * 6) * (wu > .01 && wu < .99 ? 1 : .2); SM.sm.userData.head.rotation.z = .08 * Math.sin(t * 4);
+  put(SM.say, t, th2 + .1, .35, th3 - .1); put(SM.nm, t, th3 + .5, .35, ta1 - .1); var dec = clamp((t - tc1 - 3.0) / .9); B.slam(SM.badge, dec, 8, 4.2, 1); SM.badge.position.set(0, SM.badge.position.y, 7.8); SM.badge.rotation.z = -.1;
+  /* the rain of rings (a1-a3) */
+  var m = new THREE.Matrix4(), NR = RN.N, vis = t > ta1 - .2 && t < tt1 + .3, fl = sw(ta1, ta1 + 1.2, t); for (var i = 0; i < NR; i++) { if (!vis) { m.makeTranslation(0, -50, 0); RN.im.setMatrixAt(i, m); continue; } var u = (((t - ta1) * .22 + hash(i + 11)) % 1), o = RN.o[i], b = [2.4, 2.6, 4.2], c = [(o[0] + b[0]) / 2, o[1] + 8, (o[2] + b[2]) / 2], q = 1 - u, px = q * q * o[0] + 2 * q * u * c[0] + u * u * b[0], py = q * q * o[1] + 2 * q * u * c[1] + u * u * b[1], pz = q * q * o[2] + 2 * q * u * c[2] + u * u * b[2], s = Math.min(1, u * 8) * (u > .92 ? (1 - u) * 12 : 1) * fl; m.compose(new V3(px, py, pz), new THREE.Quaternion(), new V3(s, s, s)); RN.im.setMatrixAt(i, m); } RN.im.instanceMatrix.needsUpdate = true;
+  RN.c1.draw(42 * sw(ta2, ta2 + 2.4, t)); put(RN.c1, t, ta2 - .1, .4, ta3 - .1); RN.c2.draw(sw(ta3, ta3 + 1.4, t)); put(RN.c2, t, ta3, .4, tt1 - .2); put(RN.cd, t, ta1 + .4, .4, ta2 - .2);
+  /* the lane (t1-t2) */
+  var lu = sw(tt1 - .2, tt1 + 1.2, t); W.laneEdge.forEach(function (m2) { m2.material.opacity = Math.min(1, lu * 1.2) * (t > tr1 + 6 ? .4 : 1); }); L.s14.visible = L.s16.visible = lu > 0; L.s14.scale.setScalar(.01 + eo3(lu)); L.s16.scale.setScalar(.01 + eo3(sw(tt1 + .3, tt1 + 1.4, t)));
+  L.ag.forEach(function (a, j) { var u = clamp((t - tt1 - .5 - j * .38) / 2.6), side = j % 2, bz = 8 - Math.floor(j / 2) * 6.6, bx = side ? 17.6 : 10.4; var pos = u < .5 ? new V3(lerp(27, 14, sstep(u * 2)), 0, 19.4) : new V3(lerp(14, bx + (side ? -1.8 : 1.8), sstep(u * 2 - 1)), 0, lerp(19.4, bz, sstep(u * 2 - 1))); a.visible = t > tt1 + .3 && t < tr1 + 8; a.position.copy(pos); a.rotation.y = u < .5 ? -Math.PI / 2 : (side ? Math.PI / 2 : -Math.PI / 2) + (u < .5 ? 0 : 0); a.userData.armR.rotation.x = Math.sin(t * 8 + j) * .5; });
+  put(L.cd, t, tt2 - .2, .4, tr1 - .1); put(L.l1, t, tt1 + .6, .35, tt2); put(L.l2, t, tt1 + 1.2, .35, tt2);
+  /* the catch (r1-r2): neighbours walk past, doors close, bars rise */
+  N.h.forEach(function (h, i) { h.door.rotation.y = -1.6 * (1 - sw(tr1 + .5 + i * .6, tr1 + 1.3 + i * .6, t)) * (t > tr1 - 4 ? 1 : 1) - 0; if (t < tr1 + .4) h.door.rotation.y = -1.6; });
+  N.wk.forEach(function (p, i) { var u = (((t - tr1) * .12 + i / 7) % 1 + 1) % 1; p.visible = t > tr1 - .4 && t < tw1 + 2; p.position.set(lerp(34, -34, u), 0, 19.6 + (i % 2) * 1.2); p.rotation.y = -Math.PI / 2; p.userData.armR.rotation.x = Math.sin(t * 6 + i) * .4; });
+  N.b1.visible = N.b2.visible = t > tr2 - .2 && t < tw1 + 1; var bu1 = sw(tr2, tr2 + 1.8, t), bu2 = sw(tr2 + .3, tr2 + 2.1, t); N.b1.scale.y = Math.max(.02, 8.1 * bu1); N.b1.position.y = N.b1.scale.y * .5; N.b2.scale.y = Math.max(.02, 7.9 * bu2); N.b2.position.y = N.b2.scale.y * .5; N.p1.draw(bu1); N.p2.draw(bu2); put(N.p1, t, tr2, .35, tw1); put(N.p2, t, tr2 + .3, .35, tw1); put(N.cl, t, tr2 + 1.2, .35, tw1); put(N.sh, t, tr1 + 1.2, .35, tr2);
+  /* the watchman (w1-w2) */
+  put(G.tag, t, tw1 + .2, .35, tw2 + 1.5); G.guard.userData.head.rotation.y = .4 * Math.sin(t * 1.1); G.guard.userData.armR.rotation.x = -.5 * sw(tw1 + 1, tw1 + 2, t); B.slam(G.st, clamp((t - tw2 - .3) / .8), 10, 6.4, 1); G.st.position.set(7.4, G.st.position.y, 13.4); put(G.cd, t, tw2 + 1.3, .4, tf1 - .1);
+  /* fraud (f1-f2) */
+  F.ag.forEach(function (a, j) { var u = clamp((t - tf1 - j * 1.1) / 2.2); a.visible = t > tf1 && t < tf2 + 2.6; a.position.set(lerp(-16 - j * 4, 0, sstep(u)) * (1 - u) + 0 * u, 0, lerp(17, 7.6 + j * 1.2, sstep(u))); a.position.x = lerp(-9 + j * 4, j * 3 - 3, sstep(u)); a.rotation.y = 0; a.userData.armR.rotation.x = -.8 + Math.sin(t * 7 + j) * .3; }); F.c1.draw(770 * sw(tf2, tf2 + 1.6, t)); put(F.c1, t, tf2, .4, tx1 - .2);
+  /* the entrance (x1-x5) */
+  var pu = sw(tx2, tx2 + 1, t); X.pipe.material.opacity = pu; X.rep.forEach(function (c, i) { var u = (((t - tx2 - .6) * .5 + i / 6) % 1 + 1) % 1; c.visible = t > tx2 + .4 && t < tx3 + 1.5; var p = X.curve.getPoint(u); c.position.copy(p); c.rotation.y = t * 2 + i; });
+  put(X.c1, t, tx3 + .1, .4, tx4 - .1); var ru = clamp((t - tx3) / 3.4); X.rb.visible = t > tx3 - .3 && t < tx5; X.rb.position.set(lerp(-3, -33, sstep(ru)), 0, 19.4); X.rb.rotation.y = -Math.PI / 2; X.rb.userData.armR.rotation.x = Math.sin(t * 7) * .4;
+  X.arm.rotation.z = sw(tx4 + .6, tx4 + 1.6, t) * 1.2; put(X.pr, t, tx4, .4, tx5); put(X.q, t, tx5, .4); X.q.rotation.z = .1 * Math.sin(t * 3); put(X.td, t, tx5 + 1.2, .35); X.a1.visible = X.a2.visible = X.a3.visible = true; };
+/* ---------- the camera: one continuous travelling shot list (named moves, eased, locked between) ---------- */
+function V(a) { return new V3(a[0], a[1], a[2]); }
+function mv(pA, lA, fA, pB, lB, fB, o) { o = o || {}; return function (u) { var k = sstep(u), p = V(pA).lerp(V(pB), k); p.y += (o.up || 0) * Math.sin(Math.PI * k); p.x += (o.side || 0) * Math.sin(Math.PI * k); return { p: p, l: V(lA).lerp(V(lB), k), f: lerp(fA, fB, k) }; }; }
+function orb(c, r, a0, a1, h0, h1, lA, lB, f) { return function (u) { var k = sstep(u), a = lerp(a0, a1, k) * Math.PI / 180; return { p: new V3(c[0] + r * Math.sin(a), lerp(h0, h1, k), c[2] + r * Math.cos(a)), l: V(lA).lerp(V(lB), k), f: f }; }; }
+var th2 = S0('h2'), th3 = S0('h3');
+e.follow(0, 'dolly in on the doorbell, slight arc', 0, th2 + .2, mv([-9, 4.2, 26], [1, 3.2, 5], 40, [4.5, 3.4, 17.5], [.6, 2.8, 4.2], 36, { side: 1.5, up: .4 }));
+e.follow(0, 'crane up and pull back to the colony', th3 + .3, S0('a1') + 2.6, mv([4.5, 3.4, 17.5], [.6, 2.8, 4.2], 36, [26, 19, 46], [4, 2, 8], 44, { up: 8, side: -4 }));
+e.follow(0, 'slow high orbit over the house', S0('a1') + 2.6, S0('t1') - .4, orb([4, 0, 10], 40, 38, -12, 17, 21, [3, 3, 8], [6, 3, 10], 42));
+e.follow(0, 'swoop down to the lane gate', S0('t1') - .4, S0('t1') + 2.2, mv([37, 21, 36], [6, 3, 10], 42, [16, 6.5, 33], [14, 4, 12], 40, { side: 3, up: 3 }));
+e.follow(0, 'truck along the lane', S0('t1') + 2.2, S0('r1') - .1, mv([16, 6.5, 33], [14, 4, 12], 40, [26, 4.5, 31], [13, 3, 12], 42, { side: -2 }));
+e.follow(0, 'hold at the junction', S0('r1') - .1, S0('r2') - .3, mv([26, 4.5, 31], [13, 3, 12], 42, [24, 4.5, 30], [13, 3, 12], 42, {}));
+e.follow(0, 'crane up to the bars', S0('r2') - .3, S0('w1') - .2, mv([24, 4.5, 30], [13, 3, 12], 42, [34, 12, 28], [24, 4, 10], 42, { up: 4, side: 2 }));
+e.follow(0, 'swing across to the watchman hut', S0('w1') - .2, S0('f1') - .3, mv([34, 12, 28], [24, 4, 10], 42, [-4, 6, 22], [7.4, 3.8, 12.2], 40, { up: 3, side: -6 }));
+e.follow(0, 'push to the door as the callers come', S0('f1') - .3, S0('f2') + 2.2, mv([-4, 6, 22], [7.4, 3.8, 12.2], 40, [-4, 4, 28], [1.5, 3, 8], 40, { side: -2 }));
+e.follow(0, 'dolly along the road to gate 1', S0('f2') + 2.2, S0('x2') + .2, mv([-4, 4, 28], [1.5, 3, 8], 40, [0, 6.8, 37], [-9, 5, 17], 40, { up: 1.5 }));
+e.follow(0, 'look back along the report pipe', S0('x2') + .2, S0('x3') - .2, mv([0, 6.8, 37], [-9, 5, 17], 40, [8, 10, 38], [-5, 12, 22], 44, { up: 2 }));
+e.follow(0, 'tracking move to gate 2', S0('x3') - .2, S0('x4') - .2, mv([8, 10, 38], [-5, 12, 22], 44, [-8, 6.8, 38], [-18, 5.4, 17], 40, { side: -3 }));
+e.follow(0, 'tracking move to the toll gate', S0('x4') - .2, S0('x5') - .1, mv([-8, 6.8, 38], [-18, 5.4, 17], 40, [-16, 6.8, 38], [-28, 5, 18], 40, { side: -2 }));
+e.follow(0, 'crane up over the three gates', S0('x5') - .1, S0('c1') - .1, mv([-16, 6.8, 38], [-28, 5, 18], 40, [-4, 22, 46], [-16, 6, 18], 42, { up: 7 }));
+e.follow(0, 'fly back to your door', S0('c1') - .1, S0('c1') + 3.0, mv([-4, 22, 46], [-16, 6, 18], 42, [7, 5.0, 17.5], [.2, 3.2, 6.6], 36, { side: 7, up: -2 }));
+e.follow(0, 'settle at the door', S0('c1') + 3.0, S0('cta') - .2, mv([7, 5.0, 17.5], [.2, 3.2, 6.6], 36, [7, 5.0, 17.5], [.2, 3.2, 6.6], 36, {}));
+e.follow(0, 'crane up and back', S0('cta') - .2, S0('cta') + 3.0, mv([7, 5.0, 17.5], [.2, 3.2, 6.6], 36, [14, 15, 42], [2, 1.5, 6], 42, { up: 3 }));
 })();
 /* Part C (billionaire): DOM header, captions, end card, sound events, dips, __seek */
 (function () {
@@ -286,9 +304,9 @@ var e = E, S = e.S, clamp = e.clamp, eo3 = e.eo3, SC = window.SC, GR = window.GR
 var ov = document.getElementById('ov'), capEl = document.getElementById('cap'), flash = document.getElementById('flash');
 function D(cls, css, html) { var d = document.createElement('div'); d.className = cls; d.style.cssText = css; d.innerHTML = html || ''; ov.appendChild(d); return d; }
 function ico(name, size, color, sw) { return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="' + color + '" stroke-width="' + (sw || 1.7) + '" stroke-linecap="round" stroke-linejoin="round">' + IC[name] + '</svg>'; }
-var EYE = ['UNKNOWN NUMBER · 2:47 PM', 'SPAM CALLS · INDIA, 2025', 'THE 2024 FIX · 1400 AND 1600', 'THE CATCH · NOBODY ANSWERS THE OFFICIAL STREET', 'FRAUD CALLS · 770 CRORE', 'WHO PICKS UP · EVERY TIME', 'TRAI · 18 SEPTEMBER 2026', 'DECLARE YOURSELF']
-var HL = ['Loan ne aapko <b>dhoondha</b>', '41.7 arab <b>spam calls</b>', 'Telemarketers ki <b>alag gali</b>', 'Wahi gali sabse <b>badnaam</b>', 'Bank, police, <b>payment app</b>', 'Scammer ko chahiye <b>baat</b>', 'Spam ke liye <b>call rate</b>', 'Ab loan ko <b>declare</b> karo']
-var TAGS = ['ILLUSTRATIVE SCENE · NOT A REAL CALL', 'TRUECALLER REPORT 2025 · ROUGH MATH', 'TRAI FRAMEWORK 2024 · VIA TECHCRUNCH', 'TRUECALLER CEO CLAIM · 8 JUL 2026', 'TRUECALLER REPORT · OUR ARITHMETIC', 'OUR OPINION · ILLUSTRATIVE', 'TECHCRUNCH, 18 SEP 2026 · TRAI AMENDMENT', 'ILLUSTRATIVE SCENE']
+var EYE = ['DOORBELL · 2:47 PM', 'YOUR NUMBER = YOUR DOORBELL', 'THE 2024 FIX · A MARKED STREET', 'THE CATCH · NOBODY OPENS FOR THE MARKED STREET', 'THE CHOWKIDAAR CANNOT SAY SPAM', 'SOME RINGS ARE PLAIN FRAUD', 'TRAI · 18 SEPTEMBER 2026 · THREE GATES', 'DECLARE YOURSELF'];
+var HL = ['Loan ne aapko <b>dhoondha</b>', '42 arab baar <b>ghanti</b>', 'Sellers ki <b>alag gali</b>', 'Gali ka naam hi <b>badnaam</b>', 'Chowkidaar bol nahi <b>sakta</b>', 'Bank, police, <b>payment app</b>', 'Gate par <b>teen niyam</b>', 'Ab loan ko <b>naam</b> batao'];
+var TAGS = ['ILLUSTRATIVE · THE PHONE AS A DOORBELL', 'TRUECALLER REPORT 2025 · ROUGH MATH', 'TRAI FRAMEWORK 2024 · VIA TECHCRUNCH', 'TRUECALLER CEO CLAIM · 8 JUL 2026', 'TECHCRUNCH, 8 JUL 2026', 'TRUECALLER REPORT · FEB 2026', 'TECHCRUNCH, 18 SEP 2026 · TRAI AMENDMENT', 'ILLUSTRATIVE SCENE'];
 var hsc = D('', 'left:0;top:0;width:1080px;height:430px;background:linear-gradient(rgba(13,20,51,.92),rgba(13,20,51,.75) 55%,rgba(13,20,51,0))', ''); hsc.setAttribute('data-ov', '1');
 var hdr = D('', 'left:150px;top:150px;width:768px', '<div id="eb" style="font:600 24px \'DM Mono\';letter-spacing:.14em;color:#ff8a1f;display:flex;align-items:center;gap:14px"><i style="display:inline-block;width:16px;height:16px;border-radius:50%;background:#ff8a1f"></i><span id="ebt"></span></div><div id="hl" style="font:900 56px/1.04 Chakra Petch;letter-spacing:-.02em;margin-top:14px;color:#f4ecd8;text-shadow:0 4px 18px rgba(0,0,0,.6)"></div>'),
   ebt = hdr.querySelector('#ebt'), hl = hdr.querySelector('#hl'), tag = D('', 'left:150px;top:1296px;width:768px;font:600 21px "DM Mono";letter-spacing:.06em;color:rgba(244,236,216,.7);white-space:nowrap', '');
@@ -298,22 +316,19 @@ var scrim = D('', 'left:0;top:850px;width:1080px;height:470px;background:linear-
 var btns = [['thumb-up', 'LIKE', '#f4ecd8', 190], ['share', 'SHARE', '#3de0a8', 210], ['bell-ringing', 'SUBSCRIBE', '#ff8a1f', 290]].map(function (c, k) { var l = 158 + [0, 210, 440][k]; return D('', 'left:' + l + 'px;top:1160px;width:' + c[3] + 'px;height:84px;border:4px solid ' + c[2] + ';border-radius:14px;background:#0b1230;display:flex;align-items:center;justify-content:center;gap:10px;font:600 26px "DM Mono";letter-spacing:.05em;color:#f4ecd8;box-sizing:border-box', ico(c[0], 36, c[2], 1.8) + c[1]); });
 var CAPOPT = { fs: 54, width: 768, lines: 2, chip: '#ff8a1f', chipInk: '#0b1230', keywords: { 'spam': '#ff4d5e', 'loan': '#ff8a1f', 'Truecaller': '#3de0a8', 'TRAI': '#6a7bff', 'fraud': '#ff4d5e' } };
 function sceneAt(t) { var k = 0; for (var i = 0; i < SC.length; i++) if (t >= SC[i]) k = i; return k; }
-var DIPS = []; for (var di = 1; di < SC.length; di++) DIPS.push(SC[di]);
+var DIPS = [];
 var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
-(function () { ev(.15, 'ping'); ev(.85, 'ping'); ev(1.6, 'ping'); DIPS.forEach(function (d) { ev(d - .1, 'whoosh'); }); ev(S0('h2'), 'pop'); ev(S0('h3'), 'whoosh'); ev(S0('h3') + 1.1, 'slam');
-  ev(SC[1] + .5, 'tick'); for (var a = 0; a < 6; a++) ev(SC[1] + .8 + a * .5, 'tick'); ev(S0('s3') + .8, 'pop');
-  ev(SC[2] + .5, 'pop'); ev(S0('t2') + .2, 'ping'); ev(SC[3] + .4, 'slam'); ev(SC[3] + .7, 'slam'); ev(S0('r2') + .2, 'tick'); ev(S0('r3') + 1.4, 'slam');
-  ev(S0('f1') + .5, 'pop'); ev(S0('f1') + 1.5, 'pop'); ev(S0('f2') + .2, 'ping'); for (var b = 0; b < 5; b++) ev(S0('f3') + 1.0 + b * .45, 'tick');
-  ev(SC[5] + 1.0, 'pop'); ev(SC[5] + 2.5, 'pop'); ev(SC[5] + 4.0, 'buzz');
-  ev(S0('x1') + 1.0, 'tick'); ev(S0('x1') + 2.4, 'tick'); ev(S0('x3') + 1.0, 'slam'); ev(S0('x4') + .1, 'pop');
-  ev(SC[7] + (S1('c1') - SC[7]) * .5 + .3, 'slam'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब|सब्सक्राइब', .75), 'ping'); })();
+(function () { var th2 = S0('h2'), th3 = S0('h3'), ta1 = S0('a1'), ta2 = S0('a2'), tt1 = S0('t1'), tr1 = S0('r1'), tr2 = S0('r2'), tw2 = S0('w2'), tf1 = S0('f1'), tf2 = S0('f2'), tx2 = S0('x2'), tx3 = S0('x3'), tx4 = S0('x4'), tx5 = S0('x5'), tc1 = S0('c1');
+  for (var k = 0; k < 7; k++) ev(.3 + k * 1.2, 'ping'); ev(th2 - .3, 'pop'); ev(th3, 'whoosh'); ev(ta1 + .6, 'whoosh'); for (var a = 0; a < 6; a++) ev(ta1 + 1.0 + a * .5, 'tick'); ev(ta2 + 2.4, 'ping');
+  ev(tt1 + .3, 'pop'); ev(tt1 + 1.2, 'pop'); ev(tt1 + 4, 'whoosh'); ev(tr1 + .5, 'slam'); ev(tr1 + 1.1, 'slam'); ev(tr2 + 1.0, 'tick'); ev(tw2 + .6, 'slam'); ev(tf1 + 1.0, 'pop'); ev(tf1 + 2.2, 'pop'); ev(tf2 + .2, 'ping');
+  ev(tx2 + .2, 'pop'); ev(tx3 + .2, 'pop'); ev(tx4 + .8, 'slam'); ev(tx5 + .1, 'pop'); ev(tc1 + 3.0, 'slam'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब|सब्सक्राइब', .75), 'ping'); })();
 EVL.sort(function (a, b) { return a.t - b.t; });
-var AP = [.1, .08, .1, .1, .1, .1, .1, .1], FOC = {};
+var AP = [.22, .18, .18, .18, .2, .2, .18, .2], FOC = {};
 window.__reelDurationSec = END; window.EV = EVL; window.__B = SC; window.__ready = false;
 window.__seek = function (t) {
   t = Math.max(0, Math.min(END - .001, t)); var sc = sceneAt(t), last = sc === SC.length - 1;
   GR.forEach(function (g) { g.visible = false; }); e.hideLabels();
-  S.fog = null; SCN[sc](t); e.camAt(sc, t); e.applyCam(); var ec = last && t >= tCta - .1, hv = (t - SC[sc]) < 4.2 && !ec; SAFE.t = hv ? 400 : 232; e.clampLabels();
+  S.fog = null; SCN[sc](t); if (window.__camO) e.setCam(window.__camO.p, window.__camO.l, window.__camO.f); else e.camAt(0, t); e.applyCam(); var ec = last && t >= tCta - .1, hv = (t - SC[sc]) < 4.2 && !ec; SAFE.t = hv ? 400 : 232; e.clampLabels();
   var u = sc === 0 ? 1 : clamp((t - SC[sc]) / .5), uo = 1 - clamp((t - (SC[sc] + 3.6)) / .5); ebt.textContent = EYE[sc]; hl.innerHTML = HL[sc]; hl.querySelectorAll('b').forEach(function (b) { b.style.cssText = 'font-weight:900;background:#ff8a1f;color:#0b1230;padding:0 10px;border-radius:6px;text-shadow:none'; });
   hdr.style.opacity = ec ? 0 : (sc === 0 ? uo : Math.min(u + .2, uo)); hl.style.opacity = clamp(Math.min(u, uo)); hdr.querySelector('#eb').style.opacity = clamp(.35 + .65 * u);
   tag.textContent = TAGS[sc]; tag.style.opacity = clamp((t - SC[sc]) / .5) * (ec ? 0 : 1);
