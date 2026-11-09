@@ -1,0 +1,1190 @@
+[
+ {
+  "slug": "archive-lighttable",
+  "name": "Archive Light Table",
+  "category": "Evidence Films",
+  "uses": [
+   "Brand history",
+   "Archive stories",
+   "Museums"
+  ],
+  "demo_film": "Two Seconds Short",
+  "demo_sec": 40.0,
+  "essence": "Real archive objects (glass negatives, slides, letters, telegrams, clippings, drawings) lie on a cool, backlit light table. A loupe comes down on one of them, and inside the glass the object comes alive: a negative turns positive, a line of type lights up, a n",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/archive-lighttable/STYLE.md"
+ },
+ {
+  "slug": "art-deco",
+  "name": "Art Deco",
+  "category": "Graphic & Type",
+  "uses": [
+   "Luxury & hospitality",
+   "Galas",
+   "Invitations"
+  ],
+  "demo_film": "Midnight at the Starlight Hotel",
+  "demo_sec": 58.4,
+  "essence": "Black lacquer, engraved gold line and airbrushed geometry: a 1930s poster that moves. Every composition has a centre axis, transitions open or close along it, and light arrives as bulbs switching on one by one.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/art-deco/STYLE.md"
+ },
+ {
+  "slug": "ascii-crt",
+  "name": "ASCII / CRT Terminal",
+  "category": "Graphic & Type",
+  "uses": [
+   "Developer tools",
+   "Sci-fi",
+   "Tech brands"
+  ],
+  "demo_film": "Tranquility.log",
+  "demo_sec": 59.8,
+  "essence": "Everything on screen is a real character on a monospace grid, lit by the phosphor of an old monochrome CRT.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/ascii-crt/STYLE.md"
+ },
+ {
+  "slug": "backrooms",
+  "name": "Liminal Found Footage",
+  "category": "Cinema & Eras",
+  "uses": [
+   "Horror",
+   "Mystery & ARG",
+   "Game teasers"
+  ],
+  "demo_film": "Night Shift Orientation",
+  "demo_sec": 59.7,
+  "essence": "Camcorder tapes recovered from empty, endless, fluorescent-lit spaces. Rules instead of monsters.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/backrooms/STYLE.md"
+ },
+ {
+  "slug": "blueprint",
+  "name": "Blueprint",
+  "category": "Graphic & Type",
+  "uses": [
+   "Engineering",
+   "Hardware launches",
+   "Tech explainers"
+  ],
+  "demo_film": "Patent Pending: The Cloud Catcher",
+  "demo_sec": 46.7,
+  "essence": "Engineering drawings that come alive on a sheet of cyanotype paper: white technical line work on Prussian blue, drawn in drafting order, with annotations that move.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/blueprint/STYLE.md"
+ },
+ {
+  "slug": "brick-toy",
+  "name": "Brick Toy",
+  "category": "Materials & 3D",
+  "uses": [
+   "Toys & kids",
+   "Product builds",
+   "Space"
+  ],
+  "demo_film": "Rocket from Spare Parts",
+  "demo_sec": 54.0,
+  "essence": "Stop-motion toy-brick films shot like macro photography on a real desk: a world built from interlocking plastic bricks with round studs, animated a pose at a time.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/brick-toy/STYLE.md"
+ },
+ {
+  "slug": "briefing-board",
+  "name": "Engineering Briefing Board",
+  "category": "Evidence Films",
+  "uses": [
+   "Engineering",
+   "Option comparisons",
+   "Briefings"
+  ],
+  "demo_film": "The Ship Decides",
+  "demo_sec": 40.0,
+  "essence": "One real whiteboard wall, filmed: window light on enamel, ghosts of erased marker, frame and tray. Cut-out photographs of real things land on it with weight; tags, magnets, a ruler and stamps are pinned to it; marker ink draws itself in three colours with fixe",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/briefing-board/STYLE.md"
+ },
+ {
+  "slug": "caption-news",
+  "name": "Caption News",
+  "category": "Edit & Documentary",
+  "uses": [
+   "Social news",
+   "Report explainers",
+   "Data shorts"
+  ],
+  "demo_film": "The Bee Ledger",
+  "demo_sec": 59.5,
+  "essence": "Social-video news that reads with the sound off. Real footage, photos and the source document are the ground; huge captions are the lead actor, slammed in a chunk at a time with one keyword on a yellow block. Hard cuts on a music grid, numbers that roll, a sou",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/caption-news/STYLE.md"
+ },
+ {
+  "slug": "cel-anime-80s",
+  "name": "80s Cel Anime",
+  "category": "Cartoon & Anime",
+  "uses": [
+   "Music videos",
+   "Game trailers",
+   "Nostalgia"
+  ],
+  "demo_film": "City Lights, 1987",
+  "demo_sec": 59.0,
+  "essence": "Hand-painted cel animation from the golden age of Japanese OVAs, re-created in code: flat two-tone cels over airbrushed backgrounds, backlit neon, limited-animation timing, played back as a late-80s videotape on a CRT television.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/cel-anime-80s/STYLE.md"
+ },
+ {
+  "slug": "chalkboard",
+  "name": "Chalkboard",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Word origins",
+   "Myth-busting",
+   "Lessons"
+  ],
+  "demo_film": "The Story of Chinese Characters",
+  "demo_sec": 49.3,
+  "essence": "A real classroom blackboard on which chalk writes itself, stroke by stroke in true stroke order, with no hand, no chalk stick and no eraser in sight. One idea is taught the way a teacher does it: write what people think, wipe it with one pass, write what is tr",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/chalkboard/STYLE.md"
+ },
+ {
+  "slug": "circuit-board",
+  "name": "Circuit Board",
+  "category": "Information & Keynote",
+  "uses": [
+   "Energy",
+   "Supply chains",
+   "Devices"
+  ],
+  "demo_film": "Seven Milliseconds",
+  "demo_sec": 60.0,
+  "essence": "The subject is drawn as a printed circuit board seen from straight above: the world is copper under green solder mask, routes are traces, places are pads, words are white silkscreen, and what flows (power, water, signals, goods) is light running along the copp",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/circuit-board/STYLE.md"
+ },
+ {
+  "slug": "city-symphony",
+  "name": "Time-lapse Symphony",
+  "category": "Edit & Documentary",
+  "uses": [
+   "City films",
+   "Music montages",
+   "Openers"
+  ],
+  "demo_film": "One Day in New York",
+  "demo_sec": 52.0,
+  "essence": "A city film cut like a piece of minimalist music: time-lapse turns traffic, crowds and clouds into rivers of light, the cuts get denser with the score's subdivisions, one thing is slowed almost to a stop, and the film ends on a hard cut to black on a downbeat.",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/city-symphony/STYLE.md"
+ },
+ {
+  "slug": "countdown",
+  "name": "Live Countdown Split-screen",
+  "category": "Edit & Documentary",
+  "uses": [
+   "Launches",
+   "Countdowns",
+   "Live events"
+  ],
+  "demo_film": "Counting Itself Down",
+  "demo_sec": 59.5,
+  "essence": "An edit style, not a look. Real footage of one event with a known zero (a launch, a verdict, a final whistle, polls closing), shown in real time: screen time equals event time, a clock ticks every second, and the screen splits into more and more cells as the m",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/countdown/STYLE.md"
+ },
+ {
+  "slug": "crayon-book",
+  "name": "Crayon Picture Book",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Picture books",
+   "Bedtime stories",
+   "Kids' learning"
+  ],
+  "demo_film": "The Moon Can't Sleep",
+  "demo_sec": 52.0,
+  "essence": "A picture-book page drawn live in wax crayon on toothy paper, with a watercolour wash that reveals what the crayon was hiding.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/crayon-book/STYLE.md"
+ },
+ {
+  "slug": "dark-keynote",
+  "name": "Dark Tech Keynote",
+  "category": "Information & Keynote",
+  "uses": [
+   "Product launches",
+   "SaaS",
+   "Keynotes"
+  ],
+  "demo_film": "Room to Think",
+  "demo_sec": 42.0,
+  "essence": "A software launch film where the interface itself is the star: near-black gradient, hairline grid, soft light, one brand accent, and UI that moves with snap-grid precision. Light reveals, one giant number, and a sound design that is as ordered as the pixels.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/dark-keynote/STYLE.md"
+ },
+ {
+  "slug": "data-physical",
+  "name": "Data Physicalization",
+  "category": "Evidence Films",
+  "uses": [
+   "Annual reports",
+   "Investor decks",
+   "Energy data"
+  ],
+  "demo_film": "Two Spirals",
+  "demo_sec": 39.4,
+  "essence": "Real statistics built as real objects: every unit is a countable piece of material (a plate, a block, a coin, a bar) stacked to exact scale on a crafted base, shot like a product in a studio — soft key, long shadows, shallow depth of field, physically based ma",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/data-physical/STYLE.md"
+ },
+ {
+  "slug": "dataviz",
+  "name": "Data Storytelling",
+  "category": "Information & Keynote",
+  "uses": [
+   "Data journalism",
+   "Reports",
+   "Climate & science"
+  ],
+  "demo_film": "A Hundred Summers",
+  "demo_sec": 50.0,
+  "essence": "A chart that tells a story: real data, drawn mark by mark on cream paper by a red–blue pencil, with handwritten notes pinned to the numbers. The chart itself is the camera, the rhythm and the plot.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/dataviz/STYLE.md"
+ },
+ {
+  "slug": "desktop-flythrough",
+  "name": "Desktop Flythrough",
+  "category": "Materials & 3D",
+  "uses": [
+   "App explainers",
+   "Workflows",
+   "Products"
+  ],
+  "demo_film": "Before the Ding",
+  "demo_sec": 60.0,
+  "essence": "App screens and tools lie on a sunlit desk as printed paper cards; small pixel characters, popped up into voxel toys, carry the work from card to card, while one unbroken camera flies after them, whips between stops and finally pulls back over the whole desk.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/desktop-flythrough/STYLE.md"
+ },
+ {
+  "slug": "engraving",
+  "name": "Copperplate Engraving",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Museum labels",
+   "Science explainers",
+   "Brand heritage"
+  ],
+  "demo_film": "The Honeybee, Plate VII",
+  "demo_sec": 40.0,
+  "essence": "An intaglio plate that engraves itself: a burin cuts swelling lines into copper, a proof is pulled, and the figure builds up — outline, hatching, cross-hatching — until engraved lettering, magnified details and a hand-laid wash make a finished plate.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/engraving/STYLE.md"
+ },
+ {
+  "slug": "game-show",
+  "name": "Game Show Flat",
+  "category": "Games",
+  "uses": [
+   "Tech timelines",
+   "Year in review",
+   "Variety shows"
+  ],
+  "demo_film": "Rhythm of AI, 1997 → 2026",
+  "demo_sec": 148.8,
+  "essence": "A rhythm-game variety show in flat vector: toy-like mascots with thick ink outlines on candy-coloured stripes and sunbursts, every hit landing on a fixed tempo grid, call-and-response patterns, and a judgement word when each round is won.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/game-show/STYLE.md"
+ },
+ {
+  "slug": "glass-product",
+  "name": "Glass Product Render",
+  "category": "Materials & 3D",
+  "uses": [
+   "Product launches",
+   "Consumer tech",
+   "Beauty"
+  ],
+  "demo_film": "Aura — Hear the Light",
+  "demo_sec": 32.0,
+  "essence": "Launch-film product rendering in transparent and frosted glass: a dark-field studio, strip-light sweeps, dispersion, caustics, light travelling inside the object, slow exploded views that snap shut on a downbeat.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/glass-product/STYLE.md"
+ },
+ {
+  "slug": "halftone-dossier",
+  "name": "Halftone Dossier",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Humour",
+   "Pet content",
+   "Social shorts"
+  ],
+  "demo_film": "Case File: Chubby",
+  "demo_sec": 30.0,
+  "essence": "A retro print case file: cream archive paper, overprinted halftone dots in a few flat inks, huge heavy headlines with misregistered shadows, rubber stamps that slam, and thick-outlined characters. The film is a file that is read out one exhibit at a time.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/halftone-dossier/STYLE.md"
+ },
+ {
+  "slug": "hd-2d",
+  "name": "HD-2D",
+  "category": "Games",
+  "uses": [
+   "Game trailers",
+   "Fantasy",
+   "Story films"
+  ],
+  "demo_film": "The Lampbearer",
+  "demo_sec": 76.5,
+  "essence": "Hand-made pixel sprites standing like paper cut-outs inside a lit, fogged, fully 3D diorama, shot from a high three-quarter angle through a tilt-shift lens: a toy world where every lamp throws a real shadow.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/hd-2d/STYLE.md"
+ },
+ {
+  "slug": "hologram-hud",
+  "name": "Sci-fi Hologram HUD",
+  "category": "Information & Keynote",
+  "uses": [
+   "Spec walkthroughs",
+   "Launch videos",
+   "Trade shows"
+  ],
+  "demo_film": "Volt · Spec Scan",
+  "demo_sec": 39.0,
+  "essence": "An object is scanned into a glowing wireframe. Target boxes lock onto its parts; each opens in a local exploded view, a leader pulls out, and its number rolls from garbage glyphs into the real value. It may light up, once, into a solid hologram.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/hologram-hud/STYLE.md"
+ },
+ {
+  "slug": "impasto",
+  "name": "Impasto Oil Painting",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Music videos",
+   "Art & culture",
+   "Emotional ads"
+  ],
+  "demo_film": "The Colour of Rain",
+  "demo_sec": 39.7,
+  "essence": "Thick oil paint laid with a palette knife: big, flat, sharp-edged planes of colour, raked by light so every ridge of paint shows. Clarity first: value structure before texture, hard edges at the focus, calm planes everywhere else.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/impasto/STYLE.md"
+ },
+ {
+  "slug": "ink-wash",
+  "name": "Chinese Ink Wash",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Wuxia",
+   "Cultural brands",
+   "Poetry"
+  ],
+  "demo_film": "The Swordsman and the River",
+  "demo_sec": 48.0,
+  "essence": "Xieyi ink painting on rice paper, animated: blank paper is space, one brushstroke is a mountain, a wave, a gesture or a cut.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/ink-wash/STYLE.md"
+ },
+ {
+  "slug": "iso-infographic",
+  "name": "Isometric Infographic",
+  "category": "Information & Keynote",
+  "uses": [
+   "Process explainers",
+   "Supply chains",
+   "Annual reports"
+  ],
+  "demo_film": "From Bean to Cup",
+  "demo_sec": 58.8,
+  "essence": "A system diagram comes alive: an isometric diorama of flat three-tone blocks, thin ink labels and Isotype numbers, where things open up to show their insides and the numbers are drawn, not stated.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/iso-infographic/STYLE.md"
+ },
+ {
+  "slug": "isometric-picture-book",
+  "name": "Isometric Picture Book",
+  "category": "Information & Keynote",
+  "uses": [
+   "Everyday rules",
+   "Queues",
+   "Comparisons"
+  ],
+  "demo_film": "Seventy-Two Seats",
+  "demo_sec": 59.8,
+  "essence": "A calm explainer of an everyday rule, set in one real place drawn in true isometric with flat colour: small faceless people seen from behind do the thing in order, while serif type lands on the ground, character by character, as if painted there. Whatever hide",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/isometric-picture-book/STYLE.md"
+ },
+ {
+  "slug": "kino-montage",
+  "name": "Constructivist Montage",
+  "category": "Edit & Documentary",
+  "uses": [
+   "Industry histories",
+   "Milestones",
+   "Collective effort"
+  ],
+  "demo_film": "410 Days",
+  "demo_sec": 60.0,
+  "essence": "Real archive footage, photographs and documents, printed as one ink-and-paper poster with a single red, and cut on a machine beat. Diagonal bands carry the type; windows cut along the axis hold the film; people are scissored out of photographs and stacked into",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/kino-montage/STYLE.md"
+ },
+ {
+  "slug": "lidar-survey",
+  "name": "LiDAR Survey",
+  "category": "Evidence Films",
+  "uses": [
+   "Heritage",
+   "Environment",
+   "Site surveys"
+  ],
+  "demo_film": "The Fields Under the Forest",
+  "demo_sec": 40.0,
+  "essence": "Real airborne laser points of a real place, floating in the dark as a measured cloud; a scan line or a cutting plane passes through them and the points condense into a solid, raking-lit surface, which is then measured with hairline instruments. One designed ca",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/lidar-survey/STYLE.md"
+ },
+ {
+  "slug": "living-screencast",
+  "name": "Living Screencast",
+  "category": "Information & Keynote",
+  "uses": [
+   "Product tutorials",
+   "Feature launches",
+   "Onboarding"
+  ],
+  "demo_film": "Clawd Moves In",
+  "demo_sec": 59.4,
+  "essence": "A product walkthrough that looks like a real screen recording, where a low-resolution mascot lives inside a high-resolution interface and acts out what the software is doing.",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/living-screencast/STYLE.md"
+ },
+ {
+  "slug": "lowpoly-island",
+  "name": "Low-poly Isometric Island",
+  "category": "Materials & 3D",
+  "uses": [
+   "Game trailers",
+   "World building",
+   "Calm content"
+  ],
+  "demo_film": "The Island That Grew",
+  "demo_sec": 53.0,
+  "essence": "A tiny faceted world seen through an orthographic isometric lens: everything is a geometric block, and everything that appears arrives with a bounce and a note.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/lowpoly-island/STYLE.md"
+ },
+ {
+  "slug": "memphis-diorama",
+  "name": "Memphis Diorama",
+  "category": "Materials & 3D",
+  "uses": [
+   "Web heroes",
+   "Ambient loops",
+   "Seasons"
+  ],
+  "demo_film": "Four Seasons in Pomelo Town",
+  "demo_sec": 45.0,
+  "essence": "A place built as a tabletop model: on warm white paper an organic, grainy frame grows open, and inside it a small world in flat Memphis colours, ink outlines, hard purple shadows and tiny patterns, full of small motions under a slow camera. Calm, bright and wa",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/memphis-diorama/STYLE.md"
+ },
+ {
+  "slug": "microgame",
+  "name": "Microgame Frenzy",
+  "category": "Games",
+  "uses": [
+   "Game trailers",
+   "Onboarding",
+   "Social shorts"
+  ],
+  "demo_film": "Five-Second Astronaut",
+  "demo_sec": 59.8,
+  "essence": "A rapid-fire party-game film: one command word, a few seconds, one action. Every microgame is drawn in a completely different art style, and the film keeps getting faster.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/microgame/STYLE.md"
+ },
+ {
+  "slug": "microscope",
+  "name": "Microscope Story",
+  "category": "Evidence Films",
+  "uses": [
+   "Biomedicine",
+   "Materials science",
+   "Skincare science"
+  ],
+  "demo_film": "Measured Blue",
+  "demo_sec": 39.5,
+  "essence": "Real, licence-clean microscopy of a real specimen, seen as it is, and one continuous change of scale that carries the viewer from the glass slide in the hand to a single cell. Focus breathes when the magnification changes, a focal plane sweeps when the camera ",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/microscope/STYLE.md"
+ },
+ {
+  "slug": "midcentury-toon",
+  "name": "Mid-century Cartoon",
+  "category": "Cartoon & Anime",
+  "uses": [
+   "Set-up guides",
+   "Help centres",
+   "How-to"
+  ],
+  "demo_film": "Meet Pip",
+  "demo_sec": 40.0,
+  "essence": "1950s flat colour and limited animation for \"follow along\" films: colour printed a few pixels off its broken ink line, bodies that hold still while hands do the work, abstract colour-block rooms, a calm classroom narrator, and a cool-jazz combo.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/midcentury-toon/STYLE.md"
+ },
+ {
+  "slug": "news-package",
+  "name": "Broadcast News Package",
+  "category": "Edit & Documentary",
+  "uses": [
+   "News round-ups",
+   "Bulletins",
+   "Market updates"
+  ],
+  "demo_film": "The Week in AI",
+  "demo_sec": 53.5,
+  "essence": "A television newsroom's on-air package, built entirely in code: a sting that becomes the channel bug, a rundown of today's stories that opens and closes the bulletin, a lower-third strap that never leaves the bottom of the frame, and full-frame graphics (split",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/news-package/STYLE.md"
+ },
+ {
+  "slug": "newsreel",
+  "name": "1920s Newsreel",
+  "category": "Edit & Documentary",
+  "uses": [
+   "History stories",
+   "Fads & eras",
+   "Anniversaries"
+  ],
+  "demo_film": "Knock-Knee Alert",
+  "demo_sec": 54.6,
+  "essence": "A sound newsreel of the late 1920s, cut from real archive material: a searchlight-and-globe ident with a brass fanfare, a newspaper that spins into the lens, a fast and cheerful announcer on an optical soundtrack, place-and-date cards, maps, magazine pages and",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/newsreel/STYLE.md"
+ },
+ {
+  "slug": "one-line",
+  "name": "One-line Drawing",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Brand stories",
+   "Life milestones",
+   "Minimal ads"
+  ],
+  "demo_film": "The Line That Never Lifted",
+  "demo_sec": 47.5,
+  "essence": "A single ink line that never leaves the paper. Everything on screen is that one line being drawn; scenes don't cut, they morph.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/one-line/STYLE.md"
+ },
+ {
+  "slug": "paper-lantern",
+  "name": "Paper-cut Lightbox",
+  "category": "East Asian Traditions",
+  "uses": [
+   "Journeys and travel",
+   "Farewells and anniversaries",
+   "Places and their stories"
+  ],
+  "demo_film": "The Last Night Train",
+  "demo_sec": 51.0,
+  "essence": "A layered paper-cut shadow box (纸雕灯) lit from behind: 6–9 sheets of cut card stacked in a shallow box, a warm light glowing through the paper, windows and moons burning through holes, soft shadows falling from each layer onto the next. The camera is a macro le",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/paper-lantern/STYLE.md"
+ },
+ {
+  "slug": "paper-popup",
+  "name": "Paper Pop-up Book",
+  "category": "Materials & 3D",
+  "uses": [
+   "Children's books",
+   "Game trailers",
+   "Story films"
+  ],
+  "demo_film": "Pip's Paper Adventure",
+  "demo_sec": 133.0,
+  "essence": "A pop-up book on a real desk becomes a stage: flat cut-paper actors with white borders perform in front of paper sets that spring up from the page, under real lamp light and a real macro lens.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/paper-popup/STYLE.md"
+ },
+ {
+  "slug": "papercut-red",
+  "name": "Red Paper-cut",
+  "category": "East Asian Traditions",
+  "uses": [
+   "Lunar New Year",
+   "Festive greetings",
+   "Folk tales"
+  ],
+  "demo_film": "Nian Comes to Town",
+  "demo_sec": 49.0,
+  "essence": "Chinese window-flower paper-cuts brought to life: jointed red cut-outs on paper grounds, where the cut *is* the drawing and the holes are where the light gets in.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/papercut-red/STYLE.md"
+ },
+ {
+  "slug": "pictogram-motion",
+  "name": "Pictogram Motion",
+  "category": "Graphic & Type",
+  "uses": [
+   "Public services and city stories",
+   "Brand and event identity films",
+   "Explainers told through signs and objects"
+  ],
+  "demo_film": "Left Behind",
+  "demo_sec": 50.0,
+  "essence": "A beat-locked film built from three things only: a **square-grid \"core graphic\"** of circles, half-discs and tiny patterned cells whose rows slide past each other; **geometric pictograms** (objects, vehicles, weather, signs, and a disc-headed figure when one i",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/pictogram-motion/STYLE.md"
+ },
+ {
+  "slug": "pixel-rpg",
+  "name": "16-bit Pixel RPG",
+  "category": "Games",
+  "uses": [
+   "Game trailers",
+   "Recaps",
+   "Nostalgia"
+  ],
+  "demo_film": "The Last Save Point",
+  "demo_sec": 54.5,
+  "essence": "A short film that looks, sounds and *behaves* like a mid-90s console role-playing game: 320×180 pixels, a limited indexed palette, text boxes that type, menus, save files, chip music with echo.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/pixel-rpg/STYLE.md"
+ },
+ {
+  "slug": "printed-long-take",
+  "name": "Printed Long Take",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Journeys",
+   "Wildlife",
+   "Landscapes"
+  ],
+  "demo_film": "Thirty-Three Cranes",
+  "demo_sec": 60.0,
+  "essence": "A three-dimensional world rendered as a scratchboard print, ink and paper with one red, crossed by one unbroken camera move. Depth, weather and light are all cut lines; the camera travels through the print instead of the print being turned page by page.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/printed-long-take/STYLE.md"
+ },
+ {
+  "slug": "risograph",
+  "name": "Risograph Print",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Indie brands",
+   "Zines",
+   "Lifestyle"
+  ],
+  "demo_film": "Sunday Ride",
+  "demo_sec": 40.0,
+  "essence": "Animation that looks printed, frame by frame, on a stencil duplicator: two or three translucent spot inks overprinted on warm paper, halftone dots, ink grain, and plates that never quite line up.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/risograph/STYLE.md"
+ },
+ {
+  "slug": "rubber-hose",
+  "name": "1930s Rubber Hose Cartoon",
+  "category": "Cartoon & Anime",
+  "uses": [
+   "Food & drink",
+   "Retro ads",
+   "Kids"
+  ],
+  "demo_film": "Coffee Cup Chase",
+  "demo_sec": 50.0,
+  "essence": "Black-and-white hand-inked cartoons where every object is alive and swings to a hot jazz band.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/rubber-hose/STYLE.md"
+ },
+ {
+  "slug": "satellite-briefing",
+  "name": "Satellite Briefing",
+  "category": "Evidence Films",
+  "uses": [
+   "Climate",
+   "News explainers",
+   "Geography"
+  ],
+  "demo_film": "The Map Still Says Sea",
+  "demo_sec": 37.8,
+  "essence": "Real satellite imagery of a real place, graded down to an analyst's grey, with thin white measurement lines drawn on the ground: a lock-on reticle, outlines, a range line, one reading. One continuous zoom built from stacked imagery plates carries the viewer fr",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/satellite-briefing/STYLE.md"
+ },
+ {
+  "slug": "scifi-toon",
+  "name": "Sci-Fi Sitcom Toon",
+  "category": "Cartoon & Anime",
+  "uses": [
+   "Comedy",
+   "Tech brands",
+   "Social shorts"
+  ],
+  "demo_film": "Coffee Run",
+  "demo_sec": 57.5,
+  "essence": "Adult-animation sci-fi sitcom: thick boiling outlines, flat colour, a duo whose reactions don't match, a glowing portal, and one palette per world.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/scifi-toon/STYLE.md"
+ },
+ {
+  "slug": "shadow-puppet",
+  "name": "Shadow Puppetry",
+  "category": "East Asian Traditions",
+  "uses": [
+   "Myths & folklore",
+   "Heritage",
+   "Festivals"
+  ],
+  "demo_film": "Hou Yi Shoots the Suns",
+  "demo_sec": 54.4,
+  "essence": "Chinese shadow theatre: translucent dyed-hide puppets, carved like lace, pressed against a cotton screen and lit from behind by oil lamps.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/shadow-puppet/STYLE.md"
+ },
+ {
+  "slug": "silent-film",
+  "name": "1920s Silent Film",
+  "category": "Cinema & Eras",
+  "uses": [
+   "Comedy",
+   "Retro brands",
+   "Silent storytelling"
+  ],
+  "demo_film": "The Runaway Loaf",
+  "demo_sec": 54.2,
+  "essence": "An engraved-illustration silent film projected in a picture house: ink line and silver wash, a 4:3 print that flickers and weaves between velvet curtains, intertitles instead of voices, and a cinema pianist who plays every beat.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/silent-film/STYLE.md"
+ },
+ {
+  "slug": "silkscreen-poster",
+  "name": "Silkscreen Travel Poster",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Destination guides",
+   "Tourism",
+   "Event posters"
+  ],
+  "demo_film": "The Long Way Home",
+  "demo_sec": 50.0,
+  "essence": "Opaque, hard-edged flat inks pulled one colour at a time through a screen: 4–6 inks per poster, stepped colour bands instead of gradients, thin paper-white gaps where the registration slips. Information is revealed the way the print is made: one layer, one bea",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/silkscreen-poster/STYLE.md"
+ },
+ {
+  "slug": "spy-titles",
+  "name": "60s Spy Title Sequence",
+  "category": "Graphic & Type",
+  "uses": [
+   "Title sequences",
+   "Event openers",
+   "Trailers"
+  ],
+  "demo_film": "The Velvet Cipher",
+  "demo_sec": 44.1,
+  "essence": "A cut-paper, four-ink opening title sequence for a film that never existed: silhouettes move through sets built out of the credits themselves, every brass stab is a cut, and a title is assembled from the pieces.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/spy-titles/STYLE.md"
+ },
+ {
+  "slug": "stained-glass",
+  "name": "Stained Glass",
+  "category": "Graphic & Type",
+  "uses": [
+   "Legends",
+   "Heritage",
+   "Holiday stories"
+  ],
+  "demo_film": "The Dragon of the East Window",
+  "demo_sec": 56.5,
+  "essence": "A medieval stained-glass window seen from inside a dark stone hall, alive only where the sun touches it: light is the clock, the camera and the story.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/stained-glass/STYLE.md"
+ },
+ {
+  "slug": "swiss-motion",
+  "name": "Swiss Motion Graphics",
+  "category": "Graphic & Type",
+  "uses": [
+   "Brand identity",
+   "Events",
+   "Design education"
+  ],
+  "demo_film": "Five Rules for a Poster",
+  "demo_sec": 44.0,
+  "essence": "International Typographic Style in motion: a modular grid, one typeface, one signal colour, and movement as exact as a printing press.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/swiss-motion/STYLE.md"
+ },
+ {
+  "slug": "teardown",
+  "name": "Exploded Teardown",
+  "category": "Evidence Films",
+  "uses": [
+   "Hardware launches",
+   "Product pages",
+   "Spec explainers"
+  ],
+  "demo_film": "21 Keys, Opened",
+  "demo_sec": 38.8,
+  "essence": "A real product, built from its own engineering files (CAD, PCB layout, bill of materials), lit like a studio packshot and taken apart in front of the camera: the layers lift on one axis, the camera travels between them, every part is named with the numbers its",
+  "pipeline": "3D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/teardown/STYLE.md"
+ },
+ {
+  "slug": "telestrator",
+  "name": "Sports Telestrator",
+  "category": "Edit & Documentary",
+  "uses": [
+   "Sports analysis",
+   "Match recaps",
+   "Coaching"
+  ],
+  "demo_film": "Freeze Frame",
+  "demo_sec": 54.4,
+  "essence": "The TV football analysis segment: play the clip at full speed, rewind, freeze it, and draw on the broadcast picture — rings under players' feet, marker arrows for the ball, a red patch for the space nobody covered — then play on, switch angles, count the frame",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/telestrator/STYLE.md"
+ },
+ {
+  "slug": "tilt-shift",
+  "name": "Tilt-Shift Miniature",
+  "category": "Materials & 3D",
+  "uses": [
+   "City promos",
+   "Real estate",
+   "Transport"
+  ],
+  "demo_film": "Toy Town Rush Hour",
+  "demo_sec": 38.0,
+  "essence": "A real-looking place photographed from high above with a tilted lens and a time-lapse camera, so the whole world reads as a tabletop model.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/tilt-shift/STYLE.md"
+ },
+ {
+  "slug": "transit-map",
+  "name": "Transit Map",
+  "category": "Information & Keynote",
+  "uses": [
+   "Transport",
+   "Growth over time",
+   "Networks"
+  ],
+  "demo_film": "6 Kilometres",
+  "demo_sec": 47.0,
+  "essence": "A metro schematic printed on a physical sheet: lines held to eight directions, white stops, black-outlined interchange capsules, water as a flat blue band. The network is drawn on by glowing pen tips while a real perspective camera moves over the paper: it rid",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/transit-map/STYLE.md"
+ },
+ {
+  "slug": "ukiyoe",
+  "name": "Ukiyo-e",
+  "category": "East Asian Traditions",
+  "uses": [
+   "Travel",
+   "Japanese culture",
+   "Poetry"
+  ],
+  "demo_film": "Toward the Mountain",
+  "demo_sec": 44.0,
+  "essence": "Edo-period woodblock prints brought to life: flat colour blocks, carved ink lines, bokashi skies, paper you can feel, and a camera that moves over the print like an unrolling handscroll.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "path": "assets/lemo-styles/styles/ukiyoe/STYLE.md"
+ },
+ {
+  "slug": "urban-sketch",
+  "name": "Urban Sketch · Pen & Wash",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "City & travel",
+   "Architecture",
+   "Lifestyle brands"
+  ],
+  "demo_film": "Where the Wind Went",
+  "demo_sec": 33.4,
+  "essence": "A sketchbook page drawn on location: fine sepia fineliner lines that wobble, overshoot and never quite close, with loose transparent watercolour dropped on top. The colour sits slightly off the lines, spills over them, and dissolves into cream cold-press paper",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/urban-sketch/STYLE.md"
+ },
+ {
+  "slug": "visual-investigation",
+  "name": "Visual Investigation",
+  "category": "Edit & Documentary",
+  "uses": [
+   "Reconstructions",
+   "Fact-checks",
+   "Incident reports"
+  ],
+  "demo_film": "The Hindenburg: Four Minutes, 32 Seconds",
+  "demo_sec": 60.0,
+  "essence": "A cold investigation desk: footage, photographs, documents, sound and maps from one real event, laid out on one shared clock so they check each other. The clock lives inside the picture — timestamps on the evidence, a playhead on a data chart, a stopwatch over",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/visual-investigation/STYLE.md"
+ },
+ {
+  "slug": "watercolor",
+  "name": "Watercolor Brush",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Nature documentary",
+   "Travel",
+   "Science explainers"
+  ],
+  "demo_film": "Follow the Rain",
+  "demo_sec": 113.6,
+  "essence": "A hand-painted journal page that paints itself: translucent brush strokes with dry-brush flying white on warm cotton paper, hand-written notes beside what is painted, nothing drawn with a vector line.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/watercolor/STYLE.md"
+ },
+ {
+  "slug": "white-model",
+  "name": "Projection on White Model",
+  "category": "Evidence Films",
+  "uses": [
+   "Urban planning",
+   "Exhibitions",
+   "City data"
+  ],
+  "demo_film": "How a Flattened City Grew Back",
+  "demo_sec": 40.0,
+  "essence": "A pure white massing model of a real place stands on a plinth in a dark room, and a projector paints data onto it as light: one layer at a time, falling on the surfaces that face it, spilling a little past the plate. The model never changes; only the light on ",
+  "pipeline": "3D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/white-model/STYLE.md"
+ },
+ {
+  "slug": "whiteboard",
+  "name": "Whiteboard Explainer",
+  "category": "Hand-drawn & Painting",
+  "uses": [
+   "Explainers",
+   "Online courses",
+   "Science"
+  ],
+  "demo_film": "Einstein in Your Pocket",
+  "demo_sec": 111.0,
+  "essence": "An explainer drawn live on one glossy dry-erase board: single-line handwriting that is actually *written* stroke by stroke, floating markers with no hand, magnets that can move, an eraser that can rewind, and a camera that travels across the board instead of c",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/whiteboard/STYLE.md"
+ },
+ {
+  "slug": "woodcut",
+  "name": "Woodcut Print",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Folk tales",
+   "Craft brands",
+   "Book trailers"
+  ],
+  "demo_film": "The Bell Founder",
+  "demo_sec": 58.5,
+  "essence": "A relief print that carves itself: every frame is a black wood block, and light only exists where a knife has cut it away. One colour at most, and only for the thing that burns.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "path": "assets/lemo-styles/styles/woodcut/STYLE.md"
+ }
+]
