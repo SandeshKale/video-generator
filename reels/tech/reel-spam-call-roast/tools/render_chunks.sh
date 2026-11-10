@@ -1,7 +1,7 @@
 #!/bin/bash
-# resumable render: 6 time chunks, 2 at a time, each skipped if already a valid mp4; then concat + mux final.wav -> reel3d.mp4
+# resumable render: 12 time chunks, 2 at a time, each skipped if already a valid mp4; then concat + mux final.wav -> reel3d.mp4
 R="$(cd "$(dirname "$0")/.." && pwd)"; ROOT="$R/../../.."; W=/tmp/scr/spchunks; mkdir -p $W; cd "$ROOT"
-DUR=$(python3 -c "import json;print(json.load(open('$R/audio/words.json'))['end'])"); N=6
+DUR=$(python3 -c "import json;print(json.load(open('$R/audio/words.json'))['end'])"); N=12
 one() { n=$1; a=$(python3 -c "print(round($DUR*$n/$N,3))"); b=$(python3 -c "print(round($DUR*($n+1)/$N,3))"); f=$W/c$n.mp4
   if ffprobe -v error -show_entries format=duration -of csv=p=0 $f >/dev/null 2>&1; then echo "chunk $n ok"; return; fi
   rm -f $f; REEL_FPS=30 REEL_CRF=20 REEL_START=$a REEL_END=$b bun scripts/render.mjs reels/tech/reel-spam-call-roast/site3d $f > $W/c$n.log 2>&1; echo "chunk $n done"; }
