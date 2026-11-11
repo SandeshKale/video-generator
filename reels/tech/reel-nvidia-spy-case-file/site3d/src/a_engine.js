@@ -2,7 +2,7 @@
    depth-of-field + bloom + grade post chain), authored camera shots, labels, ray primitives. Everything is a pure function of t. */
 (function () {
 var W = 1080, H = 1920, V3 = THREE.Vector3;
-var TUNG = 0xff8a1f, HOT = 0xf4ecd8, ICE = 0x3de0a8, VIO = 0x6a7bff, COR = 0xff4d5e, SAGE = 0x3de0a8, CHALK = 0x0b1230, BENCH = 0x0d1433, PLUM = 0x0b1230, CREAM = 0xf4ecd8;
+var TUNG = 0xffb300, HOT = 0xefe3c8, ICE = 0x2c4bd8, VIO = 0x7b4bd0, COR = 0xe1362f, SAGE = 0x1d9a69, CHALK = 0x13172a, BENCH = 0xead9b4, PLUM = 0x13172a, CREAM = 0xefe3c8;
 function clamp(x, a, b) { return Math.max(a == null ? 0 : a, Math.min(b == null ? 1 : b, x)); }
 function hash(i) { var h = (i * 2654435761) >>> 0; h ^= h >>> 15; h = Math.imul(h, 2246822519) >>> 0; h ^= h >>> 13; return (h >>> 0) / 4294967296; }
 function lerp(a, b, e) { return a + (b - a) * e; }
@@ -29,7 +29,7 @@ var FS = new THREE.Scene(), FC = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1
 var VS = 'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}';
 function sm(frag, u) { return new THREE.ShaderMaterial({ uniforms: u, vertexShader: VS, fragmentShader: frag, depthTest: false, depthWrite: false }); }
 function pass(m, tgt) { FQ.material = m; R.setRenderTarget(tgt); R.render(FS, FC); }
-var POST = { focus: 14, aper: 1.0, maxR: 26, bloom: .25, expo: .95, grain: .03, ca: .0008, vig: .3, fade: 0, seed: 0 };
+var POST = { half: 1, focus: 14, aper: 1.0, maxR: 26, bloom: .25, expo: .95, grain: .03, ca: .0008, vig: .3, fade: 0, seed: 0 };
 var mDof = sm('uniform sampler2D tC,tD;uniform float nr,fr,focus,aper,maxR;uniform vec2 px;varying vec2 vUv;' +
   'float lin(float d){float z=d*2.-1.;return 2.*nr*fr/(fr+nr-z*(fr-nr));}' +
   'float coc(vec2 uv){return clamp(abs(lin(texture2D(tD,uv).x)-focus)/lin(texture2D(tD,uv).x)*aper,0.,1.);}' +
@@ -47,11 +47,18 @@ var mFin = sm('uniform sampler2D tC,tB1,tB2;uniform float bloom,expo,grain,ca,vi
   'c+=(texture2D(tB1,vUv).rgb*.7+texture2D(tB2,vUv).rgb*1.0)*bloom;c*=expo;c=aces(c);c=srgb(c);float lm=dot(c,vec3(.299,.587,.114));c=mix(vec3(lm),c,1.3);c=clamp((c-.5)*1.08+.5,0.,1.);' +
   'c*=1.-vig*smoothstep(.25,.95,length(d*vec2(1.,.62))*1.55);c+=(h21(vUv*vec2(1080.,1920.)+seed)-.5)*grain;c=mix(c,vec3(0.),fade);gl_FragColor=vec4(c,1.);}',
   { tC: { value: RT1.texture }, tB1: { value: B1.texture }, tB2: { value: B3.texture }, bloom: { value: .9 }, expo: { value: 1 }, grain: { value: .035 }, ca: { value: .0016 }, vig: { value: .55 }, fade: { value: 0 }, seed: { value: 0 } });
+var RTH = mrt(W, H);
+var mHalf = sm('uniform sampler2D tC;uniform float k,ps;varying vec2 vUv;' +
+  'float scr(vec2 p,float a,float s,float d){float ca=cos(a),sa=sin(a);vec2 q=mat2(ca,-sa,sa,ca)*p/s;vec2 f=fract(q)-.5;float r=sqrt(clamp(d,0.,1.))*.72;return smoothstep(r+.08,r-.08,length(f));}' +
+  'void main(){vec3 c=texture2D(tC,vUv).rgb;float l=dot(c,vec3(.299,.587,.114));float ld=pow(clamp(l,0.,1.5),1./2.2);float dark=1.-smoothstep(.10,.88,ld);vec2 p=vUv*vec2(1080.,1920.);' +
+  'float kd=scr(p,.785,ps,dark),cd=scr(p+7.,.26,ps*1.06,dark*.85);vec3 paper=vec3(.80,.62,.36);vec3 base=c+(paper-c)*dark*.5*k;vec3 ink=vec3(.008,.010,.028),cob=vec3(.02,.06,.62);' +
+  'vec3 o=mix(base,cob,cd*dark*.6*k);o=mix(o,ink,kd*dark*.92*k);gl_FragColor=vec4(o,1.);}', { tC: { value: null }, k: { value: 1 }, ps: { value: 9 } });
 var HOOKS = { pre: [] };
 function render() {
   HOOKS.pre.forEach(function (f) { f(); });
   C.layers.set(0); R.setRenderTarget(RT0); R.clear(); R.render(S, C);
   mDof.uniforms.focus.value = POST.focus; mDof.uniforms.aper.value = POST.aper; mDof.uniforms.maxR.value = POST.maxR; pass(mDof, RT1);
+  if (POST.half > 0) { mHalf.uniforms.tC.value = RT1.texture; mHalf.uniforms.k.value = POST.half; pass(mHalf, RTH); mDown.uniforms.tC.value = RTH.texture; pass(mDown, RT1); }
   var bg = S.background, fg = S.fog; S.background = null; S.fog = null; C.layers.set(1); R.autoClear = false; R.setRenderTarget(RT1); R.render(S, C); R.autoClear = true; C.layers.set(0); S.background = bg; S.fog = fg;
   mDown.uniforms.tC.value = RT1.texture; pass(mBright, B0); mBright.uniforms.tC.value = RT1.texture;
   mBlur.uniforms.tC.value = B0.texture; mBlur.uniforms.dir.value.set(1 / (W / 4), 0); pass(mBlur, B1); mBlur.uniforms.tC.value = B1.texture; mBlur.uniforms.dir.value.set(0, 1 / (H / 4)); pass(mBlur, B0);
@@ -75,15 +82,15 @@ var GL = { t: glowTex('rgba(255,236,190,1)', 'rgba(255,170,70,.55)'), w: glowTex
 function glow(k, s, op) { var m = new THREE.Sprite(new THREE.SpriteMaterial({ map: GL[k], transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, opacity: op == null ? 1 : op })); m.scale.set(s, s, 1); return m; }
 var LBL = [], LC = {};
 function lab(text, col, hh, o) { o = o || {}; var k = text + col + JSON.stringify(o), e = LC[k];
-  if (!e) { var fs = o.fs || 56, f = o.font || '600 ' + fs + 'px "DM Mono"', c = document.createElement('canvas'), x = c.getContext('2d'); x.font = f; var lines = text.split('\n'), tw = 0; lines.forEach(function (l) { tw = Math.max(tw, Math.ceil(x.measureText(l).width)); }); var pad = o.pad || 24, lh = fs * 1.25; c.width = tw + pad * 2; c.height = Math.ceil(lh * lines.length + pad * 1.1); x = c.getContext('2d'); x.font = f;
+  if (!e) { var fs = o.fs || 56, f = o.font || '700 ' + fs + 'px "JetBrains Mono"', c = document.createElement('canvas'), x = c.getContext('2d'); x.font = f; var lines = text.split('\n'), tw = 0; lines.forEach(function (l) { tw = Math.max(tw, Math.ceil(x.measureText(l).width)); }); var pad = o.pad || 24, lh = fs * 1.25; c.width = tw + pad * 2; c.height = Math.ceil(lh * lines.length + pad * 1.1); x = c.getContext('2d'); x.font = f;
     x.fillStyle = o.bgc || 'rgba(244,236,216,.97)'; x.fillRect(0, 0, c.width, c.height); x.fillStyle = HEX(col); x.fillRect(0, 0, 10, c.height); x.strokeStyle = 'rgba(11,18,48,.35)'; x.lineWidth = 3; x.strokeRect(1.5, 1.5, c.width - 3, c.height - 3);
     x.fillStyle = HEX(o.tcol == null ? PLUM : o.tcol); x.textBaseline = 'middle'; x.textAlign = 'left'; lines.forEach(function (l, i) { x.fillText(l, pad + 8, pad * .55 + lh * (i + .5) + 2); });
     var tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 4; e = LC[k] = { tx: tx, asp: c.width / c.height }; }
   var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: e.tx, transparent: true, depthTest: false, depthWrite: false })); s.renderOrder = 30; s.layers.set(1); s.scale.set(hh * e.asp, hh, 1); s.userData = { lbl: true, kind: 'lab', sx: hh * e.asp, sy: hh, sz: 1, txt: text.slice(0, 24) }; LBL.push(s); return s; }
 function card(term, meaning, col, hh) { var c = document.createElement('canvas'), w = 940, h = 340; c.width = w; c.height = h; var x = c.getContext('2d'); x.fillStyle = 'rgba(244,236,216,.98)'; x.fillRect(0, 0, w, h); x.strokeStyle = HEX(col); x.lineWidth = 7; x.strokeRect(3.5, 3.5, w - 7, h - 7);
-  x.fillStyle = HEX(col); x.fillRect(0, 0, w, 62); x.fillStyle = '#0b1230'; x.font = '600 27px "DM Mono"'; x.textBaseline = 'middle'; x.fillText('THIS IS CALLED', 30, 33); x.beginPath(); x.arc(w - 40, 31, 11, 0, 6.283); x.fill();
-  x.fillStyle = HEX(PLUM); var tfs = 96; x.font = '900 ' + tfs + 'px Chakra Petch'; while (x.measureText(term).width > w - 60 && tfs > 30) { tfs -= 4; x.font = '900 ' + tfs + 'px Chakra Petch'; } x.fillText(term, 30, 150);
-  x.fillStyle = 'rgba(11,18,48,.85)'; x.font = '600 36px Inter'; meaning.split('\n').forEach(function (l, i) { x.fillText(l, 30, 232 + i * 50); });
+  x.fillStyle = HEX(col); x.fillRect(0, 0, w, 62); x.fillStyle = '#0b1230'; x.font = '600 27px "JetBrains Mono"'; x.textBaseline = 'middle'; x.fillText('THIS IS CALLED', 30, 33); x.beginPath(); x.arc(w - 40, 31, 11, 0, 6.283); x.fill();
+  x.fillStyle = HEX(PLUM); var tfs = 96; x.font = '400 ' + tfs + 'px "Alfa Slab One"'; while (x.measureText(term).width > w - 60 && tfs > 30) { tfs -= 4; x.font = '400 ' + tfs + 'px "Alfa Slab One"'; } x.fillText(term, 30, 150);
+  x.fillStyle = 'rgba(11,18,48,.85)'; x.font = '800 36px Inter'; meaning.split('\n').forEach(function (l, i) { x.fillText(l, 30, 232 + i * 50); });
   var tx = new THREE.CanvasTexture(c); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 4; var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthTest: false, depthWrite: false })); s.renderOrder = 31; s.layers.set(1); s.scale.set(hh * w / h, hh, 1); s.userData = { lbl: true, kind: 'card', sx: hh * w / h, sy: hh, sz: 1, txt: 'CARD ' + term }; LBL.push(s); return s; }
 function put(o, t, tIn, dur, hold) { var u = clamp((t - tIn) / (dur || .4)), ud = o.userData; if (ud.sx == null) { ud.sx = o.scale.x; ud.sy = o.scale.y; ud.sz = o.scale.z; } var vis = u > 0 && (hold == null || t < hold); o.visible = vis; if (!vis) return 0; var k = eob(u); o.scale.set(ud.sx * k, ud.sy * k, ud.sz * k); if (o.material && o.isSprite) o.material.opacity = clamp(u * 3); return u; }
 function isVis(o) { while (o) { if (!o.visible) return false; o = o.parent; } return true; }
