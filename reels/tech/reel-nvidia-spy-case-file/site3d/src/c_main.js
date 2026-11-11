@@ -18,7 +18,7 @@ var CAPOPT = { fs: 54, width: 768, lines: 2, chip: '#ffb300', chipInk: '#13172a'
 function sceneAt(t) { var k = 0; for (var i = 0; i < SC.length; i++) if (t >= SC[i]) k = i; return k; }
 var DIPS = [];
 var EVL = []; function ev(t, k) { EVL.push({ t: +t.toFixed(3), k: k }); }
-(function () { var st = window.__STAMPS_T || []; ev(S0('h1') + .02, 'pop');
+(function () { (window.STAMPT || []).forEach(function (tc, i) { ev(tc, 'stamp'); }); var hs_ = window.HOLEAT || []; hs_.forEach(function (tc) { ev(tc, 'hole'); }); ev(S0('h1') + .02, 'pop');
   ev(S0('c1'), 'whoosh'); for (var k = 0; k < 9; k++) ev(S0('c1') + .6 + k * .28, 'tick'); ev(S0('n1'), 'whoosh'); ev(S0('e1') - .1, 'whoosh'); ev(S0('e1') + .6, 'pop'); ev(WS('e1', 'चीन', .5) - .2, 'pop'); ev(WS('e1', 'सिंगापुर', .5) - .2, 'pop'); ev(S0('e2') + .3, 'pop'); ev(S0('s1') - .1, 'whoosh'); for (var b = 0; b < 6; b++) ev(S0('s1') + .3 + b * .18, 'tick'); ev(S0('s2') + .3, 'slam');
   ev(S0('u1') - .1, 'whoosh'); ev(S0('u1') + 1.2, 'tick'); ev(S0('u1') + 4.2, 'tick'); ev(S0('u1') + 7.2, 'tick'); ev(S0('r1') - .1, 'whoosh'); ev(S0('cta'), 'whoosh'); ev(WS('cta', 'लाइक', .45), 'ping'); ev(WS('cta', 'शेयर|शेर', .6), 'ping'); ev(WS('cta', 'सब्स्क्राइब|सब्सक्राइब', .75), 'ping'); })();
 var AP = [.2, .18, .18, .18, .2, .2, .18], FOC = {};

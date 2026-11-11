@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for 'Billionaire ka right swipe' (Swipe Deck score: marimba plucks, shaker, wood-block claps, warm pad).  python3 audio_mix.py   -> audio/final.wav (48 kHz) + audio/mix-report.json
+"""Score + SFX + mix for 'Sabke paas bayaan hain, saboot nahi' (Halftone Dossier score: synth pop-print kit, marimba plucks, finger snaps, stamp booms, a pad for the honest part).  python3 audio_mix.py   -> audio/final.wav (48 kHz) + audio/mix-report.json
 The score is a stage groove that gains a voice per step (kick+pad hook, bass on the math, pluck on step 1, hats+clap on the waiting room, lock motif on the seat hold),
 drops out on the lost payment reply, glitches at the bots, strips to a pad for the honest part and resolves to major on the last line.
 SFX come from the page's own event list (audio/events.json). Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, voice over music+SFX median >= 19 dB, min >= 13 dB."""
@@ -45,11 +45,11 @@ for e in ev['ev']:
     if k in ('whoosh', 'pop', 'ping', 'buzz', 'card', 'drop'):                    # soft cues never sit on top of a word's tail
         for w in WD:
             if w[1] + .03 < t < w[2]: t = w[2] + .03; break
-    if k in ('slam',): t += .25
     if k in ('whoosh', 'tick', 'pop', 'ping', 'buzz', 'card', 'drop', 'slam'):
         w0 = t - .25 if k == 'whoosh' else t; w1 = w0 + (.5 if k == 'whoosh' else .1)
         if any(min(w1, w[2]) - max(w0, w[1]) > .08 for w in WD): continue
     if k == 'ping': put(sfx, sm(tone(1320, .35, dec=.12) * .3, tone(1980, .25, dec=.08) * .12), t)
+    elif k == 'stamp': put(sfx, sm(tone(95, .4, f1=42, dec=.13) * 1.0, noise(.14, 700, 7000) * dec_n(.14, .035) * .55, tone(190, .1, dec=.03) * .4, tone(60, .7, dec=.25) * .3), t)
     elif k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .4, tone(55, .8, dec=.3) * .35), t)
     elif k == 'pop': put(sfx, tone(500, .2, f1=1100, dec=.07) * .3, t)
     elif k == 'card': put(sfx, sm(tone(660, .22, f1=1320, dec=.08) * .26, noise(.06, 3000, 9000) * dec_n(.06, .02) * .25), t)
@@ -63,12 +63,12 @@ for tb in B[1:-1]: put(sfx, whoosh(.4, True) * .1, tb - .5); put(sfx, tone(80, .
 BPM = 112; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); root = 55.0 * 2 ** (np.array([3, 0, 8, 10]) / 12)       # C, Am, F, G (one bar each)
 sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2
 def voices(t):
-    s = sc_of(t); v = dict(kick=s in (0, 5, 8, 11), pad=True, bass=s in (1, 2, 3, 4, 5, 6, 7, 8, 11), pluck=s in (0, 1, 3, 4, 6, 7, 10, 11), hat=s in (5, 6, 7, 8, 11), lock=s in (2, 4, 7, 10, 11))
-    if s == 9: v.update(kick=False, bass=False, pluck=False, hat=False, lock=False)        # the honest part: pad only
+    s = sc_of(t); v = dict(kick=s in (0, 2, 3, 4, 6), pad=True, bass=s in (1, 2, 3, 4, 6), pluck=s in (0, 1, 3, 4, 6), hat=s in (2, 3, 4, 6), lock=s in (2, 3, 6))
+    if s == 5: v.update(kick=False, bass=False, pluck=False, hat=False, lock=False)        # what is not known: pad only
     return v
 i = 0; t = 0.0
 while t < DUR:
-    bar = int(i // 16) % 4; s16 = i % 16; V = voices(t); late = sc_of(t) == 11
+    bar = int(i // 16) % 4; s16 = i % 16; V = voices(t); late = sc_of(t) == 6
     if V['kick'] and s16 % 4 == 0: put(music, tone(120, .25, f1=40, dec=.08) * (.7), t)
     if V['bass'] and s16 % 2 == 0 and s16 % 8 != 6: put(music, tone(root[bar] * (1 if s16 % 8 else 2), step * 1.8, 'saw', dec=.09) * .09, t)
     if V['pluck'] and s16 % 2 == 0: put(music, tone(root[bar] * 8 * 2 ** ([0, 4, 7, 4, 12, 9, 7, 4][(s16 // 2) % 8] / 12), step * 1.6, dec=.07) * .11, t)
@@ -76,10 +76,12 @@ while t < DUR:
     if V['hat'] and s16 in (4, 12): put(music, noise(.12, 1200, 5000) * dec_n(.12, .04) * .3, t)                                     # clap
     if V['lock'] and s16 in (0, 6): put(music, sm(tone(root[bar] * 8, .9, dec=.35) * .12, tone(root[bar] * 12, .9, dec=.25) * .06), t)
     if V['pad'] and s16 == 0 and bar % 2 == 0:
-        q = (0, 4, 7) if (late or sc_of(t) != 9) else (0, 3, 7)                                                    # the last scene resolves minor -> major
+        q = (0, 4, 7) if (late or sc_of(t) != 5) else (0, 3, 7)                                                    # the last scene resolves minor -> major
         for qq in q: put(music, tone(root[bar] * 4 * 2 ** (qq / 12), beat * 7.6, 'saw', a=.7, dec=3.2) * .035, t)
     if V['pad'] and s16 == 0: put(music, tone(root[bar], beat * 3.9, dec=2.5) * .2, t)
     i += 1; t = i * step
+for e_ in ev['ev']:
+    if e_['k'] == 'hole': i0, i1 = sec(max(0, e_['t'] - .45)), sec(e_['t'] + .04); f_ = np.zeros(max(1, i1 - i0), 'float32'); nf = min(len(f_), sec(.04)); f_[:nf] = np.linspace(1, 0, nf); music[i0:i1] *= f_
 # ---------------- ducking + carve ----------------
 vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .02).astype('float32'); on = np.roll(on, -int(.09 * SR))
 duck = np.minimum(1, uniform_filter1d(on, int(.18 * SR)) * 1.6); a_ = np.exp(-1 / (.08 * SR)); r_ = np.exp(-1 / (.3 * SR)); g = np.zeros(N, 'float32'); cur = float(duck[0])

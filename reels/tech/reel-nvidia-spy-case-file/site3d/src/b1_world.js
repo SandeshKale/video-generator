@@ -65,6 +65,7 @@ var st6 = [stamp('UNPROVEN', CS.grey, 4.8, UX, 2.6, -.06, WS('u2', 'पता|�
 var EX = 120, tR1 = S0('r1'), tCta = S0('cta');
 add(B.folder('FILE NVDA-1108', 'CASE NO. 14', { w: 6.2, h: 8.4 }), EX, 0, -1);
 var st7 = [stamp('CASE OPEN', CS.red, 4.8, EX, .2, -.1, tCta + .1, { fs: 120 })];
+window.STAMPT = STAMPS.map(function (s) { return s.tc; }); window.HOLEAT = [st1[3].tc, st6[0].tc, st7[0].tc];
 /* per-frame world state */
 SCN[0] = SCN[1] = SCN[2] = SCN[3] = SCN[4] = SCN[5] = SCN[6] = function (t) {
   W.visible = true; S.background = new THREE.Color(0xcdb98c); S.fog = null; e.POST.half = window.__noHalf ? 0 : 1;
