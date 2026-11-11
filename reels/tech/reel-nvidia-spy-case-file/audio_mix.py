@@ -49,7 +49,7 @@ for e in ev['ev']:
         w0 = t - .25 if k == 'whoosh' else t; w1 = w0 + (.5 if k == 'whoosh' else .1)
         if any(min(w1, w[2]) - max(w0, w[1]) > .08 for w in WD): continue
     if k == 'ping': put(sfx, sm(tone(1320, .35, dec=.12) * .3, tone(1980, .25, dec=.08) * .12), t)
-    elif k == 'stamp': put(sfx, sm(tone(95, .4, f1=42, dec=.13) * 1.0, noise(.14, 700, 7000) * dec_n(.14, .035) * .55, tone(190, .1, dec=.03) * .4, tone(60, .7, dec=.25) * .3), t)
+    elif k == 'stamp': put(sfx, sm(tone(95, .4, f1=42, dec=.13) * 1.0, noise(.14, 700, 7000) * dec_n(.14, .035) * .55, tone(190, .1, dec=.03) * .4, tone(60, .7, dec=.25) * .3) * .42, t)
     elif k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .4, tone(55, .8, dec=.3) * .35), t)
     elif k == 'pop': put(sfx, tone(500, .2, f1=1100, dec=.07) * .3, t)
     elif k == 'card': put(sfx, sm(tone(660, .22, f1=1320, dec=.08) * .26, noise(.06, 3000, 9000) * dec_n(.06, .02) * .25), t)
@@ -83,7 +83,7 @@ while t < DUR:
 for e_ in ev['ev']:
     if e_['k'] == 'hole': i0, i1 = sec(max(0, e_['t'] - .45)), sec(e_['t'] + .04); f_ = np.zeros(max(1, i1 - i0), 'float32'); nf = min(len(f_), sec(.04)); f_[:nf] = np.linspace(1, 0, nf); music[i0:i1] *= f_
 # ---------------- ducking + carve ----------------
-vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .02).astype('float32'); on = np.roll(on, -int(.09 * SR))
+vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .006).astype('float32'); on = np.roll(on, -int(.09 * SR))
 duck = np.minimum(1, uniform_filter1d(on, int(.18 * SR)) * 1.6); a_ = np.exp(-1 / (.08 * SR)); r_ = np.exp(-1 / (.3 * SR)); g = np.zeros(N, 'float32'); cur = float(duck[0])
 for k in range(0, N, 64):
     tg = duck[k]; cur = tg + (cur - tg) * (a_ if tg > cur else r_)**64; g[k:k+64] = cur
