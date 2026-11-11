@@ -309,5 +309,12 @@
   "voice": "synth-clone",
   "host": "no",
   "length": "93s"
+ },
+ "reel-nvidia-spy-case-file": {
+  "genre": "news-explainer",
+  "company": "nvidia",
+  "voice": "clone",
+  "host": "none",
+  "length": "97s"
  }
 }
