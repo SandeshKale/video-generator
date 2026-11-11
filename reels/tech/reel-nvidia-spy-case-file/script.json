@@ -1,0 +1,135 @@
+{
+ "title": "Sabke paas bayaan hain, saboot nahi",
+ "format": "1080x1920",
+ "version": 1,
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "h1",
+   "B": "दुनिया की सबसे क़ीमती चिप कंपनी के बॉस ने एक चिट्ठी लिखी। चिट्ठी में माफ़ी है, जाँच है, और तीन तरफ़ के बयान।",
+   "A": "Duniya ki sabse keemti chip company ke boss ne ek chitthi likhi. Chitthi mein maafi hai, jaanch hai, aur teen taraf ke bayaan.",
+   "cap": "Duniya ki sabse keemti chip company ke boss ne ek chitthi likhi. Chitthi mein maafi hai, jaanch hai, aur teen taraf ke bayaan."
+  },
+  {
+   "id": "h2",
+   "g": "g1",
+   "beat": "h2",
+   "B": "सबूत? वो पता नहीं।",
+   "A": "Saboot? Wo pata nahi.",
+   "cap": "Saboot? Wo pata nahi."
+  },
+  {
+   "id": "c1",
+   "g": "g2",
+   "beat": "c1",
+   "B": "पहले जो पक्का है। आठ नवंबर को जेन्सन हुआंग ने चिट्ठी में लिखा, मैंने अपनी पत्नी से बेवफ़ाई की। उन्होंने माफ़ी माँगी।",
+   "A": "Pehle jo pakka hai. Aath november ko Jensen Huang ne chitthi mein likha, maine apni patni se bewafai ki. Unhone maafi maangi.",
+   "cap": "Pehle jo pakka hai. Aath november ko Jensen Huang ne chitthi mein likha, maine apni patni se bewafai ki. Unhone maafi maangi."
+  },
+  {
+   "id": "c2",
+   "g": "g2",
+   "beat": "c2",
+   "B": "कंपनी ने बाहर के वकीलों से जाँच शुरू कर दी। यहाँ तक सब कन्फ़र्म्ड है। अब शुरू होता है, रिपोर्टेडली।",
+   "A": "Company ne bahar ke vakeelon se jaanch shuru kar di. Yahan tak sab confirmed hai. Ab shuru hota hai, reportedly.",
+   "cap": "Company ne bahar ke vakeelon se jaanch shuru kar di. Yahan tak sab confirmed hai. Ab shuru hota hai, reportedly."
+  },
+  {
+   "id": "n1",
+   "g": "g3",
+   "beat": "n1",
+   "B": "न्यूयॉर्क टाइम्स के मुताबिक़, अमेरिकी अधिकारी मानते हैं कि सिंगापुर की चिप ख़रीदने वाली कंपनी मेगास्पीड की एक पूर्व एक्ज़ीक्यूटिव, चीन की इंटेलिजेंस के लिए काम करती थी।",
+   "A": "New York Times ke mutabiq, American officials maante hain ki Singapore ki chip kharidne wali company Megaspeed ki ek poorv executive, China ki intelligence ke liye kaam karti thi.",
+   "cap": "New York Times ke mutabiq, American officials maante hain ki Singapore ki chip kharidne wali company Megaspeed ki ek poorv executive, China ki intelligence ke liye kaam karti thi."
+  },
+  {
+   "id": "n2",
+   "g": "g3",
+   "beat": "n2",
+   "B": "वो मेमो पब्लिक नहीं है। चीन इसे सिरे से नकारता है।",
+   "A": "Wo memo public nahi hai. China ise sire se nakarta hai.",
+   "cap": "Wo memo public nahi hai. China ise sire se nakarta hai."
+  },
+  {
+   "id": "n3",
+   "g": "g4",
+   "beat": "n3",
+   "B": "इनका सरनेम भी हुआंग है, पर कोई रिश्ता नहीं। हाँ, सबसे पहले वही चेक हुआ।",
+   "A": "Inka surname bhi Huang hai, par koi rishta nahi. Haan, sabse pehle wahi check hua.",
+   "cap": "Inka surname bhi Huang hai, par koi rishta nahi. Haan, sabse pehle wahi check hua."
+  },
+  {
+   "id": "n4",
+   "g": "g4",
+   "beat": "n4",
+   "B": "मेगास्पीड पर पहले से जाँच चल रही है कि क्या उसने चीन के ग्राहकों तक चिप पहुँचाई। कंपनी इनकार करती है।",
+   "A": "Megaspeed par pehle se jaanch chal rahi hai ki kya usne China ke grahakon tak chip pahunchai. Company inkaar karti hai.",
+   "cap": "Megaspeed par pehle se jaanch chal rahi hai ki kya usne China ke grahakon tak chip pahunchai. Company inkaar karti hai."
+  },
+  {
+   "id": "e1",
+   "g": "g5",
+   "beat": "e1",
+   "B": "अब सबके बयान सुनिए। एनविडिया का बोर्ड: सीक्रेट्स लीक होने की कोई वजह नहीं दिखती। चीन: बिना सबूत की बदनामी। सिंगापुर: हमने उन्हें कभी जाँचा ही नहीं।",
+   "A": "Ab sabke bayaan suniye. Nvidia ka board: secrets leak hone ki koi wajah nahi dikhti. China: bina saboot ki badnaami. Singapore: humne unhe kabhi jaancha hi nahi.",
+   "cap": "Ab sabke bayaan suniye. Nvidia ka board: secrets leak hone ki koi wajah nahi dikhti. China: bina saboot ki badnaami. Singapore: humne unhe kabhi jaancha hi nahi."
+  },
+  {
+   "id": "e2",
+   "g": "g6",
+   "beat": "e2",
+   "B": "और अमेरिका का वो मेमो? किसी ने दिखाया नहीं। चार फ़ोल्डर, चार बयान, सबूत के चार ख़ाली ख़ाने।",
+   "A": "Aur America ka wo memo? Kisi ne dikhaya nahi. Chaar folder, chaar bayaan, saboot ke chaar khaali khaane.",
+   "cap": "Aur America ka wo memo? Kisi ne dikhaya nahi. Chaar folder, chaar bayaan, saboot ke chaar khaali khaane."
+  },
+  {
+   "id": "s1",
+   "g": "g7",
+   "beat": "s1",
+   "B": "आपको इससे क्या? आपके कई एआई ऐप उसी कंपनी की चिप पर चलते हैं।",
+   "A": "Aapko isse kya? Aapke kai AI app usi company ki chip par chalte hain.",
+   "cap": "Aapko isse kya? Aapke kai AI app usi company ki chip par chalte hain."
+  },
+  {
+   "id": "s2",
+   "g": "g7",
+   "beat": "s2",
+   "B": "इसीलिए सोमवार को प्री-मार्केट में शेयर क़रीब पाँच परसेंट गिरा। चिप एक, भाव रोज़ का।",
+   "A": "Isiliye somvaar ko pre-market mein share kareeb paanch percent gira. Chip ek, bhaav roz ka.",
+   "cap": "Isiliye somvaar ko pre-market mein share kareeb paanch percent gira. Chip ek, bhaav roz ka."
+  },
+  {
+   "id": "u1",
+   "g": "g8",
+   "beat": "u1",
+   "B": "अब सच-सच, क्या नहीं पता। कोई चार्ज नहीं लगा। किसी ने सबके सामने ये नहीं दिखाया कि वो चीन के लिए काम करती थी। और ये भी नहीं कि उन्होंने कोई सीक्रेट बताया।",
+   "A": "Ab sach-sach, kya nahi pata. Koi charge nahi laga. Kisi ne sabke saamne ye nahi dikhaya ki wo China ke liye kaam karti thi. Aur ye bhi nahi ki unhone koi secret bataya.",
+   "cap": "Ab sach-sach, kya nahi pata. Koi charge nahi laga. Kisi ne sabke saamne ye nahi dikhaya ki wo China ke liye kaam karti thi. Aur ye bhi nahi ki unhone koi secret bataya."
+  },
+  {
+   "id": "u2",
+   "g": "g9",
+   "beat": "u2",
+   "B": "यानी अभी तक: एक कन्फ़र्म्ड चिट्ठी, एक रिपोर्टेड मेमो, और एक बहुत लंबा, पता नहीं।",
+   "A": "Yaani abhi tak: ek confirmed chitthi, ek reported memo, aur ek bahut lamba, pata nahi.",
+   "cap": "Yaani abhi tak: ek confirmed chitthi, ek reported memo, aur ek bahut lamba, pata nahi."
+  },
+  {
+   "id": "r1",
+   "g": "g10",
+   "beat": "r1",
+   "B": "ऐसी ख़बर का एक ही नियम है: पहले देखो किसने कहा, फिर देखो सबूत कहाँ है।",
+   "A": "Aisi khabar ka ek hi niyam hai: pehle dekho kisne kaha, phir dekho saboot kahan hai.",
+   "cap": "Aisi khabar ka ek hi niyam hai: pehle dekho kisne kaha, phir dekho saboot kahan hai."
+  },
+  {
+   "id": "cta",
+   "g": "g11",
+   "beat": "cta",
+   "B": "ये उस दोस्त को भेजिए जो हर फ़ॉरवर्ड पर यक़ीन कर लेता है। लाइक, शेयर और सब्सक्राइब करिए, संदेश एक्सप्लेन्स को।",
+   "A": "Yeh us dost ko bhejiye jo har forward par yakeen kar leta hai. Like, share aur subscribe karein, Sandesh Explains.",
+   "cap": "Yeh us dost ko bhejiye jo har forward par yakeen kar leta hai. Like, share aur subscribe karein, Sandesh Explains."
+  }
+ ]
+}
