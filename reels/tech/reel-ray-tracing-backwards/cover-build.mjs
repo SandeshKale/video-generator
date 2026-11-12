@@ -1,27 +1,28 @@
-// Cover — grid-first rules (3:4 crop band, <=5 words, constant structure). Optical Bench palette: tungsten ground, matte-black card, chalk type, ice reflection ray.
-import { writeFileSync } from 'node:fs'; import { fileURLToPath } from 'node:url'; import { dirname, join } from 'node:path'; import { chromium } from 'playwright';
+// Cover v2 — hologram-hud palette (near-black navy, violet wireframe, lime = the one ray that counts). Grid-first: 3:4 crop band y 240-1680, <=5 words.
+import { writeFileSync, copyFileSync } from 'node:fs'; import { fileURLToPath } from 'node:url'; import { dirname, join } from 'node:path'; import { chromium } from 'playwright';
 const __dirname = dirname(fileURLToPath(import.meta.url)), A = '../../../assets/fonts/';
+const sph = (cx, cy, r) => { let s = ''; for (let i = 1; i < 6; i++) { const ry = r * Math.sin(i * Math.PI / 6), y = cy - r * Math.cos(i * Math.PI / 6), rx = Math.sqrt(r * r - (y - cy) ** 2); s += `<ellipse cx="${cx}" cy="${y}" rx="${rx}" ry="${rx * .22}" fill="none" stroke="#b9b2ff" stroke-opacity=".7" stroke-width="3"/>`; } for (let i = 0; i < 6; i++) s += `<ellipse cx="${cx}" cy="${cy}" rx="${r * Math.abs(Math.cos(i * Math.PI / 6))}" ry="${r}" fill="none" stroke="#b9b2ff" stroke-opacity=".7" stroke-width="3"/>`; return s + `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#eef0ff" stroke-width="5"/>`; };
 const html = `<!doctype html><meta charset=utf8><style>
 @font-face{font-family:Anton;src:url(${A}anton/anton-latin-400-normal.woff2);font-display:block}
-@font-face{font-family:Mono;font-weight:600;src:url(site3d/fonts/martian-600.woff2);font-display:block}
-:root{--tu:#ffc46b;--ink:#07080b;--ch:#eef2ee;--ice:#7fd6ff;--hot:#fffaf0}
-*{margin:0;box-sizing:border-box}
-body{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--tu)}
-.grid{position:absolute;inset:0;background:linear-gradient(rgba(7,8,11,.1) 2px,transparent 2px) 0 0/90px 90px,linear-gradient(90deg,rgba(7,8,11,.1) 2px,transparent 2px) 0 0/90px 90px}
-.card{position:absolute;left:60px;top:470px;width:960px;height:760px;background:var(--ink);border:10px solid var(--ch);box-shadow:16px 18px 0 rgba(7,8,11,.55);overflow:hidden}
+@font-face{font-family:Mono;src:url(${A}share-tech-mono/share-tech-mono-latin-400-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;position:relative;overflow:hidden;background:#070812}
+.dots{position:absolute;inset:0;background:radial-gradient(#4a4488 2.2px,transparent 2.6px) 0 0/54px 54px;opacity:.55}
 svg{position:absolute;left:0;top:0}
-.n{position:absolute;left:34px;top:30px;font:400 150px/.95 Anton;color:var(--ch);letter-spacing:-.005em}
-.n b{font-weight:400;color:var(--tu)}
-.tag{position:absolute;left:60px;top:1290px;padding:16px 28px;background:var(--ink);border:6px solid var(--ch);color:var(--ice);font:600 40px/1 Mono;letter-spacing:.08em}
-.face{position:absolute;left:770px;top:1290px;width:215px;height:215px;border-radius:50%;object-fit:cover;border:12px solid var(--ch);box-shadow:0 0 0 10px var(--ink)}
-</style><body><div class="grid"></div><div class="card"><svg width="940" height="740" viewBox="0 0 940 740">
-<defs><radialGradient id="g" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#9fb4d4"/><stop offset=".7" stop-color="#2b3548"/><stop offset="1" stop-color="#07080b"/></radialGradient><filter id="b"><feGaussianBlur stdDeviation="7"/></filter></defs>
-<g stroke="#eef2ee" stroke-opacity=".12" stroke-width="2">${Array.from({length:12},(_,i)=>`<path d="M0 ${380+i*34}H940"/>`).join('')}</g>
-<rect x="38" y="470" width="120" height="86" rx="10" fill="#20232b" stroke="#eef2ee" stroke-width="5"/><circle cx="168" cy="513" r="30" fill="#0a1630" stroke="#fffaf0" stroke-width="7"/>
-<path d="M198 513 L420 600" stroke="#fffaf0" stroke-width="12" filter="url(#b)" opacity=".8"/><path d="M198 513 L420 600" stroke="#fffaf0" stroke-width="7" stroke-linecap="round"/>
-<circle cx="470" cy="610" r="110" fill="url(#g)"/><circle cx="470" cy="610" r="110" fill="none" stroke="#eef2ee" stroke-width="4" opacity=".5"/>
-<path d="M436 506 L690 392" stroke="#7fd6ff" stroke-width="12" filter="url(#b)" opacity=".85"/><path d="M436 506 L690 392" stroke="#7fd6ff" stroke-width="7" stroke-linecap="round"/><path d="M690 392 l-26 4 l12 22z" fill="#7fd6ff"/>
-<g transform="translate(700 270)"><rect width="190" height="330" fill="#14161d" stroke="#eef2ee" stroke-width="5"/>${Array.from({length:30},(_,i)=>{const r=Math.floor(i/5),c=i%5,on=((i*7+3)%5)<3;return on?`<rect x="${16+c*34}" y="${18+r*50}" width="20" height="28" fill="${i%4?'#ffc46b':'#7fd6ff'}"/>`:''}).join('')}<rect x="-10" y="-14" width="210" height="18" fill="#7fd6ff"/></g>
-</svg><div class="n">LIGHT<br><b>ULTI</b> CHALTI<br>HAI</div></div><div class="tag">RAY TRACING</div><img class="face" src="../../../prototypes/reel-app/public/profile.jpg"></body>`;
+.t{position:absolute;left:90px;top:250px;font:400 175px/.92 Anton;color:#eef0ff;letter-spacing:-.005em}.t b{font-weight:400;color:#b4f000}
+.tag{position:absolute;left:90px;top:1545px;padding:16px 26px;border:4px solid #b4f000;color:#b4f000;font:400 40px/1 Mono;letter-spacing:.12em;background:#070812}
+.chip{position:absolute;left:520px;top:1505px;height:130px;padding:0 30px 0 210px;display:flex;align-items:center;background:#0a0f1d;border:4px solid #b4f000;border-radius:8px;font:800 44px Inter,Arial;color:#eaffd0;white-space:nowrap}.chip i{color:#b4f000;font-style:normal}
+.face{position:absolute;left:505px;top:1480px;width:180px;z-index:2;height:180px;border-radius:50%;object-fit:cover;border:8px solid #b4f000;box-shadow:0 0 0 8px #070812}
+</style><body><div class="dots"></div><svg width="1080" height="1920" viewBox="0 0 1080 1920">
+<g transform="translate(0 360)"><defs><filter id="g"><feGaussianBlur stdDeviation="9"/></filter></defs>
+<ellipse cx="540" cy="1050" rx="520" ry="120" fill="none" stroke="#7c6cff" stroke-opacity=".6" stroke-width="3"/><ellipse cx="540" cy="1050" rx="380" ry="85" fill="none" stroke="#7c6cff" stroke-opacity=".4" stroke-width="3" stroke-dasharray="18 14"/>
+<g stroke="#7c6cff" stroke-width="3" fill="none" stroke-opacity=".9">${[0,1,2,3].map(i=>`<rect x="${760+i*0}" y="${700}" width="0" height="0"/>`).join('')}<path d="M740 1050V760h90v290M850 1050V680h110v370"/><path d="M740 900h90M740 830h90M850 800h110M850 880h110M850 960h110"/></g>
+${sph(430, 1000, 150)}
+<g filter="url(#g)"><path d="M120 760L400 880" stroke="#eef0ff" stroke-width="12"/><path d="M475 900L790 740" stroke="#b4f000" stroke-width="12"/></g>
+<path d="M120 760L400 880" stroke="#eef0ff" stroke-width="7" stroke-linecap="round"/><path d="M475 900L790 740" stroke="#b4f000" stroke-width="7" stroke-linecap="round"/>
+<g stroke="#eef0ff" stroke-width="5" fill="none"><path d="M120 735l-48 26 48 26z"/><circle cx="52" cy="761" r="16"/></g>
+<g stroke="#b4f000" stroke-width="5"><path d="M792 705l38 38M830 705l-38 38" transform="translate(0 0)"/></g>
+</g></svg><div class="t">LIGHT<br>ULTI<br><b>CHALTI</b><br>HAI</div>
+<div class="tag">RAY TRACING</div><img class="face" src="../../../assets/brand/nerdlogic-profile.jpg"><div class="chip">nerdlogic<i>.co</i></div></body>`;
 writeFileSync(join(__dirname, 'cover.html'), html);
-const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1080, height: 1920 } }); await p.goto('file://' + join(__dirname, 'cover.html')); await p.waitForTimeout(600); await p.screenshot({ path: join(__dirname, 'cover.png') }); await b.close(); console.log('cover.png');
+const b = await chromium.launch({ args: ['--no-sandbox'] }), p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+await p.goto('file://' + join(__dirname, 'cover.html')); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(400); await p.screenshot({ path: join(__dirname, 'cover.png') }); await b.close(); console.log('cover ok');
