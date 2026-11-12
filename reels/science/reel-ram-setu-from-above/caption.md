@@ -1,38 +1,36 @@
-# caption.md — "99.98% paani ke neeche" (Ram Setu from above, Hinglish, ~1 min 43 s)
+# caption.md — "99.98% paani ke neeche" (Ram Setu from above, v2: LiDAR Survey; Hinglish voice-over, ~102 s)
 
-## 1. Instagram caption (paste as is, ≈640 characters)
-Yeh us dost ko bhejiye jo har baat par bahas karta hai 👇
+Facts: the study's numbers are tier B (abstract as reported; the paper itself was not opened). Satellite image and photons are real NASA data and are credited below.
 
-Ramayana film Diwali pe aa rahi hai (reported). Par Rameswaram aur Mannar ke beech ki asli ret-patti ko satellite ne naapa hai. NASA ke ICESat-2 laser (Oct 2018 – Oct 2023) se ISRO ke vaigyanikon ne ~29 km ki shoals ki zanjeer ka 10 m resolution naksha banaya. Samundar ki satah ke upar sirf 0.02%, yaani 99.98% paani ke neeche. ESA ki tasveer ke saath ~48 km likha milta hai; shayad naapne ke chhor alag hain (meri samajh).
+## 1. Instagram caption (paste as is)
+Ram Setu: satellite ko asal mein kya dikhta hai, aur kya nahi? 👇
 
-Catch: study aakaar, gehrai aur matra (~1 km³) naapti hai. Yeh nahi batati ki ise kisne banaya, aur kisi kahani ki baat nahi karti.
+Ye video asli NASA data par bana hai: Palk Strait ki 30 m wali satellite tasveer (NASA HLS, Sentinel-2) aur ICESat-2 laser ke 2,16,000 asli photon returns, apni sahi jagah par. Study ke mutabik (reported): shoals ki zanjeer lagbhag 29 km lambi hai, uska sirf 0.02% hissa samundar ki satah se upar hai, aur data 2018 se 2023 ka hai. Study aakaar, gehrai aur matra naapti hai; ye nahi batati ki ise kisne banaya.
 
-🔊 Meri awaaz ka AI clone. Visuals illustrative.
-Sources: Scientific Reports 2024 (ISRO/NRSC, ICESat-2) as reported by ThePrint; ESA Sentinel-2 image, 21 Jun 2024.
+Ye us dost ko bhejiye jo har baat par bahas karta hai.
+Follow karein: nerdlogic.co
+🔊 Meri awaaz ka AI clone. Script, research aur edit mere hain; Claude se help li.
+Credit: NASA GIBS / HLS (Copernicus Sentinel-2 data), ICESat-2 data via NASA NSIDC. Seabed relief, gauge, satellite model aur arrows illustrative hain.
 
-#RamSetu #ISRO #SatelliteImagery #ScienceExplained #SandeshExplains
+#RamSetu #ICESat2 #SatelliteData #ScienceExplained #nerdlogic
 
 ## 2. Hashtags (top 5)
 | Tag | Role | Why |
 |---|---|---|
-| #RamSetu | topic / audience | the name people search |
-| #ISRO | audience | the agency behind the study |
-| #SatelliteImagery | niche keyword | what the reel shows |
-| #ScienceExplained | broad topic | explainer audience |
-| #SandeshExplains | series | groups the channel's reels |
+| #RamSetu | topic | what viewers search |
+| #ICESat2 | niche keyword | the laser satellite |
+| #SatelliteData | audience | data/science viewers |
+| #ScienceExplained | broad topic | explainer viewers |
+| #nerdlogic | series/brand | groups the channel |
 
-## 3. Not in the caption
-First comment: "Numbers are from the abstract of Dandabathula et al., Scientific Reports 14 (28 Jun 2024), DOI 10.1038/s41598-024-65908-2, as reported (I could not open the paper itself): ~29 km Dhanushkodi to Talaimannar, 0.02% above mean sea level, 0.2 million photons, 10 m grid, ICESat-2 laser reaches ~40 m. ~48 km is ESA's caption (Rameswaram Island to Mannar Island). The seabed shape and the satellite model are illustrative."
-Alt text (cover): "Orange cover: a dark survey-chart card with a huge 99.98% in white above teal contour lines, a white ridge line with orange laser dots and the word UNDERWATER; a RAM SETU tag below." (≈180 characters)
+## 3. First comment and alt text
+First comment: "Sources: NASA GIBS / HLS (Copernicus Sentinel-2 data), 15 Mar 2024, clouds filled for display. ICESat-2 ATL03 photons (NASA/NSIDC, via OpenAltimetry): 4 ground tracks, 24 beam-passes, 216,000 of 1,097,777 returns in the window shown. Study: Dandabathula et al., Scientific Reports 14 (2024) as reported (29 km, 0.02 %, 2018-2023, ~0.2 M photons, 10 m grid). Illustrative: seabed relief (from image brightness), the volume gauge, the satellite model, sediment arrows, vertical exaggeration x120. The video makes no claim about origin."
+Alt text (cover): "Satellite photo of the Palk Strait with a chain of pale sand shoals traced in amber between two islands, crossed by dotted laser tracks; title 99.98% UNDERWATER; nerdlogic.co logo." (about 190 characters)
 
-## 4. YouTube Shorts sheet
-- **Title (≤100):** Ram Setu satellite se: 99.98% paani ke neeche? (ISRO + NASA laser)
-- **Description:** Ramayana film ke saath Ram Setu phir charcha mein hai. Satellite asal mein kya bata sakta hai? NASA ICESat-2 laser, ISRO ka undersea naksha, 29 km vs 48 km ka farq, aur study kya naapti hai aur kya nahi.
-  Sources: Scientific Reports 2024 (as reported by ThePrint, 9 Jul 2024); ESA "Earth from Space: Adam's Bridge" (21 Jun 2024); NASA ICESat-2. Visuals illustrative. Voice: AI clone of the creator's voice.
-  Yeh us dost ko bhejiye jo har baat par bahas karta hai. Like, share aur subscribe karein, Sandesh Explains.
-  #RamSetu #ISRO #SatelliteImagery
-- **Tags:** Ram Setu, Adam's Bridge, ICESat-2, ISRO, satellite bathymetry, Palk Strait, Sentinel-2, Ramayana film, science explained Hindi, Hinglish explainer, Sandesh Explains
-- **Visibility:** Scheduled, evening 7:30 pm IST. **Audience:** not made for kids. **Altered or synthetic content:** Yes (AI-cloned voice, illustrative 3D scenes).
-- **Category:** Science & Technology. **Language:** Hindi (Hinglish). **Comments:** On.
-- **Pinned comment:** "Aapko kaunsa number surprise laga: 99.98%, 29 km ya 48 km? Sources description mein."
-- **Playlist:** "Science explained". **Remixing:** allow; Standard licence; paid promotion: No; Content ID: own synth audio, NASA/ESA imagery credited.
+## 4. YouTube Shorts sheet (Hindi reel: like, share, subscribe)
+- **Title:** Ram Setu: satellite ko asal mein kya dikhta hai? (असली NASA data)
+- **Description:** Palk Strait ki asli satellite tasveer aur ICESat-2 laser ke asli photon returns. Study ke mutabik shoals ki zanjeer lagbhag 29 km hai aur sirf 0.02% satah ke upar. Origin ke baare mein study kuch nahi kehti. Credit: NASA GIBS/HLS (Copernicus Sentinel-2), ICESat-2 (NASA NSIDC). Like, share aur subscribe karein: nerdlogic.co.
+- **Tags:** Ram Setu, Adam's Bridge, ICESat-2, NASA satellite, Palk Strait, satellite data, science explained hindi, nerdlogic
+- **Audience:** not made for kids. **Altered or synthetic content:** Yes (AI voice clone of the creator; relief, gauge and satellite model are illustrative).
+- **Category:** Science & Technology. **Language:** Hindi. **Comments:** on.
+- **Pinned comment:** "Real data: NASA HLS image + ICESat-2 photons. Illustrative parts are labelled on screen."

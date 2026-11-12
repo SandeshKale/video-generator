@@ -84,3 +84,34 @@ Cuts: <= 2 dips; every scene hands over by a continuous crane/tilt.
 
 ## 11. Schedule
 Approve script -> read the paper + ESA page and fix tiers -> Devanagari voice script + cloned-voice takes (CPU, ~1.5-3 h, start first) -> mockup stills in parallel -> build + lints -> render 2 slices -> frame review -> cover + caption.
+
+---
+# v2 rebuild (12 Nov 2026): LiDAR Survey look, real data, nerdlogic.co CTA
+Why: creator asked for a better visual strategy from the Lemo-Opuscar library ("search for a better visual strategy for ram setu reel"), real data where possible, more polished texturing and real-size assets, and a new spoken CTA with the new brand. Only the closing voice take (g12) was regenerated; every other take, word time and cue is the shipped voice.
+
+## Style (Lemo-Opuscar record)
+- **Slug:** `lidar-survey`. **Runner-up:** `satellite-briefing` (real imagery + hairline measurements, but no volume).
+- **Why it fits (topic type: science explainer of a real phenomenon; shape: obstacle, method, honest limit):** the film is about a laser satellite turning photon returns into a measured map; the style's native moves are exactly that (photo to points, the section, the survey window, hairline readings, one accent for what was measured).
+- **Invariants kept:** (1) cold near-black ground, one desaturated cloud ramp and one amber accent for what was found and measured; (2) the cloud is the data (every photon is a real return at its real position; fronts and planes decide what is lit, never a crossfade); (3) hairline instruments, one reading at a time, a corner instrument strip that changes only when the medium does, subtitles in a quiet strip.
+- **Adapted (our rules win):** vertical 1080x1920 at 30 fps; the plate is rotated 90 degrees so the 93 x 44 km survey fills a portrait frame; authored cinematic shots only (locked, crane, follow-cam on the satellite, orbit); no people; Hinglish voice and captions; honesty labels on everything illustrative; Barlow Condensed + IBM Plex Mono + Inter (the style asks for exactly these roles).
+
+## Benchmark to beat (previous = `reel-ram-setu-from-above` v1 "Survey Sheet")
+v1: schematic coast + procedural seabed, 6,000 invented photons, flat card chart. v2 does what v1 did not: (1) **the plate is a real 30 m NASA HLS (Copernicus Sentinel-2) image of the strait**, clouds painted out and disclosed, draped on an image-derived relief with raking sun and contours (1 world unit = 1 km, true scale); (2) **216,000 real ICESat-2 ATL03 photons** (4 ground tracks x 6 beams, 1,097,777 returns in the window in those four cycles) at their real longitude/latitude, with a side-on profile of one real beam; (3) the 29 km and 48 km figures are drawn as hairline rulers on the real image (the straight Rameswaram-north-cape to Mannar-coast line measures 48.9 km on the plate, the traced chain 29-ish km); (4) a new CTA take and the nerdlogic.co end card.
+
+## What is real and what is not (printed on screen)
+- REAL: the satellite image (NASA GIBS / HLS, 15 Mar 2024), every photon position and its height above the local sea surface, the ruler geometry (measured on that image), the photon counts.
+- ILLUSTRATIVE (labelled): the seabed relief (derived from image brightness, not survey depths), the 99.98 / 0.02 % gauge (schematic), the satellite model (stand-in, not to scale), the sediment arrows (study's direction, reported), vertical exaggeration x120 (x720 in the profile).
+- REPORTED (study, tier B): 29 km, 0.02 %, 2018-2023, ~0.2 million photons, 10 m grid, ~40 m depth, +-1.5 km undulating zone, ~1 km3, asymmetric slopes.
+- NOT achievable here and said so on screen: a photon-derived seabed. Our own histogram estimators returned only surface scatter, so the "photons below the surface" profile is shown honestly ("few returns from the bottom, the study filtered 5 years").
+
+## Asset families (>= 8)
+real NASA imagery plate; real ICESat-2 point cloud (WebGL points, deterministic); procedural relief + contour shader (three.js); PBR satellite stand-in with HDR environment; bespoke 3D instruments (rulers, gauge, section/depth ladder, arrows, survey window, scale bar); labels as 3D sprites placed in screen space; cloned voice; synth score + event SFX; kinetic captions; nerdlogic.co end card.
+
+## New technique
+Photo-to-points with a scan front (the plate is the photo ahead of nothing and the relief + real photons behind the front), real photon cloud driven by per-track fronts (the satellite stand-in sweeps its own track and the returns appear behind it), and a normal-from-heightfield shader (no derivative flicker).
+
+## Shot list (authored; `time | move | motivation`)
+0.0 locked nadir, front sweeps, headline | 4.6-10.6 crane-down + yaw to the chain | the chain is the subject | 14.5 locked nadir (S1) | 22.4 locked then tilt (S2) | 31.0 follow-cam on the satellite (damped), crane-up after the pass (S3) | 45.5 locked oblique with two rulers (S4) | 59.5 locked side-on profile, orbit, crane to top-down (S5) | 78 locked survey window (S6) | 86 locked, crane-up, end card (S7).
+
+## Validation (12 Nov 2026)
+`label-lint` 0 findings (0.25 s), `overlay-lint` 0 findings (0.5 s), stills of every scene at several times, mix: see `audio/mix-report.json`. Voice and mix not auditioned by ear; "nerd logic dot C O" is what Whisper heard in the new take (it should be heard once by a person).
