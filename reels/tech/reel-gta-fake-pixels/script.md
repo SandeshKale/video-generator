@@ -96,8 +96,8 @@ New here: (1) **a real glass-render look** (transmission, dispersion, strip-ligh
 "ILLUSTRATIVE · NEON COAST IS A MADE-UP CITY" (scene 1 and 12 kicker) · "NVIDIA CLAIM" (15/16, up to 5 frames) · "CARS: AVG, REPORTED" · "PAPER MATH" for 36 lakh x · "SIMPLIFIED" on the controller timeline · "NOT CONFIRMED BY ROCKSTAR".
 
 ## Status
-- [ ] Creator approves script + style (this file)
-- [ ] Devanagari spoken text + voice A/B (enthusiasm) + gate
-- [ ] Mockup (3 scenes) approved
-- [ ] Full build, lints (label-lint 0, overlay-lint 0), render, cover, caption, CLAUDE.md entry
+- [x] Creator approved script + style + mockup
+- [x] Devanagari spoken text + voice (no A/B: creator supplied no reference)
+- [x] Mockup (3 scenes) approved
+- [x] Full build, overlay-lint 0, render, cover, caption, CLAUDE.md entry
 - Cold-read gate: **not ticked** (no fresh reviewer run; creator is the reviewer at this step).
