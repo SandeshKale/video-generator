@@ -21,3 +21,9 @@
 
 ## To verify before the full build
 1. Read the Scientific Reports paper (open access) for exact length, depths, channel count, slopes. 2. ESA's own page for the Sentinel-2 image date and credit line (Copernicus Sentinel data, ESA). 3. ICESat-2: six beams in three pairs, orbit altitude (NASA ICESat-2 page) before drawing them.
+
+## v2 real-data pass (12 Nov 2026, for the LiDAR Survey rebuild)
+- **ICESat-2 ATL03 photons (tier A, NASA/NSIDC via OpenAltimetry, no login):** `fetch_photons.py` pulled all six beams for the four reference ground tracks that cross the strait (RGT 0081, 0150, 0523, 1095; 113 passes, Nov 2018 - Jun 2026; 1.1 GB raw, not committed). Photons are (lat, lon, WGS84 ellipsoid height) with confidence classes. Sea surface sits at about -95.7 m ellipsoid height (geoid). Track 0523 (lon 79.69-79.78) shows the Sri Lankan land edge (Mannar island, ~+3 m above sea) at lat 9.06-9.10; tracks 0081/0150/1095 cross the chain itself.
+- **What did NOT work:** a seabed depth estimator on the photons (`process_photons.py`, v1 histogram mode, v2 contiguous-layer test) returned only surface scatter. A bathymetric DEM from ATL03 needs the careful curated processing the paper used; those depths are therefore NOT derived here and must stay REPORTED (paper) or schematic.
+- **Real satellite image (tier A, NASA GIBS, HLS Sentinel-2 30 m, 15 Mar 2024, bbox 79.15-80.00 E, 9.00-9.40 N):** `imagery/hls_2024-03-15.jpg`; shows Pamban/Rameswaram island, the chain of pale sand shoals and the Mannar island coast. Credit line: "NASA GIBS / HLS (Copernicus Sentinel-2 data)". Clouds sit over both islands.
+- ETOPO 2022 15-arcsec tiles for this area were not reachable (THREDDS 404, ERDDAP 503).
