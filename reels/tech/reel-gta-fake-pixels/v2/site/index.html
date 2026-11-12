@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Gali ka Game</title>
+<style>
+@font-face{font-family:Fredoka;font-weight:600;src:url(fonts/fredoka-latin-600-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Fredoka;font-weight:700;src:url(fonts/fredoka-latin-700-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Caveat;font-weight:700;src:url(fonts/caveat-latin-700-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2) format('woff2');font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2) format('woff2');font-display:block}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#1b2350}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#ui{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+#cap{position:absolute;left:156px;width:768px;top:1350px;text-align:center}
+</style></head><body><canvas id="gl" width="1080" height="1920"></canvas><div id="ui"><div id="cap"></div></div>
+<script src="three-gltf-r160.min.js"></script><script src="rough.min.js"></script><script src="captions.js"></script>
+<script>
+Promise.all(['600 20px Fredoka','700 20px Fredoka','700 20px Caveat','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f);})).catch(function(){}).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>
