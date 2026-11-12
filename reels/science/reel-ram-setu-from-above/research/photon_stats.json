@@ -1,0 +1,198 @@
+{
+ "tracks": {
+  "0": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt1r",
+   "n_in_window": 76263,
+   "kept": 9000,
+   "sea_surface_m": -95.75
+  },
+  "1": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt2r",
+   "n_in_window": 80258,
+   "kept": 9000,
+   "sea_surface_m": -95.65
+  },
+  "2": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt1l",
+   "n_in_window": 77533,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "3": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt2l",
+   "n_in_window": 53089,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "4": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt3l",
+   "n_in_window": 33750,
+   "kept": 9000,
+   "sea_surface_m": -95.65
+  },
+  "5": {
+   "rgt": "0081",
+   "date": "2019-10-02",
+   "beam": "gt3r",
+   "n_in_window": 44171,
+   "kept": 9000,
+   "sea_surface_m": -95.65
+  },
+  "6": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt1r",
+   "n_in_window": 50379,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "7": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt2r",
+   "n_in_window": 72808,
+   "kept": 9000,
+   "sea_surface_m": -95.95
+  },
+  "8": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt1l",
+   "n_in_window": 29742,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "9": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt2l",
+   "n_in_window": 28017,
+   "kept": 9000,
+   "sea_surface_m": -95.95
+  },
+  "10": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt3l",
+   "n_in_window": 26932,
+   "kept": 9000,
+   "sea_surface_m": -95.95
+  },
+  "11": {
+   "rgt": "0150",
+   "date": "2020-04-05",
+   "beam": "gt3r",
+   "n_in_window": 47727,
+   "kept": 9000,
+   "sea_surface_m": -95.95
+  },
+  "12": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt1r",
+   "n_in_window": 17977,
+   "kept": 9000,
+   "sea_surface_m": -95.95
+  },
+  "13": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt2r",
+   "n_in_window": 21668,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "14": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt1l",
+   "n_in_window": 56753,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "15": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt2l",
+   "n_in_window": 45495,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "16": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt3l",
+   "n_in_window": 63169,
+   "kept": 9000,
+   "sea_surface_m": -95.85
+  },
+  "17": {
+   "rgt": "0523",
+   "date": "2019-08-01",
+   "beam": "gt3r",
+   "n_in_window": 21508,
+   "kept": 9000,
+   "sea_surface_m": -95.75
+  },
+  "18": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt1r",
+   "n_in_window": 29227,
+   "kept": 9000,
+   "sea_surface_m": -95.55
+  },
+  "19": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt2r",
+   "n_in_window": 31702,
+   "kept": 9000,
+   "sea_surface_m": -95.65
+  },
+  "20": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt1l",
+   "n_in_window": 47700,
+   "kept": 9000,
+   "sea_surface_m": -95.55
+  },
+  "21": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt2l",
+   "n_in_window": 76502,
+   "kept": 9000,
+   "sea_surface_m": -95.55
+  },
+  "22": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt3l",
+   "n_in_window": 39356,
+   "kept": 9000,
+   "sea_surface_m": -95.65
+  },
+  "23": {
+   "rgt": "1095",
+   "date": "2020-06-06",
+   "beam": "gt3r",
+   "n_in_window": 26051,
+   "kept": 9000,
+   "sea_surface_m": -95.75
+  }
+ },
+ "points": 216000,
+ "window_photons_total": 1097777
+}
