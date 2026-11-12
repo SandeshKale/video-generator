@@ -1,0 +1,138 @@
+{
+ "title": "Game ke pixels (GTA world, ray tracing + DLSS)",
+ "format": "1080x1920",
+ "version": 1,
+ "pause_after": {
+  "m1": 0.95
+ },
+ "sentences": [
+  {
+   "id": "h1",
+   "g": "g1",
+   "beat": "hook",
+   "B": "जीटीए सिक्स, उन्नीस नवंबर! पर सुनो, एनवीडिया का दावा है, कुछ गेम्स में तस्वीर के सोलह में से पंद्रह पिक्सल असली होते ही नहीं!",
+   "A": "GTA 6, unnees november! Par suno, NVIDIA ka daawa hai, kuch games mein tasveer ke solah mein se pandrah pixel asli hote hi nahi!",
+   "cap": "GTA 6, unnees november! Par suno, NVIDIA ka daawa hai, kuch games mein tasveer ke solah mein se pandrah pixel asli hote hi nahi!"
+  },
+  {
+   "id": "p1",
+   "g": "g2",
+   "beat": "plant",
+   "B": "तो गाड़ी के नीचे पडल में वो बिल्डिंग कौन बनाता है? चलो, बच्चों की तरह समझते हैं!",
+   "A": "Toh gaadi ke neeche puddle mein woh building kaun banata hai? Chalo, bachchon ki tarah samjhte hain!",
+   "cap": "Toh gaadi ke neeche puddle mein woh building kaun banata hai? Chalo, bachchon ki tarah samjhte hain!"
+  },
+  {
+   "id": "r1",
+   "g": "g3",
+   "beat": "light",
+   "B": "पहले ये: पडल में बिल्डिंग क्यों दिखती है? टॉर्च को शीशे पर मारो, रोशनी उछलती है! बस यही रिफ़्लेक्शन है!",
+   "A": "Pehle yeh: puddle mein building kyun dikhti hai? Torch ko sheeshe par maaro, roshni uchhalti hai! Bas yehi reflection hai!",
+   "cap": "Pehle yeh: puddle mein building kyun dikhti hai? Torch ko sheeshe par maaro, roshni uchhalti hai! Bas yehi reflection hai!"
+  },
+  {
+   "id": "b1",
+   "g": "g4",
+   "beat": "but",
+   "B": "पर कंप्यूटर के लिए? एक सूरज से अरबों किरणें, हर किरण कई बार उछलती है! सबको फ़ॉलो करना? नामुमकिन!",
+   "A": "Par computer ke liye? Ek sooraj se arbon kirnein, har kiran kai baar uchhalti hai! Sabko follow karna? Naamumkin!",
+   "cap": "Par computer ke liye? Ek sooraj se arbon kirnein, har kiran kai baar uchhalti hai! Sabko follow karna? Naamumkin!"
+  },
+  {
+   "id": "b2",
+   "g": "g5",
+   "beat": "therefore",
+   "B": "तो कंप्यूटर उल्टा चलता है! आँख से एक किरण भेजो, हर पिक्सल के लिए एक, जहाँ टकराए, वहाँ का रंग उठा लो! इसे कहते हैं रे ट्रेसिंग!",
+   "A": "Toh computer ulta chalta hai! Aankh se ek kiran bhejo, har pixel ke liye ek, jahan takraye, wahan ka rang utha lo! Ise kehte hain ray tracing!",
+   "cap": "Toh computer ulta chalta hai! Aankh se ek kiran bhejo, har pixel ke liye ek, jahan takraye, wahan ka rang utha lo! Ise kehte hain ray tracing!"
+  },
+  {
+   "id": "s1",
+   "g": "g6",
+   "beat": "scale",
+   "B": "पर फ़ोर के स्क्रीन में तिरासी लाख पिक्सल हैं! हर पिक्सल की कई किरणें, और हर सेकंड साठ बार! पिक्सार की कार्स का एक फ़्रेम, सत्रह घंटे! गेम को मिलता है, सेकंड का साठवाँ हिस्सा! यानी छत्तीस लाख गुना तेज़!",
+   "A": "Par 4K screen mein tiraasi lakh pixel hain! Har pixel ki kai kirnein, aur har second saath baar! Pixar ki Cars ka ek frame, sattrah ghante! Game ko milta hai, second ka saathva hissa! Yaani chhattis lakh guna tez!",
+   "cap": "Par 4K screen mein tiraasi lakh pixel hain! Har pixel ki kai kirnein, aur har second saath baar! Pixar ki Cars ka ek frame, sattrah ghante! Game ko milta hai, second ka saathva hissa! Yaani chhattis lakh guna tez!"
+  },
+  {
+   "id": "s2",
+   "g": "g7",
+   "beat": "dark",
+   "B": "सीधा हिसाब? नामुमकिन। तो जीपीयू ने किया जुगाड़! एक नहीं, तीन!",
+   "A": "Seedha hisaab? Naamumkin. Toh GPU ne kiya jugaad! Ek nahi, teen!",
+   "cap": "Seedha hisaab? Naamumkin. Toh GPU ne kiya jugaad! Ek nahi, teen!"
+  },
+  {
+   "id": "c1",
+   "g": "g8",
+   "beat": "cheat1",
+   "B": "जुगाड़ एक: कम किरणें! बस थोड़े डॉट्स, धुंधली तस्वीर। फिर एआई आर्टिस्ट डॉट्स जोड़कर पूरी तस्वीर बना देता है, बिल्कुल डॉट टू डॉट जैसा! इसे कहते हैं रे रिकंस्ट्रक्शन!",
+   "A": "Jugaad ek: kam kirnein! Bas thode dots, dhundhli tasveer. Phir AI artist dots jodkar poori tasveer bana deta hai, bilkul dot to dot jaisa! Ise kehte hain Ray Reconstruction!",
+   "cap": "Jugaad ek: kam kirnein! Bas thode dots, dhundhli tasveer. Phir AI artist dots jodkar poori tasveer bana deta hai, bilkul dot to dot jaisa! Ise kehte hain Ray Reconstruction!"
+  },
+  {
+   "id": "c2",
+   "g": "g9",
+   "beat": "cheat2",
+   "B": "जुगाड़ दो: छोटी तस्वीर बनाओ! चार में से सिर्फ़ एक पिक्सल! फिर एआई उसे बड़ा करके शार्प कर देता है, जैसे छोटे स्टिकर को बड़े पोस्टर में! ये है डीएलएसएस सुपर रेज़ोल्यूशन!",
+   "A": "Jugaad do: chhoti tasveer banao! Chaar mein se sirf ek pixel! Phir AI use bada karke sharp kar deta hai, jaise chhote sticker ko bade poster mein! Yeh hai DLSS Super Resolution!",
+   "cap": "Jugaad do: chhoti tasveer banao! Chaar mein se sirf ek pixel! Phir AI use bada karke sharp kar deta hai, jaise chhote sticker ko bade poster mein! Yeh hai DLSS Super Resolution!"
+  },
+  {
+   "id": "c3",
+   "g": "g10",
+   "beat": "cheat3",
+   "B": "जुगाड़ तीन: फ़्लिप बुक! आप एक फ़्रेम बनाओ, एआई बीच के फ़्रेम खुद बनाता है! एनवीडिया कहता है, एक असली फ़्रेम के पीछे पाँच तक! मल्टी फ़्रेम जनरेशन!",
+   "A": "Jugaad teen: flip book! Aap ek frame banao, AI beech ke frame khud banata hai! NVIDIA kehta hai, ek asli frame ke peeche paanch tak! Multi Frame Generation!",
+   "cap": "Jugaad teen: flip book! Aap ek frame banao, AI beech ke frame khud banata hai! NVIDIA kehta hai, ek asli frame ke peeche paanch tak! Multi Frame Generation!"
+  },
+  {
+   "id": "m1",
+   "g": "g11",
+   "beat": "sum",
+   "B": "अब तीनों जोड़ो: फ़ोर के के तैंतीस मिलियन पिक्सल में से सिर्फ़ दो मिलियन असली! बाकी सोलह में से पंद्रह, एआई! एनवीडिया का दावा है।",
+   "A": "Ab teeno jodo: 4K ke taintees million pixel mein se sirf do million asli! Baaki solah mein se pandrah, AI! NVIDIA ka daawa hai.",
+   "cap": "Ab teeno jodo: 4K ke taintees million pixel mein se sirf do million asli! Baaki solah mein se pandrah, AI! NVIDIA ka daawa hai."
+  },
+  {
+   "id": "k1",
+   "g": "g12",
+   "beat": "catch",
+   "B": "पर कैच! एआई वाले फ़्रेम ने आपका बटन प्रेस देखा ही नहीं! इसलिए लैग आता है। एनवीडिया का जवाब, रिफ़्लेक्स।",
+   "A": "Par catch! AI wale frame ne aapka button press dekha hi nahi! Isliye lag aata hai. NVIDIA ka jawab, Reflex.",
+   "cap": "Par catch! AI wale frame ne aapka button press dekha hi nahi! Isliye lag aata hai. NVIDIA ka jawab, Reflex."
+  },
+  {
+   "id": "k2",
+   "g": "g13",
+   "beat": "limit",
+   "B": "और जीटीए सिक्स कंसोल पर है, डीएलएसएस एनवीडिया के पीसी का है, रॉकस्टार ने ये सब कन्फ़र्म नहीं किया!",
+   "A": "Aur GTA 6 console par hai, DLSS NVIDIA ke PC ka hai, Rockstar ne yeh sab confirm nahi kiya!",
+   "cap": "Aur GTA 6 console par hai, DLSS NVIDIA ke PC ka hai, Rockstar ne yeh sab confirm nahi kiya!"
+  },
+  {
+   "id": "e1",
+   "g": "g14",
+   "beat": "payoff",
+   "B": "तो अगली बार जब पडल में बिल्डिंग दिखे, याद रखना: कुछ किरणें असली, बाकी एआई का अंदाज़ा! और वो भी साठ बार हर सेकंड!",
+   "A": "Toh agli baar jab puddle mein building dikhe, yaad rakhna: kuch kirnein asli, baaki AI ka andaza! Aur woh bhi saath baar har second!",
+   "cap": "Toh agli baar jab puddle mein building dikhe, yaad rakhna: kuch kirnein asli, baaki AI ka andaza! Aur woh bhi saath baar har second!"
+  },
+  {
+   "id": "f1",
+   "g": "g15",
+   "beat": "cta1",
+   "B": "ये उस दोस्त को भेजो जो कहता है गेम में सब असली है!",
+   "A": "Yeh us dost ko bhejo jo kehta hai game mein sab asli hai!",
+   "cap": "Yeh us dost ko bhejo jo kehta hai game mein sab asli hai!"
+  },
+  {
+   "id": "cta",
+   "g": "g16",
+   "beat": "cta",
+   "B": "लाइक, शेयर और सब्सक्राइब करें, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "Like, share aur subscribe karein, nerdlogic.co ko.",
+   "cap": "Like, share aur subscribe karein, nerdlogic.co ko."
+  }
+ ]
+}
