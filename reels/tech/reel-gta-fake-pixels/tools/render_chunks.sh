@@ -8,4 +8,4 @@ one() { n=$1; a=$(python3 -c "print(round($DUR*$n/$N,3))"); b=$(python3 -c "prin
 export -f one; export DUR N W R ROOT
 seq 0 $((N-1)) | xargs -P2 -I{} bash -c 'one {}'
 : > $W/list.txt; for n in $(seq 0 $((N-1))); do echo "file '$W/c$n.mp4'" >> $W/list.txt; done
-ffmpeg -y -v error -f concat -safe 0 -i $W/list.txt -i "$R/audio/final.wav" -map 0:v -map 1:a -c:v libx264 -preset medium -crf 24 -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -shortest -movflags +faststart "$R/reel.mp4" && ls -la "$R/reel-v2.mp4" && echo ALLDONE
+ffmpeg -y -v error -f concat -safe 0 -i $W/list.txt -i "$R/audio/final.wav" -map 0:v -map 1:a -c:v libx264 -preset medium -crf 24 -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -shortest -movflags +faststart "$R/reel.mp4" && ls -la "$R/reel.mp4" && echo ALLDONE
