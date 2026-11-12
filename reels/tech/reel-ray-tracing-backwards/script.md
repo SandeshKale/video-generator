@@ -96,3 +96,19 @@ Cuts: <= 2 dips; scenes hand over by a continuous move.
 
 ## 11. Schedule
 Approve script -> read Whitted, NVIDIA whitepaper, Christensen; fix tiers -> Devanagari voice + cloned takes (start first) -> mockup stills in parallel -> build + lints -> render 2 slices -> frame review -> cover + caption.
+
+---
+# v2 rebuild (12 Nov 2026): Hologram HUD look, nerdlogic.co CTA
+Why: creator asked to repeat the Opuscar style process for this reel, plus the new spoken CTA and rebrand. Only the closing voice take is replaced (the final "yeh us dost ko..." sentence becomes its own take `g13`; the `g12` closing line "agli baar puddle mein..." is trimmed from the shipped take, not regenerated).
+
+## Style (Lemo-Opuscar record)
+- **Slug:** `hologram-hud`. **Runner-up:** `glass-product` (light and glass in a dark-field studio, but a product-launch grammar and a premium-PBR look we already used in v1); `blueprint` rejected (2D only, "3D rendering never").
+- **Why it fits (topic type: how a device/technique works; shape: reversal + mechanism chain):** the script is rays and boxes. The style's moves map one to one: **scan growth** = the puddle street scanned into light (hook), **target lock + rolling value** = the primary ray locking onto its pixel/hit point (PRIMARY RAY), **teardown one layer deeper** = the BVH built level by level, **rolling digits as the payoff** = 27 boxes per ray, ~80 rays per pixel, the 10 giga-rays claim, **chip accumulation** = the history dates, **solid hologram once** = the denoised final image.
+- **Invariants kept:** (1) the subject is always a line wireframe made of light on a projector pad above a fading dot grid, never a rendered object; (2) one cold hue + one accent that is spent only on locked values (a number or ray turns accent colour at the frame it becomes true); (3) text lives on dark plates, rolling values lock right to left at 24 fps with glyph scramble, targets snap in oversized at 45 degrees and flash on the downbeat.
+- **Adapted (our rules win):** palette violet `#7c6cff` + lime `#b4f000` (lime = the nerdlogic.co brand, spent only on what is locked); Rajdhani + Share Tech Mono (+ Inter for captions); vertical 1080x1920 at 30 fps; authored camera only; no people; the previous reel's "Optical Bench" PBR look and its planar-puddle/path-tracer shader scenes are replaced, except the real shader path tracer panels (1 / 8 / 64 rays), which stay as the one honest "real render" family inside the hologram frame.
+
+## Benchmark to beat (previous = v1 "Optical Bench")
+v1 was a premium PBR bench with eleven dip-cut scenes. v2: (1) one continuous projector-pad world instead of dip cuts between 8 of 11 scenes (the pad, the dot grid and the HUD frame never leave); (2) every claim is a number that *rolls* and turns lime when locked; (3) the BVH is built live from real triangle data (levels appear one by one, one hot path in lime); (4) CTA + brand per the new rule.
+
+## Mockup (12 Nov 2026, three scenes for approval): `mockup-light-scan.png`
+A puddle street scanned into light with the off-screen tower and its reflection; one primary ray locking onto its pixel with a bounce to the building; the BVH on a torus knot. Not yet built: the other eight scenes, the 1/8/64 real path-tracer panels inside the HUD frame, the history chips, the end card.

@@ -81,3 +81,5 @@ Bodoni Moda (700, 800) — Copyright 2020 The Bodoni Moda Project Authors (https
 Familjen Grotesk (600, 700) — Copyright 2019 The Familjen Grotesk Project Authors, and Fragment Mono (400) — Copyright 2021 The Fragment Mono Project Authors; both SIL Open Font License 1.1, via @fontsource.
 
 Bungee (Copyright 2016 The Bungee Project Authors, David Jonathan Ross) and Special Elite (Copyright 2010 Astigmatic, Brian J. Bonislawsky) are licensed under the SIL Open Font License 1.1 (same terms as above); vendored via @fontsource.
+
+Rajdhani (Indian Type Foundry) and Share Tech Mono (Carrois Apostrophe): SIL OFL 1.1, vendored via @fontsource on 12 Nov 2026.
