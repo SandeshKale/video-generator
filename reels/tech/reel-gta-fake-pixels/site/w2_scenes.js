@@ -150,7 +150,7 @@ SCN[11] = function (t) { showHero(false); big.style.fontSize = '150px'; var tk2 
     ctlSlides.forEach(function (c, i) { c.material.color.set(i % 3 === 0 ? AMB : ROSE).multiplyScalar(i % 3 === 0 ? 1.6 : .8); });
     lab(0, 'ASLI FRAME', P(-1.9, -1.0, 0), AMBs, 1); lab(1, 'AI FRAME<br>BUTTON NAHI DEKHTA', P(0.0, -1.0, 0), ROSEs, t > tp ? 1 : 0); lab(2, 'LAG', P(1.9, -1.0, 0), '#f1f3f8', t > tr ? pop(t, tr, .4) : 0);
     return { k: 'CATCH', title: 'BUTTON PRESS?', sub: 'AI FRAME NE AAPKA BUTTON DEKHA HI NAHI · LAG · NVIDIA KA JAWAB: REFLEX', op: pop(t, SC[11] + .3), tag: 'SIMPLIFIED · NOT A MEASUREMENT OF ANY GAME' }; }
-  gCases.visible = true; var tg = pop(t, tk2, .5); caseA.visible = true; lab(0, 'GTA VI<br>PS5 / XBOX · 19 NOV', P(-1.45, 1.6, 0), AMBs, tg); lab(1, 'DLSS<br>NVIDIA PC GPU', P(1.45, 1.6, 0), '#f1f3f8', tg); lab(2, 'ROCKSTAR NE YE<br>CONFIRM NAHI KIYA', P(0, -1.6, 0), ROSEs, t > WS('k2', 'रॉकस्टार|रॉकस्टार', 0) ? 1 : 0);
+  gCases.visible = true; gCases.scale.setScalar(.7); var tg = pop(t, tk2, .5); caseA.visible = true; lab(0, 'GTA VI<br>PS5 / XBOX · 19 NOV', P(-1.0, 1.25, 0), AMBs, tg); lab(1, 'DLSS<br>NVIDIA PC GPU', P(1.0, 1.25, 0), '#f1f3f8', tg); lab(2, 'ROCKSTAR NE YE<br>CONFIRM NAHI KIYA', P(0, -1.3, 0), ROSEs, t > WS('k2', 'रॉकस्टार|रॉकस्टार', 0) ? 1 : 0);
   return { k: 'HONEST LIMIT', title: 'CONSOLE ≠ PC', sub: 'GTA VI: PS5 · XBOX SERIES · PC DATE NAHI', op: tg, tag: 'ROCKSTAR HAS CONFIRMED ONLY A 30 FPS TARGET · NO PC DATE' }; };
 /* 13 reframe + end card */
 SCN[12] = function (t) { showHero(true); cityLit(1); hero.rotation.y = 0; var tc = S0('cta'); cells16.visible = false; car.position.x = lerp(-2.3, 2.3, ((t - SC[12]) % 9) / 9);
