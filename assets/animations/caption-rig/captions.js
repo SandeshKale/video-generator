@@ -4,6 +4,8 @@
  * words = [{w:'Black', t0: 0.12, t1: 0.41}, ...]  (seconds; the same timing.json word list the reels already build).
  * Layout rules baked in (CLAUDE.md): <= 2 lines per chunk, chunk breaks at sentence ends, dark scrim pill behind, off-white text (never #fff),
  * and the box is meant to sit inside the Instagram safe zone (x 150-918, above y 1536) — position the host element there yourself.
+ * PLAIN MODE (creator rule, 12 Nov 2026: captions too big, overlapping components, no border/background): pass {plain: true} for text only —
+ * no scrim, no chip, no border; the spoken word is tinted with o.hi (and pops slightly), the rest is off-white with a soft shadow; default size 40 px.
  * Fonts: Inter ExtraBold (assets/fonts/inter, weight 800) or Archivo 800/900 or Roboto 900 — load every face before __ready.
  */
 (function (g) {
@@ -30,9 +32,9 @@
   }
 
   function html(t, words, o = {}) {
-    const fs = o.fs || 64, width = o.width || 768, nLines = o.lines || 2, padX = Math.round(fs * .5);
+    const plain = !!o.plain, fs = o.fs || (plain ? 40 : 64), width = o.width || 768, nLines = o.lines || 2, padX = plain ? 0 : Math.round(fs * .5);
     const maxU = o.maxUnits || Math.floor((width - 2 * padX) / (fs * .6));            // e.g. 64 px in a 768 px box -> 11 units; use fs 56 for ~13
-    const chip = o.chip || '#ffd21f', chipInk = o.chipInk || '#161616', ink = o.ink || '#f1f3f8', dim = o.dim == null ? .72 : o.dim, kw = o.keywords || {};
+    const hi = o.hi || '#ffd21f', chip = o.chip || '#ffd21f', chipInk = o.chipInk || '#161616', ink = o.ink || '#f1f3f8', dim = o.dim == null ? .72 : o.dim, kw = o.keywords || {};
     const font = o.font || "'Inter','Archivo','Roboto',sans-serif", wt = o.weight || 800;
     const cs = o._cs || (o._cs = chunks(words, maxU, nLines));
     let ci = -1; for (let i = 0; i < cs.length; i++) if (t >= cs[i][0].t0 - (o.lead == null ? .05 : o.lead)) ci = i;
@@ -43,8 +45,10 @@
     const spans = layout(c, maxU).map((ln) => ln.map((w) => {
       const on = t >= w.t0 && t < w.t1 + .001, past = t >= w.t1, k = kw[strip(w.w)];
       const pop = on ? 1 + .07 * Math.sin(clamp((t - w.t0) / .14) * Math.PI) : 1;
+      if (plain) return `<span style="display:inline-block;margin:0 ${Math.round(fs * .12)}px;color:${on ? hi : (k || ink)};opacity:${on || past ? 1 : dim};transform:scale(${pop.toFixed(3)});transform-origin:50% 70%">${esc(w.w)}</span>`;
       return `<span style="display:inline-block;padding:2px ${Math.round(fs * .2)}px;margin:0 ${Math.round(fs * .04)}px;border-radius:${Math.round(fs * .26)}px;background:${on ? chip : 'transparent'};color:${on ? chipInk : (k || ink)};opacity:${on || past ? 1 : dim};transform:scale(${pop.toFixed(3)});transform-origin:50% 60%;${on ? 'text-shadow:none' : ''}">${esc(w.w)}</span>`;
     }).join('')).join('<br>');
+    if (plain) return `<div style="display:inline-block;max-width:100%;white-space:nowrap;text-align:center;font:${wt} ${fs}px/1.3 ${font};letter-spacing:0;opacity:${born.toFixed(3)};transform:translateY(${((1 - born) * 10).toFixed(1)}px);text-shadow:0 2px 10px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.95),0 1px 2px rgba(0,0,0,.9)">${spans}</div>`;
     return `<div style="display:inline-block;max-width:100%;white-space:nowrap;text-align:center;font:${wt} ${fs}px/1.3 ${font};letter-spacing:-.01em;padding:${Math.round(fs * .3)}px ${padX}px;border-radius:${Math.round(fs * .5)}px;background:rgba(8,10,20,${o.scrim == null ? .62 : o.scrim});opacity:${born.toFixed(3)};transform:translateY(${((1 - born) * 14).toFixed(1)}px);text-shadow:0 4px 12px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.8)">${spans}</div>`;
   }
   g.CAP = { html, chunks };

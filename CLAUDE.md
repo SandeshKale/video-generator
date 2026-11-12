@@ -1708,3 +1708,9 @@ Re-cut on the creator's request (12 Nov 2026: Opuscar process + new spoken CTA +
 - **Validated:** `overlay-lint` 0 (0.5 s); stills of every scene; frames of the final MP4. Mix −14.4 LUFS, voice over music+SFX median 40.9 dB, min 2.6 dB on soft word tails (SFX trimmed; below the 13 dB target; not auditioned). **The new CTA pronunciation ("nerd logic dot C O") needs one human listen.**
 - **Pitfall:** the first scene-9 layout let the roll plate cover the panel labels (found only on the final-MP4 frame, the lint cannot see roll sprites): check each scene's top plate against the content below it on frames.
 - **Headroom:** history scene is sparse; no real footage; scenes are dip-free but not one continuous camera path.
+
+## STANDING RULE — captions: small, plain, no border or background (user, 12 Nov 2026)
+*"The captions you are adding are too big, so they overlap with components of the reel. Remove the border/background added to the captions."*
+- **Plain text only:** no scrim, no pill, no chip, no border, no frosted slab (this overrides the `glass-product` style's frosted-glass subtitle bar). Use `CAP.html(t, words, { plain: true, hi: <reel accent>, ink: '#f1f3f8' })` from `assets/animations/caption-rig/captions.js`: the spoken word is tinted and pops slightly, the rest is off-white, with a soft dark text-shadow for legibility.
+- **Small:** 40 px by default (never above ~44 px), at most 2 lines in a 768 px box, kept below the content (content stays above y 1270, captions in the 1330-1450 band). A caption that touches any component is a bug: `overlay-lint` must stay at 0 with the caption box included.
+- Reels shipped before this rule (e.g. `reel-ray-tracing-backwards` v2, which uses a chip + scrim at 50 px) keep their captions unless the creator asks for a re-render.
