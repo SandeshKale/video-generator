@@ -88,7 +88,7 @@ var AURA = new T.Mesh(new T.PlaneGeometry(2.3, 3.5), new T.MeshBasicMaterial({ m
 (function () { var pts = [], n = 22; for (var i = 0; i <= n; i++) { var u = i / n; pts.push(new T.Vector2(4.6 * Math.pow(1 - u, .62) * (1 - .12 * u) + .55, u * 26)); }
   var m = new T.Mesh(new T.LatheGeometry(pts, 20, Math.PI / 2, Math.PI), new T.MeshStandardMaterial({ map: sTex, roughness: .92, side: T.DoubleSide, envMapIntensity: .35 })); m.position.set(-4.6, 18.3, 0); m.castShadow = m.receiveShadow = true; TEM.add(m);
   var am = new T.Mesh(new T.SphereGeometry(1.5, 20, 10, Math.PI, Math.PI), STONE); am.scale.y = .42; am.position.set(-4.6, 44.9, 0); TEM.add(am); cyl(.2, .5, 2.2, BRASS, -4.6, 46.6, -.3, TEM);
-  for (var s = 0; s < 4; s++) box(13.2 - s * 2.6, .9, 7.6 - s * 1.5, STONE, 7.6, 18.9 + s * .9, -4.2, TEM); cyl(.5, 1.1, 1.4, STONE, 7.6, 23.0, -4.2, TEM, 16); })();
+  for (var s = 0; s < 4; s++) box(9.6 - s * 2.0, .9, 7.6 - s * 1.5, STONE, 9.8, 18.9 + s * .9, -4.2, TEM); cyl(.5, 1.1, 1.4, STONE, 9.8, 23.0, -4.2, TEM, 16); })();
 // little oil lamp near the niche
 var lamp = new T.PointLight(0xff9a4a, .9, 6, 2); lamp.position.set(-7.3, 1.1, .1); S.add(lamp); cyl(.08, .12, .42, BRASS, -7.3, .7, -.1); var flame = new T.Mesh(new T.SphereGeometry(.04, 10, 8), new T.MeshBasicMaterial({ color: new T.Color(6, 2.6, .8) })); flame.position.set(-7.3, 1.0, -.1); S.add(flame);
 
@@ -229,7 +229,7 @@ var PO = {
   dust: { p: V(-1.3, 3.05, .5), l: V(-4.4, 2.3, -1.5) },
   wide: P([2.7, 6.9, -3], [.3, .15, 1], 90), wideUp: P([2.9, 10.5, -3], [.3, .12, 1], 74),
   top: P([3.1, 14.6, -2.6], [.34, .12, 1], 27), pipe1: P([3, 12.2, -4.2], [.3, .1, 1], 24), pipe2: P([3, 5.4, -4.2], [.3, .1, 1], 24),
-  lens: P([3, 9.8, -4.5], [.25, .06, 1], 13), ap: P([3, 17.3, -1.0], [.55, -.06, 1], 13),
+  lens: P([3, 9.8, -4.5], [.25, .06, 1], 13), ap: P([3, 18.7, -.5], [.5, .42, 1], 9.5),
   m4: P([1.4, 3.1, -2.2], [.25, .12, 1], 22), spot: P([-7.9, 1.72, -1.5], [1, .3, -.3], 4.2),
   sanct: P([-3.4, 2.0, -2], [.28, .12, 1], 38),
   cal: P([300, 3.0, 0], [0, .16, 1], 50), cal2: P([300, 2.7, 0], [0, .15, 1], 48),
@@ -287,7 +287,7 @@ tag(tD2 + 2.0, tD4 - .4, A(M1), '<small>mirror 1</small>catches the sunbeam', 17
 tag(tD2 + 2.4, tD4 - .4, A(V(4.75, 13.5, -1.9)), '<small>engineers</small>clean and align by hand', 560, 1010);
 tag(tD4 + 2.4, tE - .3, A(V(3, 10, -4.5)), '<small>brass pipe</small>black inside, no stray light', 500, 620);
 tag(tE + 1.6, tE2 - .4, A(LN1), '<small>lens</small>gathers the light', 560, 560);
-tag(tE2 + 1.6, tE3 - .4, A(AP), '<small>filter glass</small>stops the heat', 170, 700, 'v');
+tag(tE2 + 1.6, tE3 - .4, A(AP), '<small>filter glass</small>stops the heat', 170, 620, 'v');
 tag(tE5 + .2, tF - .4, function () { return SPOTP; }, '<small>the tilak</small>58 mm', 560, 620, 'v');
 tag(tF2 + .3, tF3 - .1, A(NICHE), '<small>2024</small>on the mark', 330, 700);
 tag(tMiss + .6, tCal0 - .2, function () { return SPOTP; }, '<small>2025 · same mirror</small>light misses', 340, 600, 'v');
@@ -338,7 +338,7 @@ window.__seek = function (t) {
       if (ph > .9) base.copy(AP).addScaledVector(sd, .35).addScaledVector(side, Math.cos(th) * (ph - .9) * 9).addScaledVector(up2, Math.sin(th) * (ph - .9) * 9); base.addScaledVector(side, Math.cos(th) * r).addScaledVector(up2, Math.sin(th) * r); hp.setXYZ(i, base.x, base.y, base.z); } hp.needsUpdate = true; }
   RUL.visible = t > tE5 - .1 && t < tF + .3; RUL.position.copy(NICHE).add(V(.04, 0, .075)); RUL.scale.setScalar(eob(ramp(t, tE5 - .1, tE5 + .4)));
   // sky arc + cloud (scene I)
-  var skOn = t > tI2 + .6 && t < tJ + 1.4; SKY.visible = skOn; var arcD = 13;
+  var skOn = t > tI2 + .6 && t < tJ + 1.4; SKY.visible = skOn; var arcD = 9.5;
   SUNP.copy(AP).addScaledVector(sunDir(elNow).applyAxisAngle(V(0, 1, 0), -(drift - 2) * Math.PI / 180 * 7.9), arcD); SUNB.position.copy(SUNP);
   GHO.forEach(function (g, i) { var dd = (i + 1) * .5; g.position.copy(AP).addScaledVector(sunDir(elNow).applyAxisAngle(V(0, 1, 0), -(drift - 2 - dd) * Math.PI / 180 * 7.9), arcD); g.lookAt(cam.position); g.material.opacity = .5 - i * .12; }); SUNB.scale.setScalar(1 - cl * .6);
   CLOUD.visible = cl > .01 || (t > tI3 - 1.2 && t < tJ + 1.5); CLOUD.position.copy(SUNP).add(V(lerp(-9, 0, eio(ramp(t, tI3 - 1.0, tI3 + .9))) + lerp(0, 10, eio(ramp(t, tJ - .4, tJ + 1.6))), .1, .9));
