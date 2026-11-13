@@ -41,8 +41,8 @@ B.placeGame = function () {
 };
 // the "game": hero car drives along the coast road, chase cam behind it
 B.renderGame = function (t) {
-  var x = -30 + t * 11; if (B.gameHero) B.gameHero.position.set(x, 0, 2.3);
-  B.gameCars.forEach(function (c) { c.o.position.x = c.x0 + c.v * t; });
+  var x = -150 + ((t * 11 + 50) % 300); if (B.gameHero) { B.gameHero.position.set(x, 0, 2.3 - (B.gameLane || 0)); B.gameHero.rotation.y = Math.PI / 2 + (B.gameLane > 0 && B.gameLane < 1.95 ? .25 : 0); }
+  B.gameCars.forEach(function (c) { c.o.position.x = x + ((c.x0 + 300 + (c.v - 11) * t) % 120 + 120) % 120 - 40; });
   gcam.position.set(x - 10.5, 4.2, 6.5); gcam.lookAt(x + 6, 1.2, -1);
   R.setRenderTarget(gRT); R.render(GS, gcam); R.setRenderTarget(null);
   return gRT.texture;

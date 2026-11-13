@@ -1,0 +1,198 @@
+{
+ "title": "Gali ka Game (ray tracing + DLSS, ELI5)",
+ "format": "1080x1920",
+ "version": 2,
+ "pause_after": {
+  "g5": 0.8,
+  "g9": 0.9,
+  "g15": 0.8,
+  "g17": 0.8,
+  "g18": 0.7
+ },
+ "sentences": [
+  {
+   "id": "g1",
+   "g": "g1",
+   "beat": "hook",
+   "B": "जीटीए सिक्स आ रहा है! पर एक बात सुनके चौंक जाओगे।",
+   "A": "GTA 6 aa raha hai! Par ek baat sunke chaunk jaoge.",
+   "cap": "GTA 6 aa raha hai! Par ek baat sunke chaunk jaoge."
+  },
+  {
+   "id": "g2",
+   "g": "g2",
+   "beat": "hook",
+   "B": "एनवीडिया के मुताबिक़, ऐसे गेम्स में हर सोलह में से पंद्रह पिक्सल, असली तरीक़े से बने ही नहीं। एआई ने अंदाज़ा लगाया!",
+   "A": "NVIDIA ke mutabiq, aise games mein har 16 mein se 15 pixel, asli tareeke se bane hi nahi. AI ne andaaza lagaya!",
+   "cap": "NVIDIA ke mutabiq, aise games mein har 16 mein se 15 pixel, asli tareeke se bane hi nahi. AI ne andaaza lagaya!"
+  },
+  {
+   "id": "g3",
+   "g": "g3",
+   "beat": "pixel",
+   "B": "पहले समझो, तस्वीर होती क्या है। जाली वाली खिड़की देखो। हर छेद से बस एक रंग दिखता है।",
+   "A": "Pehle samjho, tasveer hoti kya hai. Jaali wali khidki dekho. Har chhed se bas ek rang dikhta hai.",
+   "cap": "Pehle samjho, tasveer hoti kya hai. Jaali wali khidki dekho. Har chhed se bas ek rang dikhta hai."
+  },
+  {
+   "id": "g4",
+   "g": "g4",
+   "beat": "pixel",
+   "B": "फ़ोन की स्क्रीन भी ऐसी ही जाली है। हर छेद को पिक्सल कहते हैं।",
+   "A": "Phone ki screen bhi aisi hi jaali hai. Har chhed ko pixel kehte hain.",
+   "cap": "Phone ki screen bhi aisi hi jaali hai. Har chhed ko pixel kehte hain."
+  },
+  {
+   "id": "g5",
+   "g": "g5",
+   "beat": "pixel",
+   "B": "और फ़ोर के स्क्रीन में, ऐसे तिरासी लाख छेद हैं!",
+   "A": "Aur 4K screen mein, aise 83 lakh chhed hain!",
+   "cap": "Aur 4K screen mein, aise 83 lakh chhed hain!"
+  },
+  {
+   "id": "g6",
+   "g": "g6",
+   "beat": "light",
+   "B": "हर छेद का रंग आता कहाँ से है? रोशनी से। रात को कुएँ में चाँद दिखता है ना?",
+   "A": "Har chhed ka rang aata kahaan se hai? Roshni se. Raat ko kuen mein chaand dikhta hai na?",
+   "cap": "Har chhed ka rang aata kahaan se hai? Roshni se. Raat ko kuen mein chaand dikhta hai na?"
+  },
+  {
+   "id": "g7",
+   "g": "g7",
+   "beat": "light",
+   "B": "चाँद की रोशनी पानी से टकराती है, मुड़ती है, और आपकी आँख तक आती है।",
+   "A": "Chaand ki roshni paani se takraati hai, mudti hai, aur aapki aankh tak aati hai.",
+   "cap": "Chaand ki roshni paani se takraati hai, mudti hai, aur aapki aankh tak aati hai."
+  },
+  {
+   "id": "g8",
+   "g": "g8",
+   "beat": "rt",
+   "B": "गेम यही काम उल्टा करता है। आँख से हर छेद की तरफ़ एक धागा भेजो।",
+   "A": "Game yahi kaam ulta karta hai. Aankh se har chhed ki taraf ek dhaaga bhejo.",
+   "cap": "Game yahi kaam ulta karta hai. Aankh se har chhed ki taraf ek dhaaga bhejo."
+  },
+  {
+   "id": "g9",
+   "g": "g9",
+   "beat": "rt",
+   "B": "धागा जहाँ टकराए, वहाँ से पूछो, यहाँ कितनी रोशनी है? इसको रे ट्रेसिंग कहते हैं।",
+   "A": "Dhaaga jahaan takraaye, wahaan se poochho: yahaan kitni roshni hai? Isko ray tracing kehte hain.",
+   "cap": "Dhaaga jahaan takraaye, wahaan se poochho: yahaan kitni roshni hai? Isko ray tracing kehte hain."
+  },
+  {
+   "id": "g10",
+   "g": "g10",
+   "beat": "cost",
+   "B": "पर एक तस्वीर के लिए तिरासी लाख धागे। और एक सेकंड में साठ तस्वीरें।",
+   "A": "Par ek tasveer ke liye 83 lakh dhaage. Aur ek second mein 60 tasveerein.",
+   "cap": "Par ek tasveer ke liye 83 lakh dhaage. Aur ek second mein 60 tasveerein."
+  },
+  {
+   "id": "g11",
+   "g": "g11",
+   "beat": "cost",
+   "B": "यानी हर सेकंड, पचास करोड़ धागे! फ़िल्म कार्स की एक तस्वीर बनाने में, औसतन सत्रह घंटे लगे थे।",
+   "A": "Yaani har second, 50 crore dhaage! Film Cars ki ek tasveer banane mein, ausatan 17 ghante lage the.",
+   "cap": "Yaani har second, 50 crore dhaage! Film Cars ki ek tasveer banane mein, ausatan 17 ghante lage the."
+  },
+  {
+   "id": "g12",
+   "g": "g12",
+   "beat": "rr",
+   "B": "तो ग्राफ़िक्स कार्ड जुगाड़ करता है। पहला जुगाड़: कम धागे भेजो। तस्वीर बिंदियों वाली बनती है, जैसे रंगोली के बिंदु।",
+   "A": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo. Tasveer bindiyon wali banti hai, jaise rangoli ke bindu.",
+   "cap": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo. Tasveer bindiyon wali banti hai, jaise rangoli ke bindu."
+  },
+  {
+   "id": "g13",
+   "g": "g13",
+   "beat": "rr",
+   "B": "फिर एआई, एक माहिर रंगोली वाली की तरह, बिंदु जोड़कर पूरी तस्वीर बना देता है। एनवीडिया इसे रे रिकंस्ट्रक्शन कहता है।",
+   "A": "Phir AI, ek maahir rangoli wali ki tarah, bindu jodkar poori tasveer bana deta hai. NVIDIA ise Ray Reconstruction kehta hai.",
+   "cap": "Phir AI, ek maahir rangoli wali ki tarah, bindu jodkar poori tasveer bana deta hai. NVIDIA ise Ray Reconstruction kehta hai."
+  },
+  {
+   "id": "g14",
+   "g": "g14",
+   "beat": "sr",
+   "B": "दूसरा जुगाड़: तस्वीर छोटी बनाओ, चार में से सिर्फ़ एक पिक्सल। फिर एआई उसे बड़ा और साफ़ कर देता है।",
+   "A": "Doosra jugaad: tasveer chhoti banao, chaar mein se sirf ek pixel. Phir AI use bada aur saaf kar deta hai.",
+   "cap": "Doosra jugaad: tasveer chhoti banao, chaar mein se sirf ek pixel. Phir AI use bada aur saaf kar deta hai."
+  },
+  {
+   "id": "g15",
+   "g": "g15",
+   "beat": "sr",
+   "B": "जैसे सिनेमा का पेंटर, छोटी सी फ़ोटो देखकर, बड़ा पोस्टर बना देता है। ये है डीएलएसएस।",
+   "A": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai. Yeh hai DLSS.",
+   "cap": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai. Yeh hai DLSS."
+  },
+  {
+   "id": "g16",
+   "g": "g16",
+   "beat": "fg",
+   "B": "तीसरा जुगाड़: कॉपी के कोने पर बनाई फ़्लिप बुक याद है? कार्ड एक असली तस्वीर बनाता है, और बीच की तीन तस्वीरें, एआई ख़ुद बना देता है।",
+   "A": "Teesra jugaad: copy ke kone par banayi flip-book yaad hai? Card ek asli tasveer banata hai, aur beech ki teen tasveerein, AI khud bana deta hai.",
+   "cap": "Teesra jugaad: copy ke kone par banayi flip-book yaad hai? Card ek asli tasveer banata hai, aur beech ki teen tasveerein, AI khud bana deta hai."
+  },
+  {
+   "id": "g17",
+   "g": "g17",
+   "beat": "fg",
+   "B": "इसको फ़्रेम जनरेशन कहते हैं।",
+   "A": "Isko Frame Generation kehte hain.",
+   "cap": "Isko Frame Generation kehte hain."
+  },
+  {
+   "id": "g18",
+   "g": "g18",
+   "beat": "math",
+   "B": "अब जोड़ो। चार में से एक पिक्सल, और चार में से एक तस्वीर। एक बटा सोलह!",
+   "A": "Ab jodo. Chaar mein se ek pixel, aur chaar mein se ek tasveer. Ek bata solah!",
+   "cap": "Ab jodo. Chaar mein se ek pixel, aur chaar mein se ek tasveer. Ek bata solah!"
+  },
+  {
+   "id": "g19",
+   "g": "g19",
+   "beat": "math",
+   "B": "इसीलिए एनवीडिया कहता है, सोलह में से पंद्रह पिक्सल एआई के।",
+   "A": "Isiliye NVIDIA kehta hai, 16 mein se 15 pixel AI ke.",
+   "cap": "Isiliye NVIDIA kehta hai, 16 mein se 15 pixel AI ke."
+  },
+  {
+   "id": "g20",
+   "g": "g20",
+   "beat": "catch",
+   "B": "पर एक पेंच है। फ़्लिप बुक के पहले से बने पन्ने, आपका बटन नहीं सुनते। इसलिए थोड़ा लैग लगता है।",
+   "A": "Par ek pench hai. Flip-book ke pehle se bane panne, aapka button nahi sunte. Isliye thoda lag lagta hai.",
+   "cap": "Par ek pench hai. Flip-book ke pehle se bane panne, aapka button nahi sunte. Isliye thoda lag lagta hai."
+  },
+  {
+   "id": "g21",
+   "g": "g21",
+   "beat": "catch",
+   "B": "और जीटीए सिक्स अभी पीएस फ़ाइव और एक्सबॉक्स पर आ रहा है। डीएलएसएस, एनवीडिया के पीसी कार्ड का फ़ीचर है।",
+   "A": "Aur GTA 6 abhi PS5 aur Xbox par aa raha hai. DLSS, NVIDIA ke PC card ka feature hai.",
+   "cap": "Aur GTA 6 abhi PS5 aur Xbox par aa raha hai. DLSS, NVIDIA ke PC card ka feature hai."
+  },
+  {
+   "id": "g22",
+   "g": "g22",
+   "beat": "catch",
+   "B": "रॉकस्टार ने नहीं बताया कि जीटीए सिक्स में ये होगा।",
+   "A": "Rockstar ne nahi bataya ki GTA 6 mein yeh hoga.",
+   "cap": "Rockstar ne nahi bataya ki GTA 6 mein yeh hoga."
+  },
+  {
+   "id": "g23",
+   "g": "g23",
+   "beat": "cta",
+   "B": "ऐसी और सीधी बातों के लिए, लाइक, शेयर और सब्सक्राइब करें, नर्डलॉजिक डॉट सी ओ को!",
+   "A": "Aisi aur seedhi baaton ke liye, like, share aur subscribe karein, nerdlogic.co ko!",
+   "cap": "Aisi aur seedhi baaton ke liye, like, share aur subscribe karein, nerdlogic.co ko!"
+  }
+ ]
+}
