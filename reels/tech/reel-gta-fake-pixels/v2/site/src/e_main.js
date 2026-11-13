@@ -31,7 +31,7 @@ B.loadModels(['tea_set_01', 'vintage_electric_kettle', 'brass_pot_01', 'brass_po
   window.__seek = function (t) {
     var i = B.sceneAt(t), s = SC[i];
     B.UIs.hide(); B.TS.fade = 0; B.gameLane = 0;
-    B.thrG.visible = false; B.SPOOLS.visible = false; B.KID2.visible = false; B.gridOff(); B.phoneMat.uniforms.blocks.value.set(0, 0); B.phoneMat.uniforms.grid.value = 0;
+    B.KID.visible = true; B.thrG.visible = false; B.SPOOLS.visible = false; B.KID2.visible = false; B.gridOff(); B.phoneMat.uniforms.blocks.value.set(0, 0); B.phoneMat.uniforms.grid.value = 0;
     s.act(t, s);
     var P = s.pose(t, s);
     if (i > 0 && s.tr === 'fly' && t < s.t0 + FLY) { var pv = SC[i - 1]; P = blendPose(pv.pose(s.t0, pv), P, eio((t - s.t0) / FLY)); }

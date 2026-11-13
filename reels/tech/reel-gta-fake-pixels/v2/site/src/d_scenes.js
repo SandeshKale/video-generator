@@ -106,9 +106,9 @@ function pixAct(t, sc) {
 var RAYP = null, rayL = new T.Line(new T.BufferGeometry(), new T.LineBasicMaterial({ color: new T.Color(2.2, 1.9, 1.2), toneMapped: false })), rayDot = new T.Mesh(new T.SphereGeometry(.06, 10, 8), new T.MeshBasicMaterial({ color: new T.Color(3, 2.6, 1.6), toneMapped: false }));
 S.add(rayL); S.add(rayDot);
 var rayTube = null;
-function lightPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(-1.9, -1.5, u), lerp(4.4, 4.0, u), lerp(-6.6, -7.2, u)), q: V(.5, 1.2, -11.0), fov: 42, band: V(.4, .8, -11.2), wid: .16, amp: 24 }; }
+function lightPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(1.9, 1.6, u), lerp(4.2, 3.9, u), lerp(-7.0, -7.6, u)), q: V(.2, .8, -11.2), fov: 42, band: V(.4, .8, -11.2), wid: .16, amp: 24 }; }
 function lightAct(t, sc) {
-  KID2.visible = true; KID2.position.set(1.55, 0, -10.0); KID2.rotation.y = -2.3; KID2.userData.P.head.rotation.x = .55;
+  KID2.visible = true; KID2.position.set(-1.3, 0, -10.9); KID2.rotation.y = Math.PI / 2; KID2.userData.P.head.rotation.x = .55;
   W.updateMatrixWorld(true); var eye = new T.Vector3(); KID2.userData.P.head.getWorldPosition(eye); eye.y += .2 * 1.12;
   var moonP = B.moon.position.clone(), water = V(.2, .62, -11.35);
   var src = water.clone().add(moonP.clone().sub(water).normalize().multiplyScalar(9));
@@ -118,7 +118,7 @@ function lightAct(t, sc) {
   if (k1 >= 1) { cur = water.clone().lerp(eye, eo3(k2)); pts.push(cur); }
   rayL.geometry.setFromPoints(pts); rayL.visible = t >= tr; rayDot.visible = t >= tr && k2 < 1; rayDot.position.copy(cur);
   kickHead(t, 'RANG KAHAAN SE?', t < tr - .2 ? RL('Roshni') + ' se!' : 'Roshni ' + RL('takraati') + ',<br>mudti, aankh tak', sc.t0 + .2);
-  if (rayL.visible) lab(L1, 'chaand ki roshni', src.clone().lerp(water, .35), 20, -20, t, tr + .3);
+  if (rayL.visible) lab(L1, 'chaand ki roshni', src.clone().lerp(water, .3), 30, -40, t, tr + .3);
   lab(L2, 'takraayi, mudi', water, -40, -110, t, tt);
   lab(L3, 'aankh', eye, 40, -40, t, ta);
 }
@@ -170,7 +170,7 @@ function rtAct(t, sc) {
 // ================= 5. COST (g10, g11) — spools of thread bury the lane; the Cars clock =================
 function costPose(t, sc) { var tc = WS('g11', 'फ़िल्म|फिल्म|कार्स') - .5, u = eio((t - tc) / 1.6);
   var a = { p: V(.3, 4.6, 6.0), q: V(-.2, .4, .9), fov: 40, band: V(0, .4, 1.2), wid: .2, amp: 22 };
-  var b = { p: V(1.9, 4.0, 1.6), q: V(-2.2, 4.75, -1.0), fov: 36, band: V(-2.18, 4.15, -1.0), wid: .12, amp: 26 };
+  var b = { p: V(1.9, 4.0, 1.6), q: V(-2.2, 4.4, -1.0), fov: 36, band: V(-2.18, 4.15, -1.0), wid: .12, amp: 26 };
   if (u <= 0) { var k = eio((t - sc.t0) / 3); a.p.y -= k * .6; a.p.z -= k * .6; return a; }
   return { p: a.p.clone().lerp(b.p, u), q: a.q.clone().lerp(b.q, u), fov: lerp(a.fov, b.fov, u), band: a.band.clone().lerp(b.band, u), wid: lerp(a.wid, b.wid, u), amp: lerp(a.amp, b.amp, u) };
 }
@@ -246,7 +246,7 @@ function drawPoster(sk, pu) { // sk: sketch grid strength, pu: painted share (le
   if (pu > 0) { var rows = 4, rh = h / rows; for (var r = 0; r < rows; r++) { var k = clamp(pu * rows - r); if (k <= 0) continue; g.save(); g.beginPath(); g.rect(0, r * rh, w * eio(k), rh + 1); g.clip(); g.drawImage(POSTER, 0, 0, w, h); g.restore(); } }
   B.posterTex.needsUpdate = true;
 }
-function srPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(2.6, 2.2, u), lerp(2.9, 2.7, u), lerp(-13.4, -12.8, u)), q: V(-5.4, 2.55, -11.6), fov: 42, band: V(-5.4, 2.5, -11.6), wid: .2, amp: 20 }; }
+function srPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(3.6, 3.2, u), lerp(2.9, 2.8, u), lerp(-12.8, -12.4, u)), q: V(-5.4, 2.5, -11.6), fov: 42, band: V(-5.4, 2.5, -11.6), wid: .2, amp: 20 }; }
 function srAct(t, sc) {
   var ts = WS('g14', 'छोटी'), tc4 = WS('g14', 'चार|सिर्फ़|सिर्फ'), tb = WS('g14', 'बड़ा|बडा'), tp = WS('g15', 'पेंटर'), tdl = WS('g15', 'डीएलएसएस|डी');
   var pu = clamp((t - tb + .2) / Math.max(3, tdl - tb + .6)); drawPoster(clamp((t - ts) / .5), pu);
@@ -308,7 +308,7 @@ function catchAct(t, sc) {
     head.innerHTML = 'AI ke pages button<br>' + AI('nahi sunte'); show(head, t, sc.t0 + .2);
     if (t > tb) { chip.textContent = t < tb + .45 ? '● BUTTON DABAYA' : 'LAG +'; chip.style.background = t < tb + .45 ? C.real : C.ai; chip.style.color = t < tb + .45 ? '#1b1d3a' : '#fff7e6'; place(chip, 156, 540); show(chip, t, tb, .15); }
   } else {
-    B.TABLE.visible = true;
+    B.TABLE.visible = true; B.KID.visible = false;
     if (t < tr - .2) { head.innerHTML = 'GTA 6: ' + RL('console') + '<br>DLSS: ' + AI('NVIDIA PC'); show(head, t, tTable() + .1); }
     else { head.innerHTML = 'Rockstar:<br>' + RL('confirm nahi'); show(head, t, tr - .2); }
     lab(L1, 'GTA 6 yahan', V(.48, 1.3, 3.6), -160, -60, t, tps);
