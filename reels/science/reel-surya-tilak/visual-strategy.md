@@ -27,6 +27,18 @@ Working title: **"Sooraj ko mandir ke andar kaise laaye?"** · ~95-110 s · Hing
 5. **Meaning-coded light:** saffron = sunlight, silver-blue = Moon/lunar date, vermilion = the tilak spot only. HUD: date, clock (IST), Sun height in degrees: all live and true.
 6. **Respect rule:** the idol is never modelled. The sanctum shows a plain dark stone niche with a soft glow form; the film shows the spot of light, not a face.
 
+## 3b. People in the world (creator request, 13 Nov 2026: "involve humans as seen in explainer 3D reels")
+Per the standing rule, humans are **3D brick-style figures** (Lego-like: rounded block head, torso, arms, legs; faceless; matte clay finish in the stone palette with one cloth colour each), posed and moved by the CMU mocap rig (`rig.js` tracks → 3D joints) so they walk, kneel, point and turn a wheel as a pure function of `t`. Never the idol, never a named real person.
+| Who | Where | What they do (each is an event the story needs) |
+|---|---|---|
+| **A devotee (the viewer's stand-in), saffron scarf** | hook + close, in the mandap | stands in the dark hall looking toward the niche; raises folded hands when the spot arrives. Gives scale: the 58 mm spot vs a person |
+| **A crowd of devotees (instanced, ~300)** | scene 2 and the close | queue through the mandap; all heads turn to the light at noon. Shows why the sanctum is deep inside |
+| **Two engineers in hard hats (CBRI)** | scenes 3-4, top floor and pipe | one wipes the first mirror in its holder, one aligns a lens with a small target card: the system is hand-built and serviceable (reported) |
+| **An astronomer at a desk (IIA)** | scene 6-7, calendar set | walks between the Sun ring and the Moon ring, pins the 19 Ram Navami dots, hands over a card of 19 angles |
+| **The technician who sets the mirror** | scene 7 | climbs to mirror 1 and turns the brass setting by hand, one click: the beam swings back onto the niche. The emotional beat of the reversal |
+| **Everyone, waiting** | scene 8 | a cloud crosses: figures look up; the beam dies; then returns. No artificial light |
+Rules: figures arrive on their spoken word, stay small against the architecture (temple and light remain the heroes), ≥2 poses per figure, no repeated pose in the same shot; gestures point at the mechanism being explained; labels say ILLUSTRATIVE FIGURES.
+
 ## 4. Scene plan (expert-sketcher order; each built on its spoken words)
 | # | Question | Picture (built step by step) | Camera (authored) | Truth label |
 |---|---|---|---|---|
@@ -44,7 +56,7 @@ Working title: **"Sooraj ko mandir ke andar kaise laaye?"** · ~95-110 s · Hing
 New here: (1) volumetric light shafts + lit dust as the hero; (2) a physically computed Sun that the story scrubs; (3) a whole-film single descent shot; (4) optical elements that really reflect/refract the beam; (5) score that follows the light (bowed glass/vibraphone for held light, tanpura floor, temple bell only at the landing, silence when the cloud passes).
 
 ## 6. Asset families (≥6)
-three.js PBR stone + brass (Poly Haven CC0 textures/HDRI), volumetric shader, analytic optics, real solar ephemeris, NASA Sun/Moon imagery for the orrery, canvas instruments (protractor, ruler, clock, calendar ring), kinetic type, synth score + SFX, cloned voice.
+mocap-driven brick figures (CMU BVH → 3D joints), three.js PBR stone + brass (Poly Haven CC0 textures/HDRI), volumetric shader, analytic optics, real solar ephemeris, NASA Sun/Moon imagery for the orrery, canvas instruments (protractor, ruler, clock, calendar ring), kinetic type, synth score + SFX, cloned voice.
 
 ## 7. Risks and open checks
 - Open PIB PRID 2018141, the PTI 2025 "third floor" report and the 2026 PTI report first-hand before posting.
