@@ -1,0 +1,281 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "राम नवमी। दोपहर के बारह बजे।",
+   "A": "Ram Navami. Dopahar ke barah baje.",
+   "cap": "Ram Navami. Dopahar ke barah baje."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "अयोध्या के मंदिर में, राम लला के माथे पर, रोशनी का एक तिलक।",
+   "A": "Ayodhya ke mandir mein, Ram Lalla ke maathe par, roshni ka ek tilak.",
+   "cap": "Ayodhya ke mandir mein, Ram Lalla ke maathe par, roshni ka ek tilak."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "ना बल्ब, ना तार।",
+   "A": "Na bulb, na taar.",
+   "cap": "Na bulb, na taar."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "आपने देखा होगा: छत के छेद से धूप की एक लकीर आती है, और उसमें धूल नाचती है।",
+   "A": "Aapne dekha hoga: chhat ke chhed se dhoop ki ek lakeer aati hai, aur usme dhool naachti hai.",
+   "cap": "Aapne dekha hoga: chhat ke chhed se dhoop ki ek lakeer aati hai, aur usme dhool naachti hai."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "यह वही धूप है।",
+   "A": "Yeh wahi dhoop hai.",
+   "cap": "Yeh wahi dhoop hai."
+  },
+  {
+   "id": "s6",
+   "g": "g5",
+   "B": "बस, इसे तीन मंज़िल नीचे लाना था।",
+   "A": "Bas, ise teen manzil neeche laana tha.",
+   "cap": "Bas, ise teen manzil neeche laana tha."
+  },
+  {
+   "id": "s7",
+   "g": "g6",
+   "B": "मुश्किल यह है: गर्भगृह सबसे नीचे है, और ऊपर पत्थर की तीन मंज़िलें।",
+   "A": "Mushkil yeh hai: garbhagriha sabse neeche hai, aur upar pathar ki teen manzilein.",
+   "cap": "Mushkil yeh hai: garbhagriha sabse neeche hai, aur upar pathar ki teen manzilein."
+  },
+  {
+   "id": "s8",
+   "g": "g7",
+   "B": "और दोपहर का सूरज, सीधा सिर के ऊपर।",
+   "A": "Aur dopahar ka sooraj, seedha sir ke upar.",
+   "cap": "Aur dopahar ka sooraj, seedha sir ke upar."
+  },
+  {
+   "id": "s9",
+   "g": "g8",
+   "B": "तो वैज्ञानिकों ने एक पेरिस्कोप बनाया।",
+   "A": "Toh vaigyanikon ne ek periscope banaya.",
+   "cap": "Toh vaigyanikon ne ek periscope banaya."
+  },
+  {
+   "id": "s10",
+   "g": "g9",
+   "B": "बचपन में आईने से दीवार पर धूप चमकाई थी ना?",
+   "A": "Bachpan mein aaine se deewar par dhoop chamkaayi thi na?",
+   "cap": "Bachpan mein aaine se deewar par dhoop chamkaayi thi na?"
+  },
+  {
+   "id": "s11",
+   "g": "g9",
+   "B": "बिल्कुल वही।",
+   "A": "Bilkul wahi.",
+   "cap": "Bilkul wahi."
+  },
+  {
+   "id": "s12",
+   "g": "g10",
+   "B": "छत पर पहला आईना धूप पकड़ता है, और उसे पीतल के पाइप में, नीचे भेज देता है।",
+   "A": "Chhat par pehla aaina dhoop pakadta hai, aur use peetal ke pipe mein, neeche bhej deta hai.",
+   "cap": "Chhat par pehla aaina dhoop pakadta hai, aur use peetal ke pipe mein, neeche bhej deta hai."
+  },
+  {
+   "id": "s13",
+   "g": "g11",
+   "B": "पाइप के अंदर लेंस हैं।",
+   "A": "Pipe ke andar lens hain.",
+   "cap": "Pipe ke andar lens hain."
+  },
+  {
+   "id": "s14",
+   "g": "g11",
+   "B": "वही लेंस, जिससे हम कागज़ जलाते थे।",
+   "A": "Wahi lens, jisse hum kaagaz jalaate the.",
+   "cap": "Wahi lens, jisse hum kaagaz jalaate the."
+  },
+  {
+   "id": "s15",
+   "g": "g12",
+   "B": "इसलिए सबसे ऊपर, एक शीशा गर्मी रोक लेता है।",
+   "A": "Isliye sabse upar, ek sheesha garmi rok leta hai.",
+   "cap": "Isliye sabse upar, ek sheesha garmi rok leta hai."
+  },
+  {
+   "id": "s16",
+   "g": "g13",
+   "B": "लेंस रोशनी को सिकोड़ते हैं, और आख़िरी आईना उसे माथे पर रख देता है।",
+   "A": "Lens roshni ko sikodte hain, aur aakhri aaina use maathe par rakh deta hai.",
+   "cap": "Lens roshni ko sikodte hain, aur aakhri aaina use maathe par rakh deta hai."
+  },
+  {
+   "id": "s17",
+   "g": "g14",
+   "B": "सिर्फ़ अट्ठावन मिलीमीटर।",
+   "A": "Sirf 58 millimetre.",
+   "cap": "Sirf 58 millimetre."
+  },
+  {
+   "id": "s18",
+   "g": "g15",
+   "B": "पर असली परेशानी अब शुरू होती है।",
+   "A": "Par asli pareshani ab shuru hoti hai.",
+   "cap": "Par asli pareshani ab shuru hoti hai."
+  },
+  {
+   "id": "s19",
+   "g": "g16",
+   "B": "दो हज़ार चौबीस में, तिलक बिल्कुल सही लगा।",
+   "A": "2024 mein, tilak bilkul sahi laga.",
+   "cap": "2024 mein, tilak bilkul sahi laga."
+  },
+  {
+   "id": "s20",
+   "g": "g17",
+   "B": "अगले साल, वही आईना, वही जगह... और रोशनी माथे से हट गई।",
+   "A": "Agle saal, wahi aaina, wahi jagah... aur roshni maathe se hat gayi.",
+   "cap": "Agle saal, wahi aaina, wahi jagah... aur roshni maathe se hat gayi."
+  },
+  {
+   "id": "s21",
+   "g": "g17",
+   "B": "क्यों?",
+   "A": "Kyun?",
+   "cap": "Kyun?"
+  },
+  {
+   "id": "s22",
+   "g": "g18",
+   "B": "क्योंकि राम नवमी चाँद से चलती है।",
+   "A": "Kyunki Ram Navami chaand se chalti hai.",
+   "cap": "Kyunki Ram Navami chaand se chalti hai."
+  },
+  {
+   "id": "s23",
+   "g": "g18",
+   "B": "जैसे होली और दिवाली, हर साल अलग तारीख़।",
+   "A": "Jaise Holi aur Diwali, har saal alag taareekh.",
+   "cap": "Jaise Holi aur Diwali, har saal alag taareekh."
+  },
+  {
+   "id": "s24",
+   "g": "g19",
+   "B": "और तारीख़ बदली, तो सूरज की ऊँचाई भी बदली।",
+   "A": "Aur taareekh badli, toh sooraj ki oonchai bhi badli.",
+   "cap": "Aur taareekh badli, toh sooraj ki oonchai bhi badli."
+  },
+  {
+   "id": "s25",
+   "g": "g20",
+   "B": "किसान जानता है: सर्दी में परछाई लंबी, गर्मी में छोटी।",
+   "A": "Kisaan jaanta hai: sardi mein parchhai lambi, garmi mein chhoti.",
+   "cap": "Kisaan jaanta hai: sardi mein parchhai lambi, garmi mein chhoti."
+  },
+  {
+   "id": "s26",
+   "g": "g21",
+   "B": "तो बेंगलुरु के वैज्ञानिकों ने, उन्नीस साल का हिसाब लगाया।",
+   "A": "Toh Bengaluru ke vaigyanikon ne, 19 saal ka hisaab lagaya.",
+   "cap": "Toh Bengaluru ke vaigyanikon ne, 19 saal ka hisaab lagaya."
+  },
+  {
+   "id": "s27",
+   "g": "g22",
+   "B": "उन्नीस साल बाद, चाँद और सूरज फिर साथ आ जाते हैं।",
+   "A": "19 saal baad, chaand aur sooraj phir saath aa jaate hain.",
+   "cap": "19 saal baad, chaand aur sooraj phir saath aa jaate hain."
+  },
+  {
+   "id": "s28",
+   "g": "g23",
+   "B": "इसलिए पहले आईने की, उन्नीस सेटिंग्स हैं।",
+   "A": "Isliye pehle aaine ki, 19 settings hain.",
+   "cap": "Isliye pehle aaine ki, 19 settings hain."
+  },
+  {
+   "id": "s29",
+   "g": "g24",
+   "B": "साल में एक बार, एक आदमी ऊपर चढ़ता है, और रेडियो की ट्यूनिंग की तरह, आईना ज़रा सा घुमाता है।",
+   "A": "Saal mein ek baar, ek aadmi upar chadhta hai, aur radio ki tuning ki tarah, aaina zara sa ghumaata hai.",
+   "cap": "Saal mein ek baar, ek aadmi upar chadhta hai, aur radio ki tuning ki tarah, aaina zara sa ghumaata hai."
+  },
+  {
+   "id": "s30",
+   "g": "g25",
+   "B": "और तिलक सिर्फ़ कुछ मिनट रहता है।",
+   "A": "Aur tilak sirf kuch minute rehta hai.",
+   "cap": "Aur tilak sirf kuch minute rehta hai."
+  },
+  {
+   "id": "s31",
+   "g": "g26",
+   "B": "क्योंकि धरती घूम रही है, और सूरज दो मिनट में, अपनी ही चौड़ाई जितना खिसक जाता है।",
+   "A": "Kyunki dharti ghoom rahi hai, aur sooraj 2 minute mein, apni hi chaudaai jitna khisak jaata hai.",
+   "cap": "Kyunki dharti ghoom rahi hai, aur sooraj 2 minute mein, apni hi chaudaai jitna khisak jaata hai."
+  },
+  {
+   "id": "s32",
+   "g": "g27",
+   "B": "बादल आ गया?",
+   "A": "Baadal aa gaya?",
+   "cap": "Baadal aa gaya?"
+  },
+  {
+   "id": "s33",
+   "g": "g27",
+   "B": "तो उस साल, तिलक नहीं।",
+   "A": "Toh us saal, tilak nahi.",
+   "cap": "Toh us saal, tilak nahi."
+  },
+  {
+   "id": "s34",
+   "g": "g28",
+   "B": "ना बिजली, ना मोटर।",
+   "A": "Na bijli, na motor.",
+   "cap": "Na bijli, na motor."
+  },
+  {
+   "id": "s35",
+   "g": "g28",
+   "B": "बस आईने, पीतल, गणित, और खुला आसमान।",
+   "A": "Bas aaine, peetal, ganit, aur khula aasmaan.",
+   "cap": "Bas aaine, peetal, ganit, aur khula aasmaan."
+  },
+  {
+   "id": "s36",
+   "g": "g29",
+   "B": "अगली बार छत से धूप की लकीर दिखे, तो यह याद कीजिएगा।",
+   "A": "Agli baar chhat se dhoop ki lakeer dikhe, toh yeh yaad kijiyega.",
+   "cap": "Agli baar chhat se dhoop ki lakeer dikhe, toh yeh yaad kijiyega."
+  },
+  {
+   "id": "s37",
+   "g": "g30",
+   "B": "शेयर और फ़ॉलो करें, नर्डलॉजिक डॉट सी ओ।",
+   "A": "Share aur follow karein, nerdlogic.co",
+   "cap": "Share aur follow karein, nerdlogic.co"
+  }
+ ],
+ "pause_after": {
+  "s3": 0.9,
+  "s6": 0.6,
+  "s8": 0.6,
+  "s11": 0.5,
+  "s14": 0.5,
+  "s17": 0.8,
+  "s18": 0.5,
+  "s21": 1.0,
+  "s23": 0.5,
+  "s25": 0.6,
+  "s28": 0.6,
+  "s29": 0.7,
+  "s31": 0.6,
+  "s33": 0.8,
+  "s35": 0.6,
+  "s36": 0.6
+ }
+}

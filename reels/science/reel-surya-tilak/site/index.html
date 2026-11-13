@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Surya Tilak</title><style>
+@font-face{font-family:Rozha;src:url(fonts/rozha-one-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:MM;font-weight:500;src:url(fonts/martian-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#120709}
+#stage{position:absolute;inset:0;width:1080px;height:1920px}
+canvas,svg{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none}
+.kick{position:absolute;left:162px;top:214px;font:500 22px MM;letter-spacing:.14em;color:#ffd9a0;text-transform:uppercase;white-space:nowrap}
+.kick i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ffd9a0;margin-right:12px;box-shadow:0 0 14px #ffb347}
+.head{position:absolute;left:162px;top:256px;width:756px;font:400 74px/1.06 Rozha;letter-spacing:-.01em;color:#f6ecd9;text-shadow:0 4px 16px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.9)}
+.head b{font-weight:400;color:#ffc56b}
+.tag{position:absolute;font:600 24px/1.25 Inter;color:#f6ecd9;background:rgba(24,10,12,.84);border:1.5px solid rgba(255,217,160,.55);padding:9px 14px 10px;border-radius:3px;white-space:nowrap}
+.tag small{display:block;font:500 16px MM;letter-spacing:.1em;color:#ffc56b;margin-bottom:3px;text-transform:uppercase}
+.tag.v{border-color:#ff6a4a}.tag.v small{color:#ff8a6a}
+.tag.m{border-color:#9fc4ff}.tag.m small{color:#9fc4ff}
+.hud{position:absolute;left:162px;top:1196px;display:flex;gap:10px}
+.hud div{font:500 19px MM;letter-spacing:.06em;color:#f6ecd9;background:rgba(24,10,12,.84);border:1.5px solid rgba(255,217,160,.35);padding:9px 12px;border-radius:3px;white-space:nowrap}
+.hud div small{display:block;font:500 13px MM;color:#c9a777;letter-spacing:.12em;margin-bottom:3px}
+.src{position:absolute;left:162px;top:1278px;width:756px;font:500 16px MM;color:#c9a777;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+#cap{position:absolute;left:162px;top:1340px;width:756px}
+.endc{position:absolute;left:162px;top:520px;width:756px;text-align:center}
+.endc img{width:250px;height:250px;border-radius:50%;border:8px solid #b4f000;box-shadow:0 0 0 10px #0a0f1d,0 16px 40px rgba(0,0,0,.7);display:block;margin:0 auto}
+.endc .hn{font:400 84px Rozha;color:#f6ecd9;margin-top:34px;text-shadow:0 4px 16px rgba(0,0,0,.8)}
+.endc .btns{margin-top:30px;display:flex;gap:20px;justify-content:center}
+.endc .btns span{font:800 32px Inter;letter-spacing:.1em;padding:16px 34px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
+</style></head><body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><svg id="lines" width="1080" height="1920"></svg><div id="ov"></div><div id="cap"></div></div>
+<script src="lib/three-gltf-r160.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
+<script>
+window.__ready=false;
+Promise.all(['74px Rozha','500 20px MM','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f)})).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>
