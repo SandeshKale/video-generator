@@ -83,3 +83,9 @@ Neighbouring scenes always change their primary family: jaali (procedural) → w
 ## 8. Next, after approval
 1. Mockup of 3 scenes from 3 families: the hook phone grid, the jaali + threads, and the rangoli path-tracer. Shown as stills at full size and phone size.
 2. Then: voice, the full build, lints, the final-MP4 frame review and the mix.
+
+## 9. Status (13 Nov 2026): built and rendered
+- `v2/reel.mp4`: 105.1 s, 1080×1920, 30 fps, 29 MB. `v2/cover.png`, `v2/caption.md`.
+- Validated: `overlay-lint` 0 findings (0.25 s), 0 `WS()` cue misses, a contact sheet of the final MP4 incl. all 11 chunk joins and the end card.
+- Mix: −14.6 LUFS, −1.2 dBTP; voice over music+SFX median 39.4 dB, min 5.9 dB at two soft "है।" tails (54.4 s, 70.6 s). Voice and mix not auditioned by ear.
+- Known: the hook's phone grid fills 11 of 16 tiles before the crane-up (the cover forces all 16); caption sits over the kid's torso in the thread scene.

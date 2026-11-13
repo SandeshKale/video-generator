@@ -57,6 +57,7 @@ var GRID = [], REAL = 0;
     m.position.set(-.076 + (c + .5) * sw, .035 - (r + .5) * sh, .0052); m.userData = { r: r, c: c, tR: tr, tA: ta }; B.PHONE.add(m); GRID.push(m); }
 })();
 B.gridOff = function () { gridAt(function () { return 0; }); };
+B.gridFull = function () { gridAt(function () { return 1; }); };
 function gridAt(fn, realFn) { GRID.forEach(function (m, i) { var k = fn(m.userData.r, m.userData.c, i); m.material.map = (realFn ? realFn(m.userData.r, m.userData.c, i) : i === REAL) ? GRID[REAL].userData.tR : GRID[REAL].userData.tA; m.material.opacity = k > 0 ? .92 : 0; m.scale.set(1, k > 0 ? eob(Math.min(1, k)) : .001, 1); }); }
 var KID = B.KID, KID2 = B.voxel({ s: 1.12, top: 0xffd23f, bot: 0x2f4fa8, skin: 0xa86f48 }); W.add(KID2); B.KID2 = KID2;
 function phonePose(t, extraPush) { // first-person POV on the kid's phone
