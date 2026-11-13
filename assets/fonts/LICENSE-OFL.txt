@@ -86,3 +86,5 @@ Rajdhani (Indian Type Foundry) and Share Tech Mono (Carrois Apostrophe): SIL OFL
 
 
 Inter Tight (latin 200, 300) — SIL OFL 1.1, from @fontsource/inter-tight (vendored 12 Nov 2026 for reel-gta-fake-pixels).
+
+Rozha One (Indian Type Foundry): SIL OFL 1.1, latin + devanagari 400, vendored via @fontsource on 13 Nov 2026 for reel-surya-tilak.
