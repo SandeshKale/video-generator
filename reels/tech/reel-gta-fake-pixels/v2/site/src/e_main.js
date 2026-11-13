@@ -16,7 +16,7 @@ function buildEV() {
   E.push({ t: WS('g8', 'धागा'), k: 'zip' }); E.push({ t: WS('g9', 'रे|ट्रेसिंग'), k: 'card' });
   E.push({ t: WS('g10', 'तिरासी|83'), k: 'rumble' }); E.push({ t: WS('g11', 'पचास|50'), k: 'slam' }); E.push({ t: WS('g11', 'सत्रह|17'), k: 'clock' });
   E.push({ t: WS('g12', 'कम'), k: 'sparkle' }); E.push({ t: WS('g13', 'पूरी'), k: 'swell' }); E.push({ t: WS('g13', 'रिकंस्ट्र|रे'), k: 'card' });
-  E.push({ t: WS('g14', 'बड़ा|बडा'), k: 'brush' }); E.push({ t: WS('g15', 'डीएलएसएस|डी'), k: 'card' });
+  E.push({ t: WS('g14', 'बड़ा|बडा'), k: 'brush' }); E.push({ t: WS('g15b', 'डीएलएसएस|डी|DLSS'), k: 'card' });
   E.push({ t: WS('g16', 'कार्ड'), k: 'flip' }); E.push({ t: WS('g16', 'बीच'), k: 'riffle' }); E.push({ t: WS('g17', 'फ़्रेम|फ्रेम|जनरेशन'), k: 'card' });
   E.push({ t: WS('g18', 'पिक्सल'), k: 'tick' }); E.push({ t: WS('g18', 'तस्वीर'), k: 'tick' }); E.push({ t: WS('g18', 'सोलह|बटा'), k: 'slam' });
   E.push({ t: WS('g20', 'बटन'), k: 'click' }); E.push({ t: WS('g20', 'लैग|लेग'), k: 'buzz' }); E.push({ t: WS('g22', 'रॉकस्टार|रॉक'), k: 'stamp' });

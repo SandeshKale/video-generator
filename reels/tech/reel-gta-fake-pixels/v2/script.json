@@ -5,7 +5,7 @@
  "pause_after": {
   "g5": 0.8,
   "g9": 0.9,
-  "g15": 0.8,
+  "g15b": 0.8,
   "g17": 0.8,
   "g18": 0.7
  },
@@ -102,9 +102,17 @@
    "id": "g12",
    "g": "g12",
    "beat": "rr",
-   "B": "तो ग्राफ़िक्स कार्ड जुगाड़ करता है। पहला जुगाड़: कम धागे भेजो। तस्वीर बिंदियों वाली बनती है, जैसे रंगोली के बिंदु।",
-   "A": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo. Tasveer bindiyon wali banti hai, jaise rangoli ke bindu.",
-   "cap": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo. Tasveer bindiyon wali banti hai, jaise rangoli ke bindu."
+   "B": "तो ग्राफ़िक्स कार्ड जुगाड़ करता है। पहला जुगाड़: कम धागे भेजो।",
+   "A": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo.",
+   "cap": "Toh graphics card jugaad karta hai. Pehla jugaad: kam dhaage bhejo."
+  },
+  {
+   "id": "g12b",
+   "g": "g12b",
+   "beat": "rr",
+   "B": "तस्वीर बिंदियों वाली बनती है, जैसे रंगोली के बिंदु।",
+   "A": "Tasveer bindiyon wali banti hai, jaise rangoli ke bindu.",
+   "cap": "Tasveer bindiyon wali banti hai, jaise rangoli ke bindu."
   },
   {
    "id": "g13",
@@ -126,9 +134,17 @@
    "id": "g15",
    "g": "g15",
    "beat": "sr",
-   "B": "जैसे सिनेमा का पेंटर, छोटी सी फ़ोटो देखकर, बड़ा पोस्टर बना देता है। ये है डीएलएसएस।",
-   "A": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai. Yeh hai DLSS.",
-   "cap": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai. Yeh hai DLSS."
+   "B": "जैसे सिनेमा का पेंटर, छोटी सी फ़ोटो देखकर, बड़ा पोस्टर बना देता है।",
+   "A": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai.",
+   "cap": "Jaise cinema ka painter, chhoti si photo dekhkar, bada poster bana deta hai."
+  },
+  {
+   "id": "g15b",
+   "g": "g15b",
+   "beat": "sr",
+   "B": "ये है डीएलएसएस।",
+   "A": "Yeh hai DLSS.",
+   "cap": "Yeh hai DLSS."
   },
   {
    "id": "g16",

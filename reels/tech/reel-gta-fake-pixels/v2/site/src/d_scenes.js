@@ -220,7 +220,7 @@ var MAKER = B.MAKER = B.voxel({ s: 1.05, top: 0xff3f8e, bot: 0xff3f8e, skin: 0x9
 (function () { var P = MAKER.userData.P; P.legL.rotation.x = -1.3; P.legR.rotation.x = -1.3; P.legL.position.y -= .3; P.legR.position.y -= .3; P.torso.position.y -= .33; P.armL.position.y -= .33; P.armR.position.y -= .33; P.head.position.y -= .33; P.armR.rotation.x = -1.0; P.armL.rotation.x = -.6; P.head.rotation.x = .5; })();
 var rangRC = V(1.15, 0, .3);
 function rrPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(2.35, 1.5, u), lerp(3.6, 3.1, u), lerp(3.3, 1.8, u)), q: V(1.15, 0, .2), fov: 34, band: rangRC, wid: .13, amp: 28 }; }
-var rrState = function (t) { var tb = WS('g12', 'बिंदियों|बिंदि'), tj = WS('g13', 'जोड़|जोड'), tp = WS('g13', 'पूरी'); return { nd: Math.floor(clamp((t - (WS('g12', 'कम') - .1)) / Math.max(1.5, tb - WS('g12', 'कम') + .8)) * RDOTS.length), lu: clamp((t - tj + .8) / 2.4), fu: clamp((t - tp + .2) / 2.6) }; };
+var rrState = function (t) { var tb = WS('g12b', 'बिंदियों|बिंदि'), tj = WS('g13', 'जोड़|जोड'), tp = WS('g13', 'पूरी'); return { nd: Math.floor(clamp((t - (WS('g12', 'कम') - .1)) / Math.max(1.5, tb - WS('g12', 'कम') + .8)) * RDOTS.length), lu: clamp((t - tj + .8) / 2.4), fu: clamp((t - tp + .2) / 2.6) }; };
 function rrAct(t, sc) {
   MAKER.visible = true; var st = rrState(t); drawRangoli(st.nd, st.lu, st.fu); MAKER.userData.P.armR.rotation.x = -1.0 + Math.sin(t * 5) * .12 * (st.lu > 0 && st.fu < 1 ? 1 : 0);
   var tj = WS('g13', 'एआई|फिर');
@@ -248,7 +248,7 @@ function drawPoster(sk, pu) { // sk: sketch grid strength, pu: painted share (le
 }
 function srPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(3.6, 3.2, u), lerp(2.9, 2.8, u), lerp(-12.8, -12.4, u)), q: V(-5.4, 2.5, -11.6), fov: 42, band: V(-5.4, 2.5, -11.6), wid: .2, amp: 20 }; }
 function srAct(t, sc) {
-  var ts = WS('g14', 'छोटी'), tc4 = WS('g14', 'चार|सिर्फ़|सिर्फ'), tb = WS('g14', 'बड़ा|बडा'), tp = WS('g15', 'पेंटर'), tdl = WS('g15', 'डीएलएसएस|डी');
+  var ts = WS('g14', 'छोटी'), tc4 = WS('g14', 'चार|सिर्फ़|सिर्फ'), tb = WS('g14', 'बड़ा|बडा'), tp = WS('g15', 'पेंटर'), tdl = WS('g15b', 'डीएलएसएस|डी|DLSS');
   var pu = clamp((t - tb + .2) / Math.max(3, tdl - tb + .6)); drawPoster(clamp((t - ts) / .5), pu);
   // painter climbs along the scaffold following the sweep
   var rows = 4, r = Math.min(3, Math.floor(pu * rows)), k = clamp(pu * rows - r), PW = B.HD_PW, PH = B.HD_PH, PY = B.HD_PY;
@@ -333,8 +333,8 @@ var SC = B.SCN = [
   { g: ['g6', 'g7'], pose: lightPose, act: lightAct, tr: 'dip' },
   { g: ['g8', 'g9'], pose: rtPose, act: rtAct, tr: 'fly' },
   { g: ['g10', 'g11'], pose: costPose, act: costAct, tr: 'fly' },
-  { g: ['g12', 'g13'], pose: rrPose, act: rrAct, tr: 'fly' },
-  { g: ['g14', 'g15'], pose: srPose, act: srAct, tr: 'fly' },
+  { g: ['g12', 'g12b', 'g13'], pose: rrPose, act: rrAct, tr: 'fly' },
+  { g: ['g14', 'g15', 'g15b'], pose: srPose, act: srAct, tr: 'fly' },
   { g: ['g16', 'g17'], pose: fgPose, act: fgAct, tr: 'fly' },
   { g: ['g18', 'g19'], pose: mathPose, act: mathAct, tr: 'dip' },
   { g: ['g20', 'g21', 'g22'], pose: catchPose, act: catchAct, tr: 'none' },
