@@ -260,6 +260,79 @@ function scene5() {
   el('tag', '<small>VALMIKI 5.8-5.9 · OUR 3D</small>Pahaad jaisa, sone ka', 'left:600px;top:1080px');
   el('cap', 'Film ne aisa banaya. <span>Valmiki ne aisa likha.</span>');
 }
-({ 1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5 })[SC]();
+
+// =============== SCENE 7: animated teardown (assemble -> explode -> labels -> close) ===============
+function eob(x, k) { x = clamp(x); k = k || 1.4; return 1 + (k + 1) * Math.pow(x - 1, 3) + k * Math.pow(x - 1, 2); }
+function scene7() {
+  var DUR = 13; window.__reelDurationSec = DUR;
+  var ORDER = ['engine', 'lotus', 'stairs', 'deck', 'pillars', 'crystal', 'frame', 'peaks'];
+  P.position.set(0, -2.15, 0); cam.fov = 26; cam.updateProjectionMatrix();
+  var floor = new T.Mesh(new T.CircleGeometry(9, 64), new T.MeshStandardMaterial({ color: 0x0b1440, roughness: .35, metalness: .4 })); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; S.add(floor);
+  // two authored camera poses (assembled close-up, exploded wide), solved once
+  function pose(e) { setExplode(e); P.rotation.y = 0; P.updateMatrixWorld(true);
+    var top = new T.Vector3(0, ASM.peaks + e * (EXP.peaks - ASM.peaks) + 2.75, 0), bot = new T.Vector3(0, (e ? EXP.engine - .5 : -1.4), 0); P.localToWorld(top); P.localToWorld(bot);
+    fitV(new T.Vector3(0, 1.5, 0), new T.Vector3(0, .2, 1).normalize(), top, bot, e ? 470 : 560, e ? 1230 : 1160); return { p: cam.position.clone(), q: new T.Vector3().copy(cam.position).add(cam.getWorldDirection(new T.Vector3()).multiplyScalar(10)), floor: bot.y - .6 }; }
+  var A = pose(0), X = pose(1); floor.position.y = X.floor;
+  var kick = el('kick', '<i></i>OUR 3D · BUILT FROM VALMIKI\'S WORDS'), head = el('head', 'Pushpak, <b>part by part</b>', 'font-size:64px');
+  var TAGS = [['peaks', 1.3, 'R', '01', '5.8.5', 'Pahaad jaisa, kai shikhar'], ['frame', .05, 'L', '02', '5.8.1 · 6.124', 'Sona, heere, ghantiyaan'], ['crystal', .45, 'R', '03', '5.9.16', 'Crystal khidkiyaan + hawa ke chhed'],
+    ['pillars', .6, 'L', '04', '5.9.13', 'Bhediyon ki nakkaashi'], ['deck', -.05, 'R', '05', '5.9.17 · 6.123.1', 'Moonge ka farsh, hans'], ['stairs', -.25, 'L', '06', '5.9.15', 'Sone ki seedhiyaan'],
+    ['lotus', -.4, 'L', '07', 'OUR TOUCH · NOT IN VERSE', 'Kamal-peeth'], ['engine', 0, 'R', '08', 'ENGINE?', 'Text mein nahi']];
+  TAGS.forEach(function (q, i) { var cls = i >= 6 ? 'tag q' : 'tag', d = el(cls, '<small><b style="color:' + (i === 7 ? '#3fd0c9' : '#c2780e') + '">' + q[3] + '</b> · ' + q[4] + '</small>' + q[5].replace(', ', ',<br>').replace(' + ', '<br>+ '), 'left:0;top:0;opacity:0');
+    if (i === 6) { d.style.borderColor = '#e8b04a'; d.querySelector('small').style.color = '#e8b04a'; } q.el = d; q.t0 = 5.0 + i * .55; });
+  var cap = el('cap', ''), src = el('src', 'Valmiki Ramayana 5.8-5.9, 6.123-124 · our model, not the film\'s design');
+  var CAPS = [[0, 'Valmiki ki lines se, <span>part by part.</span>'], [5, 'Har hissa, apne <span>shlok ke saath.</span>'], [9.2, 'Aur engine? <span>Text mein nahi.</span>'], [11.2, 'Phir se, <span>ek Pushpak.</span>']];
+  window.__seek = function (t) {
+    // explode 1.6..4.6 (staggered, bottom first), close 11.0..12.6 (top first)
+    var eAll = 0; for (var k = 0; k < ORDER.length; k++) {
+      var o = eob((t - 1.6 - k * .22) / 1.3, 1.2), c = eio((t - 11.0 - (ORDER.length - 1 - k) * .08) / 1.1), e = Math.max(0, o * (1 - c)), name = ORDER[k];
+      L[name].position.y = ASM[name] + (EXP[name] - ASM[name]) * e; if (name === 'lotus') L.petals.forEach(function (q) { var cc = q.ri ? 2.95 : 2.85, oo = q.ri ? 1.62 : 1.32; q.m.rotation.x = cc + (oo - cc) * clamp(e * 1.4); }); eAll += e / ORDER.length; }
+    L.engine.children[0].material.opacity = .9 * clamp((t - 3.0) / .8) * (1 - clamp((t - 10.8) / .5));
+    // turntable (designed: constant slow turn, motivates the reveal), camera dolly A->X on the explode, X->A on the close
+    P.rotation.y = .9 - t * .055; var m = eio((t - 1.4) / 3.0) * (1 - eio((t - 10.9) / 1.6));
+    cam.position.copy(A.p).lerp(X.p, m); cam.lookAt(new T.Vector3().copy(A.q).lerp(X.q, m)); cam.updateMatrixWorld(); P.updateMatrixWorld(true);
+    // labels: leader from a dot on the part to its card, cards stacked per side
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var lastY = { L: 440, R: 440 };
+    TAGS.forEach(function (q) { var a = clamp((t - q.t0) / .35) * (1 - clamp((t - 10.4) / .4)); if (a <= 0) { q.el.style.opacity = 0; return; }
+      var p = new T.Vector3(q[2] === 'R' ? 1.5 : -1.5, q[1], .8); if (q[0] === 'engine') p.set(1.1, 0, 0); if (q[0] === 'lotus') p.set(-2.0, -.45, .6);
+      L[q[0]].localToWorld(p); var sp = scr(p), h = q.el.offsetHeight, w = q.el.offsetWidth, tx = q[2] === 'R' ? 690 : 162, ty = Math.max(sp.y - h / 2, lastY[q[2]] + 12);
+      lastY[q[2]] = ty + h; q.el.style.left = tx + 'px'; q.el.style.top = ty + 'px'; q.el.style.opacity = a; q.el.style.transform = 'translateY(' + (1 - eio(a)) * 14 + 'px)';
+      if (a > .3) { leader(sp, { x: q[2] === 'R' ? tx : tx + w, y: ty + h / 2 }, q[0] === 'engine' ? '#3fd0c9' : q[0] === 'lotus' ? '#e8b04a' : null); var ln = svg.lastChild.previousSibling; svg.lastChild.setAttribute('opacity', a); ln.setAttribute('opacity', a * .8); } });
+    var ci = 0; CAPS.forEach(function (c, i) { if (t >= c[0]) ci = i; }); cap.innerHTML = CAPS[ci][1];
+    render(t);
+  };
+  window.__seek(0);
+}
+
+// =============== SCENE 6: the film's hot-air idea, tested with numbers ===============
+function scene6() { P.visible = false;
+  // a generic passenger-balloon envelope (teardrop lathe, gores), not the film's dome
+  var pts = []; for (var i = 0; i <= 40; i++) { var u = i / 40, y = -1.6 + u * 4.2, r = u < .18 ? .35 + u * 3.2 : 1.6 * Math.sin(Math.min(1, (u - .02) / .98) * Math.PI * .92 + .12) * (1 - Math.pow(u, 6) * .15); pts.push(new T.Vector2(Math.max(.02, r), y)); } pts.push(new T.Vector2(0, 2.62));
+  var gore = cv(1024, 256, function (g, w, h) { for (var k = 0; k < 16; k++) { g.fillStyle = k % 2 ? '#e8b04a' : '#0e2a7a'; g.fillRect(k * w / 16, 0, w / 16, h); } g.fillStyle = 'rgba(255,255,255,.08)'; for (var y = 0; y < h; y += 16) g.fillRect(0, y, w, 2); });
+  var env = new T.Mesh(new T.LatheGeometry(pts, 64), new T.MeshStandardMaterial({ map: gore, roughness: .55, metalness: .05, side: T.DoubleSide, transparent: true, opacity: .55, depthWrite: false })); S.add(env);
+  var basket = new T.Mesh(new T.BoxGeometry(.6, .45, .6), new T.MeshStandardMaterial({ color: 0x8a5a2a, roughness: .8 })); basket.position.y = -2.5; S.add(basket);
+  for (var k = 0; k < 4; k++) { var a = k * Math.PI / 2 + Math.PI / 4, ln = new T.Mesh(new T.CylinderGeometry(.008, .008, .9, 4), GOLD2); ln.position.set(Math.cos(a) * .33, -1.95, Math.sin(a) * .33); ln.rotation.z = Math.cos(a) * .1; ln.rotation.x = -Math.sin(a) * .1; S.add(ln); }
+  var flame = new T.Mesh(new T.ConeGeometry(.16, .7, 16), new T.MeshBasicMaterial({ color: new T.Color(1, .55, .15).multiplyScalar(4) })); flame.position.y = -1.85; S.add(flame);
+  // air particles: warm & sparse inside, cool & dense outside
+  var hot = [], cold = []; for (var i2 = 0; i2 < 2600; i2++) { var ang = hsh(i2) * 6.283, rad = Math.sqrt(hsh(i2 + 7)), x = Math.cos(ang) * rad * 3.6, y2 = .6 + Math.sin(ang) * rad * 3.4, z = (hsh(i2 + 13) - .5) * 1.2, rr = Math.abs(x);
+    var inside = y2 > -1.5 && y2 < 2.5 && rr < 1.5 * Math.sin(Math.min(1, (y2 + 1.6) / 4.2) * Math.PI * .92 + .12) * .95;
+    if (inside) { if (hsh(i2 + 3) < .55) hot.push(x, y2, z); } else cold.push(x, y2, z); }
+  function pts3(a, col, sz) { var g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(a, 3)); S.add(new T.Points(g, new T.PointsMaterial({ color: col, size: sz, sizeAttenuation: false, transparent: true, depthWrite: false, map: DOT, alphaTest: .05 }))); }
+  var DOT = cv(64, 64, function (g, w, h) { var r = g.createRadialGradient(32, 32, 0, 32, 32, 30); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(.5, 'rgba(255,255,255,.6)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, w, h); });
+  pts3(hot, new T.Color(1, .5, .15).multiplyScalar(2.4), 9); pts3(cold, new T.Color(.35, .7, 1).multiplyScalar(1.2), 7);
+  var arrow = new T.ArrowHelper(new T.Vector3(0, 1, 0), new T.Vector3(0, 2.8, 0), 1.2, 0x3fd0c9, .35, .25); S.add(arrow);
+  bg.visible = true; cam.fov = 28; cam.updateProjectionMatrix(); fitV(new T.Vector3(0, 0, 0), new T.Vector3(0, .05, 1).normalize(), new T.Vector3(0, 4.2, 0), new T.Vector3(0, -2.8, 0), 470, 1060);
+  render(6);
+  el('kick', '<i></i>FILM\'S IDEA · A HOT-AIR DOME');
+  el('head', 'Garam hawa, <b>halki hawa</b>', 'font-size:64px');
+  el('tag', '<small>100°C ANDAR</small><span style="font:800 34px Syne">0.95 kg/m³</span>', 'left:162px;top:560px');
+  el('tag', '<small>15°C BAAHAR</small><span style="font:800 34px Syne">1.23 kg/m³</span>', 'left:630px;top:560px;background:#cfe8ff');
+  el('tag q', '<small>LIFT · HAR m³</small><span style="font:800 34px Syne;color:#3fd0c9">0.28 kg</span>', 'left:690px;top:760px;background:rgba(7,16,46,.85)');
+  el('tag', '<small>1 m³ SONA = 19.3 TONNE · OUR CALC.</small><span style="font:800 50px Syne">≈ 69,000 m³</span><br>garam hawa · ≈ 25 passenger balloon', 'left:162px;top:1090px;background:#e8b04a');
+  el('src', 'ThePrint (2 Apr 2026) on the teaser: "lotus-cum-hot air balloon" · physics: ideal-gas air density, sea level', 'top:1272px');
+  el('cap', 'Film ka gumbad: <span>hot-air balloon.</span>');
+}
+
+({ 1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5, 6: scene6, 7: scene7 })[SC]();
 setTimeout(function () { window.__ready = true; }, SC >= 4 ? 1500 : 200);
 })();
