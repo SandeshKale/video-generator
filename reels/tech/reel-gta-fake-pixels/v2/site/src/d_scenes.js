@@ -16,25 +16,25 @@ function WS(gid, needle, k, last) {
 }
 B.WS = WS;
 // ---------- UI ----------
-var UI = document.getElementById('ui');
+var UI = document.getElementById('stage');
 function el(css, html) { var d = document.createElement('div'); d.style.cssText = 'position:absolute;' + css; if (html != null) d.innerHTML = html; UI.appendChild(d); return d; }
 B.el = el;
 var SH = 'text-shadow:0 4px 14px rgba(10,12,40,.55),0 1px 3px rgba(10,12,40,.8);';
 var kick = el('left:156px;top:236px;font:600 30px Fredoka;letter-spacing:.08em;color:#1b1d3a;background:' + C.real + ';padding:6px 16px 4px;border-radius:10px;opacity:0');
-var head = el('left:156px;top:296px;width:740px;font:700 82px/1.06 Fredoka;color:#fff7e6;letter-spacing:-.01em;' + SH + 'opacity:0');
+var head = el('left:156px;top:296px;width:740px;font:700 82px/1.18 Fredoka;color:#fff7e6;letter-spacing:-.01em;' + SH + 'opacity:0');
 var sub = el('left:156px;top:500px;width:740px;font:600 34px/1.25 Inter;color:#fff7e6;' + SH + 'opacity:0');
 var blk = function (txt, col, ink) { return '<span style="background:' + col + ';color:' + (ink || '#fff7e6') + ';padding:0 .16em;border-radius:.14em;text-shadow:none;box-decoration-break:clone;-webkit-box-decoration-break:clone">' + txt + '</span>'; };
 var AI = function (x) { return blk(x, C.ai); }, RL = function (x) { return blk(x, C.real, '#1b1d3a'); };
 var card = el('left:470px;top:1030px;width:430px;padding:22px 26px 18px;background:#fff7e6;border-radius:6px;box-shadow:0 14px 30px rgba(10,12,40,.45);transform-origin:50% 0;opacity:0;box-sizing:border-box');
-card.innerHTML = '<div style="position:absolute;left:150px;top:-16px;width:120px;height:32px;background:rgba(255,210,63,.85);transform:rotate(-4deg)"></div><div style="font:700 40px Caveat;color:#6a5a7a">isko kehte hain:</div><div class="tm" style="font:700 60px/1.02 Fredoka;color:#1b1d3a;margin-top:4px"></div>';
+card.innerHTML = '<div style="position:absolute;left:150px;top:-16px;width:120px;height:32px;background:rgba(255,210,63,.85);transform:rotate(-4deg)"></div><div style="font:700 40px/1 Caveat;color:#6a5a7a">isko kehte hain:</div><div class="tm" style="font:700 60px/1.05 Fredoka;color:#1b1d3a;margin-top:24px"></div>';
 var cardTm = card.querySelector('.tm');
 function chalk() { return el('font:700 58px/1 Caveat;color:#fff7e6;' + SH + 'white-space:nowrap;opacity:0'); }
 var L1 = chalk(), L2 = chalk(), L3 = chalk();
-var big = el('left:156px;width:768px;text-align:center;font:700 120px/1 Fredoka;color:' + C.real + ';' + SH + 'opacity:0;font-variant-numeric:tabular-nums');
+var big = el('left:162px;width:756px;text-align:center;font:700 120px/1 Fredoka;color:' + C.real + ';' + SH + 'opacity:0;font-variant-numeric:tabular-nums');
 var chip = el('font:700 44px Fredoka;padding:8px 22px 6px;border-radius:14px;opacity:0;white-space:nowrap');
 var cap = document.getElementById('cap');
 // end card
-var endc = el('left:156px;top:560px;width:768px;height:700px;opacity:0;text-align:center');
+var endc = el('left:162px;top:560px;width:756px;height:700px;opacity:0;text-align:center');
 endc.innerHTML = '<div style="width:300px;height:300px;margin:0 auto;border-radius:50%;background:#0d1330;padding:14px;box-sizing:border-box;box-shadow:0 0 0 8px #b4f000,0 18px 40px rgba(0,0,0,.5)"><img src="nerdlogic-profile.jpg" style="width:100%;height:100%;border-radius:50%;display:block"></div>' +
   '<div style="font:700 86px Fredoka;color:#fff7e6;margin-top:46px;' + SH + '">nerdlogic.co</div><div class="btns" style="display:flex;justify-content:center;gap:22px;margin-top:40px"></div>';
 var BTN = ['LIKE', 'SHARE', 'SUBSCRIBE'].map(function (x, i) { var b = document.createElement('div'); b.textContent = x; b.style.cssText = 'font:700 40px Fredoka;padding:14px 28px 10px;border-radius:40px;opacity:0;' + (i === 2 ? 'background:#ff3f8e;color:#fff7e6' : 'background:#fff7e6;color:#1b1d3a'); endc.querySelector('.btns').appendChild(b); return b; });
@@ -44,7 +44,7 @@ function show(d, t, t0, dur) { var u = clamp((t - t0) / (dur || .35)); d.style.o
 function popCard(t, t0, term, fs) { var u = clamp((t - t0) / .4); card.style.opacity = u > 0 ? 1 : 0; card.style.transform = 'rotate(-3deg) scale(' + (u > 0 ? eob(u) : 0) + ')'; cardTm.textContent = term; cardTm.style.fontSize = (fs || 60) + 'px'; }
 function place(d, x, y) { d.style.left = Math.round(x) + 'px'; d.style.top = Math.round(y) + 'px'; }
 // a chalk label anchored to a world point, clamped inside the safe box
-function lab(d, txt, p, dx, dy, t, t0, t1) { if (t < t0 || (t1 != null && t > t1)) return; var s = B.toScr(p); d.textContent = txt; var w = txt.length * 24; place(d, clamp(s.x + (dx || 0), 160, 918 - w), clamp(s.y + (dy || 0), 560, 1250)); show(d, t, t0); if (t1 != null) d.style.opacity = Math.min(+d.style.opacity, clamp((t1 - t) / .3)); }
+function lab(d, txt, p, dx, dy, t, t0, t1) { if (t < t0 || (t1 != null && t > t1)) return; var s = B.toScr(p); d.textContent = txt; var w = txt.length * 30; place(d, clamp(s.x + (dx || 0), 160, 918 - w), clamp(s.y + (dy || 0), 560, 1250)); show(d, t, t0); if (t1 != null) d.style.opacity = Math.min(+d.style.opacity, clamp((t1 - t) / .3)); }
 function kickHead(t, k, h, t0) { kick.textContent = k; show(kick, t, t0 - .1); head.innerHTML = h; show(head, t, t0); }
 B.UIs = { hide: hideUI };
 
@@ -70,7 +70,7 @@ function hookPose(t, sc) { var cU = eio((t - (sc.t1 - 2.2)) / 2.0), P = phonePos
   return cU <= 0 ? P : { p: P.p.clone().lerp(far, cU), q: P.q.clone().lerp(V(-.2, 1.0, -2.4), cU), fov: lerp(40, 36, cU), band: P.band.clone().lerp(V(0, 1, 0), cU), wid: lerp(.11, .18, cU), amp: lerp(30, 20, cU), hideHead: cU < .3 }; }
 function hookAct(t, sc) {
   gameOnPhone(t, 0, 0);
-  var g2 = GR('g2'), tg = WS('g2', 'सोलह'), tAI = WS('g2', 'एआई|अंदाज़');
+  var g2 = GR('g2'), tg = WS('g2', 'सोलह|सोला'), tAI = WS('g2', 'एआई|AI|अंदाज़|अन्दा');
   gridAt(function (r, c, i) { return i === REAL ? (t - tg) / .28 : (t - (tg + .5 + ((i * 7) % 16) / 16 * 1.6)) / .28; });
   kick.textContent = 'GTA 6 · 19 NOV'; show(kick, t, -1);
   if (t < tg - .2) { head.innerHTML = 'GTA 6 aa raha hai!'; show(head, t, -1); }
@@ -103,8 +103,8 @@ function pixAct(t, sc) {
 }
 
 // ================= 3. LIGHT (g6, g7) — the moon in the well =================
-var RAYP = null, rayL = new T.Line(new T.BufferGeometry(), new T.LineBasicMaterial({ color: new T.Color(2.2, 1.9, 1.2), toneMapped: false })), rayDot = new T.Mesh(new T.SphereGeometry(.06, 10, 8), new T.MeshBasicMaterial({ color: new T.Color(3, 2.6, 1.6), toneMapped: false }));
-S.add(rayL); S.add(rayDot);
+var RAYP = null, rayL = new T.Mesh(new T.BufferGeometry(), new T.MeshBasicMaterial({ color: new T.Color(2.4, 2.0, 1.2), toneMapped: false })), rayDot = new T.Mesh(new T.SphereGeometry(.06, 10, 8), new T.MeshBasicMaterial({ color: new T.Color(3, 2.6, 1.6), toneMapped: false }));
+S.add(rayL); S.add(rayDot); B.rayHide = function () { rayL.visible = false; rayDot.visible = false; };
 var rayTube = null;
 function lightPose(t, sc) { var u = eio((t - sc.t0) / (sc.t1 - sc.t0)); return { p: V(lerp(1.9, 1.6, u), lerp(4.2, 3.9, u), lerp(-7.0, -7.6, u)), q: V(.2, .8, -11.2), fov: 42, band: V(.4, .8, -11.2), wid: .16, amp: 24 }; }
 function lightAct(t, sc) {
@@ -112,11 +112,11 @@ function lightAct(t, sc) {
   W.updateMatrixWorld(true); var eye = new T.Vector3(); KID2.userData.P.head.getWorldPosition(eye); eye.y += .2 * 1.12;
   var moonP = B.moon.position.clone(), water = V(.2, .62, -11.35);
   var src = water.clone().add(moonP.clone().sub(water).normalize().multiplyScalar(9));
-  var tr = WS('g7', 'रोशनी'), tt = WS('g7', 'टकरा'), tm = WS('g7', 'मुड़|मुड'), ta = WS('g7', 'आँख|आंख');
+  var tr = WS('g7', 'रोशनी'), tt = WS('g7', 'टकरा|तकरा'), tm = WS('g7', 'मुड़|मुड|मुढ'), ta = WS('g7', 'आँख|आंख|आख');
   var k1 = clamp((t - tr) / (tt - tr + .2)), k2 = clamp((t - tm) / Math.max(.4, ta - tm + .3));
   var pts = [src.clone()]; var a = src.clone().lerp(water, eo3(k1)); pts.push(a); var cur = a;
   if (k1 >= 1) { cur = water.clone().lerp(eye, eo3(k2)); pts.push(cur); }
-  rayL.geometry.setFromPoints(pts); rayL.visible = t >= tr; rayDot.visible = t >= tr && k2 < 1; rayDot.position.copy(cur);
+  rayL.geometry.dispose(); rayL.geometry = pts.length > 1 && pts[0].distanceTo(pts[pts.length - 1]) > .01 ? new T.TubeGeometry(new T.CurvePath().add ? (function () { var cp = new T.CurvePath(); for (var q = 1; q < pts.length; q++) cp.add(new T.LineCurve3(pts[q - 1], pts[q])); return cp; })() : null, 64, .035, 6, false) : new T.BufferGeometry(); rayL.visible = t >= tr; rayDot.visible = t >= tr && k2 < 1; rayDot.position.copy(cur);
   kickHead(t, 'RANG KAHAAN SE?', t < tr - .2 ? RL('Roshni') + ' se!' : 'Roshni ' + RL('takraati') + ',<br>mudti, aankh tak', sc.t0 + .2);
   if (rayL.visible) lab(L1, 'chaand ki roshni', src.clone().lerp(water, .3), 30, -40, t, tr + .3);
   lab(L2, 'takraayi, mudi', water, -40, -110, t, tt);
@@ -186,7 +186,7 @@ function costAct(t, sc) {
   show(head, t, t < t60 - .2 ? sc.t0 + .2 : t < t50 - .2 ? t60 - .2 : t < tc - .2 ? t50 - .2 : tc - .2);
   if (t >= tc) { sub.textContent = 'Pixar Cars (2006), D23 ke mutabiq, average · reported'; sub.style.top = '500px'; show(sub, t, tc + .4); }
   if (t > t60 - .2 && t < tc - .3) { chip.textContent = '× 60 / SECOND'; chip.style.background = C.real; chip.style.color = '#1b1d3a'; place(chip, 156, 540); show(chip, t, t60); }
-  if (t >= tc) { var hrs = Math.min(17, Math.floor(17 * eio((t - t17 + .4) / 2.4))); big.textContent = hrs + ' ghante'; big.style.top = '1040px'; big.style.fontSize = '88px'; show(big, t, t17 - .2); }
+  if (t >= tc) { var hrs = Math.min(17, Math.floor(17 * eio((t - t17 + .4) / 2.4))); big.textContent = hrs + ' ghante'; big.style.top = '600px'; big.style.fontSize = '88px'; show(big, t, t17 - .2); }
 }
 
 // ================= 6. RAY RECONSTRUCTION (g12, g13) — rangoli =================
@@ -241,7 +241,7 @@ B.initPoster = function () {
 };
 function drawPoster(sk, pu) { // sk: sketch grid strength, pu: painted share (left -> right, top -> bottom sweeps)
   var g = B.posterTex.userData.g, w = 600, h = 840; g.fillStyle = '#efe6d2'; g.fillRect(0, 0, w, h);
-  g.globalAlpha = .35 * sk; g.imageSmoothingEnabled = false; g.drawImage(SMALL, 0, 0, w, h); g.globalAlpha = 1; g.imageSmoothingEnabled = true;
+  g.globalAlpha = .7 * sk; g.imageSmoothingEnabled = false; g.drawImage(SMALL, 0, 0, w, h); g.globalAlpha = 1; g.imageSmoothingEnabled = true;
   g.strokeStyle = 'rgba(40,40,60,' + .5 * sk + ')'; g.lineWidth = 2; for (var x = 0; x <= w; x += 60) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke(); } for (var y = 0; y <= h; y += 60) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
   if (pu > 0) { var rows = 4, rh = h / rows; for (var r = 0; r < rows; r++) { var k = clamp(pu * rows - r); if (k <= 0) continue; g.save(); g.beginPath(); g.rect(0, r * rh, w * eio(k), rh + 1); g.clip(); g.drawImage(POSTER, 0, 0, w, h); g.restore(); } }
   B.posterTex.needsUpdate = true;
@@ -259,7 +259,7 @@ function srAct(t, sc) {
   if (t < tb - .2) { head.innerHTML = 'Tasveer chhoti:<br>' + RL('4 mein se 1') + ' pixel'; show(head, t, sc.t0 + .2); } else { head.innerHTML = 'AI use banata hai<br>' + AI('bada + saaf'); show(head, t, tb - .2); }
   lab(L1, 'chhoti photo', V(-4.47, 1.6, -10.6), -60, -90, t, ts + .2);
   lab(L2, 'bada poster', V(-5.4, 4.6, -11.6), -100, -60, t, tp);
-  if (t >= tdl - .1) popCard(t, tdl, 'DLSS', 64); card.style.top = '1040px'; card.style.left = '520px';
+  if (t >= tdl - .1) popCard(t, tdl, 'DLSS', 64); card.style.top = '1040px'; card.style.left = '470px';
   if (t >= tdl) { sub.textContent = 'DLSS Super Resolution · NVIDIA'; sub.style.top = '500px'; show(sub, t, tdl + .3); }
 }
 
@@ -282,7 +282,7 @@ function fgAct(t, sc) {
 function mathPose(t, sc) { return phonePose(t, .14); }
 function mathAct(t, sc) {
   gameOnPhone(t, 0, 0);
-  var tp = WS('g18', 'पिक्सल'), tt = WS('g18', 'तस्वीर'), t16 = WS('g18', 'सोलह|बटा'), tn = WS('g19', 'एनवीडिया|इसीलिए');
+  var tp = WS('g18', 'पिक्सल'), tt = WS('g18', 'तस्वीर'), t16 = WS('g18', 'बटा|बता|सोलह|सोला'), tn = WS('g19', 'एनवीडिया|इसीलिए');
   gridAt(function (r, c) { var a = (t - tp) / .25, b = (t - tt - r * .08) / .25; return c > 0 ? a : (r > 0 ? Math.max(a, b) : a); }, function (r, c) { return c === 0 && (r === 0 || t < tt); });
   kick.textContent = 'AB JODO'; show(kick, t, sc.t0 + .1);
   if (t < t16 - .2) { head.innerHTML = (t < tt - .1 ? RL('4 mein 1') + ' pixel' : RL('4 mein 1') + ' pixel<br>× ' + RL('4 mein 1') + ' tasveer'); show(head, t, sc.t0 + .2); }
@@ -311,7 +311,7 @@ function catchAct(t, sc) {
     B.TABLE.visible = true; B.KID.visible = false;
     if (t < tr - .2) { head.innerHTML = 'GTA 6: ' + RL('console') + '<br>DLSS: ' + AI('NVIDIA PC'); show(head, t, tTable() + .1); }
     else { head.innerHTML = 'Rockstar:<br>' + RL('confirm nahi'); show(head, t, tr - .2); }
-    lab(L1, 'GTA 6 yahan', V(.48, 1.3, 3.6), -160, -60, t, tps);
+    lab(L1, 'GTA 6 yahan', V(.48, 1.3, 3.6), -160, -150, t, tps);
     lab(L2, 'DLSS yahan', V(1.32, 1.35, 3.6), -40, -70, t, td);
     if (t >= tr) { sub.textContent = 'GTA 6: PS5 + Xbox Series X|S · 19 Nov 2026 · PC date nahi'; sub.style.top = '520px'; show(sub, t, tr + .2); }
   }
@@ -320,7 +320,7 @@ function catchAct(t, sc) {
 // ================= 11. CTA (g23) =================
 function ctaPose(t, sc) { var u = eio((t - sc.t0) / 3.5); return { p: V(lerp(2.0, .6, u), lerp(2.6, 9.5, u), lerp(6.6, 8.6, u)), q: V(0, .2, lerp(2.0, -3.0, u)), fov: lerp(36, 42, u), band: V(0, 0, lerp(2, -2, u)), wid: .22, amp: 18 }; }
 function ctaAct(t, sc) {
-  var tl = WS('g23', 'लाइक'), ts = WS('g23', 'शेयर'), tsu = WS('g23', 'सब्स'), tn = WS('g23', 'नर्ड|लॉजिक');
+  var tl = WS('g23', 'लाइक'), ts = WS('g23', 'शेयर|शेर'), tsu = WS('g23', 'सब्स'), tn = WS('g23', 'नर्ड|लॉजिक');
   endc.style.opacity = clamp((t - (sc.t0 + .3)) / .5); B.TS.fade = Math.max(B.TS.fade, .45 * clamp((t - sc.t0 - .3) / .5));
   [tl, ts, tsu].forEach(function (x, i) { var u = clamp((t - x) / .3); BTN[i].style.opacity = u; BTN[i].style.transform = 'scale(' + (u > 0 ? eob(u) : .5) + ')'; });
   var pulse = 1 + .04 * Math.max(0, Math.sin((t - tn) * 6)) * (t > tn ? 1 : 0); endc.querySelector('img').parentNode.style.transform = 'scale(' + pulse + ')';

@@ -47,8 +47,8 @@ def soft_off_word(t):
 def chime(f, d=.6, g=.3): return sm(tone(f, d, dec=d/3) * g, tone(f * 2.01, d * .7, dec=d/5) * g * .4, tone(f * 3.02, d * .5, dec=d/8) * g * .2)
 for e in ev['ev']:
     t, k = e['t'], e['k']
-    if k in ('swish', 'whoosh', 'pop', 'ping', 'ping2', 'buzz', 'card', 'sparkle', 'tick', 'zip', 'flip', 'click'): t = soft_off_word(t)
-    if k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .35, tone(55, .8, dec=.3) * .3), t + .2)
+    if k not in ('rumble', 'brush', 'riffle', 'clock', 'count'): t = soft_off_word(t)
+    if k == 'slam': put(sfx, sm(tone(110, .5, f1=38, dec=.18) * .9, noise(.25, 200, 6000) * dec_n(.25, .06) * .35, tone(55, .8, dec=.3) * .3), t)
     elif k == 'stamp': put(sfx, sm(tone(90, .3, f1=45, dec=.1) * .8, noise(.12, 300, 3000) * dec_n(.12, .03) * .5), t + .15)
     elif k == 'pop': put(sfx, tone(500, .2, f1=1100, dec=.07) * .3, t)
     elif k == 'card': put(sfx, sm(tone(660, .22, f1=1320, dec=.08) * .24, noise(.06, 3000, 9000) * dec_n(.06, .02) * .22), t)
@@ -67,7 +67,7 @@ for e in ev['ev']:
         for j in range(26): put(sfx, sm(tone(220 + 90 * ((j * 7) % 5), .08, dec=.03) * .08, noise(.03, 800, 4000) * dec_n(.03, .01) * .12), t + j * .11 + .05 * ((j * 3) % 2))
     elif k == 'clock':
         for j in range(16): put(sfx, noise(.015, 2500, 7000) * dec_n(.015, .005) * (.25 if j % 2 else .15), t - .3 + j * .16)
-    elif k == 'swell': put(sfx, sm(*[tone(440 * 2 ** (q / 12), 1.6, 'saw', a=.8, dec=1.2) * .03 for q in (0, 4, 7, 12)]), t - .4)
+    elif k == 'swell': put(sfx, sm(*[tone(440 * 2 ** (q / 12), 1.6, 'saw', a=.8, dec=1.2) * .012 for q in (0, 4, 7, 12)]), soft_off_word(t))
     elif k == 'brush':
         for j in range(8): put(sfx, noise(.28, 1500, 6000) * np.sin(np.linspace(0, np.pi, int(.28 * SR))) * .09, t + j * .4)
     elif k == 'flip': put(sfx, noise(.06, 1500, 7000) * dec_n(.06, .02) * .25, t)
@@ -102,7 +102,7 @@ while t < DUR:
     if V['pad'] and s16 == 0: put(music, tone(root[bar], beat * 3.9, dec=2.5) * .18, t)
     i += 1; t = i * step
 # ---------------- ducking + carve ----------------
-vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .02).astype('float32'); on = np.roll(on, -int(.09 * SR))
+vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .008).astype('float32'); on = np.roll(on, -int(.09 * SR))
 duck = np.minimum(1, uniform_filter1d(on, int(.18 * SR)) * 1.6); a_ = np.exp(-1 / (.08 * SR)); r_ = np.exp(-1 / (.3 * SR)); g = np.zeros(N, 'float32'); cur = float(duck[0])
 for k in range(0, N, 64):
     tg = duck[k]; cur = tg + (cur - tg) * (a_ if tg > cur else r_)**64; g[k:k+64] = cur
