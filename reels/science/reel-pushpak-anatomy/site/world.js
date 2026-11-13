@@ -324,7 +324,7 @@ var SC_FN = {
     gA.visible = true; keyAt(OA); key.intensity = .6; S.environmentIntensity = .4; bg.visible = false;
     var t1 = ST('s1'), nIn = 12;    // 12 sheets already down at frame 0, the rest drop in during s1
     SHEETS.forEach(function (m, i0) { var i = (i0 * 17) % 50, d = m.userData, tin = i < nIn ? -1 : t1 + (i - nIn) / (50 - nIn) * 2.3, u = eio((t - tin) / .45); m.visible = u > 0; m.position.set(d.x, d.y + (1 - u) * 1.6, d.z); m.rotation.set(-Math.PI / 2, 0, d.rz + (1 - u) * .6); });
-    shots(t, [{ p: [0, 14.0, 6.0], q: [0, 0, -.4], fov: 30 }, { t: t1 + .2, d: 2.6, p: [0, 16.4, 7.4], q: [0, 0, -.6], fov: 30 }, { t: ST('s4') - .2, d: 2.2, p: [0, 15.4, 6.6], q: [0, 0, -.8], fov: 30 }]);
+    shots(t, [{ p: [0, 18.0, 8.2], q: [0, 0, .75], fov: 30 }, { t: t1 + .2, d: 2.6, p: [0, 20.5, 9.0], q: [0, 0, .1], fov: 30 }, { t: ST('s4') - .2, d: 2.2, p: [0, 19.5, 8.4], q: [0, 0, 0], fov: 30 }]);
     var nShown = Math.min(50, Math.max(nIn, Math.floor(nIn + clamp((t - t1) / 2.3) * (50 - nIn) + .5)));
     headline(t, -1, 'RAMAYANA · PART 1 · 5 NOV 2026', 'Pushpak ke <b>' + (t < t1 + 2.2 ? nShown : '40-50') + '</b> design');
     show('c2', 'tag', '<small>SIRF DESIGN</small><span style="font:800 56px Syne;color:#1a1530">2 saal</span>', t, CUE('s2', 'दो') - .1, 'left:162px;top:1000px');
