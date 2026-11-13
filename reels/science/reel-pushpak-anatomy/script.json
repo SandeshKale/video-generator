@@ -1,0 +1,285 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "रामायण फ़िल्म के मेकर्स ने, पुष्पक विमान के चालीस-पचास डिज़ाइन बनाए।",
+   "A": "Ramayana film ke makers ne, Pushpak Viman ke 40-50 design banaye.",
+   "cap": "Ramayana film ke makers ne, Pushpak Viman ke 40-50 design banaye."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "सिर्फ़ डिज़ाइन में, दो साल लगे।",
+   "A": "Sirf design mein, 2 saal lage.",
+   "cap": "Sirf design mein, 2 saal lage."
+  },
+  {
+   "id": "s3",
+   "g": "g2",
+   "B": "और रावण-जटायु की लड़ाई? साढ़े छह साल!",
+   "A": "Aur Ravan-Jatayu ki ladaai? 6.5 saal!",
+   "cap": "Aur Ravan-Jatayu ki ladaai? 6.5 saal!"
+  },
+  {
+   "id": "s4",
+   "g": "g3",
+   "B": "डायरेक्टर नितेश तिवारी ने कहा: हम चाहते थे, इसमें थोड़ा साइंस हो।",
+   "A": "Director Nitesh Tiwari ne kaha: hum chahte the, isme thoda science ho.",
+   "cap": "Director Nitesh Tiwari ne kaha: hum chahte the, isme thoda science ho."
+  },
+  {
+   "id": "s5",
+   "g": "g4",
+   "B": "तो चलिए, वही करते हैं। पर फ़िल्म की कॉपी नहीं।",
+   "A": "Toh chaliye, wahi karte hain. Par film ki copy nahi.",
+   "cap": "Toh chaliye, wahi karte hain. Par film ki copy nahi."
+  },
+  {
+   "id": "s6",
+   "g": "g5",
+   "B": "वाल्मीकि की अपनी लाइनों से, इसे हिस्सा-हिस्सा खोलकर देखते हैं।",
+   "A": "Valmiki ki apni lines se, ise hissa-hissa kholkar dekhte hain.",
+   "cap": "Valmiki ki apni lines se, ise hissa-hissa kholkar dekhte hain."
+  },
+  {
+   "id": "s7",
+   "g": "g6",
+   "B": "आकार: पहाड़ जैसा, कई शिखरों वाला।",
+   "A": "Aakaar: pahaad jaisa, kai shikharon waala.",
+   "cap": "Aakaar: pahaad jaisa, kai shikharon waala."
+  },
+  {
+   "id": "s8",
+   "g": "g6",
+   "B": "ढांचा: सोना और हीरे।",
+   "A": "Dhaancha: sona aur heere.",
+   "cap": "Dhaancha: sona aur heere."
+  },
+  {
+   "id": "s9",
+   "g": "g7",
+   "B": "खंभों पर, भेड़ियों की नक्काशी।",
+   "A": "Khambhon par, bhediyon ki nakkaashi.",
+   "cap": "Khambhon par, bhediyon ki nakkaashi."
+  },
+  {
+   "id": "s10",
+   "g": "g7",
+   "B": "सीढ़ियाँ, सोने की।",
+   "A": "Seedhiyaan, sone ki.",
+   "cap": "Seedhiyaan, sone ki."
+  },
+  {
+   "id": "s11",
+   "g": "g8",
+   "B": "फ़र्श, मूँगे और रत्नों का।",
+   "A": "Farsh, moonge aur ratnon ka.",
+   "cap": "Farsh, moonge aur ratnon ka."
+  },
+  {
+   "id": "s12",
+   "g": "g8",
+   "B": "और खिड़कियाँ क्रिस्टल की, साथ में हवा के छेद भी!",
+   "A": "Aur khidkiyaan crystal ki, saath mein hawa ke chhed bhi!",
+   "cap": "Aur khidkiyaan crystal ki, saath mein hawa ke chhed bhi!"
+  },
+  {
+   "id": "s13",
+   "g": "g9",
+   "B": "वाल्मीकि ने, इसके वेंटिलेशन तक लिखे हैं।",
+   "A": "Valmiki ne, iske ventilation tak likhe hain.",
+   "cap": "Valmiki ne, iske ventilation tak likhe hain."
+  },
+  {
+   "id": "s14",
+   "g": "g10",
+   "B": "पर एक चीज़ ग़ायब है। इंजन।",
+   "A": "Par ek cheez gaayab hai. Engine.",
+   "cap": "Par ek cheez gaayab hai. Engine."
+  },
+  {
+   "id": "s15",
+   "g": "g11",
+   "B": "वाल्मीकि कहते हैं, ये मन के विचार से चलता है, सोच जितना तेज़।",
+   "A": "Valmiki kehte hain, ye mann ke vichaar se chalta hai, soch jitna tez.",
+   "cap": "Valmiki kehte hain, ye mann ke vichaar se chalta hai, soch jitna tez."
+  },
+  {
+   "id": "s16",
+   "g": "g12",
+   "B": "और एक जगह लिखा है, इसे आसमान में, राक्षस और भूतगण उठाते हैं।",
+   "A": "Aur ek jagah likha hai, ise aasmaan mein rakshas aur bhootgan uthaate hain.",
+   "cap": "Aur ek jagah likha hai, ise aasmaan mein rakshas aur bhootgan uthaate hain."
+  },
+  {
+   "id": "s17",
+   "g": "g13",
+   "B": "फ़िल्म ने इसका जवाब दिया।",
+   "A": "Film ne iska jawaab diya.",
+   "cap": "Film ne iska jawaab diya."
+  },
+  {
+   "id": "s18",
+   "g": "g13b",
+   "B": "रिव्यूज़ के मुताबिक़, पुष्पक का गुंबद, एक हॉट-एयर बैलून जैसा है।",
+   "A": "Reviews ke mutaabik, Pushpak ka gumbad, ek hot-air balloon jaisa hai.",
+   "cap": "Reviews ke mutaabik, Pushpak ka gumbad, ek hot-air balloon jaisa hai."
+  },
+  {
+   "id": "s19",
+   "g": "g14",
+   "B": "और ये साइंस से सही है!",
+   "A": "Aur ye science se sahi hai!",
+   "cap": "Aur ye science se sahi hai!"
+  },
+  {
+   "id": "s20",
+   "g": "g14b",
+   "B": "गरम हवा, ठंडी हवा से हल्की होती है, इसलिए ऊपर उठती है।",
+   "A": "Garam hawa, thandi hawa se halki hoti hai, isliye upar uthti hai.",
+   "cap": "Garam hawa, thandi hawa se halki hoti hai, isliye upar uthti hai."
+  },
+  {
+   "id": "s21",
+   "g": "g15",
+   "B": "बस एक दिक़्क़त: सिर्फ़ एक घन मीटर सोना, उन्नीस टन का होता है।",
+   "A": "Bas ek dikkat: sirf 1 ghan meter sona, 19 ton ka hota hai.",
+   "cap": "Bas ek dikkat: sirf 1 ghan meter sona, 19 ton ka hota hai."
+  },
+  {
+   "id": "s22",
+   "g": "g15b",
+   "B": "उसे उठाने के लिए, लगभग पच्चीस पैसेंजर बैलून जितनी गरम हवा चाहिए।",
+   "A": "Use uthaane ke liye, lagbhag 25 passenger balloon jitni garam hawa chahiye.",
+   "cap": "Use uthaane ke liye, lagbhag 25 passenger balloon jitni garam hawa chahiye."
+  },
+  {
+   "id": "s23",
+   "g": "g16",
+   "B": "फिर वो प्राचीन विमान शास्त्र का क्या, जिसकी फ़ोटो आप फ़ॉरवर्ड करते हैं?",
+   "A": "Phir wo prachin vimaan shastra ka kya, jiski photo aap forward karte hain?",
+   "cap": "Phir wo prachin vimaan shastra ka kya, jiski photo aap forward karte hain?"
+  },
+  {
+   "id": "s24",
+   "g": "g17",
+   "B": "वो किताब, उन्नीस सौ अठारह से तेईस के बीच लिखवाई गई।",
+   "A": "Wo kitaab, 1918 se 1923 ke beech likhwaai gayi.",
+   "cap": "Wo kitaab, 1918 se 1923 ke beech likhwaai gayi."
+  },
+  {
+   "id": "s25",
+   "g": "g18",
+   "B": "और उन्नीस सौ चौहत्तर में, आई आई एस सी के पाँच वैज्ञानिकों ने उसे जाँचा।",
+   "A": "Aur 1974 mein, IISc ke 5 vaigyanikon ne use jaancha.",
+   "cap": "Aur 1974 mein, IISc ke 5 vaigyanikon ne use jaancha."
+  },
+  {
+   "id": "s26",
+   "g": "g18b",
+   "B": "फ़ैसला: इनमें से कोई भी प्लेन, उड़ नहीं सकता।",
+   "A": "Faisla: inme se koi bhi plane, ud nahi sakta.",
+   "cap": "Faisla: inme se koi bhi plane, ud nahi sakta."
+  },
+  {
+   "id": "s27",
+   "g": "g19",
+   "B": "एक और फ़र्क़। फ़िल्म में रावण, सीता जी को पुष्पक में ले जाता है।",
+   "A": "Ek aur farak. Film mein Ravan, Sita ji ko Pushpak mein le jaata hai.",
+   "cap": "Ek aur farak. Film mein Ravan, Sita ji ko Pushpak mein le jaata hai."
+  },
+  {
+   "id": "s28",
+   "g": "g19b",
+   "B": "और जटायु, उसी पर लड़ते हैं।",
+   "A": "Aur Jatayu, usi par ladte hain.",
+   "cap": "Aur Jatayu, usi par ladte hain."
+  },
+  {
+   "id": "s29",
+   "g": "g20",
+   "B": "वाल्मीकि में वो एक रथ है, गधों से खिंचा हुआ, जिसे जटायु तोड़ देते हैं।",
+   "A": "Valmiki mein wo ek rath hai, gadhon se khincha hua, jise Jatayu tod dete hain.",
+   "cap": "Valmiki mein wo ek rath hai, gadhon se khincha hua, jise Jatayu tod dete hain."
+  },
+  {
+   "id": "s30",
+   "g": "g21",
+   "B": "पर पुष्पक की असली साइंस यहाँ है।",
+   "A": "Par Pushpak ki asli science yahaan hai.",
+   "cap": "Par Pushpak ki asli science yahaan hai."
+  },
+  {
+   "id": "s31",
+   "g": "g21b",
+   "B": "लौटते वक़्त, राम ने सीता जी को, ऊपर से पूरा रास्ता दिखाया।",
+   "A": "Lautte waqt, Ram ne Sita ji ko, upar se poora raasta dikhaya.",
+   "cap": "Lautte waqt, Ram ne Sita ji ko, upar se poora raasta dikhaya."
+  },
+  {
+   "id": "s32",
+   "g": "g22",
+   "B": "लंका, सेतु, किष्किंधा, पंचवटी, चित्रकूट, प्रयाग, अयोध्या।",
+   "A": "Lanka, Setu, Kishkindha, Panchavati, Chitrakoot, Prayag, Ayodhya.",
+   "cap": "Lanka, Setu, Kishkindha, Panchavati, Chitrakoot, Prayag, Ayodhya."
+  },
+  {
+   "id": "s33",
+   "g": "g22b",
+   "B": "लगभग दो हज़ार सात सौ किलोमीटर।",
+   "A": "Lagbhag 2,700 kilometre.",
+   "cap": "Lagbhag 2,700 kilometre."
+  },
+  {
+   "id": "s34",
+   "g": "g23",
+   "B": "और आज? इसरो का एक स्पेसप्लेन, जो ख़ुद रनवे पर उतरता है।",
+   "A": "Aur aaj? ISRO ka ek spaceplane, jo khud runway par utarta hai.",
+   "cap": "Aur aaj? ISRO ka ek spaceplane, jo khud runway par utarta hai."
+  },
+  {
+   "id": "s35",
+   "g": "g23b",
+   "B": "उसका नाम है, पुष्पक।",
+   "A": "Uska naam hai, Pushpak.",
+   "cap": "Uska naam hai, Pushpak."
+  },
+  {
+   "id": "s36",
+   "g": "g24",
+   "B": "फ़िल्म का पार्ट टू, दो हज़ार अट्ठाईस की दिवाली पर आएगा।",
+   "A": "Film ka Part 2, 2028 ki Diwali par aayega.",
+   "cap": "Film ka Part 2, 2028 ki Diwali par aayega."
+  },
+  {
+   "id": "s37",
+   "g": "g25",
+   "B": "ऐसी और कहानियों के लिए, लाइक, शेयर और सब्सक्राइब करें, नर्डलॉजिक डॉट सी ओ को!",
+   "A": "Aisi aur kahaniyon ke liye, like, share aur subscribe karein, nerdlogic.co ko!",
+   "cap": "Aisi aur kahaniyon ke liye, like, share aur subscribe karein, nerdlogic.co ko!"
+  }
+ ],
+ "pause_after": {
+  "s3": 0.75,
+  "s4": 0.65,
+  "s6": 0.55,
+  "s13": 0.65,
+  "s14": 0.75,
+  "s16": 0.55,
+  "s17": 0.45,
+  "s19": 0.55,
+  "s21": 0.65,
+  "s22": 0.75,
+  "s23": 0.45,
+  "s24": 0.55,
+  "s26": 0.75,
+  "s28": 0.45,
+  "s29": 0.75,
+  "s30": 0.45,
+  "s32": 0.65,
+  "s33": 0.75,
+  "s35": 0.75,
+  "s36": 0.55
+ }
+}

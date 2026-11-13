@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Pushpak anatomy</title><style>
+@font-face{font-family:Syne;font-weight:800;src:url(fonts/syne-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Syne;font-weight:700;src:url(fonts/syne-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:FM;src:url(fonts/fragment-mono-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#07102e}
+#stage{position:absolute;inset:0;width:1080px;height:1920px}
+canvas{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none}
+.kick{position:absolute;left:162px;top:212px;font:400 26px FM;letter-spacing:.14em;color:#e8b04a;text-transform:uppercase}
+.kick i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#e8b04a;margin-right:12px;vertical-align:1px;font-style:normal}
+.head{position:absolute;left:162px;top:258px;width:756px;font:800 74px/1.08 Syne;letter-spacing:-.02em;color:#f4ecd8;text-shadow:0 4px 14px rgba(0,0,0,.55)}
+.head b{color:#07102e;background:#e8b04a;padding:0 12px;font-weight:800;text-shadow:none}
+.head em{font-style:normal;color:#ff6a4a}
+.tag{position:absolute;font:600 25px/1.25 Inter;color:#1a1530;background:#f4ecd8;padding:10px 14px 11px;border-radius:4px;box-shadow:0 6px 18px rgba(0,0,0,.45);white-space:nowrap}
+.tag small{display:block;font:400 19px FM;letter-spacing:.06em;color:#8a5a12;margin-bottom:3px}
+.tag.q{background:transparent;color:#f4ecd8;border:2px dashed #3fd0c9;box-shadow:none}
+.tag.q small{color:#3fd0c9}
+.src{position:absolute;left:162px;top:1272px;width:756px;font:400 20px FM;color:#9fb0d8;letter-spacing:.04em}
+.label{position:absolute;font:400 20px FM;color:#cfe8ff;letter-spacing:.08em}
+svg{position:absolute;left:0;top:0}
+#cap{position:absolute;left:162px;top:1340px;width:756px}
+.endc{position:absolute;left:162px;top:560px;width:756px;text-align:center}
+.endc img{width:260px;height:260px;border-radius:50%;border:10px solid #b4f000;box-shadow:0 0 0 10px #0a0f1d,0 16px 40px rgba(0,0,0,.6);display:block;margin:0 auto}
+.endc .hn{font:800 76px Syne;color:#f4ecd8;margin-top:36px;letter-spacing:-.02em;text-shadow:0 4px 14px rgba(0,0,0,.6)}
+.endc .btns{margin-top:30px;display:flex;gap:18px;justify-content:center}
+.endc .btns span{font:800 30px Inter;letter-spacing:.08em;padding:16px 26px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
+</style></head><body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><svg id="lines" width="1080" height="1920"></svg><div id="ov"></div><div id="cap"></div></div>
+<script src="lib/three-gltf-r160.min.js"></script><script src="lib/rough.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
+<script>
+Promise.all(['800 40px Syne','700 40px Syne','20px FM','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f)})).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>
