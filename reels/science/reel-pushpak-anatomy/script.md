@@ -39,6 +39,11 @@ Marks in the voice text: `/` = short breath **0.3 s** (commas, list items), `//`
 - Delivery: speed ~0.92 (calm, not slow), one take per breath group, then `scripts/pause_inject.py` with the per-group `pause_after` values from these marks.
 - **Gate:** `scripts/voice_pause_report.py` must show silence **28-34 %**, a stop ≥ 0.4 s every **2.5-3.8 s**, no internal pause > 1.2 s, speech rate 2.4-3.0 words/s. Report the numbers with the voice.
 
+## Film still and our model (creator, 13 Nov: options 1+2+3)
+- TMDB lists Part 1 as *Ramayana: Rise of a Legend* (656908). All 54 backdrops were checked; one shows the Pushpak (aerial, lotus-like craft over clouds): `research/film-stills/pushpak-aerial.jpg`, credits in `research/film-stills/CREDITS.md`.
+- It appears once, ≤ 2.5 s, unmodified, credited on screen, in a new **beat 8a "Ek Pushpak, do roop"**: film still on top, our verse-built model below ("Film ne aisa banaya. Valmiki ne aisa likha.").
+- We do **not** rebuild the film's design from its stills. Our model keeps its own shikhara top; the only shared idea is a generic **kamal-peeth** (inverted lotus base from temple architecture), labelled "OUR TOUCH · NOT IN VERSE", whose petals open as the parts separate.
+
 ## Open loops
 Hook asks "where is the science?" → beat 5 (no engine) → beat 7 (the manual fails) → beat 9-10 pay it off with real, measurable science.
 

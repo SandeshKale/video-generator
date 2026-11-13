@@ -116,13 +116,21 @@ function layer(name) { var g = new T.Group(); P.add(g); L[name] = g; return g; }
   var pk = layer('peaks'); var main = shikhara(1.05, 2.6, GOLD); pk.add(main);
   for (var c2 = 0; c2 < 4; c2++) { var a4 = c2 / 4 * 6.283 + Math.PI / 4, sm = shikhara(.42, 1.05, GOLD2); sm.position.set(Math.cos(a4) * 1.5, 0, Math.sin(a4) * 1.5); pk.add(sm); }
   for (var c3 = 0; c3 < 8; c3++) { var a5 = c3 / 8 * 6.283, tn = shikhara(.2, .5, GOLD); tn.position.set(Math.cos(a5) * 1.95, 0, Math.sin(a5) * 1.95); pk.add(tn); }
+  var lo = layer('lotus'); L.petals = [];
+  function petalGeo(len, wid) { var sh = new T.Shape(); sh.moveTo(0, 0); sh.bezierCurveTo(wid, len * .25, wid * .8, len * .8, 0, len); sh.bezierCurveTo(-wid * .8, len * .8, -wid, len * .25, 0, 0);
+    var g = new T.ExtrudeGeometry(sh, { depth: .03, bevelEnabled: true, bevelSize: .02, bevelThickness: .02, bevelSegments: 2, curveSegments: 16 }); g.translate(0, 0, -.015); return g; }
+  var HAM = new T.MeshStandardMaterial({ color: 0xf0b850, metalness: 1, roughness: .34, map: cv(256, 256, function (g, w, h) { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); for (var i = 0; i < 500; i++) { g.fillStyle = 'rgba(120,80,20,' + hsh(i) * .25 + ')'; g.beginPath(); g.arc(hsh(i * 3) * w, hsh(i * 5) * h, 3 + hsh(i * 7) * 8, 0, 7); g.fill(); } }) });
+  [[8, 2.15, 1.35, .62, 0], [8, 1.85, 1.0, .5, Math.PI / 8]].forEach(function (row, ri) { for (var i = 0; i < row[0]; i++) { var a = i / row[0] * 6.283 + row[4], piv = new T.Group(), pm = new T.Mesh(petalGeo(row[2], row[3]), ri ? GOLD2 : HAM);
+      piv.position.set(Math.cos(a) * row[1] * .55, -.32 - ri * .1, Math.sin(a) * row[1] * .55); piv.rotation.y = -a + Math.PI / 2; pm.rotation.x = 0; piv.add(pm); lo.add(piv); L.petals.push({ p: piv, m: pm, ri: ri }); } });
   P.traverse(function (m) { if (m.isMesh) { m.castShadow = true; m.receiveShadow = true; } });
   // engine slot: empty, dashed (nothing in the text)
   var eg = layer('engine'); var box = new T.LineSegments(new T.EdgesGeometry(new T.CylinderGeometry(1.1, 1.1, .9, 8)), new T.LineDashedMaterial({ color: 0x3fd0c9, dashSize: .12, gapSize: .09, transparent: true, opacity: .9 })); box.computeLineDistances(); eg.add(box);
 })();
-var ASM = { engine: -1.95, deck: 0, stairs: 0, pillars: .04, crystal: .1, frame: 1.25, peaks: 1.45 };
-var EXP = { engine: -2.5, deck: 0, stairs: -.42, pillars: 1.0, crystal: 2.35, frame: 3.65, peaks: 4.25 };
-function setExplode(e) { for (var k in L) L[k].position.y = ASM[k] + (EXP[k] - ASM[k]) * e; }
+var ASM = { lotus: 0, engine: -1.95, deck: 0, stairs: 0, pillars: .04, crystal: .1, frame: 1.25, peaks: 1.45 };
+var EXP = { lotus: -.25, engine: -2.5, deck: 0, stairs: -.42, pillars: 1.0, crystal: 2.35, frame: 3.65, peaks: 4.25 };
+function setExplode(e) { for (var k in ASM) L[k].position.y = ASM[k] + (EXP[k] - ASM[k]) * e;
+  // petals hang down (closed, hugging the keel) and open outward as the parts separate
+  L.petals.forEach(function (q) { var c = q.ri ? 2.95 : 2.85, o = q.ri ? 1.62 : 1.32; q.m.rotation.x = c + (o - c) * Math.min(1, e * 1.4); }); }
 
 // =============== SCENE 2: exploded Pushpak ===============
 function scene2() {
@@ -134,13 +142,14 @@ function scene2() {
   render(4.2);
   el('kick', '<i></i>OUR 3D · BUILT FROM VALMIKI\'S WORDS');
   el('head', 'Pushpak, <b>part by part</b>', 'font-size:64px');
-  var tags = [['peaks', 1.3, 'R', '5.8.5', 'Pahaad jaisa,<br>kai shikhar'], ['frame', .05, 'L', '5.8.1 · 6.124', 'Sona, heere,<br>ghantiyaan'], ['crystal', .45, 'R', '5.9.16', 'Crystal khidkiyaan<br>+ hawa ke chhed'],
+  setExplode(1); var tags = [['peaks', 1.3, 'R', '5.8.5', 'Pahaad jaisa,<br>kai shikhar'], ['frame', .05, 'L', '5.8.1 · 6.124', 'Sona, heere,<br>ghantiyaan'], ['crystal', .45, 'R', '5.9.16', 'Crystal khidkiyaan<br>+ hawa ke chhed'],
     ['pillars', .6, 'L', '5.9.13', 'Khambhe: bhediyon<br>ki nakkaashi'], ['deck', -.05, 'R', '5.9.17 · 6.123.1', 'Moonge ka farsh,<br>hans ke chitra'], ['stairs', -.25, 'L', '5.9.15', 'Sone ki<br>seedhiyaan']];
   var lastY = { L: 400, R: 400 };
   tags.forEach(function (q) { var g = L[q[0]], p = new T.Vector3(q[2] === 'R' ? 1.5 : -1.5, q[1], .8); g.localToWorld(p); var sp = scr(p);
     var ty = Math.max(sp.y - 40, lastY[q[2]] + 14), tx = q[2] === 'R' ? 690 : 162, d = el('tag', '<small>' + q[3] + '</small>' + q[4], 'left:' + tx + 'px;top:' + ty + 'px');
     lastY[q[2]] = ty + d.offsetHeight; var ay = ty + d.offsetHeight / 2; leader(sp, { x: q[2] === 'R' ? tx : tx + d.offsetWidth, y: ay }); });
   var ep = new T.Vector3(1.1, 0, 0); L.engine.localToWorld(ep); var se = scr(ep);
+  var lp = new T.Vector3(-2.2, -.4, .6); L.lotus.localToWorld(lp); var sl = scr(lp), ly = Math.max(sl.y - 30, lastY.L + 14), ld = el('tag q', '<small>OUR TOUCH · NOT IN VERSE</small>Kamal-peeth', 'left:162px;top:' + ly + 'px;border-color:#e8b04a'); ld.querySelector('small').style.color = '#e8b04a'; leader(sl, { x: 162 + ld.offsetWidth, y: ly + ld.offsetHeight / 2 }, '#e8b04a');
   var ey = Math.max(se.y - 40, lastY.R + 14), ed = el('tag q', '<small>ENGINE?</small>Text mein nahi', 'left:690px;top:' + ey + 'px'); leader(se, { x: 690, y: ey + ed.offsetHeight / 2 }, '#3fd0c9');
   el('src', 'Valmiki Ramayana 5.8-5.9, 6.123-124 · not the film\'s design');
   el('cap', 'Valmiki ne iske <span>hawa ke chhed</span> tak likhe.');
@@ -237,6 +246,20 @@ function scene4() {
 }
 
 window.__ready = false;
-({ 1: scene1, 2: scene2, 3: scene3, 4: scene4 })[SC]();
-setTimeout(function () { window.__ready = true; }, SC === 4 ? 1500 : 200);
+function scene5() {
+  setExplode(.3); P.rotation.y = .5; P.position.set(0, 0, 0); P.updateMatrixWorld(true);
+  cam.fov = 26; cam.updateProjectionMatrix();
+  var top = new T.Vector3(0, ASM.peaks + .3 * (EXP.peaks - ASM.peaks) + 2.75, 0), bot = new T.Vector3(0, -1.6, 0);
+  fitV(new T.Vector3(0, 1.5, 0), new T.Vector3(0, .32, 1).normalize(), top, bot, 905, 1255);
+  render(5.1);
+  el('kick', '<i></i>FILM VS VALMIKI');
+  el('head', 'Ek Pushpak, <b>do roop</b>', 'font-size:64px');
+  el('', '<img src="../research/film-stills/pushpak-aerial.jpg" style="width:756px;height:425px;object-fit:cover;display:block;border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.6)">', 'position:absolute;left:162px;top:440px');
+  el('tag', '<small>FILM · RAMAYANA: PART 1</small>"Mechanical lotus" (reviews)', 'left:186px;top:800px;background:#ff6a4a;color:#1a0a06');
+  el('label', '© Prime Focus Studios / Sony Pictures · VFX DNEG · still via TMDB', 'left:162px;top:874px;color:#c9b8ff;font-size:17px');
+  el('tag', '<small>VALMIKI 5.8-5.9 · OUR 3D</small>Pahaad jaisa, sone ka', 'left:600px;top:1080px');
+  el('cap', 'Film ne aisa banaya. <span>Valmiki ne aisa likha.</span>');
+}
+({ 1: scene1, 2: scene2, 3: scene3, 4: scene4, 5: scene5 })[SC]();
+setTimeout(function () { window.__ready = true; }, SC >= 4 ? 1500 : 200);
 })();
