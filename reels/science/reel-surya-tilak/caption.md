@@ -37,3 +37,5 @@ Tags: surya tilak, ram navami, ayodhya ram mandir, science in hindi, periscope, 
 
 ## Photo credits (v2)
 Sanctum and idol photo: Vice President's Secretariat / Press Information Bureau, Government of India (GODL-India), via Wikimedia Commons. The light beam and spot on that photo are drawn by us. Temple exterior photo: "Ram Mandir, Ayodhya" (CC BY 3.0), via Wikimedia Commons. The 3D temple is a schematic model.
+
+Film still: *Ramayana: Part 1* (2026) © Prime Focus Studios; VFX DNEG; via TMDB. Shown for under 3 seconds, unmodified, for comment. This reel is not affiliated with the film.
