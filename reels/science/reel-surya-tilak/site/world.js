@@ -56,7 +56,14 @@ function stoneTex() { var c = document.createElement('canvas'); c.width = c.heig
   g.strokeStyle = 'rgba(90,60,40,.16)'; g.lineWidth = 2; for (var y = 0; y < 512; y += 64) { g.beginPath(); g.moveTo(0, y); g.lineTo(512, y); g.stroke(); for (var x = (y / 64 % 2) * 64; x < 512; x += 128) { g.beginPath(); g.moveTo(x, y); g.lineTo(x, y + 64); g.stroke(); } }
   var t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.SRGBColorSpace; t.anisotropy = 8; t.repeat.set(2, 2); return t; }
 var sTex = stoneTex();
-var STONE = new T.MeshStandardMaterial({ map: sTex, roughness: .92, envMapIntensity: .35 }), STONE_D = new T.MeshStandardMaterial({ map: sTex, color: 0xcbbfae, roughness: .92, envMapIntensity: .35 });
+var STONE = new T.MeshStandardMaterial({ map: sTex, color: 0xf3d9c4, roughness: .9, envMapIntensity: .35 }), STONE_D = new T.MeshStandardMaterial({ map: sTex, color: 0xd9b9a2, roughness: .92, envMapIntensity: .35 });
+function carveTex() { var c = document.createElement('canvas'); c.width = c.height = 512; var g = c.getContext('2d'); g.fillStyle = '#e6c9b2'; g.fillRect(0, 0, 512, 512);
+  function rel(fn) { g.save(); g.translate(2, 3); g.strokeStyle = 'rgba(80,40,25,.5)'; fn(); g.restore(); g.save(); g.translate(-1.5, -2); g.strokeStyle = 'rgba(255,246,232,.75)'; fn(); g.restore(); }
+  g.lineWidth = 5; for (var cx = 0; cx < 2; cx++) for (var cy = 0; cy < 2; cy++) (function (ox, oy) { rel(function () { g.beginPath(); g.moveTo(ox + 26, oy + 250); g.lineTo(ox + 26, oy + 110); g.bezierCurveTo(ox + 26, oy + 40, ox + 128, oy + 70, ox + 128, oy + 18); g.bezierCurveTo(ox + 128, oy + 70, ox + 230, oy + 40, ox + 230, oy + 110); g.lineTo(ox + 230, oy + 250); g.stroke();
+      for (var k = 0; k < 12; k++) { var a = k / 12 * 6.283; g.beginPath(); g.ellipse(ox + 128 + Math.cos(a) * 34, oy + 150 + Math.sin(a) * 34, 20, 8, a, 0, 6.283); g.stroke(); } g.beginPath(); g.arc(ox + 128, oy + 150, 13, 0, 6.283); g.stroke(); g.beginPath(); g.arc(ox + 128, oy + 150, 62, 0, 6.283); g.stroke();
+      for (var q = 0; q < 6; q++) { g.beginPath(); g.arc(ox + 21 + q * 43, oy + 246, 17, Math.PI, 0); g.stroke(); } }); })(cx * 256, cy * 256);
+  var t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.SRGBColorSpace; t.anisotropy = 8; t.repeat.set(5, 4); return t; }
+var CARVE = new T.MeshStandardMaterial({ map: carveTex(), roughness: .88, envMapIntensity: .35 });
 var CUT = new T.MeshStandardMaterial({ color: 0x8a5a44, roughness: .95, envMapIntensity: .2 });
 var BRASS = new T.MeshStandardMaterial({ color: 0xd9a441, metalness: 1, roughness: .28 }), BRASS_D = new T.MeshStandardMaterial({ color: 0xa87a2c, metalness: 1, roughness: .42 });
 var BLACK = new T.MeshStandardMaterial({ color: 0x0a0806, roughness: 1, side: T.BackSide, envMapIntensity: 0 });
@@ -75,7 +82,7 @@ var X0 = -9, X1 = 15, Z0 = -8, FH = 6;
 box(X1 - X0 + 3, 1.2, 9.5, STONE_D, (X0 + X1) / 2, -.6, Z0 / 2 - .75, TEM);
 for (var f = 1; f <= 3; f++) { box(X1 - X0, .55, -Z0 - 5.1, STONE, (X0 + X1) / 2, f * FH, Z0 + (-Z0 - 5.1) / 2, TEM); box(X1 - X0, .55, 3.9, STONE, (X0 + X1) / 2, f * FH, -1.95, TEM);
   box(3 - .6 - X0, .55, 1.2, STONE, (X0 + 2.4) / 2, f * FH, -4.5, TEM); box(X1 - 3.6, .55, 1.2, STONE, (X1 + 3.6) / 2, f * FH, -4.5, TEM); box(X1 - X0, .56, .04, CUT, (X0 + X1) / 2, f * FH, 0, TEM); }
-box(.8, 18.3, -Z0, STONE, X0 - .4, 9.15, Z0 / 2, TEM); box(.8, 18.3, -Z0, STONE, X1 + .4, 9.15, Z0 / 2, TEM); box(X1 - X0 + 1.6, 18.3, .8, STONE_D, (X0 + X1) / 2, 9.15, Z0 - .4, TEM);
+box(.8, 18.3, -Z0, STONE, X0 - .4, 9.15, Z0 / 2, TEM); box(.8, 18.3, -Z0, STONE, X1 + .4, 9.15, Z0 / 2, TEM); box(X1 - X0 + 1.6, 18.3, .8, CARVE, (X0 + X1) / 2, 9.15, Z0 - .4, TEM);
 box(.82, 18.3, .04, CUT, X0 - .4, 9.15, 0, TEM); box(.82, 18.3, .04, CUT, X1 + .4, 9.15, 0, TEM);
 for (var f2 = 0; f2 < 3; f2++) for (var px = -1; px <= 13; px += 3.5) { if (Math.abs(px - 3) < 1) continue; var py = f2 * FH + .28;
   cyl(.34, .4, 5.1, STONE, px, py + 2.8, -6.4, TEM, 12); box(1.0, .35, 1.0, STONE, px, py + .2, -6.4, TEM); box(1.1, .3, 1.1, STONE, px, py + 5.3, -6.4, TEM); cyl(.5, .34, .4, STONE, px, py + 4.95, -6.4, TEM, 12); }
@@ -91,6 +98,34 @@ var AURA = new T.Mesh(new T.PlaneGeometry(2.3, 3.5), new T.MeshBasicMaterial({ m
   for (var s = 0; s < 4; s++) box(9.6 - s * 2.0, .9, 7.6 - s * 1.5, STONE, 9.8, 18.9 + s * .9, -4.2, TEM); cyl(.5, 1.1, 1.4, STONE, 9.8, 23.0, -4.2, TEM, 16); })();
 // little oil lamp near the niche
 var lamp = new T.PointLight(0xff9a4a, .9, 6, 2); lamp.position.set(-7.3, 1.1, .1); S.add(lamp); cyl(.08, .12, .42, BRASS, -7.3, .7, -.1); var flame = new T.Mesh(new T.SphereGeometry(.04, 10, 8), new T.MeshBasicMaterial({ color: new T.Color(6, 2.6, .8) })); flame.position.set(-7.3, 1.0, -.1); S.add(flame);
+
+// ---------- v2 decoration: marigold garlands, flags, diyas, bells, rangoli, carpet, petals; the real idol photo as an inset in the niche ----------
+var FRONTG = new T.Group(); TEM.add(FRONTG); var FLW = [0xff8a00, 0xffc400], gSph = new T.SphereGeometry(1, 8, 6), FLM = new T.MeshStandardMaterial({ roughness: .8, envMapIntensity: .3 });
+function garlandPts(pts, r, par) { var n = pts.length, m = new T.InstancedMesh(gSph, FLM, n), o = new T.Object3D(), c = new T.Color();
+  for (var i = 0; i < n; i++) { o.position.copy(pts[i]); o.scale.setScalar(r * (.85 + .3 * hsh(i * 3.1 + pts[0].x))); o.updateMatrix(); m.setMatrixAt(i, o.matrix); c.setHex(FLW[Math.floor(i / 3) % 2]); if (hsh(i + 7.3 + pts[0].y) > .88) c.setHex(0xfff0d8); else if (hsh(i + 2.1) > .93) c.setHex(0xd81e3a); m.setColorAt(i, c); }
+  m.instanceColor.needsUpdate = true; (par || TEM).add(m); return m; }
+function swag(a, b, sag, n, r, par) { var pts = []; for (var i = 0; i < n; i++) { var u = i / (n - 1), q = a.clone().lerp(b, u); q.y -= sag * 4 * u * (1 - u); pts.push(q); } return garlandPts(pts, r, par); }
+for (var gf = 1; gf <= 3; gf++) for (var gx = X0; gx < X1 - .1; gx += 3) { swag(V(gx, gf * FH - .32, .1), V(gx + 3, gf * FH - .32, .1), .62, 24, .105, FRONTG); swag(V(gx, gf * FH - .32, .1), V(gx, gf * FH - 1.5, .1), 0, 9, .095, FRONTG); }
+for (var gx2 = X0; gx2 < X1 - .1; gx2 += 3) swag(V(gx2, 18.35, .1), V(gx2 + 3, 18.35, .1), .5, 24, .105, FRONTG);
+(function () { var pts = []; for (var k = 0; k <= 46; k++) { var a = k / 46 * Math.PI; pts.push(V(-8.18, 4.02 + Math.sin(a) * 1.84, -1.5 + Math.cos(a) * 1.84)); } garlandPts(pts, .1); swag(V(-8.2, 4.02, -.3), V(-8.2, .9, -.3), 0, 30, .07); swag(V(-8.2, 4.02, -2.72), V(-8.2, .9, -2.72), 0, 30, .07);
+  for (var f3 = 0; f3 < 3; f3++) for (var px3 = -1; px3 <= 13; px3 += 3.5) { if (Math.abs(px3 - 3) < 1) continue; var rp = []; for (var k2 = 0; k2 < 16; k2++) { var a2 = k2 / 16 * 6.283; rp.push(V(px3 + Math.cos(a2) * .47, f3 * FH + 4.75 + Math.sin(a2 * 3) * .04, -6.4 + Math.sin(a2) * .47)); } garlandPts(rp, .085); swag(V(px3, f3 * FH + 4.7, -5.93), V(px3, f3 * FH + 3.2, -5.93), 0, 12, .08); } })();
+var FLAGS = []; function flag(x, y, z, w, h) { cyl(.05, .05, h * 2.6, BRASS, x, y + h * 1.3, z, TEM, 8); var g = new T.PlaneGeometry(w, h, 16, 4), m = new T.Mesh(g, new T.MeshStandardMaterial({ color: 0xff7a1a, roughness: .7, side: T.DoubleSide, emissive: 0x7a2a00, emissiveIntensity: .5 })); m.position.set(x + w / 2, y + h * 2.05, z); TEM.add(m); m.userData = { b: Array.prototype.slice.call(g.attributes.position.array), w: w }; FLAGS.push(m); }
+flag(-4.6, 47.3, -.3, 3.4, 2.0); flag(9.8, 23.7, -4.2, 2.3, 1.35);
+var DIYA = []; (function () { for (var x = X0 + .6; x < X1 - .2; x += 1.15) DIYA.push(V(x, .28, -.14)); for (var k = 0; k < 7; k++) { var a = -1.2 + k * .4; DIYA.push(V(-6.9 + Math.cos(a) * .1 - Math.abs(a) * .25, .28, -1.5 + Math.sin(a) * 1.9)); } for (var f = 1; f <= 2; f++) for (var x2 = X0 + 1.2; x2 < X1 - .5; x2 += 2.3) DIYA.push(V(x2, f * FH + .28, -.14)); })();
+var DBOWL = new T.InstancedMesh(new T.CylinderGeometry(.075, .04, .05, 10), BRASS, DIYA.length), DFL = new T.InstancedMesh(new T.SphereGeometry(.035, 8, 6), new T.MeshBasicMaterial({ color: new T.Color(3.2, 1.5, .45) }), DIYA.length);
+(function () { var o = new T.Object3D(); DIYA.forEach(function (q, i) { o.position.copy(q).add(V(0, .025, 0)); o.updateMatrix(); DBOWL.setMatrixAt(i, o.matrix); }); TEM.add(DBOWL); TEM.add(DFL); })();
+var BELLS = []; [0, 2.6, 5.2, 7.8, 10.4, 13].forEach(function (bx, i) { var g = new T.Group(); g.position.set(bx, FH - .28, -1.1); cyl(.012, .012, .7, BRASS_D, 0, -.35, 0, g, 6); cyl(.05, .17, .26, BRASS, 0, -.82, 0, g, 16); var cl = new T.Mesh(new T.SphereGeometry(.04, 8, 6), BRASS_D); cl.position.y = -.98; g.add(cl); TEM.add(g); BELLS.push(g); });
+(function () { var c = document.createElement('canvas'); c.width = c.height = 512; var g = c.getContext('2d'); g.translate(256, 256); var cols = ['#ff8a00', '#ffd23a', '#e6294a', '#fff3dc', '#2aa66a', '#ff5fa2'];
+  for (var ring = 5; ring >= 1; ring--) { var n = 8 + ring * 4; for (var k = 0; k < n; k++) { var a = k / n * 6.283; g.save(); g.rotate(a); g.fillStyle = cols[(ring + k) % cols.length]; g.beginPath(); g.ellipse(ring * 44, 0, 30, 15, 0, 0, 6.283); g.fill(); g.restore(); } } g.fillStyle = '#ffd23a'; g.beginPath(); g.arc(0, 0, 26, 0, 6.283); g.fill();
+  var tx = new T.CanvasTexture(c); tx.colorSpace = T.SRGBColorSpace; var m = new T.Mesh(new T.CircleGeometry(1.45, 48), new T.MeshStandardMaterial({ map: tx, transparent: true, roughness: .9, envMapIntensity: .2, polygonOffset: true, polygonOffsetFactor: -2 })); m.rotation.x = -Math.PI / 2; m.position.set(-3.6, .292, -1.55); m.receiveShadow = true; TEM.add(m);
+  var cp = box(17.5, .015, 1.5, new T.MeshStandardMaterial({ color: 0x9c1c22, roughness: .95, envMapIntensity: .15 }), 5.6, .288, -1.85, TEM); cp.castShadow = false; box(17.5, .016, .08, BRASS_D, 5.6, .289, -1.1, TEM); box(17.5, .016, .08, BRASS_D, 5.6, .289, -2.6, TEM); })();
+var NPET = 240, PETAL = new T.InstancedMesh(new T.PlaneGeometry(.1, .07), new T.MeshBasicMaterial({ side: T.DoubleSide }), NPET); (function () { var c = new T.Color(), pc = [0xff9a1a, 0xffd23a, 0xff6fa8, 0xfff0d8]; for (var i = 0; i < NPET; i++) { c.setHex(pc[i % 4]).multiplyScalar(.9); PETAL.setColorAt(i, c); } PETAL.instanceColor.needsUpdate = true; PETAL.frustumCulled = false; S.add(PETAL); })();
+var HALL = [1.5, 7, 12.5].map(function (x) { var l = new T.PointLight(0xffb060, 0, 11, 1.7); l.position.set(x, 4.6, -1.6); S.add(l); return l; });
+var kal = new T.Mesh(new T.SphereGeometry(.55, 20, 14), BRASS); kal.position.set(-4.6, 46.1, -.3); kal.scale.y = 1.15; TEM.add(kal);
+var IDOL = (function () { var im = window.IM && window.IM['idol-sanctum.jpg']; if (!im || !im.width) return new T.Group(); var c = document.createElement('canvas'); c.width = 440; c.height = 520; var g = c.getContext('2d'); g.drawImage(im, 650, 265, 220, 260, 0, 0, 440, 520);
+  g.globalCompositeOperation = 'destination-in'; var gr = g.createRadialGradient(220, 250, 150, 220, 250, 262); gr.addColorStop(0, '#000'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, 440, 520);
+  var tx = new T.CanvasTexture(c); tx.colorSpace = T.SRGBColorSpace; tx.anisotropy = 8; var hgt = 1.9, wid = hgt * 220 / 260, m = new T.Mesh(new T.PlaneGeometry(wid, hgt), new T.MeshBasicMaterial({ map: tx, transparent: true, depthWrite: false, color: new T.Color(.8, .76, .7) }));
+  m.rotation.y = Math.PI / 2; m.position.set(NICHE.x - .05, NICHE.y - (.5 - .246) * hgt, NICHE.z); m.renderOrder = 2; S.add(m); return m; })();
 
 // ---------- Sun geometry (real): Ayodhya 26.7956 N; noon elevation = 90 - lat + declination ----------
 var LAT = 26.7956;
@@ -173,12 +208,14 @@ function fig(o) { o = o || {}; var g = new T.Group(), cl = clay(o.cloth || 0xe9e
 // pose: nam (0..1 folded hands), up (0..1 look up), walk phase, sway seed
 function pose(g, o) { var J = g.J, nam = o.nam || 0, up = o.up || 0, w = o.walk, sw = Math.sin((o.t || 0) * .9 + (o.seed || 0) * 9) * .025;
   ['L', 'R'].forEach(function (k, i) { var s = i ? 1 : -1; J['sh' + k].rotation.set(s * .42 * nam, 0, .08 + .47 * nam + (w != null ? -s * Math.sin(w) * .5 : 0)); J['el' + k].rotation.set(s * .62 * nam, 0, 1.75 * nam + (w != null ? .25 : 0)); J['leg' + k].rotation.z = w != null ? s * Math.sin(w) * .45 : 0; });
-  J.head.rotation.z = -.1 * nam + .38 * up; J.tor.rotation.z = sw - .04 * up; J.hips.position.y = .82 + (w != null ? Math.abs(Math.cos(w)) * .03 : 0); }
+  J.head.rotation.z = -.1 * nam + .38 * up; J.tor.rotation.z = sw - .04 * up; J.head.rotation.y = (o.hy || 0); J.hips.position.y = .82 + (w != null ? Math.abs(Math.cos(w)) * .03 : 0); }
 var COLS = [0xe9e2d2, 0xd8b98a, 0xb9c4c9, 0xd9a7a0, 0xc9d2a8, 0xe3c46b, 0xa9b6d9];
 var dev = fig({ cloth: 0xefe6d4, legs: 0xe6dcc8, scarf: 0xf08a24 }); dev.position.set(-5.7, .28, -.35); dev.rotation.y = Math.PI + .2;
 var CROWD = []; function crowd(n, x0, x1, z0, z1, seed, near) { for (var i = 0; i < n; i++) { var g = fig({ cloth: COLS[Math.floor(hsh(i + seed) * COLS.length)], legs: hsh(i + seed + 4) > .5 ? 0xd9d2c2 : 0x6c5a4c, scarf: hsh(i + seed + 7) > .8 ? 0xe8842a : null });
     g.position.set(x0 + (x1 - x0) * hsh(i * 2.1 + seed + 1), .28, z0 + (z1 - z0) * hsh(i * 3.7 + seed + 2)); g.rotation.y = Math.PI + (hsh(i + seed + 3) - .5) * .3; g.userData = { seed: i + seed, nam: hsh(i + seed + 9) > .45 ? 1 : 0, near: near }; CROWD.push(g); } }
-crowd(5, -4.9, -3.0, -3.3, -2.0, 40, 1); crowd(30, -.2, 14, -5.4, -.5, 11, 0);
+crowd(6, -5.2, -2.6, -3.3, -2.0, 40, 1); crowd(34, -.2, 14, -3.1, -.55, 11, 0);
+CROWD.forEach(function (g, i) { var u = g.userData; u.z = g.position.z; u.sp = .42 + .3 * hsh(i * 5.3 + 1); u.ph = hsh(i * 7.7 + 2) * 15; u.kid = hsh(i * 9.1 + 4) > .8; u.jai = hsh(i * 4.3 + 6) > .55; if (u.kid) g.scale.setScalar(.68); });
+var priest = fig({ cloth: 0xf08a24, legs: 0xf6ead2 }); priest.position.set(-6.5, .28, -2.75); priest.rotation.y = Math.PI - .5; (function () { var pl = new T.Group(); pl.position.y = -.34; priest.J.elR.add(pl); cyl(.13, .13, .02, BRASS, 0, 0, 0, pl, 16); var f = new T.Mesh(new T.SphereGeometry(.035, 8, 6), new T.MeshBasicMaterial({ color: new T.Color(6, 2.6, .7) })); f.position.y = .06; f.scale.y = 1.8; pl.add(f); var l = new T.PointLight(0xff9a4a, 1.2, 4, 2); l.position.y = .1; pl.add(l); })();
 var e1 = fig({ cloth: 0x2f6f8f, legs: 0x39424e, hat: 0xf2c230 }), e2 = fig({ cloth: 0xd8632a, legs: 0x39424e, hat: 0xf4f1e8 }), tech = fig({ cloth: 0x2f6f8f, legs: 0x39424e, hat: 0xf2c230 }), astro = fig({ cloth: 0xefe6d4, legs: 0x4a5560, hat: 0xf4f1e8 });
 e1.position.set(4.75, 12.28, -1.9); e1.rotation.y = Math.PI + .25; e2.position.set(1.3, 12.28, -3.6); e2.rotation.y = -.2;
 var card = box(.02, .3, .4, new T.MeshStandardMaterial({ color: 0xf4ecd8, roughness: .8 }), 0, 0, 0);
@@ -262,8 +299,10 @@ function camAt(t) { var cur = PO.hook, a = null, u = 0;
 // ---------- DOM overlays ----------
 function el(cls, html) { var d = document.createElement('div'); d.className = cls; d.innerHTML = html; d.style.display = 'none'; ov.appendChild(d); return d; }
 var HEADS = [
-  [0, tB - .1, 'RAM NAVAMI · DOPAHAR 12 BAJE', 'Na bulb. Na taar.<br>Phir yeh <b>roshni</b><br>aayi kahan se?'],
-  [tB2 + 3.2, tD - .1, 'MUSHKIL', 'Garbhagriha <b>teen<br>manzil</b> neeche hai.'],
+  [0, tB - .1, 'AYODHYA · RAM NAVAMI · DOPAHAR 12 BAJE', 'Yeh tilak <b>sooraj</b><br>ne lagaya hai.'],
+  [tB + .35, tB2 - .25, 'AAPNE DEKHA HOGA', 'Chhat ke chhed se<br><b>dhoop ki lakeer</b>.'],
+  [tB2 - .05, tC - .15, 'ASLI MANDIR · AYODHYA', 'Wahi dhoop. Bas <b>teen<br>manzil</b> neeche laani thi.'],
+  [tC + .1, tD - .1, 'MUSHKIL', 'Garbhagriha <b>teen<br>manzil</b> neeche hai.'],
   [tD + .1, tE - .2, 'JAWAAB', 'Chhat se neeche tak,<br>ek <b>periscope</b>.'],
   [tE + .2, tF - .2, 'PIPE KE ANDAR', 'Lens roshni ko<br><b>sikodte</b> hain.'],
   [tF + 1.8, tCal0, 'ASLI PARESHANI', 'Agle saal, tilak<br><b>hat gaya</b>.'],
@@ -274,13 +313,13 @@ var HEADS = [
   [tJ + 1.4, tCTA - .2, 'BAS ITNA', 'Aaine. Peetal.<br>Ganit. <b>Khula aasmaan</b>.']
 ].map(function (h) { return { t0: h[0], t1: h[1], k: el('kick', '<i></i>' + h[2]), h: el('head', h[3]) }; });
 var HUD = el('hud', ''), SRC = el('src', '');
-var SRCS = [[0, tB - .1, 'reported · CSIR-CBRI Roorkee, 2024 · idol not shown'], [tB2 + 3.2, tD - .1, 'schematic model · not the temple\'s drawings'], [tD + .1, tE5 - .1, '4 mirrors + 4 lenses: reported · layout schematic'], [tE5, tF - .2, '58 mm: reported (CBRI)'],
+var SRCS = [[tB + .35, tB2 - .25, 'the same sunlight you see at home'], [tC + .1, tD - .1, 'schematic model · not the temple\'s drawings'], [tD + .1, tE5 - .1, '4 mirrors + 4 lenses: reported · layout schematic'],
   [tF + 1.8, tCal0, 'sun heights: our calculation · miss shown schematically'], [tG + .3, tH - .1, 'dates approx: our calculation · sun data by IIA (reported)'], [tH + .1, tCal1 - .1, '235 moons ≈ 19 years, 2 h apart: our calculation'],
   [tH3 + .2, tBack - .1, 'yearly hand shift: reported (PIB) · wheel form illustrative'], [tI + .2, tJ - .2, 'speeded up 30× · our calculation'], [tJ + 1.4, tCTA - .2, 'no electricity: reported · figures illustrative']];
 var TAGS = [];   // [t0, t1, world anchor fn, html, x, y, cls]
 function tag(t0, t1, anchor, html, x, y, cls) { var d = el('tag ' + (cls || ''), html); d.style.left = x + 'px'; d.style.top = y + 'px'; TAGS.push({ t0: t0, t1: t1, a: anchor, d: d, x: x, y: y, cls: cls }); }
 function A(v) { return function () { return v; }; }
-tag(t_spot + .5, tB - .3, function () { return SPOTP; }, '<small>the tilak</small>58 mm spot of sunlight', 430, 640, 'v');
+
 tag(tC + 1.2, tD - .2, A(V(-4, 9, 0)), '<small>3 floors of stone</small>20 ft each', 600, 700);
 tag(tC2 + 1.8, tD2 - .5, A(AP.clone().addScaledVector(sunDir(EL24), 5)), '<small>noon sun · 17 Apr 2024</small>73.8° above the horizon', 520, 560);
 tag(tD2 + 2.0, tD4 - .4, A(M1), '<small>mirror 1</small>catches the sunbeam', 170, 880);
@@ -288,7 +327,7 @@ tag(tD2 + 2.4, tD4 - .4, A(V(4.75, 13.5, -1.9)), '<small>engineers</small>clean 
 tag(tD4 + 2.4, tE - .3, A(V(3, 10, -4.5)), '<small>brass pipe</small>black inside, no stray light', 500, 620);
 tag(tE + 1.6, tE2 - .4, A(LN1), '<small>lens</small>gathers the light', 560, 560);
 tag(tE2 + 1.6, tE3 - .4, A(AP), '<small>filter glass</small>stops the heat', 170, 620, 'v');
-tag(tE5 + .2, tF - .4, function () { return SPOTP; }, '<small>the tilak</small>58 mm', 560, 620, 'v');
+
 tag(tF2 + .3, tF3 - .1, A(NICHE), '<small>2024</small>on the mark', 330, 700);
 tag(tMiss + .6, tCal0 - .2, function () { return SPOTP; }, '<small>2025 · same mirror</small>light misses', 340, 600, 'v');
 tag(tH4 + .6, tBack - .3, A(V(3.93, 13.7, -1.9)), '<small>setting wheel</small>19 notches, one per year', 520, 720);
@@ -296,12 +335,28 @@ tag(tH4 + 1.0, tBack - .3, A(M1), '<small>mirror 1</small>tilts about 2° this y
 tag(tBack + 2.3, tI2 - .4, function () { return SPOTP; }, '<small>after one click</small>back on the mark', 330, 690, 'v');
 tag(tI2 + 2.4, tI3 - .2, function () { return SUNP; }, '<small>in 2 minutes</small>the Sun moves its own width', 380, 760);
 tag(tI4 - .1, tJ - .3, function () { return CLOUD.position; }, '<small>cloud</small>no sunlight, no tilak', 420, 800, 'm');
+// ---------- v2: real-photo plates (DOM): blurred fill + sharp card. The 3D world is not drawn while a plate is opaque ----------
+var stage = document.getElementById('stage'), FX = 759, FY = 329;      // forehead of the idol in the photo (px)
+function plate(src, cx, cy, cw, ch, iw, ih) { var d = document.createElement('div'); d.className = 'plate'; d.setAttribute('data-ov', '1');
+  d.innerHTML = '<img class="bg" src="img/' + src + '"><div class="card" style="left:' + cx + 'px;top:' + cy + 'px;width:' + cw + 'px;height:' + ch + 'px"><div class="in" style="width:' + iw + 'px;height:' + ih + 'px"><img src="img/' + src + '" width="' + iw + '" height="' + ih + '"><div class="glowv"></div><div class="beam"></div><div class="spot"></div></div></div><div class="flash"></div><div class="pcred" style="top:' + (cy + ch + 14) + 'px"></div>';
+  stage.insertBefore(d, svg); return { d: d, inn: d.querySelector('.in'), beam: d.querySelector('.beam'), spot: d.querySelector('.spot'), gl: d.querySelector('.glowv'), flash: d.querySelector('.flash'), cred: d.querySelector('.pcred'), bg: d.querySelector('.bg'), img: d.querySelector('.in img'), cx: cx, cy: cy, cw: cw, ch: ch, iw: iw }; }
+var PL1 = plate('idol-sanctum.jpg', 162, 452, 756, 800, 960, 1038), PL2 = plate('temple-flowers.png', 162, 610, 756, 443, 960, 563);
+PL1.gl.style.setProperty('--gx', (FX / 960 * 100) + '%'); PL1.gl.style.setProperty('--gy', (FY / 1038 * 100) + '%'); PL2.beam.style.display = PL2.spot.style.display = PL2.gl.style.display = 'none';
+PL2.cred.textContent = 'real photo · Ram Mandir, Ayodhya · CC BY 3.0 (Wikimedia Commons)';
+var ARR = document.createElement('div'); ARR.setAttribute('data-ov', '1'); ARR.style.cssText = 'position:absolute;left:500px;top:150px;width:8px;background:repeating-linear-gradient(180deg,#ffc56b 0 16px,transparent 16px 28px);box-shadow:0 0 14px #ffb347'; PL2.d.appendChild(ARR);
+function idolView(s, px, py, beam, sp, t) { var k = PL1.cw / 960 * s; PL1.inn.style.transform = 'translate(' + (px - FX * k).toFixed(2) + 'px,' + (py - FY * k).toFixed(2) + 'px) scale(' + k.toFixed(4) + ')';
+  var Lb = 560; PL1.beam.style.left = (FX - Lb) + 'px'; PL1.beam.style.top = (FY - 32) + 'px'; PL1.beam.style.width = Lb + 'px'; PL1.beam.style.transform = 'rotate(9deg)'; PL1.beam.style.opacity = beam;
+  var z = 46 * sp; PL1.spot.style.left = (FX - z / 2) + 'px'; PL1.spot.style.top = (FY - z / 2) + 'px'; PL1.spot.style.width = PL1.spot.style.height = z + 'px'; PL1.gl.style.opacity = .55 + .45 * beam; }
+var tSun = CW('s1', .68), tNa = CW('s3', 0), tTaar = CW('s3', .55);
+var ST_ = [ [CW('s2', .62), tB - .25, el('tag v', '<small>the tilak</small>58 mm of real sunlight'), 200, 1120], [tNa, tB - .25, el('xchip', 'NA <s>BULB</s>'), 200, 1010], [tTaar, tB - .25, el('xchip', 'NA <s>TAAR</s>'), 470, 1010],
+  [tB2 + 1.6, tC - .2, el('pill', '3 manzil neeche'), 0, 0], [tE5 + .15, tF - .35, el('tag v', '<small>the tilak</small>sirf 58 mm'), 200, 1120] ];
+ST_.forEach(function (q) { q[2].style.left = q[3] + 'px'; q[2].style.top = q[4] + 'px'; });
 var CAPW = TM.cap.map(function (c) { return { w: c.w, t0: c.t0, t1: c.t1 }; });
 var END = el('endc', '<img src="img/profile.jpg"><div class="hn">nerdlogic.co</div><div class="btns"><span id="bS">SHARE</span><span id="bF">FOLLOW</span></div>');
 var SPOTP = NICHE.clone(), SUNP = V(0, 0, 0);
 
 // ---------- sound events for the mix ----------
-window.EV = [[t_beam0, 'whoosh'], [t_spot, 'bell'], [tB2, 'rise'], [tC2 + .4, 'tick'], [tD, 'pop'], [tD2 + 2.0, 'glint'], [tD4 + .4, 'whoosh'], [tE + 1.6, 'glint'], [tE2 + 1.4, 'thud'], [tE3, 'whoosh'], [tE5, 'bell'], [tF3, 'tick'], [tMiss, 'slide'], [tWhy, 'hole'],
+window.EV = [[0, 'hit'], [tSun, 'glint'], [tNa, 'thud'], [tTaar, 'thud'], [tB - .05, 'whoosh'], [tB2 - .1, 'shutter'], [tC - .05, 'whoosh'], [tE5 - .1, 'shutter'], [tB2, 'rise'], [tC2 + .4, 'tick'], [tD, 'pop'], [tD2 + 2.0, 'glint'], [tD4 + .4, 'whoosh'], [tE + 1.6, 'glint'], [tE2 + 1.4, 'thud'], [tE3, 'whoosh'], [tE5, 'bell'], [tF3, 'tick'], [tMiss, 'slide'], [tWhy, 'hole'],
   [tCal0, 'relay'], [tG2, 'tick'], [tG4, 'tick'], [tH2, 'chime'], [tCal1, 'relay'], [tClick, 'click'], [tClick + .5, 'bell'], [tBack, 'whoosh'], [tI2, 'rise'], [tI3 + .2, 'hole'], [tJ, 'bell'], [tCTA, 'chime']].map(function (e) { return { t: +e[0].toFixed(3), k: e[1] }; });
 window.SCN_T0 = function () { return [0, tB, tC, tD, tE, tF, tG, tH, tH3, tI, tJ, tCTA]; };
 
@@ -347,14 +402,25 @@ window.__seek = function (t) {
   S.environmentIntensity = inCal ? .35 : lerp(.08, .5, uOut); hemi.intensity = inCal ? .3 : lerp(.1, .55, uOut) * dim; sun.intensity = inCal ? 0 : lerp(0, 4.0, uOut) * (1 - cl * .85) * (inTop ? .65 : 1);
   fill.intensity = inCal ? 0 : lerp(0, .5, uOut); back.intensity = inCal ? 0 : lerp(.5, .15, uOut); kf.intensity = inTop * 1.5; calKey.intensity = inCal ? 2.2 : 0;
   mGrade.uniforms.exp.value = (inCal ? 1.05 : inTop ? .95 : lerp(1.0, 1.05, uOut)) * lerp(1, .32, eio(ramp(t, tCTA - .3, tCTA + .8))); mGrade.uniforms.bloom.value = inCal ? .6 : inTop ? .62 : lerp(1.1, .7, uOut);
-  spotL.intensity = lit * lerp(2.6, 9, uOut); lamp.intensity = lerp(.9, 2.5, uOut); flame.scale.set(1, 1.8 + .25 * Math.sin(t * 9) * Math.sin(t * 5.3), 1);
+  spotL.intensity = lit * lerp(2.6, 9, uOut); lamp.intensity = lerp(.9, 2.5, uOut); flame.scale.set(1, 1.8 + .25 * Math.sin(t * 9) * Math.sin(t * 5.3), 1); HALL.forEach(function (l, k) { l.intensity = inCal ? 0 : lerp(0, 9, uOut) * (.92 + .08 * Math.sin(t * 7 + k * 2)); });
   AURA.material.opacity = lerp(.2, .32, uOut) * (1 - .7 * ramp(t, tE4, tE4 + 2) * (1 - ramp(t, tF, tF + 1.5)));
   var fd = function (c) { return 1 - clamp(Math.abs(t - c) / .28); }; mGrade.uniforms.fade.value = Math.max(fd(tCal0), fd(tCal1)) * .96;
   // --- people
-  var nam = eo(ramp(t, t_spot, t_spot + .9)), look = cl;
+  var nam = eo(ramp(t, t_spot, t_spot + .9)), look = cl; var eOnPre = t >= tD - .2 && !(t >= tCal1 - .3);
   pose(dev, { t: t, nam: nam, up: look * .6, seed: 1 });
-  CROWD.forEach(function (g) { var u = g.userData; pose(g, { t: t, nam: u.nam * (u.near ? nam : 1) * (1 - look * .5) * (Math.abs(err) > 1 ? .3 : 1), up: Math.max(look, Math.abs(err) > 1 && t < tCal0 ? .45 : 0) * (.6 + .4 * hsh(u.seed)), seed: u.seed }); });
-  var eOn = t >= tD - .2 && !(t >= tCal1 - .3); e1.visible = e2.visible = eOn && !inCal; if (eOn) { pose(e1, { t: t, seed: 3 }); e1.J.shR.rotation.z = 1.25 + Math.sin(t * 3.1) * .12; e1.J.elR.rotation.z = .35 + Math.sin(t * 3.1 + .6) * .2; pose(e2, { t: t, seed: 5 }); e2.J.shL.rotation.z = 1.0; e2.J.elL.rotation.z = .7; }
+  var hold = Math.max(eo(ramp(t, tE5 - .3, tE5 + .5)) * (1 - ramp(t, tF3 + .2, tF3 + 1.2)), eo(ramp(t, tBack + 1.6, tBack + 2.4)) * (1 - ramp(t, tI2 - .5, tI2 + .5)), eo(ramp(t, tJ2, tJ2 + .8)));     // moments when everyone stops and salutes the tilak
+  CROWD.forEach(function (g) { var u = g.userData, upv = Math.max(look, Math.abs(err) > 1 && t < tCal0 ? .45 : 0) * (.6 + .4 * hsh(u.seed)), hy = Math.sin(t * .7 + u.seed * 3.1) * .3;
+    if (!u.near) { var d = t * u.sp + u.ph - hold * 0, xx = 14.2 - ((d % 14.8) + 14.8) % 14.8, edge = Math.min(1, (14.2 - xx) / .8, (xx + .6) / .8); g.position.set(xx, .28, u.z + Math.sin(t * .5 + u.seed) * .06); g.scale.setScalar((u.kid ? .68 : 1) * Math.max(.001, eo(edge)));
+      pose(g, { t: t, nam: Math.max(u.nam * .0, hold * (u.jai ? 0 : 1)), up: upv, walk: d * 5.4 + u.seed, seed: u.seed, hy: hy }); if (hold > .02 && u.jai) { ['L', 'R'].forEach(function (k) { g.J['sh' + k].rotation.z = lerp(g.J['sh' + k].rotation.z, 2.75 + Math.sin(t * 5 + u.seed) * .12, hold); g.J['el' + k].rotation.z = lerp(g.J['el' + k].rotation.z, .15, hold); }); } }
+    else { var b = Math.pow(Math.max(0, Math.sin(t * .75 + u.seed * 2.3)), 6); pose(g, { t: t, nam: (u.near ? Math.max(nam, .85) : 1) * (1 - look * .5) * (Math.abs(err) > 1 ? .3 : 1), up: upv, seed: u.seed, hy: hy * .5 }); g.J.tor.rotation.z -= .5 * b; g.J.head.rotation.z -= .2 * b; } });
+  pose(priest, { t: t, seed: 21 }); priest.J.shR.rotation.set(.35 * Math.cos(t * 2.6), 0, 1.35 + .28 * Math.sin(t * 2.6)); priest.J.elR.rotation.z = .35; priest.J.shL.rotation.z = .5; priest.J.elL.rotation.z = 1.3 + .25 * Math.sin(t * 9); priest.visible = !inCal;
+  var dvb = Math.pow(Math.max(0, Math.sin(t * .6 + 1)), 8); dev.J.tor.rotation.z -= .55 * dvb;
+  FLAGS.forEach(function (f) { var p = f.geometry.attributes.position, b = f.userData.b, w = f.userData.w; for (var k = 0; k < p.count; k++) { var u2 = (b[k * 3] + w / 2) / w; p.setXYZ(k, b[k * 3], b[k * 3 + 1] * (1 - .82 * u2) + Math.sin(u2 * 5 - t * 4.2) * .1 * u2, Math.sin(u2 * 7 - t * 6) * .32 * u2); } p.needsUpdate = true; });
+  (function () { var o = new T.Object3D(); DIYA.forEach(function (q, k) { var fl = 1.5 + .5 * Math.sin(t * 11 + k * 2.1) * Math.sin(t * 6.3 + k); o.position.copy(q).add(V(Math.sin(t * 7 + k) * .006, .085, 0)); o.scale.set(1, fl, 1); o.updateMatrix(); DFL.setMatrixAt(k, o.matrix); }); DFL.instanceMatrix.needsUpdate = true;
+    var farCam = cam.position.z > 9; FRONTG.visible = farCam; PETAL.visible = !inCal && farCam; if (PETAL.visible) { for (var k = 0; k < NPET; k++) { var fy = ((t * (.5 + .5 * hsh(k * 1.3)) + hsh(k * 2.9) * 5.4) % 5.4); o.position.set(X0 + .8 + hsh(k * 3.7) * 22.5 + Math.sin(t * 1.3 + k) * .25, 5.7 - fy, -4.6 + hsh(k * 5.1) * 4.5); o.rotation.set(t * 2 + k, t * 1.4 + k * 2, k); o.scale.setScalar(1); o.updateMatrix(); PETAL.setMatrixAt(k, o.matrix); } PETAL.instanceMatrix.needsUpdate = true; } })();
+  BELLS.forEach(function (b, k) { b.rotation.x = Math.sin(t * 2.3 + k * 1.7) * .16; b.rotation.z = Math.sin(t * 1.7 + k) * .06; });
+  e2.position.x = 1.3 + 1.5 * Math.sin(t * .33); if (eOnPre) { var mv = Math.cos(t * .33); e2.rotation.y = mv > 0 ? 0 : Math.PI; }
+  var eOn = t >= tD - .2 && !(t >= tCal1 - .3); e1.visible = e2.visible = eOn && !inCal; if (eOn) { pose(e1, { t: t, seed: 3 }); e1.J.shR.rotation.z = 1.25 + Math.sin(t * 3.1) * .12; e1.J.elR.rotation.z = .35 + Math.sin(t * 3.1 + .6) * .2; pose(e2, { t: t, seed: 5, walk: Math.abs(Math.cos(t * .33)) > .25 ? e2.position.x * 5.2 : null }); e2.J.shL.rotation.z += .5; e2.J.elL.rotation.z = .7; e1.J.tor.rotation.z = .1 * Math.sin(t * 3.1); e1.J.head.rotation.y = .3 * Math.sin(t * 1.1); }
   var tOn = t >= tCal1 - .3 && t < tI2 + 2.5; tech.visible = astro.visible = card.visible = tOn || inCal;
   if (inCal) { // astronomer on the calendar set, pinning dates
     astro.position.copy(OC).add(V(-5.9 + ramp(t, tG, tG + 1.4) * 0, 0, 1.0)); astro.rotation.y = .9; pose(astro, { t: t, seed: 7 }); astro.J.shR.rotation.z = 1.9 + Math.sin(t * 2.2) * .15; astro.J.elR.rotation.z = .2; card.visible = false; tech.visible = false; }
@@ -370,7 +436,17 @@ window.__seek = function (t) {
     var sl = 1.6 / Math.tan(gEl * Math.PI / 180); SHAD.scale.x = Math.max(.05, sl); SHAD.position.x = -3.3 + sl / 2;
     MOON.rotation.y = t * .5; var phs = (t - tG) * 1.1; moonL.position.set(MOON.position.x + Math.sin(phs) * 8, MOON.position.y + 2, Math.cos(phs) * 8); moonL.intensity = 2.4;
     pose(farmer, { t: t, seed: 11 }); farmer.J.shR.rotation.z = t > tG4 ? 1.1 : .1; } else moonL.intensity = 0;
-  render(t);
+  // --- real-photo plates
+  var p1a = 1 - ramp(t, tB - .1, tB + .4), p1b = ramp(t, tE5 - .3, tE5 - .05) * (1 - ramp(t, tF - .3, tF - .05)), p1 = t < tB + .4 ? p1a : p1b, p2 = ramp(t, tB2 - .2, tB2 + .05) * (1 - ramp(t, tC - .2, tC + .05));
+  PL1.d.style.display = p1 > 0 ? 'block' : 'none'; PL2.d.style.display = p2 > 0 ? 'block' : 'none';
+  if (p1 > 0) { PL1.d.style.opacity = p1; if (t < tB + .4) { var uz = eio(ramp(t, 0, 7.6)), pls = Math.exp(-Math.max(0, t - tSun) * 2.2) * (t >= tSun ? 1 : 0), brt = 1 + .5 * Math.exp(-t * 3.5);
+      idolView(lerp(1.24, 1.98, uz), lerp(578, 470, uz), lerp(300, 345, uz), Math.min(1, .62 + .12 * Math.sin(t * 2.3) + .4 * pls), 1 + .12 * Math.sin(t * 3.1) + .9 * pls + 1.2 * Math.exp(-t * 4), t);
+      PL1.flash.style.display = t < .8 ? 'block' : 'none'; PL1.flash.style.opacity = .5 * ramp(t, .02, .1) * (1 - ramp(t, .1, .75)); PL1.cred.textContent = 'real photo: PIB · GODL-India · beam + spot drawn by us'; PL1.img.style.filter = 'brightness(' + (.5 + .3 * Math.exp(-t * 4)).toFixed(3) + ') saturate(1.1)'; }
+    else { var uq = eio(ramp(t, tE5 - .3, tF - .2)); idolView(lerp(2.25, 2.6, uq), lerp(430, 400, uq), lerp(400, 420, uq), .8, 1 + .1 * Math.sin(t * 3.1), t); PL1.flash.style.display = 'none'; PL1.cred.textContent = '58 mm: reported (CBRI) · photo: PIB, GODL-India · spot drawn by us'; PL1.img.style.filter = 'brightness(.5) saturate(1.1)'; } }
+  if (p2 > 0) { PL2.d.style.opacity = p2; var u2s = ramp(t, tB2 - .2, tC), k2 = PL2.cw / 960 * lerp(1.03, 1.15, u2s); PL2.inn.style.transform = 'translate(' + ((PL2.cw - 960 * k2) / 2).toFixed(2) + 'px,' + ((PL2.ch - 563 * k2) * .55).toFixed(2) + 'px) scale(' + k2.toFixed(4) + ')';
+    var ua = eo(ramp(t, tB2 + .5, tB2 + 2.0)); ARR.style.top = (PL2.cy + 40) + 'px'; ARR.style.left = (PL2.cx + 340) + 'px'; ARR.style.height = (300 * ua) + 'px'; ST_[3][2].style.left = (PL2.cx + 360) + 'px'; ST_[3][2].style.top = (PL2.cy + 300) + 'px'; }
+  ST_.forEach(function (q) { var on = t >= q[0] && t < q[1]; q[2].style.display = on ? 'block' : 'none'; if (on) { var u = eob(ramp(t, q[0], q[0] + .3)) * (1 - ramp(t, q[1] - .2, q[1])); q[2].style.opacity = Math.min(1, u); q[2].style.transform = 'scale(' + (.7 + .3 * u) + ')'; } });
+  if (!(p1 >= 1 || p2 >= 1)) render(t);
   // --- DOM
   HEADS.forEach(function (h) { var on = t >= h.t0 && t < h.t1, u = (h.t0 === 0 ? 1 : eo(ramp(t, h.t0, h.t0 + .45))) * (1 - ramp(t, h.t1 - .25, h.t1)); h.k.style.display = h.h.style.display = on ? 'block' : 'none'; if (on) { h.k.style.opacity = h.h.style.opacity = u; h.h.style.transform = 'translateY(' + (1 - u) * 14 + 'px)'; } });
   var s = null; SRCS.forEach(function (q) { if (t >= q[0] && t < q[1]) s = q; }); SRC.style.display = s ? 'block' : 'none'; if (s) { SRC.textContent = s[2]; SRC.style.opacity = (s[0] === 0 ? 1 : eo(ramp(t, s[0], s[0] + .4))) * (1 - ramp(t, s[1] - .2, s[1])); }

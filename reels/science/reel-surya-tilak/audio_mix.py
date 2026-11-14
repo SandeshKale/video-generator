@@ -67,13 +67,15 @@ for e in ev['ev']:
         put(sfx, sm(tone(240, .2, f1=150, dec=.06) * .5, noise(.05, 900, 5000) * dec_n(.05, .012) * .4), t + .12)
     elif k == 'whoosh': put(sfx, whoosh(.55, False) * .2, t - .28)
     elif k == 'hole': HOLES.append(t)
+    elif k == 'hit': put(sfx, .3 * sm(chime(293.7, 3.2, .5), chime(587.3, 2.6, .3), tone(73.4, 1.4, f1=50, dec=.5) * 1.1, noise(.12, 150, 2500) * dec_n(.12, .04) * .5, tone(220, 2.4, 'saw', a=.25, dec=1.4, f1=233) * .09), t)
+    elif k == 'shutter': put(sfx, sm(noise(.03, 2000, 9000) * dec_n(.03, .008) * .5, tone(900, .05, dec=.015) * .2), t); put(sfx, noise(.04, 1500, 8000) * dec_n(.04, .01) * .4, t + .07)
 # ---------------- score (D, our own: tanpura drone, sitar-like plucks, frame drums, glass bells) ----------------
 BPM = 84; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); D2 = 73.42
 sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2
 RAGA = [0, 2, 4, 7, 9, 12, 14, 16]   # D major pentatonic-ish
 def voices(t):
     s = sc_of(t)
-    return dict(drone=True, drum=s in (3, 8, 10), pluck=s in (3, 4, 7, 8, 10), bell=s in (0, 1, 4, 6, 7, 10, 11), pulse=s == 6, low=s in (0, 2, 5), dry=s in (5, 9))
+    return dict(drone=True, drum=s not in (5, 9), pluck=s in (0, 1, 3, 4, 6, 7, 8, 10, 11), bell=s in (0, 1, 4, 6, 7, 10, 11), pulse=s == 6, low=s in (0, 2, 5), dry=s in (5, 9))
 def tanpura(f, d):   # four strings, slow bloom, rich partials
     n = int(d * SR); tt = np.arange(n) / SR; y = np.zeros(n, 'float32')
     for h in range(1, 9): y += (np.sin(2 * np.pi * f * h * tt * (1 + .0007 * h)) / h ** 1.2).astype('float32')
@@ -95,6 +97,14 @@ while t < DUR:
     if V['pulse'] and s16 % 2 == 0: put(music, tone(D2 * 2 * (1.5 if s16 % 8 == 4 else 1), step * 1.6, 'square', dec=.05) * .035, t)
     if V['dry'] and s16 % 4 == 0: put(music, noise(.015, 2500, 7000) * dec_n(.015, .005) * .12, t)
     i += 1; t = i * step
+def flute(f, d): 
+    n = int(d * SR); tt = np.arange(n) / SR; vib = 1 + .006 * np.sin(2 * np.pi * 5.2 * tt) * np.minimum(1, tt / .3); ph = 2 * np.pi * np.cumsum(f * vib) / SR
+    e = np.minimum(1, tt / .08) * np.minimum(1, (d - tt) / .18); return ((np.sin(ph) + .28 * np.sin(2 * ph) + .08 * np.sin(3 * ph)) * e + noise(d, 2000, 7000)[:n] * .03 * e).astype('float32')
+SEN = json.load(open(A + '/words.json'))['sentences']; ends = sorted(set(round(x['t1'], 2) for x in SEN)) if isinstance(SEN, list) and SEN and 't1' in SEN[0] else []
+for gi, te in enumerate(ends):
+    nxt = min([w[1] for w in WD if w[1] > te + .05] or [DUR]); gap = nxt - te
+    if gap > .45:
+        n1 = RAGA[(gi * 3) % len(RAGA)]; n2 = RAGA[(gi * 3 + 2) % len(RAGA)]; put(music, flute(D2 * 8 * 2 ** (n1 / 12), min(.45, gap * .5)) * .5, te + .05); put(music, flute(D2 * 8 * 2 ** (n2 / 12), min(.6, gap * .6)) * .5, te + .05 + min(.4, gap * .45))
 # holes: the music drops out for a beat when the light is lost (the miss, the cloud)
 hm = np.ones(N, 'float32')
 for ht in HOLES:
@@ -106,8 +116,10 @@ duck = np.minimum(1, uniform_filter1d(on, int(.18 * SR)) * 1.6); a_ = np.exp(-1 
 for k in range(0, N, 64):
     tg = duck[k]; cur = tg + (cur - tg) * (a_ if tg > cur else r_)**64; g[k:k+64] = cur
 MUS = float(os.environ.get('MUS', .2)); SFXG = float(os.environ.get('SFXG', .4))
-sos = butter(2, [1200/(SR/2), 4500/(SR/2)], btype='band', output='sos'); music_d = music * MUS * (1 - .975 * g); music_d = music_d - .55 * sosfilt(sos, music_d) * g
+sos = butter(2, [1200/(SR/2), 4500/(SR/2)], btype='band', output='sos'); music_d = music * MUS * (1 - float(os.environ.get('DUCK', .6)) * g); music_d = music_d - .55 * sosfilt(sos, music_d) * g * .8
 sfx_d = sfx * SFXG * (1 - .92 * g)
+oth = music_d + sfx_d; venv = np.sqrt(uniform_filter1d(voice.astype('float64') ** 2, int(.25 * SR))); oenv = np.sqrt(uniform_filter1d(oth.astype('float64') ** 2, int(.04 * SR))) + 1e-9
+lim = np.where(g > .4, np.minimum(1, np.maximum(venv, .012) / 4.5 / oenv), 1.0); lim = np.minimum(lim, uniform_filter1d(lim, int(.03 * SR))).astype('float32'); music_d = music_d * lim; sfx_d = sfx_d * lim   # keeps voice >= ~13 dB over the bed while speaking
 mix = voice + music_d + sfx_d; mix = mix / max(1, np.max(np.abs(mix)) / .89); sf.write(A + '/mix-pre.wav', mix, SR)
 M = subprocess.run(['ffmpeg', '-hide_banner', '-i', A + '/mix-pre.wav', '-af', 'loudnorm=I=-14:TP=-1.2:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr; j = json.loads(M[M.rindex('{'):])
 subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', A + '/mix-pre.wav', '-af', f"loudnorm=I=-14:TP=-1.2:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true", '-ar', '48000', A + '/final.wav'], check=True)

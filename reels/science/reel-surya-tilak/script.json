@@ -3,16 +3,16 @@
   {
    "id": "s1",
    "g": "g1",
-   "B": "राम नवमी। दोपहर के बारह बजे।",
-   "A": "Ram Navami. Dopahar ke barah baje.",
-   "cap": "Ram Navami. Dopahar ke barah baje."
+   "B": "यह तिलक किसी इंसान ने नहीं लगाया। इसे सूरज ने लगाया है!",
+   "A": "Yeh tilak kisi insaan ne nahi lagaya. Ise sooraj ne lagaya hai!",
+   "cap": "Yeh tilak kisi insaan ne nahi lagaya. Ise sooraj ne lagaya hai!"
   },
   {
    "id": "s2",
    "g": "g2",
-   "B": "अयोध्या के मंदिर में, राम लला के माथे पर, रोशनी का एक तिलक।",
-   "A": "Ayodhya ke mandir mein, Ram Lalla ke maathe par, roshni ka ek tilak.",
-   "cap": "Ayodhya ke mandir mein, Ram Lalla ke maathe par, roshni ka ek tilak."
+   "B": "अयोध्या में, राम नवमी की दोपहर, राम लला के माथे पर।",
+   "A": "Ayodhya mein, Ram Navami ki dopahar, Ram Lalla ke maathe par.",
+   "cap": "Ayodhya mein, Ram Navami ki dopahar, Ram Lalla ke maathe par."
   },
   {
    "id": "s3",
@@ -276,6 +276,8 @@
   "s31": 0.6,
   "s33": 0.8,
   "s35": 0.6,
-  "s36": 0.6
+  "s36": 0.6,
+  "s1": 0.45,
+  "s2": 0.5
  }
 }
