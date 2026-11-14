@@ -53,11 +53,11 @@ var tS1 = Math.min(tA2, 2.5), tS2 = Math.min(tA3, tA2 + 2.5);           // each 
 // ---------- station 0: the film (two official stills, comment use, <= 2.5 s each) ----------
 var FS0 = photo('film/jatayu-0.jpg', 10), FS1 = photo('film/jatayu-1.jpg', 10); FS0.position.copy(C[0]); FS1.position.copy(C[0]);
 // ---------- station 1: a real vulture in the real sky ----------
-var VUL = photo('cut/vulture-flight-2.png', 2.07), FAR = [];
+var VUL = photo('cut/vulture-hi.png', 2.07), FAR = [];
 for (var i = 0; i < 9; i++) { var f = photo(i % 2 ? 'cut/griffon-soar.png' : 'cut/vulture-flight-2.png', .5 + hsh(i) * .5); f.userData.k = i; FAR.push(f); }
 var RUL = bar(V(-.74, -.96, .02), V(.74, .98, .02), .022, 0xfbf6ea, VUL), RT1 = bar(V(-.82, -.9, .02), V(-.66, -1.02, .02), .022, 0xfbf6ea, VUL), RT2 = bar(V(.66, 1.04, .02), V(.82, .92, .02), .022, 0xfbf6ea, VUL);
 // ---------- station 2: opened up (real specimens in depth) ----------
-var GH = photo('cut/vulture-blur.png', 2.6), GS = photo('cut/vulture-flight-2.png', 2.6), SK = photo('cut/skel-lammergeier.png', 3.1);
+var GH = photo('cut/vulture-blur.png', 2.6), GS = photo('cut/vulture-hi.png', 2.6), SK = photo('cut/skel-lammergeier.png', 3.1);
 GH.position.copy(off(C[2], -1.25, .25, -1.6)); GS.position.copy(GH.position); SK.position.copy(off(C[2], .5, -.1, 0));
 var DR = photo('cut/d-raven.png', 1.25), DD = photo('cut/d-dove.png', 1.0), DMc = photo('cut/d-micro.png', .82), DB = photo('cut/d-bone.png', 1.05);
 DR.position.copy(off(C[2], -1.45, .85, 1.0)); DD.position.copy(off(C[2], -.8, .05, 1.5)); DMc.position.copy(off(C[2], -1.35, -.3, 2.0)); DB.position.copy(off(C[2], 1.3, -.85, .9));
@@ -77,18 +77,18 @@ var KM = .7, LAD = new T.Group(); LAD.position.copy(C[3]); S.add(LAD);
     p.setX(i, x * k); p.setZ(i, z * k); var lit = .55 + .45 * Math.max(0, Math.cos(a - .9)) + n * .22, snow = u > .52 + n * .1 ? 1 : 0, c = snow ? new T.Color().setHSL(.6, .1, Math.min(.97, .62 + lit * .34)) : new T.Color().setHSL(.07, .12, .12 + lit * .2); col.push(c.r, c.g, c.b); }
   g.setAttribute('color', new T.Float32BufferAttribute(col, 3));
   var m = new T.Mesh(g, new T.MeshBasicMaterial({ vertexColors: true, transparent: true })); m.position.set(-2.0, hh / 2, -1.2); LAD.add(m); })();
-var HV = photo('cut/vulture-flight-2.png', 1.2, LAD); HV.position.set(1.15, 11.3 * KM, .3);
+var HV = photo('cut/vulture-hi.png', 1.2, LAD); HV.position.set(1.15, 11.3 * KM, .3);
 // ---------- station 4: make it bigger ----------
-var VB = photo('cut/vulture-flight-2.png', 1.3); VB.position.copy(off(C[4], 0, .6, 0));
+var VB = photo('cut/vulture-hi.png', 1.3); VB.position.copy(off(C[4], 0, .6, 0));
 var SQ = [], CU = []; (function () { var e = new T.EdgesGeometry(new T.BoxGeometry(.3, .3, .3));
   for (var k = 0; k < 4; k++) { var m = new T.Mesh(new T.BoxGeometry(.3, .3, .03), new T.MeshBasicMaterial({ color: 0xffe2b8, transparent: true })); m.position.copy(off(C[4], -1.2 + (k % 2) * .36, -1.2 + Math.floor(k / 2) * .36, .5)); S.add(m); SQ.push(m); }
   for (var k2 = 0; k2 < 8; k2++) { var c = new T.Mesh(new T.BoxGeometry(.3, .3, .3), new T.MeshBasicMaterial({ color: 0xff8a1f, transparent: true })); c.add(new T.LineSegments(e, new T.LineBasicMaterial({ color: 0x1a0d02, transparent: true }))); c.position.copy(off(C[4], .75 + (k2 % 2) * .36, -1.2 + (Math.floor(k2 / 2) % 2) * .36, .5 + Math.floor(k2 / 4) * .36)); c.rotation.set(0, 0, 0); S.add(c); CU.push(c); } })();
 var KITE = new T.Group(), KSTR; (function () { var sh = new T.Shape(); sh.moveTo(0, .5); sh.lineTo(.36, 0); sh.lineTo(0, -.5); sh.lineTo(-.36, 0); sh.closePath(); var m = new T.Mesh(new T.ShapeGeometry(sh), new T.MeshBasicMaterial({ color: 0xff5a1f, transparent: true, side: T.DoubleSide })); KITE.add(m); KITE.add(bar(V(0, .5, .01), V(0, -.5, .01), .02, 0x1a0d02)); KITE.add(bar(V(-.36, 0, .01), V(.36, 0, .01), .02, 0x1a0d02)); S.add(KITE);
   KSTR = new T.Line(new T.BufferGeometry().setFromPoints([V(0, 0, 0), V(0, 0, 0)]), new T.LineBasicMaterial({ color: 0xfbf6ea, transparent: true })); S.add(KSTR); })();
 // ---------- station 5: the heaviest fliers, to scale (1 unit = 1 m) ----------
-var L1 = photo('cut/vulture-flight-2.png', 2.07), L2 = photo('cut/albatross.png', 1.5), L3 = photo('cut/argentavis.png', 3.3), L4 = framed('argentavis-mef.jpg', 1.3), FS2 = photo('film/jatayu-2.jpg', 5.2);
+var L1 = photo('cut/vulture-hi.png', 2.07), L2 = photo('cut/albatross.png', 1.5), L3 = photo('cut/argentavis.png', 3.3), L4 = framed('argentavis-mef.jpg', 1.3), FS2 = photo('film/jatayu-2.jpg', 5.2);
 L1.position.copy(off(C[5], -2.0, -.75, 0)); L2.position.copy(off(C[5], -.4, 1.35, 0)); L3.position.copy(off(C[5], 5.6, -.3, 0)); L4.position.copy(off(C[5], 5.0, -2.55, .4)); FS2.position.copy(off(C[5], 16, .2, 0));
-var HB = photo('cut/vulture-flight-2.png', 4.2); HB.material = HB.material.clone(); HB.material.color.setRGB(.5, .4, .36);
+var HB = photo('cut/vulture-hi.png', 4.2); HB.material = HB.material.clone(); HB.material.color.setRGB(.5, .4, .36);
 var MRUL = new T.Group(); MRUL.position.copy(off(C[5], 0, -1.95, 0)); S.add(MRUL); (function () { bar(V(-5, 0, 0), V(9, 0, 0), .03, 0xfbf6ea, MRUL); for (var k = -5; k <= 9; k++) bar(V(k, -.09, 0), V(k, .09, 0), .025, 0xfbf6ea, MRUL); })();
 // ---------- station 6: the real loss (100 real birds; 97 fade) ----------
 var FLK = []; for (var q = 0; q < 100; q++) { var b = photo(q % 3 ? 'cut/griffon-soar.png' : 'cut/vulture-flight-2.png', .42 + hsh(q * 3.3) * .3); b.material = b.material.clone(); b.userData = { r: 1.0 + hsh(q * 1.7) * 2.3, y: -2.6 + hsh(q * 2.9) * 5.6, ph: hsh(q * 5.1) * 6.283, sp: .25 + hsh(q * 7.7) * .3, keep: q === 7 || q === 41 || q === 76, ord: hsh(q * 9.3) }; FLK.push(b); }
@@ -99,7 +99,7 @@ var VIAL = new T.Group(); (function () { var gl = new T.Mesh(new T.CylinderGeome
 var PIN = framed('pinjore-crop.jpg', 3.05); PIN.position.copy(off(C[7], 0, -.15, 0)); PIN.rotation.z = -.025;
 var RET = []; for (var r2 = 0; r2 < 14; r2++) { var rb = photo(r2 % 2 ? 'cut/griffon-soar.png' : 'cut/vulture-flight-2.png', .5 + hsh(r2 * 4.1) * .4); rb.userData.k = r2; RET.push(rb); }
 // ---------- station 8: sunset; the film's Jatayu, then the real one ----------
-var FS3 = photo('film/jatayu-1.jpg', 10), VEND = photo('cut/vulture-flight-2.png', 2.6); FS3.position.copy(C[8]); VEND.material = VEND.material.clone(); VEND.material.color.setRGB(.42, .34, .3);
+var FS3 = photo('film/jatayu-1.jpg', 10), VEND = photo('cut/vulture-hi.png', 2.6); FS3.position.copy(C[8]); VEND.material = VEND.material.clone(); VEND.material.color.setRGB(.42, .34, .3);
 
 // ---------- camera: authored shots, locked between moves ----------
 var PO = {
@@ -176,7 +176,7 @@ tag(tH4, tI - .5, A(off(C[4], .93, -.85, .68)), '<small>weight</small>× 8', 770
 tag(tH5 + .5, tI - .5, function () { return KITE.position; }, '<small>heavy kite</small>needs faster wind', 500, 450);
 tag(tI + 1.0, tI2 + .3, A(L1.position), '<small>vulture</small>6 kg · 2.5 m', 170, 1110);
 tag(tI + 1.4, tI2 + .3, A(L2.position), '<small>albatross</small>up to ~16 kg · 3.5 m', 520, 470);
-tag(tI2 + 1.5, tI3 - .2, A(L3.position), '<small>Argentavis · ~6 million years ago</small>~70 kg · ~6 m wings', 170, 560);
+tag(tI2 + 1.5, tI3 - .2, A(L3.position), '<small>Argentavis · extinct · artist's reconstruction</small>~70 kg · ~6 m wings', 170, 560);
 tag(tI2 + 2.1, tI3 - .2, A(L4.position), '<small>its real fossil mount</small>museum, Argentina', 170, 1130);
 tag(tJ5, tK - .4, A(VIAL.position), '<small>cattle painkiller</small>deadly to vultures', 250, 1120, 'r');
 tag(tK4, tL - .5, A(off(C[7], .3, -.9, 0)), '<small>ring on the leg</small>before release', 520, 1130, 'g');

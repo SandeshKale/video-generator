@@ -323,5 +323,12 @@
   "voice": "clone",
   "host": "none",
   "length": "111s"
+ },
+ "reel-jatayu-flight": {
+  "genre": "heritage-science-explainer",
+  "company": "none",
+  "voice": "clone",
+  "host": "none",
+  "length": "~95s"
  }
 }

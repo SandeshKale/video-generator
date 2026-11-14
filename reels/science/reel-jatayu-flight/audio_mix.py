@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Score + SFX + mix for 'Sooraj ko andar kaise laaye?' (own synthesis: tanpura floor in D, glass bells for light, soft plucks, low frame drum).
 python3 audio_mix.py -> audio/final.wav (48 kHz) + audio/mix-report.json. SFX come from the page's own event list (audio/events.json).
-The score follows the light: bells when the beam lands, a hole in the music on 'hole' events (the miss, the cloud), full voices at the ending.
+Jatayu score: high wind bed, bowed pad in C, santoor-like plucks, slow frame drum; minor until the comeback (scene 9), major after; a hole in the music when the vultures vanish.
 Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, voice over music+SFX median >= 19 dB, min >= 13 dB."""
 import json, os, re, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
@@ -69,27 +69,27 @@ for e in ev['ev']:
     elif k == 'hole': HOLES.append(t)
     elif k == 'hit': put(sfx, .3 * sm(chime(293.7, 3.2, .5), chime(587.3, 2.6, .3), tone(73.4, 1.4, f1=50, dec=.5) * 1.1, noise(.12, 150, 2500) * dec_n(.12, .04) * .5, tone(220, 2.4, 'saw', a=.25, dec=1.4, f1=233) * .09), t)
     elif k == 'shutter': put(sfx, sm(noise(.03, 2000, 9000) * dec_n(.03, .008) * .5, tone(900, .05, dec=.015) * .2), t); put(sfx, noise(.04, 1500, 8000) * dec_n(.04, .01) * .4, t + .07)
-# ---------------- score (D, our own: tanpura drone, sitar-like plucks, frame drums, glass bells) ----------------
-BPM = 84; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); D2 = 73.42
+# ---------------- score (C, our own: wind, bowed pad, santoor-like plucks, frame drum, bells) ----------------
+BPM = 76; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); D2 = 65.41
 sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2
-RAGA = [0, 2, 4, 7, 9, 12, 14, 16]   # D major pentatonic-ish
+MINOR = [0, 3, 5, 7, 10, 12, 15, 17]; MAJOR = [0, 2, 4, 7, 9, 12, 14, 16]; RAGA = MINOR
 def voices(t):
     s = sc_of(t)
-    return dict(drone=True, drum=s not in (5, 9), pluck=s in (0, 1, 3, 4, 6, 7, 8, 10, 11), bell=s in (0, 1, 4, 6, 7, 10, 11), pulse=s == 6, low=s in (0, 2, 5), dry=s in (5, 9))
+    return dict(drone=True, drum=s not in (8,), pluck=s in (1, 2, 3, 4, 5, 6, 7, 9, 10, 11), bell=s in (0, 1, 5, 9, 10, 11), pulse=s == 6, low=s in (0, 6, 8), dry=s == 8, major=s >= 9)
 def tanpura(f, d):   # four strings, slow bloom, rich partials
     n = int(d * SR); tt = np.arange(n) / SR; y = np.zeros(n, 'float32')
-    for h in range(1, 9): y += (np.sin(2 * np.pi * f * h * tt * (1 + .0007 * h)) / h ** 1.2).astype('float32')
-    return (y * np.minimum(1, tt / .5) * np.exp(-tt / (d * .9))).astype('float32')
+    for h in range(1, 7): y += (np.sin(2 * np.pi * f * h * tt * (1 + .0011 * h) + .6 * np.sin(2 * np.pi * .23 * h * tt)) / h ** 1.7).astype('float32')
+    return (y * np.minimum(1, tt / 1.4) * np.minimum(1, (d - tt) / 1.2).clip(0)).astype('float32')
 def pluck(f):  # sitar-like: bright attack + buzz
-    return sm(tone(f, .7, 'saw', a=.002, dec=.22) * .5, tone(f * 2, .4, dec=.08) * .2, noise(.03, 3000, 8000) * dec_n(.03, .008) * .08)
+    return sm(tone(f, .9, dec=.2) * .5, tone(f * 1.004, .9, dec=.24) * .4, tone(f * 2.002, .5, dec=.09) * .22, tone(f * 4.01, .2, dec=.03) * .1, noise(.012, 4000, 9000) * dec_n(.012, .004) * .1)
 i = 0; t = 0.0
 while t < DUR:
-    s16 = i % 16; bar = int(i // 16); V = voices(t)
+    s16 = i % 16; bar = int(i // 16); V = voices(t); RAGA = MAJOR if V['major'] else MINOR
     if V['drone'] and s16 == 0 and bar % 2 == 0:
         for j, f in enumerate((D2 * 1.5, D2 * 2, D2 * 2, D2)): put(music, tanpura(f, beat * 8) * (.05 if not V['dry'] else .03), t + j * beat * 2)
     if V['drum'] and not any(w[1] - .15 < t < w[2] + .1 for w in WD if abs(w[1] - t) < 2 and w[0].endswith('।')):
-        if s16 in (0, 6, 10): put(music, sm(tone(65, .5, f1=45, dec=.18) * .9, noise(.04, 200, 1200) * dec_n(.04, .01) * .3), t)
-        if s16 in (4, 12): put(music, sm(noise(.08, 400, 4000) * dec_n(.08, .03) * .35, tone(220, .12, dec=.04) * .2), t)
+        if s16 in (0, 10): put(music, sm(tone(65, .5, f1=45, dec=.18) * .9, noise(.04, 200, 1200) * dec_n(.04, .01) * .3), t)
+        if s16 in (6, 12, 14): put(music, sm(noise(.08, 400, 4000) * dec_n(.08, .03) * .35, tone(220, .12, dec=.04) * .2), t)
     if V['low'] and s16 in (0, 8): put(music, tone(D2 / 2, beat * 1.8, dec=.6) * .25, t)
     if V['pluck'] and s16 % 2 == 0 and s16 not in (6, 14):
         n = RAGA[(s16 // 2 * 3 + bar * 2) % len(RAGA)]; put(music, pluck(D2 * 4 * 2 ** (n / 12)) * .07, t)
@@ -97,6 +97,8 @@ while t < DUR:
     if V['pulse'] and s16 % 2 == 0: put(music, tone(D2 * 2 * (1.5 if s16 % 8 == 4 else 1), step * 1.6, 'square', dec=.05) * .035, t)
     if V['dry'] and s16 % 4 == 0: put(music, noise(.015, 2500, 7000) * dec_n(.015, .005) * .12, t)
     i += 1; t = i * step
+# wind bed: band noise with a slow swell, a little brighter when the camera is high
+wn = noise(DUR + .1, 250, 1800)[:N]; tt_ = np.arange(N) / SR; music += (wn * (.05 + .035 * np.sin(2 * np.pi * .07 * tt_) + .02 * np.sin(2 * np.pi * .19 * tt_ + 1))).astype('float32')
 def flute(f, d): 
     n = int(d * SR); tt = np.arange(n) / SR; vib = 1 + .006 * np.sin(2 * np.pi * 5.2 * tt) * np.minimum(1, tt / .3); ph = 2 * np.pi * np.cumsum(f * vib) / SR
     e = np.minimum(1, tt / .08) * np.minimum(1, (d - tt) / .18); return ((np.sin(ph) + .28 * np.sin(2 * ph) + .08 * np.sin(3 * ph)) * e + noise(d, 2000, 7000)[:n] * .03 * e).astype('float32')
@@ -104,7 +106,7 @@ SEN = json.load(open(A + '/words.json'))['sentences']; ends = sorted(set(round(x
 for gi, te in enumerate(ends):
     nxt = min([w[1] for w in WD if w[1] > te + .05] or [DUR]); gap = nxt - te
     if gap > .45:
-        n1 = RAGA[(gi * 3) % len(RAGA)]; n2 = RAGA[(gi * 3 + 2) % len(RAGA)]; put(music, flute(D2 * 8 * 2 ** (n1 / 12), min(.45, gap * .5)) * .5, te + .05); put(music, flute(D2 * 8 * 2 ** (n2 / 12), min(.6, gap * .6)) * .5, te + .05 + min(.4, gap * .45))
+        RG = MAJOR if te >= B[9] else MINOR; n1 = RG[(gi * 3) % len(RG)]; n2 = RG[(gi * 3 + 2) % len(RG)]; put(music, flute(D2 * 8 * 2 ** (n1 / 12), min(.45, gap * .5)) * .5, te + .05); put(music, flute(D2 * 8 * 2 ** (n2 / 12), min(.6, gap * .6)) * .5, te + .05 + min(.4, gap * .45))
 # holes: the music drops out for a beat when the light is lost (the miss, the cloud)
 hm = np.ones(N, 'float32')
 for ht in HOLES:
