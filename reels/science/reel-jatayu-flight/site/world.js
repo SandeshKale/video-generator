@@ -88,7 +88,7 @@ var KITE = new T.Group(), KSTR; (function () { var sh = new T.Shape(); sh.moveTo
 // ---------- station 5: the heaviest fliers, to scale (1 unit = 1 m) ----------
 var L1 = photo('cut/vulture-hi.png', 2.07), L2 = photo('cut/albatross.png', 1.5), L3 = photo('cut/argentavis.png', 3.3), L4 = framed('argentavis-mef.jpg', 1.3), FS2 = photo('film/jatayu-2.jpg', 5.2);
 L1.position.copy(off(C[5], -2.0, -.75, 0)); L2.position.copy(off(C[5], -.4, 1.35, 0)); L3.position.copy(off(C[5], 5.6, -.3, 0)); L4.position.copy(off(C[5], 5.0, -2.55, .4)); FS2.position.copy(off(C[5], 16, .2, 0));
-var HB = photo('cut/vulture-hi.png', 4.2); HB.material = HB.material.clone(); HB.material.color.setRGB(.5, .4, .36);
+var HB = photo('cut/vulture-hi.png', 3.3); HB.material = HB.material.clone(); HB.material.color.setRGB(.5, .4, .36);
 var MRUL = new T.Group(); MRUL.position.copy(off(C[5], 0, -1.95, 0)); S.add(MRUL); (function () { bar(V(-5, 0, 0), V(9, 0, 0), .03, 0xfbf6ea, MRUL); for (var k = -5; k <= 9; k++) bar(V(k, -.09, 0), V(k, .09, 0), .025, 0xfbf6ea, MRUL); })();
 // ---------- station 6: the real loss (100 real birds; 97 fade) ----------
 var FLK = []; for (var q = 0; q < 100; q++) { var b = photo(q % 3 ? 'cut/griffon-soar.png' : 'cut/vulture-flight-2.png', .42 + hsh(q * 3.3) * .3); b.material = b.material.clone(); b.userData = { r: 1.0 + hsh(q * 1.7) * 2.3, y: -2.6 + hsh(q * 2.9) * 5.6, ph: hsh(q * 5.1) * 6.283, sp: .25 + hsh(q * 7.7) * .3, keep: q === 7 || q === 41 || q === 76, ord: hsh(q * 9.3) }; FLK.push(b); }
@@ -176,7 +176,7 @@ tag(tH4, tI - .5, A(off(C[4], .93, -.85, .68)), '<small>weight</small>× 8', 770
 tag(tH5 + .5, tI - .5, function () { return KITE.position; }, '<small>heavy kite</small>needs faster wind', 500, 450);
 tag(tI + 1.0, tI2 + .3, A(L1.position), '<small>vulture</small>6 kg · 2.5 m', 170, 1110);
 tag(tI + 1.4, tI2 + .3, A(L2.position), '<small>albatross</small>up to ~16 kg · 3.5 m', 520, 470);
-tag(tI2 + 1.5, tI3 - .2, A(L3.position), '<small>Argentavis · extinct · artist's reconstruction</small>~70 kg · ~6 m wings', 170, 560);
+tag(tI2 + 1.5, tI3 - .2, A(L3.position), '<small>Argentavis · extinct · artist reconstruction</small>~70 kg · ~6 m wings', 170, 560);
 tag(tI2 + 2.1, tI3 - .2, A(L4.position), '<small>its real fossil mount</small>museum, Argentina', 170, 1130);
 tag(tJ5, tK - .4, A(VIAL.position), '<small>cattle painkiller</small>deadly to vultures', 250, 1120, 'r');
 tag(tK4, tL - .5, A(off(C[7], .3, -.9, 0)), '<small>ring on the leg</small>before release', 520, 1130, 'g');
@@ -225,7 +225,7 @@ window.__seek = function (t) {
   var on5 = t > tI - .6 && t < tJ + 1.1; L1.visible = L2.visible = MRUL.visible = on5; L1.position.y = C[5].y - .75 + Math.sin(t * .7) * .05; L2.position.y = C[5].y + 1.35 + Math.sin(t * .6 + 1) * .06;
   show(L3, on5 ? eo(ramp(t, tI2 + .9, tI2 + 1.7)) : 0, .8 + .2 * eob(ramp(t, tI2 + .9, tI2 + 1.7))); showF(L4, on5 ? eo(ramp(t, tI2 + 1.9, tI2 + 2.5)) * (1 - ramp(t, tI3 - .1, tI3 + .3)) : 0);
   show(FS2, on5 && t >= tI3 - .1 && t < tI3 + 2.5 ? Math.min(1, ramp(t, tI3 - .1, tI3 + .2)) * (1 - ramp(t, tI3 + 2.2, tI3 + 2.5)) : 0);
-  var uh = eio(ramp(t, tI4 - .1, tI4 + 2.6)), hOn = t > tI4 - .3 && t < tJ + .9; HB.visible = hOn; if (hOn) { HB.position.set(C[5].x + 16 + lerp(-5.5, .2, uh), 7.5 + lerp(-3.2, .3, uh) + Math.sin(t * .7) * .06, 0); HB.rotation.z = lerp(.3, .02, uh); HB.material.opacity = Math.min(1, ramp(t, tI4 - .3, tI4 + .3)); }
+  var uh = eo(ramp(t, tI4 + .3, tI4 + 1.9)), hOn = t > tI4 - .3 && t < tJ + .9; HB.visible = hOn; if (hOn) { HB.position.set(C[5].x + 16 + lerp(-3.6, .2, uh), 7.5 + lerp(-2.2, .3, uh) + Math.sin(t * .7) * .06, 0); HB.rotation.z = lerp(.3, .02, uh); HB.material.opacity = Math.min(1, ramp(t, tI4 - .3, tI4 + .3)); }
   // station 6: 100 real birds; 97 fade
   var on6 = t > tJ - .5 && t < tK + 1.2, gone = ramp(t, tJ3 - .9, tJ3 + 1.5);
   FLK.forEach(function (b) { var u = b.userData, a = t * u.sp + u.ph, o = on6 ? (u.keep ? 1 : 1 - ramp(gone, u.ord * .8, u.ord * .8 + .2)) : 0; b.visible = o > .01; if (!b.visible) return; b.material.opacity = o; b.position.set(C[6].x + Math.cos(a) * u.r, u.y + Math.sin(t * .4 + u.ph) * .15 - (u.keep ? 0 : (1 - o) * 1.2), Math.sin(a) * u.r); b.rotation.z = a + 1.57; face(b); b.rotateZ(a + 1.57); });
