@@ -1,0 +1,10 @@
+import { chromium } from 'playwright'; import { spawn } from 'node:child_process';
+const root = '/home/user/video-generator/';
+const srv = spawn('python3', ['-m', 'http.server', '8834', '--bind', '127.0.0.1'], { cwd: root, stdio: 'ignore' });
+await new Promise(r => setTimeout(r, 800));
+const b = await chromium.launch({ args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+const p = await b.newPage({ viewport: { width: 1080, height: 1920 } }); p.on('pageerror', e => console.log('ERR', e.message)); p.on('console', m => console.log('CON', m.text()));
+await p.goto(`http://127.0.0.1:8834/reels/science/reel-jatayu-flight/site/index.html`); await p.waitForFunction('window.__ready===true', null, { timeout: 120000 });
+console.log(await p.evaluate(process.argv[2]));
+if (process.argv[3]) await p.screenshot({ path: process.argv[3] });
+await b.close(); srv.kill();
