@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Jatayu</title><style>
+@font-face{font-family:Fr;font-weight:900;src:url(fonts/fraunces-latin-900-normal.woff2);font-display:block}
+@font-face{font-family:DM;font-weight:500;src:url(fonts/dm-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#0a1630}
+#stage{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden}
+canvas,svg{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none}
+.scr{position:absolute;left:0;width:1080px}
+#tint{position:absolute;inset:0;background:#0a0f1e;opacity:0}
+.kick{position:absolute;left:162px;top:206px;font:500 22px DM;letter-spacing:.14em;color:#ffe2b8;text-transform:uppercase;white-space:nowrap}
+.kick i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ff8a1f;margin-right:12px}
+.head{position:absolute;left:162px;top:244px;width:756px;font:900 70px/1.05 Fr;letter-spacing:-.02em;color:#fbf6ea;text-shadow:0 4px 18px rgba(0,0,20,.55)}
+.head b{font-weight:900;background:#ff8a1f;color:#1a0d02;padding:0 12px;text-shadow:none}
+.tag{position:absolute;font:600 24px/1.25 Inter;color:#fbf6ea;background:rgba(8,20,44,.88);border:1.5px solid rgba(255,226,184,.6);padding:9px 14px 10px;border-radius:3px;white-space:nowrap}
+.tag small{display:block;font:500 15px DM;letter-spacing:.1em;color:#ffb25c;margin-bottom:3px;text-transform:uppercase}
+.tag.r{border-color:#ff5a4a}.tag.r small{color:#ff8a7a}
+.tag.g{border-color:#7be0a0}.tag.g small{color:#9af0b8}
+.hud{position:absolute;left:162px;top:1196px;display:flex;gap:10px}
+.hud div{font:500 20px DM;letter-spacing:.05em;color:#fbf6ea;background:rgba(8,20,44,.88);border:1.5px solid rgba(255,226,184,.4);padding:9px 12px;border-radius:3px;white-space:nowrap}
+.hud div small{display:block;font:500 13px DM;color:#ffb25c;letter-spacing:.12em;margin-bottom:3px}
+.src{position:absolute;left:162px;top:1282px;width:756px;font:500 14px DM;color:#e8dcc4;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 4px #000}
+#cap{position:absolute;left:162px;top:1340px;width:756px}
+.endc{position:absolute;left:162px;top:560px;width:756px;text-align:center}
+.endc img{width:240px;height:240px;border-radius:50%;border:8px solid #b4f000;box-shadow:0 0 0 10px #0a0f1d,0 16px 40px rgba(0,0,0,.7);display:block;margin:0 auto}
+.endc .hn{font:900 80px Fr;color:#fbf6ea;margin-top:30px;text-shadow:0 4px 16px rgba(0,0,0,.8)}
+.endc .ser{font:500 22px DM;letter-spacing:.12em;color:#ffe2b8;margin-top:10px;text-transform:uppercase}
+.endc .btns{margin-top:28px;display:flex;gap:20px;justify-content:center}
+.endc .btns span{font:800 32px Inter;letter-spacing:.1em;padding:16px 34px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
+</style></head><body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div id="tint" data-ov="1"></div><svg id="lines" width="1080" height="1920"></svg>
+<div class="scr" data-ov="1" style="top:0;height:620px;background:linear-gradient(180deg,rgba(8,20,44,.8) 0,rgba(8,20,44,.62) 55%,rgba(8,20,44,0) 100%)"></div>
+<div class="scr" data-ov="1" style="top:1180px;height:740px;background:linear-gradient(0deg,rgba(8,20,44,.92) 0,rgba(8,20,44,.74) 62%,rgba(8,20,44,0) 100%)"></div>
+<div id="ov"></div><div id="cap"></div></div>
+<script src="lib/three-gltf-r160.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
+<script>
+window.__ready=false;window.IM={};
+var IMGS=['sky_kloofendal.jpg','sky_belfast.jpg','film/jatayu-0.jpg','film/jatayu-1.jpg','film/jatayu-2.jpg','cut/vulture-flight-2.png','cut/vulture-blur.png','cut/griffon-soar.png','cut/albatross.png','cut/skel-lammergeier.png','cut/argentavis.png','cut/d-raven.png','cut/d-dove.png','cut/d-micro.png','cut/d-bone.png','argentavis-mef.jpg','pinjore-crop.jpg','profile.jpg'];
+Promise.all(['900 70px Fr','500 20px DM','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f)}).concat(IMGS.map(function(n){return new Promise(function(res){var i=new Image();i.onload=i.onerror=function(){res()};i.src='img/'+n;window.IM[n]=i;});}))).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>

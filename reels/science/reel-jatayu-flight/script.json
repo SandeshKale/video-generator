@@ -1,0 +1,253 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "फ़िल्म में जटायु ने रावण का रथ तोड़ दिया।",
+   "A": "Film mein Jatayu ne Ravan ka rath tod diya.",
+   "cap": "Film mein Jatayu ne Ravan ka rath tod diya."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "पर एक सवाल: इतना बड़ा पक्षी, उड़ भी सकता है?",
+   "A": "Par ek sawaal: itna bada pakshi, ud bhi sakta hai?",
+   "cap": "Par ek sawaal: itna bada pakshi, ud bhi sakta hai?"
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "कमेंट में अपना जवाब लिखिए।",
+   "A": "Comment mein apna jawaab likhiye.",
+   "cap": "Comment mein apna jawaab likhiye."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "वाल्मीकि ने जटायु को गिद्धराज कहा: गिद्धों का राजा।",
+   "A": "Valmiki ne Jatayu ko gidhraj kaha: gidhon ka raja.",
+   "cap": "Valmiki ne Jatayu ko gidhraj kaha: gidhon ka raja."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "और असली गिद्ध, आज भी हमारे आसमान में उड़ता है।",
+   "A": "Aur asli gidh, aaj bhi hamare aasmaan mein udta hai.",
+   "cap": "Aur asli gidh, aaj bhi hamare aasmaan mein udta hai."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "पंख: ढाई मीटर। वज़न: सिर्फ़ छह किलो।",
+   "A": "Pankh: dhaai metre. Vazan: sirf chhe kilo.",
+   "cap": "Pankh: dhaai metre. Vazan: sirf chhe kilo."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "छह किलो में इतने बड़े पंख? चलिए, इसे खोल के देखते हैं।",
+   "A": "Chhe kilo mein itne bade pankh? Chaliye, ise khol ke dekhte hain.",
+   "cap": "Chhe kilo mein itne bade pankh? Chaliye, ise khol ke dekhte hain."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "सबसे ऊपर, पंख।",
+   "A": "Sabse upar, pankh.",
+   "cap": "Sabse upar, pankh."
+  },
+  {
+   "id": "s9",
+   "g": "g8",
+   "B": "हर पंख में हज़ारों बारीक काँटे हैं, जो ज़िप की तरह जुड़ जाते हैं।",
+   "A": "Har pankh mein hazaaron baareek kaante hain, jo zip ki tarah jud jaate hain.",
+   "cap": "Har pankh mein hazaaron baareek kaante hain, jo zip ki tarah jud jaate hain."
+  },
+  {
+   "id": "s10",
+   "g": "g9",
+   "B": "हल्का भी, मज़बूत भी।",
+   "A": "Halka bhi, mazboot bhi.",
+   "cap": "Halka bhi, mazboot bhi."
+  },
+  {
+   "id": "s11",
+   "g": "g10",
+   "B": "उसके नीचे, सीने की मांसपेशी। पूरे वज़न का लगभग एक चौथाई।",
+   "A": "Uske neeche, seene ki maaspeshi. Poore vazan ka lagbhag ek chauthai.",
+   "cap": "Uske neeche, seene ki maaspeshi. Poore vazan ka lagbhag ek chauthai."
+  },
+  {
+   "id": "s12",
+   "g": "g11",
+   "B": "यही इसका इंजन है।",
+   "A": "Yahi iska engine hai.",
+   "cap": "Yahi iska engine hai."
+  },
+  {
+   "id": "s13",
+   "g": "g12",
+   "B": "और हड्डियाँ? अंदर से खोखली।",
+   "A": "Aur haddiyan? Andar se khokhli.",
+   "cap": "Aur haddiyan? Andar se khokhli."
+  },
+  {
+   "id": "s14",
+   "g": "g13",
+   "B": "पर बीच में तिरछी पट्टियाँ हैं, जैसे पुल के गर्डर।",
+   "A": "Par beech mein tirchhi pattiyan hain, jaise pul ke girder.",
+   "cap": "Par beech mein tirchhi pattiyan hain, jaise pul ke girder."
+  },
+  {
+   "id": "s15",
+   "g": "g14",
+   "B": "पूरा ढाँचा, वज़न का सिर्फ़ पाँच प्रतिशत।",
+   "A": "Poora dhaancha, vazan ka sirf paanch pratishat.",
+   "cap": "Poora dhaancha, vazan ka sirf paanch pratishat."
+  },
+  {
+   "id": "s16",
+   "g": "g15",
+   "B": "फेफड़ों के साथ, नौ हवा की थैलियाँ।",
+   "A": "Phephdon ke saath, nau hawa ki thailiyan.",
+   "cap": "Phephdon ke saath, nau hawa ki thailiyan."
+  },
+  {
+   "id": "s17",
+   "g": "g16",
+   "B": "इसीलिए एक गिद्ध, ग्यारह किलोमीटर ऊपर तक मिला है। एवरेस्ट से भी ऊँचा।",
+   "A": "Isiliye ek gidh, gyarah kilometre upar tak mila hai. Everest se bhi ooncha.",
+   "cap": "Isiliye ek gidh, gyarah kilometre upar tak mila hai. Everest se bhi ooncha."
+  },
+  {
+   "id": "s18",
+   "g": "g17",
+   "B": "अब इसे बड़ा करते हैं।",
+   "A": "Ab ise bada karte hain.",
+   "cap": "Ab ise bada karte hain."
+  },
+  {
+   "id": "s19",
+   "g": "g18",
+   "B": "लंबाई दुगनी कीजिए: पंख चार गुना, पर वज़न आठ गुना।",
+   "A": "Lambai dugni kijiye: pankh chaar guna, par vazan aath guna.",
+   "cap": "Lambai dugni kijiye: pankh chaar guna, par vazan aath guna."
+  },
+  {
+   "id": "s20",
+   "g": "g19",
+   "B": "पतंग वाला जानता है: भारी पतंग को तेज़ हवा चाहिए।",
+   "A": "Patang wala jaanta hai: bhaari patang ko tez hawa chahiye.",
+   "cap": "Patang wala jaanta hai: bhaari patang ko tez hawa chahiye."
+  },
+  {
+   "id": "s21",
+   "g": "g20",
+   "B": "इसीलिए आज का सबसे भारी उड़ने वाला पक्षी, बस उन्नीस किलो का है।",
+   "A": "Isiliye aaj ka sabse bhaari udne wala pakshi, bas unnees kilo ka hai.",
+   "cap": "Isiliye aaj ka sabse bhaari udne wala pakshi, bas unnees kilo ka hai."
+  },
+  {
+   "id": "s22",
+   "g": "g21",
+   "B": "और इतिहास का सबसे भारी, आर्जेंटाविस: सत्तर किलो, छह मीटर के पंख।",
+   "A": "Aur itihaas ka sabse bhaari, Argentavis: sattar kilo, chhe metre ke pankh.",
+   "cap": "Aur itihaas ka sabse bhaari, Argentavis: sattar kilo, chhe metre ke pankh."
+  },
+  {
+   "id": "s23",
+   "g": "g22",
+   "B": "फ़िल्म जितना बड़ा? विज्ञान कहता है, मुश्किल।",
+   "A": "Film jitna bada? Vigyan kehta hai, mushkil.",
+   "cap": "Film jitna bada? Vigyan kehta hai, mushkil."
+  },
+  {
+   "id": "s24",
+   "g": "g23",
+   "B": "पर कहानी का जटायु, हिम्मत से बड़ा है।",
+   "A": "Par kahani ka Jatayu, himmat se bada hai.",
+   "cap": "Par kahani ka Jatayu, himmat se bada hai."
+  },
+  {
+   "id": "s25",
+   "g": "g24",
+   "B": "पर असली दुख यह है।",
+   "A": "Par asli dukh yeh hai.",
+   "cap": "Par asli dukh yeh hai."
+  },
+  {
+   "id": "s26",
+   "g": "g25",
+   "B": "भारत के असली जटायु, हमारे गिद्ध, पंद्रह साल में सत्तानवे प्रतिशत ख़त्म हो गए।",
+   "A": "Bharat ke asli Jatayu, hamare gidh, pandrah saal mein 97 pratishat khatm ho gaye.",
+   "cap": "Bharat ke asli Jatayu, hamare gidh, pandrah saal mein 97 pratishat khatm ho gaye."
+  },
+  {
+   "id": "s27",
+   "g": "g26",
+   "B": "किसी रावण ने नहीं मारा। मवेशियों की एक दर्द की दवा ने।",
+   "A": "Kisi Ravan ne nahi maara. Maveshiyon ki ek dard ki dawa ne.",
+   "cap": "Kisi Ravan ne nahi maara. Maveshiyon ki ek dard ki dawa ne."
+  },
+  {
+   "id": "s28",
+   "g": "g27",
+   "B": "दो हज़ार छह में, उस दवा पर रोक लगी।",
+   "A": "2006 mein, us dawa par rok lagi.",
+   "cap": "2006 mein, us dawa par rok lagi."
+  },
+  {
+   "id": "s29",
+   "g": "g28",
+   "B": "और हरियाणा के पिंजौर में, गिद्ध पाले और छोड़े जा रहे हैं।",
+   "A": "Aur Haryana ke Pinjore mein, gidh paale aur chhode ja rahe hain.",
+   "cap": "Aur Haryana ke Pinjore mein, gidh paale aur chhode ja rahe hain."
+  },
+  {
+   "id": "s30",
+   "g": "g29",
+   "B": "उस केंद्र का नाम? जटायु।",
+   "A": "Us kendra ka naam? Jatayu.",
+   "cap": "Us kendra ka naam? Jatayu."
+  },
+  {
+   "id": "s31",
+   "g": "g30",
+   "B": "फ़िल्म का जटायु, सीता के लिए लड़ा।",
+   "A": "Film ka Jatayu, Sita ke liye lada.",
+   "cap": "Film ka Jatayu, Sita ke liye lada."
+  },
+  {
+   "id": "s32",
+   "g": "g31",
+   "B": "असली जटायु, रोज़ हमारे लिए लड़ता है।",
+   "A": "Asli Jatayu, roz hamare liye ladta hai.",
+   "cap": "Asli Jatayu, roz hamare liye ladta hai."
+  },
+  {
+   "id": "s33",
+   "g": "g32",
+   "B": "शेयर और फ़ॉलो करें, नर्डलॉजिक डॉट सी ओ।",
+   "A": "Share aur follow karein, nerdlogic.co",
+   "cap": "Share aur follow karein, nerdlogic.co"
+  }
+ ],
+ "pause_after": {
+  "s1": 0.3,
+  "s2": 0.7,
+  "s3": 0.6,
+  "s6": 0.6,
+  "s7": 0.6,
+  "s10": 0.5,
+  "s12": 0.6,
+  "s15": 0.6,
+  "s17": 0.7,
+  "s20": 0.6,
+  "s22": 0.5,
+  "s24": 0.9,
+  "s25": 0.5,
+  "s27": 0.8,
+  "s30": 0.9,
+  "s32": 0.6
+ }
+}
