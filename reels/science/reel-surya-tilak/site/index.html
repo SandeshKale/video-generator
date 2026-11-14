@@ -3,14 +3,14 @@
 @font-face{font-family:MM;font-weight:500;src:url(fonts/martian-mono-latin-500-normal.woff2);font-display:block}
 @font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
 @font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
-*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#120709}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#070304}
 #stage{position:absolute;inset:0;width:1080px;height:1920px}
 canvas,svg{position:absolute;left:0;top:0}
 #ov{position:absolute;inset:0;pointer-events:none}
 .kick{position:absolute;left:162px;top:214px;font:500 22px MM;letter-spacing:.14em;color:#ffd9a0;text-transform:uppercase;white-space:nowrap}
 .kick i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ffd9a0;margin-right:12px;box-shadow:0 0 14px #ffb347}
 .head{position:absolute;left:162px;top:256px;width:756px;font:400 74px/1.06 Rozha;letter-spacing:-.01em;color:#f6ecd9;text-shadow:0 4px 16px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.9)}
-.head b{font-weight:400;color:#ffc56b}
+.head b{font-weight:400;background:#ffc56b;color:#1a0a06;padding:0 12px;text-shadow:none}
 .tag{position:absolute;font:600 24px/1.25 Inter;color:#f6ecd9;background:rgba(24,10,12,.84);border:1.5px solid rgba(255,217,160,.55);padding:9px 14px 10px;border-radius:3px;white-space:nowrap}
 .tag small{display:block;font:500 16px MM;letter-spacing:.1em;color:#ffc56b;margin-bottom:3px;text-transform:uppercase}
 .tag.v{border-color:#ff6a4a}.tag.v small{color:#ff8a6a}
@@ -26,8 +26,8 @@ canvas,svg{position:absolute;left:0;top:0}
 .endc .btns{margin-top:30px;display:flex;gap:20px;justify-content:center}
 .endc .btns span{font:800 32px Inter;letter-spacing:.1em;padding:16px 34px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
 
-.plate{position:absolute;inset:0;overflow:hidden;display:none;background:#120709}
-.plate .bg{position:absolute;left:-12%;top:-12%;width:124%;height:124%;object-fit:cover;filter:blur(30px) brightness(.4) saturate(1.25)}
+.plate{position:absolute;inset:0;overflow:hidden;display:none;background:#070304}
+.plate .bg{position:absolute;left:-12%;top:-12%;width:124%;height:124%;object-fit:cover;filter:blur(40px) brightness(.16) saturate(1.2)}
 .plate .card{position:absolute;overflow:hidden;border:3px solid #e9c176;box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 0 1px rgba(0,0,0,.6)}
 .plate .in{position:absolute;left:0;top:0;transform-origin:0 0}
 .plate .in img{display:block}
@@ -40,9 +40,9 @@ canvas,svg{position:absolute;left:0;top:0}
 .xchip{position:absolute;font:800 34px Inter;color:#f6ecd9;background:rgba(24,10,12,.9);border:2px solid #ff6a4a;padding:12px 20px;border-radius:4px;white-space:nowrap}
 .xchip s{color:#ff8a6a;text-decoration-thickness:4px}
 </style></head><body>
-<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><svg id="lines" width="1080" height="1920"></svg><div id="ov"></div><div id="cap"></div></div>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><svg id="lines" width="1080" height="1920"></svg><div data-ov="1" style="position:absolute;left:0;top:0;width:1080px;height:640px;background:linear-gradient(180deg,rgba(7,3,4,.82) 0,rgba(7,3,4,.7) 55%,rgba(7,3,4,0) 100%)"></div><div data-ov="1" style="position:absolute;left:0;top:1250px;width:1080px;height:670px;background:linear-gradient(0deg,rgba(7,3,4,.9) 0,rgba(7,3,4,.72) 60%,rgba(7,3,4,0) 100%)"></div><div id="ov"></div><div id="cap"></div></div>
 <script src="lib/three-gltf-r160.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
 <script>
 window.__ready=false;
-window.IM={};Promise.all(['74px Rozha','500 20px MM','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f)}).concat(['idol-sanctum.jpg','temple-flowers.png'].map(function(n){return new Promise(function(res){var i=new Image();i.onload=i.onerror=function(){res()};i.src='img/'+n;window.IM[n]=i;});}))).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+window.IM={};Promise.all(['74px Rozha','500 20px MM','600 20px Inter','800 20px Inter'].map(function(f){return document.fonts.load(f)}).concat(['idol-sanctum.jpg','temple-flowers.png','film-ram-sun.jpg'].map(function(n){return new Promise(function(res){var i=new Image();i.onload=i.onerror=function(){res()};i.src='img/'+n;window.IM[n]=i;});}))).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
 </script></body></html>

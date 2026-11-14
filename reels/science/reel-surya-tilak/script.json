@@ -3,16 +3,16 @@
   {
    "id": "s1",
    "g": "g1",
-   "B": "यह तिलक किसी इंसान ने नहीं लगाया। इसे सूरज ने लगाया है!",
-   "A": "Yeh tilak kisi insaan ne nahi lagaya. Ise sooraj ne lagaya hai!",
-   "cap": "Yeh tilak kisi insaan ne nahi lagaya. Ise sooraj ne lagaya hai!"
+   "B": "फ़िल्म में राम के पीछे का सूरज, कंप्यूटर ने बनाया था।",
+   "A": "Film mein Ram ke peeche ka sooraj, computer ne banaya tha.",
+   "cap": "Film mein Ram ke peeche ka sooraj, computer ne banaya tha."
   },
   {
    "id": "s2",
    "g": "g2",
-   "B": "अयोध्या में, राम नवमी की दोपहर, राम लला के माथे पर।",
-   "A": "Ayodhya mein, Ram Navami ki dopahar, Ram Lalla ke maathe par.",
-   "cap": "Ayodhya mein, Ram Navami ki dopahar, Ram Lalla ke maathe par."
+   "B": "पर अयोध्या में, राम लला के माथे पर, असली सूरज उतरता है!",
+   "A": "Par Ayodhya mein, Ram Lalla ke maathe par, asli sooraj utarta hai!",
+   "cap": "Par Ayodhya mein, Ram Lalla ke maathe par, asli sooraj utarta hai!"
   },
   {
    "id": "s3",
@@ -234,9 +234,9 @@
   {
    "id": "s34",
    "g": "g28",
-   "B": "ना बिजली, ना मोटर।",
-   "A": "Na bijli, na motor.",
-   "cap": "Na bijli, na motor."
+   "B": "ना वी एफ़ एक्स, ना बिजली, ना मोटर।",
+   "A": "Na VFX, na bijli, na motor.",
+   "cap": "Na VFX, na bijli, na motor."
   },
   {
    "id": "s35",
@@ -277,7 +277,7 @@
   "s33": 0.8,
   "s35": 0.6,
   "s36": 0.6,
-  "s1": 0.45,
+  "s1": 0.35,
   "s2": 0.5
  }
 }

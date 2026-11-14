@@ -127,6 +127,12 @@ var IDOL = (function () { var im = window.IM && window.IM['idol-sanctum.jpg']; i
   var tx = new T.CanvasTexture(c); tx.colorSpace = T.SRGBColorSpace; tx.anisotropy = 8; var hgt = 1.9, wid = hgt * 220 / 260, m = new T.Mesh(new T.PlaneGeometry(wid, hgt), new T.MeshBasicMaterial({ map: tx, transparent: true, depthWrite: false, color: new T.Color(.8, .76, .7) }));
   m.rotation.y = Math.PI / 2; m.position.set(NICHE.x - .05, NICHE.y - (.5 - .246) * hgt, NICHE.z); m.renderOrder = 2; S.add(m); return m; })();
 
+// ---------- v3: the temple is frosted glass on black, so the light path, brass optics, flowers and people are the heroes ----------
+var GHOST = new T.ShaderMaterial({ transparent: true, depthWrite: false, blending: T.AdditiveBlending, side: T.DoubleSide, uniforms: { c: { value: new T.Color(1.0, .78, .55) } },
+  vertexShader: 'varying vec3 vN, vV; void main(){ vec4 mv=modelViewMatrix*vec4(position,1.); vN=normalize(normalMatrix*normal); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }',
+  fragmentShader: 'uniform vec3 c; varying vec3 vN, vV; void main(){ float f=1.-abs(dot(normalize(vN),normalize(vV))); gl_FragColor=vec4(c*(.035+.55*pow(f,2.6)),1.); }' });
+TEM.traverse(function (m) { if (m.isMesh && !m.isInstancedMesh && (m.material === STONE || m.material === STONE_D || m.material === CARVE || m.material === CUT || (m.material.map && m.material.map === sTex))) { m.material = GHOST; m.castShadow = false; m.receiveShadow = false; } });
+S.background = new T.Color(0x070304);
 // ---------- Sun geometry (real): Ayodhya 26.7956 N; noon elevation = 90 - lat + declination ----------
 var LAT = 26.7956;
 function decl(doy) { var g = 2 * Math.PI / 365.2422 * (doy - 1 + .27); return (0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g)) * 180 / Math.PI; }
@@ -255,6 +261,7 @@ var tB = ST('s4'), tB2 = ST('s5'), tC = ST('s7'), tC2 = ST('s8'), tD = ST('s9'),
 var tE = ST('s13'), tE2 = ST('s15'), tE3 = ST('s16'), tE4 = CW('s16', .5), tE5 = ST('s17');
 var tF = ST('s18'), tF2 = ST('s19'), tF3 = ST('s20'), tMiss = CW('s20', .62), tWhy = ST('s21');
 var tG = ST('s22'), tG2 = ST('s23'), tG3 = ST('s24'), tG4 = ST('s25'), tH = ST('s26'), tH2 = ST('s27'), tH3 = ST('s28'), tH4 = ST('s29'), tClick = CW('s29', .86);
+var tHit = CW('s2', .68), tFilm = 2.5;
 var tI = ST('s30'), tI2 = ST('s31'), tI3 = ST('s32'), tI4 = ST('s33'), tJ = ST('s34'), tJ2 = ST('s35'), tJ3 = ST('s36'), tCTA = ST('s37');
 var tCal0 = tG - .25, tCal1 = tH3 - .3;         // light-change cuts into and out of the calendar set
 var tBack = SE('s29') + .15;                    // after the click: ride down to see the tilak return
@@ -299,7 +306,8 @@ function camAt(t) { var cur = PO.hook, a = null, u = 0;
 // ---------- DOM overlays ----------
 function el(cls, html) { var d = document.createElement('div'); d.className = cls; d.innerHTML = html; d.style.display = 'none'; ov.appendChild(d); return d; }
 var HEADS = [
-  [0, tB - .1, 'AYODHYA · RAM NAVAMI · DOPAHAR 12 BAJE', 'Yeh tilak <b>sooraj</b><br>ne lagaya hai.'],
+  [0, tFilm - .02, 'RAMAYANA · PARDE PAR', 'Film ka sooraj<br><b>VFX</b> tha.'],
+  [tFilm, tB - .1, 'AYODHYA · RAM NAVAMI · DOPAHAR 12 BAJE', 'Yeh wala sooraj<br><b>asli</b> hai.'],
   [tB + .35, tB2 - .25, 'AAPNE DEKHA HOGA', 'Chhat ke chhed se<br><b>dhoop ki lakeer</b>.'],
   [tB2 - .05, tC - .15, 'ASLI MANDIR · AYODHYA', 'Wahi dhoop. Bas <b>teen<br>manzil</b> neeche laani thi.'],
   [tC + .1, tD - .1, 'MUSHKIL', 'Garbhagriha <b>teen<br>manzil</b> neeche hai.'],
@@ -310,7 +318,7 @@ var HEADS = [
   [tH + .1, tCal1 - .1, '19 SAAL', 'Unnees saal baad,<br>wahi <b>taareekh</b>.'],
   [tH3 + .2, tBack - .1, 'SAAL MEIN EK BAAR', 'Ek aaina.<br><b>19</b> settings.<br>Haath se.'],
   [tI + .2, tJ - .2, 'SIRF KUCH MINUTE', 'Dharti <b>ghoom</b> rahi hai.'],
-  [tJ + 1.4, tCTA - .2, 'BAS ITNA', 'Aaine. Peetal.<br>Ganit. <b>Khula aasmaan</b>.']
+  [tJ + 1.4, tCTA - .2, 'NA VFX · NA BIJLI', 'Aaine. Peetal. Ganit.<br><b>Khula aasmaan</b>.']
 ].map(function (h) { return { t0: h[0], t1: h[1], k: el('kick', '<i></i>' + h[2]), h: el('head', h[3]) }; });
 var HUD = el('hud', ''), SRC = el('src', '');
 var SRCS = [[tB + .35, tB2 - .25, 'the same sunlight you see at home'], [tC + .1, tD - .1, 'schematic model · not the temple\'s drawings'], [tD + .1, tE5 - .1, '4 mirrors + 4 lenses: reported · layout schematic'],
@@ -342,13 +350,14 @@ function plate(src, cx, cy, cw, ch, iw, ih) { var d = document.createElement('di
   stage.insertBefore(d, svg); return { d: d, inn: d.querySelector('.in'), beam: d.querySelector('.beam'), spot: d.querySelector('.spot'), gl: d.querySelector('.glowv'), flash: d.querySelector('.flash'), cred: d.querySelector('.pcred'), bg: d.querySelector('.bg'), img: d.querySelector('.in img'), cx: cx, cy: cy, cw: cw, ch: ch, iw: iw }; }
 var PL1 = plate('idol-sanctum.jpg', 162, 452, 756, 800, 960, 1038), PL2 = plate('temple-flowers.png', 162, 610, 756, 443, 960, 563);
 PL1.gl.style.setProperty('--gx', (FX / 960 * 100) + '%'); PL1.gl.style.setProperty('--gy', (FY / 1038 * 100) + '%'); PL2.beam.style.display = PL2.spot.style.display = PL2.gl.style.display = 'none';
+var PLF = plate('film-ram-sun.jpg', 162, 572, 756, 425, 1280, 720); PLF.beam.style.display = PLF.spot.style.display = PLF.gl.style.display = 'none'; PLF.cred.textContent = 'film still © Prime Focus Studios · DNEG (via TMDB) · shown for comment';
 PL2.cred.textContent = 'real photo · Ram Mandir, Ayodhya · CC BY 3.0 (Wikimedia Commons)';
 var ARR = document.createElement('div'); ARR.setAttribute('data-ov', '1'); ARR.style.cssText = 'position:absolute;left:500px;top:150px;width:8px;background:repeating-linear-gradient(180deg,#ffc56b 0 16px,transparent 16px 28px);box-shadow:0 0 14px #ffb347'; PL2.d.appendChild(ARR);
 function idolView(s, px, py, beam, sp, t) { var k = PL1.cw / 960 * s; PL1.inn.style.transform = 'translate(' + (px - FX * k).toFixed(2) + 'px,' + (py - FY * k).toFixed(2) + 'px) scale(' + k.toFixed(4) + ')';
   var Lb = 560; PL1.beam.style.left = (FX - Lb) + 'px'; PL1.beam.style.top = (FY - 32) + 'px'; PL1.beam.style.width = Lb + 'px'; PL1.beam.style.transform = 'rotate(9deg)'; PL1.beam.style.opacity = beam;
   var z = 46 * sp; PL1.spot.style.left = (FX - z / 2) + 'px'; PL1.spot.style.top = (FY - z / 2) + 'px'; PL1.spot.style.width = PL1.spot.style.height = z + 'px'; PL1.gl.style.opacity = .55 + .45 * beam; }
-var tSun = CW('s1', .68), tNa = CW('s3', 0), tTaar = CW('s3', .55);
-var ST_ = [ [CW('s2', .62), tB - .25, el('tag v', '<small>the tilak</small>58 mm of real sunlight'), 200, 1120], [tNa, tB - .25, el('xchip', 'NA <s>BULB</s>'), 200, 1010], [tTaar, tB - .25, el('xchip', 'NA <s>TAAR</s>'), 470, 1010],
+var tSun = tHit, tNa = CW('s3', 0), tTaar = CW('s3', .55);
+var ST_ = [ [tHit + .7, tB - .25, el('tag v', '<small>the tilak</small>58 mm of real sunlight'), 200, 1120], [.15, tFilm - .1, el('pill', 'film · Ramayana (2026) · VFX'), 180, 590], [tFilm + .2, tB - .25, el('pill', 'Ayodhya · real photo'), 180, 470], [tNa, tB - .25, el('xchip', 'NA <s>BULB</s>'), 200, 1010], [tTaar, tB - .25, el('xchip', 'NA <s>TAAR</s>'), 470, 1010],
   [tB2 + 1.6, tC - .2, el('pill', '3 manzil neeche'), 0, 0], [tE5 + .15, tF - .35, el('tag v', '<small>the tilak</small>sirf 58 mm'), 200, 1120] ];
 ST_.forEach(function (q) { q[2].style.left = q[3] + 'px'; q[2].style.top = q[4] + 'px'; });
 var CAPW = TM.cap.map(function (c) { return { w: c.w, t0: c.t0, t1: c.t1 }; });
@@ -356,7 +365,7 @@ var END = el('endc', '<img src="img/profile.jpg"><div class="hn">nerdlogic.co</d
 var SPOTP = NICHE.clone(), SUNP = V(0, 0, 0);
 
 // ---------- sound events for the mix ----------
-window.EV = [[0, 'hit'], [tSun, 'glint'], [tNa, 'thud'], [tTaar, 'thud'], [tB - .05, 'whoosh'], [tB2 - .1, 'shutter'], [tC - .05, 'whoosh'], [tE5 - .1, 'shutter'], [tB2, 'rise'], [tC2 + .4, 'tick'], [tD, 'pop'], [tD2 + 2.0, 'glint'], [tD4 + .4, 'whoosh'], [tE + 1.6, 'glint'], [tE2 + 1.4, 'thud'], [tE3, 'whoosh'], [tE5, 'bell'], [tF3, 'tick'], [tMiss, 'slide'], [tWhy, 'hole'],
+window.EV = [[0, 'hit'], [tFilm, 'shutter'], [tHit, 'hit'], [tHit + .1, 'bell'], [tNa, 'thud'], [tTaar, 'thud'], [tB - .05, 'whoosh'], [tB2 - .1, 'shutter'], [tC - .05, 'whoosh'], [tE5 - .1, 'shutter'], [tB2, 'rise'], [tC2 + .4, 'tick'], [tD, 'pop'], [tD2 + 2.0, 'glint'], [tD4 + .4, 'whoosh'], [tE + 1.6, 'glint'], [tE2 + 1.4, 'thud'], [tE3, 'whoosh'], [tE5, 'bell'], [tF3, 'tick'], [tMiss, 'slide'], [tWhy, 'hole'],
   [tCal0, 'relay'], [tG2, 'tick'], [tG4, 'tick'], [tH2, 'chime'], [tCal1, 'relay'], [tClick, 'click'], [tClick + .5, 'bell'], [tBack, 'whoosh'], [tI2, 'rise'], [tI3 + .2, 'hole'], [tJ, 'bell'], [tCTA, 'chime']].map(function (e) { return { t: +e[0].toFixed(3), k: e[1] }; });
 window.SCN_T0 = function () { return [0, tB, tC, tD, tE, tF, tG, tH, tH3, tI, tJ, tCTA]; };
 
@@ -437,16 +446,17 @@ window.__seek = function (t) {
     MOON.rotation.y = t * .5; var phs = (t - tG) * 1.1; moonL.position.set(MOON.position.x + Math.sin(phs) * 8, MOON.position.y + 2, Math.cos(phs) * 8); moonL.intensity = 2.4;
     pose(farmer, { t: t, seed: 11 }); farmer.J.shR.rotation.z = t > tG4 ? 1.1 : .1; } else moonL.intensity = 0;
   // --- real-photo plates
-  var p1a = 1 - ramp(t, tB - .1, tB + .4), p1b = ramp(t, tE5 - .3, tE5 - .05) * (1 - ramp(t, tF - .3, tF - .05)), p1 = t < tB + .4 ? p1a : p1b, p2 = ramp(t, tB2 - .2, tB2 + .05) * (1 - ramp(t, tC - .2, tC + .05));
+  var pf = t < tFilm ? 1 : 0; PLF.d.style.display = pf ? 'block' : 'none'; if (pf) { var kf2 = 756 / 1280 * lerp(1.04, 1.16, t / tFilm); PLF.inn.style.transform = 'translate(' + ((756 - 1280 * kf2) / 2).toFixed(2) + 'px,' + ((425 - 720 * kf2) / 2).toFixed(2) + 'px) scale(' + kf2.toFixed(4) + ')'; }
+  var p1a = (t >= tFilm ? 1 : 0) * (1 - ramp(t, tB - .1, tB + .4)), p1b = ramp(t, tE5 - .3, tE5 - .05) * (1 - ramp(t, tF - .3, tF - .05)), p1 = t < tB + .4 ? p1a : p1b, p2 = ramp(t, tB2 - .2, tB2 + .05) * (1 - ramp(t, tC - .2, tC + .05));
   PL1.d.style.display = p1 > 0 ? 'block' : 'none'; PL2.d.style.display = p2 > 0 ? 'block' : 'none';
-  if (p1 > 0) { PL1.d.style.opacity = p1; if (t < tB + .4) { var uz = eio(ramp(t, 0, 7.6)), pls = Math.exp(-Math.max(0, t - tSun) * 2.2) * (t >= tSun ? 1 : 0), brt = 1 + .5 * Math.exp(-t * 3.5);
-      idolView(lerp(1.24, 1.98, uz), lerp(578, 470, uz), lerp(300, 345, uz), Math.min(1, .62 + .12 * Math.sin(t * 2.3) + .4 * pls), 1 + .12 * Math.sin(t * 3.1) + .9 * pls + 1.2 * Math.exp(-t * 4), t);
-      PL1.flash.style.display = t < .8 ? 'block' : 'none'; PL1.flash.style.opacity = .5 * ramp(t, .02, .1) * (1 - ramp(t, .1, .75)); PL1.cred.textContent = 'real photo: PIB · GODL-India · beam + spot drawn by us'; PL1.img.style.filter = 'brightness(' + (.5 + .3 * Math.exp(-t * 4)).toFixed(3) + ') saturate(1.1)'; }
-    else { var uq = eio(ramp(t, tE5 - .3, tF - .2)); idolView(lerp(2.25, 2.6, uq), lerp(430, 400, uq), lerp(400, 420, uq), .8, 1 + .1 * Math.sin(t * 3.1), t); PL1.flash.style.display = 'none'; PL1.cred.textContent = '58 mm: reported (CBRI) · photo: PIB, GODL-India · spot drawn by us'; PL1.img.style.filter = 'brightness(.5) saturate(1.1)'; } }
+  if (p1 > 0) { PL1.d.style.opacity = p1; if (t < tB + .4) { var uz = eio(ramp(t, tFilm, tB)), on = t >= tHit ? 1 : 0, pls = on * Math.exp(-(t - tHit) * 2.2);
+      idolView(lerp(1.24, 1.98, uz), lerp(578, 470, uz), lerp(300, 345, uz), on * Math.min(1, .62 + .12 * Math.sin(t * 2.3) + .4 * pls), on * (1 + .12 * Math.sin(t * 3.1) + 1.6 * pls), t); PL1.spot.style.display = PL1.beam.style.display = on ? 'block' : 'none'; PL1.gl.style.opacity = on * .8;
+      PL1.flash.style.display = (t >= tHit && t < tHit + .7) ? 'block' : 'none'; PL1.flash.style.opacity = .55 * ramp(t, tHit, tHit + .07) * (1 - ramp(t, tHit + .07, tHit + .65)); PL1.cred.textContent = 'real photo: PIB · GODL-India · beam + spot drawn by us'; PL1.img.style.filter = 'brightness(' + (on ? .5 + .25 * pls : .38).toFixed(3) + ') saturate(1.1)'; }
+    else { var uq = eio(ramp(t, tE5 - .3, tF - .2)); idolView(lerp(2.25, 2.6, uq), lerp(430, 400, uq), lerp(400, 420, uq), .8, 1 + .1 * Math.sin(t * 3.1), t); PL1.spot.style.display = PL1.beam.style.display = 'block'; PL1.flash.style.display = 'none'; PL1.cred.textContent = '58 mm: reported (CBRI) · photo: PIB, GODL-India · spot drawn by us'; PL1.img.style.filter = 'brightness(.5) saturate(1.1)'; } }
   if (p2 > 0) { PL2.d.style.opacity = p2; var u2s = ramp(t, tB2 - .2, tC), k2 = PL2.cw / 960 * lerp(1.03, 1.15, u2s); PL2.inn.style.transform = 'translate(' + ((PL2.cw - 960 * k2) / 2).toFixed(2) + 'px,' + ((PL2.ch - 563 * k2) * .55).toFixed(2) + 'px) scale(' + k2.toFixed(4) + ')';
-    var ua = eo(ramp(t, tB2 + .5, tB2 + 2.0)); ARR.style.top = (PL2.cy + 40) + 'px'; ARR.style.left = (PL2.cx + 340) + 'px'; ARR.style.height = (300 * ua) + 'px'; ST_[3][2].style.left = (PL2.cx + 360) + 'px'; ST_[3][2].style.top = (PL2.cy + 300) + 'px'; }
+    var ua = eo(ramp(t, tB2 + .5, tB2 + 2.0)); ARR.style.top = (PL2.cy + 40) + 'px'; ARR.style.left = (PL2.cx + 340) + 'px'; ARR.style.height = (300 * ua) + 'px'; ST_[5][2].style.left = (PL2.cx + 360) + 'px'; ST_[5][2].style.top = (PL2.cy + 300) + 'px'; }
   ST_.forEach(function (q) { var on = t >= q[0] && t < q[1]; q[2].style.display = on ? 'block' : 'none'; if (on) { var u = eob(ramp(t, q[0], q[0] + .3)) * (1 - ramp(t, q[1] - .2, q[1])); q[2].style.opacity = Math.min(1, u); q[2].style.transform = 'scale(' + (.7 + .3 * u) + ')'; } });
-  if (!(p1 >= 1 || p2 >= 1)) render(t);
+  if (!(p1 >= 1 || p2 >= 1 || pf)) render(t);
   // --- DOM
   HEADS.forEach(function (h) { var on = t >= h.t0 && t < h.t1, u = (h.t0 === 0 ? 1 : eo(ramp(t, h.t0, h.t0 + .45))) * (1 - ramp(t, h.t1 - .25, h.t1)); h.k.style.display = h.h.style.display = on ? 'block' : 'none'; if (on) { h.k.style.opacity = h.h.style.opacity = u; h.h.style.transform = 'translateY(' + (1 - u) * 14 + 'px)'; } });
   var s = null; SRCS.forEach(function (q) { if (t >= q[0] && t < q[1]) s = q; }); SRC.style.display = s ? 'block' : 'none'; if (s) { SRC.textContent = s[2]; SRC.style.opacity = (s[0] === 0 ? 1 : eo(ramp(t, s[0], s[0] + .4))) * (1 - ramp(t, s[1] - .2, s[1])); }
