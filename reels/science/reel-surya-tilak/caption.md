@@ -33,3 +33,7 @@ A vertical 3D explainer. In a dim stone sanctum, a thin beam of sunlight lands a
 Title: Surya Tilak: sooraj ki kiran mandir ke andar kaise pahunchti hai?
 Description: Ayodhya ke Ram Mandir ka Surya Tilak, aasaan bhaasha mein: aaine, lens, peetal ka pipe aur 19 saal ka hisaab. Model schematic hai; murti nahi dikhayi gayi. Sources pehle comment mein.
 Tags: surya tilak, ram navami, ayodhya ram mandir, science in hindi, periscope, CBRI, IIA, nerdlogic
+
+
+## Photo credits (v2)
+Sanctum and idol photo: Vice President's Secretariat / Press Information Bureau, Government of India (GODL-India), via Wikimedia Commons. The light beam and spot on that photo are drawn by us. Temple exterior photo: "Ram Mandir, Ayodhya" (CC BY 3.0), via Wikimedia Commons. The 3D temple is a schematic model.

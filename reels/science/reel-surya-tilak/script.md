@@ -1,4 +1,4 @@
-# Surya Tilak — script v1 (13 Nov 2026, for approval before voice)
+# Surya Tilak — script v2 (14 Nov 2026; v1 hook replaced after creator feedback)
 
 **Title on cover:** "Sooraj ko andar kaise laaye?" · **Length:** ~110 s · **Voice:** cloned Hinglish voice, speed 0.92, natural pauses · **Handle:** nerdlogic.co
 **CTA (creator, 13 Nov):** "share aur follow karein" (this reel only; replaces like/share/subscribe). End card: SHARE · FOLLOW buttons + nerdlogic.co + logo.
@@ -38,7 +38,7 @@ New: volumetric light shafts with lit dust as the hero; a computed Sun the story
 ## Script (Roman master; Devanagari TTS text is written at the voice step)
 | # | Time | Voice-over (Hinglish) | Picture, built on the words | People | Label |
 |---|---|---|---|---|---|
-| 1 | 0-9 | Ram Navami. Dopahar ke barah baje. Ayodhya ke mandir mein, Ram Lalla ke maathe par, roshni ka ek tilak. **Na bulb, na taar.** | Dark sanctum; beam arrives, 58 mm spot lands in the arch (idol not shown) | Devotee in saffron scarf folds hands | REPORTED · CBRI |
+| 1 | 0-9 | **Yeh tilak kisi insaan ne nahi lagaya. Ise sooraj ne lagaya hai!** Ayodhya mein, Ram Navami ki dopahar, Ram Lalla ke maathe par. Na bulb, na taar. | REAL PHOTO of the sanctum and idol (PIB, GODL-India) from frame 0, push-in; beam and 58 mm spot drawn on the forehead; NA BULB / NA TAAR chips | — | REAL PHOTO · BEAM + SPOT DRAWN BY US |
 | 2 | 9-19 | Aapne dekha hoga: chhat ke chhed se dhoop ki ek lakeer aati hai, aur usme dhool naachti hai. Yeh wahi dhoop hai. Bas, ise **teen manzil neeche** laana tha. | Camera rises along the beam; dust sparkles inside it; crane up and out to the cut-away temple | Crowd in the hall, heads toward the light | SCHEMATIC MODEL |
 | 3 | 19-28 | Mushkil yeh hai: garbh-grih sabse neeche hai, upar pathar ki teen manzilein. Aur dopahar ka sooraj, seedha sar ke upar. | Section: 3 floors × 20 ft; protractor draws the noon Sun at 74°; the ray hits the roof | Crowd queueing | OUR CALCULATION |
 | 4 | 28-41 | To vaigyanikon ne ek **periscope** banaya. Bachpan mein aaine se deewar par dhoop chamkaayi thi na? Bilkul wahi. Chhat par pehla aaina dhoop pakadta hai, aur use peetal ke pipe mein, neeche bhej deta hai. | Roof opening, mirror 1 flashes, beam turns north, mirror 2, down the brass pipe; camera rides down | Two engineers; one wipes mirror 1 | 4 MIRRORS + 4 LENSES · REPORTED |
@@ -62,3 +62,7 @@ Full stop 0.55 s; question 0.9 s ("Kyun?" gets 1.0 s before scene 7); comma 0.26
 
 ## Open before posting
 Open PIB PRID 2018141 and the PTI 2025/2026 reports first-hand (blocked from this sandbox).
+
+## v2 changes (creator feedback, 14 Nov)
+Hot hook on a real photo; the idol is shown through the real PIB photo (hook, the 58 mm beat, and as an inset in the 3D niche); real temple photo before the cut-away; decorated temple; queueing crowd, priest, bowing devotees; audible score. Engagement rules: `docs/ENGAGEMENT-BRAIN-NOTES.md`. Photo credits: `research/photos/CREDITS.md`.
+- The idol is never redrawn or generated: only the real photograph is used, and the light spot on it is labelled as drawn by us.
