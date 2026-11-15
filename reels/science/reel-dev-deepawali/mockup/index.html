@@ -1,0 +1,160 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Dev Deepawali mockup</title><style>
+@font-face{font-family:Baloo;font-weight:800;src:url(fonts/baloo-2-devanagari-800-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Baloo;font-weight:800;src:url(fonts/baloo-2-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Baloo;font-weight:700;src:url(fonts/baloo-2-devanagari-700-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Baloo;font-weight:700;src:url(fonts/baloo-2-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Tiro;font-weight:400;src:url(fonts/tiro-devanagari-hindi-devanagari-400-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+200C-200D,U+25CC}
+@font-face{font-family:Tiro;font-weight:400;src:url(fonts/tiro-devanagari-hindi-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#060917}
+#stage{position:absolute;inset:0;overflow:hidden}canvas{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0}
+.scr{position:absolute;left:0;width:1080px;pointer-events:none}
+.badge{position:absolute;left:162px;top:196px;height:50px;display:flex;border-radius:25px;overflow:hidden;font:700 25px/50px Baloo;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.badge span{padding:0 18px 0 20px;background:#f5a623;color:#1a1004}
+.badge span+span{background:rgba(223,233,255,.16);color:#dfe9ff;border:2px solid rgba(223,233,255,.5);border-left:0;border-radius:0 25px 25px 0;line-height:46px}
+.badge.full span+span{background:#dfe9ff;color:#0b1026}
+.badge em{font:800 20px Inter;font-style:normal;letter-spacing:.1em;padding:0 16px;background:#0b1026;color:#f5a623;line-height:50px}
+.head{position:absolute;left:162px;top:262px;width:756px;font:800 84px/1.12 Baloo;color:#fbf1dc;text-shadow:0 4px 18px rgba(0,0,0,.7),0 1px 3px rgba(0,0,0,.9)}
+.head b{background:#f5a623;color:#1a1004;padding:0 16px;border-radius:6px;text-shadow:none;font-weight:800}
+.head i{font-style:normal;color:#ffd27d}
+.tag{position:absolute;font:700 28px/1.2 Baloo;color:#fbf1dc;background:rgba(8,12,30,.86);border-left:5px solid #f5a623;padding:8px 16px 6px;white-space:nowrap}
+.tag small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#f5a623;text-transform:uppercase;margin-bottom:2px}
+.tag.cool{border-color:#dfe9ff}.tag.cool small{color:#dfe9ff}
+.src{position:absolute;left:162px;top:1290px;width:756px;font:600 15px Inter;letter-spacing:.12em;color:#c9d3f2;text-transform:uppercase;text-shadow:0 1px 4px #000;white-space:nowrap}
+#cap{position:absolute;left:162px;top:1340px;width:756px;font:800 40px/1.25 Inter;color:#f1f3f8;text-shadow:0 3px 10px rgba(0,0,0,.9),0 1px 2px #000}
+#cap u{text-decoration:none;color:#ffc659}
+.num{position:absolute;font:800 64px/1 Baloo;color:#ffd27d;text-shadow:0 4px 16px rgba(0,0,0,.8);font-variant-numeric:tabular-nums;white-space:nowrap}
+</style></head><body><div id="stage"><canvas id="c" width="1080" height="1920"></canvas>
+<div class="scr" style="top:0;height:620px;background:linear-gradient(180deg,rgba(6,9,23,.78) 0,rgba(6,9,23,.35) 62%,rgba(6,9,23,0) 100%)"></div>
+<div class="scr" style="top:1210px;height:710px;background:linear-gradient(0deg,rgba(6,9,23,.96) 0,rgba(6,9,23,.8) 62%,rgba(6,9,23,0) 100%)"></div>
+<div id="ov"></div><div id="cap"></div></div>
+<script>
+var W=1080,H=1920,S=+(new URLSearchParams(location.search).get('s')||1);
+var main=document.getElementById('c'),X=main.getContext('2d');
+function cv(){var c=document.createElement('canvas');c.width=W;c.height=H;return c}
+var seed=7;function R(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+// paper fibre grain
+var GR=document.createElement('canvas');GR.width=GR.height=256;(function(){var g=GR.getContext('2d'),d=g.createImageData(256,256);for(var i=0;i<d.data.length;i+=4){var v=R()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=26}g.putImageData(d,0,0)})();
+var LIGHT=[540,1000];
+// a paper sheet: flat colour, grain, warm backlight bleeding through (trans), then stacked with rim + soft shadow
+function sheet(col,draw,trans,rad){var c=cv(),x=c.getContext('2d');x.fillStyle=col;draw(x);
+ x.globalCompositeOperation='source-atop';x.fillStyle=x.createPattern(GR,'repeat');x.fillRect(0,0,W,H);
+ if(trans){var g=x.createRadialGradient(LIGHT[0],LIGHT[1],0,LIGHT[0],LIGHT[1],rad||900);g.addColorStop(0,'rgba(255,186,104,'+trans+')');g.addColorStop(.55,'rgba(255,160,90,'+trans*.35+')');g.addColorStop(1,'rgba(255,160,90,0)');x.fillStyle=g;x.fillRect(0,0,W,H)}
+ var r=cv(),y=r.getContext('2d');y.drawImage(c,0,0);y.globalCompositeOperation='source-in';y.fillStyle='rgba(255,222,170,.75)';y.fillRect(0,0,W,H);
+ X.save();X.shadowColor='rgba(2,3,12,.62)';X.shadowBlur=46;X.shadowOffsetY=30;X.drawImage(r,0,-3);X.restore();X.drawImage(c,0,0)}
+// light through holes: drawn sharp, then bloomed twice
+function emit(draw,b1,b2){var c=cv(),x=c.getContext('2d');draw(x);X.save();X.globalCompositeOperation='lighter';X.drawImage(c,0,0);X.filter='blur('+(b1||7)+'px)';X.drawImage(c,0,0);X.filter='blur('+(b2||34)+'px)';X.globalAlpha=.8;X.drawImage(c,0,0);X.restore()}
+function dot(x,cx,cy,r,col){x.fillStyle=col;x.beginPath();x.arc(cx,cy,r,0,7);x.fill()}
+function shik(x,cx,base,w,h){x.beginPath();x.moveTo(cx-w/2,base);x.bezierCurveTo(cx-w*.46,base-h*.5,cx-w*.2,base-h*.86,cx-w*.1,base-h*.9);x.lineTo(cx+w*.1,base-h*.9);x.bezierCurveTo(cx+w*.2,base-h*.86,cx+w*.46,base-h*.5,cx+w/2,base);x.fill();
+ x.beginPath();x.ellipse(cx,base-h*.92,w*.17,h*.035,0,0,7);x.fill();x.fillRect(cx-w*.03,base-h*1.06,w*.06,h*.13);dot(x,cx,base-h*.98,w*.05,x.fillStyle);
+ x.beginPath();x.moveTo(cx,base-h*1.06);x.lineTo(cx+w*.2,base-h*1.03);x.lineTo(cx,base-h*1.0);x.fill()}
+function chhatri(x,cx,base,w){x.fillRect(cx-w/2,base-w*.75,w*.08,w*.75);x.fillRect(cx+w/2-w*.08,base-w*.75,w*.08,w*.75);x.fillRect(cx-w*.6,base-w*.82,w*1.2,w*.09);x.beginPath();x.ellipse(cx,base-w*.82,w*.46,w*.42,0,Math.PI,0);x.fill();x.fillRect(cx-w*.02,base-w*1.42,w*.04,w*.2)}
+function parasol(x,cx,base,w){x.fillRect(cx-3,base-w*.9,6,w*.9);x.beginPath();x.moveTo(cx-w/2,base-w*.82);x.quadraticCurveTo(cx,base-w*1.2,cx+w/2,base-w*.82);x.fill()}
+function boat(x,cx,y,w){x.beginPath();x.moveTo(cx-w/2,y-16);x.quadraticCurveTo(cx,y+26,cx+w/2,y-16);x.quadraticCurveTo(cx,y+2,cx-w/2,y-16);x.fill();x.fillRect(cx-w*.12,y-44,w*.24,34)}
+function sky(top,mid,bot,hy){var g=X.createLinearGradient(0,0,0,H);g.addColorStop(0,top);g.addColorStop(hy||.5,mid);g.addColorStop(1,bot);X.fillStyle=g;X.fillRect(0,0,W,H);X.fillStyle=X.createPattern(GR,'repeat');X.fillRect(0,0,W,H)}
+function stars(n,ymax,skip){emit(function(x){for(var i=0;i<n;i++){var sx=R()*W,sy=R()*ymax,r=.8+R()*1.9;if(skip&&skip(sx,sy))continue;dot(x,sx,sy,r,'rgba(223,233,255,'+(.35+R()*.6)+')')}},3,14)}
+function moon(cx,cy,r){emit(function(x){var g=x.createRadialGradient(cx-r*.2,cy-r*.2,r*.1,cx,cy,r);g.addColorStop(0,'#ffffff');g.addColorStop(1,'#cfdcff');x.fillStyle=g;x.beginPath();x.arc(cx,cy,r,0,7);x.fill();x.fillStyle='rgba(120,140,190,.22)';[[-.3,-.2,.22],[.25,.1,.3],[-.1,.4,.16],[.35,-.4,.12]].forEach(function(m){x.beginPath();x.arc(cx+m[0]*r,cy+m[1]*r,m[2]*r,0,7);x.fill()})},10,60)}
+// Pleiades: offsets in degrees from Alcyone (east to the left), brightness
+var PL=[[0,0,1],[-.383,-.052,.75],[-.389,.032,.5],[.264,-.157,.65],[.378,.263,.7],[.595,.008,.72],[.519,.362,.6],[.612,.184,.4],[.36,.449,.38]];
+function pleiades(cx,cy,sc,rot,gain){emit(function(x){PL.forEach(function(p){var a=rot||0,px=p[0]*Math.cos(a)-p[1]*Math.sin(a),py=p[0]*Math.sin(a)+p[1]*Math.cos(a);dot(x,cx+px*sc,cy-py*sc,(2.2+p[2]*4.2)*(gain||1),'#e6efff')})},5,22)}
+function lampRow(x,y,x0,x1,gap,jit,r){for(var px=x0;px<x1;px+=gap*(.7+R()*.6)){dot(x,px,y+(R()-.5)*(jit||3),(r||3.2)*(.75+R()*.5),'#ffc56a')}}
+function ghats(y0,dim,hs){hs=hs||1; // four sheets of riverfront, back to front; y0 = horizon line
+ sheet('#6b86c6',function(x){x.fillRect(0,y0+20,W,H);for(var i=0;i<16;i++){var w=40+R()*50;shik(x,30+i*70+R()*20,y0+24,w,(70+R()*90)*hs)}},.5*dim);
+ sheet('#42599a',function(x){x.fillRect(0,y0+70,W,H);[[120,150,250],[330,110,190],[520,190,330],[735,130,230],[930,160,280]].forEach(function(t){x.fillRect(t[0]-t[1]*.8,y0+10,t[1]*1.6,64);shik(x,t[0],y0+14,t[1]*(hs<1?.8:1),t[2]*hs)});chhatri(x,235,y0+72,60);chhatri(x,640,y0+72,70);chhatri(x,1010,y0+72,56)},.36*dim);
+ emit(function(x){[[120,150],[520,190],[930,160],[330,110],[735,130]].forEach(function(t){lampRow(x,y0+8,t[0]-t[1]*.75,t[0]+t[1]*.75,13,2,2.6);dot(x,t[0],y0-18,hs<1?6:9,'#ffb85a')});lampRow(x,y0+68,0,W,11,3,2.8)});
+ sheet('#253870',function(x){x.fillRect(0,y0+120,W,H);chhatri(x,90,y0+122,86);chhatri(x,455,y0+122,74);chhatri(x,870,y0+122,92);x.fillRect(560,y0+84,200,40);x.fillRect(585,y0+58,150,30)},.2*dim);
+ emit(function(x){for(var k=0;k<5;k++)lampRow(x,y0+126+k*22,0,W,9+k,3,3);lampRow(x,y0+82,562,758,12,2,2.6)});
+ sheet('#0e1634',function(x){x.fillRect(0,y0+236,W,H);[70,300,610,820,1000].forEach(function(px,i){parasol(x,px,y0+238,110+(i%2)*30)});boat(x,210,y0+300,230);boat(x,760,y0+312,260)},.07*dim);
+ emit(function(x){lampRow(x,y0+240,0,W,12,3,3.4);lampRow(x,y0+262,0,W,15,3,3.6);dot(x,210,y0+262,7,'#ffb85a');dot(x,760,y0+274,7,'#ffb85a');
+  x.globalAlpha=.5;for(var i=0;i<70;i++){var px=R()*W,l=12+R()*34;x.fillStyle='#ffb45a';x.fillRect(px,y0+316+R()*14,2.5,l)}})}
+function E(cls,html,st){var d=document.createElement('div');d.className=cls;d.innerHTML=html;if(st)d.style.cssText=st;document.getElementById('ov').appendChild(d);return d}
+function badge(n){E('badge'+(n>1?' full':''),'<em>EP 01</em><span>शास्त्र</span><span>साइंस?</span>')}
+function cap(h){document.getElementById('cap').innerHTML=h}
+
+var SC={
+1:function(){LIGHT=[560,1010];sky('#070b22','#1c2c66','#3a4f96',.5);
+ emit(function(x){var g=x.createRadialGradient(560,1010,0,560,1010,620);g.addColorStop(0,'rgba(255,170,90,.5)');g.addColorStop(1,'rgba(255,170,90,0)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ stars(150,930,function(sx,sy){return Math.hypot(sx-770,sy-700)<190});moon(770,700,104);pleiades(640,560,150,.5,.55);
+ ghats(900,1);
+ badge(1);E('head','देवताओं की दिवाली <b>बाकी है</b>');
+ E('num','10,00,000+','left:162px;top:1196px');E('tag','<small>Reported · Kashi</small>दीये · 24 नवंबर','left:540px;top:1196px');
+ E('src','Paper-cut lightbox · schematic ghats, not a map');
+ cap('Diwali mana li? Devtaon ki <u>abhi</u> baaki hai.')},
+2:function(){LIGHT=[540,820];sky('#080c26','#16225a','#2b3c84',.55);stars(170,1300);
+ emit(function(x){var g=x.createRadialGradient(540,820,0,540,820,700);g.addColorStop(0,'rgba(255,176,96,.42)');g.addColorStop(1,'rgba(255,176,96,0)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ function city(x,cy,w,n,hh){x.beginPath();x.moveTo(540-w/2,cy);x.bezierCurveTo(540-w*.42,cy+90,540-w*.1,cy+120,540,cy+128);x.bezierCurveTo(540+w*.1,cy+120,540+w*.42,cy+90,540+w/2,cy);x.fill();
+  for(var i=0;i<n;i++){var px=540-w/2+w*(i+.5)/n,tw=w/n*.78,th=hh*(.45+R()*.55);if(Math.abs(px-540)<w/n*.8)th=hh*1.25;x.fillRect(px-tw/2,cy-th,tw,th+2);if(i%2){x.beginPath();x.ellipse(px,cy-th,tw*.5,tw*.42,0,Math.PI,0);x.fill()}else{x.beginPath();x.moveTo(px-tw/2,cy-th);x.lineTo(px,cy-th-tw*.9);x.lineTo(px+tw/2,cy-th);x.fill()}}
+  x.globalCompositeOperation='destination-out';x.beginPath();x.arc(540,cy+38,30,0,7);x.fill();x.globalCompositeOperation='source-over'}
+ function wins(x,cy,w,col){for(var i=0;i<46;i++){var px=540-w*.46+R()*w*.92;if(Math.abs(px-540)<40)continue;x.fillStyle=col;x.fillRect(px,cy-12-R()*70,5,9)}}
+ function cloud(x,cx,cy,w){x.beginPath();x.ellipse(cx,cy,w,w*.16,0,0,7);x.ellipse(cx-w*.4,cy-w*.1,w*.34,w*.16,0,0,7);x.ellipse(cx+w*.3,cy-w*.13,w*.4,w*.2,0,0,7);x.fill()}
+ sheet('#d2a85c',function(x){city(x,610,400,9,96);cloud(x,150,700,150);cloud(x,960,560,170)},.5,800);emit(function(x){wins(x,610,400,'#fff0c0')},4,18);
+ sheet('#93a0c2',function(x){city(x,850,440,10,104);cloud(x,960,930,170);cloud(x,110,860,130)},.3,800);emit(function(x){wins(x,850,440,'#eef4ff')},4,18);
+ sheet('#3a4263',function(x){city(x,1090,470,10,108);cloud(x,150,1150,170);cloud(x,950,1170,150)},.14,800);emit(function(x){wins(x,1090,470,'#ff9c5a')},4,18);
+ // the one ray, through the three gates
+ emit(function(x){var g=x.createLinearGradient(0,1250,0,470);g.addColorStop(0,'#ffe9b0');g.addColorStop(.75,'#ffc56a');g.addColorStop(1,'rgba(255,197,106,0)');x.fillStyle=g;x.fillRect(535,470,10,780);[648,888,1128].forEach(function(cy){dot(x,540,cy,26,'#fff3cf')});x.beginPath();x.moveTo(540,452);x.lineTo(524,500);x.lineTo(556,500);x.fillStyle='#fff3cf';x.fill()},8,40);
+ sheet('#080b1e',function(x){x.fillRect(0,1262,W,H)},0);sheet('#5a4a8a',function(x){x.lineWidth=22;x.strokeStyle='#5a4a8a';x.lineCap='round';x.beginPath();x.moveTo(330,1262);x.quadraticCurveTo(540,1130,750,1262);x.stroke();x.lineWidth=4;x.beginPath();x.moveTo(332,1260);x.lineTo(748,1260);x.stroke()},.3,700);
+ badge(1);E('head','तीन शहर. <b>एक तीर.</b>');
+ E('tag','<small>स्वर्ग</small>सोना','left:162px;top:500px');E('tag cool','<small>आकाश</small>चाँदी','left:162px;top:742px');E('tag','<small>धरती</small>लोहा','left:162px;top:986px');
+ E('tag','<small>कथा · Mahabharata</small>हज़ार साल में एक बार','left:640px;top:408px');
+ E('src','Katha · Karna Parva 33–34 · shown as cut paper');
+ cap('Shiv ne intezaar kiya. Sahi pal aaya. <u>Ek teer.</u>')},
+3:function(){LIGHT=[540,560];sky('#0a0f2c','#0f1840','#141f52',.5);
+ emit(function(x){var g=x.createRadialGradient(540,560,0,540,560,950);g.addColorStop(0,'rgba(255,196,120,.95)');g.addColorStop(.3,'rgba(255,176,96,.5)');g.addColorStop(1,'rgba(120,150,230,.16)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ var ex=540,ey=905,r=235;
+ sheet('#16204e',function(x){x.fillRect(0,0,W,H);x.globalCompositeOperation='destination-out';x.lineWidth=13;x.beginPath();x.arc(ex,ey,r,0,7);x.stroke();
+  x.beginPath();x.arc(540,560,56,0,7);x.fill();for(var i=0;i<16;i++){var a=i/16*6.283;x.lineWidth=7;x.lineCap='round';x.beginPath();x.moveTo(540+Math.cos(a)*74,560+Math.sin(a)*74);x.lineTo(540+Math.cos(a)*(96+(i%2)*14),560+Math.sin(a)*(96+(i%2)*14));x.stroke()}
+  for(var d=0;d<=15;d++){var a=-Math.PI/2+d/15*Math.PI;x.lineWidth=d%5?4:8;x.beginPath();x.moveTo(ex+Math.cos(a)*(r+22),ey+Math.sin(a)*(r+22));x.lineTo(ex+Math.cos(a)*(r+(d%5?40:54)),ey+Math.sin(a)*(r+(d%5?40:54)));x.stroke()}
+  x.globalCompositeOperation='source-over'},.22,900);
+ emit(function(x){dot(x,540,560,54,'#ffd58a');x.strokeStyle='#ffc56a';x.lineWidth=13;x.beginPath();x.arc(ex,ey,r,-Math.PI/2,Math.PI/2);x.stroke()},8,44);
+ sheet('#2c8a86',function(x){x.beginPath();x.arc(ex,ey,50,0,7);x.fill()},.25,700);
+ sheet('#1b5e66',function(x){x.beginPath();x.moveTo(ex-30,ey-20);x.quadraticCurveTo(ex-5,ey-44,ex+16,ey-18);x.quadraticCurveTo(ex+30,ey+10,ex+6,ey+30);x.quadraticCurveTo(ex-22,ey+18,ex-30,ey-20);x.fill()},0);
+ // moon phases along the half orbit (sun is up the page): day 0, 4, 7.5, 11, 15
+ [[0,0],[4,.27],[7.5,.5],[11,.73],[15,1]].forEach(function(p){var a=-Math.PI/2+p[0]/15*Math.PI,mx=ex+Math.cos(a)*r,my=ey+Math.sin(a)*r,mr=p[0]==15?34:26;
+  sheet('#0a0e24',function(x){x.beginPath();x.arc(mx,my,mr+5,0,7);x.fill()},0);
+  if(p[1]>0)emit(function(x){x.save();x.beginPath();x.arc(mx,my,mr,0,7);x.clip();x.fillStyle='#e9f0ff';if(p[1]>=1){x.fillRect(mx-mr,my-mr,2*mr,2*mr)}else{x.beginPath();x.arc(mx,my,mr,Math.PI/2,-Math.PI/2,false);x.ellipse(mx,my,Math.abs(1-2*p[1])*mr,mr,0,-Math.PI/2,Math.PI/2,p[1]<.5);x.fill()}x.restore()},p[0]==15?8:4,p[0]==15?40:16)});
+ badge(1);E('head','आधा चक्कर = <b>15 दिन</b>');
+ E('tag','<small>दिवाली · 9 नवंबर</small>अमावस्या','left:162px;top:640px');E('tag cool','<small>देव दीपावली · 24 नवंबर</small>पूर्णिमा','left:162px;top:1150px');
+ E('tag','<small>हमारी गणना</small>15.3 दिन','left:726px;top:872px');E('tag','<small>धरती</small>आप','left:420px;top:980px','');
+ E('src','Not to scale · new moon → full moon, PyEphem');
+ cap('Pandrah din mein chand, <u>aadha chakkar</u> kaat kar, poora.')},
+4:function(){LIGHT=[540,1150];sky('#060a20','#131f55','#2c3f86',.6);
+ var mx=400,my=880,sc=260,mr=.2785*sc,ax=596,ay=514;
+ emit(function(x){var g=x.createRadialGradient(mx,my,0,mx,my,520);g.addColorStop(0,'rgba(200,215,255,.34)');g.addColorStop(1,'rgba(200,215,255,0)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ stars(190,1100,function(sx,sy){return Math.hypot(sx-mx,sy-my)<150||Math.hypot(sx-ax-70,sy-ay+40)<210});
+ pleiades(ax,ay,sc,.5,1.25);moon(mx,my,mr);
+ // ruler: three Moon-width rings between the Moon's limb and Alcyone
+ emit(function(x){var dx=ax-mx,dy=ay-my,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L;x.strokeStyle='#ffc56a';x.lineWidth=3;x.setLineDash([10,9]);x.beginPath();x.moveTo(mx+ux*mr,my+uy*mr);x.lineTo(ax-ux*16,ay-uy*16);x.stroke();x.setLineDash([]);
+  for(var k=1;k<=2;k++){x.beginPath();x.arc(mx+ux*mr*2*k,my+uy*mr*2*k,mr,0,7);x.stroke()}},2,10);
+ ghats(984,.8,.42);
+ badge(2);E('head','इस साल: <b>2° से कम</b>');
+ E('tag cool','<small>Ise kehte hain</small>कृत्तिका · Pleiades','left:162px;top:420px');
+ E('tag','<small>24 नवंबर · शाम 6–7 बजे</small>चाँद','left:500px;top:846px');
+ E('tag','<small>दूरी</small>3–4 चाँद जितनी','left:630px;top:668px');
+ E('tag','<small>2025</small>16° दूर ➜','left:744px;top:540px','');
+ E('src','Our calculation · PyEphem · Varanasi · cluster drawn brighter than seen');
+ cap('Is saal, chaubees ki shaam: <u>do degree</u> se bhi kam.')},
+5:function(){LIGHT=[300,1180];sky('#050818','#101a4a','#263878',.62);
+ var mx=500,my=800,sc=330,mr=.2785*sc,ax=mx+185,ay=my-290;
+ emit(function(x){var g=x.createRadialGradient(mx,my,0,mx,my,600);g.addColorStop(0,'rgba(200,215,255,.3)');g.addColorStop(1,'rgba(200,215,255,0)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ stars(240,1150,function(sx,sy){return Math.hypot(sx-mx,sy-my)<170});pleiades(ax,ay,sc,.5,1.5);moon(mx,my,mr);
+ // far village roofs
+ sheet('#3d5596',function(x){x.fillRect(0,1150,W,H);[[60,150,90],[250,110,60],[690,170,80],[900,140,110]].forEach(function(b){x.fillRect(b[0],1150-b[2],b[1],b[2]+4)});shik(x,480,1154,90,150)},.3,700);
+ emit(function(x){[[100,1100],[160,1092],[300,1118],[740,1104],[800,1096],[960,1070],[1010,1090]].forEach(function(p){x.fillStyle='#ffc56a';x.fillRect(p[0],p[1],12,16)})},4,18);
+ // the thumb (blocky, voxel-like) covers the Moon
+ sheet('#0b1028',function(x){x.translate(mx,my+500);x.rotate(-.09);x.beginPath();x.roundRect(-118,-640,236,1500,[112,112,10,10]);x.fill()},.03);
+ sheet('#1a2450',function(x){x.translate(mx,my+500);x.rotate(-.09);x.beginPath();x.roundRect(-78,-622,156,128,[74,74,44,44]);x.fill();x.lineWidth=5;x.strokeStyle='#1a2450';x.lineCap='round';[-330,-306].forEach(function(yy,i){x.beginPath();x.moveTo(-70+i*8,yy);x.quadraticCurveTo(0,yy+16,70-i*8,yy);x.stroke()})},.02);
+ // the parapet and one diya
+ sheet('#0b1027',function(x){x.fillRect(0,1232,W,H);x.fillRect(0,1206,W,30);x.beginPath();x.moveTo(190,1170);x.quadraticCurveTo(262,1250,334,1170);x.lineTo(352,1160);x.lineTo(172,1160);x.fill()},.1,500);
+ emit(function(x){var g=x.createRadialGradient(262,1130,2,262,1120,60);g.addColorStop(0,'#fff6d8');g.addColorStop(.4,'#ffc56a');g.addColorStop(1,'rgba(255,150,60,0)');x.fillStyle=g;x.beginPath();x.moveTo(262,1066);x.bezierCurveTo(292,1110,286,1150,262,1158);x.bezierCurveTo(238,1150,232,1110,262,1066);x.fill()},8,46);
+ emit(function(x){var g=x.createRadialGradient(262,1190,0,262,1190,330);g.addColorStop(0,'rgba(255,170,90,.2)');g.addColorStop(1,'rgba(255,170,90,0)');x.fillStyle=g;x.fillRect(0,0,W,H)},1,1);
+ badge(2);E('head','अंगूठे से<br><b>चाँद ढको</b>');
+ E('tag cool','<small>कार्तिक का नाम</small>कृत्तिका','left:724px;top:612px','');
+ E('tag','<small>छत पर</small>एक दीया','left:162px;top:980px');
+ E('tag','<small>साफ़ आसमान चाहिए</small>शहर में दूरबीन मदद करेगी','left:590px;top:1196px');
+ E('src','Illustration · the cluster is faint beside a full Moon');
+ cap('Bagal mein jo guchha dikhe, wahi hai <u>Kartik ka naam.</u>')}
+};
+Promise.all(['800 84px Baloo','700 28px Baloo','400 30px Tiro','600 15px Inter','800 40px Inter'].map(function(f){return document.fonts.load(f,'देव Aa')})).then(function(){SC[S]();window.__done=true});
+</script></body></html>
