@@ -69,8 +69,8 @@ var GA = new T.Group(); S.add(GA); floor(GA, XA, 160, 34); colonnade(GA, -6.2, 4
 var imS = IM['film/lanka-28.jpg'], SW = 5.0, SH = SW * imS.height / imS.width;
 var FS = new T.Mesh(new T.PlaneGeometry(SW, SH), new T.MeshBasicMaterial({ map: tx('film/lanka-28.jpg', null, true), toneMapped: false })); FS.position.set(0, 3.7, -6); GA.add(FS);
 var FR = mesh(new T.BoxGeometry(SW + .22, SH + .22, .1), goldF, GA, 0, 3.7, -6.06);
-mesh(new T.CylinderGeometry(1.5, 1.6, .5, 64), marble([2, 1], { roughness: .35 }), GA, 0, .25, 0);
-var BAL = new T.Group(); BAL.position.set(0, .5, 0); GA.add(BAL); mesh(new T.CylinderGeometry(.3, .38, .1, 48), brass, BAL, 0, .05, 0); mesh(new T.CylinderGeometry(.035, .05, 1.3, 24), brass, BAL, 0, .72, 0);
+var PLN = new T.Group(); GA.add(PLN); mesh(new T.CylinderGeometry(1.5, 1.6, .5, 64), marble([2, 1], { roughness: .35 }), PLN, 0, .25, 0);
+var BAL = new T.Group(); BAL.position.set(0, .5, 0); PLN.add(BAL); mesh(new T.CylinderGeometry(.3, .38, .1, 48), brass, BAL, 0, .05, 0); mesh(new T.CylinderGeometry(.035, .05, 1.3, 24), brass, BAL, 0, .72, 0);
 var BEAM = new T.Group(); BEAM.position.y = 1.36; BAL.add(BEAM); mesh(new T.BoxGeometry(2.3, .05, .06), brass, BEAM);
 var HANG = [-1, 1].map(function (sd) { var hang = new T.Group(); hang.position.set(sd * 1.1, 0, 0); BEAM.add(hang); for (var k = 0; k < 3; k++) { var a = k * 2.094, ch = mesh(new T.CylinderGeometry(.007, .007, .78, 6), brass, hang, Math.cos(a) * .17, -.37, Math.sin(a) * .17); ch.rotation.z = Math.cos(a) * .42; ch.rotation.x = -Math.sin(a) * .42; } mesh(new T.CylinderGeometry(.36, .3, .035, 48), brass, hang, 0, -.74, 0); return hang; });
 var CLAYB = mesh(new T.BoxGeometry(BW, BH, BD), clay, HANG[0], 0, -.74 + .018 + BH * 1.75 / 2, 0); CLAYB.scale.setScalar(1.75); CLAYB.rotation.y = -.35;
@@ -79,7 +79,7 @@ var GOLDB = mesh(new T.BoxGeometry(BW, BH, BD), gold, HANG[1], 0, 0, 0); GOLDB.s
 // ---------- station B: the palace square — all the gold as one cube, then taken apart into a village ----------
 var GB = new T.Group(); S.add(GB); floor(GB, XB + 150, 2400, 500); colonnade(GB, XB - 36, 30, 8, 9, 15, 1.1);
 colonnade(GB, VX - 200, -150, 8, 26, 46, 3.2); colonnade(GB, VX + 200, -150, 8, 26, 46, 3.2);
-var LAY = []; for (var k = 0; k < NL; k++) LAY.push(mesh(new T.BoxGeometry(Cb, LH * .94, Cb), slabMat, GB, XB, 0, 0));
+var LAY = []; for (var k = 0; k < NL; k++) LAY.push(mesh(new T.BoxGeometry(Cb, LH * .985, Cb), slabMat, GB, XB, 0, 0));
 var pitch = new T.Mesh(new T.PlaneGeometry(3.05, 20.12), new T.MeshStandardMaterial({ color: 0xb9d38a, roughness: 1 })); pitch.rotation.x = -Math.PI / 2; pitch.position.set(XB + 17, .03, 3); pitch.receiveShadow = true; GB.add(pitch);
 [-1, 1].forEach(function (e) { for (var q = -1; q <= 1; q++) mesh(new T.CylinderGeometry(.04, .04, .71, 8), new T.MeshStandardMaterial({ color: 0x8a5a2a }), GB, XB + 17 + q * .115, .36, 3 + e * 10.06); });
 var CLH = new T.Group(); mesh(new T.BoxGeometry(6, 3, 4.5), pbr('red_brick_03', [3, 1.5]), CLH, 0, 1.5, 0); mesh(new T.BoxGeometry(6.6, .22, 5.1), new T.MeshStandardMaterial({ color: 0x9a9084, roughness: .9 }), CLH, 0, 3.1, 0); mesh(new T.BoxGeometry(1, 2, .08), new T.MeshStandardMaterial({ color: 0x2f5d6b, roughness: .7 }), CLH, -.8, 1, 2.27); CLH.position.set(XB - 18, 0, 10); CLH.rotation.y = .3; GB.add(CLH);
@@ -102,17 +102,18 @@ var skinM = goldF.clone(); skinM.side = T.DoubleSide; skinM.roughness = .16; ski
 function curved(w, h, bow) { var g = new T.PlaneGeometry(w, h, 16, 1), p = g.attributes.position; for (var i = 0; i < p.count; i++) { var u = p.getX(i) / w; p.setZ(i, bow * (1 - 4 * u * u)); } g.computeVertexNormals(); return g; }
 var SKN = [];   // [mesh, rest position, lift direction, lift distance, order]
 function skin(geo, x, y, z, dir, dist, ord) { var m = mesh(geo, skinM, GATE, x, y, z); m.receiveShadow = false; SKN.push({ m: m, p: V(x, y, z), d: dir, L: dist, o: ord }); return m; }
-skin(curved(2.76, 3.9, .04), 0, 1.95, -.07, V(0, 0, 1), 2.4, 0);
-[-1, 1].forEach(function (sd) { skin(curved(1.02, 5.2, .05), sd * 1.9, 2.6, .52, V(sd * .35, 0, 1), 3.4, 1); skin(curved(1.1, 1.1, .03), sd * 4.1, 2.5, .37, V(sd * .3, 0, 1), 2.6, 2); skin(curved(3.4, .34, .02), sd * 4.1, 4.36, .32, V(sd * .2, .5, 1), 2.4, 3); });
+skin(curved(2.76, 3.9, .1), 0, 1.95, -.07, V(0, 0, 1), 2.4, 0);
+[-1, 1].forEach(function (sd) { skin(curved(1.02, 5.2, .1), sd * 1.9, 2.6, .52, V(sd * .35, 0, 1), 3.4, 1); skin(curved(1.1, 1.1, .03), sd * 4.1, 2.5, .37, V(sd * .3, 0, 1), 2.6, 2); skin(curved(3.4, .34, .02), sd * 4.1, 4.36, .32, V(sd * .2, .5, 1), 2.4, 3); });
 skin(new T.TorusGeometry(1.42, .16, 18, 64, Math.PI), 0, 4.0, .2, V(0, .15, 1), 4.3, 2);
-skin(curved(5.0, .9, .05), 0, 5.65, .54, V(0, .3, 1), 5.0, 3);
+skin(curved(5.0, .9, .1), 0, 5.65, .54, V(0, .3, 1), 5.0, 3);
 skin(new T.SphereGeometry(1.28, 40, 20, 0, 6.283, 0, 1.57), 0, 6.1, 0, V(0, 1, 0), 2.6, 4);
 var FIN = mesh(new T.ConeGeometry(.3, .9, 8), goldF, GATE, 0, 7.7, 0);
 // mithai with silver leaf (the everyday version of the same idea)
-var MIT = new T.Group(); MIT.position.set(XD + 3.2, 0, 6.6); GD.add(MIT); mesh(new T.CylinderGeometry(.5, .56, .95, 40), marble([1, 1]), MIT, 0, .475, 0); mesh(new T.CylinderGeometry(.44, .4, .03, 48), brass, MIT, 0, .965, 0);
+var MIT = new T.Group(); MIT.position.set(XD + 7, 0, 62); GD.add(MIT); mesh(new T.CylinderGeometry(.5, .56, .95, 40), marble([1, 1]), MIT, 0, .475, 0); mesh(new T.CylinderGeometry(.44, .4, .03, 48), brass, MIT, 0, .965, 0);
 var silver = new T.MeshStandardMaterial({ color: 0xf4f4f4, metalness: 1, roughness: .28, envMapIntensity: 1.6 }), barfi = new T.MeshStandardMaterial({ color: 0xf3e3c2, roughness: .85 });
 for (var b = 0; b < 7; b++) { var bx = (b % 3 - 1) * .2 + (Math.floor(b / 3) % 2) * .1, bz = (Math.floor(b / 3) - 1) * .2, by = b === 6 ? 1.07 : .995; if (b === 6) { bx = 0; bz = 0; } var bf = mesh(new T.BoxGeometry(.17, .06, .17), barfi, MIT, bx, by + .015, bz); bf.rotation.y = .78 + (hsh(b) - .5) * .2; var sv = mesh(new T.PlaneGeometry(.165, .165), silver, MIT, bx, by + .047, bz); sv.rotation.x = -Math.PI / 2; sv.rotation.z = bf.rotation.y; }
 // one gram of gold becomes a leaf the size of a small window
+mesh(new T.BoxGeometry(2.2, 2.9, .45), stoneM([1, 1]), GD, XD + 10.6, 1.45, 60.4); mesh(new T.BoxGeometry(.8, .8, .06), new T.MeshStandardMaterial({ color: 0x6a4428, roughness: .7 }), GD, XD + 10.6, 1.6, 60.64);
 var BEAD = mesh(new T.SphereGeometry(.06, 24, 12), gold, GD, 0, 0, 0), LEAF = mesh(curved(.74, .74, .02), skinM, GD, 0, 0, 0);
 
 // ---------- station F: the almirah ----------
@@ -128,11 +129,11 @@ var NINE = []; for (var n9 = 0; n9 < 9; n9++) { var nb = mesh(new T.BoxGeometry(
 function P(c, az, el, d, up) { var a = az * Math.PI / 180, e = el * Math.PI / 180; return { p: V(c.x + d * Math.sin(a) * Math.cos(e), c.y + d * Math.sin(e), c.z + d * Math.cos(a) * Math.cos(e)), l: V(c.x, c.y - (up == null ? .021 : up) * d, c.z) }; }
 var PO = {
   f0: P(V(0, 3.7, -6), 9, 3, 17), f1: P(V(0, 3.7, -6), -5, 1, 15.6),
-  b0: P(V(0, 1.3, 0), 10, 14, 14), b1: P(V(0, 1.3, 0), -4, 6, 11), b2: P(V(.35, 1.15, 0), -16, 4, 8.2),
-  c0: P(V(XB - 2, 9.2, 0), 52, 6, 150), c1: P(V(XB - 2, 9.2, 0), 30, 2.5, 126), c2: P(V(XB + 6, 8.4, 0), 12, 2.5, 112),
+  b0: P(V(0, 1.3, 0), 10, 14, 14), b1: P(V(0, 1.3, 0), -4, 6, 11), b2: P(V(.25, 1.2, 0), -14, 4, 9.6),
+  c0: P(V(XB - 2, 9.2, 0), 52, 6, 150), c1: P(V(XB + 1, 9.6, 0), 30, 2.5, 142), c2: P(V(XB + 6, 8.8, 0), 12, 2.5, 128),
   d0: P(V(XB + 8, 21, 0), 24, 4, 205), h0: P(V(HX, 2.3, HZ), 30, 8, 44), v0: P(V(HX + 40, 0, 6), 28, 16, 190, .05), v1: P(V(VX - 6, 0, 4), 26, 11, 320, .07),
-  g0: P(V(XD, 4.2, .6), 8, 4, 30), g1: P(V(XD, 4.6, 2.2), -30, 6, 33), g2: P(V(XD + 3.2, 1.2, 6.6), -14, 13, 6.4), g3: P(V(XD - 4.1, 2.5, 2.2), 20, 4, 9.5),
-  a0: P(V(XF, 1.32, .2), -12, 6, 9.6), a1: P(V(XF, 1.25, .5), 6, 9, 8.2), a2: P(V(XF, 1.4, .3), -4, 5, 12)
+  g0: P(V(XD, 4.2, .6), 8, 4, 30), g1: P(V(XD, 4.6, 2.2), -30, 6, 33), g2: P(V(XD + 7, 1.2, 62), 28, 13, 6.4), g3: P(V(XD + 10.4, 1.5, 61.2), 24, 6, 6.6),
+  a0: P(V(XF, 1.0, .4), -12, 6, 10.4), a1: P(V(XF, .95, .5), 6, 8, 9.6), a2: P(V(XF, 1.0, .4), -4, 5, 12.5)
 };
 var MOVES = [
   [0, tS1, 'f0', 'f1'],                                  // slow arc across the film still
@@ -147,8 +148,8 @@ var MOVES = [
   [t17 - .2, t18 + 1.6, 'g0', 'g1'],                     // slow orbit while the parts are named and the skin lifts
   [t19 - .4, t19 + .9, 'g1', 'g2'],                      // down to the mithai
   [t20 - .4, t20 + .9, 'g2', 'g3'],                      // across to the window
-  [t21 - .1, t21 + 1.0, 'g3', 'f0'], [t22, t22 + 2.5, 'f0', 'f1'],    // back to the film still
-  [t22 + 2.5, t22 + 3.6, 'f1', 'a0'],                    // whip to the almirah
+  [t22 - 1.0, t22 - .1, 'g3', 'f0'], [t22 - .1, t22 + 2.4, 'f0', 'f1'],    // back to the film still
+  [t22 + 2.4, t22 + 3.3, 'f1', 'a0'],                    // whip to the almirah
   [t25 - .2, t25 + 1.6, 'a0', 'a1'],                     // push in as the doors open
   [t27 - .3, t27 + 1.6, 'a1', 'a2']
 ];
@@ -167,15 +168,15 @@ var HEADS = [
   [t12 + .4, t13 - .1, 'Ek pakka ghar', 'Ek ghar mein<br><b>10,000</b> eent.'],
   [t13 + .5, t15 - .4, 'Wahi sona · eenton ke ghar', 'Saara sona:<br>sirf <b>600 ghar</b>.<br>Ek gaon.'],
   [t15 + .5, t18 - .1, 'To kya sone ki Lanka jhooth hai?', 'Valmiki: safed mahal,<br><b>sone</b> ke darwaze.'],
-  [t18 + .1, t21 - .2, 'Lanka ko khol ke dekhte hain', 'Thos nahi.<br>Sone ki <b>parat</b>.'],
-  [t21 + .6, t22 + 2.7, 'Film walon ne bhi yahi kiya', 'Sinhasan: fibre.<br>Upar sone ka <b>vark</b>.'],
-  [t24, t27 - .2, 'Asli sone ki Lanka', 'Har 9 mein se<br><b>1 eent</b>: hamari<br>almaari mein.']
+  [t18 + .1, t22 - 1.0, 'Lanka ko khol ke dekhte hain', 'Thos nahi.<br>Sone ki <b>parat</b>.'],
+  [t22 - .1, t22 + 2.5, 'Film walon ne bhi yahi kiya', 'Sinhasan: fibre.<br>Upar sone ka <b>vark</b>.'],
+  [t24, t27 - .2, 'Asli sone ki Lanka', 'Har 9 mein se<br><b>1 eent</b> hamari.']
 ].map(function (h) { return { t0: h[0], t1: h[1], k: el('kick', '<i></i>' + h[2]), h: el('head', h[3]) }; });
 var HUD = el('hud', ''), SRC = el('src', ''), FOL = el('fol', '<img src="img/profile.jpg">nerdlogic.co<em>FOLLOW</em>');
 var SRCS = [[0, tS1 + .3, 'film still © Prime Focus Studios · DNEG · via TMDB · shown for comment'], [t3 + .2, t6 - .4, 'our arithmetic: brick 23 × 11 × 7.5 cm · gold 19.3 g per cm³'],
   [t6 + .5, t10 - .1, 'world gold council: about 219,891 tonnes mined in all history (end 2025) · cube: our arithmetic'], [t10 + .3, t12 - .4, 'our arithmetic: 219,891 tonnes ÷ 37 kg ≈ 60 lakh bricks · bricks drawn larger than life'],
   [t12 + .4, t15 - .4, 'our estimate: 10,000 bricks per two-room house · 60 lakh ÷ 10,000 = 600'], [t15 + .5, t18 - .1, 'Valmiki Ramayana, Sundara Kanda 2 and Yuddha Kanda 3 (prose translation) · gate: our schematic'],
-  [t18 + .1, t21 - .2, 'gold leaf about 0.1 micron: 1 gram ≈ half a square metre (our arithmetic) · gate: our schematic'], [t22, t22 + 2.5, 'film still © Prime Focus Studios · via TMDB · throne details: art director R. Andhale, as reported'],
+  [t18 + .1, t22 - 1.0, 'gold leaf about 0.1 micron: 1 gram ≈ half a square metre (our arithmetic) · gate: our schematic'], [t22 - .1, t22 + 2.4, 'film still © Prime Focus Studios · via TMDB · throne details: art director R. Andhale, as reported'],
   [t24, t27 - .2, 'household gold about 25,000 tonnes (WGC; estimates 23,000–34,600) · 25,000 ÷ 219,891 ≈ 1 in 9']];
 var TAGS = []; function tag(t0, t1, anchor, html, x, y) { var d = el('tag', html); d.style.left = x + 'px'; d.style.top = y + 'px'; TAGS.push({ t0: t0, t1: t1, a: anchor, d: d, x: x, y: y }); }
 function A(v) { return function () { return v; }; } function WP(o) { return function () { return o.getWorldPosition(new T.Vector3()); }; }
@@ -190,17 +191,17 @@ tag(t17b, t18 - .2, A(V(XD, 1.4, 0)), '<small>sone ka</small>darwaza', 470, 1150
 tag(t17c, t18 - .2, A(V(XD + 4.1, 2.5, .4)), '<small>sone ki</small>khidki', 700, 700);
 tag(t18 + 1.6, t19 - .3, function () { return SKN[0].m.getWorldPosition(new T.Vector3()); }, '<small>upar ki parat</small>sone ka vark', 170, 1150);
 tag(t18 + 1.9, t19 - .3, A(V(XD - 1.9, 3.2, .5)), '<small>andar</small>safed pathar', 600, 620);
-tag(t19 + .7, t20 - .3, A(V(XD + 3.2, 1.08, 6.6)), '<small>mithai par</small>chaandi ka vark', 560, 620);
-tag(t20b + .6, t21 - .2, function () { return LEAF.position; }, '<small>1 gram sona</small>ek chhoti khidki', 170, 1150);
-tag(t22 + .3, t22 + 2.5, A(V(-1.4, 3.0, -6)), '<small>andar</small>fibre', 170, 1060);
-tag(t22b, t22 + 2.5, A(V(1.3, 4.4, -6)), '<small>upar</small>24 carat sone ka vark', 520, 1150);
+tag(t19 + .7, t20 - .3, A(V(XD + 7, 1.08, 62)), '<small>mithai par</small>chaandi ka vark', 560, 620);
+tag(t20b + .6, t22 - 1.1, function () { return LEAF.position; }, '<small>1 gram sona</small>ek chhoti khidki', 170, 1080);
+tag(t22 + .2, t22 + 2.4, A(V(-1.4, 3.0, -6)), '<small>andar</small>fibre', 170, 1060);
+tag(Math.min(t22b, t22 + 1.2), t22 + 2.4, A(V(1.3, 4.4, -6)), '<small>upar</small>24 carat sone ka vark', 520, 1150);
 var CAPW = TM.cap.map(function (c) { return { w: c.w, t0: c.t0, t1: c.t1 }; });
 var END = el('endc', '<img src="img/profile.jpg"><div class="hn">nerdlogic.co</div><div class="ser">Ramayana × Vigyan</div><div class="btns"><span id="bS">SHARE</span><span id="bF">FOLLOW</span></div>');
 
 // ---------- sound events ----------
 var tLay = function (k) { return t6 + .9 + k * ((t8b - t6 - .9) / NL); };
 var EVL = [[0, 'hit'], [tS1, 'whoosh'], [t3, 'tick'], [t4 + .3, 'pop'], [t5g, 'thud'], [t6 - .3, 'whoosh'], [t8b, 'bell'], [t9 + .2, 'tick'], [t10 + .1, 'rise'], [t11, 'slide'], [t12 - .3, 'whoosh'], [t12b + .9, 'chime'], [t13 + .2, 'rise'], [t13b, 'bell'], [t14b, 'thud'], [t15, 'hole'], [t15 - .3, 'whoosh'],
-  [t17, 'pop'], [t17b, 'pop'], [t17c, 'pop'], [t18 + .3, 'glint'], [t19 + .5, 'pop'], [t20b, 'glint'], [t21, 'whoosh'], [t22, 'shutter'], [t23, 'chime'], [t22 + 2.6, 'whoosh'], [t25 + .2, 'click'], [t25b, 'bell'], [t26b, 'glint'], [t27, 'chime']];
+  [t17, 'pop'], [t17b, 'pop'], [t17c, 'pop'], [t18 + .3, 'glint'], [t19 + .5, 'pop'], [t20b, 'glint'], [t22 - .9, 'whoosh'], [t22, 'shutter'], [t23, 'chime'], [t22 + 2.5, 'whoosh'], [t25 + .2, 'click'], [t25b, 'bell'], [t26b, 'glint'], [t27, 'chime']];
 for (var kk = 0; kk < NL; kk++) EVL.push([tLay(kk) + .45, 'thud']);
 window.EV = EVL.map(function (e) { return { t: +Math.max(0, e[0]).toFixed(3), k: e[1] }; }).sort(function (a, b) { return a.t - b.t; });
 window.SCN_T0 = function () { return [0, t3, t6, t10, t12, t13, t15, t18, t19, t21, t24, t27]; };
@@ -213,7 +214,7 @@ window.__seek = function (t) {
   glc.style.filter = (blurpx > .5 || endU > .01) ? 'blur(' + Math.max(blurpx, endU * 7).toFixed(1) + 'px) brightness(' + (1 - endU * .28).toFixed(2) + ')' : 'none';
   GA.visible = cx > -120 && cx < 250; GB.visible = cx > 250 && cx < 1300; GD.visible = cx > 1300; GF.visible = cx < -120;
   // --- A: film still (<= 2.5 s each time), balance
-  var fsOn = t < tS1 + .25 || (t >= t22 - .2 && t < t22 + 2.5 + .25); FS.visible = FR.visible = fsOn && GA.visible;
+  var fsOn = t < tS1 + .25 || (t >= t22 - .35 && t < t22 + 2.4 + .2); FS.visible = FR.visible = fsOn && GA.visible; PLN.visible = t > tS1 - .05 && t < t20;
   var gl5 = ramp(t, t5g - .45, t5g), land = t - t5g, sw = land > 0 ? -.33 * (1 - Math.exp(-land * 3.2) * Math.cos(land * 7.5)) : 0, th = .12 * eo(ramp(t, t4 + .1, t4 + .8)) + sw;
   BEAM.rotation.z = th; HANG[0].rotation.z = HANG[1].rotation.z = -th; CLAYB.visible = t > t4 + .1; CLAYB.position.y = -.74 + .018 + BH * 1.75 / 2 + (1 - eo(ramp(t, t4 + .1, t4 + .5))) * .9;
   GOLDB.visible = t > t5g - .45; GOLDB.position.y = -.74 + .018 + BH * 1.75 / 2 + (1 - gl5 * gl5) * 1.3;
@@ -237,10 +238,10 @@ window.__seek = function (t) {
   if (GD.visible) { var lift = ramp(t, t18 + .2, t18 + 2.2);
     SKN.forEach(function (s) { var u = eio(clamp((lift * 1.5 - s.o * .1))); s.m.position.copy(s.p).addScaledVector(s.d, s.L * u); }); FIN.position.y = 7.7 + 2.6 * eio(clamp(lift * 1.5 - .4));
     var um = eob(ramp(t, t19 + .1, t19 + .7)); MIT.visible = um > .01; MIT.scale.setScalar(Math.max(.001, um));
-    var wb = V(XD - 4.1, 2.5, .44), b0 = V(XD - 4.1, 2.6, 3.2), ub = eob(ramp(t, t20 - .1, t20 + .4)), fl = eio(ramp(t, t20b, t20b + .7)), fly = eio(ramp(t, t20b + .8, t20b + 1.6));
+    var wb = V(XD + 10.6, 1.6, 60.69), b0 = V(XD + 9.5, 1.5, 61.9), ub = eob(ramp(t, t20 - .1, t20 + .4)), fl = eio(ramp(t, t20b, t20b + .7)), fly = eio(ramp(t, t20b + .8, t20b + 1.6));
     BEAD.visible = ub > .01 && fl < .5; BEAD.position.copy(b0); BEAD.scale.setScalar(Math.max(.001, ub) * (1 + fl * 1.5));
     LEAF.visible = fl > .3; LEAF.position.copy(b0).lerp(wb, fly); LEAF.position.y += Math.sin(fly * Math.PI) * .25; LEAF.scale.setScalar(Math.max(.05, eo((fl - .3) / .7))); LEAF.rotation.set(Math.sin(t * 3) * .12 * (1 - fly), Math.sin(t * 2.2) * .2 * (1 - fly), 0);
-    if (t < t19 - .4) shadowBox(V(XD, 4, 3), 15); else if (t < t20 - .4) shadowBox(V(XD + 3.2, 1, 6.6), 3); else shadowBox(V(XD - 3.4, 2.4, 2), 7); }
+    if (t < t19 - .4) shadowBox(V(XD, 4, 3), 15); else if (t < t20 - .4) shadowBox(V(XD + 7, 1, 62), 3); else shadowBox(V(XD + 10.4, 1.5, 61), 4); }
   // --- F: the almirah
   if (GF.visible) { var od = eio(ramp(t, t25 + .1, t25 + 1.3)); DOORS[0].rotation.y = -od * 1.95; DOORS[1].rotation.y = od * 1.95;
     for (var n = 0; n < 9; n++) { var un = eob(ramp(t, t26 + .1 + n * .07, t26 + .45 + n * .07)), bp = V(XF + (n % 3 - 1) * .42, .28 + .06 + .01, 1.35 + (Math.floor(n / 3) - 1) * .22), nbk = NINE[n]; nbk.visible = un > .01; nbk.scale.setScalar(1.5 * Math.max(.001, un)); nbk.position.copy(bp); nbk.rotation.set(0, (hsh(n) - .5) * .2, 0);
@@ -257,7 +258,7 @@ window.__seek = function (t) {
   else if (t >= t11 && t < t12 - .4) hud = [['SONE KI EENTEIN', inr(Math.round(6000000 * eio(ramp(t, t11, t12 - .8)) / 1000) * 1000)]];
   else if (t >= t12 + .4 && t < t13 + .1) hud = [['IS GHAR MEIN EENTEIN', inr(Math.round(10000 * ramp(t, t12 - .2, t12b + .9) / 100) * 100)]];
   else if (t >= t13 + .2 && t < t15 - .4) hud = [['SONE KE GHAR', inr(Math.min(600, Math.round((window.__nh || 0) / 1) + (t > t13b + 1.3 ? 600 : 0)))], ['HAR GHAR', '10,000 eent']];
-  else if (t >= t20b + .5 && t < t21 - .2) hud = [['PARAT KI MOTAI', 'baal se 500 guna patli']];
+  else if (t >= t20b + .5 && t < t22 - 1.1) hud = [['PARAT KI MOTAI', 'baal se 500 guna patli']];
   else if (t >= t25b && t < t27 - .2) hud = [['BHARAT KE GHARON MEIN', '25,000 tonne sona']];
   HUD.style.display = hud ? 'flex' : 'none'; if (hud) HUD.innerHTML = hud.map(function (h) { return '<div><small>' + h[0] + '</small>' + h[1] + '</div>'; }).join('');
   var Ls = ''; TAGS.forEach(function (g) { var on = t >= g.t0 && t < g.t1; g.d.style.display = on ? 'block' : 'none'; if (!on) return; var u = eo(ramp(t, g.t0, g.t0 + .35)) * (1 - ramp(t, g.t1 - .2, g.t1)); g.d.style.opacity = u;

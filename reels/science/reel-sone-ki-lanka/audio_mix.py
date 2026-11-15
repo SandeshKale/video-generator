@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Score + SFX + mix for 'Sooraj ko andar kaise laaye?' (own synthesis: tanpura floor in D, glass bells for light, soft plucks, low frame drum).
 python3 audio_mix.py -> audio/final.wav (48 kHz) + audio/mix-report.json. SFX come from the page's own event list (audio/events.json).
-Jatayu score: high wind bed, bowed pad in C, santoor-like plucks, slow frame drum; minor until the comeback (scene 9), major after; a hole in the music when the vultures vanish.
+Sone ki Lanka score: palace-court feel, soft air bed, bowed pad in C, santoor-like plucks, slow frame drum; minor until the comeback (scene 9), major after; a hole in the music when the vultures vanish.
 Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, voice over music+SFX median >= 19 dB, min >= 13 dB."""
 import json, os, re, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
