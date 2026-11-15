@@ -1,0 +1,149 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Sone ki Lanka mockup</title><style>
+@font-face{font-family:An;font-weight:700;src:url(../../../../assets/fonts/antonio/antonio-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:RH;font-weight:500;src:url(../../../../assets/fonts/red-hat-mono/red-hat-mono-latin-500-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(../../../../assets/fonts/inter/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(../../../../assets/fonts/inter/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#1a1410}
+#stage{position:absolute;inset:0;overflow:hidden}canvas{position:absolute;left:0;top:0}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,0) 52%,rgba(20,10,4,.5) 100%)}
+.scr{position:absolute;left:0;width:1080px}
+.kick{position:absolute;left:162px;top:206px;font:500 22px RH;letter-spacing:.16em;color:#f3e6c8;text-transform:uppercase;white-space:nowrap;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+.kick i{display:inline-block;width:12px;height:12px;background:#e7b53c;margin-right:12px;transform:rotate(45deg)}
+.head{position:absolute;left:162px;top:246px;width:756px;font:700 84px/1.06 An;letter-spacing:-.01em;color:#fbf3df;text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.8)}
+.head b{font-weight:700;background:#e7b53c;color:#231405;padding:0 14px;text-shadow:none}
+.tag{position:absolute;font:600 26px/1.25 Inter;color:#fbf3df;background:rgba(26,16,8,.86);border-left:4px solid #e7b53c;padding:10px 16px 11px;white-space:nowrap}
+.tag small{display:block;font:500 15px RH;letter-spacing:.12em;color:#e7b53c;margin-bottom:3px;text-transform:uppercase}
+.tag.r{border-color:#c8452c}.tag.r small{color:#f08a6c}
+.src{position:absolute;left:162px;top:1284px;width:756px;font:500 14px RH;color:#e9dcc0;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 4px #000}
+#cap{position:absolute;left:162px;top:1344px;width:756px;text-align:center;font:800 40px/1.25 Inter;color:#f4f1e8;text-shadow:0 3px 10px rgba(0,0,0,.85),0 1px 2px #000}
+#cap em{font-style:normal;color:#f2c14e}
+svg{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><canvas id="gl" width="1080" height="1920"></canvas><div class="vig"></div>
+<div class="scr" style="top:0;height:640px;background:linear-gradient(180deg,rgba(22,13,6,.74) 0,rgba(22,13,6,.42) 60%,rgba(22,13,6,0) 100%)"></div>
+<div class="scr" style="top:1200px;height:720px;background:linear-gradient(0deg,rgba(22,13,6,.94) 0,rgba(22,13,6,.72) 60%,rgba(22,13,6,0) 100%)"></div>
+<svg id="lines" width="1080" height="1920"></svg><div id="ov"></div><div id="cap"></div></div>
+<script src="../../../../assets/animations/three/three.min.js"></script>
+<script>
+window.__ready = false;
+var S_ = +(new URLSearchParams(location.search).get('s') || 1), T = THREE, W = 1080, H = 1920;
+var IM = {}, LIST = ['tex/brown_photostudio_02.jpg', 'tex/aarfontein_sunrise.jpg', 'tex/red_brick_03_diff.jpg', 'tex/red_brick_03_nor.jpg', 'tex/red_brick_03_rough.jpg', 'tex/marble_01_diff.jpg', 'tex/marble_01_nor.jpg', 'tex/marble_01_rough.jpg', 'tex/white_sandstone_blocks_02_diff.jpg', 'tex/white_sandstone_blocks_02_nor.jpg', 'tex/white_sandstone_blocks_02_rough.jpg', 'tex/metal_plate_rough.jpg', '../research/film-stills/lanka-28.jpg'];
+Promise.all(['700 84px An', '500 20px RH', '600 20px Inter', '800 20px Inter'].map(function (f) { return document.fonts.load(f); }).concat(LIST.map(function (n) { return new Promise(function (res) { var i = new Image(); i.onload = i.onerror = function () { res(); }; i.src = n; IM[n] = i; }); }))).then(main);
+function main() {
+  var R = new T.WebGLRenderer({ canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true });
+  R.setPixelRatio(1); R.setSize(W, H, false); R.outputColorSpace = T.SRGBColorSpace; R.toneMapping = T.ACESFilmicToneMapping; R.toneMappingExposure = 1.2; R.shadowMap.enabled = true; R.shadowMap.type = T.PCFSoftShadowMap;
+  var S = new T.Scene(), cam = new T.PerspectiveCamera(30, W / H, .05, 4000), V = function (x, y, z) { return new T.Vector3(x, y, z); };
+  function tx(n, rep, srgb) { var t = new T.Texture(IM[n]); if (srgb) t.colorSpace = T.SRGBColorSpace; t.wrapS = t.wrapT = T.RepeatWrapping; if (rep) t.repeat.set(rep[0], rep[1]); t.anisotropy = 8; t.needsUpdate = true; return t; }
+  function pbr(base, rep, o) { return new T.MeshStandardMaterial(Object.assign({ map: tx('tex/' + base + '_diff.jpg', rep, true), normalMap: tx('tex/' + base + '_nor.jpg', rep), roughnessMap: tx('tex/' + base + '_rough.jpg', rep), roughness: 1, metalness: 0 }, o || {})); }
+  var outdoor = S_ >= 3;
+  // environment: a real photographed studio (or a real sunrise) lights and reflects in everything
+  var envT = tx(outdoor ? 'tex/aarfontein_sunrise.jpg' : 'tex/brown_photostudio_02.jpg', null, true); envT.mapping = T.EquirectangularReflectionMapping;
+  var pm = new T.PMREMGenerator(R);
+  if (outdoor) { // the real sunrise photo plus a true-HDR sun, so gold catches hard glints
+    var EO = new T.Scene(), sk = new T.Mesh(new T.SphereGeometry(100, 48, 24), new T.MeshBasicMaterial({ map: tx('tex/aarfontein_sunrise.jpg', null, true), side: T.BackSide })); sk.scale.x = -1; EO.add(sk);
+    var sun = new T.Mesh(new T.SphereGeometry(5, 16, 8), new T.MeshBasicMaterial({ color: new T.Color(0xffd9a0).multiplyScalar(90) })); sun.position.set(55, 42, 60); EO.add(sun);
+    var sun2 = new T.Mesh(new T.SphereGeometry(9, 16, 8), new T.MeshBasicMaterial({ color: new T.Color(0xfff2d8).multiplyScalar(14) })); sun2.position.set(-70, 30, 50); EO.add(sun2);
+    S.environment = pm.fromScene(EO, 0).texture; }
+  else { // a softbox studio with real HDR intensities, so polished gold gets hard bright highlights
+    var ES = new T.Scene(); ES.add(new T.Mesh(new T.BoxGeometry(40, 24, 40), new T.MeshBasicMaterial({ color: 0x1c130b, side: T.BackSide })));
+    [[0, 11, 0, 16, 10, 0xfff0d6, 9, 'y'], [-14, 4, 6, 9, 12, 0xffd9a0, 14, 'x'], [14, 5, -4, 7, 10, 0xcfe0ff, 7, 'x'], [0, 3, 16, 14, 5, 0xffe6c0, 6, 'z'], [6, 1.5, -17, 10, 2, 0xff9a4a, 5, 'z']].forEach(function (q) { var m = new T.Mesh(new T.PlaneGeometry(q[3], q[4]), new T.MeshBasicMaterial({ color: new T.Color(q[5]).multiplyScalar(q[6]), side: T.DoubleSide })); m.position.set(q[0], q[1], q[2]); if (q[7] === 'y') m.rotation.x = Math.PI / 2; if (q[7] === 'x') m.rotation.y = Math.PI / 2; ES.add(m); });
+    S.environment = pm.fromScene(ES, .02).texture; }
+  if (outdoor) { S.background = envT; S.backgroundBlurriness = .02; S.backgroundIntensity = 1.15; } else { S.background = new T.Color(0x1f1710); S.fog = new T.Fog(0x1f1710, 16, 52); }
+  var key = new T.DirectionalLight(0xffe2b0, outdoor ? 3.2 : 2.6); key.castShadow = true; key.shadow.mapSize.set(4096, 4096); key.shadow.bias = -.0004; key.shadow.normalBias = .02; S.add(key); S.add(key.target);
+  var rim = new T.DirectionalLight(0x9fc4ff, .9); S.add(rim);
+  function shadowBox(c, r) { key.shadow.camera.left = -r; key.shadow.camera.right = r; key.shadow.camera.top = r; key.shadow.camera.bottom = -r; key.shadow.camera.near = .1; key.shadow.camera.far = r * 8; key.target.position.copy(c); key.shadow.camera.updateProjectionMatrix(); }
+  var gold = new T.MeshStandardMaterial({ color: 0xffc04a, metalness: 1, roughness: .16, roughnessMap: tx('tex/metal_plate_rough.jpg', [.6, .6]), envMapIntensity: outdoor ? 2.0 : 1.25 });
+  gold.onBeforeCompile = function (sh) { sh.fragmentShader = sh.fragmentShader.replace('#include <roughnessmap_fragment>', 'float roughnessFactor = roughness;\n#ifdef USE_ROUGHNESSMAP\n roughnessFactor = roughness * (0.75 + 0.9 * texture2D( roughnessMap, vRoughnessMapUv ).g);\n#endif'); };
+  function brickNormals(cols, rows, rep) { var c = document.createElement('canvas'); c.width = 2048; c.height = 2048; var g = c.getContext('2d'), cw = 2048 / cols, rh = 2048 / rows; for (var y = 0; y < rows; y++) for (var x = -1; x < cols; x++) { var i = y * 131 + x * 17, nx = (hsh(i) - .5) * .16, ny = (hsh(i + 9.1) - .5) * .16; g.fillStyle = 'rgb(' + Math.round((nx + 1) * 127.5) + ',' + Math.round((ny + 1) * 127.5) + ',255)'; g.fillRect((x + (y % 2) * .5) * cw, y * rh, cw, rh); g.fillStyle = 'rgba(96,96,200,.9)'; g.fillRect((x + (y % 2) * .5) * cw, y * rh, cw, 2); g.fillRect((x + (y % 2) * .5) * cw, y * rh, 2, rh); } var t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; t.repeat.set(rep[0], rep[1]); t.anisotropy = 8; return t; }
+  var clay = pbr('red_brick_03', [.16, .1]);
+  var BW = .23, BH = .075, BD = .11;                      // a standard Indian brick, metres
+  function brick(mat, par) { var g = new T.BoxGeometry(BW, BH, BD, 1, 1, 1), m = new T.Mesh(g, mat); m.castShadow = m.receiveShadow = true; (par || S).add(m); return m; }
+  function ground(mat, size) { var m = new T.Mesh(new T.PlaneGeometry(size, size), mat); m.rotation.x = -Math.PI / 2; m.receiveShadow = true; S.add(m); return m; }
+  function P(c, az, el, d, up) { var a = az * Math.PI / 180, e = el * Math.PI / 180; cam.position.set(c.x + d * Math.sin(a) * Math.cos(e), c.y + d * Math.sin(e), c.z + d * Math.cos(a) * Math.cos(e)); cam.lookAt(c.x, c.y - (up == null ? .021 : up) * d, c.z); cam.updateMatrixWorld(); }
+  var ov = document.getElementById('ov'), tags = [];
+  function el(cls, html, x, y) { var d = document.createElement('div'); d.className = cls; d.innerHTML = html; if (x != null) { d.style.left = x + 'px'; d.style.top = y + 'px'; } ov.appendChild(d); return d; }
+  function tag(html, x, y, anchor, cls) { tags.push({ d: el('tag ' + (cls || ''), html, x, y), a: anchor, x: x, y: y, cls: cls }); }
+  function head(k, h, src, cap) { el('kick', '<i></i>' + k); el('head', h); if (src) el('src', src); document.getElementById('cap').innerHTML = cap; }
+  var hsh = function (i) { var x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+
+  if (S_ === 1) {   // hook: the film's throne (official still), and under it our first real gold brick
+    ground(pbr('marble_01', [10, 10], { roughness: .55, envMapIntensity: .8 }), 60);
+    var im = IM['../research/film-stills/lanka-28.jpg'], st = new T.Mesh(new T.PlaneGeometry(4.6, 4.6 * im.height / im.width), new T.MeshBasicMaterial({ map: tx('../research/film-stills/lanka-28.jpg', null, true), toneMapped: false })); st.position.set(0, 3.0, -1.6); st.rotation.y = -.09; S.add(st);
+    var fr = new T.Mesh(new T.BoxGeometry(4.74, 4.6 * im.height / im.width + .14, .06), gold); fr.position.copy(st.position).add(V(0, 0, -.04)); fr.rotation.y = -.09; fr.castShadow = true; S.add(fr);
+    var ped = new T.Mesh(new T.BoxGeometry(2.6, 1.0, 1.1), pbr('marble_01', [1.3, .5], { roughness: .45 })); ped.position.set(0, .5, 1.3); ped.castShadow = ped.receiveShadow = true; S.add(ped);
+    for (var i = 0; i < 9; i++) { var b = brick(gold); var r = Math.floor(i / 3), c = i % 3; b.scale.setScalar(2.6); b.position.set((c - 1) * .64 + (r % 2) * .14, 1.098 + r * .196, 1.3); b.rotation.y = (hsh(i) - .5) * .12; if (r === 2 && c !== 1) b.visible = false; }
+    key.position.set(4, 7, 6); shadowBox(V(0, 0, 0), 6); rim.position.set(-5, 3, -4);
+    P(V(0, 2.05, 0), 10, 6, 14.2);
+    head('Ramayana · Part 1 · Ravana ka sinhasan', 'Sone ki Lanka.<br>Itna <b>sona</b><br>hai bhi?', 'film still © Prime Focus Studios · DNEG · via TMDB · shown for comment', 'Film mein Ravana ki Lanka, <em>sone</em> ki hai.');
+    tag('<small>film mein</small>sinhasan par asli 24 carat sone ka vark', 170, 960, V(-1.3, 2.4, -1.6));
+  }
+  if (S_ === 2) {   // the unit: one clay brick against one gold brick, on a balance
+    ground(pbr('marble_01', [10, 10], { roughness: .5, envMapIntensity: .8 }), 60);
+    var brass = new T.MeshStandardMaterial({ color: 0xb98a3a, metalness: 1, roughness: .38 }), dark = new T.MeshStandardMaterial({ color: 0x2a1d12, metalness: .2, roughness: .6 });
+    var base = new T.Mesh(new T.CylinderGeometry(.34, .4, .08, 48), dark); base.position.y = .04; base.castShadow = true; S.add(base);
+    var post = new T.Mesh(new T.CylinderGeometry(.035, .045, 1.25, 24), brass); post.position.y = .7; post.castShadow = true; S.add(post);
+    var beam = new T.Group(); beam.position.y = 1.32; beam.rotation.z = -.2; S.add(beam);
+    var bar = new T.Mesh(new T.BoxGeometry(2.3, .05, .06), brass); bar.castShadow = true; beam.add(bar);
+    [-1, 1].forEach(function (sd) { var hang = new T.Group(); hang.position.set(sd * 1.1, 0, 0); hang.rotation.z = .2; beam.add(hang);
+      for (var k = 0; k < 3; k++) { var a = k * 2.094, ch = new T.Mesh(new T.CylinderGeometry(.006, .006, .78, 6), brass); ch.position.set(Math.cos(a) * .17, -.37, Math.sin(a) * .17); ch.rotation.z = Math.cos(a) * .42; ch.rotation.x = -Math.sin(a) * .42; hang.add(ch); }
+      var pan = new T.Mesh(new T.CylinderGeometry(.36, .3, .035, 48), brass); pan.position.y = -.74; pan.castShadow = pan.receiveShadow = true; hang.add(pan);
+      var b = brick(sd < 0 ? clay : gold, hang); b.scale.setScalar(1.75); b.position.y = -.74 + .018 + BH * 1.75 / 2; b.rotation.y = sd * .35; });
+    key.position.set(3, 6, 5); shadowBox(V(0, .6, 0), 3.2); rim.position.set(-4, 2.5, -3);
+    P(V(0, .75, 0), -16, 7, 11);
+    head('Naap ki ikaai · ek eent', 'Mitti ki eent: 3 kilo.<br>Sone ki eent:<br><b>37 kilo</b>.', 'our arithmetic: brick 23 × 11 × 7.5 cm · gold 19.3 g per cm³', 'Wahi eent, sone ki ho, to <em>saintees</em> kilo.');
+    tag('<small>mitti</small>3 kilo', 190, 620, V(-1.06, .92, 0)); tag('<small>sona</small>37 kilo · ek bori cement se zyada', 420, 1180, V(1.14, .5, 0));
+  }
+  if (S_ === 3) {   // all the gold ever mined, as one cube of bricks, beside a cricket pitch and a house
+    var grass = new T.MeshStandardMaterial({ color: 0x5c7a3a, roughness: 1 }); ground(grass, 900);
+    var Cb = 22.5, bump = (function () { var c = document.createElement('canvas'); c.width = 1024; c.height = 1024; var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 1024, 1024); g.strokeStyle = '#555'; g.lineWidth = 3; for (var y = 0; y < 16; y++) { g.beginPath(); g.moveTo(0, y * 64); g.lineTo(1024, y * 64); g.stroke(); for (var x = 0; x < 6; x++) { var xx = x * 196 + (y % 2) * 98; g.beginPath(); g.moveTo(xx, y * 64); g.lineTo(xx, y * 64 + 64); g.stroke(); } } var t = new T.CanvasTexture(c); t.wrapS = t.wrapT = T.RepeatWrapping; t.repeat.set(16, 18); t.anisotropy = 8; return t; })();
+    var cubeMat = gold.clone(); cubeMat.roughnessMap = null; cubeMat.roughness = .3; cubeMat.normalMap = brickNormals(14, 42, [7, 7]); cubeMat.roughness = .2; cubeMat.envMapIntensity = 1.6;
+    var cube = new T.Mesh(new T.BoxGeometry(Cb, Cb, Cb), cubeMat); cube.position.set(0, Cb / 2, 0); cube.castShadow = cube.receiveShadow = true; S.add(cube);
+    var pitch = new T.Mesh(new T.PlaneGeometry(3.05, 20.12), new T.MeshStandardMaterial({ color: 0xcdb98a, roughness: 1 })); pitch.rotation.x = -Math.PI / 2; pitch.position.set(17.5, .03, 2); pitch.receiveShadow = true; S.add(pitch);
+    [-1, 1].forEach(function (e) { for (var k = -1; k <= 1; k++) { var st = new T.Mesh(new T.CylinderGeometry(.03, .03, .71, 8), new T.MeshStandardMaterial({ color: 0xf5f0e0 })); st.position.set(17.5 + k * .115, .36, 2 + e * 10.06); st.castShadow = true; S.add(st); } });
+    var house = new T.Group(); var wall = new T.Mesh(new T.BoxGeometry(6, 3, 4.5), pbr('red_brick_03', [3, 1.5])); wall.position.y = 1.5; wall.castShadow = wall.receiveShadow = true; house.add(wall);
+    var roof = new T.Mesh(new T.BoxGeometry(6.6, .22, 5.1), new T.MeshStandardMaterial({ color: 0x8d8478, roughness: .9 })); roof.position.y = 3.1; roof.castShadow = true; house.add(roof);
+    var door = new T.Mesh(new T.BoxGeometry(1, 2, .08), new T.MeshStandardMaterial({ color: 0x2f5d6b, roughness: .7 })); door.position.set(-.8, 1, 2.27); house.add(door); house.position.set(-19, 0, 6); house.rotation.y = .35; S.add(house);
+    function person(x, z, col) { var g = new T.Group(), m = new T.MeshStandardMaterial({ color: col, roughness: .8 }), sk = new T.MeshStandardMaterial({ color: 0x9a6a48, roughness: .8 }); var b = new T.Mesh(new T.BoxGeometry(.42, .6, .24), m); b.position.y = 1.1; var l = new T.Mesh(new T.BoxGeometry(.38, .8, .22), new T.MeshStandardMaterial({ color: 0x33384a })); l.position.y = .4; var h = new T.Mesh(new T.BoxGeometry(.28, .28, .28), sk); h.position.y = 1.56; [b, l, h].forEach(function (q) { q.castShadow = true; g.add(q); }); g.position.set(x, 0, z); S.add(g); return g; }
+    person(13, 12.5, 0xd4521c); person(3, 14, 0xfbf3df); person(-13.4, 10.5, 0x2e7d6b); person(-12.6, 10.9, 0xe7b53c);
+    key.position.set(40, 46, 34); shadowBox(V(0, 8, 0), 44); rim.position.set(-30, 20, -30);
+    P(V(-3, 8.5, 0), 31, 2.5, 128);
+    head('Duniya ka saara sona · ek jagah', 'Ek cube.<br><b>22 metre</b>.<br>Bas.', 'world gold council: about 219,891 tonnes mined in all history (end 2025) · cube size: our arithmetic', 'Aaj tak ka <em>saara</em> sona: ek cricket pitch jitna cube.');
+    tag('<small>aaj tak khoda gaya sara sona</small>lagbhag 2.2 lakh tonne', 170, 560, V(-4, 22.5, 11.25));
+    tag('<small>cricket pitch</small>20 metre', 660, 1150, V(17.5, 0, 6)); tag('<small>ek pakka ghar</small>', 170, 1150, V(-19, 3, 8));
+  }
+  if (S_ === 4) {   // re-stack the same gold as houses: one village, not a Lanka
+    var soil = new T.MeshStandardMaterial({ color: 0x8a6f4c, roughness: 1 }); ground(soil, 2000);
+    var N = 600, hm = new T.InstancedMesh(new T.BoxGeometry(6, 3, 4.5), gold.clone(), N), rf = new T.InstancedMesh(new T.BoxGeometry(6.5, .25, 5), gold.clone(), N); hm.material.roughnessMap = null; hm.material.roughness = .2; hm.material.normalMap = brickNormals(10, 20, [2.6, 2]); rf.material.roughnessMap = null; rf.material.roughness = .34; rf.material.color.set(0xe9a93a);
+    hm.castShadow = hm.receiveShadow = rf.castShadow = true; var M = new T.Matrix4(), Q = new T.Quaternion(), k = 0;
+    for (var gx = -15; gx < 15 && k < N; gx++) for (var gz = -10; gz < 10 && k < N; gz++) { var x = gx * 11 + (hsh(k * 3.1) - .5) * 3 + (Math.abs(gx) % 5 === 0 ? 5 : 0), z = gz * 9.5 + (hsh(k * 5.7) - .5) * 2.4 + (Math.abs(gz) % 4 === 0 ? 5 : 0); Q.setFromAxisAngle(V(0, 1, 0), (hsh(k * 7.3) - .5) * .3); var hh = .85 + hsh(k * 2.3) * .5; M.compose(V(x, 1.5 * hh, z), Q, V(1, hh, 1)); hm.setMatrixAt(k, M); M.compose(V(x, 3 * hh + .12, z), Q, V(1, 1, 1)); rf.setMatrixAt(k, M); k++; }
+    S.add(hm); S.add(rf);
+    var road = new T.Mesh(new T.PlaneGeometry(400, 5), new T.MeshStandardMaterial({ color: 0x6b5a43, roughness: 1 })); road.rotation.x = -Math.PI / 2; road.position.y = .02; S.add(road);
+    key.position.set(120, 110, 90); shadowBox(V(0, 0, 0), 190); rim.position.set(-80, 40, -60);
+    S.fog = new T.Fog(0xe9c9a0, 260, 900); P(V(-6, 0, 4), 28, 10, 300, .06);
+    head('Wahi sona · eenton mein', 'Saara sona:<br>sirf <b>600 ghar</b>.<br>Ek gaon.', 'our estimate: about 60 lakh gold bricks, 10,000 bricks per two-room house', 'Poori duniya ka sona. <em>Ek</em> gaon. Lanka nahi.');
+    tag('<small>lagbhag</small>60 lakh sone ki eentein', 170, 640, V(-90, 3, -60)); tag('<small>ek ghar</small>10,000 eent', 610, 1150, V(40, 3, 60));
+  }
+  if (S_ === 5) {   // the answer: gold leaf on white stone, as Valmiki describes and as the film's art team did
+    ground(pbr('marble_01', [40, 40], { roughness: .5, envMapIntensity: .8 }), 200);
+    var stone = pbr('white_sandstone_blocks_02', [1.6, 2.4]), stoneB = pbr('white_sandstone_blocks_02', [3.2, .5]);
+    var gate = new T.Group(); S.add(gate);
+    [-1, 1].forEach(function (sd) { var p = new T.Mesh(new T.BoxGeometry(1.0, 5.2, 1.0), stone); p.position.set(sd * 1.9, 2.6, 0); p.castShadow = p.receiveShadow = true; gate.add(p); var capm = new T.Mesh(new T.BoxGeometry(1.3, .28, 1.3), gold); capm.position.set(sd * 1.9, 5.3, 0); capm.castShadow = true; gate.add(capm); var bs = new T.Mesh(new T.BoxGeometry(1.3, .3, 1.3), stone); bs.position.set(sd * 1.9, .15, 0); bs.castShadow = true; gate.add(bs); });
+    var lint = new T.Mesh(new T.BoxGeometry(5.6, .9, 1.1), stoneB); lint.position.y = 5.9; lint.castShadow = true; gate.add(lint);
+    var arch = new T.Mesh(new T.TorusGeometry(1.42, .2, 20, 64, Math.PI), gold); arch.position.set(0, 4.0, .1); arch.castShadow = true; gate.add(arch);
+    var fin = new T.Mesh(new T.ConeGeometry(.42, 1.1, 8), gold); fin.position.y = 6.9; fin.castShadow = true; gate.add(fin); var ball = new T.Mesh(new T.SphereGeometry(.3, 32, 16), gold); ball.position.y = 6.45; gate.add(ball);
+    // the door: left leaf already gilded, right leaf bare wood, a sheet of leaf half way across
+    var wood = new T.MeshStandardMaterial({ color: 0x5a3a22, roughness: .7 }); var dl = new T.Mesh(new T.BoxGeometry(1.38, 3.9, .1), gold); dl.position.set(-.7, 1.95, -.2); dl.castShadow = true; gate.add(dl);
+    var dr = new T.Mesh(new T.BoxGeometry(1.38, 3.9, .1), wood); dr.position.set(.7, 1.95, -.2); dr.castShadow = true; gate.add(dr);
+    var leafM = gold.clone(); leafM.roughness = .12; leafM.side = T.DoubleSide; var lg = new T.PlaneGeometry(.75, .75, 12, 12), pp = lg.attributes.position; for (var i2 = 0; i2 < pp.count; i2++) { var u = pp.getX(i2) / .75 + .5; pp.setZ(i2, Math.sin(u * 3.1) * .1 * u + Math.sin(pp.getY(i2) * 9) * .012); } lg.computeVertexNormals();
+    var leaf = new T.Mesh(lg, leafM); leaf.position.set(.5, 2.75, -.06); leaf.rotation.y = -.3; leaf.castShadow = true; gate.add(leaf);
+    for (var q = 0; q < 6; q++) { var f = new T.Mesh(new T.PlaneGeometry(.66, .74), leafM); f.position.set(.37 + (q % 2) * .67, .42 + Math.floor(q / 2) * .76, -.145); gate.add(f); }
+    key.position.set(5, 9, 7); shadowBox(V(0, 3, 0), 8); rim.position.set(-6, 4, -5);
+    P(V(0, 3.3, 0), -19, 1.5, 27);
+    head('To phir sone ki Lanka kaise?', 'Thos nahi.<br>Sone ka <b>vark</b>.', 'Valmiki, Sundara Kanda 2: white buildings, golden doors, windows and archways · gold leaf about 0.1 micron', 'Ek gram sona, aadha <em>square metre</em> dhak deta hai.');
+    tag('<small>pathar · safed</small>jaisa Valmiki ne likha', 170, 640, V(-1.9, 4.2, .5)); tag('<small>sirf upar ki parat</small>1 gram = aadha square metre', 440, 1180, V(.6, 2.3, 0));
+  }
+  R.render(S, cam);
+  var v3 = new T.Vector3(), Ls = ''; tags.forEach(function (g) { v3.copy(g.a).project(cam); var ax = (v3.x + 1) / 2 * W, ay = (1 - v3.y) / 2 * H, w = g.d.offsetWidth, h = g.d.offsetHeight, bx = Math.min(g.x + w, Math.max(g.x, ax)), by = ay < g.y ? g.y : g.y + h, col = g.cls === 'r' ? '#f08a6c' : '#e7b53c';
+    Ls += '<path d="M' + ax + ' ' + ay + ' L' + bx + ' ' + by + '" stroke="' + col + '" stroke-width="2.5" fill="none"/><circle cx="' + ax + '" cy="' + ay + '" r="7" fill="none" stroke="' + col + '" stroke-width="2.5"/>'; });
+  document.getElementById('lines').innerHTML = Ls; window.__ready = true;
+}
+</script></body></html>
