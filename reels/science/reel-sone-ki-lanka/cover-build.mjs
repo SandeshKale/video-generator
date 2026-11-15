@@ -4,7 +4,7 @@ const H = dirname(fileURLToPath(import.meta.url)), root = join(H, '../../../'), 
 const srv = spawn('python3', ['-m', 'http.server', '8845', '--bind', '127.0.0.1'], { cwd: root, stdio: 'ignore' }); await new Promise(r => setTimeout(r, 800));
 const b = await chromium.launch({ args: ['--no-sandbox', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] }); let p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
 await p.goto('http://127.0.0.1:8845/reels/science/reel-sone-ki-lanka/site/index.html'); await p.waitForFunction('window.__ready===true', null, { timeout: 150000 });
-await p.evaluate(() => { const t = window.__dbg('t9 + .2'); window.__seek(t); window.__dbg("var q=P(V(XB+3,4.5,0),34,3,118); cam.position.copy(q.p); cam.lookAt(q.l); cam.updateMatrixWorld(); R.render(S,cam)"); });
+await p.evaluate(() => { const t = window.__dbg('t9 + .2'); window.__seek(t); window.__dbg("var q=P(V(XB+3,22,0),34,3,135); cam.position.copy(q.p); cam.lookAt(q.l); cam.updateMatrixWorld(); R.render(S,cam)"); });
 await p.waitForTimeout(300); const url = await p.evaluate(() => document.getElementById('gl').toDataURL('image/jpeg', .92)); await p.close();
 const prof = fs.readFileSync(join(root, 'assets/brand/nerdlogic-profile.jpg')).toString('base64');
 const html = `<!doctype html><meta charset=utf8><style>
