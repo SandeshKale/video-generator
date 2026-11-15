@@ -1,0 +1,202 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "फ़िल्म में रावण की लंका, सोने की है।",
+   "A": "Film mein Ravan ki Lanka, sone ki hai.",
+   "cap": "Film mein Ravan ki Lanka, sone ki hai."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "पर दुनिया में, इतना सोना है भी?",
+   "A": "Par duniya mein, itna sona hai bhi?",
+   "cap": "Par duniya mein, itna sona hai bhi?"
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "चलिए, ईंट से नापते हैं।",
+   "A": "Chaliye, eent se naapte hain.",
+   "cap": "Chaliye, eent se naapte hain."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "आपके घर की एक ईंट: तीन किलो।",
+   "A": "Aapke ghar ki ek eent: teen kilo.",
+   "cap": "Aapke ghar ki ek eent: teen kilo."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "वही ईंट सोने की हो, तो सैंतीस किलो!",
+   "A": "Wahi eent sone ki ho, to saintees kilo!",
+   "cap": "Wahi eent sone ki ho, to saintees kilo!"
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "अब दुनिया का सारा सोना इकट्ठा कीजिए।",
+   "A": "Ab duniya ka saara sona ikattha kijiye.",
+   "cap": "Ab duniya ka saara sona ikattha kijiye."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "जितना आज तक, ज़मीन से निकला है।",
+   "A": "Jitna aaj tak, zameen se nikla hai.",
+   "cap": "Jitna aaj tak, zameen se nikla hai."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "सिर्फ़ एक डिब्बा बनेगा: बाईस मीटर का।",
+   "A": "Sirf ek dibba banega: baees metre ka.",
+   "cap": "Sirf ek dibba banega: baees metre ka."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "एक क्रिकेट पिच जितना।",
+   "A": "Ek cricket pitch jitna.",
+   "cap": "Ek cricket pitch jitna."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "अब इसे खोल के, ईंटें बनाते हैं।",
+   "A": "Ab ise khol ke, eentein banate hain.",
+   "cap": "Ab ise khol ke, eentein banate hain."
+  },
+  {
+   "id": "s11",
+   "g": "g11",
+   "B": "लगभग साठ लाख ईंटें।",
+   "A": "Lagbhag saath lakh eentein.",
+   "cap": "Lagbhag saath lakh eentein."
+  },
+  {
+   "id": "s12",
+   "g": "g12",
+   "B": "एक पक्के घर में, दस हज़ार ईंट लगती हैं।",
+   "A": "Ek pakke ghar mein, das hazaar eent lagti hain.",
+   "cap": "Ek pakke ghar mein, das hazaar eent lagti hain."
+  },
+  {
+   "id": "s13",
+   "g": "g13",
+   "B": "तो कुल कितने घर बने? सिर्फ़ छह सौ।",
+   "A": "To kul kitne ghar bane? Sirf chhe sau.",
+   "cap": "To kul kitne ghar bane? Sirf chhe sau."
+  },
+  {
+   "id": "s14",
+   "g": "g14",
+   "B": "पूरी दुनिया का सोना: एक गाँव। लंका नहीं।",
+   "A": "Poori duniya ka sona: ek gaon. Lanka nahi.",
+   "cap": "Poori duniya ka sona: ek gaon. Lanka nahi."
+  },
+  {
+   "id": "s15",
+   "g": "g15",
+   "B": "तो क्या सोने की लंका झूठ है?",
+   "A": "To kya sone ki Lanka jhooth hai?",
+   "cap": "To kya sone ki Lanka jhooth hai?"
+  },
+  {
+   "id": "s16",
+   "g": "g16",
+   "B": "नहीं। वाल्मीकि ने लिखा है:",
+   "A": "Nahi. Valmiki ne likha hai:",
+   "cap": "Nahi. Valmiki ne likha hai:"
+  },
+  {
+   "id": "s17",
+   "g": "g17",
+   "B": "सफ़ेद महल, और सोने के दरवाज़े, खिड़कियाँ, और दीवार।",
+   "A": "Safed mahal, aur sone ke darwaze, khidkiyan, aur deewar.",
+   "cap": "Safed mahal, aur sone ke darwaze, khidkiyan, aur deewar."
+  },
+  {
+   "id": "s18",
+   "g": "g18",
+   "B": "यानी पत्थर के ऊपर, सोने की पतली परत।",
+   "A": "Yaani pathar ke upar, sone ki patli parat.",
+   "cap": "Yaani pathar ke upar, sone ki patli parat."
+  },
+  {
+   "id": "s19",
+   "g": "g19",
+   "B": "जैसे मिठाई पर, चाँदी का वर्क।",
+   "A": "Jaise mithai par, chaandi ka vark.",
+   "cap": "Jaise mithai par, chaandi ka vark."
+  },
+  {
+   "id": "s20",
+   "g": "g20",
+   "B": "एक ग्राम सोना, एक छोटी खिड़की ढक देता है।",
+   "A": "Ek gram sona, ek chhoti khidki dhak deta hai.",
+   "cap": "Ek gram sona, ek chhoti khidki dhak deta hai."
+  },
+  {
+   "id": "s21",
+   "g": "g21",
+   "B": "फ़िल्म वालों ने भी यही किया।",
+   "A": "Film walon ne bhi yahi kiya.",
+   "cap": "Film walon ne bhi yahi kiya."
+  },
+  {
+   "id": "s22",
+   "g": "g22",
+   "B": "रावण का सिंहासन फ़ाइबर का है, ऊपर असली सोने का वर्क।",
+   "A": "Ravan ka sinhasan fibre ka hai, upar asli sone ka vark.",
+   "cap": "Ravan ka sinhasan fibre ka hai, upar asli sone ka vark."
+  },
+  {
+   "id": "s23",
+   "g": "g23",
+   "B": "ऐसी और कहानियों के लिए, फ़ॉलो कीजिए।",
+   "A": "Aisi aur kahaniyon ke liye, follow kijiye.",
+   "cap": "Aisi aur kahaniyon ke liye, follow kijiye."
+  },
+  {
+   "id": "s24",
+   "g": "g24",
+   "B": "और असली सोने की लंका?",
+   "A": "Aur asli sone ki Lanka?",
+   "cap": "Aur asli sone ki Lanka?"
+  },
+  {
+   "id": "s25",
+   "g": "g25",
+   "B": "भारत के घरों में, पच्चीस हज़ार टन सोना रखा है।",
+   "A": "Bharat ke gharon mein, pachchees hazaar ton sona rakha hai.",
+   "cap": "Bharat ke gharon mein, pachchees hazaar ton sona rakha hai."
+  },
+  {
+   "id": "s26",
+   "g": "g26",
+   "B": "दुनिया की हर नौ में से एक ईंट, हमारी अलमारी में।",
+   "A": "Duniya ki har nau mein se ek eent, hamari almaari mein.",
+   "cap": "Duniya ki har nau mein se ek eent, hamari almaari mein."
+  },
+  {
+   "id": "s27",
+   "g": "g27",
+   "B": "शेयर कीजिए। नर्डलॉजिक डॉट सी ओ।",
+   "A": "Share kijiye. nerdlogic.co",
+   "cap": "Share kijiye. nerdlogic.co"
+  }
+ ],
+ "pause_after": {
+  "s2": 0.9,
+  "s5": 0.8,
+  "s9": 0.8,
+  "s14": 1.0,
+  "s15": 0.9,
+  "s22": 0.6,
+  "s24": 0.7
+ }
+}
