@@ -296,7 +296,7 @@ window.__seek = function (t) {
   } else {
     var lit2 = eo(ramp(t, tDi - .05, tDi + .5)), hu = eo(ramp(t, tAn - .1, tAn + .8)), cov = ramp(t, tAn + .45, tAn + .9), rev = eo(ramp(t, tAn + .7, tAn + 1.6));
     F.flame.u.op.value = lit2; F.glow.u.op.value = lit2 * (1 + .06 * Math.sin(t * 9)); F.handG.position.y = lerp(-1500, 0, hu) + 6 * Math.sin(t * 1.3) * hu; F.handG.position.x = 4 * Math.sin(t * .9) * hu;
-    setChart(F.ch, [RM[0] + .5 * 1.6 * RSC, RM[1] - .866 * 1.6 * RSC], RSC, 1.6, -700, 1, .6 * (1 - .78 * cov), .28 + 1.2 * rev, 0, [0, 0], t); F.ch.cl.u.rv.value = 2;
+    setChart(F.ch, [RM[0] + .5 * 1.6 * RSC, RM[1] - .866 * 1.6 * RSC], RSC, 1.6, -700, 1 - eo(ramp(t, tEnd, tEnd + .4)), .6 * (1 - .78 * cov) * (1 - eo(ramp(t, tEnd, tEnd + .4))), .28 + 1.2 * rev, 0, [0, 0], t); F.ch.cl.u.rv.value = 2;
     F.stars.u.op.value = .7 + .5 * rev; F.win.u.op.value = 1;
     var endU0 = eo(ramp(t, tEnd, tEnd + .5)); F.sh.forEach(function (m) { m.material.color.setScalar(1 - .5 * endU0); }); F.hand.material.color.setRGB(.5 * (1 - .5 * endU0), .4 * (1 - .5 * endU0), .46 * (1 - .5 * endU0)); F.handG.visible = endU0 < .5;
   }
