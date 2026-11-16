@@ -1,0 +1,243 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "दिवाली मना ली?",
+   "A": "Diwali mana li?",
+   "cap": "Diwali mana li?"
+  },
+  {
+   "id": "s2",
+   "g": "g1",
+   "B": "देवताओं की, अभी बाक़ी है।",
+   "A": "Devtaon ki abhi baaki hai.",
+   "cap": "Devtaon ki abhi baaki hai."
+  },
+  {
+   "id": "s3",
+   "g": "g1",
+   "B": "चौबीस नवंबर।",
+   "A": "Chaubees November.",
+   "cap": "Chaubees November."
+  },
+  {
+   "id": "s4",
+   "g": "g2",
+   "B": "उस रात काशी के घाट, दस लाख से ज़्यादा दीयों से जलेंगे।",
+   "A": "Us raat Kashi ke ghaat, das lakh se zyada diyon se jalenge.",
+   "cap": "Us raat Kashi ke ghaat, das lakh se zyada diyon se jalenge."
+  },
+  {
+   "id": "s5",
+   "g": "g3",
+   "B": "पर यही रात क्यों?",
+   "A": "Par yahi raat kyon?",
+   "cap": "Par yahi raat kyon?"
+  },
+  {
+   "id": "s6",
+   "g": "g4",
+   "B": "कथा कहती है: तीन असुर भाइयों के, तीन उड़ते शहर थे।",
+   "A": "Katha kehti hai: teen asur bhaiyon ke teen udte sheher the.",
+   "cap": "Katha kehti hai: teen asur bhaiyon ke teen udte sheher the."
+  },
+  {
+   "id": "s7",
+   "g": "g4",
+   "B": "सोने का, चाँदी का, लोहे का।",
+   "A": "Sone ka, chaandi ka, lohe ka.",
+   "cap": "Sone ka, chaandi ka, lohe ka."
+  },
+  {
+   "id": "s8",
+   "g": "g5",
+   "B": "शर्त यह थी: हज़ार साल में एक बार, तीनों एक हो जाएँगे।",
+   "A": "Sharat yeh thi: hazaar saal mein ek baar, teeno ek ho jaayenge.",
+   "cap": "Sharat yeh thi: hazaar saal mein ek baar, teeno ek ho jaayenge."
+  },
+  {
+   "id": "s9",
+   "g": "g5",
+   "B": "और तभी, एक ही तीर से टूट सकते हैं।",
+   "A": "Aur tabhi, ek hi teer se toot sakte hain.",
+   "cap": "Aur tabhi, ek hi teer se toot sakte hain."
+  },
+  {
+   "id": "s10",
+   "g": "g6",
+   "B": "शिव ने इंतज़ार किया।",
+   "A": "Shiv ne intezaar kiya.",
+   "cap": "Shiv ne intezaar kiya."
+  },
+  {
+   "id": "s11",
+   "g": "g6",
+   "B": "सही पल आया।",
+   "A": "Sahi pal aaya.",
+   "cap": "Sahi pal aaya."
+  },
+  {
+   "id": "s12",
+   "g": "g6",
+   "B": "एक तीर।",
+   "A": "Ek teer.",
+   "cap": "Ek teer."
+  },
+  {
+   "id": "s13",
+   "g": "g7",
+   "B": "देवताओं ने ख़ुशी में दीये जलाए।",
+   "A": "Devtaon ne khushi mein diye jalaye.",
+   "cap": "Devtaon ne khushi mein diye jalaye."
+  },
+  {
+   "id": "s14",
+   "g": "g7",
+   "B": "यह है शास्त्र।",
+   "A": "Yeh hai shastra.",
+   "cap": "Yeh hai shastra."
+  },
+  {
+   "id": "s15",
+   "g": "g8",
+   "B": "पर महाभारत वाली कथा में, कोई तारीख़ नहीं लिखी।",
+   "A": "Par Mahabharat wali katha mein, koi tareekh nahi likhi.",
+   "cap": "Par Mahabharat wali katha mein, koi tareekh nahi likhi."
+  },
+  {
+   "id": "s16",
+   "g": "g9",
+   "B": "तो यह रात किसने चुनी?",
+   "A": "To yeh raat kisne chuni?",
+   "cap": "To yeh raat kisne chuni?"
+  },
+  {
+   "id": "s17",
+   "g": "g9",
+   "B": "आसमान ने।",
+   "A": "Aasmaan ne.",
+   "cap": "Aasmaan ne."
+  },
+  {
+   "id": "s18",
+   "g": "g10",
+   "B": "दिवाली अमावस्या थी: चाँद ग़ायब।",
+   "A": "Diwali amavasya thi: chand gayab.",
+   "cap": "Diwali amavasya thi: chand gayab."
+  },
+  {
+   "id": "s19",
+   "g": "g10",
+   "B": "पंद्रह दिन में चाँद, धरती का आधा चक्कर काटकर, पूरा हो जाता है।",
+   "A": "Pandrah din mein chand, dharti ka aadha chakkar kaat kar, poora ho jaata hai.",
+   "cap": "Pandrah din mein chand, dharti ka aadha chakkar kaat kar, poora ho jaata hai."
+  },
+  {
+   "id": "s20",
+   "g": "g11",
+   "B": "और महीने का नाम, कार्तिक, तारों के एक गुच्छे से आया: कृत्तिका।",
+   "A": "Aur mahine ka naam, Kartik, taaron ke ek guchhe se aaya: Krittika.",
+   "cap": "Aur mahine ka naam, Kartik, taaron ke ek guchhe se aaya: Krittika."
+  },
+  {
+   "id": "s21",
+   "g": "g12",
+   "B": "क्योंकि इस पूर्णिमा का चाँद, उसी के पास होता है।",
+   "A": "Kyunki is purnima ka chand, usi ke paas hota hai.",
+   "cap": "Kyunki is purnima ka chand, usi ke paas hota hai."
+  },
+  {
+   "id": "s22",
+   "g": "g13",
+   "B": "लेकिन हर साल नहीं।",
+   "A": "Lekin har saal nahi.",
+   "cap": "Lekin har saal nahi."
+  },
+  {
+   "id": "s23",
+   "g": "g13",
+   "B": "पिछले साल चाँद, कृत्तिका से सोलह डिग्री दूर था।",
+   "A": "Pichhle saal chand, Krittika se solah degree door tha.",
+   "cap": "Pichhle saal chand, Krittika se solah degree door tha."
+  },
+  {
+   "id": "s24",
+   "g": "g14",
+   "B": "इस साल, चौबीस की शाम: दो डिग्री से भी कम।",
+   "A": "Is saal, chaubees ki shaam: do degree se bhi kam.",
+   "cap": "Is saal, chaubees ki shaam: do degree se bhi kam."
+  },
+  {
+   "id": "s25",
+   "g": "g14",
+   "B": "बस तीन-चार चाँद जितनी दूरी।",
+   "A": "Bas teen-chaar chand jitni doori.",
+   "cap": "Bas teen-chaar chand jitni doori."
+  },
+  {
+   "id": "s26",
+   "g": "g15",
+   "B": "आसमान के ऐसे हिसाब चाहिए?",
+   "A": "Aasmaan ke aise hisaab chahiye?",
+   "cap": "Aasmaan ke aise hisaab chahiye?"
+  },
+  {
+   "id": "s27",
+   "g": "g15",
+   "B": "फ़ॉलो कर लो।",
+   "A": "Follow kar lo.",
+   "cap": "Follow kar lo."
+  },
+  {
+   "id": "s28",
+   "g": "g16",
+   "B": "तो चौबीस को, छत पर एक दीया रखना।",
+   "A": "To chaubees ko, chhat par ek diya rakhna.",
+   "cap": "To chaubees ko, chhat par ek diya rakhna."
+  },
+  {
+   "id": "s29",
+   "g": "g16",
+   "B": "फिर चाँद को, अँगूठे से ढकना।",
+   "A": "Phir chand ko, angoothe se dhakna.",
+   "cap": "Phir chand ko, angoothe se dhakna."
+  },
+  {
+   "id": "s30",
+   "g": "g17",
+   "B": "बगल में जो गुच्छा दिखे, वही है कार्तिक का नाम।",
+   "A": "Bagal mein jo guchha dikhe, wahi hai Kartik ka naam.",
+   "cap": "Bagal mein jo guchha dikhe, wahi hai Kartik ka naam."
+  },
+  {
+   "id": "s31",
+   "g": "g18",
+   "B": "कथा शास्त्र की।",
+   "A": "Katha shastra ki.",
+   "cap": "Katha shastra ki."
+  },
+  {
+   "id": "s32",
+   "g": "g18",
+   "B": "तारीख़ आसमान की।",
+   "A": "Tareekh aasmaan ki.",
+   "cap": "Tareekh aasmaan ki."
+  }
+ ],
+ "pause_after": {
+  "s3": 0.5,
+  "s5": 0.9,
+  "s9": 0.6,
+  "s12": 1.0,
+  "s14": 0.8,
+  "s15": 0.5,
+  "s17": 0.9,
+  "s19": 0.6,
+  "s21": 0.7,
+  "s23": 0.5,
+  "s25": 0.9,
+  "s27": 0.6,
+  "s30": 0.8
+ }
+}
