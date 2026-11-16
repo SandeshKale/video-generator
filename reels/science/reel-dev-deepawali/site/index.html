@@ -1,0 +1,52 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Dev Deepawali</title><style>
+@font-face{font-family:Baloo;font-weight:800;src:url(fonts/baloo-2-devanagari-800-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Baloo;font-weight:800;src:url(fonts/baloo-2-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Baloo;font-weight:700;src:url(fonts/baloo-2-devanagari-700-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Baloo;font-weight:700;src:url(fonts/baloo-2-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Tiro;font-weight:400;src:url(fonts/tiro-devanagari-hindi-devanagari-400-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+200C-200D,U+25CC}
+@font-face{font-family:Tiro;font-weight:400;src:url(fonts/tiro-devanagari-hindi-latin-400-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#060917}
+#stage{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden}canvas{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none}
+.scr{position:absolute;left:0;width:1080px;pointer-events:none}
+#fade{position:absolute;inset:0;background:#060917;opacity:0}#flash{position:absolute;inset:0;background:#fff1cf;opacity:0}
+.badge{position:absolute;left:162px;top:196px;height:50px;display:flex;border-radius:25px;overflow:hidden;font:700 25px/50px Baloo;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.badge em{font:800 20px Inter;font-style:normal;letter-spacing:.1em;padding:0 16px;background:#0b1026;color:#f5a623;line-height:50px}
+.badge span{padding:0 18px 0 20px;line-height:46px;border:2px solid rgba(245,166,35,.7);color:#ffd27d;background:rgba(245,166,35,.12)}
+.badge span+span{border:2px solid rgba(223,233,255,.5);border-left:0;border-radius:0 25px 25px 0;color:#dfe9ff;background:rgba(223,233,255,.12)}
+.badge span.on{background:#f5a623;color:#1a1004}.badge span+span.on{background:#dfe9ff;color:#0b1026}
+.head{position:absolute;left:162px;top:262px;width:756px;font:800 84px/1.12 Baloo;color:#fbf1dc;text-shadow:0 4px 18px rgba(0,0,0,.7),0 1px 3px rgba(0,0,0,.9)}
+.head b{background:#f5a623;color:#1a1004;padding:0 16px;border-radius:6px;text-shadow:none;font-weight:800;display:inline-block;line-height:1.12}
+.tag{position:absolute;font:700 28px/1.2 Baloo;color:#fbf1dc;background:rgba(8,12,30,.88);border-left:5px solid #f5a623;padding:8px 16px 6px;white-space:nowrap}
+.tag small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#f5a623;text-transform:uppercase;margin-bottom:2px}
+.tag.cool{border-color:#dfe9ff}.tag.cool small{color:#dfe9ff}
+.src{position:absolute;left:162px;top:1290px;width:756px;font:600 15px Inter;letter-spacing:.12em;color:#c9d3f2;text-transform:uppercase;text-shadow:0 1px 4px #000;white-space:nowrap}
+#cap{position:absolute;left:162px;top:1340px;width:756px}
+.num{position:absolute;font:800 64px/1 Baloo;color:#ffd27d;text-shadow:0 4px 16px rgba(0,0,0,.85);font-variant-numeric:tabular-nums;white-space:nowrap}
+.num small{font:800 16px Inter;letter-spacing:.14em;color:#fbf1dc;display:block;margin-bottom:6px;text-transform:uppercase}
+.card{position:absolute;background:#f3ead6;padding:10px 10px 0;box-shadow:0 18px 50px rgba(0,0,0,.7)}
+.card img{display:block;width:100%}
+.card p{font:800 14px/34px Inter;letter-spacing:.1em;color:#2a2010;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.fol{position:absolute;left:176px;top:1120px;height:92px;padding:0 26px 0 108px;display:flex;align-items:center;background:#0a0f1d;border:3px solid #b4f000;border-radius:8px;font:800 34px Inter;color:#eaffd0;white-space:nowrap}
+.fol img{position:absolute;left:-14px;top:-14px;width:114px;height:114px;border-radius:50%;border:6px solid #b4f000;box-shadow:0 0 0 6px #0a0f1d}
+.fol em{font-style:normal;color:#b4f000;margin-left:16px;font-size:26px;letter-spacing:.1em}
+.endc{position:absolute;left:162px;top:640px;width:756px;text-align:center}
+.endc img{width:230px;height:230px;border-radius:50%;border:8px solid #b4f000;box-shadow:0 0 0 10px #0a0f1d,0 16px 40px rgba(0,0,0,.7);display:block;margin:0 auto}
+.endc .hn{font:800 84px Baloo;color:#fbf1dc;margin-top:18px;text-shadow:0 4px 16px rgba(0,0,0,.85)}
+.endc .ser{font:800 20px Inter;letter-spacing:.14em;color:#ffd27d;margin-top:2px;text-transform:uppercase;text-shadow:0 2px 6px #000}
+.endc .btns{margin-top:26px;display:flex;gap:20px;justify-content:center}
+.endc .btns span{font:800 32px Inter;letter-spacing:.1em;padding:16px 34px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
+</style></head><body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas>
+<div id="fade" data-ov="1"></div><div id="flash" data-ov="1"></div>
+<div class="scr" data-ov="1" id="scrT" style="top:0;height:640px;background:linear-gradient(180deg,rgba(6,9,23,.8) 0,rgba(6,9,23,.38) 62%,rgba(6,9,23,0) 100%)"></div>
+<div class="scr" data-ov="1" id="scrB" style="top:1180px;height:740px;background:linear-gradient(0deg,rgba(6,9,23,.97) 0,rgba(6,9,23,.86) 66%,rgba(6,9,23,0) 100%)"></div>
+<div id="ov"></div><div id="cap"></div></div>
+<script src="lib/three-gltf-r160.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
+<script>
+window.__ready=false;window.IM={};
+var IMGS=['hand.png','ghat-real.jpg','pleiades.jpg','profile.jpg'];
+Promise.all(['800 84px Baloo','700 28px Baloo','400 30px Tiro','600 15px Inter','800 40px Inter'].map(function(f){return document.fonts.load(f,'देव Aa 123')}).concat(IMGS.map(function(n){return new Promise(function(res){var i=new Image();i.onload=i.onerror=function(){res()};i.src='img/'+n;window.IM[n]=i;});}))).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>
