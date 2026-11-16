@@ -337,5 +337,12 @@
   "voice": "clone",
   "host": "none",
   "length": "72s"
+ },
+ "reel-dev-deepawali": {
+  "genre": "heritage-science-explainer",
+  "company": "none",
+  "voice": "clone",
+  "host": "none",
+  "length": "68s"
  }
 }
