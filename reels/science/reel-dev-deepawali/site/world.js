@@ -167,7 +167,7 @@ F.ch = mkChart(F);
 sheet(F, { rect: [-400, 960, 1480, 1800], z: -300, col: '#3d5596', trans: .3, rad: 700, draw: function (x) { x.fillRect(-400, 1150, 1900, 800); [[60, 150, 90], [250, 110, 60], [690, 170, 80], [900, 140, 110], [-240, 180, 70], [1150, 200, 90]].forEach(function (b) { x.fillRect(b[0], 1150 - b[2], b[1], b[2] + 4); }); shik(x, 480, 1154, 90, 150); } });
 F.win = emit(F, { rect: [-300, 1020, 1380, 1160], z: -296, b1: 4, b2: 18, fl: .15, draw: function (x) { [[100, 1100], [160, 1092], [300, 1118], [740, 1104], [800, 1096], [960, 1070], [1010, 1090], [-150, 1100], [1220, 1090]].forEach(function (p) { x.fillStyle = '#ffc56a'; x.fillRect(p[0], p[1], 12, 16); }); } });
 F.handG = new T.Group(); F.g.add(F.handG);
-F.hand = new T.Mesh(PG, new T.MeshBasicMaterial({ map: (function () { var t = new T.Texture(IM['hand.png']); t.colorSpace = T.NoColorSpace; t.needsUpdate = true; return t; })(), transparent: true, depthTest: false, color: new T.Color(.62, .5, .54) })); place(F.hand, F, [RM[0] - 806, RM[1] - 150, RM[0] - 806 + 1506, RM[1] - 150 + 1799], -80, F.handG);
+F.hand = new T.Mesh(PG, new T.MeshBasicMaterial({ map: (function () { var t = new T.Texture(IM['hand.png']); t.colorSpace = T.NoColorSpace; t.needsUpdate = true; return t; })(), transparent: true, depthTest: false, color: new T.Color(.5, .4, .46) })); place(F.hand, F, [RM[0] - 832, RM[1] - 150, RM[0] - 832 + 1506, RM[1] - 150 + 1799], -80, F.handG);
 sheet(F, { rect: [-300, 1120, 1380, 2300], z: 0, col: '#0b1027', trans: .1, rad: 500, draw: function (x) { x.fillRect(-300, 1232, 1700, 1100); x.fillRect(-300, 1206, 1700, 30); x.beginPath(); x.moveTo(190, 1170); x.quadraticCurveTo(262, 1250, 334, 1170); x.lineTo(352, 1160); x.lineTo(172, 1160); x.fill(); } });
 F.flame = emit(F, { rect: [130, 960, 400, 1260], z: 4, b1: 8, b2: 46, fl: .5, draw: function (x) { var g = x.createRadialGradient(262, 1130, 2, 262, 1120, 60); g.addColorStop(0, '#fff6d8'); g.addColorStop(.4, '#ffc56a'); g.addColorStop(1, 'rgba(255,150,60,0)'); x.fillStyle = g; x.beginPath(); x.moveTo(262, 1066); x.bezierCurveTo(292, 1110, 286, 1150, 262, 1158); x.bezierCurveTo(238, 1150, 232, 1110, 262, 1066); x.fill(); } });
 F.glow = emit(F, { rect: [-100, 840, 620, 1540], z: 6, q: .25, b1: 0, draw: radial(262, 1190, 340, 'rgba(255,170,90,.3)', 'rgba(255,170,90,0)') });
@@ -210,7 +210,7 @@ var SRC = E('src', '');
 var TAGS = []; function tag(t0, t1, html, x, y, cool, anchor) { var g = { t0: t0, t1: t1, x: x, y: y, a: anchor, d: E('tag' + (cool ? ' cool' : ''), html, 'left:' + x + 'px;top:' + y + 'px') }; TAGS.push(g); return g; }
 var NUM = E('num', '', 'left:162px;top:1196px'), NUM2 = E('num', '', 'left:162px;top:1150px');
 var PH1 = E('card', '<img src="img/ghat-real.jpg"><p>Real photo · Dev Deepawali, Varanasi · D. P. Roy, CC0</p>', 'left:162px;top:560px;width:756px'); PH1.setAttribute('data-ov', '1');
-var PH2 = E('card', '<img src="img/pleiades.jpg"><p>Real photo · NASA, ESA, AURA/Caltech</p>', 'left:162px;top:800px;width:330px'); PH2.setAttribute('data-ov', '1');
+var PH2 = E('card', '<img src="img/pleiades.jpg"><p>Real photo · NASA, ESA, AURA/Caltech</p>', 'left:162px;top:900px;width:330px'); PH2.setAttribute('data-ov', '1');
 var tPh = lerp(tA, tQ, .42), tPh2 = Math.min(tPh + 2.3, tQ - .05);
 tag(tA + .2, tPh - .1, '<small>Reported · Kashi</small>दीये · 24 नवंबर', 560, 1196);
 // cities
@@ -298,7 +298,7 @@ window.__seek = function (t) {
     F.flame.u.op.value = lit2; F.glow.u.op.value = lit2 * (1 + .06 * Math.sin(t * 9)); F.handG.position.y = lerp(-1500, 0, hu) + 6 * Math.sin(t * 1.3) * hu; F.handG.position.x = 4 * Math.sin(t * .9) * hu;
     setChart(F.ch, [RM[0] + .5 * 1.6 * RSC, RM[1] - .866 * 1.6 * RSC], RSC, 1.6, -700, 1, .6 * (1 - .78 * cov), .28 + 1.2 * rev, 0, [0, 0], t); F.ch.cl.u.rv.value = 2;
     F.stars.u.op.value = .7 + .5 * rev; F.win.u.op.value = 1;
-    var endU0 = eo(ramp(t, tEnd, tEnd + .5)); F.sh.forEach(function (m) { m.material.color.setScalar(1 - .5 * endU0); }); F.hand.material.color.setRGB(.62 * (1 - .5 * endU0), .5 * (1 - .5 * endU0), .54 * (1 - .5 * endU0));
+    var endU0 = eo(ramp(t, tEnd, tEnd + .5)); F.sh.forEach(function (m) { m.material.color.setScalar(1 - .5 * endU0); }); F.hand.material.color.setRGB(.5 * (1 - .5 * endU0), .4 * (1 - .5 * endU0), .46 * (1 - .5 * endU0)); F.handG.visible = endU0 < .5;
   }
   R.render(S, cam);
   document.getElementById('stage').style.transform = shx ? 'translateX(' + shx.toFixed(1) + 'px)' : ''; flashEl.style.opacity = fl;

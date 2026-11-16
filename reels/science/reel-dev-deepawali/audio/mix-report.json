@@ -1,0 +1,9 @@
+{
+ "median_db": 15.5,
+ "min_db": 8.8,
+ "p10_db": 12.7,
+ "n": 106,
+ "note": "250 ms windows inside words; not auditioned by ear",
+ "lufs": -14.2,
+ "true_peak_dbfs": -1.2
+}
