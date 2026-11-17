@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for 'Sooraj ko andar kaise laaye?' (own synthesis: tanpura floor in D, glass bells for light, soft plucks, low frame drum).
+"""Score + SFX + mix for the pala (frost) reel: cold glassy pad (own synthesis), breathing air bed, glass bells, soft low pulse; warms slightly on the remedies.
+python3 audio_mix.py -> audio/final.wav + audio/mix-report.json. SFX from the page event list (audio/events.json).
+Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, audible bed (voice over music median ~16 dB, min >= 12 dB)."""
 python3 audio_mix.py -> audio/final.wav (48 kHz) + audio/mix-report.json. SFX come from the page's own event list (audio/events.json).
-Sone ki Lanka score: palace-court feel, soft air bed, bowed pad in C, santoor-like plucks, slow frame drum; minor until the comeback (scene 9), major after; a hole in the music when the vultures vanish.
-Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, voice over music+SFX median >= 19 dB, min >= 13 dB."""
 import json, os, re, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
 from scipy.ndimage import uniform_filter1d
@@ -41,77 +41,44 @@ def whoosh(dur=.5, up=True):
 sfx = np.zeros(N, 'float32')
 WD = json.load(open(A + '/words.json'))['words']
 def soft_off_word(t):
-    for _ in range(6):                                  # keep stepping past words until the hit lands in a gap
+    for _ in range(6):
         hit = [w for w in WD if w[1] - .02 < t < w[2]]
         if not hit: return t
         t = hit[0][2] + .03
     return t
 def chime(f, d=.6, g=.3): return sm(tone(f, d, dec=d/3) * g, tone(f * 2.01, d * .7, dec=d/5) * g * .4, tone(f * 3.02, d * .5, dec=d/8) * g * .2)
-SOFT = ('tick', 'pop', 'glint', 'thud', 'slide', 'relay', 'click', 'bell', 'chime', 'whoosh', 'rise')
-HOLES = []
+SOFT = ('tick', 'whoosh', 'cloud', 'drop', 'ping')
 for e in ev['ev']:
     t, k = e['t'], e['k']
     if k in SOFT: t = soft_off_word(t)
-    if k == 'pop': put(sfx, tone(520, .18, f1=1040, dec=.06) * .1, t)
-    elif k == 'tick': put(sfx, sm(chime(1760, .25, .08), noise(.02, 3000, 9000) * dec_n(.02, .006) * .2), t)
-    elif k == 'glint': put(sfx, sm(chime(2349.3, .7, .12), chime(3520, .5, .05)), t)
-    elif k == 'bell': put(sfx, sm(chime(587.3, 2.4, .32), chime(1174.7, 1.8, .12), tone(146.8, 1.6, dec=.7) * .2), t)
-    elif k == 'chime':
-        for j in range(8): put(sfx, chime(1174.7 * 2 ** ([0, 4, 7, 12, 7, 4, 9, 12][j] / 12), .6, .06), t + j * .13)
-    elif k == 'rise': put(sfx, sm(whoosh(1.6, True) * .2, tone(146.8, 1.6, 'saw', a=1.2, dec=1.0) * .03), t - .2)
-    elif k == 'thud': put(sfx, sm(tone(70, .6, f1=35, dec=.2) * .8, noise(.1, 100, 1200) * dec_n(.1, .03) * .3), t)
-    elif k == 'slide': put(sfx, sm(tone(880, 1.1, f1=220, dec=.6) * .12, noise(1.0, 500, 3000) * np.linspace(1, 0, int(1.0 * SR)) * .05), t)
-    elif k == 'relay': put(sfx, sm(tone(180, .25, f1=120, dec=.08) * .35, noise(.05, 800, 4000) * dec_n(.05, .015) * .25), t)
-    elif k == 'click':
-        for j in range(4): put(sfx, sm(noise(.03, 1500, 7000) * dec_n(.03, .008) * .5, tone(1400, .05, dec=.015) * .2), t - .36 + j * .12)
-        put(sfx, sm(tone(240, .2, f1=150, dec=.06) * .5, noise(.05, 900, 5000) * dec_n(.05, .012) * .4), t + .12)
-    elif k == 'whoosh': put(sfx, whoosh(.55, False) * .2, t - .28)
-    elif k == 'hole': HOLES.append(t)
-    elif k == 'hit': put(sfx, .3 * sm(chime(293.7, 3.2, .5), chime(587.3, 2.6, .3), tone(73.4, 1.4, f1=50, dec=.5) * 1.1, noise(.12, 150, 2500) * dec_n(.12, .04) * .5, tone(220, 2.4, 'saw', a=.25, dec=1.4, f1=233) * .09), t)
-    elif k == 'shutter': put(sfx, sm(noise(.03, 2000, 9000) * dec_n(.03, .008) * .5, tone(900, .05, dec=.015) * .2), t); put(sfx, noise(.04, 1500, 8000) * dec_n(.04, .01) * .4, t + .07)
-# ---------------- score (C, our own: wind, bowed pad, santoor-like plucks, frame drum, bells) ----------------
-BPM = 76; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); D2 = 65.41
-sc_of = lambda t: max(i for i in range(len(B) - 1) if B[i] <= t) if t < B[-1] else len(B) - 2
-MINOR = [0, 3, 5, 7, 10, 12, 15, 17]; MAJOR = [0, 2, 4, 7, 9, 12, 14, 16]; RAGA = MINOR
-def voices(t):
-    s = sc_of(t)
-    return dict(drone=True, drum=s not in (8,), pluck=s in (1, 2, 3, 4, 5, 6, 7, 9, 10, 11), bell=s in (0, 1, 5, 9, 10, 11), pulse=s == 6, low=s in (0, 6, 8), dry=s == 8, major=s >= 9)
-def tanpura(f, d):   # four strings, slow bloom, rich partials
+    if k == 'tick': put(sfx, sm(chime(1760, .25, .08), noise(.02, 3000, 9000) * dec_n(.02, .006) * .2), t)
+    elif k == 'ping': put(sfx, sm(chime(1318.5, .9, .14), chime(1975.5, .6, .05)), t)
+    elif k == 'whoosh': put(sfx, whoosh(.55, False) * .16, t - .28)
+    elif k == 'stamp': put(sfx, sm(tone(90, .5, f1=45, dec=.15) * .9, noise(.06, 300, 3000) * dec_n(.06, .02) * .45), t)
+    elif k == 'hit': put(sfx, .3 * sm(chime(329.6, 3.0, .5), chime(659.3, 2.4, .25), tone(82.4, 1.4, f1=55, dec=.5) * 1.0, noise(.1, 200, 3000) * dec_n(.1, .04) * .4), t)
+    elif k == 'cloud': put(sfx, sm(noise(1.2, 300, 2500) * np.sin(np.linspace(0, np.pi, int(1.2 * SR))) * .06, chime(659.3, 1.0, .05)), t)
+    elif k == 'low': put(sfx, tone(65.4, 1.8, f1=55, dec=.8) * .35, t)
+    elif k == 'drop': put(sfx, sm(tone(1480, .3, f1=700, dec=.07) * .18, chime(1046.5, .7, .06)), t)
+# ---------------- score: cold glass pad in E minor, breathing air, sparse bells, slow low pulse ----------------
+BPM = 66; beat = 60 / BPM; music = np.zeros(N, 'float32'); E2 = 82.41
+SCALE = [0, 3, 7, 10, 12, 15, 19]
+def pad(f, d):
     n = int(d * SR); tt = np.arange(n) / SR; y = np.zeros(n, 'float32')
-    for h in range(1, 7): y += (np.sin(2 * np.pi * f * h * tt * (1 + .0011 * h) + .6 * np.sin(2 * np.pi * .23 * h * tt)) / h ** 1.7).astype('float32')
-    return (y * np.minimum(1, tt / 1.4) * np.minimum(1, (d - tt) / 1.2).clip(0)).astype('float32')
-def pluck(f):  # sitar-like: bright attack + buzz
-    return sm(tone(f, .9, dec=.2) * .5, tone(f * 1.004, .9, dec=.24) * .4, tone(f * 2.002, .5, dec=.09) * .22, tone(f * 4.01, .2, dec=.03) * .1, noise(.012, 4000, 9000) * dec_n(.012, .004) * .1)
-i = 0; t = 0.0
-while t < DUR:
-    s16 = i % 16; bar = int(i // 16); V = voices(t); RAGA = MAJOR if V['major'] else MINOR
-    if V['drone'] and s16 == 0 and bar % 2 == 0:
-        for j, f in enumerate((D2 * 1.5, D2 * 2, D2 * 2, D2)): put(music, tanpura(f, beat * 8) * (.05 if not V['dry'] else .03), t + j * beat * 2)
-    if V['drum'] and not any(w[1] - .15 < t < w[2] + .1 for w in WD if abs(w[1] - t) < 2 and w[0].endswith('।')):
-        if s16 in (0, 10): put(music, sm(tone(65, .5, f1=45, dec=.18) * .9, noise(.04, 200, 1200) * dec_n(.04, .01) * .3), t)
-        if s16 in (6, 12, 14): put(music, sm(noise(.08, 400, 4000) * dec_n(.08, .03) * .35, tone(220, .12, dec=.04) * .2), t)
-    if V['low'] and s16 in (0, 8): put(music, tone(D2 / 2, beat * 1.8, dec=.6) * .25, t)
-    if V['pluck'] and s16 % 2 == 0 and s16 not in (6, 14):
-        n = RAGA[(s16 // 2 * 3 + bar * 2) % len(RAGA)]; put(music, pluck(D2 * 4 * 2 ** (n / 12)) * .07, t)
-    if V['bell'] and s16 == 0 and bar % 2 == 1: put(music, chime(D2 * 16 * 2 ** (RAGA[bar % 5] / 12), 2.2, .05), t)
-    if V['pulse'] and s16 % 2 == 0: put(music, tone(D2 * 2 * (1.5 if s16 % 8 == 4 else 1), step * 1.6, 'square', dec=.05) * .035, t)
-    if V['dry'] and s16 % 4 == 0: put(music, noise(.015, 2500, 7000) * dec_n(.015, .005) * .12, t)
-    i += 1; t = i * step
-# wind bed: band noise with a slow swell, a little brighter when the camera is high
-wn = noise(DUR + .1, 250, 1800)[:N]; tt_ = np.arange(N) / SR; music += (wn * (.05 + .035 * np.sin(2 * np.pi * .07 * tt_) + .02 * np.sin(2 * np.pi * .19 * tt_ + 1))).astype('float32')
-def flute(f, d): 
-    n = int(d * SR); tt = np.arange(n) / SR; vib = 1 + .006 * np.sin(2 * np.pi * 5.2 * tt) * np.minimum(1, tt / .3); ph = 2 * np.pi * np.cumsum(f * vib) / SR
-    e = np.minimum(1, tt / .08) * np.minimum(1, (d - tt) / .18); return ((np.sin(ph) + .28 * np.sin(2 * ph) + .08 * np.sin(3 * ph)) * e + noise(d, 2000, 7000)[:n] * .03 * e).astype('float32')
-SEN = json.load(open(A + '/words.json'))['sentences']; ends = sorted(set(round(x['t1'], 2) for x in SEN)) if isinstance(SEN, list) and SEN and 't1' in SEN[0] else []
-for gi, te in enumerate(ends):
-    nxt = min([w[1] for w in WD if w[1] > te + .05] or [DUR]); gap = nxt - te
-    if gap > .45:
-        RG = MAJOR if te >= B[9] else MINOR; n1 = RG[(gi * 3) % len(RG)]; n2 = RG[(gi * 3 + 2) % len(RG)]; put(music, flute(D2 * 8 * 2 ** (n1 / 12), min(.45, gap * .5)) * .5, te + .05); put(music, flute(D2 * 8 * 2 ** (n2 / 12), min(.6, gap * .6)) * .5, te + .05 + min(.4, gap * .45))
-# holes: the music drops out for a beat when the light is lost (the miss, the cloud)
-hm = np.ones(N, 'float32')
-for ht in HOLES:
-    a0, a1 = sec(ht - .15), sec(ht + 1.6); n_ = max(1, min(N, a1) - a0); hm[a0:a0 + n_] *= np.concatenate([np.linspace(1, .06, sec(.15)), np.full(max(0, n_ - sec(.15) - sec(.6)), .06, 'float32'), np.linspace(.06, 1, sec(.6))])[:n_]
-music *= hm
+    for h, a in ((1, 1), (2, .4), (3, .18), (4, .08)): y += (a * np.sin(2 * np.pi * f * h * tt * (1 + .0013 * h) + .8 * np.sin(2 * np.pi * .17 * h * tt))).astype('float32')
+    return (y * np.minimum(1, tt / 2.0) * np.minimum(1, (d - tt) / 2.0).clip(0)).astype('float32')
+bars = int(DUR / (beat * 8)) + 2
+for b_ in range(bars):
+    t0 = b_ * beat * 8; root = E2 * 2 ** ([0, 0, -2, -2, 3, 3, -5, 0][b_ % 8] / 12)
+    for j, m_ in enumerate((0, 7, 12)): put(music, pad(root * 2 ** (m_ / 12), beat * 9) * .07, t0)
+    if b_ % 2 == 1: put(music, chime(root * 8 * 2 ** (SCALE[(b_ * 3) % len(SCALE)] / 12), 2.4, .05), t0 + beat * 2)
+    if t0 > 4:
+        for q in range(4): put(music, sm(tone(root, beat * .9, f1=root * .8, dec=.3) * .22), t0 + q * beat * 2)
+wn = noise(DUR + .1, 300, 2400)[:N]; tt_ = np.arange(N) / SR; music += (wn * (.04 + .03 * np.sin(2 * np.pi * .06 * tt_) + .015 * np.sin(2 * np.pi * .17 * tt_ + 1))).astype('float32')
+# a held breath of silence right before the stamp lands (ground frost)
+try:
+    st_ = [e['t'] for e in ev['ev'] if e['k'] == 'stamp'][0]; hm = np.ones(N, 'float32'); a0 = sec(st_ - .3); a1 = sec(st_ + 1.0); hm[a0:a1] = np.concatenate([np.linspace(1, .12, sec(.2)), np.full(a1 - a0 - sec(.2) - sec(.5), .12, 'float32'), np.linspace(.12, 1, sec(.5))])[:a1 - a0]; music *= hm
+except Exception as ex: print('no stamp hole', ex)
+
 # ---------------- ducking + carve ----------------
 vad = np.convolve(np.abs(voice), np.ones(int(.02 * SR)) / int(.02 * SR), 'same'); on = (vad > .008).astype('float32'); on = np.roll(on, -int(.09 * SR))
 duck = np.minimum(1, uniform_filter1d(on, int(.18 * SR)) * 1.6); a_ = np.exp(-1 / (.08 * SR)); r_ = np.exp(-1 / (.3 * SR)); g = np.zeros(N, 'float32'); cur = float(duck[0])

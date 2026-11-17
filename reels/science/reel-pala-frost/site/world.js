@@ -149,6 +149,7 @@ window.__seek = function (t) {
   show(END, endU, (1 - endU) * 30); if (endU > 0) { $('eF').style.transform = 'scale(' + eob(ramp(t, tEnd + .15, tEnd + .5)) * (1 + .04 * Math.sin((t - tEnd) * 4.2)) + ')'; $('eS').style.transform = 'scale(' + eob(ramp(t, tEnd + .4, tEnd + .75)) * (1 + .04 * Math.sin((t - tEnd) * 4.2 + 1.5)) + ')'; }
   capEl.innerHTML = t < TM.groups[TM.groups.length - 1].end + .4 ? CAP.html(t, CAPW, { plain: true, hi: '#7fe3ff', ink: '#eef6fb', fs: 40, width: 756 }) : '';
 };
+window.SCN_T0 = function () { return SHOTS.map(function (z) { return z.t0; }).concat([tEnd]); };
 window.__dbg = function (c) { return eval(c); };
 window.__seek(0); window.__ready = true;
 })();
