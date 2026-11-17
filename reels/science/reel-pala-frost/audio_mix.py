@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for the pala (frost) reel: cold glassy pad (own synthesis), breathing air bed, glass bells, soft low pulse; warms slightly on the remedies.
-python3 audio_mix.py -> audio/final.wav + audio/mix-report.json. SFX from the page event list (audio/events.json).
+"""Score + SFX + mix for the pala (frost) reel: cold glassy pad (own synthesis), breathing air bed, glass bells, soft low pulse.
+python3 audio_mix.py -> audio/final.wav + audio/mix-report.json. SFX come from the page event list (audio/events.json).
 Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, audible bed (voice over music median ~16 dB, min >= 12 dB)."""
-python3 audio_mix.py -> audio/final.wav (48 kHz) + audio/mix-report.json. SFX come from the page's own event list (audio/events.json).
 import json, os, re, subprocess, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt, resample_poly
 from scipy.ndimage import uniform_filter1d
