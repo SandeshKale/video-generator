@@ -90,3 +90,5 @@ Inter Tight (latin 200, 300) — SIL OFL 1.1, from @fontsource/inter-tight (vend
 Rozha One (Indian Type Foundry): SIL OFL 1.1, latin + devanagari 400, vendored via @fontsource on 13 Nov 2026 for reel-surya-tilak.
 
 Tiro Devanagari Hindi (400) and Baloo 2 (700, 800; latin + devanagari): SIL OFL 1.1, vendored via @fontsource on 15 Nov 2026 for reel-dev-deepawali.
+
+Mukta (Ek Type; latin + devanagari 700, 800): SIL OFL 1.1, vendored via @fontsource on 17 Nov 2026 for reel-pala-frost.
