@@ -1,0 +1,203 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "रात को थर्मामीटर में चार डिग्री।",
+   "A": "Raat ko thermometer mein chaar degree.",
+   "cap": "Raat ko thermometer mein chaar degree."
+  },
+  {
+   "id": "s2",
+   "g": "g1",
+   "B": "फिर भी सुबह खेत पर पाला।",
+   "A": "Phir bhi subah khet par pala.",
+   "cap": "Phir bhi subah khet par pala."
+  },
+  {
+   "id": "s3",
+   "g": "g2",
+   "B": "ऐसा कैसे?",
+   "A": "Aisa kaise?",
+   "cap": "Aisa kaise?"
+  },
+  {
+   "id": "s4",
+   "g": "g3",
+   "B": "पाला पड़ते ही आलू और सरसों जल जाते हैं।",
+   "A": "Pala padte hi aloo aur sarson jal jaate hain.",
+   "cap": "Pala padte hi aloo aur sarson jal jaate hain."
+  },
+  {
+   "id": "s5",
+   "g": "g3",
+   "B": "बिहार में दो हज़ार चौबीस की सर्दी-कोहरे में, देर से बोए आलू में पच्चीस से चालीस प्रतिशत नुकसान बताया गया।",
+   "A": "Bihar mein 2024 ki sardi-kohre mein, der se boye aloo mein pachchis se chalis pratishat nuksaan bataya gaya.",
+   "cap": "Bihar mein 2024 ki sardi-kohre mein, der se boye aloo mein pachchis se chalis pratishat nuksaan bataya gaya."
+  },
+  {
+   "id": "s6",
+   "g": "g4",
+   "B": "अंत में एक टेस्ट: आज रात खुद कर लेना।",
+   "A": "Ant mein ek test: aaj raat khud kar lena.",
+   "cap": "Ant mein ek test: aaj raat khud kar lena."
+  },
+  {
+   "id": "s7",
+   "g": "g5",
+   "B": "थर्मामीटर हवा का तापमान बताता है, लगभग छाती की ऊँचाई पर।",
+   "A": "Thermometer hawa ka tapman batata hai, lagbhag chaati ki unchai par.",
+   "cap": "Thermometer hawa ka tapman batata hai, lagbhag chaati ki unchai par."
+  },
+  {
+   "id": "s8",
+   "g": "g5",
+   "B": "पर पत्ता ज़मीन के पास है, खुले आसमान के नीचे।",
+   "A": "Par patta zameen ke paas hai, khule aasmaan ke neeche.",
+   "cap": "Par patta zameen ke paas hai, khule aasmaan ke neeche."
+  },
+  {
+   "id": "s9",
+   "g": "g6",
+   "B": "इसे कहते हैं ज़मीनी पाला।",
+   "A": "Ise kehte hain zameeni pala.",
+   "cap": "Ise kehte hain zameeni pala."
+  },
+  {
+   "id": "s10",
+   "g": "g7",
+   "B": "दिन में पत्ता धूप से गर्मी लेता है।",
+   "A": "Din mein patta dhoop se garmi leta hai.",
+   "cap": "Din mein patta dhoop se garmi leta hai."
+  },
+  {
+   "id": "s11",
+   "g": "g7",
+   "B": "रात को वही गर्मी आसमान की तरफ़ छोड़ देता है।",
+   "A": "Raat ko wahi garmi aasmaan ki taraf chhod deta hai.",
+   "cap": "Raat ko wahi garmi aasmaan ki taraf chhod deta hai."
+  },
+  {
+   "id": "s12",
+   "g": "g8",
+   "B": "बादल हो, तो गर्मी लौटती है।",
+   "A": "Baadal ho, to garmi lautti hai.",
+   "cap": "Baadal ho, to garmi lautti hai."
+  },
+  {
+   "id": "s13",
+   "g": "g8",
+   "B": "साफ़ आसमान में नहीं।",
+   "A": "Saaf aasmaan mein nahi.",
+   "cap": "Saaf aasmaan mein nahi."
+  },
+  {
+   "id": "s14",
+   "g": "g9",
+   "B": "साफ़ आसमान और हल्की हवा: सबसे ख़तरनाक रात।",
+   "A": "Saaf aasmaan aur halki hawa: sabse khatarnak raat.",
+   "cap": "Saaf aasmaan aur halki hawa: sabse khatarnak raat."
+  },
+  {
+   "id": "s15",
+   "g": "g10",
+   "B": "ठंडी हवा भारी होती है, ढलान से बहकर नीचे के खेत में भर जाती है, जैसे बाढ़ का पानी।",
+   "A": "Thandi hawa bhaari hoti hai, dhalaan se bahkar neeche ke khet mein bhar jaati hai, jaise baadh ka paani.",
+   "cap": "Thandi hawa bhaari hoti hai, dhalaan se bahkar neeche ke khet mein bhar jaati hai, jaise baadh ka paani."
+  },
+  {
+   "id": "s16",
+   "g": "g11",
+   "B": "क्या काम करता है?",
+   "A": "Kya kaam karta hai?",
+   "cap": "Kya kaam karta hai?"
+  },
+  {
+   "id": "s17",
+   "g": "g11",
+   "B": "शाम को सिंचाई: गीली मिट्टी गर्मी रोकती है।",
+   "A": "Shaam ko sinchai: geeli mitti garmi rokti hai.",
+   "cap": "Shaam ko sinchai: geeli mitti garmi rokti hai."
+  },
+  {
+   "id": "s18",
+   "g": "g12",
+   "B": "और नर्सरी को टाट, भूसे या पॉलीथीन से ढको।",
+   "A": "Aur nursery ko tat, bhoose ya polythene se dhako.",
+   "cap": "Aur nursery ko tat, bhoose ya polythene se dhako."
+  },
+  {
+   "id": "s19",
+   "g": "g13",
+   "B": "कई राज्य धुआँ करने को कहते हैं।",
+   "A": "Kai rajya dhuan karne ko kehte hain.",
+   "cap": "Kai rajya dhuan karne ko kehte hain."
+  },
+  {
+   "id": "s20",
+   "g": "g13",
+   "B": "पर एफ़ ए ओ की रिसर्च में धुएँ से फ़ायदा नहीं मिला।",
+   "A": "Par FAO ki research mein dhuan se fayda nahi mila.",
+   "cap": "Par FAO ki research mein dhuan se fayda nahi mila."
+  },
+  {
+   "id": "s21",
+   "g": "g14",
+   "B": "ऐसी खेती-मौसम की बातें चाहिए? नर्डलॉजिक डॉट सी ओ को फ़ॉलो करो।",
+   "A": "Aisi kheti-mausam ki baatein chahiye? nerdlogic dot co ko follow karo.",
+   "cap": "Aisi kheti-mausam ki baatein chahiye? nerdlogic dot co ko follow karo."
+  },
+  {
+   "id": "s22",
+   "g": "g15",
+   "B": "आज रात आसमान साफ़ हो, तो एक थर्मामीटर ज़मीन पर रखो, एक छाती की ऊँचाई पर।",
+   "A": "Aaj raat aasmaan saaf ho, to ek thermometer zameen par rakho, ek chaati ki unchai par.",
+   "cap": "Aaj raat aasmaan saaf ho, to ek thermometer zameen par rakho, ek chaati ki unchai par."
+  },
+  {
+   "id": "s23",
+   "g": "g15",
+   "B": "सुबह दोनों देखो।",
+   "A": "Subah dono dekho.",
+   "cap": "Subah dono dekho."
+  },
+  {
+   "id": "s24",
+   "g": "g15",
+   "B": "बादल वाली रात में फ़र्क़ कम होगा।",
+   "A": "Badal wali raat mein farq kam hoga.",
+   "cap": "Badal wali raat mein farq kam hoga."
+  },
+  {
+   "id": "s25",
+   "g": "g16",
+   "B": "कल का मौसम: मेघदूत ऐप या किसान कॉल सेंटर।",
+   "A": "Kal ka mausam: Meghdoot app ya Kisan Call Centre.",
+   "cap": "Kal ka mausam: Meghdoot app ya Kisan Call Centre."
+  },
+  {
+   "id": "s26",
+   "g": "g17",
+   "B": "पाला हवा से नहीं, साफ़ आसमान से पड़ता है।",
+   "A": "Pala hawa se nahi, saaf aasmaan se padta hai.",
+   "cap": "Pala hawa se nahi, saaf aasmaan se padta hai."
+  }
+ ],
+ "pause_after": {
+  "s3": 1.0,
+  "s5": 0.6,
+  "s6": 0.6,
+  "s8": 0.7,
+  "s9": 0.9,
+  "s11": 0.6,
+  "s13": 0.8,
+  "s14": 0.9,
+  "s15": 0.8,
+  "s17": 0.5,
+  "s18": 0.7,
+  "s20": 0.9,
+  "s21": 0.6,
+  "s24": 0.8,
+  "s25": 0.7
+ }
+}
