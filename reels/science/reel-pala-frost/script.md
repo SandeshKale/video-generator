@@ -120,3 +120,8 @@ Families used: 8 (Cycles 3D, real photography, data objects, icons, rough stroke
 3. Open the five primary checks in `research/sources.md`.
 4. Cold read by someone who has not seen this script.
 5. A listen check for the Devanagari take of "zameeni pala", "polythene" and "Meghdoot".
+
+## Build notes (17 Nov 2026)
+- Final cut 76.65 s. Series badge dropped per creator; remaining decisions approved ("rest all is good").
+- Voice groups: g1..g17 plus g3b (Bihar sentence); timing from `audio/words.json` (Whisper) via `voice/make_timing.py`.
+- Open before posting: the five primary checks in `research/sources.md`; listen to g16 ("Meghdoot app"), "ज़मीनी पाला", "पॉलीथीन" and the CTA "nerdlogic dot co"; confirm KCC hours; cold read.

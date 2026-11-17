@@ -344,5 +344,12 @@
   "voice": "clone",
   "host": "none",
   "length": "68s"
+ },
+ "reel-pala-frost": {
+  "genre": "farm-science-explainer",
+  "company": "none",
+  "voice": "clone",
+  "host": "none",
+  "length": "77s"
  }
 }
