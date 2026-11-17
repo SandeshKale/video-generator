@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Pala</title><style>
+@font-face{font-family:Mukta;font-weight:800;src:url(fonts/mukta-devanagari-800-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Mukta;font-weight:800;src:url(fonts/mukta-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Mukta;font-weight:700;src:url(fonts/mukta-devanagari-700-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF}
+@font-face{font-family:Mukta;font-weight:700;src:url(fonts/mukta-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#05070d}
+#stage{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden}canvas{position:absolute;left:0;top:0}
+#ov{position:absolute;inset:0;pointer-events:none}.scr{position:absolute;left:0;width:1080px;pointer-events:none}
+#fade{position:absolute;inset:0;background:#05070d;opacity:0}
+.ser{position:absolute;left:162px;top:182px;font:800 20px Inter;letter-spacing:.16em;color:#bfeaff;text-transform:uppercase;display:flex;align-items:center;gap:10px;text-shadow:0 2px 8px #000}
+.ser i{width:10px;height:10px;border-radius:50%;background:#7fe3ff;box-shadow:0 0 10px #7fe3ff}
+.head{position:absolute;left:162px;top:232px;width:756px;font:800 80px/1.14 Mukta;color:#eef6fb;text-shadow:0 4px 18px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.9)}
+.head b{background:#7fe3ff;color:#06121a;padding:0 14px;border-radius:6px;text-shadow:none;font-weight:800;display:inline-block;line-height:1.14}
+.head b.w{background:#ff8a3d;color:#1a0b02}
+.src{position:absolute;left:162px;top:1292px;width:756px;font:600 15px Inter;letter-spacing:.12em;color:#c9dbe6;text-transform:uppercase;text-shadow:0 1px 4px #000;white-space:nowrap}
+#cap{position:absolute;left:162px;top:1340px;width:756px}
+.tag{position:absolute;font:700 30px/1.2 Mukta;color:#eef6fb;background:rgba(6,12,20,.86);border-left:6px solid #7fe3ff;padding:8px 18px 6px;white-space:nowrap}
+.tag small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#7fe3ff;text-transform:uppercase;margin-bottom:2px}
+.tag.w{border-color:#ff8a3d}.tag.w small{color:#ff8a3d}
+.rd{position:absolute;width:300px;background:rgba(6,12,20,.88);border:2px solid rgba(127,227,255,.55);border-radius:10px;padding:10px 16px 12px;white-space:nowrap}
+.rd small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#9fb8c7;text-transform:uppercase}
+.rd em{display:block;font:800 66px/1.05 Inter;font-style:normal;color:#7fe3ff;font-variant-numeric:tabular-nums}
+.rd.w{border-color:rgba(255,138,61,.65)}.rd.w em{color:#ff8a3d}
+.rd p{font:700 24px/1.2 Mukta;color:#eef6fb}
+.stamp{position:absolute;font:800 64px/1 Mukta;color:#7fe3ff;border:6px solid #7fe3ff;padding:6px 26px 2px;border-radius:8px;background:rgba(6,12,20,.78);white-space:nowrap}
+.bars{position:absolute;left:162px;top:520px;width:756px;height:520px;background:rgba(6,12,20,.86);border:2px solid rgba(127,227,255,.45);border-radius:10px}
+.bars .b{position:absolute;bottom:92px;width:210px;border-radius:6px 6px 0 0}
+.bars .b span{position:absolute;top:-62px;left:0;width:100%;text-align:center;font:800 54px Inter;font-variant-numeric:tabular-nums}
+.bars .l{position:absolute;bottom:20px;width:260px;text-align:center;font:700 26px/1.15 Mukta;color:#eef6fb}
+.bars .h{position:absolute;left:24px;top:16px;font:800 14px Inter;letter-spacing:.14em;color:#ffb98a;text-transform:uppercase}
+.chip{position:absolute;left:162px;width:756px;background:rgba(6,12,20,.9);border-left:6px solid #7fe3ff;padding:10px 20px 8px;font:700 28px/1.25 Mukta;color:#eef6fb}
+.chip small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#7fe3ff;text-transform:uppercase}
+.chip.w{border-color:#ff8a3d}.chip.w small{color:#ff8a3d}
+.fol{position:absolute;left:176px;top:1130px;height:92px;padding:0 26px 0 108px;display:flex;align-items:center;background:#0a0f1d;border:3px solid #b4f000;border-radius:8px;font:800 34px Inter;color:#eaffd0;white-space:nowrap}
+.fol img{position:absolute;left:-14px;top:-14px;width:114px;height:114px;border-radius:50%;border:6px solid #b4f000;box-shadow:0 0 0 6px #0a0f1d}
+.fol em{font-style:normal;color:#b4f000;margin-left:16px;font-size:26px;letter-spacing:.1em}
+.endc{position:absolute;left:162px;top:560px;width:756px;text-align:center}
+.endc img{width:230px;height:230px;border-radius:50%;border:8px solid #b4f000;box-shadow:0 0 0 10px #0a0f1d,0 16px 40px rgba(0,0,0,.7);display:block;margin:0 auto}
+.endc .hn{font:800 84px Inter;color:#eef6fb;margin-top:22px;text-shadow:0 4px 16px rgba(0,0,0,.85)}
+.endc .sr{font:800 22px Inter;letter-spacing:.14em;color:#bfeaff;margin-top:6px;text-transform:uppercase;text-shadow:0 2px 6px #000}
+.endc .btns{margin-top:28px;display:flex;gap:22px;justify-content:center}
+.endc .btns span{font:800 34px Inter;letter-spacing:.1em;padding:16px 38px;border-radius:999px;background:#b4f000;color:#0a0f1d;display:inline-block}
+svg.ar{position:absolute;left:0;top:0;width:1080px;height:1920px}
+</style></head><body>
+<div id="stage"><canvas id="gl" width="1080" height="1920"></canvas>
+<div class="scr" data-ov="1" style="top:0;height:620px;background:linear-gradient(180deg,rgba(5,7,13,.78) 0,rgba(5,7,13,.34) 62%,rgba(5,7,13,0) 100%)"></div>
+<div class="scr" data-ov="1" style="top:1250px;height:670px;background:linear-gradient(0deg,rgba(5,7,13,.8) 0,rgba(5,7,13,.6) 36%,rgba(5,7,13,.34) 52%,rgba(5,7,13,0) 100%)"></div>
+<div id="fade" data-ov="1"></div><div id="ov"></div><div id="cap"></div></div>
+<script src="lib/three-gltf-r160.min.js"></script><script src="lib/captions.js"></script><script src="timing.js"></script>
+<script>
+window.__ready=false;window.IM={};
+var IMGS=[];'ABCDEFGI'.split('').forEach(function(k){IMGS.push('plate_'+k+'.jpg','d8_'+k+'.png')});IMGS.push('profile.jpg');
+Promise.all(['800 80px Mukta','700 30px Mukta','600 15px Inter','800 40px Inter'].map(function(f){return document.fonts.load(f,'पाला ज़मीनी Aa 123')}).concat(IMGS.map(function(n){return new Promise(function(res){var i=new Image();i.onload=i.onerror=function(){res()};i.src='img/'+n;window.IM[n]=i;});}))).then(function(){var s=document.createElement('script');s.src='world.js';document.body.appendChild(s);});
+</script></body></html>
