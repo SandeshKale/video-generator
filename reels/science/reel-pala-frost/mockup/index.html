@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Pala mockup</title><style>
+@font-face{font-family:Mukta;font-weight:800;src:url(fonts/mukta-devanagari-800-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+200C-200D,U+20B9,U+25CC}
+@font-face{font-family:Mukta;font-weight:800;src:url(fonts/mukta-latin-800-normal.woff2);font-display:block}
+@font-face{font-family:Mukta;font-weight:700;src:url(fonts/mukta-devanagari-700-normal.woff2);font-display:block;unicode-range:U+0900-097F,U+200C-200D,U+20B9,U+25CC}
+@font-face{font-family:Mukta;font-weight:700;src:url(fonts/mukta-latin-700-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:600;src:url(fonts/inter-latin-600-normal.woff2);font-display:block}
+@font-face{font-family:Inter;font-weight:800;src:url(fonts/inter-latin-800-normal.woff2);font-display:block}
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#0a1018}
+#bg{position:absolute;inset:0;background-size:cover}
+.scr{position:absolute;left:0;width:1080px}
+.badge{position:absolute;left:162px;top:196px;height:50px;display:flex;font:700 26px/50px Mukta;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+.badge em{font:800 19px/50px Inter;font-style:normal;letter-spacing:.12em;padding:0 14px;background:#0d1622;color:#ff9b4a}
+.badge span{padding:0 18px;background:#e9f1f8;color:#0d1622}
+.head{position:absolute;left:162px;top:262px;width:756px;font:800 92px/1.1 Mukta;color:#f2f6fa;text-shadow:0 4px 18px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.9)}
+.head b{background:#ff9b4a;color:#1a0d02;padding:0 16px;text-shadow:none;display:inline-block;line-height:1.08}
+.head b.c{background:#6fd3ff;color:#04202e}
+.tag{position:absolute;font:700 30px/1.2 Mukta;color:#f2f6fa;background:rgba(9,15,24,.9);border-left:5px solid #ff9b4a;padding:8px 16px 7px;white-space:nowrap}
+.tag small{display:block;font:800 14px Inter;letter-spacing:.14em;color:#ff9b4a;text-transform:uppercase;margin-bottom:2px}
+.tag.c{border-color:#6fd3ff}.tag.c small{color:#6fd3ff}
+.tag big{font:800 44px Mukta}
+.src{position:absolute;left:162px;top:1290px;width:756px;font:600 15px Inter;letter-spacing:.12em;color:#d3deea;text-transform:uppercase;text-shadow:0 1px 4px #000;white-space:nowrap}
+#cap{position:absolute;left:162px;top:1340px;width:756px;font:800 40px/1.25 Inter;color:#f1f3f8;text-shadow:0 3px 10px rgba(0,0,0,.9),0 1px 2px #000}
+#cap u{text-decoration:none;color:#ffb46e}
+svg{position:absolute;left:0;top:0}
+</style></head><body><div id="stage"><div id="bg"></div>
+<div class="scr" style="top:0;height:640px;background:linear-gradient(180deg,rgba(8,13,22,.72) 0,rgba(8,13,22,.3) 62%,rgba(8,13,22,0) 100%)"></div>
+<div class="scr" style="top:1180px;height:740px;background:linear-gradient(0deg,rgba(8,13,22,.96) 0,rgba(8,13,22,.78) 62%,rgba(8,13,22,0) 100%)"></div>
+<svg id="sv" width="1080" height="1920"></svg><div id="ov"></div><div id="cap"></div></div>
+<script>
+var S=+(new URLSearchParams(location.search).get('s')||1),ov=document.getElementById('ov'),sv=document.getElementById('sv');
+document.getElementById('bg').style.backgroundImage='url(img/f'+S+'.jpg)';
+function E(c,h,st){var d=document.createElement('div');d.className=c;d.innerHTML=h;if(st)d.style.cssText=st;ov.appendChild(d)}
+function arrow(x0,y0,x1,y1,col,w,dash){var a=Math.atan2(y1-y0,x1-x0),h=26;sv.innerHTML+='<path d="M'+x0+' '+y0+' L'+x1+' '+y1+'" stroke="'+col+'" stroke-width="'+(w||7)+'" stroke-linecap="round" '+(dash?'stroke-dasharray="'+dash+'"':'')+' fill="none" opacity=".92"/><path d="M'+x1+' '+y1+' L'+(x1-h*Math.cos(a-.45))+' '+(y1-h*Math.sin(a-.45))+' M'+x1+' '+y1+' L'+(x1-h*Math.cos(a+.45))+' '+(y1-h*Math.sin(a+.45))+'" stroke="'+col+'" stroke-width="'+(w||7)+'" stroke-linecap="round" fill="none"/>'}
+E('badge','<em>EP 01</em><span>खेत का विज्ञान</span>');
+var SC={
+1:function(){E('head','4° फिर भी <b>पाला?</b>');E('tag','<small>हवा का तापमान · Illustrative</small><big>4°C</big>','left:330px;top:560px');E('src','Photoreal render · stand-in crop plants · not a real farm');document.getElementById('cap').innerHTML='Raat ko thermometer mein <u>chaar</u> degree. Phir bhi subah khet par pala.'},
+2:function(){E('head','हवा ≠ <b>पत्ता</b>');E('tag','<small>छाती की ऊँचाई · हवा</small><big>4°C</big>','left:668px;top:520px');E('tag c','<small>ज़मीन के पास · पत्ता</small><big>−1°C</big>','left:590px;top:1100px');E('tag','<small>Ise kehte hain</small>ज़मीनी पाला','left:162px;top:760px');E('src','Readings are illustrative · do the two-thermometer test yourself');document.getElementById('cap').innerHTML='Par patta <u>zameen ke paas</u> hai, khule aasmaan ke neeche.'},
+3:function(){E('head','रात: गर्मी <b>आसमान को</b>');[[330,760,300,520],[470,820,480,560],[600,1000,650,720],[230,960,170,700]].forEach(function(a){arrow(a[0],a[1],a[2],a[3],'#ff9b4a',8,'2 20')});E('tag','<small>पत्ते से निकलती गर्मी</small>साफ़ आसमान: वापस नहीं','left:470px;top:600px');E('src','Illustration of heat leaving a leaf · arrows are not measured');document.getElementById('cap').innerHTML='Raat ko wahi garmi <u>aasmaan ki taraf</u> chhod deta hai.'},
+4:function(){E('head','ठंडी हवा <b class="c">नीचे भरती है</b>');[[250,1230,330,900],[540,1240,540,880],[830,1230,750,900]].forEach(function(a){arrow(a[0],a[1],a[2],a[3],'#6fd3ff',8)});E('tag c','<small>निचला खेत</small>ज़्यादा पाला','left:400px;top:700px');E('src','FAO: cold air flows downhill and pools "like water in a flood"');document.getElementById('cap').innerHTML='Thandi hawa bhaari hoti hai, <u>neeche ke khet</u> mein bhar jaati hai.'}};
+Promise.all(['800 92px Mukta','700 30px Mukta','800 40px Inter','600 15px Inter'].map(function(f){return document.fonts.load(f,'पाला Aa 4')})).then(function(){var i=new Image();i.onload=function(){SC[S]();window.__done=true};i.src='img/f'+S+'.jpg'});
+</script></body></html>
