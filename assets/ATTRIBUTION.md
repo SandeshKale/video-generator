@@ -329,3 +329,5 @@ All sources and terms were read from the sites on 31 Oct 2026; full table and cr
 - `assets/fonts/{roboto,archivo}`, `inter-800` — @fontsource packages (OFL-1.1 per package metadata), vendored per the repo pattern and the npm packages removed.
 - `assets/animations/caption-rig/`, `assets/space/blender/earth.py` — own work (CC0).
 - **Not fetched (blocked or login-only):** Solar System Scope textures (connection failed from the sandbox; CC BY 4.0), Pexels/Pixabay (403), Vecteezy/Videezy (account + attribution), Sketchfab/CGTrader GPS satellites (account, per-model licences), Google Earth Studio (account/approval/terms), Freesound/Epidemic/Artlist/YouTube Audio Library, SF Pro / Helvetica Now (proprietary). Steps: `docs/ASSET-LOGIN-STEPS.md` Part B.
+
+Added for `reel-gilli-danda-sweet-spot`: 64_01, 64_02, 64_03, 63_01 (golf swing; stand-in for the danda strike) from the same una-dinosauria/cmu-mocap mirror (`data/0<subject>/`) — same CMU terms/acknowledgment as above.

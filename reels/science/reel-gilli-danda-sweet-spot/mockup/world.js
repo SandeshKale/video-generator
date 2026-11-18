@@ -24,8 +24,30 @@ var LANE = new THREE.Group(); S.add(LANE);
 var stone = new THREE.Mesh(new THREE.SphereGeometry(.34, 18, 12).scale(1, .62, 1), toon(NEUT)); outl(stone, dark(NEUT), .03); stone.position.set(-.05, .2, 0); LANE.add(stone); shadow(.9, 0, 0).parent !== LANE && 0;
 var GL = .75, gilli = box(1.5, .15, .15, ACC, .03); LANE.add(gilli);
 var ghosts = []; for (var gk = 0; gk < 6; gk++) { var gm = new THREE.Mesh(new THREE.BoxGeometry(1.5, .15, .15), new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: .32 * (1 - gk / 7), depthWrite: false })); LANE.add(gm); ghosts.push(gm); }
-var kid = new THREE.Group(); LANE.add(kid); (function () { var t = box(.9, 1.1, .6, ENERGY), h = box(.6, .6, .6, 0xC9A27A), l1 = box(.32, 1.0, .32, 0x6c5a45), l2 = box(.32, 1.0, .32, 0x6c5a45); t.position.y = 1.55; h.position.y = 2.4; l1.position.set(-.2, .5, 0); l2.position.set(.2, .5, 0); var arm = box(.62, .2, .22, 0xC9A27A); arm.position.set(.62, .45, 0); t.add(arm); kid.add(t, h, l1, l2); kid.position.set(-2.3, 0, .35); shadow(1.2, -2.3, .35); })();
-var HAND = new V3(-1.45, 2.1, .35), DL = 2.55, danda = new THREE.Group(); LANE.add(danda); (function () { var d = box(DL, .16, .16, SAGE, .03); d.position.x = DL / 2; danda.add(d); danda.position.copy(HAND); })();
+
+/* ===== mocap figurine (CMU golf swing standing in for the danda strike) ===== */
+var M3 = window.MOCAP3, JN = M3.swingA.joints, JI = {}; JN.forEach(function (n, i) { JI[n] = i; });
+function sampleClip(cl, tc, loop) { var n = cl.n, f = tc * cl.fps; if (loop) f = ((f % (n - 1)) + (n - 1)) % (n - 1); else f = clamp(f, 0, n - 1); var i0 = Math.floor(f), i1 = Math.min(n - 1, i0 + 1), u = f - i0, a = cl.f[i0], b = cl.f[i1], r = new Array(a.length); for (var k = 0; k < a.length; k++) r[k] = a[k] + (b[k] - a[k]) * u; return r; }
+function jp(r, n, S, o) { var k = JI[n] * 3; return new V3(r[k] * S + o[0], r[k + 1] * S + o[1], r[k + 2] * S + o[2]); }
+function mkFig(shirt, skin, pants) {
+  var g = new THREE.Group(); LANE.add(g); var B = [];
+  function bone(c, r, sph) { var m = new THREE.Mesh(sph ? new THREE.SphereGeometry(1, 14, 10) : new THREE.CylinderGeometry(1, 1, 1, 12), toon(c)); outl(m, dark(c), .16); g.add(m); B.push({ m: m, r: r, sph: sph }); return m; }
+  var def = { torso: bone(shirt, .27), shoul: bone(shirt, .16), hipb: bone(pants, .17), head: bone(skin, .26, 1), uaL: bone(skin, .1), uaR: bone(skin, .1), faL: bone(skin, .085), faR: bone(skin, .085), thL: bone(pants, .13), thR: bone(pants, .13), shL: bone(pants, .105), shR: bone(pants, .105), ftL: bone(0x3a2f24, .09), ftR: bone(0x3a2f24, .09) };
+  var joints = ['eL', 'eR', 'hL', 'hR', 'kL', 'kR', 'fL', 'fR', 'sL', 'sR'].map(function (n) { return { n: n, m: bone(/^[hef]/.test(n) && n[0] !== 'f' ? skin : (n[0] === 'k' || n[0] === 'f' ? pants : skin), n[0] === 'h' ? .1 : .12, 1) }; });
+  function seg(m, r, a, b) { var d = b.clone().sub(a), L = d.length(); m.position.copy(a).addScaledVector(d, .5); m.quaternion.setFromUnitVectors(new V3(0, 1, 0), d.clone().normalize()); m.scale.set(r, L, r); }
+  return { g: g, pose: function (row, S, o) {
+    var P = function (n) { return jp(row, n, S, o); }; seg(def.torso, .27 * S, P('hip'), P('neck')); seg(def.shoul, .16 * S, P('sL'), P('sR')); seg(def.hipb, .17 * S, P('uL'), P('uR'));
+    var h = P('head'); def.head.position.copy(h); def.head.scale.setScalar(.26 * S); def.head.quaternion.identity();
+    seg(def.uaL, .1 * S, P('sL'), P('eL')); seg(def.uaR, .1 * S, P('sR'), P('eR')); seg(def.faL, .085 * S, P('eL'), P('hL')); seg(def.faR, .085 * S, P('eR'), P('hR'));
+    seg(def.thL, .13 * S, P('uL'), P('kL')); seg(def.thR, .13 * S, P('uR'), P('kR')); seg(def.shL, .105 * S, P('kL'), P('fL')); seg(def.shR, .105 * S, P('kR'), P('fR')); seg(def.ftL, .09 * S, P('fL'), P('tL')); seg(def.ftR, .09 * S, P('fR'), P('tR'));
+    joints.forEach(function (j) { j.m.position.copy(P(j.n)); j.m.scale.setScalar((j.n[0] === 'h' ? .1 : .12) * S * .9); });
+  } };
+}
+var FS_ = 1.05, FIG = mkFig(ENERGY, 0xC9A27A, 0x6c5a45), SW = M3.swingA, DL = 2.6, E_END = new V3(.68, .70, 0), club = box(DL, .16, .16, SAGE, .03); LANE.add(club);
+var OFF = [0, 0, 0], tImp = SW.impact / SW.fps, GRIPK = .3;
+function clubAt(row, o) { var gp = jp(row, 'hL', FS_, o).add(jp(row, 'hR', FS_, o)).multiplyScalar(.5), el = jp(row, 'eL', FS_, o).add(jp(row, 'eR', FS_, o)).multiplyScalar(.5), d = gp.clone().sub(el).normalize(); return { gp: gp, d: d }; }
+(function () { var r = SW.f[SW.impact], c = clubAt(r, [0, 0, 0]); var p0 = c.gp.clone().addScaledVector(c.d, -GRIPK); if (c.d.y < -.05) { DL = clamp((E_END.y - p0.y) / c.d.y, 1.8, 3.8); } var tip = p0.clone().addScaledVector(c.d, DL); OFF = [E_END.x - tip.x, 0, -tip.z]; console.log('club', DL.toFixed(2), 'dy', c.d.y.toFixed(2), 'tip', tip.x.toFixed(2), tip.y.toFixed(2), 'OFF', OFF.map(function (v) { return v.toFixed(2); })); club.geometry.dispose(); club.geometry = new THREE.BoxGeometry(DL, .16, .16); })();
+function figAt(t) { var row = sampleClip(SW, t - TS + tImp, false); FIG.pose(row, FS_, OFF); var c = clubAt(row, OFF), p0 = c.gp.clone().addScaledVector(c.d, -GRIPK), mid = p0.clone().addScaledVector(c.d, DL / 2); club.position.copy(mid); club.quaternion.setFromUnitVectors(new V3(1, 0, 0), c.d); return mid; }
 (function () { /* far stadium: four towers + bowl, neutral with warm lamps */ for (var i = 0; i < 4; i++) { var tw = box(1.6, 26, 1.6, NEUT, .06), x = -34 + i * 22; tw.position.set(x, 13, -90); LANE.add(tw); var lamp = new THREE.Mesh(new THREE.BoxGeometry(5, 2.4, .6), new THREE.MeshBasicMaterial({ color: ENERGY })); lamp.position.set(x, 27, -89); LANE.add(lamp); } var bowl = box(60, 5, 6, NEUT, .08); bowl.position.set(-12, 2.5, -90); LANE.add(bowl); })();
 /* gilli physics: rest on stone, then end-strike launch (slow motion factor SM) */
 var TS = 5.9, SM = .35, C0 = new V3(0, .387, 0), A0 = 25 * Math.PI / 180, V0 = [1.7, 6.6], OM = -14;
@@ -65,7 +87,7 @@ window.__seek = function (t) {
   if (scn === 'A') camA(t); else if (scn === 'B') camB(t); else camD(t);
   cam.updateMatrixWorld(true);
   var g = gilliAt(t); setG(gilli, g); ghosts.forEach(function (m, k) { var gg = gilliAt(t - (k + 1) * .1); setG(m, gg); m.visible = !g.on && t > TS && t < TS + 3; });
-  danda.rotation.z = dAng(t); if (t > TS + .5) danda.rotation.z = lerp(dAng(TS + .5), -70 * Math.PI / 180, ramp(t, TS + .5, TS + 1.2)); kid.position.z = .35;
+  var clubMid = figAt(t);
   var bs = batAt(t); var tt = Math.max(0, t - 10.5);
   ball.position.set(t < TH ? lerp(7, .45, ramp(t, 10.9, TH)) : .45 + 4.5 * eo3(ramp(t, TH, TH + 1.6)), YT + UH * BL, 0);
   /* DOM */
@@ -73,7 +95,7 @@ window.__seek = function (t) {
   head.innerHTML = scn === 'A' ? 'The IPL secret is in your <i>village lane</i>' : scn === 'B' ? 'Hit the <i>end</i>: it flies' : 'One spot on a bat <i>doesn’t shake</i>';
   var c = ''; CAPS.forEach(function (x) { if (t >= x[0] && t <= x[1]) c = x[2]; }); cap.textContent = c;
   var uA = ramp(t, .8, 1.5) * (scn === 'A' ? 1 : 0), uB = (scn === 'B' ? 1 : 0) * ramp(t, 5.2, 5.8), uD = scn === 'D' ? ramp(t, 11, 11.6) : 0, uN = scn === 'D' ? ramp(t, 12.6, 13.3) : 0;
-  place(tStone, stone.position.clone(), -80, 70, uA); place(tGilli, gilli.position.clone().add(new V3(.3, .1, 0)), 120, -90, uA || uB); place(tDanda, new V3(-1.2, 2.0, .35), -40, -120, uB); place(tAuc, new V3(-12, 29, -90), 40, 60, uA > 0 ? ramp(t, 1.8, 2.6) : 0);
+  place(tStone, stone.position.clone(), -80, 70, uA); place(tGilli, gilli.position.clone().add(new V3(.3, .1, 0)), 120, -90, uA || uB); place(tDanda, club.position.clone(), -40, -120, uB); place(tAuc, new V3(-12, 29, -90), 40, 60, uA > 0 ? ramp(t, 1.8, 2.6) : 0);
   place(tNode, new V3(200 + .35, YT + NODEU * BL, 0), 150, 120, uN); place(tShake, new V3(200 - .6, YT + .55 * BL, 0), -120, -80, ramp(t, TH + .3, TH + 1.1) * (scn === 'D' ? 1 : 0));
   R.render(S, cam);
 };
