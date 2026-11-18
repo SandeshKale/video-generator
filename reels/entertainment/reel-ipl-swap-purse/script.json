@@ -1,0 +1,109 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "हार्दिक पांड्या: अठारह करोड़। अर्शदीप सिंह: अठारह करोड़। बराबर पैसा। पर क्या सौदा बराबर है?",
+   "A": "Hardik Pandya: ₹18 crore. Arshdeep Singh: ₹18 crore. Barabar paisa. Par kya sauda barabar hai?",
+   "cap": "Hardik Pandya: ₹18 crore. Arshdeep Singh: ₹18 crore. Barabar paisa. Par kya sauda barabar hai?"
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "ग्यारह नवंबर को मुंबई और पंजाब ने एक स्वैप किया। हार्दिक गए पंजाब, अर्शदीप आए मुंबई।",
+   "A": "Gyaarah November ko Mumbai aur Punjab ne ek swap kiya. Hardik gaye Punjab, Arshdeep aaye Mumbai.",
+   "cap": "Gyaarah November ko Mumbai aur Punjab ne ek swap kiya. Hardik gaye Punjab, Arshdeep aaye Mumbai."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "मुंबई को ये क्यों करना पड़ा? दो हज़ार छब्बीस में मुंबई, रिपोर्ट्स के मुताबिक़, नौवें नंबर पर रही।",
+   "A": "Mumbai ko ye kyon karna pada? 2026 mein Mumbai, reports ke mutabik, nauwein number par rahi.",
+   "cap": "Mumbai ko ye kyon karna pada? 2026 mein Mumbai, reports ke mutabik, nauwein number par rahi."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "और बुमराह ने पूरे सीज़न में सिर्फ़ चार विकेट लिए, औसत एक सौ दो के आसपास।",
+   "A": "Aur Bumrah ne poore season mein sirf chaar wicket liye, average ek sau do ke aaspaas.",
+   "cap": "Aur Bumrah ne poore season mein sirf chaar wicket liye, average ek sau do ke aaspaas."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "तो मुंबई ने बुमराह का साथी ढूँढा। अर्शदीप सिंह: पंजाब के लिए सबसे ज़्यादा विकेट, एक सौ ग्यारह, छियानबे मैच में।",
+   "A": "To Mumbai ne Bumrah ka saathi dhoondha. Arshdeep Singh: Punjab ke liye sabse zyada wicket, ek sau gyaarah, chhiyaanbe match mein.",
+   "cap": "To Mumbai ne Bumrah ka saathi dhoondha. Arshdeep Singh: Punjab ke liye sabse zyada wicket, ek sau gyaarah, chhiyaanbe match mein."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "पंजाब को क्या मिला? हार्दिक की बल्लेबाज़ी, और एक नई शुरुआत, श्रेयस अय्यर और रिकी पोंटिंग के साथ।",
+   "A": "Punjab ko kya mila? Hardik ki batting, aur ek nayi shuruaat, Shreyas Iyer aur Ricky Ponting ke saath.",
+   "cap": "Punjab ko kya mila? Hardik ki batting, aur ek nayi shuruaat, Shreyas Iyer aur Ricky Ponting ke saath."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "पर पिछले सीज़न हार्दिक ने तेईस ओवर में सिर्फ़ चार विकेट लिए, इकॉनमी लगभग बारह।",
+   "A": "Par pichhle season Hardik ne teis over mein sirf chaar wicket liye, economy lagbhag baarah.",
+   "cap": "Par pichhle season Hardik ne teis over mein sirf chaar wicket liye, economy lagbhag baarah."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "अब असली सवाल पैसे का है। सत्रह नवंबर के बाद पंजाब के पास सिर्फ़ अठारह पॉइंट छह करोड़ बचे, और छह जगह खाली।",
+   "A": "Ab asli sawal paise ka hai. Satrah November ke baad Punjab ke paas sirf ₹18.6 crore bache, aur chhe jagah khaali.",
+   "cap": "Ab asli sawal paise ka hai. Satrah November ke baad Punjab ke paas sirf ₹18.6 crore bache, aur chhe jagah khaali."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "मुंबई के पास बत्तीस पॉइंट छह करोड़, और नौ जगह।",
+   "A": "Mumbai ke paas ₹32.6 crore, aur nau jagah.",
+   "cap": "Mumbai ke paas ₹32.6 crore, aur nau jagah."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "यानी पंजाब को अब बॉलिंग नीलामी से ख़रीदनी पड़ेगी। और आकाश चोपड़ा के हिसाब से, वहाँ एक बड़ा गैप है।",
+   "A": "Yaani Punjab ko ab bowling auction se khareedni padegi. Aur Aakash Chopra ke hisaab se, wahan ek bada gap hai.",
+   "cap": "Yaani Punjab ko ab bowling auction se khareedni padegi. Aur Aakash Chopra ke hisaab se, wahan ek bada gap hai."
+  },
+  {
+   "id": "s11",
+   "g": "g11",
+   "B": "नीलामी सोलह दिसंबर को गोवा में है। तभी पता चलेगा, ये सौदा किसने जीता।",
+   "A": "Auction solah December ko Goa mein hai. Tabhi pata chalega, ye sauda kisne jeeta.",
+   "cap": "Auction solah December ko Goa mein hai. Tabhi pata chalega, ye sauda kisne jeeta."
+  },
+  {
+   "id": "s12",
+   "g": "g12",
+   "B": "आईपीएल का ऐसा हिसाब-किताब चाहिए? नर्डलॉजिक डॉट सी ओ को फ़ॉलो करो, और शेयर करो।",
+   "A": "IPL ka aisa hisaab-kitaab chahiye? nerdlogic.co ko follow karo, aur share karo.",
+   "cap": "IPL ka aisa hisaab-kitaab chahiye? nerdlogic.co ko follow karo, aur share karo."
+  },
+  {
+   "id": "s13",
+   "g": "g13",
+   "B": "दोनों अठारह करोड़ के। पर एक को बॉलर मिला, और दूसरे को बॉलिंग का सवाल।",
+   "A": "Dono ₹18 crore ke. Par ek ko bowler mila, aur doosre ko bowling ka sawal.",
+   "cap": "Dono ₹18 crore ke. Par ek ko bowler mila, aur doosre ko bowling ka sawal."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.7,
+  "s2": 0.5,
+  "s3": 0.7,
+  "s4": 0.5,
+  "s5": 0.6,
+  "s6": 0.5,
+  "s7": 0.7,
+  "s8": 0.6,
+  "s9": 0.5,
+  "s10": 0.7,
+  "s11": 0.8,
+  "s12": 0.7
+ }
+}
