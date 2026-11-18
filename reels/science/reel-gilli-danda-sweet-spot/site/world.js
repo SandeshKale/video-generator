@@ -86,7 +86,7 @@ var slideA = arrow(.0, 1.5, 2.2, SAGE, 1, 0); slideA.rotation.y = 0; slideA.posi
 var BAT = new THREE.Group(); BAT.position.set(200, 0, 0); S.add(BAT); laneMarks(200);
 var BL = 2.7, N = 90, YT = 1.9, bgeo = new THREE.BoxGeometry(1, BL, .5, 1, N, 1), brest = bgeo.attributes.position.array.slice(), bcol = new Float32Array(bgeo.attributes.position.count * 3); bgeo.setAttribute('color', new THREE.BufferAttribute(bcol, 3));
 var bat = new THREE.Mesh(bgeo, toon(0xffffff, true)); outl(bat, dark(SAGE), .03); BAT.add(bat);
-function prof(u) { var sh = clamp((u - .58) / .14), sm = sh * sh * (3 - 2 * sh); return lerp(.5, .15, sm); }
+function prof(u) { var sh = clamp((u - .58) / .14), sm = sh * sh * (3 - 2 * sh); return lerp(.38, .13, sm); }
 function gs(u) { if (u < .176) return u / .176 * .224; if (u < .8) return .224 + (u - .176) / .624 * (.776 - .224); return .776 + (u - .8) / .2 * .224; }
 function mode(s) { var b = 4.730, x = b * s, sg = .9825; return Math.cosh(x) + Math.cos(x) - sg * (Math.sinh(x) + Math.sin(x)); }
 var NODEU = .176, node = new THREE.Mesh(new THREE.TorusGeometry(.62, .035, 8, 40).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: INK })); node.position.set(0, YT + NODEU * BL, 0); BAT.add(node);
@@ -95,7 +95,7 @@ HITS.forEach(function () { var b = new THREE.Mesh(new THREE.SphereGeometry(.36, 
 var hand = box(.8, .6, .8, SKIN); BAT.add(hand); shadow(2.5, 200, 0);
 var ruler150 = new THREE.Group(); (function () { var L = .15 / .85 * BL, a = flat(.05, L, .05, INK), t1 = flat(.4, .05, .05, INK), t2 = flat(.4, .05, .05, INK); a.position.set(1.15, YT + L / 2, 0); t1.position.set(1.15, YT, 0); t2.position.set(1.15, YT + L, 0); ruler150.add(a, t1, t2); BAT.add(ruler150); })();
 function batAt(t) { var pos = bgeo.attributes.position, amp = [], k, tot = 0; HITS.forEach(function (h) { var tt = t - h.t, A = tt < 0 ? 0 : clamp(mode(gs(h.u)) / W42 * .5, -.8, .8) * Math.exp(-tt / 1.4) * Math.sin(OMG * tt); amp.push(A); tot += A; });
-  for (var i = 0; i < pos.count; i++) { var ry = brest[i * 3 + 1], u = (ry + BL / 2) / BL, w = mode(gs(u)) / W42, dx = tot * w; pos.array[i * 3] = brest[i * 3] * prof(u) + dx; pos.array[i * 3 + 1] = ry + YT + BL / 2; pos.array[i * 3 + 2] = brest[i * 3 + 2]; var kk = clamp(Math.abs(dx) / .5 * 1.1), c = new THREE.Color(SAGE).lerp(new THREE.Color(VIO), kk); bcol[i * 3] = c.r; bcol[i * 3 + 1] = c.g; bcol[i * 3 + 2] = c.b; }
+  for (var i = 0; i < pos.count; i++) { var ry = brest[i * 3 + 1], u = (ry + BL / 2) / BL, w = mode(gs(u)) / W42, dx = tot * w; pos.array[i * 3] = brest[i * 3] * prof(u) + dx; pos.array[i * 3 + 1] = ry + YT + BL / 2; pos.array[i * 3 + 2] = brest[i * 3 + 2]; var kk = clamp(Math.abs(dx) / .5 * 1.1), c = new THREE.Color(u > .74 ? 0x4a3d2e : SAGE).lerp(new THREE.Color(VIO), kk); bcol[i * 3] = c.r; bcol[i * 3 + 1] = c.g; bcol[i * 3 + 2] = c.b; }
   pos.needsUpdate = true; bgeo.attributes.color.needsUpdate = true; bgeo.computeVertexNormals(); var hd = tot * mode(gs(1)) / W42; hand.position.set(hd, YT + BL + .1, 0); return Math.abs(hd); }
 /* ===== set F (ox 300): runners + the SMAT board ===== */
 var FL = new THREE.Group(); S.add(FL); FL.position.x = 300; laneMarks(300);
