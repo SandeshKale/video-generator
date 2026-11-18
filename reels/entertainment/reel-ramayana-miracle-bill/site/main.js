@@ -41,7 +41,7 @@ window.__seek = function (t) {
     var sc = o.sc, tE = o.t1 ? Math.min(o.t1, sc.t1) : sc.t1, on = (t >= sc.t0 + (sc.i === 0 ? -1 : .05)) && t < tE - .05;
     if (!on) { o.el.style.display = 'none'; return; }
     var u = ramp(t, o.t0, o.t0 + .55); if (t > tE - .3) u = u * clamp((tE - .05 - t) / .25);
-    var w = o.in.offsetWidth || 300, h = o.in.offsetHeight || 100, x, y;
+    o.el.style.display = 'block'; var w = o.in.offsetWidth || 300, h = o.in.offsetHeight || 100, x, y;
     if (o.anchor) { var p = V.proj(o.anchor, sc.C); x = p[0] - w / 2 + (o.dx || 0); y = p[1] - h; } else { x = o.px[0]; y = o.px[1]; }
     x = Math.max(156, Math.min(918 - w, x)); y = Math.max(232, Math.min(1290 - h, y)); o.el.style.left = x + 'px'; o.el.style.top = y + 'px'; V.writeIn(o, u);
   });

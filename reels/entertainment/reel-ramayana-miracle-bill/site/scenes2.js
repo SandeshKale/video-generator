@@ -20,7 +20,7 @@ var caps = [V.mkRig(scC, SC, { s: 1.9, wide: 1.5, col: VIO, rim: VIO, gcol: VIO,
 var capT = [tKum, tHan, tAsu], capKind = ['stomp', 'leap', 'walk'], capAng = [0, 2.1, 4.2], capRad = 2.8;
 V.labIn(C, { html: '<div class="tag v">Motion-capture floor</div><div class="big v"><span>0</span></div><div class=tag style="margin-top:2px">infrared cameras · about</div><div class=src style="margin-top:8px">Cinematographer Pankaj Kumar<br>THR India · reported</div>', t0: t42 - .3, px: [162, 250] });
 V.labIn(C, { html: '<div class="src r">Illustration · voxel stand-ins<br>not the film’s footage</div>', t0: C.t0 + 1.2, px: [162, 1210] });
-var cl = [V.labIn(C, { html: '<div class="tag v">Kumbhakarna</div>', t0: tKum, anchor: new V3(), dx: -60 }), V.labIn(C, { html: '<div class="tag v">Hanuman</div>', t0: tHan, anchor: new V3(), dx: -50 }), V.labIn(C, { html: '<div class="tag v">Asur</div>', t0: tAsu, anchor: new V3(), dx: -30 })];
+var cl = [V.labIn(C, { html: '<div class="tag v">▸ Kumbhakarna · captured</div>', t0: tKum, px: [162, 1000] }), V.labIn(C, { html: '<div class="tag v">▸ Hanuman · captured</div>', t0: tHan, px: [162, 1060] }), V.labIn(C, { html: '<div class="tag v">▸ Asur · captured</div>', t0: tAsu, px: [162, 1120] })];
 var mark = lines((function () { var p = circ(.5, 40, .02); return p; })(), lineMat(scC, EMB, 1)); mark.visible = false; SC.add(mark);
 C.upd = function (t, tl, dur) {
   var a = ramp(tl, 0, dur * .3), b = ramp(tl, dur * .3, dur * .58), c = ramp(t, tKum - .2, C.t1), ea = 1 - Math.pow(1 - a, 3), eb = eio(b), ec = eio(c);
@@ -39,7 +39,7 @@ C.upd = function (t, tl, dur) {
   caps.forEach(function (c2, i) { var u = ramp(t, capT[i], capT[i] + .5), on = u > 0, ang = capAng[i] + (t - capT[i]) * .25, cx = capRad * Math.cos(ang), cz = capRad * Math.sin(ang);
     c2.root.visible = on; c2.ghosts.forEach(function (g) { g.arr.forEach(function (l) { l.visible = on; }); });
     var tt = Math.max(0, t - capT[i]); V.rigGhosts(c2, function (k) { var q = tt - (k + 1) * .17; V.poseRig(c2, capRad * Math.cos(capAng[i] + q * .25), capRad * Math.sin(capAng[i] + q * .25), -(capAng[i] + q * .25) + Math.PI, q * 4.2, capKind[i]); });
-    V.poseRig(c2, cx, cz, -ang + Math.PI, tt * 4.2, capKind[i]); c2.root.scale.setScalar(c2.s * eob(u)); cl[i].anchor.set(cx, c2.s * 1.9 + 1.0, cz); });
+    V.poseRig(c2, cx, cz, -ang + Math.PI, tt * 4.2, capKind[i]); c2.root.scale.setScalar(c2.s * eob(u)); });
 };
 
 /* ================= scene D: Jatayu — entirely CG vs two live actors ================= */
