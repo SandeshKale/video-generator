@@ -13,16 +13,18 @@ def slug(title): return SHORT[re.sub(r'^File:|\.\w+$', '', title)]
 for s in SRC:
     out = f"{D}/{slug(s['title'])}.jpg"
     if os.path.exists(out) and os.path.getsize(out) > 10000: print('ok', os.path.basename(out)); continue
+    PIB = {'hardik-pmo': 'H20240704162110', 'arshdeep-pmo': 'H20240704162086', 'bumrah-pmo': 'H20240704162101', 'pant-pmo': 'H20240704162087'}   # canonical PIB originals (2200 px), same GODL-India photos as on Commons
     url = s['url']
-    if s['w'] > 1920:   # Wikimedia asks for standard thumbnail widths; 1920 px is plenty for a 1080 px canvas
+    if slug(s['title']) in PIB: url = 'https://static.pib.gov.in/WriteReadData/Gallery/PhotoGallery/2024/Jul/' + PIB[slug(s['title'])] + '.JPG'
+    if s['w'] > 1920 and slug(s['title']) not in PIB:   # Wikimedia asks for standard thumbnail widths; 1920 px is plenty for a 1080 px canvas
         base, name = url.rsplit('/', 1); url = base.replace('/commons/', '/commons/thumb/') + '/' + name + '/1920px-' + name
-    for att in range(8):
+    for att in range(3):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': UA}); data = urllib.request.urlopen(req, timeout=90).read(); break
         except Exception as e:
-            wait = 45 * (att + 1); print('retry', s['title'][:40], e, f'wait {wait}s'); time.sleep(wait)
-    else: sys.exit('failed ' + s['title'])
-    if s['w'] <= 1920 and hashlib.sha1(data).hexdigest() != s['sha1']: sys.exit('sha1 mismatch ' + s['title'])
+            wait = 30 * (att + 1); print('retry', s['title'][:40], e, f'wait {wait}s'); time.sleep(wait)
+    else: print('FAILED (rate limited?), rerun later:', s['title']); continue
+    if s['w'] <= 1920 and slug(s['title']) not in PIB and hashlib.sha1(data).hexdigest() != s['sha1']: sys.exit('sha1 mismatch ' + s['title'])
     open(out, 'wb').write(data); print('saved', os.path.basename(out), len(data) // 1024, 'KB'); time.sleep(8)
 L = ['# Photo credits (licence read on each Commons file page, 18 Nov 2026)', '']
 for s in SRC:
