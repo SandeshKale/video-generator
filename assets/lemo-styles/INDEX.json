@@ -2,7 +2,7 @@
  {
   "slug": "archive-lighttable",
   "name": "Archive Light Table",
-  "category": "Evidence Films",
+  "category": "Instruments & Evidence",
   "uses": [
    "Brand history",
    "Archive stories",
@@ -15,6 +15,7 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/archive-lighttable/STYLE.md"
  },
  {
@@ -33,12 +34,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/art-deco/STYLE.md"
  },
  {
   "slug": "ascii-crt",
-  "name": "ASCII / CRT Terminal",
-  "category": "Graphic & Type",
+  "name": "CRT ASCII Terminal",
+  "category": "Film & Tape",
   "uses": [
    "Developer tools",
    "Sci-fi",
@@ -51,12 +53,32 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/ascii-crt/STYLE.md"
+ },
+ {
+  "slug": "assembly-line-diagram",
+  "name": "Assembly-Line Diagram",
+  "category": "Line Diagrams",
+  "uses": [
+   "How a process works",
+   "Biology and medicine",
+   "Supply chains and pipelines"
+  ],
+  "demo_film": "The Disassembly Line",
+  "demo_sec": 54.9,
+  "essence": "A process explained as a factory cut open in elevation: a silhouette (a body, a machine, a building, a city) is sliced like a doll's house into rooms on floors, each room a work station with a machine, a numbered plaque and tiny workers; coloured pipes carry t",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/assembly-line-diagram/STYLE.md"
  },
  {
   "slug": "backrooms",
   "name": "Liminal Found Footage",
-  "category": "Cinema & Eras",
+  "category": "Film & Tape",
   "uses": [
    "Horror",
    "Mystery & ARG",
@@ -69,12 +91,32 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/backrooms/STYLE.md"
+ },
+ {
+  "slug": "bauhaus-shapes",
+  "name": "Bauhaus Shapes",
+  "category": "Graphic & Type",
+  "uses": [
+   "Finance and economics explainers",
+   "Mechanisms and principles",
+   "Titles and chapter cards"
+  ],
+  "demo_film": "COMPOUND",
+  "demo_sec": 52.0,
+  "essence": "An explainer told only with circles, squares, triangles, arcs and straight lines, set in opaque colour on a light, matte paper. Every shape is a quantity drawn to scale (area is the amount), the shapes are the characters, and type only names them. A thin const",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/bauhaus-shapes/STYLE.md"
  },
  {
   "slug": "blueprint",
   "name": "Blueprint",
-  "category": "Graphic & Type",
+  "category": "Line Diagrams",
   "uses": [
    "Engineering",
    "Hardware launches",
@@ -87,12 +129,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/blueprint/STYLE.md"
  },
  {
   "slug": "brick-toy",
   "name": "Brick Toy",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "Toys & kids",
    "Product builds",
@@ -105,12 +148,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/brick-toy/STYLE.md"
  },
  {
   "slug": "briefing-board",
   "name": "Engineering Briefing Board",
-  "category": "Evidence Films",
+  "category": "Instruments & Evidence",
   "uses": [
    "Engineering",
    "Option comparisons",
@@ -123,6 +167,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/briefing-board/STYLE.md"
  },
  {
@@ -141,12 +186,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/caption-news/STYLE.md"
  },
  {
   "slug": "cel-anime-80s",
   "name": "80s Cel Anime",
-  "category": "Cartoon & Anime",
+  "category": "Cartoons",
   "uses": [
    "Music videos",
    "Game trailers",
@@ -159,12 +205,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/cel-anime-80s/STYLE.md"
  },
  {
   "slug": "chalkboard",
   "name": "Chalkboard",
-  "category": "Hand-drawn & Painting",
+  "category": "Sketch & Board",
   "uses": [
    "Word origins",
    "Myth-busting",
@@ -177,12 +224,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/chalkboard/STYLE.md"
  },
  {
   "slug": "circuit-board",
   "name": "Circuit Board",
-  "category": "Information & Keynote",
+  "category": "Light & Lines",
   "uses": [
    "Energy",
    "Supply chains",
@@ -195,11 +243,12 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/circuit-board/STYLE.md"
  },
  {
   "slug": "city-symphony",
-  "name": "Time-lapse Symphony",
+  "name": "City Symphony",
   "category": "Edit & Documentary",
   "uses": [
    "City films",
@@ -213,7 +262,46 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/city-symphony/STYLE.md"
+ },
+ {
+  "slug": "colored-pencil",
+  "name": "Colored-Pencil Science Illustration",
+  "category": "Painting & Illustration",
+  "uses": [
+   "Natural-science cutaways",
+   "Picture-book explainers",
+   "Hidden structures and processes"
+  ],
+  "demo_film": "The Other Half",
+  "demo_sec": 50.8,
+  "essence": "A real 3D cutaway world (ground, soil horizons, stones, buried structures, living things) redrawn every frame as a colored-pencil plate on toothed paper: four layers of pencil, a wobbling graphite contour, labels pencilled on cream paper tags. The camera can s",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/colored-pencil/STYLE.md"
+ },
+ {
+  "slug": "comic-history",
+  "name": "Comic History Cartoon",
+  "category": "Cartoons",
+  "uses": [
+   "Territorial changes in history",
+   "Light explainers on geopolitics",
+   "Market share and turf-war stories"
+  ],
+  "demo_film": "One Piece of Paper",
+  "demo_sec": 51.0,
+  "essence": "Countries are paper puppets joined with brass split pins, standing on a map printed on paper; whoever takes a piece of land cuts a scrap of paper and slaps it onto the map. The whole film is one comic page on a table, a panel per moment, and the camera travels",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": true,
+  "path": "assets/lemo-styles/styles/comic-history/STYLE.md"
  },
  {
   "slug": "countdown",
@@ -231,12 +319,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/countdown/STYLE.md"
  },
  {
   "slug": "crayon-book",
   "name": "Crayon Picture Book",
-  "category": "Hand-drawn & Painting",
+  "category": "Painting & Illustration",
   "uses": [
    "Picture books",
    "Bedtime stories",
@@ -249,12 +338,51 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/crayon-book/STYLE.md"
+ },
+ {
+  "slug": "crayon-world",
+  "name": "Crayon World 3D",
+  "category": "3D & Miniature",
+  "uses": [
+   "Short stories",
+   "Tributes",
+   "Journeys"
+  ],
+  "demo_film": "The Butterfly",
+  "demo_sec": 64.5,
+  "essence": "A whole world built in 3D and redrawn in wax crayon, by a child's hand, twelve times a second, while a camera moves through it: real depth and parallax, a flight or a walk in first person, and every frame still a crayon drawing on the same sheet of paper.",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/crayon-world/STYLE.md"
+ },
+ {
+  "slug": "dark-documentary",
+  "name": "Radar Sweep Documentary",
+  "category": "Instruments & Evidence",
+  "uses": [
+   "History of science and engineering",
+   "Archaeology, sites and reconstructions",
+   "Astronomy, deep space and survey"
+  ],
+  "demo_film": "Catching the Moon",
+  "demo_sec": 52.0,
+  "essence": "The world is black until a scan passes. A plane of light sweeps across terrain, machines and rooms; what it has touched lights up, then settles into echoes (contour lines, range rings, wireframe edges) that slowly fade. Facts arrive as instrument readings: thi",
+  "pipeline": "3D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/dark-documentary/STYLE.md"
  },
  {
   "slug": "dark-keynote",
   "name": "Dark Tech Keynote",
-  "category": "Information & Keynote",
+  "category": "Screens & Interfaces",
   "uses": [
    "Product launches",
    "SaaS",
@@ -267,12 +395,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/dark-keynote/STYLE.md"
  },
  {
   "slug": "data-physical",
   "name": "Data Physicalization",
-  "category": "Evidence Films",
+  "category": "Data & Maps",
   "uses": [
    "Annual reports",
    "Investor decks",
@@ -285,12 +414,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/data-physical/STYLE.md"
  },
  {
   "slug": "dataviz",
   "name": "Data Storytelling",
-  "category": "Information & Keynote",
+  "category": "Data & Maps",
   "uses": [
    "Data journalism",
    "Reports",
@@ -303,12 +433,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/dataviz/STYLE.md"
  },
  {
   "slug": "desktop-flythrough",
-  "name": "Desktop Flythrough",
-  "category": "Materials & 3D",
+  "name": "Tabletop App Flythrough",
+  "category": "Screens & Interfaces",
   "uses": [
    "App explainers",
    "Workflows",
@@ -321,7 +452,27 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/desktop-flythrough/STYLE.md"
+ },
+ {
+  "slug": "double-exposure",
+  "name": "Double Exposure",
+  "category": "Film & Tape",
+  "uses": [
+   "Brand and city films",
+   "Documentary and series openings",
+   "Music video intros"
+  ],
+  "demo_film": "Mountains and Seas",
+  "demo_sec": 50.5,
+  "essence": "A silhouette is a window. A dark animal shape from the first exposure holds a second photograph, the place that animal carries with it, while the world outside the shape is where it is now. Monochrome photographs, warm lamps as the only colour, and a camera th",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/double-exposure/STYLE.md"
  },
  {
   "slug": "engraving",
@@ -339,11 +490,69 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/engraving/STYLE.md"
  },
  {
+  "slug": "firefly-pointillism",
+  "name": "Firefly Pointillism",
+  "category": "Light & Lines",
+  "uses": [
+   "Picture-book stories",
+   "Many becoming one",
+   "Night and nature lyric"
+  ],
+  "demo_film": "Shine Back",
+  "demo_sec": 50.6,
+  "essence": "Thousands of soft, breathing points of light on black make up the people, animals, grass, moon, rain and words. The points are never created or destroyed: they scatter, fly off and gather somewhere else as something new, and that is how this style tells a stor",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/firefly-pointillism/STYLE.md"
+ },
+ {
+  "slug": "flat-space-explainer",
+  "name": "Scale Zoom Explainer",
+  "category": "Graphic & Type",
+  "uses": [
+   "Science explainers",
+   "Scale and size",
+   "Classroom"
+  ],
+  "demo_film": "The Long Way Down",
+  "demo_sec": 52.0,
+  "essence": "Solid flat shapes on a deep night-blue ground, each with one shade step and hard-edged ring \"glows\", drawn to true scale inside each frame, guided by a small character who is the camera's own lens. A continuous change of scale carries the viewer through orders",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/flat-space-explainer/STYLE.md"
+ },
+ {
+  "slug": "flow-field",
+  "name": "Flow-field Wind Lines",
+  "category": "Light & Lines",
+  "uses": [
+   "Storms, monsoons and other weather",
+   "Ocean currents and river floods",
+   "Any flow measured against a threshold"
+  ],
+  "demo_film": "Typhoon Yagi over Qiongzhou",
+  "demo_sec": 52.0,
+  "essence": "An invisible field — wind, current, traffic, any flow — made visible as thousands of thin ink streamlines engraved on warm paper, with darker strokes running along them at the local speed. The lines are computed from data or a physical model, never drawn by ha",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/flow-field/STYLE.md"
+ },
+ {
   "slug": "game-show",
-  "name": "Game Show Flat",
+  "name": "Rhythm Game Show",
   "category": "Games",
   "uses": [
    "Tech timelines",
@@ -357,12 +566,32 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/game-show/STYLE.md"
+ },
+ {
+  "slug": "gilded-illumination",
+  "name": "Gilded Illumination",
+  "category": "Traditional Crafts",
+  "uses": [
+   "Fables and picture-book stories",
+   "Holiday and festival shorts",
+   "Brand and origin stories"
+  ],
+  "demo_film": "Borrowed Light",
+  "demo_sec": 46.8,
+  "essence": "The whole frame is one gilded miniature painting, and the story happens inside it: flat mineral pigments inside firm ink outlines, white-lead highlights and dots, and real gold leaf (laid in squares, with seams, burnished) that only shines when a light inside ",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": true,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/gilded-illumination/STYLE.md"
  },
  {
   "slug": "glass-product",
   "name": "Glass Product Render",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "Product launches",
    "Consumer tech",
@@ -375,6 +604,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/glass-product/STYLE.md"
  },
  {
@@ -393,11 +623,31 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/halftone-dossier/STYLE.md"
  },
  {
+  "slug": "hardcore-info",
+  "name": "Line-Art Cutaway",
+  "category": "Line Diagrams",
+  "uses": [
+   "Hardware explainers",
+   "Product engineering",
+   "Science education"
+  ],
+  "demo_film": "Where Is Your Phone's Antenna?",
+  "demo_sec": 52.0,
+  "essence": "A real-sized object, modelled in 3D and traced live into a black-line technical drawing on warm white paper: it turns, comes apart, is cut open and is flown into, while numbered leaders, dimension lines and section hatching stay attached to its parts. One sing",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/hardcore-info/STYLE.md"
+ },
+ {
   "slug": "hd-2d",
-  "name": "HD-2D",
+  "name": "2.5D Pixel Art",
   "category": "Games",
   "uses": [
    "Game trailers",
@@ -411,12 +661,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/hd-2d/STYLE.md"
  },
  {
   "slug": "hologram-hud",
   "name": "Sci-fi Hologram HUD",
-  "category": "Information & Keynote",
+  "category": "Screens & Interfaces",
   "uses": [
    "Spec walkthroughs",
    "Launch videos",
@@ -429,12 +680,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/hologram-hud/STYLE.md"
  },
  {
   "slug": "impasto",
   "name": "Impasto Oil Painting",
-  "category": "Hand-drawn & Painting",
+  "category": "Painting & Illustration",
   "uses": [
    "Music videos",
    "Art & culture",
@@ -447,12 +699,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/impasto/STYLE.md"
  },
  {
   "slug": "ink-wash",
   "name": "Chinese Ink Wash",
-  "category": "Hand-drawn & Painting",
+  "category": "Traditional Crafts",
   "uses": [
    "Wuxia",
    "Cultural brands",
@@ -465,12 +718,51 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/ink-wash/STYLE.md"
+ },
+ {
+  "slug": "instruction-manual",
+  "name": "Instruction Manual Art",
+  "category": "Line Diagrams",
+  "uses": [
+   "Assembly and set-up guides",
+   "Safety instructions",
+   "Product onboarding"
+  ],
+  "demo_film": "Step Ten",
+  "demo_sec": 50.6,
+  "essence": "The film is a printed assembly manual: one sheet of off-white paper, black line art in true isometric (45°), flat white parts, faceless people at real proportions, and the manual's own signs (step numbers, parts call-outs, dotted guide lines, flat arrows, magn",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/instruction-manual/STYLE.md"
+ },
+ {
+  "slug": "ipad-sketch",
+  "name": "Tablet Sketch Explainer",
+  "category": "Sketch & Board",
+  "uses": [
+   "Food & drink explainers",
+   "Craft and how-to",
+   "Lifestyle science"
+  ],
+  "demo_film": "From Cherry to Cup",
+  "demo_sec": 51.0,
+  "essence": "The whole frame is a cream drawing canvas on a tablet, seen while someone draws and explains: grainy pencil lines go down first, flat colour blocks come after, shifted off the line and not quite filled, and the canvas itself is pinched, panned and turned betwe",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/ipad-sketch/STYLE.md"
  },
  {
   "slug": "iso-infographic",
   "name": "Isometric Infographic",
-  "category": "Information & Keynote",
+  "category": "Line Diagrams",
   "uses": [
    "Process explainers",
    "Supply chains",
@@ -483,12 +775,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/iso-infographic/STYLE.md"
  },
  {
   "slug": "isometric-picture-book",
-  "name": "Isometric Picture Book",
-  "category": "Information & Keynote",
+  "name": "Isometric People Scene",
+  "category": "3D & Miniature",
   "uses": [
    "Everyday rules",
    "Queues",
@@ -501,6 +794,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/isometric-picture-book/STYLE.md"
  },
  {
@@ -519,12 +813,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/kino-montage/STYLE.md"
  },
  {
   "slug": "lidar-survey",
   "name": "LiDAR Survey",
-  "category": "Evidence Films",
+  "category": "Instruments & Evidence",
   "uses": [
    "Heritage",
    "Environment",
@@ -537,12 +832,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/lidar-survey/STYLE.md"
  },
  {
   "slug": "living-screencast",
-  "name": "Living Screencast",
-  "category": "Information & Keynote",
+  "name": "Mascot Screencast",
+  "category": "Screens & Interfaces",
   "uses": [
    "Product tutorials",
    "Feature launches",
@@ -555,12 +851,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/living-screencast/STYLE.md"
  },
  {
   "slug": "lowpoly-island",
   "name": "Low-poly Isometric Island",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "Game trailers",
    "World building",
@@ -573,12 +870,70 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/lowpoly-island/STYLE.md"
+ },
+ {
+  "slug": "manga-panels",
+  "name": "Manga Panels",
+  "category": "Cartoons",
+  "uses": [
+   "Music videos",
+   "Product launches",
+   "Anime openings"
+  ],
+  "demo_film": "KOMA ONE: Thirty Frames a Second",
+  "demo_sec": 48.0,
+  "essence": "A black-and-white Japanese manga page that moves: G-pen ink, screentone dots, one spot colour, panels that open on the beat, sound effects slammed in letter by letter, and a camera that travels across the paper and through the gutters. The panel is the cut.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": true,
+  "path": "assets/lemo-styles/styles/manga-panels/STYLE.md"
+ },
+ {
+  "slug": "map-explainer",
+  "name": "3D Map Explainer",
+  "category": "Data & Maps",
+  "uses": [
+   "News and geopolitics",
+   "Energy, trade and shipping",
+   "Rivers, borders and terrain"
+  ],
+  "demo_film": "Strait of Hormuz",
+  "demo_sec": 52.0,
+  "essence": "Real elevation and real imagery built into a three-dimensional map with the vertical exaggerated, lit by one warm, low sun; a sea coloured by its real depth; and over it a layer of data that glows, flows and lights up along true geography: routes, lanes, measu",
+  "pipeline": "3D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/map-explainer/STYLE.md"
+ },
+ {
+  "slug": "marker-paper",
+  "name": "Marker on Paper",
+  "category": "Sketch & Board",
+  "uses": [
+   "Worked problems",
+   "Science explainers",
+   "Lessons"
+  ],
+  "demo_film": "How Far Can You See?",
+  "demo_sec": 52.0,
+  "essence": "A pad of matte white paper and one bullet-tip permanent marker in black, with a red and a blue marker for meaning only: blue is what we know, red is what we want. A problem is drawn, reasoned out and answered one sheet at a time, stroke by stroke, with no hand",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/marker-paper/STYLE.md"
  },
  {
   "slug": "memphis-diorama",
   "name": "Memphis Diorama",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "Web heroes",
    "Ambient loops",
@@ -591,6 +946,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/memphis-diorama/STYLE.md"
  },
  {
@@ -609,12 +965,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/microgame/STYLE.md"
  },
  {
   "slug": "microscope",
-  "name": "Microscope Story",
-  "category": "Evidence Films",
+  "name": "Under the Microscope",
+  "category": "Instruments & Evidence",
   "uses": [
    "Biomedicine",
    "Materials science",
@@ -627,12 +984,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/microscope/STYLE.md"
  },
  {
   "slug": "midcentury-toon",
   "name": "Mid-century Cartoon",
-  "category": "Cartoon & Anime",
+  "category": "Cartoons",
   "uses": [
    "Set-up guides",
    "Help centres",
@@ -645,7 +1003,27 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/midcentury-toon/STYLE.md"
+ },
+ {
+  "slug": "neon-tubes",
+  "name": "Neon Tubes",
+  "category": "Light & Lines",
+  "uses": [
+   "Shop openings and mascot stories",
+   "Nightlife and city-pop music videos",
+   "City and festival night idents"
+  ],
+  "demo_film": "Midnight Snack",
+  "demo_sec": 48.0,
+  "essence": "Real neon signs on a rainy night street: bent glass tubes filled with gas on painted boards, striking with a flicker, lighting the wet walls and doubling in every puddle. The figures on the signs are alive: an animal or a mascot made of one bent tube per pose ",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/neon-tubes/STYLE.md"
  },
  {
   "slug": "news-package",
@@ -663,6 +1041,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/news-package/STYLE.md"
  },
  {
@@ -681,12 +1060,32 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/newsreel/STYLE.md"
+ },
+ {
+  "slug": "one-bit-dither",
+  "name": "1-bit Dither",
+  "category": "Screens & Interfaces",
+  "uses": [
+   "History told through a chain of media",
+   "Printing, scanning and signals",
+   "Night scenes and space"
+  ],
+  "demo_film": "The Moon's Fax",
+  "demo_sec": 50.0,
+  "essence": "A real 3D world shown with exactly two inks: every grey becomes a pattern of dots that is fixed to the surfaces, outlines come from depth and normal breaks, and printed things (fax prints, newspapers, labels) carry their own physical dots. The camera moves fre",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/one-bit-dither/STYLE.md"
  },
  {
   "slug": "one-line",
   "name": "One-line Drawing",
-  "category": "Hand-drawn & Painting",
+  "category": "Sketch & Board",
   "uses": [
    "Brand stories",
    "Life milestones",
@@ -699,12 +1098,32 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/one-line/STYLE.md"
+ },
+ {
+  "slug": "oscilloscope-math",
+  "name": "Oscilloscope Math",
+  "category": "Light & Lines",
+  "uses": [
+   "Maths and physics lessons",
+   "Signals and electronics",
+   "Science explainers"
+  ],
+  "demo_film": "The Gibbs Phenomenon",
+  "demo_sec": 51.1,
+  "essence": "Mathematics drawn by an electron beam on a phosphor screen: thin glowing green lines on near-black, a dotted graticule, monospace readouts and TeX formulas, every number on screen computed from the same values that draw the picture. The screen is a window onto",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/oscilloscope-math/STYLE.md"
  },
  {
   "slug": "paper-lantern",
   "name": "Paper-cut Lightbox",
-  "category": "East Asian Traditions",
+  "category": "Traditional Crafts",
   "uses": [
    "Journeys and travel",
    "Farewells and anniversaries",
@@ -717,12 +1136,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/paper-lantern/STYLE.md"
  },
  {
   "slug": "paper-popup",
   "name": "Paper Pop-up Book",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "Children's books",
    "Game trailers",
@@ -735,12 +1155,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/paper-popup/STYLE.md"
  },
  {
   "slug": "papercut-red",
   "name": "Red Paper-cut",
-  "category": "East Asian Traditions",
+  "category": "Traditional Crafts",
   "uses": [
    "Lunar New Year",
    "Festive greetings",
@@ -753,7 +1174,27 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/papercut-red/STYLE.md"
+ },
+ {
+  "slug": "pen-plotter",
+  "name": "Pen Plotter",
+  "category": "Line Diagrams",
+  "uses": [
+   "Maps and terrain",
+   "Measurements and records",
+   "Generative and data drawings"
+  ],
+  "demo_film": "8848.86",
+  "demo_sec": 49.9,
+  "essence": "A pen plotter on a desk draws the subject one stroke at a time: real pens, real ink on paper, real machine motion. Maps, charts and lettering appear as polylines a gantry lays down, with pen changes at a rack, pen-up travel and pen-down ink, and the camera liv",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/pen-plotter/STYLE.md"
  },
  {
   "slug": "pictogram-motion",
@@ -771,7 +1212,27 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/pictogram-motion/STYLE.md"
+ },
+ {
+  "slug": "pip-simulation",
+  "name": "Blob Simulation",
+  "category": "Data & Maps",
+  "uses": [
+   "Evolution and natural selection",
+   "Game theory and agent-based models",
+   "Epidemics, queues and markets"
+  ],
+  "demo_film": "Is Faster Better?",
+  "demo_sec": 52.0,
+  "essence": "A crowd of small flocked characters, the Pips, runs a real simulation on a warm paper lab board: evolution, games, epidemics, queues, markets. The rules are written in code, the outcome is computed, and the result is shown with the Pips themselves: they are th",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/pip-simulation/STYLE.md"
  },
  {
   "slug": "pixel-rpg",
@@ -789,11 +1250,50 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/pixel-rpg/STYLE.md"
  },
  {
+  "slug": "pop-art",
+  "name": "Pop Art",
+  "category": "Print & Printmaking",
+  "uses": [
+   "Everyday-object explainers",
+   "Brand and product posters",
+   "Small data stories"
+  ],
+  "demo_film": "The Same Banana",
+  "demo_sec": 52.0,
+  "essence": "Sixties screen-print and pop-art poster language used to tell something: Ben-Day dots fixed to the paper, heavy black key lines, flat red, yellow and blue, plates that never quite register. Every frame is one whole printed poster; the camera pushes into the do",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/pop-art/STYLE.md"
+ },
+ {
+  "slug": "precise-mechanism",
+  "name": "Color-Coded Mechanism",
+  "category": "Line Diagrams",
+  "uses": [
+   "How machines work",
+   "Product and engineering explainers",
+   "Science teaching"
+  ],
+  "demo_film": "Three Systems Keep the Time",
+  "demo_sec": 52.0,
+  "essence": "A real mechanism built in 3D and coloured like an anatomy plate: a pale ground, one flat colour per subsystem, the part being explained in a single accent. The machine runs truthfully (true ratios, true rates, true physics), and the camera cuts it open, explod",
+  "pipeline": "3D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/precise-mechanism/STYLE.md"
+ },
+ {
   "slug": "printed-long-take",
-  "name": "Printed Long Take",
+  "name": "Scratchboard Long Take",
   "category": "Print & Printmaking",
   "uses": [
    "Journeys",
@@ -807,6 +1307,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/printed-long-take/STYLE.md"
  },
  {
@@ -825,12 +1326,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/risograph/STYLE.md"
  },
  {
   "slug": "rubber-hose",
   "name": "1930s Rubber Hose Cartoon",
-  "category": "Cartoon & Anime",
+  "category": "Cartoons",
   "uses": [
    "Food & drink",
    "Retro ads",
@@ -843,12 +1345,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/rubber-hose/STYLE.md"
  },
  {
   "slug": "satellite-briefing",
   "name": "Satellite Briefing",
-  "category": "Evidence Films",
+  "category": "Instruments & Evidence",
   "uses": [
    "Climate",
    "News explainers",
@@ -861,12 +1364,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/satellite-briefing/STYLE.md"
  },
  {
   "slug": "scifi-toon",
   "name": "Sci-Fi Sitcom Toon",
-  "category": "Cartoon & Anime",
+  "category": "Cartoons",
   "uses": [
    "Comedy",
    "Tech brands",
@@ -879,12 +1383,51 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/scifi-toon/STYLE.md"
+ },
+ {
+  "slug": "scratch-film",
+  "name": "Scratch Film",
+  "category": "Film & Tape",
+  "uses": [
+   "Things that happen in the dark",
+   "One mark to a whole system",
+   "Small adventures told in light and shadow"
+  ],
+  "demo_film": "The Night Climb",
+  "demo_sec": 52.0,
+  "essence": "Direct animation: every picture looks scratched through black emulsion with a needle and tinted with transparent dye, redrawn by hand fifteen times a second and projected. Black is the ground; everything bright is a cut. Lines boil from drawing to drawing, lig",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/scratch-film/STYLE.md"
+ },
+ {
+  "slug": "security-xray",
+  "name": "Security X-ray",
+  "category": "Instruments & Evidence",
+  "uses": [
+   "Airport and customs screening",
+   "Parcel and cargo inspection",
+   "Product internals"
+  ],
+  "demo_film": "Night Shift at Lane 3",
+  "demo_sec": 51.9,
+  "essence": "The film is seen through a baggage-screening console: objects are never shown, only their dual-energy X-ray image, where every material has its colour (organic orange, mixed green, metal blue, impenetrable black) and every outline comes from thickness, not fro",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/security-xray/STYLE.md"
  },
  {
   "slug": "shadow-puppet",
   "name": "Shadow Puppetry",
-  "category": "East Asian Traditions",
+  "category": "Traditional Crafts",
   "uses": [
    "Myths & folklore",
    "Heritage",
@@ -897,12 +1440,13 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/shadow-puppet/STYLE.md"
  },
  {
   "slug": "silent-film",
   "name": "1920s Silent Film",
-  "category": "Cinema & Eras",
+  "category": "Film & Tape",
   "uses": [
    "Comedy",
    "Retro brands",
@@ -915,7 +1459,27 @@
   "needs_real_assets": false,
   "human_like_characters": true,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/silent-film/STYLE.md"
+ },
+ {
+  "slug": "silhouette-rhythm",
+  "name": "Silhouette Rhythm",
+  "category": "Graphic & Type",
+  "uses": [
+   "Music videos",
+   "Sports and team films",
+   "Nature and festival openers"
+  ],
+  "demo_film": "Half a Beat",
+  "demo_sec": 49.0,
+  "essence": "Pure black silhouettes against a saturated sunset, changing pose on every beat; on the key beat everything freezes and only the sky keeps moving. The water is the second canvas: reflections, ripples and back-lit droplets.",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/silhouette-rhythm/STYLE.md"
  },
  {
   "slug": "silkscreen-poster",
@@ -933,7 +1497,46 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/silkscreen-poster/STYLE.md"
+ },
+ {
+  "slug": "sketchnote",
+  "name": "Sketchnote",
+  "category": "Sketch & Board",
+  "uses": [
+   "Lecture notes",
+   "Science explainers",
+   "One-page summaries"
+  ],
+  "demo_film": "How Bees Make Honey",
+  "demo_sec": 51.0,
+  "essence": "One page of visual notes on dot-grid paper, drawn while you watch: a black fineliner writes and draws, a grey marker gives volume and shadow, one yellow marker carries the single thing that matters. Banners, rounded boxes, fat arrows, icons and hand lettering ",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/sketchnote/STYLE.md"
+ },
+ {
+  "slug": "spreadsheet",
+  "name": "Spreadsheet Film",
+  "category": "Screens & Interfaces",
+  "uses": [
+   "Data literacy",
+   "Finance & costs",
+   "Analytics explainers"
+  ],
+  "demo_film": "The Hidden Column",
+  "demo_sec": 52.0,
+  "essence": "A whole film inside one spreadsheet window. Cells are the pixels, conditional formatting paints the pictures, the formula bar speaks the lines, and the camera is the sheet's own zoom and scroll. Every picture is made of numbers, and the picture turns out to be",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/spreadsheet/STYLE.md"
  },
  {
   "slug": "spy-titles",
@@ -951,12 +1554,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/spy-titles/STYLE.md"
  },
  {
   "slug": "stained-glass",
   "name": "Stained Glass",
-  "category": "Graphic & Type",
+  "category": "Traditional Crafts",
   "uses": [
    "Legends",
    "Heritage",
@@ -969,7 +1573,27 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/stained-glass/STYLE.md"
+ },
+ {
+  "slug": "stick-explainer",
+  "name": "Stick-figure Explainer",
+  "category": "Sketch & Board",
+  "uses": [
+   "Science explainers",
+   "Networks & social ideas",
+   "Data comparisons"
+  ],
+  "demo_film": "Six Hands Away",
+  "demo_sec": 52.0,
+  "essence": "Plain stick people on warm paper, one accent colour, and a logic you can watch: people stand on a \"system line\", react to each other, and hold hands. A held hand is not two arms touching but one continuous curve from one shoulder to the next, so a crowd can jo",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/stick-explainer/STYLE.md"
  },
  {
   "slug": "swiss-motion",
@@ -987,12 +1611,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/swiss-motion/STYLE.md"
  },
  {
   "slug": "teardown",
   "name": "Exploded Teardown",
-  "category": "Evidence Films",
+  "category": "Line Diagrams",
   "uses": [
    "Hardware launches",
    "Product pages",
@@ -1005,6 +1630,7 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/teardown/STYLE.md"
  },
  {
@@ -1023,12 +1649,51 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/telestrator/STYLE.md"
+ },
+ {
+  "slug": "text-flash-cuts",
+  "name": "Text Flash Cuts",
+  "category": "Graphic & Type",
+  "uses": [
+   "Suspense & drama trailers",
+   "Title sequences",
+   "Manifesto films"
+  ],
+  "demo_film": "Behind You",
+  "demo_sec": 46.2,
+  "essence": "Avant-garde TV anime in the manner of the early-2000s \"text frame\" school: full-screen heavy Mincho title cards cut in for two to nine frames, architecture reduced to symbolic geometry, a red-black-white palette, characters as silhouettes or extreme close-ups,",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": true,
+  "cultural_material": false,
+  "needs_image_generator": true,
+  "path": "assets/lemo-styles/styles/text-flash-cuts/STYLE.md"
+ },
+ {
+  "slug": "thermal-camera",
+  "name": "Thermal Camera",
+  "category": "Instruments & Evidence",
+  "uses": [
+   "Building and energy inspection",
+   "Wildlife at night",
+   "Machines and electrics"
+  ],
+  "demo_film": "A Building on a Winter Night",
+  "demo_sec": 49.0,
+  "essence": "The film is seen through a radiometric thermal camera: a low-resolution, slightly noisy picture in an iron palette where brightness means temperature, with the camera's own instruments on screen (colour scale, spot meters, area boxes, isotherm, hot-spot tracke",
+  "pipeline": "2D",
+  "needs_real_assets": false,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/thermal-camera/STYLE.md"
  },
  {
   "slug": "tilt-shift",
   "name": "Tilt-Shift Miniature",
-  "category": "Materials & 3D",
+  "category": "3D & Miniature",
   "uses": [
    "City promos",
    "Real estate",
@@ -1041,12 +1706,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/tilt-shift/STYLE.md"
  },
  {
   "slug": "transit-map",
   "name": "Transit Map",
-  "category": "Information & Keynote",
+  "category": "Data & Maps",
   "uses": [
    "Transport",
    "Growth over time",
@@ -1059,12 +1725,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/transit-map/STYLE.md"
  },
  {
   "slug": "ukiyoe",
   "name": "Ukiyo-e",
-  "category": "East Asian Traditions",
+  "category": "Traditional Crafts",
   "uses": [
    "Travel",
    "Japanese culture",
@@ -1077,12 +1744,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": true,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/ukiyoe/STYLE.md"
  },
  {
   "slug": "urban-sketch",
   "name": "Urban Sketch · Pen & Wash",
-  "category": "Hand-drawn & Painting",
+  "category": "Painting & Illustration",
   "uses": [
    "City & travel",
    "Architecture",
@@ -1095,7 +1763,27 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/urban-sketch/STYLE.md"
+ },
+ {
+  "slug": "vintage-collage",
+  "name": "Vintage Engraving Collage",
+  "category": "Print & Printmaking",
+  "uses": [
+   "The history of an object",
+   "Magazine-style explainers on ideas and society",
+   "Archive and collecting stories"
+  ],
+  "demo_film": "The Inverted Jenny",
+  "demo_sec": 52.0,
+  "essence": "A magazine collage made on a paper table: public-domain engravings, stamps, old photographs and printed ephemera are cut out with a white paper margin and laid over torn sheets of flat colour, and the pieces move like cut-out animation, on twos, with paper thi",
+  "pipeline": "2D",
+  "needs_real_assets": true,
+  "human_like_characters": false,
+  "cultural_material": false,
+  "needs_image_generator": false,
+  "path": "assets/lemo-styles/styles/vintage-collage/STYLE.md"
  },
  {
   "slug": "visual-investigation",
@@ -1113,12 +1801,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/visual-investigation/STYLE.md"
  },
  {
   "slug": "watercolor",
   "name": "Watercolor Brush",
-  "category": "Hand-drawn & Painting",
+  "category": "Painting & Illustration",
   "uses": [
    "Nature documentary",
    "Travel",
@@ -1131,12 +1820,13 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/watercolor/STYLE.md"
  },
  {
   "slug": "white-model",
-  "name": "Projection on White Model",
-  "category": "Evidence Films",
+  "name": "Projection-Mapped Model",
+  "category": "Data & Maps",
   "uses": [
    "Urban planning",
    "Exhibitions",
@@ -1149,12 +1839,13 @@
   "needs_real_assets": true,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/white-model/STYLE.md"
  },
  {
   "slug": "whiteboard",
   "name": "Whiteboard Explainer",
-  "category": "Hand-drawn & Painting",
+  "category": "Sketch & Board",
   "uses": [
    "Explainers",
    "Online courses",
@@ -1167,6 +1858,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/whiteboard/STYLE.md"
  },
  {
@@ -1185,6 +1877,7 @@
   "needs_real_assets": false,
   "human_like_characters": false,
   "cultural_material": false,
+  "needs_image_generator": false,
   "path": "assets/lemo-styles/styles/woodcut/STYLE.md"
  }
 ]

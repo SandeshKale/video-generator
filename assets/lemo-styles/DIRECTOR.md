@@ -13,6 +13,7 @@ The user gives a style and a topic, sometimes more (length, language, voice, mus
 - Length **30–60 s**; shorter and tight beats padded. Beyond two or three minutes multiplies time and token cost: tell the user.
 - 1920×1080 at 24 fps by default; an output frame rate set in the style's `STYLE.md` (30 or 60 fps, for example) wins, and is what you pass to `--fps` and `mux.sh`; other sizes (vertical 1080×1920, for example) with `--size WxH` on the render tools.
 - Voice and subtitles in the language the user writes in. Subtitles burned in and exported as `.srt`.
+- **The language on screen is the film's, not the demo's.** Many `STYLE.md` files set a Chinese line above an English line (subtitles, titles, labels): those are the two languages of our demos. A film in one language sets that line alone, in the upper line's place and size. A film in two keeps the stack, its main language on top. For another script, choose an openly licensed face of the same kind (weight, serif or sans, written or printed). The rest of the style's type stays: sizes, placement, how the text arrives.
 - Loudness −14 LUFS.
 
 Say it in the questions when it matters: a good Chinese voice uses Microsoft's online service (edge-tts) and needs a connection; offline, Kokoro reads Chinese but sounds plain (TECHNIQUE.md §4).
@@ -21,7 +22,7 @@ Requests that only change the plan:
 
 - **No voice, or no subtitles.** Drop those steps and say so in the treatment.
 - **Their own voice recording.** Use it as it is; transcribe it with faster-whisper for word timings.
-- **Their own material**: logos, photos, footage, and for styles built from real material (the Evidence Films) their own data, scans, imagery or CAD. Ask whether they have any; what they give comes first, and the sources in the `STYLE.md` are the fallback. Before you download from those sources, tell the user what you will fetch, from where and under which licence. Rights: section 12.
+- **Their own material**: logos, photos, footage, and for a style built from real data or scans (its `STYLE.md` says so) their own data, scans, imagery or CAD. Ask whether they have any; what they give comes first, and the sources in the `STYLE.md` are the fallback. Before you download from those sources, tell the user what you will fetch, from where and under which licence. Rights: section 12.
 
 ## 2. Find a benchmark first
 
@@ -124,7 +125,7 @@ Render 6–9 key shots with the real drawing code, tiled into one sheet (`core/r
 **Deliver**, in the project folder (the complete list):
 
 - `<name>.mp4` (24 fps unless `STYLE.md` sets another rate, about −14 LUFS) and `poster.jpg`;
-- `<name>.srt`, when the film has narration, dialogue or subtitles;
+- `<name>.srt`, when the film has narration, dialogue or subtitles; when the subtitles are burned into the picture, `subtitles_<lang>.srt` instead (desktop players load a `.srt` named like the video on top of the picture, so every line would show twice);
 - `TREATMENT.md`;
 - `CREDITS`: every third-party asset in the film (sample libraries, music, fonts, images, the voice engine) with its source and licence (TECHNIQUE.md §11);
 - the source, with a one-command `build.sh` (TECHNIQUE.md §2).
