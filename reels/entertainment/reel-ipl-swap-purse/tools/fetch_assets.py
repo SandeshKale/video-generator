@@ -14,7 +14,7 @@ for s in SRC:
     out = f"{D}/{slug(s['title'])}.jpg"
     if os.path.exists(out) and os.path.getsize(out) > 10000: print('ok', os.path.basename(out)); continue
     PIB = {'hardik-pmo': 'H20240704162110', 'arshdeep-pmo': 'H20240704162086', 'bumrah-pmo': 'H20240704162101', 'pant-pmo': 'H20240704162087'}   # canonical PIB originals (2200 px), same GODL-India photos as on Commons
-    url = s['url']
+    url = s['url'].split('?')[0]   # the API appends utm_* parameters; Wikimedia answers HTTP 400 to them on thumbnails
     if slug(s['title']) in PIB: url = 'https://static.pib.gov.in/WriteReadData/Gallery/PhotoGallery/2024/Jul/' + PIB[slug(s['title'])] + '.JPG'
     if s['w'] > 1920 and slug(s['title']) not in PIB:   # Wikimedia asks for standard thumbnail widths; 1920 px is plenty for a 1080 px canvas
         base, name = url.rsplit('/', 1); url = base.replace('/commons/', '/commons/thumb/') + '/' + name + '/1920px-' + name

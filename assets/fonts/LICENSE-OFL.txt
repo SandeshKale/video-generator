@@ -92,3 +92,5 @@ Rozha One (Indian Type Foundry): SIL OFL 1.1, latin + devanagari 400, vendored v
 Tiro Devanagari Hindi (400) and Baloo 2 (700, 800; latin + devanagari): SIL OFL 1.1, vendored via @fontsource on 15 Nov 2026 for reel-dev-deepawali.
 
 Mukta (Ek Type; latin + devanagari 700, 800): SIL OFL 1.1, vendored via @fontsource on 17 Nov 2026 for reel-pala-frost.
+
+Teko (Indian Type Foundry; latin + devanagari 600, 700): SIL OFL 1.1, vendored via @fontsource on 18 Nov 2026 for reel-ipl-swap-purse.
