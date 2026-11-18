@@ -86,7 +86,7 @@ Families used: real photographs, kinetic slam captions, rolling counters and led
 ## Publish kit (draft)
 - **Cover (≤ 5 words):** ₹18 CR = ₹18 CR?
 - **Caption line 1:** Hardik ₹18 crore, Arshdeep ₹18 crore: barabar sauda? Ye reel us dost ko bhejo jo MI aur PBKS par bahas karta hai. Follow: nerdlogic.co
-- **Hashtags (5):** #IPL2027 #HardikPandya #ArshdeepSingh #IPLAuction #nerdlogic
+- **Hashtags (5, creator-set 18 Nov, placed at the very end of the caption):** #IPL2027 #HardikPandya #ArshdeepSingh #IPLAuction #MumbaiIndians
 - Credits block: `research/sources.md`.
 
 ## Still open before a build
