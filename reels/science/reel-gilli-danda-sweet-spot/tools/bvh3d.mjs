@@ -65,6 +65,7 @@ for (const [name, [file, kind]] of Object.entries(CL)) {
       return { tip: gp.map((v, k) => v + dv[k] / dl * leg * 1.7), root: r(P[idx('Hips')]) }; };
     let bc = 1e18; for (let yd = 0; yd < 360; yd += 5) { const y = yd * D2R, T = tipOf(all[impact], y); let cost = 0; for (let k = 1; k <= 12; k++) cost += Math.abs(tipOf(all[impact - k], y).tip[2] - T.tip[2]) * 3 / leg; cost += Math.max(0, 1.3 * leg - (T.tip[0] - T.root[0])) * 40 / leg; if (cost < bc) { bc = cost; yaw = y; } }
   }
+  if (kind === 'loop') { const a0 = all[f0][idx('Hips')], a1 = all[f1][idx('Hips')]; yaw = Math.atan2(-(a1[2] - a0[2]), a1[0] - a0[0]); }
   const cy = Math.cos(yaw), sy = Math.sin(yaw);
   const rot = (p) => [p[0] * cy - p[2] * sy, p[1], p[0] * sy + p[2] * cy];
   let minY = 1e9; for (let f = f0; f <= f1; f++) for (const k of ['fL', 'fR', 'tL', 'tR']) minY = Math.min(minY, all[f][idx(KEYS[k])][1]);
