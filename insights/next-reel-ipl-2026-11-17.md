@@ -60,3 +60,38 @@ Rules from the style: Wikimedia Commons only with CC0, public domain, CC BY (cre
 2. **Style:** `caption-news` with `data-physical` purse stacks (recommended), or hold for `telestrator` if you can supply match footage?
 3. **Footage:** do you have clips you are licensed to use? If not, I build with the photos above and tell you plainly that no match video is included.
 4. **Language:** Hinglish voice with captions, nerdlogic.co end card, "share aur follow" CTA, as for the last reels?
+
+---
+# Update, 18 Nov 2026: photo licences re-read, sizes corrected, facts corrected
+
+## Correction to the "photos are small" limit
+The earlier map used the small crops from search results. The **full PMO originals are 2,200 px wide**, so the four players' photos work as large cards, and Pant's (2200×3091 portrait) works as a full-bleed 1080×1920 shot. All nine files below were re-read through the Commons API on 18 Nov (licence, author, size, sha1 in `reels/entertainment/reel-ipl-swap-purse/research/photos/SOURCES.json`):
+
+| Who / what | Licence | Size | Credit shown |
+|---|---|---|---|
+| Hardik Pandya (PMO, 4 Jul 2024 T20 World Cup winners' meeting) | GODL-India | 2200×1658 | PMO / PIB |
+| Arshdeep Singh (PMO, same event) | GODL-India | 2200×1683 | PMO / PIB |
+| Jasprit Bumrah (PMO) | GODL-India | 2200×2104 | PMO / PIB |
+| Rishabh Pant (PMO) | GODL-India | 2200×3091 portrait | PMO / PIB |
+| Shreyas Iyer (Bollywood Hungama) | CC BY 3.0 | 585×1040 | Bollywood Hungama, cropped |
+| Ricky Ponting (Tourism Victoria) | CC BY 2.0 | 973×1377 | Tourism Victoria, cropped |
+| Preity Zinta at IPL auction (Bollywood Hungama) | CC BY 3.0 | 585×439 | Bollywood Hungama, cropped |
+| Wankhede Stadium (DesiBoy101) | CC BY 4.0 | 3264×2448 | DesiBoy101 |
+| Narendra Modi Stadium, Ahmedabad (Ishi6181) | CC0 | 3024×4032 | none needed; never captioned as Mumbai or Punjab |
+Rejected (share-alike, the style rejects it): the Wankhede 5916 px panorama (CC BY-SA 3.0), the Modi Stadium aerial (CC BY-SA 4.0), the only Mullanpur/PBKS stadium image (CC BY-SA 4.0). Punjab stays a name chip.
+GODL-India terms: commercial use and adaptation allowed with attribution and the source URL; do not imply government endorsement; no emblems or logos. Crop the Prime Minister out (adaptation is allowed) but keep the credit chip and links.
+Fetch: `tools/fetch_assets.py` (one request at a time, backoff on HTTP 429, standard 1920 px thumbnails for the big files, sha1 check for the rest). Wikimedia answered the first attempt with 429; the script retries with growing waits.
+
+## Footage (unchanged, and firmer)
+There is no open-licence IPL match video. ICC terms bar match footage on social platforms and BCCI is policing ground filming (as reported in your message; I did not open those pages). Free generic stock cricket clips exist (Pexels' licence allows commercial use without attribution; Pixabay's allows modification but forbids misleading use), but they are amateur matches: if used, they are captioned "generic cricket, not IPL". Stock clips come as H.264: transcode to VP9/WebM before they go into a Playwright page. Recommendation: photos with motion plus the coin-stack purse and a telestrator-style set of arrows and rings drawn on our own graphics and the stadium stills; no footage, and say so in the caption ("Is reel mein koi match footage nahi hai").
+
+## Fact corrections (this session's re-check)
+- **Arshdeep is Punjab Kings' all-time leading wicket-taker (a franchise record), not the IPL's.** Reports: 111 wickets in 96 matches for Punjab, the only bowler in franchise history past 100 wickets (India TV, Outlook, GeoSuper, others). The script line must say "Punjab ke liye sabse zyada wicket", never "IPL ke".
+- **Bumrah's 2026: 4 wickets in 13 matches, average 102.50, economy ≈ 8.37** (several outlets; the lowest wicket tally of his IPL career; he carried a niggle after the T20 World Cup 2026 per Mahela Jayawardene). Wisden's "4 wickets at 102.50" is confirmed.
+- **MI's 2026 finish:** Wisden says ninth; Khaleej Times and Gulf News put MI ninth and eliminated by mid-May; I did not find the final league table. Say "ninth, reportedly" until the official table is opened.
+- **Purses:** Outlook's live blog (6:56 pm IST, 17 Nov) gives MI ₹32.6 cr / 9 slots and PBKS ₹18.6 cr / 6 slots. Your message says Cricbuzz's final lists match these and TOI's 21:06 update agrees; I could not open Cricbuzz from here, so the on-screen tag is "Outlook / Cricbuzz, 17 Nov 2026" only once someone opens the Cricbuzz page. Keep "as of 17 Nov".
+- New for the bowling-gap beat (Outlook live blog, as reported): MI released Boult and Chahar; PBKS released Lockie Ferguson and Mitchell Owen. A Facebook post that put Vishnu Vinod in the swap is wrong per the final lists (retained by PBKS): keep to the two confirmed names.
+- Dhoni and Pant→DC (₹15 cr) / Kuldeep→LSG are reported as confirmed by several outlets in your message; I have not re-read those pages and the reel does not use them.
+
+## Still to check before rendering
+Hardik's 2026 batting and bowling numbers and "last played six months ago" (Wisden only); MI's final 2026 position; the Cricbuzz purse page; PBKS's and MI's own statements; the credit block in the caption (PIB links for the four PMO photos, Bollywood Hungama and Tourism Victoria CC BY lines, DesiBoy101 CC BY 4.0, Ishi6181 CC0, figures source and date).
