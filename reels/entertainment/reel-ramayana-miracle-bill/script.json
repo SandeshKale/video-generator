@@ -1,0 +1,125 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "चंद्रयान-तीन चाँद तक छह सौ पंद्रह करोड़ में पहुँचा। रामायण पार्ट वन का बजट, रिपोर्ट्स के मुताबिक़, आठ सौ पैंतीस से नौ सौ करोड़। चाँद पर जाना सस्ता, और चमत्कार दिखाना महँगा? ऐसा क्यों?",
+   "A": "Chandrayaan-3 chaand tak 615 crore mein pahuncha. Ramayana Part 1 ka budget, reports ke mutabik, 835 se 900 crore. Chaand par jaana sasta, aur chamatkar dikhana mehnga? Aisa kyun?",
+   "cap": "Chandrayaan-3 chaand tak 615 crore mein pahuncha. Ramayana Part 1 ka budget, reports ke mutabik, 835 se 900 crore. Chaand par jaana sasta, aur chamatkar dikhana mehnga? Aisa kyun?"
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "असली दुनिया में सूरज की किरण मुफ़्त है। दीवार पर गिरती है, और बस चली जाती है। किसी को हिसाब नहीं लगता।",
+   "A": "Asli duniya mein sooraj ki kiran muft hai. Deewar par girti hai, aur bas chali jaati hai. Kisi ko hisaab nahi lagta.",
+   "cap": "Asli duniya mein sooraj ki kiran muft hai. Deewar par girti hai, aur bas chali jaati hai. Kisi ko hisaab nahi lagta."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "पर्दे पर कुछ भी पहले से मौजूद नहीं होता। हर किरण के लिए कंप्यूटर को पूछना पड़ता है: ये कहाँ गिरती है? कहाँ मुड़ती है? कहाँ रुकती है? इसी सवाल का बिल लगता है।",
+   "A": "Parde par kuch bhi pehle se maujood nahi hota. Har kiran ke liye computer ko poochna padta hai: ye kahan girti hai? Kahan mudti hai? Kahan rukti hai? Isi sawaal ka bill lagta hai.",
+   "cap": "Parde par kuch bhi pehle se maujood nahi hota. Har kiran ke liye computer ko poochna padta hai: ye kahan girti hai? Kahan mudti hai? Kahan rukti hai? Isi sawaal ka bill lagta hai."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "इस फ़िल्म के प्रोड्यूसर नमित मल्होत्रा की कंपनी डी-नेग ये बिल पहले भी भर चुकी है। इंटरस्टेलर का ब्लैक होल याद है?",
+   "A": "Is film ke producer Namit Malhotra ki company DNEG ye bill pehle bhi bhar chuki hai. Interstellar ka black hole yaad hai?",
+   "cap": "Is film ke producer Namit Malhotra ki company DNEG ye bill pehle bhi bhar chuki hai. Interstellar ka black hole yaad hai?"
+  },
+  {
+   "id": "s4b",
+   "g": "g5",
+   "B": "रिपोर्ट्स के मुताबिक़ कुछ फ्रेम एक-एक के लिए सौ घंटे तक रेंडर हुए।",
+   "A": "Reports ke mutabik kuch frame ek-ek ke liye sau ghante tak render hue.",
+   "cap": "Reports ke mutabik kuch frame ek-ek ke liye sau ghante tak render hue."
+  },
+  {
+   "id": "s5",
+   "g": "g6",
+   "B": "और उस काम पर दो असली साइंस पेपर छपे। यानी वहाँ रोशनी का खेल फ़िज़िक्स का था, जादू का नहीं।",
+   "A": "Aur us kaam par do asli science paper chhape. Yaani wahan roshni ka khel physics ka tha, jaadu ka nahi.",
+   "cap": "Aur us kaam par do asli science paper chhape. Yaani wahan roshni ka khel physics ka tha, jaadu ka nahi."
+  },
+  {
+   "id": "s6",
+   "g": "g7",
+   "B": "अब रामायण की तरफ़। सिनेमैटोग्राफ़र पंकज कुमार के मुताबिक़, मोशन कैप्चर फ़्लोर पर क़रीब बयालीस इन्फ़्रारेड कैमरे थे।",
+   "A": "Ab Ramayana ki taraf. Cinematographer Pankaj Kumar ke mutabik, motion capture floor par qareeb 42 infrared camera the.",
+   "cap": "Ab Ramayana ki taraf. Cinematographer Pankaj Kumar ke mutabik, motion capture floor par qareeb 42 infrared camera the."
+  },
+  {
+   "id": "s7",
+   "g": "g8",
+   "B": "कुंभकर्ण, हनुमान, असुर: जहाँ असली अभिनेता नहीं, वहाँ उनकी चाल कैप्चर की गई।",
+   "A": "Kumbhakarna, Hanuman, asur: jahan asli abhineta nahi, wahan unki chaal capture ki gayi.",
+   "cap": "Kumbhakarna, Hanuman, asur: jahan asli abhineta nahi, wahan unki chaal capture ki gayi."
+  },
+  {
+   "id": "s8",
+   "g": "g9",
+   "B": "और जटायु? उनके शब्दों में, जटायु पूरी तरह सी-जी है। उस सीन में सिर्फ़ दो असली अभिनेता थे: यश और साई पल्लवी।",
+   "A": "Aur Jatayu? Unke shabdon mein, Jatayu poori tarah CG hai. Us scene mein sirf do asli abhineta the: Yash aur Sai Pallavi.",
+   "cap": "Aur Jatayu? Unke shabdon mein, Jatayu poori tarah CG hai. Us scene mein sirf do asli abhineta the: Yash aur Sai Pallavi."
+  },
+  {
+   "id": "s9",
+   "g": "g10",
+   "B": "यानी हर पंख, हर छाया, उन पर पड़ती हर किरण गणित से आई।",
+   "A": "Yaani har pankh, har chhaya, un par padti har kiran ganit se aayi.",
+   "cap": "Yaani har pankh, har chhaya, un par padti har kiran ganit se aayi."
+  },
+  {
+   "id": "s10",
+   "g": "g11",
+   "B": "पूरा बिल कितना? ये अभी किसी ने नहीं बताया। रेंडर के घंटे और बिजली का ख़र्चा पब्लिक नहीं है।",
+   "A": "Poora bill kitna? Ye abhi kisi ne nahi bataya. Render ke ghante aur bijli ka kharcha public nahi hai.",
+   "cap": "Poora bill kitna? Ye abhi kisi ne nahi bataya. Render ke ghante aur bijli ka kharcha public nahi hai."
+  },
+  {
+   "id": "s10b",
+   "g": "g12",
+   "B": "बजट के आँकड़े भी अलग-अलग हैं: पार्ट वन के लिए आठ सौ पैंतीस से नौ सौ करोड़, और दो हिस्सों का मिलाकर, मेकर्स के मुताबिक़, चार हज़ार करोड़।",
+   "A": "Budget ke aankde bhi alag-alag hain: Part 1 ke liye 835 se 900 crore, aur do hisson ka milakar, makers ke mutabik, 4,000 crore.",
+   "cap": "Budget ke aankde bhi alag-alag hain: Part 1 ke liye 835 se 900 crore, aur do hisson ka milakar, makers ke mutabik, 4,000 crore."
+  },
+  {
+   "id": "s11",
+   "g": "g13",
+   "B": "ये तुलना अधूरी है, एक मिशन की और एक फ़िल्म की। पर सवाल असली है।",
+   "A": "Ye tulna adhoori hai, ek mission ki aur ek film ki. Par sawaal asli hai.",
+   "cap": "Ye tulna adhoori hai, ek mission ki aur ek film ki. Par sawaal asli hai."
+  },
+  {
+   "id": "s11b",
+   "g": "g14",
+   "B": "जब अगली बार पर्दे पर रोशनी की एक किरण दिखे, याद रखना: असली दुनिया में वो मुफ़्त थी।",
+   "A": "Jab agli baar parde par roshni ki ek kiran dikhe, yaad rakhna: asli duniya mein wo muft thi.",
+   "cap": "Jab agli baar parde par roshni ki ek kiran dikhe, yaad rakhna: asli duniya mein wo muft thi."
+  },
+  {
+   "id": "s12",
+   "g": "g15",
+   "B": "ऐसी और कहानियाँ चाहिए? नर्डलॉजिक डॉट सी ओ को फ़ॉलो करो, और शेयर करो।",
+   "A": "Aisi aur kahaniyan chahiye? nerdlogic.co ko follow karo, aur share karo.",
+   "cap": "Aisi aur kahaniyan chahiye? nerdlogic.co ko follow karo, aur share karo."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.7,
+  "s2": 0.6,
+  "s3": 0.8,
+  "s4": 0.35,
+  "s4b": 0.6,
+  "s5": 0.6,
+  "s6": 0.5,
+  "s7": 0.6,
+  "s8": 0.6,
+  "s9": 0.8,
+  "s10": 0.45,
+  "s10b": 0.7,
+  "s11": 0.5,
+  "s11b": 0.9
+ }
+}
