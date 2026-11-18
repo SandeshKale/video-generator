@@ -1,4 +1,4 @@
-# Reel: "Chamatkar ka Bill" — the bill for computed light (Ramayana: Part 1)
+# Reel: "VFX ka Bill" (series idea: Chamatkar ka Bill) — the bill for computed light (Ramayana: Part 1)
 Folder `reels/entertainment/reel-ramayana-miracle-bill/` · ~80 s · Hinglish voice-over (cloned voice), English on screen · nerdlogic.co · CTA "share aur follow"
 
 ## Why this reel
@@ -71,6 +71,6 @@ three.js analytic-scan shader world (all), analytic physics (S4 lensing), instan
 - Tone: awe, not mockery; no "Ravan jhootha" framing.
 
 ## Publish kit (draft)
-- Cover: "KIRAN KA BILL" (3 words) over a cold-ice sunbeam hitting an ember-colored rupee mark? decide at cover step; check on the 3-up grid.
+- Cover: "VFX KA BILL" (3 words, creator-chosen 18 Nov) over a cold-ice sunbeam hitting an ember-colored rupee mark? decide at cover step; check on the 3-up grid.
 - Hashtags: to be set with the creator (the IPL set was creator-chosen); candidates #Ramayana #VFX #Interstellar #IndianCinema #Physics.
 - Open-first before posting: THR India interview full text, DNEG/Wired 100 h source, current budget reports, release-date wording.

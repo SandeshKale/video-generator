@@ -5,8 +5,10 @@ Fonts vendored in this folder:
 - inter/inter-latin-500-normal.woff2
 - inter/inter-latin-600-normal.woff2
 - inter/inter-latin-700-normal.woff2
+- inter/inter-latin-200-normal.woff2, inter/inter-latin-300-normal.woff2 (thin weights, 18 Nov 2026)
 - jetbrains-mono/jetbrains-mono-latin-500-normal.woff2
 - jetbrains-mono/jetbrains-mono-latin-700-normal.woff2
+- jetbrains-mono/jetbrains-mono-latin-300-normal.woff2 (thin weight, 18 Nov 2026)
 - space-grotesk/space-grotesk-latin-600-normal.woff2
 - space-grotesk/space-grotesk-latin-700-normal.woff2
 - sora/sora-latin-700-normal.woff2
