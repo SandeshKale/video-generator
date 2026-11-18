@@ -83,7 +83,7 @@ var rulerA = flat(1.2, .06, .08, VIO), comA = new THREE.Mesh(new THREE.SphereGeo
 var spinArc = new THREE.Mesh(new THREE.TorusGeometry(.9, .06, 8, 28, 4.2), new THREE.MeshBasicMaterial({ color: VIO })); spinArc.rotation.x = Math.PI / 2; spinArc.position.set(0, .3, -2.2); TQ.add(spinArc);
 var slideA = arrow(.0, 1.5, 2.2, SAGE, 1, 0); slideA.rotation.y = 0; slideA.position.set(2.9, .3, 1.5 + .75);
 /* ===== set D (ox 200): the bat, three impacts (shake / quiet spot / edge) ===== */
-var BAT = new THREE.Group(); BAT.position.set(200, 0, 0); S.add(BAT); laneMarks(200);
+var BAT = new THREE.Group(); BAT.position.set(200, 1.0, 0); S.add(BAT); laneMarks(200);
 var BL = 3.6, N = 90, YT = 1.9, bgeo = new THREE.BoxGeometry(1, BL, .5, 1, N, 1), brest = bgeo.attributes.position.array.slice(), bcol = new Float32Array(bgeo.attributes.position.count * 3); bgeo.setAttribute('color', new THREE.BufferAttribute(bcol, 3));
 var bat = new THREE.Mesh(bgeo, toon(0xffffff, true)); outl(bat, dark(SAGE), .03); BAT.add(bat);
 function prof(u) { return u < .62 ? .66 : lerp(.66, .22, clamp((u - .62) / .12)); }
@@ -141,11 +141,11 @@ window.__seek = function (t) {
   capEl.innerHTML = t >= TEND ? '' : capHtml(t);
   /* labels */
   var oneIf = function (c) { return c ? 1 : 0; }, L1 = sc === 'L';
-  place(tStone, stone.position.clone(), -80, 70, L1 && t < TB ? ramp(t, 1.0, 1.7) : 0); place(tGilli, gilli.position.clone().add(new V3(.3, .1, 0)), 120, -90, L1 ? ramp(t, 1.2, 1.9) * oneIf(t < TS + 1) : 0); place(tAuc, new V3(-12, 29, -90), 40, 60, L1 && t < TB ? ramp(t, CW('s1', 'ipl') + .2, CW('s1', 'ipl') + .8) : 0);
+  place(tStone, stone.position.clone(), -90, -100, L1 && t < TB ? ramp(t, 1.0, 1.7) : 0); place(tGilli, gilli.position.clone().add(new V3(.3, .1, 0)), 120, -90, L1 ? ramp(t, 1.2, 1.9) * oneIf(t < TS + 1) : 0); place(tAuc, new V3(-12, 5.2, -90), 60, 50, L1 && t < TB ? ramp(t, CW('s1', 'ipl') + .2, CW('s1', 'ipl') + .8) : 0);
   place(tDanda, shown.club || new V3(0, 0, 0), -40, -120, L1 && t > TB ? ramp(t, TB + .4, TB + 1) * oneIf(t < TS + .5) : 0);
   place(tSlide, new V3(101.1, .3, 0), 80, -140, sc === 'C' ? ramp(t, TC1 + .8, TC1 + 1.5) : 0);
-  var ud = ramp(t, CW('s4', 'taaqat') + .2, CW('s4', 'taaqat') + .8); place(tF, new V3(140, .4, 1.1), 150, -60, sc === 'T' ? ud : 0); place(tD, new V3(140.5, .3, -2.2), 150, 120, sc === 'T' ? ramp(t, CW('s4', 'doori') + .2, CW('s4', 'doori') + .8) : 0); place(tD0, new V3(140, .3, 1.5), 150, 100, sc === 'T' ? ramp(t, CW('s4', 'doori') + .5, CW('s4', 'doori') + 1.1) : 0);
-  place(tNode, new V3(200.35, YT + NODEU * BL, 0), 140, 130, sc === 'D' ? ramp(t, CW('s6', 'pandrah') - .2, CW('s6', 'pandrah') + .5) * oneIf(t < TH3 - 1) : 0); place(tShake, new V3(199.4, YT + .55 * BL, 0), -120, -90, sc === 'D' ? ramp(t, TH1 + .3, TH1 + 1) * oneIf(t < TH2 - .2) : 0);
+  var ud = ramp(t, CW('s4', 'taaqat') + .2, CW('s4', 'taaqat') + .8); place(tF, new V3(140, .4, 1.1), 150, -60, sc === 'T' ? ud : 0); place(tD, new V3(140.5, .3, -2.2), 150, 120, sc === 'T' ? ramp(t, CW('s4', 'doori') + .2, CW('s4', 'doori') + .8) : 0); place(tD0, new V3(140, .3, 1.5), 150, -80, sc === 'T' ? ramp(t, CW('s4', 'doori') + .5, CW('s4', 'doori') + 1.1) : 0);
+  place(tNode, new V3(200.35, 1.0 + YT + NODEU * BL, 0), 150, -110, sc === 'D' ? ramp(t, CW('s6', 'pandrah') - .2, CW('s6', 'pandrah') + .5) * oneIf(t < TH3 - 1) : 0); place(tShake, new V3(199.4, 1.0 + YT + .55 * BL, 0), -120, -90, sc === 'D' ? ramp(t, TH1 + .3, TH1 + 1) * oneIf(t < TH2 - .2) : 0);
   place(tSmat, new V3(300 + 2.2, 3.5, -5.8), -40, -170, sc === 'F' ? ramp(t, CW('s8', 'syed') + .1, CW('s8', 'syed') + .7) * oneIf(t < TEND - .3) : 0); place(tAuc2, new V3(300 + 2.2, 2.7, -5.8), 30, 120, sc === 'F' ? ramp(t, CW('s8', 'neelaami'), CW('s8', 'neelaami') + .6) * oneIf(t < TEND - .3) : 0);
   /* scene cut: ink-brown ground panel rises and falls */
   var wp = 0; [TB, TC, ST('s4') - .25, TD, TF].forEach(function (b) { if (b !== TB) { var d = Math.abs(t - b); if (d < .22) wp = Math.max(wp, 1 - d / .22); } }); wipe.style.height = (wp * 1920) + 'px'; wipe.style.opacity = wp > 0 ? .98 : 0;

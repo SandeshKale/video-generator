@@ -90,7 +90,7 @@ for k in range(0, N, 64):
 MUS = float(os.environ.get('MUS', .2)); SFXG = float(os.environ.get('SFXG', .4))
 sos = butter(2, [1200/(SR/2), 4500/(SR/2)], btype='band', output='sos'); music_d = music * MUS * (1 - float(os.environ.get('DUCK', .6)) * g); music_d = music_d - .55 * sosfilt(sos, music_d) * g * .8
 sfx_d = sfx * SFXG * (1 - .92 * g)
-oth = music_d + sfx_d; venv = np.sqrt(uniform_filter1d(voice.astype('float64') ** 2, int(.25 * SR))); oenv = np.sqrt(uniform_filter1d(oth.astype('float64') ** 2, int(.04 * SR))) + 1e-9
+oth = music_d + sfx_d; venv = np.sqrt(np.maximum(0, uniform_filter1d(voice.astype('float64') ** 2, int(.25 * SR)))); oenv = np.sqrt(np.maximum(0, uniform_filter1d(oth.astype('float64') ** 2, int(.04 * SR)))) + 1e-9
 lim = np.where(g > .4, np.minimum(1, np.maximum(venv, .012) / 4.5 / oenv), 1.0); lim = np.minimum(lim, uniform_filter1d(lim, int(.03 * SR))).astype('float32'); music_d = music_d * lim; sfx_d = sfx_d * lim   # keeps voice >= ~13 dB over the bed while speaking
 mix = voice + music_d + sfx_d; mix = mix / max(1, np.max(np.abs(mix)) / .89); sf.write(A + '/mix-pre.wav', mix, SR)
 M = subprocess.run(['ffmpeg', '-hide_banner', '-i', A + '/mix-pre.wav', '-af', 'loudnorm=I=-14:TP=-1.2:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr; j = json.loads(M[M.rindex('{'):])
@@ -99,7 +99,7 @@ W = json.load(open(A + '/words.json'))['words']; ratios = []; worst = []
 for w in W:
     for t0 in np.arange(w[1], w[2] - .25, .25):
         a, b = sec(t0), sec(t0 + .25); vv = np.sqrt(np.mean(voice[a:b] ** 2)); oo = np.sqrt(np.mean((music_d[a:b] + sfx_d[a:b]) ** 2)) + 1e-9
-        if vv > .01: ratios.append(20 * np.log10(vv / oo)); worst.append((round(20 * np.log10(vv / oo), 1), round(float(t0), 2), w[0]))
+        if vv > .01 and np.isfinite(oo) and np.isfinite(vv): ratios.append(20 * np.log10(vv / oo)); worst.append((round(20 * np.log10(vv / oo), 1), round(float(t0), 2), w[0]))
 r = dict(median_db=round(float(np.median(ratios)), 1), min_db=round(float(np.min(ratios)), 1), p10_db=round(float(np.percentile(ratios, 10)), 1), n=len(ratios), note='250 ms windows inside words; not auditioned by ear')
 out = subprocess.run(['ffmpeg', '-v', 'info', '-i', A + '/final.wav', '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
 m = re.findall(r'I:\s+(-?[\d.]+) LUFS', out); tp = re.findall(r'Peak:\s+(-?[\d.]+) dBFS', out); r['lufs'] = float(m[-1]) if m else None; r['true_peak_dbfs'] = float(tp[-1]) if tp else None
