@@ -83,10 +83,10 @@ var rulerA = flat(1.2, .06, .08, VIO), comA = new THREE.Mesh(new THREE.SphereGeo
 var spinArc = new THREE.Mesh(new THREE.TorusGeometry(.9, .06, 8, 28, 4.2), new THREE.MeshBasicMaterial({ color: VIO })); spinArc.rotation.x = Math.PI / 2; spinArc.position.set(0, .3, -2.2); TQ.add(spinArc);
 var slideA = arrow(.0, 1.5, 2.2, SAGE, 1, 0); slideA.rotation.y = 0; slideA.position.set(2.9, .3, 1.5 + .75);
 /* ===== set D (ox 200): the bat, three impacts (shake / quiet spot / edge) ===== */
-var BAT = new THREE.Group(); BAT.position.set(200, 1.0, 0); S.add(BAT); laneMarks(200);
-var BL = 3.6, N = 90, YT = 1.9, bgeo = new THREE.BoxGeometry(1, BL, .5, 1, N, 1), brest = bgeo.attributes.position.array.slice(), bcol = new Float32Array(bgeo.attributes.position.count * 3); bgeo.setAttribute('color', new THREE.BufferAttribute(bcol, 3));
+var BAT = new THREE.Group(); BAT.position.set(200, 0, 0); S.add(BAT); laneMarks(200);
+var BL = 2.7, N = 90, YT = 1.9, bgeo = new THREE.BoxGeometry(1, BL, .5, 1, N, 1), brest = bgeo.attributes.position.array.slice(), bcol = new Float32Array(bgeo.attributes.position.count * 3); bgeo.setAttribute('color', new THREE.BufferAttribute(bcol, 3));
 var bat = new THREE.Mesh(bgeo, toon(0xffffff, true)); outl(bat, dark(SAGE), .03); BAT.add(bat);
-function prof(u) { return u < .62 ? .66 : lerp(.66, .22, clamp((u - .62) / .12)); }
+function prof(u) { var sh = clamp((u - .58) / .14), sm = sh * sh * (3 - 2 * sh); return lerp(.5, .15, sm); }
 function gs(u) { if (u < .176) return u / .176 * .224; if (u < .8) return .224 + (u - .176) / .624 * (.776 - .224); return .776 + (u - .8) / .2 * .224; }
 function mode(s) { var b = 4.730, x = b * s, sg = .9825; return Math.cosh(x) + Math.cos(x) - sg * (Math.sinh(x) + Math.sin(x)); }
 var NODEU = .176, node = new THREE.Mesh(new THREE.TorusGeometry(.62, .035, 8, 40).rotateX(Math.PI / 2), new THREE.MeshBasicMaterial({ color: INK })); node.position.set(0, YT + NODEU * BL, 0); BAT.add(node);
@@ -116,7 +116,7 @@ var K_AB = [[0, [.9, .9, 4.8], [.3, .6, 0], 28], [3.2, [-.5, 2.6, 17.5], [-.5, 1
 var K_C = [[TC, [100.4, 2.4, 15], [100, 1.3, 0], 34], [TC1 - .1, [100.4, 2.4, 15], [100, 1.3, 0], 34], [TC1 + 1.5, [101.6, 2.0, 11.5], [100.8, 1.0, 0], 34], [ST('s4') - .35, [101.6, 2.0, 11.5], [100.8, 1.0, 0], 34]];
 var K_T = [[ST('s4') - .3, [140, 15, 2.5], [140, 0, -.4], 36], [ST('s4') + 2, [140, 15, 2.5], [140, 0, -.4], 36], [TD, [140, 14, 3.5], [140, 0, -.4], 36]];
 var TH1 = HITS[0].t, TH2 = HITS[1].t, TH3 = HITS[2].t;
-var K_D = [[TD, [200, 12, 9], [200, 3.4, 0], 30], [TD + 2, [201.2, 4.6, 12.5], [200, 4.2, 0], 30], [TH2 + .6, [201.2, 4.6, 12.5], [200, 4.2, 0], 30], [TH3 - 1.2, [202.4, 3.4, 11], [200.4, 3.8, 0], 30], [TH3 + 1.0, [200.8, 6.0, 9], [200, 5.4, 0], 30], [TF + 9, [200.8, 6.0, 9], [200, 5.4, 0], 30]];
+var K_D = [[TD, [200, 10, 9], [200, 2.9, 0], 36], [TD + 2, [201, 3.9, 12.5], [200, 2.9, 0], 36], [TH2 + .6, [201, 3.9, 12.5], [200, 2.9, 0], 36], [TH3 - 1.2, [201.6, 3.2, 11], [200.3, 2.9, 0], 36], [TH3 + 1.0, [200.8, 4.4, 10], [200, 3.3, 0], 36], [TF + 9, [200.8, 4.4, 10], [200, 3.3, 0], 36]];
 var K_F = [[TF, [303, 3.6, 17.5], [303, 1.9, 0], 34], [TEND - .5, [303, 3.6, 17.5], [303, 1.9, 0], 34], [TEND + 1.2, [303, 6.5, 23], [303, 2.6, 0], 34], [DUR + 5, [303, 6.5, 23], [303, 2.6, 0], 34]];
 var CAPW = TM.cap.map(function (c) { return { w: c.w, t0: c.t0, t1: c.t1 }; });
 function capHtml(t) { return window.CAP.html(t, CAPW, { plain: true, hi: '#E8472A', ink: '#2A2118', fs: 40, width: 756 }).replace(/text-shadow:[^"]*"/, 'text-shadow:0 0 8px rgba(241,230,211,.95),0 1px 2px rgba(241,230,211,.9)"'); }
@@ -145,7 +145,7 @@ window.__seek = function (t) {
   place(tDanda, shown.club || new V3(0, 0, 0), -40, -120, L1 && t > TB ? ramp(t, TB + .4, TB + 1) * oneIf(t < TS + .5) : 0);
   place(tSlide, new V3(101.1, .3, 0), 80, -140, sc === 'C' ? ramp(t, TC1 + .8, TC1 + 1.5) : 0);
   var ud = ramp(t, CW('s4', 'taaqat') + .2, CW('s4', 'taaqat') + .8); place(tF, new V3(140, .4, 1.1), 150, -60, sc === 'T' ? ud : 0); place(tD, new V3(140.5, .3, -2.2), 150, 120, sc === 'T' ? ramp(t, CW('s4', 'doori') + .2, CW('s4', 'doori') + .8) : 0); place(tD0, new V3(140, .3, 1.5), 150, -80, sc === 'T' ? ramp(t, CW('s4', 'doori') + .5, CW('s4', 'doori') + 1.1) : 0);
-  place(tNode, new V3(200.35, 1.0 + YT + NODEU * BL, 0), 150, -110, sc === 'D' ? ramp(t, CW('s6', 'pandrah') - .2, CW('s6', 'pandrah') + .5) * oneIf(t < TH3 - 1) : 0); place(tShake, new V3(199.4, 1.0 + YT + .55 * BL, 0), -120, -90, sc === 'D' ? ramp(t, TH1 + .3, TH1 + 1) * oneIf(t < TH2 - .2) : 0);
+  place(tNode, new V3(200.35, YT + NODEU * BL, 0), 150, -110, sc === 'D' ? ramp(t, CW('s6', 'pandrah') - .2, CW('s6', 'pandrah') + .5) * oneIf(t < TH3 - 1) : 0); place(tShake, new V3(199.4, YT + .55 * BL, 0), -120, -90, sc === 'D' ? ramp(t, TH1 + .3, TH1 + 1) * oneIf(t < TH2 - .2) : 0);
   place(tSmat, new V3(300 + 2.2, 3.5, -5.8), -40, -170, sc === 'F' ? ramp(t, CW('s8', 'syed') + .1, CW('s8', 'syed') + .7) * oneIf(t < TEND - .3) : 0); place(tAuc2, new V3(300 + 2.2, 2.7, -5.8), 30, 120, sc === 'F' ? ramp(t, CW('s8', 'neelaami'), CW('s8', 'neelaami') + .6) * oneIf(t < TEND - .3) : 0);
   /* scene cut: ink-brown ground panel rises and falls */
   var wp = 0; [TB, TC, ST('s4') - .25, TD, TF].forEach(function (b) { if (b !== TB) { var d = Math.abs(t - b); if (d < .22) wp = Math.max(wp, 1 - d / .22); } }); wipe.style.height = (wp * 1920) + 'px'; wipe.style.opacity = wp > 0 ? .98 : 0;
