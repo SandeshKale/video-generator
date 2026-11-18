@@ -365,5 +365,12 @@
   "voice": "clone",
   "host": "none",
   "length": "99s"
+ },
+ "reel-gilli-danda-sweet-spot": {
+  "genre": "sport-physics-explainer",
+  "company": "none",
+  "voice": "clone",
+  "host": "none",
+  "length": "61s"
  }
 }
