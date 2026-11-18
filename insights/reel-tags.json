@@ -351,5 +351,12 @@
   "voice": "clone",
   "host": "none",
   "length": "77s"
+ },
+ "reel-ipl-swap-purse": {
+  "genre": "sports-data-explainer",
+  "company": "IPL (Mumbai Indians, Punjab Kings)",
+  "voice": "clone",
+  "host": "none",
+  "length": "75s"
  }
 }
