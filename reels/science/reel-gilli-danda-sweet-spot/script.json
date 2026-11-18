@@ -1,0 +1,85 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "सोलह दिसंबर को आईपीएल की नीलामी है, और कुछ अनजान नाम करोड़पति बनेंगे। उनके बल्ले की फ़िज़िक्स, आपने गाँव की गली में पहले ही देख रखी है।",
+   "A": "16 December ko IPL ki neelaami hai, aur kuch anjaan naam crorepati banenge. Unke bat ki physics, aapne gaon ki gali mein pehle hi dekh rakhi hai.",
+   "cap": "16 December ko IPL ki neelaami hai, aur kuch anjaan naam crorepati banenge. Unke bat ki physics, aapne gaon ki gali mein pehle hi dekh rakhi hai."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "गिल्ली को पत्थर पर तिरछा रखो। उसके किनारे पर डंडा मारो, और वो हवा में उछल जाती है।",
+   "A": "Gilli ko patthar par tirchha rakho. Uske kinare par danda maaro, aur wo hawa mein uchhal jaati hai.",
+   "cap": "Gilli ko patthar par tirchha rakho. Uske kinare par danda maaro, aur wo hawa mein uchhal jaati hai."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "लेकिन अगर बीच में मारो? तो वो बस खिसकती है, उछलती नहीं। ताक़त वही थी, बस जगह बदल गई।",
+   "A": "Lekin agar beech mein maaro? Wo bas khisakti hai, uchhalti nahi. Taaqat wahi thi, bas jagah badal gayi.",
+   "cap": "Lekin agar beech mein maaro? Wo bas khisakti hai, uchhalti nahi. Taaqat wahi thi, bas jagah badal gayi."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "इसे कहते हैं टॉर्क। ताक़त गुणा दूरी। केंद्र से जितना दूर मारो, उतना ज़्यादा घुमाव।",
+   "A": "Ise kehte hain torque. Taaqat guna doori. Centre se jitna door maaro, utna zyada ghumaav.",
+   "cap": "Ise kehte hain torque. Taaqat guna doori. Centre se jitna door maaro, utna zyada ghumaav."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "अब बल्ले पर आओ। गेंद बल्ले पर कहीं भी लगे, बल्ला काँपता है। पर एक ख़ास जगह है, जहाँ काँपना लगभग रुक जाता है।",
+   "A": "Ab bat par aao. Gend bat par kahin bhi lage, bat kaanpta hai. Par ek khaas jagah hai, jahan kaanpna lagbhag ruk jaata hai.",
+   "cap": "Ab bat par aao. Gend bat par kahin bhi lage, bat kaanpta hai. Par ek khaas jagah hai, jahan kaanpna lagbhag ruk jaata hai."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "बल्ले के सिरे से क़रीब पंद्रह सेंटीमीटर अंदर। इसे स्वीट स्पॉट कहते हैं। यहाँ गेंद लगे, तो हाथ को झटका नहीं लगता।",
+   "A": "Bat ke sire se kareeb pandrah centimetre andar. Ise sweet spot kehte hain. Yahan gend lage, toh haath ko jhatka nahi lagta.",
+   "cap": "Bat ke sire se kareeb pandrah centimetre andar. Ise sweet spot kehte hain. Yahan gend lage, toh haath ko jhatka nahi lagta."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "किनारे पर लगी? तो काँपना सीधा हाथ तक आता है, और हाथ सुन्न।",
+   "A": "Kinare par lagi? Toh kaanpna seedha haath tak aata hai, aur haath sunn.",
+   "cap": "Kinare par lagi? Toh kaanpna seedha haath tak aata hai, aur haath sunn."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "अभी सैयद मुश्ताक़ अली ट्रॉफ़ी चल रही है, और नीलामी से पहले कई लड़के अपना नाम बना रहे हैं।",
+   "A": "Abhi Syed Mushtaq Ali Trophy chal rahi hai, aur neelaami se pehle kai ladke apna naam bana rahe hain.",
+   "cap": "Abhi Syed Mushtaq Ali Trophy chal rahi hai, aur neelaami se pehle kai ladke apna naam bana rahe hain."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "गिल्ली हो या करोड़ों का बल्ला, राज़ एक ही है: सही जगह पर मारो।",
+   "A": "Gilli ho ya karodon ka bat, raaz ek hi hai: sahi jagah par maaro.",
+   "cap": "Gilli ho ya karodon ka bat, raaz ek hi hai: sahi jagah par maaro."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "आपने गिल्ली-डंडा खेला है? अपने गाँव का नाम लिखो। नर्डलॉजिक डॉट सी ओ को फ़ॉलो करो, और शेयर करो।",
+   "A": "Aapne gilli-danda khela hai? Apne gaon ka naam likho. nerdlogic.co ko follow karo, aur share karo.",
+   "cap": "Aapne gilli-danda khela hai? Apne gaon ka naam likho. nerdlogic.co ko follow karo, aur share karo."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.7,
+  "s2": 0.45,
+  "s3": 0.6,
+  "s4": 0.7,
+  "s5": 0.5,
+  "s6": 0.5,
+  "s7": 0.6,
+  "s8": 0.5,
+  "s9": 0.8
+ }
+}
