@@ -69,7 +69,7 @@ def kf(keys, t):
 def aim(cam, loc, look):
     cam.location = loc; d = Vector(look) - Vector(loc); cam.rotation_euler = d.to_track_quat('-Z', 'Y').to_euler()
 def label(items, cam, s, u, v, frac, col, t_on, t_off=1e9, font='plexmono', dist=12, align='LEFT'):
-    o = parent_cam(hud(s, cam, u, v, frac, col, dist=dist, font=font, align=align), cam); items.append((o, t_on, t_off)); return o
+    o = parent_cam(hud(s, cam, u, v, frac, col, dist=dist, font=font, align=align), cam); o.visible_glossy = False; o.visible_diffuse = False; o.visible_shadow = False; o.visible_transmission = False; items.append((o, t_on, t_off)); return o
 def set_labels(items, t):
     for o, a, b in items: o.hide_render = not (a <= t < b); o.hide_viewport = o.hide_render
 
@@ -95,7 +95,7 @@ def shot_ghat(final=False):
     cam = camera((0, -13, 2.2), (0, 6, 4.0), lens=30, fstop=1.6, focus=16); items = []
     if not final:
         label(items, cam, 'DEV DEEPAWALI', -.44, .40, .06, CREAM, 0, 1e9, 'anton', 14); label(items, cam, 'KARTIK PURNIMA  ·  24 NOV', -.44, .355, .02, SUN, 0, 1e9, 'plexmono', 14)
-        label(items, cam, 'THE MOON LOOKS HUGE.', -.44, -.22, .03, CREAM, 0.2, 1e9, 'anton', 14)
+        label(items, cam, 'THE MOON LOOKS HUGE.', -.44, .30, .03, CREAM, 0.2, 1e9, 'anton', 14)
     else:
         a = ST['s8']
         label(items, cam, 'FAITH: YOURS.', -.44, .40, .06, CREAM, a, 1e9, 'anton', 14); label(items, cam, 'THE SKY: MEASURABLE.', -.44, .34, .06, SUN, a + 2.2, 1e9, 'anton', 14)
@@ -159,13 +159,13 @@ def shot_sky():
     bm = nail.modifiers.new('b', 'BEVEL'); bm.width = nw * .18; bm.segments = 4
     cam = camera((0, 0, 2.0), (0, math.cos(math.radians(pitch)) * 10, 2.0 + math.sin(math.radians(pitch)) * 10), lens=26); items = []
     s5, s6, s7, s8 = ST['s5'], ST['s6'], ST['s7'], ST['s8']
-    label(items, cam, 'SAME MOON.', -.44, .40, .07, CREAM, s5, 1e9, 'anton'); label(items, cam, 'DIFFERENT BRAIN.', -.44, .33, .07, SUN, s5 + 2.0, 1e9, 'anton')
-    label(items, cam, 'HIGH', -.44, .22, .024, MUTE, s5 + 1.0, 1e9); label(items, cam, 'HORIZON', -.44, -.08, .024, MUTE, s5 + 1.0, 1e9)
-    label(items, cam, 'same width', .13, .16, .022, TEAL, s5 + 3.0, 1e9); label(items, cam, 'same width', .13, -.14, .022, TEAL, s5 + 3.0, 1e9); label(items, cam, 'NASA: photos show equal width', -.44, -.46, .02, MUTE, s5 + 3.0, 1e9)
-    label(items, cam, 'THE MOON ILLUSION', -.44, -.40, .03, CREAM, s6, s7, 'anton'); label(items, cam, 'DEBATED: ONE MAIN EXPLANATION', -.44, -.45, .02, SUN, s6 + 1.0, s7)
-    label(items, cam, 'FINGERNAIL TEST  ·  arm out', -.44, -.40, .026, CREAM, s7, 1e9); label(items, cam, 'nail ~1°  ·  moon ~0.5°  ·  both look the same size', -.44, -.45, .018, SUN, s7 + 1.5, 1e9)
+    label(items, cam, 'SAME MOON.', -.44, .40, .07, CREAM, s5, s6, 'anton', 4); label(items, cam, 'DIFFERENT BRAIN.', -.44, .33, .07, SUN, s5 + 2.0, s6, 'anton', 4)
+    label(items, cam, 'HIGH', -.44, .22, .024, MUTE, s5 + 1.0, s6, 'plexmono', 4); label(items, cam, 'HORIZON', -.44, -.08, .024, MUTE, s5 + 1.0, s6, 'plexmono', 4)
+    label(items, cam, 'same width', .13, .16, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'same width', .13, -.14, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'NASA: photos show equal width', -.44, -.46, .02, MUTE, s5 + 3.0, s6, 'plexmono', 4)
+    label(items, cam, 'THE MOON ILLUSION', -.44, -.40, .03, CREAM, s6, s7, 'anton', 4); label(items, cam, 'DEBATED: ONE MAIN EXPLANATION', -.44, -.45, .02, SUN, s6 + 1.0, s7, 'plexmono', 4)
+    label(items, cam, 'FINGERNAIL TEST  ·  arm out', -.44, -.40, .026, CREAM, s7, 1e9, 'plexmono', 4); label(items, cam, 'nail ~1°  ·  moon ~0.5°', -.44, -.45, .018, SUN, s7 + 1.5, 1e9, 'plexmono', 4)
     def animate(t):
-        for o in calip: o.hide_render = not (t >= s5 + 3.0)
+        for o in calip: o.hide_render = not (s5 + 3.0 <= t < s6)
         for o in rails: o.hide_render = not (s6 <= t < s7)
         nail.hide_render = not (t >= s7)
         pit = kf([(0, (20,)), (s6 - T0, (20,)), (s6 - T0 + 1.5, (14,)), (s7 - T0, (14,)), (s7 - T0 + 1.5, (9,))], t - T0)[0]
