@@ -1,4 +1,4 @@
-# "Chaand bada hai, ya dimaag?" — supermoon × moon illusion × Dev Deepawali (~70 s, Hinglish voice-over, nerdlogic.co)
+# "Chaand bada hai, ya dimaag?" — supermoon × moon illusion × Dev Deepawali (~80 s, Hinglish voice-over, nerdlogic.co)
 Folder `reels/science/reel-supermoon-illusion/`. Post 22–23 Nov, re-share 24 Nov evening. **Blender-first** (all animation rendered in Blender) + **earshot / Openverse audio** (standing rules, 19 Nov 2026).
 
 ## Why this reel
