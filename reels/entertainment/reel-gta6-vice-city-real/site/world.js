@@ -125,7 +125,7 @@ L('GAME · VICE CITY<small>REAL · MIAMI</small>', '#ffa21f', CW('s4', 'vice'), 
 L('GAME · LEONIDA KEYS<small>REAL · FLORIDA KEYS</small>', '#2fe0d6', CW('s4', 'leonida', 1), TE - .3, function () { var p = proj(KEYS.clone().setY(.7)); return { x: p[0] + 30, y: p[1] - 90 }; });
 L('GAME · GRASSRIVERS<small>REAL · EVERGLADES</small>', '#ffd27a', CW('s4', 'grassrivers'), TE - .3, function () { var p = proj(EVG.clone().setY(.7)); return { x: p[0] - 400, y: p[1] - 160 }; });
 L('1 DOT = 10,000 GATORS<small>ILLUSTRATIVE · FWC ESTIMATE ~1.3 M</small>', '#ffa21f', CW('s5', 'terah'), TF - .3, function () { return { x: 162, y: 1090 }; });
-var cnt = L('0 / 67 COUNTIES', '#2fe0d6', CW('s5', 'sadsath'), TF - .3, function () { return { x: 162, y: 1165 }; }, 'big');
+var cnt = L('0 / 67 COUNTIES', '#2fe0d6', CW('s5', 'zile'), TF - .3, function () { return { x: 162, y: 1165 }; }, 'big');
 L('HIS OWN RECORDS: <b>NO FOUNTAIN</b>', '#ffa21f', CW('s6', 'kaagzon'), TG - .3, function () { return { x: 162, y: 1090 }; });
 L('FIRST TIED TO HIM IN 1535 · HE DIED 1521', '#2fe0d6', CW('s7', 'jharne'), TG - .3, function () { return { x: 162, y: 1165 }; });
 L('FAKE CITY · VICE CITY', '#ffa21f', CW('s8', 'nakli'), TH - .3, function () { var p = proj(MIA.clone().setY(.9)); return { x: p[0] + 40, y: p[1] - 130 }; });
@@ -146,7 +146,7 @@ ev(.05, 'hit'); CUTS.forEach(function (c) { ev(c - .12, 'whoosh'); });
 for (var si = 0; si < 22; si++) ev(CW('s2', 'baais') + .1 + si * .09, 'tick');
 for (var sj = 0; sj < 16; sj++) ev(CW('s2', 'saintaalis') + sj * .17, 'tick');
 var tLand = CW('s3', 'helicopter') + 2.6; ev(tLand, 'thud'); ev(CW('s4', 'vice'), 'ping'); ev(CW('s4', 'leonida', 1), 'ping'); ev(CW('s4', 'grassrivers'), 'ping');
-ev(CW('s5', 'sadsath'), 'tick'); ev(CW('s7', 'mithak'), 'stamp'); ev(CW('s8', 'nikli'), 'stamp'); ev(CW('s9', 'ps5'), 'ping'); ev(CW('s9', 'xbox'), 'ping'); ev(CW('s9', 'paanch'), 'tick'); ev(TEND, 'ping');
+ev(CW('s5', 'zile'), 'tick'); ev(CW('s7', 'mithak'), 'stamp'); ev(CW('s8', 'nikli'), 'stamp'); ev(CW('s9', 'ps5'), 'ping'); ev(CW('s9', 'xbox'), 'ping'); ev(CW('s9', 'paanch'), 'tick'); ev(TEND, 'ping');
 /* ---- seek ---- */
 window.__seek = function (t) {
   var sc = 'A'; if (t >= TB) sc = 'B'; if (t >= TC) sc = 'C'; if (t >= TD) sc = 'D'; if (t >= TE) sc = 'E'; if (t >= TF) sc = 'F'; if (t >= TG) sc = 'G'; if (t >= TH) sc = 'H';
@@ -162,10 +162,10 @@ window.__seek = function (t) {
   /* E: gators */
   gMesh.visible = sc === 'E';
   if (sc === 'E') {
-    var e0 = CW('s5', 'terah'), sp = eio(ramp(t, CW('s5', 'sadsath') - .1, CW('s5', 'sadsath') + 1.6));
+    var e0 = CW('s5', 'terah'), sp = eio(ramp(t, CW('s5', 'zile') - .1, CW('s5', 'zile') + 1.6));
     for (var g = 0; g < NG; g++) { var born = ramp(t, e0 + g * .012, e0 + g * .012 + .25); var p = gA[g].clone().lerp(gB[g], sp); p.x += Math.sin(t * .8 + g) * .01 * (1 - sp); p.z += Math.cos(t * .7 + g * 1.3) * .01 * (1 - sp); gDum.position.copy(p); gDum.scale.setScalar(Math.max(.0001, born * (1 + .2 * Math.sin(t * 3 + g)))); gDum.updateMatrix(); gMesh.setMatrixAt(g, gDum.matrix); }
     gMesh.instanceMatrix.needsUpdate = true;
-    cnt.firstChild.nodeValue = Math.round(67 * eo3(ramp(t, CW('s5', 'sadsath'), CW('s5', 'sadsath') + 1.4))) + ' / 67 COUNTIES';
+    cnt.firstChild.nodeValue = Math.round(67 * eo3(ramp(t, CW('s5', 'zile'), CW('s5', 'zile') + 1.4))) + ' / 67 COUNTIES';
   }
   /* B: slabs */
   if (sc === 'B') {
