@@ -1,0 +1,77 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "चौबीस नवंबर, देव दीपावली की शाम। चाँद आसमान में आएगा, और सब कहेंगे: कितना बड़ा! पर सवाल ये है: चाँद बड़ा है, या हमारा दिमाग़ उसे बड़ा दिखा रहा है?",
+   "A": "24 November, Dev Deepawali ki shaam. Chaand aasmaan mein aayega, aur sab kahenge: kitna bada! Par sawal ye hai: chaand bada hai, ya hamara dimaag use bada dikha raha hai?",
+   "cap": "24 November, Dev Deepawali ki shaam. Chaand aasmaan mein aayega, aur sab kahenge: kitna bada! Par sawal ye hai: chaand bada hai, ya hamara dimaag use bada dikha raha hai?"
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "चाँद की परिक्रमा गोल नहीं, थोड़ी अंडे जैसी है। कभी वो पास आता है, कभी दूर जाता है। इस बार पूर्णिमा के दिन वो पास होगा: लगभग तीन लाख इकसठ हज़ार किलोमीटर।",
+   "A": "Chaand ki parikrama gol nahi, thodi ande jaisi hai. Kabhi wo paas aata hai, kabhi door jaata hai. Is baar poornima ke din wo paas hoga: lagbhag teen lakh iksath hazaar kilometer.",
+   "cap": "Chaand ki parikrama gol nahi, thodi ande jaisi hai. Kabhi wo paas aata hai, kabhi door jaata hai. Is baar poornima ke din wo paas hoga: lagbhag teen lakh iksath hazaar kilometer."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "इसे सुपरमून कहते हैं। नासा के मुताबिक़, साल की सबसे दूर वाली पूर्णिमा के मुक़ाबले, सबसे पास वाली ज़्यादा से ज़्यादा चौदह प्रतिशत बड़ी और तीस प्रतिशत ज़्यादा चमकदार दिख सकती है।",
+   "A": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima ke muqable, sabse paas wali zyada se zyada chaudah pratishat badi aur tees pratishat zyada chamakdaar dikh sakti hai.",
+   "cap": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima ke muqable, sabse paas wali zyada se zyada chaudah pratishat badi aur tees pratishat zyada chamakdaar dikh sakti hai."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "और ये अकेली नहीं: चौबीस दिसंबर और बाईस जनवरी को भी पास वाली पूर्णिमा आएगी, दिसंबर वाली सबसे पास।",
+   "A": "Aur ye akeli nahi: 24 December aur 22 January ko bhi paas wali poornima aayegi, December wali sabse paas.",
+   "cap": "Aur ye akeli nahi: 24 December aur 22 January ko bhi paas wali poornima aayegi, December wali sabse paas."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "पर जो चाँद पेड़ों और इमारतों के ऊपर बहुत बड़ा दिखता है, वो असल में बड़ा नहीं होता। नासा का टेस्ट: एक ही कैमरे से क्षितिज पर और ऊपर फ़ोटो लो, चाँद की चौड़ाई बराबर निकलती है।",
+   "A": "Par jo chaand pedon aur imaaraton ke upar bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai.",
+   "cap": "Par jo chaand pedon aur imaaraton ke upar bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "इसे मून इल्यूज़न कहते हैं। एक मुख्य व्याख्या है पॉन्ज़ो इल्यूज़न: दिमाग़ चाँद की तुलना पेड़ों से करता है। नासा कहता है, पूरी वजह पर बहस जारी है।",
+   "A": "Ise moon illusion kehte hain. Ek mukhya vyakhya hai Ponzo illusion: dimaag chaand ki tulna pedon se karta hai. NASA kehta hai, poori wajah par bahas jaari hai.",
+   "cap": "Ise moon illusion kehte hain. Ek mukhya vyakhya hai Ponzo illusion: dimaag chaand ki tulna pedon se karta hai. NASA kehta hai, poori wajah par bahas jaari hai."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "खुद आज़माओ: हाथ सीधा करो। तुम्हारी उँगली का नाखून चाँद को ढक लेगा, चाहे चाँद क्षितिज पर हो या सिर के ऊपर।",
+   "A": "Khud aazmaao: haath seedha karo. Tumhari ungli ka naakhun chaand ko dhak lega, chahe chaand kshitij par ho ya sir ke upar.",
+   "cap": "Khud aazmaao: haath seedha karo. Tumhari ungli ka naakhun chaand ko dhak lega, chahe chaand kshitij par ho ya sir ke upar."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "देव दीपावली, कार्तिक पूर्णिमा: काशी के घाट दीयों से जगमगाते हैं। मान्यता है कि शिव जी ने त्रिपुरासुर पर जीत पाई थी। आस्था अपनी जगह, आसमान का नाप अपनी जगह।",
+   "A": "Dev Deepawali, Kartik Purnima: Kashi ke ghaat diyon se jagmagate hain. Maanyata hai ki Shiv ji ne Tripurasur par jeet paayi thi. Aastha apni jagah, aasmaan ka naap apni jagah.",
+   "cap": "Dev Deepawali, Kartik Purnima: Kashi ke ghaat diyon se jagmagate hain. Maanyata hai ki Shiv ji ne Tripurasur par jeet paayi thi. Aastha apni jagah, aasmaan ka naap apni jagah."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "तो चौबीस नवंबर की शाम चाँद देखना, और उँगली बढ़ाकर नापना। तुम्हें कितना बड़ा दिखा? फ़ॉलो और शेयर करिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "To 24 November ki shaam chaand dekhna, aur ungli badhakar naapna. Tumhe kitna bada dikha? Follow aur share kariye, nerdlogic.co ko.",
+   "cap": "To 24 November ki shaam chaand dekhna, aur ungli badhakar naapna. Tumhe kitna bada dikha? Follow aur share kariye, nerdlogic.co ko."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.6,
+  "s2": 0.5,
+  "s3": 0.5,
+  "s4": 0.5,
+  "s5": 0.5,
+  "s6": 0.5,
+  "s7": 0.7,
+  "s8": 0.5
+ }
+}
