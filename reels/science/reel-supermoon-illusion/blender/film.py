@@ -134,15 +134,15 @@ def shot_orbit():
     return animate
 
 def shot_sky():
-    sc = setup('050a24', 1.0); world_glow('02040f', '23327a', 1.2); camloc = Vector((0, 0, 2.0)); pitch = 20; sun((70, 0, 20), 0.9, (.6, .7, 1.0))
+    sc = setup('050a24', 1.0); world_glow('02040f', '23327a', 1.2); camloc = Vector((0, 0, 2.0)); pitch = 16; sun((70, 0, 20), 0.9, (.6, .7, 1.0))
     bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 150, 0)); g = bpy.context.object; g.scale = (800, 800, 1); g.data.materials.append(pbr(hexc('0e1636'), .9))
-    d = 300; r = d * math.tan(math.radians(4.3)); mm = tex_mat('moon_color_2k.jpg', 1.0, emis=1.5)
+    d = 300; r = d * math.tan(math.radians(3.2)); mm = tex_mat('moon_color_2k.jpg', 1.0, emis=1.5)
     def at(elev, dist=d): return camloc + Vector((0, math.cos(math.radians(elev)), math.sin(math.radians(elev)))) * dist
     calip = []
     for elev in (31, 7.0):
         c = at(elev); sphere(*c, r, mm)
-        b = bpy.ops.mesh.primitive_cube_add(location=c + Vector((0, 0, -r * 1.35))); b = bpy.context.object; b.scale = (r, 1.0, .35); b.data.materials.append(emit(TEAL, 3)); calip.append(b)
-        for sx in (-1, 1): bpy.ops.mesh.primitive_cube_add(location=c + Vector((sx * r, 0, -r * 1.35))); k = bpy.context.object; k.scale = (.5, 1.0, 4.5); k.data.materials.append(emit(TEAL, 3)); calip.append(k)
+        b = bpy.ops.mesh.primitive_cube_add(location=c + Vector((0, 0, -r * 1.2))); b = bpy.context.object; b.scale = (r, 1.0, .35); b.data.materials.append(emit(TEAL, 3)); calip.append(b)
+        for sx in (-1, 1): bpy.ops.mesh.primitive_cube_add(location=c + Vector((sx * r, 0, -r * 1.2))); k = bpy.context.object; k.scale = (.5, 1.0, 4.5); k.data.materials.append(emit(TEAL, 3)); calip.append(k)
     random.seed(5); tm = pbr(hexc('01030a'), .9)
     for i in range(110):
         y = random.uniform(24, 190); x = random.uniform(-.7, .7) * y * 1.0; h = y * math.tan(math.radians(random.uniform(2.0, 9.0)))
@@ -155,20 +155,22 @@ def shot_sky():
         cu = bpy.data.curves.new('r', 'CURVE'); cu.dimensions = '3D'; sp = cu.splines.new('POLY'); sp.points.add(1); sp.points[0].co = (sx * 7, 10, .03, 1); sp.points[1].co = (sx * .5, 190, .03, 1); cu.bevel_depth = .09
         o = bpy.data.objects.new('r', cu); bpy.context.scene.collection.objects.link(o); o.data.materials.append(emit(hexc('f3e7c9'), 2)); rails.append(o)
     # fingernail: ~1 deg wide at arm's length, pale capsule just in front of the low moon
-    nd = 120; nw = nd * math.tan(math.radians(1.0)); bpy.ops.mesh.primitive_cube_add(location=at(7.0, nd)); nail = bpy.context.object; nail.scale = (nw / 2, .4, nw / 1.6); nail.data.materials.append(emit(hexc('f2c7b8'), 1.6))
-    bm = nail.modifiers.new('b', 'BEVEL'); bm.width = nw * .18; bm.segments = 4
+    nd = 120; nw = nd * math.tan(math.radians(9.0)); nails = []
+    for elev in (31, 7.0):
+        bpy.ops.mesh.primitive_cube_add(location=at(elev, nd)); nl = bpy.context.object; nl.scale = (nw / 2, .4, nw / 1.5); nl.data.materials.append(emit(hexc('f2c7b8'), 1.6))
+        bm = nl.modifiers.new('b', 'BEVEL'); bm.width = nw * .2; bm.segments = 4; nails.append(nl)
     cam = camera((0, 0, 2.0), (0, math.cos(math.radians(pitch)) * 10, 2.0 + math.sin(math.radians(pitch)) * 10), lens=26); items = []
     s5, s6, s7, s8 = ST['s5'], ST['s6'], ST['s7'], ST['s8']
     label(items, cam, 'SAME MOON.', -.44, .40, .07, CREAM, s5, s6, 'anton', 4); label(items, cam, 'DIFFERENT BRAIN.', -.44, .33, .07, SUN, s5 + 2.0, s6, 'anton', 4)
     label(items, cam, 'HIGH', -.44, .22, .024, MUTE, s5 + 1.0, s6, 'plexmono', 4); label(items, cam, 'HORIZON', -.44, -.08, .024, MUTE, s5 + 1.0, s6, 'plexmono', 4)
-    label(items, cam, 'same width', .13, .16, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'same width', .13, -.14, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'NASA: photos show equal width', -.44, -.46, .02, MUTE, s5 + 3.0, s6, 'plexmono', 4)
+    label(items, cam, 'same width', .13, .16, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'same width', .13, -.14, .022, TEAL, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'NASA: photos show equal width', -.44, -.46, .02, MUTE, s5 + 3.0, s6, 'plexmono', 4); label(items, cam, 'moons drawn larger than life', .44, -.46, .016, MUTE, s5, 1e9, 'plexmono', 4, 'RIGHT')
     label(items, cam, 'THE MOON ILLUSION', -.44, -.40, .03, CREAM, s6, s7, 'anton', 4); label(items, cam, 'DEBATED: ONE MAIN EXPLANATION', -.44, -.45, .02, SUN, s6 + 1.0, s7, 'plexmono', 4)
-    label(items, cam, 'FINGERNAIL TEST  ·  arm out', -.44, -.40, .026, CREAM, s7, 1e9, 'plexmono', 4); label(items, cam, 'nail ~1°  ·  moon ~0.5°', -.44, -.45, .018, SUN, s7 + 1.5, 1e9, 'plexmono', 4)
+    label(items, cam, 'FINGERNAIL TEST  ·  arm out', -.44, -.40, .026, CREAM, s7, 1e9, 'plexmono', 4); label(items, cam, 'a nail at arm\'s length hides the moon', -.44, -.45, .018, SUN, s7 + 1.5, 1e9, 'plexmono', 4)
     def animate(t):
         for o in calip: o.hide_render = not (s5 + 3.0 <= t < s6)
         for o in rails: o.hide_render = not (s6 <= t < s7)
-        nail.hide_render = not (t >= s7)
-        pit = kf([(0, (20,)), (s6 - T0, (20,)), (s6 - T0 + 1.5, (14,)), (s7 - T0, (14,)), (s7 - T0 + 1.5, (9,))], t - T0)[0]
+        for nl in nails: nl.hide_render = not (t >= s7 + 1.0)
+        pit = kf([(0, (16,)), (s6 - T0, (16,)), (s6 - T0 + 1.5, (12,)), (s7 - T0, (12,)), (s7 - T0 + 1.5, (9,))], t - T0)[0]
         aim(cam, (0, 0, 2.0), (0, math.cos(math.radians(pit)) * 10, 2.0 + math.sin(math.radians(pit)) * 10)); set_labels(items, t)
     return animate
 
