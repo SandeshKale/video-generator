@@ -145,7 +145,7 @@ function vis(arr) { var n = 0; arr.forEach(function (m) { if (m.visible) n++; })
 ev(.05, 'hit'); CUTS.forEach(function (c) { ev(c - .12, 'whoosh'); });
 for (var si = 0; si < 22; si++) ev(CW('s2', 'baais') + .1 + si * .09, 'tick');
 for (var sj = 0; sj < 16; sj++) ev(CW('s2', 'saintaalis') + sj * .17, 'tick');
-var tLand = CW('s3', 'helicopter') + 2.6; ev(tLand, 'thud'); ev(CW('s4', 'vice'), 'ping'); ev(CW('s4', 'leonida', 1), 'ping'); ev(CW('s4', 'grassrivers'), 'ping');
+var tLand = CW('s3', 'helicopter') + 2.6; ev(tLand, 'thud'); ev(CW('s4', 'vice') + .45, 'ping'); ev(CW('s4', 'leonida', 1) + .5, 'ping'); ev(CW('s4', 'grassrivers') + .6, 'ping');
 ev(CW('s5', 'zile'), 'tick'); ev(CW('s7', 'mithak'), 'stamp'); ev(CW('s8', 'nikli'), 'stamp'); ev(CW('s9', 'ps5'), 'ping'); ev(CW('s9', 'xbox'), 'ping'); ev(CW('s9', 'paanch'), 'tick'); ev(TEND, 'ping');
 /* ---- seek ---- */
 window.__seek = function (t) {
