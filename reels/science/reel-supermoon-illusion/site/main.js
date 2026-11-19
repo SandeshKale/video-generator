@@ -3,11 +3,11 @@ var v = document.getElementById('v'), cv = document.getElementById('c'), cx = cv
 var SEN = {}; TM.sentences.forEach(function (s) { SEN[s.id] = s; });
 function CW(id, w) { for (var i = 0; i < TM.cap.length; i++) if (TM.cap[i].s === id && TM.cap[i].w.toLowerCase().replace(/[^a-z0-9]/g, '').indexOf(w) === 0) return TM.cap[i].t0; return SEN[id].t0 + 1; }
 var DUR = TM.end; window.__reelDurationSec = DUR; var TEND = CW('s9', 'nerdlogic') - .3;
-var CUTS = window.FILM_CUTS || [];
+var CUTS = [SEN.s2.t0, SEN.s5.t0, SEN.s8.t0]; var FPS = 12;
 var CAPW = TM.cap.map(function (c) { return { w: c.w, t0: c.t0, t1: c.t1 }; });
 function clamp(x) { return Math.max(0, Math.min(1, x)); } function ramp(t, a, b) { return clamp((t - a) / (b - a)); }
 function eob(x) { var c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); } function eo3(x) { return 1 - Math.pow(1 - x, 3); }
-var FPS = 24, ready = false;
+var ready = false;
 function seekVideo(t) { return new Promise(function (res) { var tt = Math.min(Math.max(0, t), (v.duration || 1e9) - .02); function on() { v.removeEventListener('seeked', on); res(); } v.addEventListener('seeked', on); v.currentTime = (Math.floor(tt * FPS) + .5) / FPS; }); }
 window.__seek = async function (t) {
   if (!ready) return;
