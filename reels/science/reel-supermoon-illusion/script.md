@@ -1,4 +1,4 @@
-# "Chaand bada hai, ya dimaag?" — supermoon × moon illusion × Dev Deepawali (~70–75 s, Hinglish voice-over, nerdlogic.co)
+# "Chaand bada hai, ya dimaag?" — supermoon × moon illusion × Dev Deepawali (~70 s, Hinglish voice-over, nerdlogic.co)
 Folder `reels/science/reel-supermoon-illusion/`. Post 22–23 Nov, re-share 24 Nov evening. **Blender-first** (all animation rendered in Blender) + **earshot / Openverse audio** (standing rules, 19 Nov 2026).
 
 ## Why this reel
@@ -6,7 +6,7 @@ Folder `reels/science/reel-supermoon-illusion/`. Post 22–23 Nov, re-share 24 N
 - `insights/report.md` is stale (12 Oct, old account); account lessons that apply: first fact by ~8 s, follow ask before the last payoff, honest ending.
 - **Corrections to the plan** (see `research/sources.md`): "14 % bigger / 30 % brighter" is NASA's *maximum versus the year's faintest full moon*, not this November's value (Star Walk: ~6.5 % / ~13.5 % versus an average full moon, tier B) → voiced as "zyada se zyada"; distance voiced "lagbhag 3 lakh 61 hazaar km"; "three in a row" and the December distance are tier B (outlets differ by ~90 km); the Ponzo explanation is *one leading idea*, NASA says the cause is still debated.
 - **Overlap:** shipped `reel-dev-deepawali` already uses 24 Nov's full Moon (Pleiades twist). Post this as a pair a day apart, or skip one.
-- Script length: 9 sentences ≈ 215 words ≈ 80 s at 2.7 w/s (plan said 155 words). Cut the three-supermoons line or the finger test if it must be ≤ 70 s.
+- Script length: 9 sentences, 224 words ≈ 83 s at 2.7 w/s (the plan said 155 words / 60 s; the first draft was 268 words). Cut the "December and January" line or the finger test if it must be shorter.
 
 ## Storytelling gate (docs/STORYTELLING-GUIDE.md)
 Protagonist: the Moon on Dev Deepawali night. Obstacle: everyone says it looks huge — is it? Reversal: the real supermoon gain is "up to 14 %" and the big horizon Moon is mostly the illusion; the viewer's own eye + fingernail is the test. Honest ending: the illusion's cause is still debated; faith and measurement kept apart.

@@ -3,37 +3,37 @@
   {
    "id": "s1",
    "g": "g1",
-   "B": "चौबीस नवंबर, देव दीपावली की शाम। चाँद आसमान में आएगा, और सब कहेंगे: कितना बड़ा! पर सवाल ये है: चाँद बड़ा है, या हमारा दिमाग़ उसे बड़ा दिखा रहा है?",
-   "A": "24 November, Dev Deepawali ki shaam. Chaand aasmaan mein aayega, aur sab kahenge: kitna bada! Par sawal ye hai: chaand bada hai, ya hamara dimaag use bada dikha raha hai?",
-   "cap": "24 November, Dev Deepawali ki shaam. Chaand aasmaan mein aayega, aur sab kahenge: kitna bada! Par sawal ye hai: chaand bada hai, ya hamara dimaag use bada dikha raha hai?"
+   "B": "चौबीस नवंबर, देव दीपावली की शाम। चाँद निकलेगा, और सब कहेंगे: कितना बड़ा! पर क्या चाँद सच में बड़ा है, या हमारा दिमाग़ उसे बड़ा दिखा रहा है?",
+   "A": "24 November, Dev Deepawali ki shaam. Chaand niklega, aur sab kahenge: kitna bada! Par kya chaand sach mein bada hai, ya hamara dimaag use bada dikha raha hai?",
+   "cap": "24 November, Dev Deepawali ki shaam. Chaand niklega, aur sab kahenge: kitna bada! Par kya chaand sach mein bada hai, ya hamara dimaag use bada dikha raha hai?"
   },
   {
    "id": "s2",
    "g": "g2",
-   "B": "चाँद की परिक्रमा गोल नहीं, थोड़ी अंडे जैसी है। कभी वो पास आता है, कभी दूर जाता है। इस बार पूर्णिमा के दिन वो पास होगा: लगभग तीन लाख इकसठ हज़ार किलोमीटर।",
-   "A": "Chaand ki parikrama gol nahi, thodi ande jaisi hai. Kabhi wo paas aata hai, kabhi door jaata hai. Is baar poornima ke din wo paas hoga: lagbhag teen lakh iksath hazaar kilometer.",
-   "cap": "Chaand ki parikrama gol nahi, thodi ande jaisi hai. Kabhi wo paas aata hai, kabhi door jaata hai. Is baar poornima ke din wo paas hoga: lagbhag teen lakh iksath hazaar kilometer."
+   "B": "चाँद की परिक्रमा थोड़ी अंडे जैसी है, इसलिए वो कभी पास आता है, कभी दूर। इस पूर्णिमा पर वो पास होगा: लगभग तीन लाख इकसठ हज़ार किलोमीटर।",
+   "A": "Chaand ki parikrama thodi ande jaisi hai, isliye wo kabhi paas aata hai, kabhi door. Is poornima par wo paas hoga: lagbhag teen lakh iksath hazaar kilometer.",
+   "cap": "Chaand ki parikrama thodi ande jaisi hai, isliye wo kabhi paas aata hai, kabhi door. Is poornima par wo paas hoga: lagbhag teen lakh iksath hazaar kilometer."
   },
   {
    "id": "s3",
    "g": "g3",
-   "B": "इसे सुपरमून कहते हैं। नासा के मुताबिक़, साल की सबसे दूर वाली पूर्णिमा के मुक़ाबले, सबसे पास वाली ज़्यादा से ज़्यादा चौदह प्रतिशत बड़ी और तीस प्रतिशत ज़्यादा चमकदार दिख सकती है।",
-   "A": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima ke muqable, sabse paas wali zyada se zyada chaudah pratishat badi aur tees pratishat zyada chamakdaar dikh sakti hai.",
-   "cap": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima ke muqable, sabse paas wali zyada se zyada chaudah pratishat badi aur tees pratishat zyada chamakdaar dikh sakti hai."
+   "B": "इसे सुपरमून कहते हैं। नासा के मुताबिक़, साल की सबसे दूर वाली पूर्णिमा से, सबसे पास वाली ज़्यादा से ज़्यादा चौदह प्रतिशत बड़ी दिख सकती है।",
+   "A": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima se, sabse paas wali zyada se zyada chaudah pratishat badi dikh sakti hai.",
+   "cap": "Ise supermoon kehte hain. NASA ke mutabik, saal ki sabse door wali poornima se, sabse paas wali zyada se zyada chaudah pratishat badi dikh sakti hai."
   },
   {
    "id": "s4",
    "g": "g4",
-   "B": "और ये अकेली नहीं: चौबीस दिसंबर और बाईस जनवरी को भी पास वाली पूर्णिमा आएगी, दिसंबर वाली सबसे पास।",
-   "A": "Aur ye akeli nahi: 24 December aur 22 January ko bhi paas wali poornima aayegi, December wali sabse paas.",
-   "cap": "Aur ye akeli nahi: 24 December aur 22 January ko bhi paas wali poornima aayegi, December wali sabse paas."
+   "B": "और ये अकेली नहीं: दिसंबर और जनवरी में भी पास वाली पूर्णिमा आएगी।",
+   "A": "Aur ye akeli nahi: December aur January mein bhi paas wali poornima aayegi.",
+   "cap": "Aur ye akeli nahi: December aur January mein bhi paas wali poornima aayegi."
   },
   {
    "id": "s5",
    "g": "g5",
-   "B": "पर जो चाँद पेड़ों और इमारतों के ऊपर बहुत बड़ा दिखता है, वो असल में बड़ा नहीं होता। नासा का टेस्ट: एक ही कैमरे से क्षितिज पर और ऊपर फ़ोटो लो, चाँद की चौड़ाई बराबर निकलती है।",
-   "A": "Par jo chaand pedon aur imaaraton ke upar bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai.",
-   "cap": "Par jo chaand pedon aur imaaraton ke upar bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai."
+   "B": "पर पेड़ों के ऊपर जो चाँद बहुत बड़ा दिखता है, वो असल में बड़ा नहीं होता। नासा का टेस्ट: एक ही कैमरे से क्षितिज पर और ऊपर फ़ोटो लो, चाँद की चौड़ाई बराबर निकलती है।",
+   "A": "Par pedon ke upar jo chaand bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai.",
+   "cap": "Par pedon ke upar jo chaand bahut bada dikhta hai, wo asal mein bada nahi hota. NASA ka test: ek hi camera se kshitij par aur upar photo lo, chaand ki chaudaai barabar nikalti hai."
   },
   {
    "id": "s6",
@@ -45,9 +45,9 @@
   {
    "id": "s7",
    "g": "g7",
-   "B": "खुद आज़माओ: हाथ सीधा करो। तुम्हारी उँगली का नाखून चाँद को ढक लेगा, चाहे चाँद क्षितिज पर हो या सिर के ऊपर।",
-   "A": "Khud aazmaao: haath seedha karo. Tumhari ungli ka naakhun chaand ko dhak lega, chahe chaand kshitij par ho ya sir ke upar.",
-   "cap": "Khud aazmaao: haath seedha karo. Tumhari ungli ka naakhun chaand ko dhak lega, chahe chaand kshitij par ho ya sir ke upar."
+   "B": "खुद आज़माओ: हाथ सीधा करो। उँगली का नाखून चाँद को ढक लेगा, चाहे चाँद नीचे हो या ऊपर।",
+   "A": "Khud aazmaao: haath seedha karo. Ungli ka naakhun chaand ko dhak lega, chahe chaand neeche ho ya upar.",
+   "cap": "Khud aazmaao: haath seedha karo. Ungli ka naakhun chaand ko dhak lega, chahe chaand neeche ho ya upar."
   },
   {
    "id": "s8",
@@ -59,9 +59,9 @@
   {
    "id": "s9",
    "g": "g9",
-   "B": "तो चौबीस नवंबर की शाम चाँद देखना, और उँगली बढ़ाकर नापना। तुम्हें कितना बड़ा दिखा? फ़ॉलो और शेयर करिए, नर्डलॉजिक डॉट सी ओ को।",
-   "A": "To 24 November ki shaam chaand dekhna, aur ungli badhakar naapna. Tumhe kitna bada dikha? Follow aur share kariye, nerdlogic.co ko.",
-   "cap": "To 24 November ki shaam chaand dekhna, aur ungli badhakar naapna. Tumhe kitna bada dikha? Follow aur share kariye, nerdlogic.co ko."
+   "B": "तो चौबीस नवंबर की शाम चाँद को उँगली से नापना। कितना बड़ा दिखा? फ़ॉलो और शेयर करिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "To 24 November ki shaam chaand ko ungli se naapna. Kitna bada dikha? Follow aur share kariye, nerdlogic.co ko.",
+   "cap": "To 24 November ki shaam chaand ko ungli se naapna. Kitna bada dikha? Follow aur share kariye, nerdlogic.co ko."
   }
  ],
  "pause_after": {
