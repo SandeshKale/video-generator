@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for the gilli-danda reel: village-lane groove (dholak-style low hits, shaker, plucked marimba), strike SFX from the page events, event SFX from the page.
+"""Score + SFX + mix for the GTA VI x Florida reel: slow map-flyover score (warm saw pad per bar, soft kick, hat, plucked arp), stamp/thud SFX and event SFX from the page.
 python3 audio_mix.py -> audio/final.wav + audio/mix-report.json. SFX come from the page event list (audio/events.json).
 Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, audible bed (voice over music median ~16 dB, min >= 12 dB)."""
 import json, os, re, subprocess, numpy as np, soundfile as sf
@@ -66,18 +66,18 @@ for e in ev['ev']:
         for j in range(33): put(sfx, sm(chime(1976 + (j % 5) * 120, .4, .06), noise(.015, 4000, 9000) * dec_n(.015, .005) * .12), t + j * .075 + .35)
     elif k == 'ring': put(sfx, sm(whoosh(.4, False) * .1, chime(880, .7, .07)), t)
     elif k == 'ping': put(sfx, sm(chime(1318.5, .9, .14), chime(1975.5, .6, .05)), t)
+    elif k == 'stamp': put(sfx, sm(noise(.1, 100, 1200) * dec_n(.1, .035) * .9, tone(70, .3, f1=44, dec=.1) * .9, noise(.03, 1500, 6000) * dec_n(.03, .01) * .5), t)
 # ---------------- score: 120 BPM bulletin groove ----------------
-BPM = 98; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); A2 = 98.0
-def mallet(f, d=.3): return sm(tone(f, d, dec=d / 3) * .6, tone(f * 4, d * .3, dec=d / 10) * .15)
+BPM = 92; beat = 60 / BPM; step = beat / 4; music = np.zeros(N, 'float32'); A2 = 110.0
+def pluck(f, d=.3): return sm(tone(f, d, 'tri', dec=d / 3) * .6, tone(f * 2, d * .3, dec=d / 8) * .15)
 i = 0; t = 0.0
 while t < DUR:
     s16 = i % 16; bar = i // 16
-    if s16 in (0, 8): put(music, sm(tone(58, .3, f1=44, dec=.1) * .9, noise(.03, 300, 1500) * dec_n(.03, .01) * .3), t)
-    if s16 in (4, 12): put(music, noise(.07, 1500, 7000) * dec_n(.07, .02) * .22, t)
-    if s16 % 2 == 0: put(music, noise(.02, 6000, 12000) * dec_n(.02, .006) * .1, t)
-    root = A2 * 2 ** ([0, 0, -2, -2, 3, 3, -5, 0][bar % 8] / 12)
-    if s16 % 2 == 0: put(music, tone(root, step * 1.7, 'saw', dec=.12) * .1, t)
-    if s16 in (2, 6, 10, 14) and (bar % 2 == 1): put(music, mallet(root * 4 * 2 ** ([0, 4, 7, 12][(s16 // 4) % 4] / 12), .28) * .12, t)
+    root = A2 * 2 ** ([0, -4, -2, -7][bar % 4] / 12); third = 2 ** ((3 if bar % 4 in (0, 2) else 4) / 12)
+    if s16 == 0: put(music, sm(tone(root, beat * 4, 'saw', a=.4, dec=1.6) * .1, tone(root * third, beat * 4, 'saw', a=.5, dec=1.6) * .07, tone(root * 1.5, beat * 4, 'saw', a=.6, dec=1.6) * .06), t)
+    if s16 in (0, 6, 8): put(music, sm(tone(56, .28, f1=42, dec=.1) * .85, noise(.03, 300, 1400) * dec_n(.03, .01) * .25), t)
+    if s16 % 4 == 2: put(music, noise(.03, 6000, 12000) * dec_n(.03, .01) * .09, t)
+    if s16 % 2 == 0 and bar >= 2: put(music, pluck(root * 4 * 2 ** ([0, 7, 12, 7][(s16 // 2) % 4] / 12), .3) * .1, t)
     i += 1; t = i * step
 if turn_t:   # the music drops for a beat before the purse turn, then a timpani roll
     hm = np.ones(N, 'float32'); a0 = sec(turn_t - .35); a1 = sec(turn_t + .15); hm[a0:a1] = np.linspace(1, .08, a1 - a0); music *= hm
