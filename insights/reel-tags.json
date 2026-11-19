@@ -379,5 +379,12 @@
   "voice": "clone",
   "host": "none",
   "length": "92s"
+ },
+ "reel-supermoon-illusion": {
+  "genre": "sky-science-explainer",
+  "company": "none (NASA sources)",
+  "voice": "clone",
+  "host": "none",
+  "length": "72s"
  }
 }

@@ -10,7 +10,7 @@ ${font('Anton', 400, join(A, 'fonts/anton/anton-latin-400-normal.woff2'))}
 .ring{position:absolute;left:182px;top:317px;width:716px;height:716px;border:8px solid #ff9d2e;border-radius:50%;box-shadow:0 0 40px rgba(255,157,46,.7)}
 .tag{position:absolute;left:640px;top:268px;font:700 40px 'Anton';letter-spacing:.06em;color:#05081c;background:#ff9d2e;padding:8px 22px 0;transform:rotate(-4deg)}
 .t1{position:absolute;left:0;width:1080px;text-align:center;top:1085px;font-size:210px;line-height:1;color:#f3e7c9;text-shadow:0 8px 30px rgba(0,0,0,.8)}
-.t2{position:absolute;left:150px;width:780px;text-align:center;top:1300px;font-size:210px;line-height:1;color:#05081c;background:#ff9d2e;padding:14px 0 0}
+.t2{position:absolute;left:150px;width:780px;text-align:center;top:1300px;font-size:168px;white-space:nowrap;line-height:1;color:#05081c;background:#ff9d2e;padding:14px 0 0}
 .face{position:absolute;right:130px;top:1585px;width:140px;height:140px;border-radius:50%;border:6px solid #b4f000;box-shadow:0 0 0 6px #05081c;overflow:hidden}.face img{width:100%;height:100%;object-fit:cover}
 </style><div class=moon></div><div class=ring></div><div class=tag>+14% MAX</div><div class=t1>BIG MOON?</div><div class=t2>14% TRUE</div><div class=face><img src="${prof}"></div></html>`;
 fs.writeFileSync(join(D, 'cover.html'), html);

@@ -29,3 +29,12 @@ Heaviest shot (ghat steps + 300 instanced emissive diyas + textured moon), same 
 | 720×1280 | 12 | 3.9 | 1.6 h |
 | 540×960 | 8 | 2.2 | 0.9 h |
 The plan's estimate (1–4 s/frame) was optimistic by ~3×: time scales with pixels, barely with samples (fixed overhead: denoise + scene). **Decision:** render at 720×1280 (~4 s/frame) and upscale 1.5× with a light sharpen, keep slow shots at 12 fps and frame-double (halves their cost), render in 12 resumable chunks with a Monitor. The probe frame showed the moon texture working but the diyas/steps composition was not yet framed (it is a timing probe, not a layout).
+
+## Audio brief (as built) and delivery notes
+- Score: slow celestial pad + bell arp at 66 BPM (code-made, `audio_mix.py`), ducked under the voice.
+- SFX (earshot bank renders in `audio/sfx/`): shot-change whooshes at s2/s5/s8, riser + sub + shimmer on SUPERMOON (s3), small bell at the open and at the faith beat (s8), tink x2 on the calipers, impact swell when the nail covers the Moon (s7), chime on the CTA.
+- Openverse: CC0 "Temple bells", "Peace bell" and a CC0 stream were identified but the hosts returned 403 (freesound CDN) / 429 (Wikimedia) from this sandbox, so no Openverse file is in the mix; nothing needs credit. The two 0-byte placeholder files in `audio/ov/` could not be deleted by the harness and can be removed.
+- Mix (measured, not auditioned): -14.5 LUFS, -1.2 dBTP, voice over music+SFX median 22.1 dB, p10 15.0, min 8.5 dB on soft word tails (below the 13 dB target).
+- Render: Blender Cycles CPU 720x1280, 12 samples, 12 fps source upscaled to 1080x1920 (Lanczos + light sharpen), measured ~10 s/frame ghat, 4.4 s orbit, 7 s sky (860 frames, ~2 h incl. one fix re-render); page = captions + end card over the seeked VP9 film, rendered in 12 chunks.
+- Validated: `overlay-lint` 0 findings (0.5 s step, 144 samples); contact sheets of the final MP4 incl. every cut and the end card, and of the reworked sky section; cover checked at phone size.
+- Known limits: voice not auditioned (Hindi numerals and "nerdlogic.co" pronunciation need one human listen); headlines are English-only (Blender text has no Devanagari shaping); orbit shape and Moon sizes are exaggerated (labelled); fingernail is a stylised oval; 12 fps source with 30 fps page render (motion is slow, so acceptable); no real footage. `reel-dev-deepawali` overlaps on the Dev Deepawali story.
