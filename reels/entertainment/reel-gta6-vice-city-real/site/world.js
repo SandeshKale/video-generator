@@ -124,8 +124,8 @@ var tS1 = CW('s1', 'duniya'), tMia = CW('s4', 'miami');
 L('GAME · VICE CITY<small>REAL · MIAMI</small>', '#ffa21f', CW('s4', 'vice'), TE - .3, function () { var p = proj(MIA.clone().setY(.7)); return { x: p[0] + 36, y: p[1] - 150 }; });
 L('GAME · LEONIDA KEYS<small>REAL · FLORIDA KEYS</small>', '#2fe0d6', CW('s4', 'leonida', 1), TE - .3, function () { var p = proj(KEYS.clone().setY(.7)); return { x: p[0] + 30, y: p[1] - 90 }; });
 L('GAME · GRASSRIVERS<small>REAL · EVERGLADES</small>', '#ffd27a', CW('s4', 'grassrivers'), TE - .3, function () { var p = proj(EVG.clone().setY(.7)); return { x: p[0] - 400, y: p[1] - 160 }; });
-L('1 DOT = 10,000 GATORS<small>ILLUSTRATIVE · FWC ESTIMATE ~1.3 M</small>', '#ffa21f', CW('s5', 'terah'), TF - .3, function () { return { x: 162, y: 1090 }; });
-var cnt = L('0 / 67 COUNTIES', '#2fe0d6', CW('s5', 'zile'), TF - .3, function () { return { x: 162, y: 1165 }; }, 'big');
+L('1 DOT = 10,000 GATORS<small>ILLUSTRATIVE · FWC ESTIMATE ~1.3 M</small>', '#ffa21f', CW('s5', 'terah'), TF - .3, function () { return { x: 162, y: 1120 }; });
+var cnt = L('0 / 67 COUNTIES', '#2fe0d6', CW('s5', 'zile'), TF - .3, function () { return { x: 162, y: 1190 }; }, 'big');
 L('HIS OWN RECORDS: <b>NO FOUNTAIN</b>', '#ffa21f', CW('s6', 'kaagzon'), TG - .3, function () { return { x: 162, y: 1090 }; });
 L('FIRST TIED TO HIM IN 1535 · HE DIED 1521', '#2fe0d6', CW('s7', 'jharne'), TG - .3, function () { return { x: 162, y: 1165 }; });
 L('FAKE CITY · VICE CITY', '#ffa21f', CW('s8', 'nakli'), TH - .3, function () { var p = proj(MIA.clone().setY(.9)); return { x: p[0] + 40, y: p[1] - 130 }; });
@@ -195,7 +195,7 @@ window.__seek = function (t) {
   if (!window.__skipRender) R.render(S, CAM);
   /* DOM */
   var hi = HD[hdIdx(t)]; setT(eyeEl, hi[2]); setT(headEl, (sc === 'F' && t >= CW('s7', 'mithak')) ? 'झरना: <i>मिथक</i>' : hi[3]); setT(srcEl, hi[4]);
-  headEl.style.opacity = sc === 'A' ? ramp(t, 0, .25) : 1;
+  headEl.style.opacity = 1;
   LBL.forEach(function (o) {
     var on = t >= o.tOn && t < o.tOff && t < TEND + 5; if (!on) { o.e.style.display = 'none'; return; }
     o.e.style.display = 'block'; var w = o.e.offsetWidth, h = o.e.offsetHeight, p = o.f(w, h), u = eob(ramp(t, o.tOn, o.tOn + .45)) * (t > o.tOff - .25 ? clamp((o.tOff - t) / .25) : 1);

@@ -372,5 +372,12 @@
   "voice": "clone",
   "host": "none",
   "length": "61s"
+ },
+ "reel-gta6-vice-city-real": {
+  "genre": "game-launch-fact-explainer",
+  "company": "GTA VI / Take-Two",
+  "voice": "clone",
+  "host": "none",
+  "length": "92s"
  }
 }
