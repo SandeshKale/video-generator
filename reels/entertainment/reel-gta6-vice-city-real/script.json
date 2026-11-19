@@ -1,0 +1,85 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "आज GTA 6 आ गया है। दुनिया भर के लोग एक नकली शहर में उतरेंगे। पर वो शहर एक असली जगह से बना है, और उस जगह की सबसे मशहूर कहानी ख़ुद नकली है।",
+   "A": "Aaj GTA 6 aa gaya hai. Duniya bhar ke log ek nakli shehar mein utrenge. Par wo shehar ek asli jagah se bana hai, aur us jagah ki sabse mashhoor kahani khud nakli hai.",
+   "cap": "Aaj GTA 6 aa gaya hai. Duniya bhar ke log ek nakli shehar mein utrenge. Par wo shehar ek asli jagah se bana hai, aur us jagah ki sabse mashhoor kahani khud nakli hai."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "पिछला GTA 5 बाईस करोड़ से ज़्यादा बिका। और टेक-टू के मुताबिक़, GTA 6 के दूसरे ट्रेलर को चौबीस घंटे में सैंतालीस करोड़ से ज़्यादा व्यूज़ मिले, सारे प्लेटफ़ॉर्म मिलाकर।",
+   "A": "Pichla GTA 5 baais crore se zyada bika. Aur Take-Two ke mutabik, GTA 6 ke doosre trailer ko chaubees ghante mein saintaalis crore se zyada views mile, saare platform milakar.",
+   "cap": "Pichla GTA 5 baais crore se zyada bika. Aur Take-Two ke mutabik, GTA 6 ke doosre trailer ko chaubees ghante mein saintaalis crore se zyada views mile, saare platform milakar."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "अब असली जगह देखो: अमेरिका का मायामी। सितंबर में वहाँ एक अरेना की छत पर, हेलीकॉप्टर से एक बोर्ड उतारा गया: वेलकम टू वाइस सिटी। रिपोर्ट के मुताबिक़ क़रीब साढ़े नौ लाख डॉलर का सौदा, और बोर्ड पर गेम का पूरा नाम लिखना मना है।",
+   "A": "Ab asli jagah dekho: America ka Miami. September mein wahan ek arena ki chhat par, helicopter se ek board utaara gaya: Welcome to Vice City. Report ke mutabik qareeb saade nau lakh dollar ka sauda, aur board par game ka poora naam likhna mana hai.",
+   "cap": "Ab asli jagah dekho: America ka Miami. September mein wahan ek arena ki chhat par, helicopter se ek board utaara gaya: Welcome to Vice City. Report ke mutabik qareeb saade nau lakh dollar ka sauda, aur board par game ka poora naam likhna mana hai."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "गेम की दुनिया का नाम है लियोनिडा, और वो फ़्लोरिडा जैसी है। वाइस सिटी मायामी है, लियोनिडा कीज़ फ़्लोरिडा कीज़, और ग्रासरिवर्स एवरग्लेड्स का दलदल।",
+   "A": "Game ki duniya ka naam hai Leonida, aur wo Florida jaisi hai. Vice City Miami hai, Leonida Keys Florida Keys, aur Grassrivers Everglades ka daldal.",
+   "cap": "Game ki duniya ka naam hai Leonida, aur wo Florida jaisi hai. Vice City Miami hai, Leonida Keys Florida Keys, aur Grassrivers Everglades ka daldal."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "और उस दलदल की सबसे असली चीज़: मगरमच्छ। फ़्लोरिडा की वाइल्डलाइफ़ एजेंसी के मुताबिक़ वहाँ क़रीब तेरह लाख एलीगेटर हैं, और वो सड़सठ के सड़सठ ज़िलों में मिलते हैं।",
+   "A": "Aur us daldal ki sabse asli cheez: magarmachh. Florida ki wildlife agency ke mutabik wahan qareeb terah lakh alligator hain, aur wo sadsath ke sadsath zilon mein milte hain.",
+   "cap": "Aur us daldal ki sabse asli cheez: magarmachh. Florida ki wildlife agency ke mutabik wahan qareeb terah lakh alligator hain, aur wo sadsath ke sadsath zilon mein milte hain."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "अब असली जगह की सबसे मशहूर कहानी। कहते हैं, स्पेन का खोजी पोंस दे लियोन, जवानी का झरना ढूँढते हुए फ़्लोरिडा पहुँचा था। पर उसके अपने कागज़ों में ऐसे किसी झरने का ज़िक्र ही नहीं है।",
+   "A": "Ab asli jagah ki sabse mashhoor kahani. Kehte hain, Spain ka khoji Ponce de Leon, jawaani ka jharna dhoondhte hue Florida pahuncha tha. Par uske apne kaagzon mein aise kisi jharne ka zikr hi nahin hai.",
+   "cap": "Ab asli jagah ki sabse mashhoor kahani. Kehte hain, Spain ka khoji Ponce de Leon, jawaani ka jharna dhoondhte hue Florida pahuncha tha. Par uske apne kaagzon mein aise kisi jharne ka zikr hi nahin hai."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "झरने वाली कहानी पहली बार उसकी मौत के चौदह साल बाद लिखी गई। इतिहासकार इसे मिथक मानते हैं।",
+   "A": "Jharne wali kahani pehli baar uski maut ke chaudah saal baad likhi gayi. Itihaaskaar ise mithak maante hain.",
+   "cap": "Jharne wali kahani pehli baar uski maut ke chaudah saal baad likhi gayi. Itihaaskaar ise mithak maante hain."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "तो नकली शहर, असली जगह से बना। और उस असली जगह की सबसे बड़ी कहानी, नकली निकली।",
+   "A": "Toh nakli shehar, asli jagah se bana. Aur us asli jagah ki sabse badi kahani, nakli nikli.",
+   "cap": "Toh nakli shehar, asli jagah se bana. Aur us asli jagah ki sabse badi kahani, nakli nikli."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "GTA 6 आज सिर्फ़ PS5 और Xbox Series पर है। PC की कोई तारीख़ नहीं बताई गई। भारत में PS5 पर कीमत रिपोर्ट के मुताबिक़ पाँच हज़ार नौ सौ निन्यानवे रुपये, पर ख़रीदने से पहले PlayStation Store पर देख लेना।",
+   "A": "GTA 6 aaj sirf PS5 aur Xbox Series par hai. PC ki koi taareekh nahin batayi gayi. Bharat mein PS5 par keemat report ke mutabik paanch hazaar nau sau ninyaanve rupaye, par khareedne se pehle PlayStation Store par dekh lena.",
+   "cap": "GTA 6 aaj sirf PS5 aur Xbox Series par hai. PC ki koi taareekh nahin batayi gayi. Bharat mein PS5 par keemat report ke mutabik paanch hazaar nau sau ninyaanve rupaye, par khareedne se pehle PlayStation Store par dekh lena."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "ऐसी और कहानियों के लिए, फ़ॉलो और शेयर करिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "Aisi aur kahaniyon ke liye, follow aur share kariye, nerdlogic.co ko.",
+   "cap": "Aisi aur kahaniyon ke liye, follow aur share kariye, nerdlogic.co ko."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.6,
+  "s2": 0.5,
+  "s3": 0.5,
+  "s4": 0.5,
+  "s5": 0.5,
+  "s6": 0.45,
+  "s7": 0.7,
+  "s8": 0.6,
+  "s9": 0.5
+ }
+}
