@@ -80,3 +80,31 @@ def facing(cam, roll_deg=0):
     """camera-facing rotation (local x = right, y = up, z = toward camera) plus an in-plane roll."""
     from mathutils import Euler
     return (cam.rotation_euler.to_matrix() @ Euler((0, 0, math.radians(roll_deg))).to_matrix()).to_euler()
+# ---------------- animation helpers ----------------
+from mathutils import Matrix, Euler
+def ss(x): x = max(0.0, min(1.0, x)); return x * x * (3 - 2 * x)
+def eo(x): x = max(0.0, min(1.0, x)); return 1 - (1 - x) ** 3
+def kf(keys, t):
+    if t <= keys[0][0]: return keys[0][1]
+    for (ta, a), (tb, b) in zip(keys, keys[1:]):
+        if t <= tb:
+            u = ss((t - ta) / (tb - ta)); return tuple(x + (y - x) * u for x, y in zip(a, b))
+    return keys[-1][1]
+def aim(cam, loc, look):
+    cam.location = loc; cam.rotation_euler = (Vector(look) - Vector(loc)).to_track_quat('-Z', 'Y').to_euler()
+def hudbar(cam, u, v, wf, hf, col, dist=4):
+    """screen-anchored bar whose ORIGIN is its left edge, so object scale.x grows it from the left."""
+    o = hudbox(cam, u, v, wf, hf, col, dist); w = o.dimensions.x; o.data.transform(Matrix.Translation((w / 2, 0, 0))); o.data.update()
+    bpy.context.view_layer.update(); M = o.matrix_world
+    vf = 2 * math.atan(18 / cam.data.lens); hh = dist * math.tan(vf / 2); hw = hh * (Cfg.W / Cfg.H); loc = cam.matrix_world @ Vector((u * 2 * hw, v * 2 * hh, -dist))
+    o.parent = None; o.location = loc; o.rotation_euler = cam.rotation_euler.copy(); o.parent = cam; o.matrix_parent_inverse = cam.matrix_world.inverted(); return o
+def set_world(sc, gray=None, color=None, strength=1.0):
+    b = sc.world.node_tree.nodes['Background']; b.inputs[0].default_value = (gray, gray, gray, 1) if gray is not None else color; b.inputs[1].default_value = strength
+def dust(n, seed=3, spread=(3.2, 3.0, 2.2), center=(0, 1.0, .3), size=.012, col=None):
+    rng = random.Random(seed); objs = []; m = emit(col or hexc('9fb4c4'), 2.5)
+    for i in range(n):
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1, radius=size * rng.uniform(.5, 1.6)); o = bpy.context.object; o.data.materials.append(m)
+        o.visible_glossy = False; o.visible_shadow = False; objs.append((o, rng.uniform(-1, 1) * spread[0] + center[0], rng.uniform(-1.4, 1) * spread[1] + center[1], rng.uniform(-1, 1) * spread[2] + center[2], rng.uniform(.03, .12), rng.uniform(0, 6.28)))
+    return objs
+def dust_step(objs, t, spread_z=2.2, base_z=-.3):
+    for o, x, y, z, v, ph in objs: o.location = (x + .08 * math.sin(t * .7 + ph), y + .06 * math.cos(t * .5 + ph), base_z + ((z - base_z + v * t) % spread_z))
