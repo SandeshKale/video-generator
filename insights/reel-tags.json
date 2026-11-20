@@ -386,5 +386,12 @@
   "voice": "clone",
   "host": "none",
   "length": "72s"
+ },
+ "reel-gta6-mobile-scam": {
+  "genre": "scam-warning-hardware-explainer",
+  "company": "GTA VI / Rockstar (name only)",
+  "voice": "clone",
+  "host": "none",
+  "length": "74s"
  }
 }

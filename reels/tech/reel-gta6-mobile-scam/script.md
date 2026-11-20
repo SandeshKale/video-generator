@@ -54,3 +54,11 @@ Cold sparse score (glass/celesta, a low pulse that quickens in s4-s6), a faint f
 
 ## Guardrails
 Never show or link a real scam site/APK; the fake card is our own graphic. Zero Rockstar assets or logos; "official store" card is typography only. "Announce nahi hua", never "kabhi nahi". Throttling = reviewed flagships in 20-minute stress tests; real games usually load chips less (voiced in s7). Temperatures are ILLUSTRATIVE.
+
+## Delivery notes (as built, 20 Nov 2026)
+- **Film:** one continuous Blender (Cycles CPU) world, 12 fps source at 720x1280 upscaled to 1080x1920 (Lanczos + light sharpen), 892 frames; thermal half = grayscale temperature pass -> iron palette + sensor simulation + a separate overlay pass for the instruments; scan-line wipes between visible and thermal. Cues come from the voice words (`blender/film.py` reads `site/timing.js`).
+- **Measured:** ~7-9 s/frame (visible 9, thermal 3 passes ~8) -> ~2 h for the film; page render 12 chunks ~15 min.
+- **Voice:** OmniVoice clone, 10 breath groups, speed 0.92; every sentence heard (Whisper spells GTA/Latin words oddly); the CTA take was heard as "follow शेर करिये nerdlogic .co" ("और" not heard): **needs one human listen**; the "10.28 teraflops" line (g4) should also be listened to.
+- **Audio:** earshot bank renders on picture moments (stamp riser + sub + impact, scan risers/whooshes, tinks on the bars, downlifter on the throttle, bells on the official card, CTA chime) + a thermal-camera fan hum under the thermal half; no Openverse file (hosts blocked); mix -14.4 LUFS, -1.2 dBTP, voice over music+SFX median 21.4 dB, p10 14.0, min 8.6 dB on soft word tails (below the 13 dB target). Not auditioned.
+- **Validated:** `overlay-lint` 0 findings (0.5 s step, 149 samples); contact sheets of the film and of the final MP4 incl. both scans and the end card; label overprint at s9 found on the film sheet and fixed (official labels end at s9) and the last three segments re-rendered; cover checked at phone size.
+- **Known limits:** console is a generic "PS5-class" model; 12 fps source; thermal temperatures illustrative; labels are English only; voice and mix not auditioned; Openverse not used. `blender/anim.py` is kept because `cover_hero.py` reuses its hook scene.
