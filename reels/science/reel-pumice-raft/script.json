@@ -1,0 +1,78 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "ये पत्थर पानी में डालो। डूबा? नहीं। तैर गया!",
+   "A": "Ye patthar paani mein daalo. Dooba? Nahi. Tair gaya!",
+   "cap": "Ye patthar paani mein daalo. Dooba? Nahi. Tair gaya!"
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "इसे प्यूमिस कहते हैं। ये ज्वालामुखी के झाग से बना पत्थर है, और इसके अंदर हज़ारों छोटे हवा के बुलबुले बंद हैं।",
+   "A": "Ise pumice kehte hain. Ye jwalamukhi ke jhaag se bana patthar hai, aur iske andar hazaaron chhote hawa ke bulbule band hain.",
+   "cap": "Ise pumice kehte hain. Ye jwalamukhi ke jhaag se bana patthar hai, aur iske andar hazaaron chhote hawa ke bulbule band hain."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "बुलबुले इसे पानी से हल्का रखते हैं, इसीलिए ये तैरता है। जब तक पानी अंदर नहीं भर जाता, ये डूबता नहीं।",
+   "A": "Bulbule ise paani se halka rakhte hain, isiliye ye tairta hai. Jab tak paani andar nahi bhar jaata, ye doobta nahi.",
+   "cap": "Bulbule ise paani se halka rakhte hain, isiliye ye tairta hai. Jab tak paani andar nahi bhar jaata, ye doobta nahi."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "अब सोचो, एक ज्वालामुखी से ऐसे बेशुमार टुकड़े। मई दो हज़ार छब्बीस में, पापुआ न्यू गिनी के पास, समुद्र के नीचे एक ज्वालामुखी फटा।",
+   "A": "Ab socho, ek jwalamukhi se aise beshumaar tukde. Mai 2026 mein, Papua New Guinea ke paas, samundar ke neeche ek jwalamukhi phata.",
+   "cap": "Ab socho, ek jwalamukhi se aise beshumaar tukde. Mai 2026 mein, Papua New Guinea ke paas, samundar ke neeche ek jwalamukhi phata."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "चार जून को NASA के सैटेलाइट ने उसे देखा: पानी का रंग बदला हुआ, और पास में तैरता प्यूमिस।",
+   "A": "Chaar June ko NASA ke satellite ne use dekha: paani ka rang badla hua, aur paas mein tairta pumice.",
+   "cap": "Chaar June ko NASA ke satellite ne use dekha: paani ka rang badla hua, aur paas mein tairta pumice."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "जून की शुरुआत में प्यूमिस की परतें बहकर एडमिरल्टी द्वीपों तक पहुँचीं। कुछ किनारों पर कई मीटर मोटी परत जमी, ऐसा स्थानीय मीडिया ने बताया।",
+   "A": "June ki shuruaat mein pumice ki parten bahkar Admiralty dweepon tak pahunchi. Kuch kinaron par kai meter moti parat jami, aisa sthaaniya media ne bataya.",
+   "cap": "June ki shuruaat mein pumice ki parten bahkar Admiralty dweepon tak pahunchi. Kuch kinaron par kai meter moti parat jami, aisa sthaaniya media ne bataya."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "NASA के मुताबिक ऐसे राफ़्ट महीनों से सालों तक तैर सकते हैं। दो हज़ार बारह में, एक राफ़्ट शुरू में लगभग चार सौ वर्ग किलोमीटर का था।",
+   "A": "NASA ke mutabik aise raft mahino se saalon tak tair sakte hain. 2012 mein, ek raft shuru mein lagbhag chaar sau vargkilometre ka tha.",
+   "cap": "NASA ke mutabik aise raft mahino se saalon tak tair sakte hain. 2012 mein, ek raft shuru mein lagbhag chaar sau vargkilometre ka tha."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "रामायण में तैरते पत्थरों से राम सेतु बनने की कहानी है। वो आस्था और कहानी है। विज्ञान बस इतना कहता है कि तैरने वाले पत्थर असली होते हैं।",
+   "A": "Ramayana mein tairte pattharon se Ram Setu banne ki kahani hai. Wo aastha aur kahani hai. Vigyan bas itna kehta hai ki tairne wale patthar asli hote hain.",
+   "cap": "Ramayana mein tairte pattharon se Ram Setu banne ki kahani hai. Wo aastha aur kahani hai. Vigyan bas itna kehta hai ki tairne wale patthar asli hote hain."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "आपके घर में भी शायद असली प्यूमिस हो: पैर घिसने वाला पत्थर। पानी में डालकर देखो।",
+   "A": "Aapke ghar mein bhi shayad asli pumice ho: pair ghisne wala patthar. Paani mein daalkar dekho.",
+   "cap": "Aapke ghar mein bhi shayad asli pumice ho: pair ghisne wala patthar. Paani mein daalkar dekho."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "फ़ॉलो और शेयर करो, नर्डलॉजिक डॉट सी ओ।",
+   "A": "Follow aur share karo, nerdlogic dot co.",
+   "cap": "Follow aur share karo, nerdlogic.co."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.55,
+  "s9": 0.5
+ }
+}
