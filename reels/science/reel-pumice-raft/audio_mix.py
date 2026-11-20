@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score + SFX + mix for the supermoon reel. SFX = earshot bank renders (audio/sfx/*.wav) placed on the picture moments; score = slow celestial pad + bell arp (code-made);
+"""Score + SFX + mix for the pumice raft reel. SFX = earshot bank renders (audio/sfx/*.wav) placed on the picture moments; score = slow celestial pad + bell arp (code-made);
 optional Openverse CC0 recordings in audio/ov (temple bell, stream) when present. python3 audio_mix.py -> audio/final.wav + audio/mix-report.json.
 Mix rules: voice-activity ducking with look-ahead, 1.2-4.5 kHz carve, audible bed (voice over music median ~16 dB, min >= 12 dB)."""
 import json, os, re, glob, subprocess, numpy as np, soundfile as sf
@@ -51,13 +51,15 @@ def soft_off_word(t):
         t = hit[0][2] + .03
     return t
 def chime(f, d=.6, g=.3): return sm(tone(f, d, dec=d/3) * g, tone(f * 2.01, d * .7, dec=d/5) * g * .4, tone(f * 3.02, d * .5, dec=d/8) * g * .2)
-# picture moments (all derived from sentence starts so a new voice re-times them)
-for k in ('s2', 's5', 's8'): put(sfx, ld('fit_whoosh.short_bamboo_swish', .5), soft_off_word(S[k] - .25))        # shot changes
-put(sfx, ld('riser_swell', .5), S['s3'] - 2.2 + .0); put(sfx, ld('sub', .9), S['s3'] + .0); put(sfx, ld('shimmer_m0', .35), S['s3'] + .1)   # SUPERMOON lands
-put(sfx, ld('small_bell', .6), S['s1'] + .2); put(sfx, ld('small_bell', .5), S['s8'] + .1)                          # Dev Deepawali bells (open + faith beat)
-put(sfx, ld('click_tink', .6), soft_off_word(S['s5'] + 3.0)); put(sfx, ld('click_tink', .6), soft_off_word(S['s5'] + 3.2))       # calipers lock
-put(sfx, ld('impact_swell', .35, 3.0), S['s7'] + 1.5)                                                           # nail covers the moon
-put(sfx, chime(1046.5, 1.4, .2), S['s9'] + 2.0)                                                                  # CTA
+# picture moments (derived from sentence starts so a new voice re-times them)
+for k in ('s4', 's5', 's8', 's9'): put(sfx, ld('fit_whoosh.short_bamboo_swish', .5), soft_off_word(S[k] - .25))        # shot changes
+put(sfx, ld('small_bell', .5), S['s1'] + .0)                                                                      # drop splash accent
+put(sfx, ld('click_tink', .6), soft_off_word(S['s2'] + 4.5)); put(sfx, ld('shimmer_m0', .35), S['s3'] + .1)          # bubbles
+put(sfx, ld('riser_swell', .5), S['s4'] - 1.2); put(sfx, ld('sub', .9), S['s4'] + .3)                               # eruption
+put(sfx, ld('click_tink', .6), soft_off_word(S['s5'] + .6))                                                         # satellite lock
+put(sfx, ld('impact_swell', .35, 3.0), S['s7'] + 3.5)                                                           # 400 km2 reveal
+put(sfx, ld('small_bell', .5), S['s8'] + .1)                                                                      # faith beat
+put(sfx, chime(1046.5, 1.4, .2), S['s10'] + 1.0)                                                                  # CTA
 ovb = glob.glob(A + '/ov/*bell*.wav') + glob.glob(A + '/ov/*temple*.wav'); ovw = glob.glob(A + '/ov/*water*.wav') + glob.glob(A + '/ov/*stream*.wav')
 def ovload(p, g):
     x, s = sf.read(p); x = x if x.ndim == 1 else x.mean(1); return resample_poly(x, SR, s).astype('float32') * g
