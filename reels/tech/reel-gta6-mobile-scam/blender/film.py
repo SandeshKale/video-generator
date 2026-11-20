@@ -51,16 +51,16 @@ WH = hexc('f1f3f8')
 L('vis', 'GTA 6 MOBILE?', -.44, .40, .062, CREAM, 0, ST('s3') - .4, 'anton'); L('vis', '= VIRUS', -.44, .335, .062, TOMATO, T_STAMP + .15, ST('s3') - .4, 'anton'); L('vis', 'FAKE INSTALLER · OUR OWN GRAPHIC', -.44, -.17, .014, MUTE, 0, ST('s3') - .4)
 L('vis', 'PASSWORD STEALER', -.44, .27, .03, TOMATO, ST('s2') + .3, ST('s3') - .4, 'plexmono')
 L('vis', 'REPORTED BY SECURITY FIRMS', -.44, .23, .016, MUTE, ST('s2') + .3, ST('s3') - .4)
-L('vis', 'PS5 + XBOX SERIES', -.44, .30, .04, GREEN, WS('s3', ['PS5', 'प्ले', 'Play'], 1.5), T_SC1, 'anton'); L('vis', 'MOBILE: NOT ANNOUNCED', -.44, -.12, .02, TOMATO, WS('s3', ['मोबाइल', 'Mobile', 'mobile'], 3.5), T_SC1, 'plexmono'); L('vis', 'PC: NOT YET', -.44, -.155, .02, TOMATO, WS('s3', ['पी', 'PC'], 5.5), T_SC1)
+L('vis', 'PS5 + XBOX SERIES', -.44, .30, .04, GREEN, WS('s3', ['PS5', 'प्ले', 'Play'], 1.5), T_SC1, 'anton'); L('vis', 'MOBILE: NOT ANNOUNCED', -.44, -.12, .02, TOMATO, WS('s3', ['मोबाइल', 'मोबा', 'Mobile', 'mobile'], 3.5), T_SC1, 'plexmono'); L('vis', 'PC: NOT YET', -.44, -.155, .02, TOMATO, WS('s3', ['पी', 'PC'], 5.5), T_SC1)
 L('vis', 'OFFICIAL STORE ONLY', -.44, .40, .06, GREEN, T_SC2E, 1e9, 'anton'); L('vis', 'San Andreas on mobile since 2013', -.44, .35, .02, MUTE, T_SC2E + .3, 1e9); L('vis', 'name only · no Rockstar art', -.44, .325, .014, MUTE, T_SC2E + .3, 1e9)
 L('vis', 'SEND THIS TO ONE FRIEND', -.44, .40, .045, CREAM, ST('s9'), 1e9, 'anton')
 # thermal instruments
 lut = iron_lut(24); scale_bars = [hudbox(cam, .405, -.12 + .0125 * k + .006, .04, .0128, tuple(lut[k]) + (1,), 6) for k in range(24)]
 inst = [(o, T_SC1E, T_SC2, 'ov') for o in scale_bars]
 for s_, u, v, fr, col in (('70.0 C', .33, .185, .018, WH), ('15.0 C', .33, -.125, .018, WH), ('TEMPERATURES ILLUSTRATIVE', -.44, -.145, .014, WH)): inst.append((hud(s_, cam, u, v, fr, col, 6), T_SC1E, T_SC2, 'ov'))
-rec = hud('REC 00:00', cam, -.44, .45, .02, WH, 6); sp1 = hud('Sp1  68.4 C', cam, .02, .0, .024, WH, 6); sp2 = hud('Sp2  31.0 C', cam, -.44, -.10, .024, WH, 6); inst += [(rec, T_SC1E, T_SC2, 'ov'), (sp1, WS('s5', ['वॉट', 'watt', 'Watt'], 1.0) - .5, T_SC2, 'ov'), (sp2, ST('s6'), T_SC2, 'ov')]
+rec = hud('REC 00:00', cam, -.44, .45, .02, WH, 6); sp1 = hud('Sp1  68.4 C', cam, .02, .0, .024, WH, 6); sp2 = hud('Sp2  31.0 C', cam, -.44, -.10, .024, WH, 6); inst += [(rec, T_SC1E, T_SC2, 'ov'), (sp1, WS('s5', ['वाट', 'वॉट', 'watt', 'Watt'], 1.0) - .5, T_SC2, 'ov'), (sp2, ST('s6'), T_SC2, 'ov')]
 bars = []
-for i, (lab, frac, t_on) in enumerate((('10.28 TFLOPS', 1.0, WS('s4', ['पॉइंट', 'point', 'Point'], 2.0)), ('16 GB MEMORY', .8, WS('s4', ['सोलह', 'solah', '16'], 6.5)), ('~200 W  WHOLE CONSOLE', .9, WS('s5', ['दो', 'सौ', '200'], 1.0)))):
+for i, (lab, frac, t_on) in enumerate((('10.28 TFLOPS', 1.0, WS('s4', ['10', 'पॉइंट', 'point'], 2.0)), ('16 GB MEMORY', .8, WS('s4', ['सोलह', 'solah', '16'], 6.5)), ('~200 W  WHOLE CONSOLE', .9, WS('s5', ['दो', 'सौ', '200'], 1.0)))):
     v = .385 - .075 * i; l = hud(lab, cam, -.44, v + .022, .016, WH, 6); b = hudbar(cam, -.44, v, .62 * frac, .012, hexc('ffb21f'), 6); inst += [(l, t_on, T_SC2, 'ov'), (b, t_on, T_SC2, 'ov')]; bars.append((b, t_on))
 T6 = ST('s6'); spd_l = hud('GPU SPEED  100%', cam, -.44, -.045, .016, WH, 6); spd_b = hudbar(cam, -.44, -.075, .5, .012, hexc('7dffa0'), 6); thr = hud('STRESS TEST, NOT A GAME', cam, -.44, -.165, .013, WH, 6)
 inst += [(spd_l, T6 + .5, T_SC2, 'ov'), (spd_b, T6 + .5, T_SC2, 'ov'), (thr, ST('s7'), T_SC2, 'ov')]; labs += inst

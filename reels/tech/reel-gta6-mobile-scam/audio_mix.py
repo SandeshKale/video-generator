@@ -60,9 +60,9 @@ def WS(sid, subs, fb):
 T_STAMP = WS('s1', ['वायरस', 'वाइरस', 'virus', 'Virus'], 3.0); T_SC1 = S['s4'] - .3; T_SC1E = T_SC1 + 1.4; T_SC2 = S['s8'] - .2; T_SC2E = T_SC2 + 1.3; T6 = S['s6']
 put(sfx, ld('riser_swell', .45), T_STAMP - 2.2); put(sfx, ld('cut_hit_sub', .9), T_STAMP); put(sfx, ld('impact_swell', .3, 2.5), T_STAMP + .02)         # MALWARE stamp
 put(sfx, ld('fit_whoosh.short_bamboo_swish', .5), soft_off_word(S['s3'] - .1))                                                                    # console slides in
-put(sfx, ld('click_tink', .6), soft_off_word(WS('s3', ['PS5', 'प्ले', 'Play'], 1.5))); put(sfx, ld('click_tink', .6), soft_off_word(WS('s3', ['मोबाइल', 'Mobile', 'mobile'], 3.5)))
+put(sfx, ld('click_tink', .6), soft_off_word(WS('s3', ['PS5', 'प्ले', 'Play'], 1.5))); put(sfx, ld('click_tink', .6), soft_off_word(WS('s3', ['मोबाइल', 'मोबा', 'Mobile', 'mobile'], 3.5)))
 put(sfx, ld('riser_swell', .5), T_SC1 - 1.9); put(sfx, ld('fit_whoosh.short_bamboo_swish', .5), T_SC1 + .3); put(sfx, ld('shimmer_m0', .3), T_SC1 + .6)             # scan into thermal
-for t_on in (WS('s4', ['पॉइंट', 'point', 'Point'], 2.0), WS('s4', ['सोलह', 'solah', '16'], 6.5), WS('s5', ['दो', 'सौ', '200'], 1.0)): put(sfx, ld('click_tink', .7), soft_off_word(t_on))
+for t_on in (WS('s4', ['10', 'पॉइंट', 'point'], 2.0), WS('s4', ['सोलह', 'solah', '16'], 6.5), WS('s5', ['दो', 'सौ', '200'], 1.0)): put(sfx, ld('click_tink', .7), soft_off_word(t_on))
 put(sfx, ld('downlifter_synth_fall', .35), T6 + .5)                                                                                                 # speed falls
 put(sfx, ld('fit_whoosh.short_bamboo_swish', .5), T_SC2); put(sfx, ld('fit_bell_small_bell', .5), T_SC2E + .3); put(sfx, ld('shimmer_m0', .3), T_SC2E + .4)    # back to the real world
 put(sfx, chime(1046.5, 1.4, .2), S['s10'] + 1.2)
