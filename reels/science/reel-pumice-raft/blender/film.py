@@ -76,7 +76,7 @@ def build_CUT():
     return up
 def build_SEA():
     sky('#1a2b45', '#f2a873', 1.0); sunlight(3, (1.25, .2, .9), (1, .8, .6)); s_ = sea('#14485c')
-    bpy.ops.mesh.primitive_cone_add(vertices=48, radius1=2.4, radius2=.5, depth=2.2, location=(0, 9, -1.0)); cone = bpy.context.object; cone.data.materials.append(pm('#2a2623', .9))
+    bpy.ops.mesh.primitive_cone_add(vertices=48, radius1=2.4, radius2=.7, depth=2.2, location=(0, 9, -.15)); cone = bpy.context.object; cone.data.materials.append(pm('#2a2623', .9))
     random.seed(3); P = []
     for i in range(420):
         bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=.2, location=(0, 9, .2)); o = bpy.context.object; bpy.ops.object.shade_smooth(); o.data.materials.append(pm('#8a8f94', .95)); P.append((o, random.random(), random.gauss(0, .5), random.gauss(0, .5)))
@@ -113,7 +113,7 @@ def build_LEGEND():
     L('KAHANI · AASTHA', BT.ANTON, 110, INK, -.40, .38, SEN['s8']['t0'] + .3, outline=('#1a0f2a', 5)); L('SCIENCE: TAIRNE WALE PATTHAR ASLI HOTE HAIN', BT.PLEX_SEMI, 26, AMB, -.40, .31, CW('s8', 'vigyan'))
     def up(t):
         p = ss((t - T0)/(T1-T0)); st.location = (0, -1.5, .1 + .03*math.sin(t*2)); st.rotation_euler = (.1*math.sin(t*2.2), .06*math.sin(t*1.7), t*.25)
-        cam.location = Vector((-2.2 + 3.6*p, -3.8, .5)); aim(cam, (p*.6, 3.0, .6))
+        cam.location = Vector((-1.6 + 2.2*p, -3.8, .5)); aim(cam, (-.2 + .9*p, -.5, .35))
     return up
 def build_BUCKET():
     sky('#cfd8dc', '#f4efe6', 1.0); sunlight(3, (.9, .3, .6)); 
