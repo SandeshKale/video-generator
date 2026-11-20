@@ -32,7 +32,7 @@ Sources: https://science.nasa.gov/earth/earth-observatory/pumice-rafts-encroach-
 
 ## 4. Credits and honesty notes (not for the caption)
 - Real data: the NASA Earth Observatory / Landsat 8 image of 4 Jun 2026 (plume and discoloured water at the vent, 720×480 thumbnail, shown with credit). The pumice dots over it are drawn by us and labelled "ILLUSTRATIVE". The raft itself is not shown in that picture.
-- Everything else is Blender (Cycles) renders: stone, cutaway (illustrative), eruption plume (stylised), legend shoreline and bridge silhouette (not a map of Ram Setu), bucket.
+- Everything else is Blender (Cycles) renders: stone, cutaway (illustrative), eruption plume (stylised), legend shoreline with a floating stone (no map or bridge of Ram Setu is shown), bucket.
 - Not claimed: any link between Ram Setu stones and pumice; Sicily-size 2012 raft; the "billions" of pieces; any density number.
 - Text layer: crisp overlay pass (`scripts/blender_text.py`). Audio: earshot code-made effects; Openverse not used.
 - Voice: the CTA take is heard by Whisper as "follow share karo nerdlogic .co" (brand in Latin letters): one human listen needed. Numerals "2012" and "400" are heard as digits.
