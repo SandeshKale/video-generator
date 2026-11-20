@@ -393,5 +393,12 @@
   "voice": "clone",
   "host": "none",
   "length": "74s"
+ },
+ "reel-pumice-raft": {
+  "genre": "science-explainer-news-peg",
+  "company": "NASA Earth Observatory (credit only)",
+  "voice": "clone",
+  "host": "none",
+  "length": "63s"
  }
 }
