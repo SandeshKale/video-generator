@@ -14,3 +14,8 @@ Tiers: A = agency/peer-reviewed page, B = reported/secondary, C = not to say.
 - Exact pumice density figure: not stated (not found in this pass).
 ## Imagery plan
 NASA GIBS WMS true-colour MODIS (Terra/Aqua) for the Bismarck Sea, 15 May and ~early Jun 2026 (keyless, reachable on 12–19 Nov); credit NASA EOSDIS/GIBS, no NASA logo, no endorsement.
+
+## First-hand read of NASA page (20 Nov 2026, fetched with curl; page text read)
+- Eruption flagged by satellites; in early June rafts of pumice drifted NW from the vent and clogged coastlines of several Admiralty Islands (Lou, Baluan worst hit per local media; Manus ~125 km NW of the volcano). Pumice layer up to several metres thick on shores (media reports, as NASA cites). Landsat 8 OLI image 4 Jun 2026 shows bands of pumice drifting with surface currents. Ash can "weld" fragments into larger rafts (J. Garvin, NASA Goddard, on Hunga Tonga 2022). Rafts can be floating homes for marine organisms. Afloat "months to years".
+- Plate used: `research/img/nasa_oli_20260604.jpg` = NASA Earth Observatory / Lauren Dauphin, Landsat 8 OLI, 4 Jun 2026 (plume + discoloured water at the vent, 720x480 thumbnail). Credit on screen; no NASA logo; no endorsement.
+- MODIS true-colour GIBS plates (15 May, 3 Jun) were fetched but are cloud-covered at this scale: the raft is NOT identifiable in them, so they are not used as evidence.
