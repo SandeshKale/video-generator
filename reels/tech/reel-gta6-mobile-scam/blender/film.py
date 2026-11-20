@@ -52,7 +52,7 @@ L('vis', 'GTA 6 MOBILE?', -.44, .40, .062, CREAM, 0, ST('s3') - .4, 'anton'); L(
 L('vis', 'PASSWORD STEALER', -.44, .27, .03, TOMATO, ST('s2') + .3, ST('s3') - .4, 'plexmono')
 L('vis', 'REPORTED BY SECURITY FIRMS', -.44, .23, .016, MUTE, ST('s2') + .3, ST('s3') - .4)
 L('vis', 'PS5 + XBOX SERIES', -.44, .30, .04, GREEN, WS('s3', ['PS5', 'प्ले', 'Play'], 1.5), T_SC1, 'anton'); L('vis', 'MOBILE: NOT ANNOUNCED', -.44, -.12, .02, TOMATO, WS('s3', ['मोबाइल', 'मोबा', 'Mobile', 'mobile'], 3.5), T_SC1, 'plexmono'); L('vis', 'PC: NOT YET', -.44, -.155, .02, TOMATO, WS('s3', ['पी', 'PC'], 5.5), T_SC1)
-L('vis', 'OFFICIAL STORE ONLY', -.44, .40, .06, GREEN, T_SC2E, 1e9, 'anton'); L('vis', 'San Andreas on mobile since 2013', -.44, .35, .02, MUTE, T_SC2E + .3, 1e9); L('vis', 'name only · no Rockstar art', -.44, .325, .014, MUTE, T_SC2E + .3, 1e9)
+L('vis', 'OFFICIAL STORE ONLY', -.44, .40, .06, GREEN, T_SC2E, ST('s9') - .2, 'anton'); L('vis', 'San Andreas on mobile since 2013', -.44, .35, .02, MUTE, T_SC2E + .3, ST('s9') - .2); L('vis', 'name only · no Rockstar art', -.44, .325, .014, MUTE, T_SC2E + .3, ST('s9') - .2)
 L('vis', 'SEND THIS TO ONE FRIEND', -.44, .40, .045, CREAM, ST('s9'), 1e9, 'anton')
 # thermal instruments
 lut = iron_lut(24); scale_bars = [hudbox(cam, .405, -.12 + .0125 * k + .006, .04, .0128, tuple(lut[k]) + (1,), 6) for k in range(24)]
