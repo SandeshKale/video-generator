@@ -1,0 +1,85 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "जीटीए सिक्स का मोबाइल डाउनलोड ढूँढ रहे हो? वो गेम नहीं, वायरस है।",
+   "A": "GTA 6 ka mobile download dhoondh rahe ho? Wo game nahi, virus hai.",
+   "cap": "GTA 6 ka mobile download dhoondh rahe ho? Wo game nahi, virus hai."
+  },
+  {
+   "id": "s2",
+   "g": "g2",
+   "B": "सिक्योरिटी कंपनियों ने पकड़ा है: नकली जीटीए सिक्स इंस्टॉलर और ए पी के के नाम पर पासवर्ड चुराने वाला मैलवेयर बाँटा जा रहा है।",
+   "A": "Security companies ne pakda hai: fake GTA 6 installer aur APK ke naam pe password churane wala malware baanta ja raha hai.",
+   "cap": "Security companies ne pakda hai: fake GTA 6 installer aur APK ke naam pe password churane wala malware baanta ja raha hai."
+  },
+  {
+   "id": "s3",
+   "g": "g3",
+   "B": "सच ये है: रॉकस्टार ने जीटीए सिक्स सिर्फ़ प्लेस्टेशन फ़ाइव और एक्सबॉक्स सीरीज़ के लिए लॉन्च किया। मोबाइल वर्शन अनाउंस ही नहीं हुआ। पी सी भी अभी नहीं।",
+   "A": "Sach ye hai: Rockstar ne GTA 6 sirf PlayStation 5 aur Xbox Series ke liye launch kiya. Mobile version announce hi nahi hua. PC bhi abhi nahi.",
+   "cap": "Sach ye hai: Rockstar ne GTA 6 sirf PlayStation 5 aur Xbox Series ke liye launch kiya. Mobile version announce hi nahi hua. PC bhi abhi nahi."
+  },
+  {
+   "id": "s4",
+   "g": "g4",
+   "B": "तो फ़ोन पे चलेगा क्यों नहीं? प्लेस्टेशन फ़ाइव के ग्राफ़िक्स चिप की ताक़त दस पॉइंट दो आठ टेराफ़्लॉप्स है। यानी हर सेकंड दस लाख करोड़ से ज़्यादा हिसाब। साथ में सोलह जीबी मेमोरी।",
+   "A": "To phone pe chalega kyun nahi? PS5 ke graphics chip ki taaqat das point do aath teraflops hai. Yaani har second das lakh crore se zyada hisaab. Saath mein solah GB memory.",
+   "cap": "To phone pe chalega kyun nahi? PS5 ke graphics chip ki taaqat das point do aath teraflops hai. Yaani har second das lakh crore se zyada hisaab. Saath mein solah GB memory."
+  },
+  {
+   "id": "s5",
+   "g": "g5",
+   "B": "और पूरा प्लेस्टेशन फ़ाइव खेलते वक़्त लगभग दो सौ वॉट बिजली खींचता है। इसीलिए उसके अंदर बड़ा पंखा और हीट सिंक है।",
+   "A": "Aur poora PS5 khelte waqt lagbhag do sau watt bijli kheenchta hai. Isliye uske andar bada pankha aur heat sink hai.",
+   "cap": "Aur poora PS5 khelte waqt lagbhag do sau watt bijli kheenchta hai. Isliye uske andar bada pankha aur heat sink hai."
+  },
+  {
+   "id": "s6",
+   "g": "g6",
+   "B": "फ़ोन में इतनी गर्मी निकालने की जगह नहीं। कुछ फ़्लैगशिप फ़ोन ने बीस मिनट के स्ट्रेस टेस्ट में आधी से ज़्यादा स्पीड गिरा दी। इसको कहते हैं थर्मल थ्रॉटलिंग।",
+   "A": "Phone mein itni garmi nikaalne ki jagah nahi. Kuch flagship phones ne bees minute ke stress test mein aadhi se zyada speed gira di. Isko kehte hain thermal throttling.",
+   "cap": "Phone mein itni garmi nikaalne ki jagah nahi. Kuch flagship phones ne bees minute ke stress test mein aadhi se zyada speed gira di. Isko kehte hain thermal throttling."
+  },
+  {
+   "id": "s7",
+   "g": "g7",
+   "B": "ये टेस्ट गेम से ज़्यादा कड़क होते हैं, पर बात वही: गरम चिप ख़ुद धीमा हो जाता है।",
+   "A": "Ye test game se zyada kadak hote hain, par baat wahi: garam chip khud dheema ho jaata hai.",
+   "cap": "Ye test game se zyada kadak hote hain, par baat wahi: garam chip khud dheema ho jaata hai."
+  },
+  {
+   "id": "s8",
+   "g": "g8",
+   "B": "फ़ोन पे जीटीए खेलना है? रॉकस्टार का अपना जीटीए सैन एंड्रियास, दो हज़ार तेरह से मोबाइल पे है। बस वही डाउनलोड करो, ऑफ़िशियल स्टोर से।",
+   "A": "Phone pe GTA khelna hai? Rockstar ka apna GTA San Andreas, do hazaar terah se mobile pe hai. Bas wahi download karo, official store se.",
+   "cap": "Phone pe GTA khelna hai? Rockstar ka apna GTA San Andreas, do hazaar terah se mobile pe hai. Bas wahi download karo, official store se."
+  },
+  {
+   "id": "s9",
+   "g": "g9",
+   "B": "जो भी जीटीए सिक्स ए पी के भेजे, वो स्कैम है। ये वीडियो उस दोस्त को भेजो जो डाउनलोड ढूँढ रहा है। उसका फ़ोन और बैंक अकाउंट, दोनों बच सकते हैं।",
+   "A": "Jo bhi GTA 6 APK bheje, wo scam hai. Ye video us dost ko bhejo jo download dhoondh raha hai. Uska phone aur bank account, dono bach sakte hain.",
+   "cap": "Jo bhi GTA 6 APK bheje, wo scam hai. Ye video us dost ko bhejo jo download dhoondh raha hai. Uska phone aur bank account, dono bach sakte hain."
+  },
+  {
+   "id": "s10",
+   "g": "g10",
+   "B": "फ़ॉलो और शेयर करिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "Follow aur share kariye, nerdlogic.co ko.",
+   "cap": "Follow aur share kariye, nerdlogic.co ko."
+  }
+ ],
+ "pause_after": {
+  "s1": 0.6,
+  "s2": 0.5,
+  "s3": 0.5,
+  "s4": 0.5,
+  "s5": 0.5,
+  "s6": 0.4,
+  "s7": 0.6,
+  "s8": 0.5,
+  "s9": 0.6
+ }
+}
