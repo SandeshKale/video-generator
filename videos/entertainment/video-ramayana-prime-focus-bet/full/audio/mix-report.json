@@ -1,7 +1,7 @@
 {
- "voice_over_music_median_db": 25.8,
+ "voice_over_music_median_db": 26.5,
  "min_db": -4.4,
- "p10_db": 19.7,
+ "p10_db": 20.4,
  "n": 1468,
  "note": "numeric only, not auditioned"
 }
