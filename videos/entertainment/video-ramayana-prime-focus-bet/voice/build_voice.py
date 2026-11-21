@@ -32,7 +32,7 @@ for _g, _ in GROUPS: GAP.setdefault(_g, 0.9)
 MERGE = {'ट':'त','ठ':'थ','ड':'द','ढ':'ध','ष':'स','श':'स','ण':'न','ञ':'न','ङ':'न','ज़':'ज','फ़':'फ','क़':'क','ख़':'ख','ग़':'ग','ड़':'र','ढ़':'र','ऑ':'ओ','ऐ':'ए','औ':'ओ','ई':'इ','ऊ':'उ','आ':'अ'}
 def skel(t):
     t = re.sub(r'[़्ँंःा-ौ॑-॔।,.?!\'"’‘ \-]', '', t); return ''.join(MERGE.get(c, c) for c in t)
-TERMS = ['कंपनी','क़र्ज़']
+TERMS = ['कंपनी','कर्ज़ा','सैलरी','इंटरेस्ट']
 def f0var(a):
     y = librosa.resample(a, orig_sr=SR, target_sr=16000); f0, _, _ = librosa.pyin(y, fmin=70, fmax=400, sr=16000, frame_length=1024, hop_length=160); f = f0[~np.isnan(f0)]
     return float(np.std(12*np.log2(f/np.median(f)))) if len(f) > 20 else 0.0
