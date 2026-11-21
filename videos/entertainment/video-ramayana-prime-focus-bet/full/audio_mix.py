@@ -71,6 +71,15 @@ music *= uniform_filter1d(m, int(.25 * SR))
 env = np.sqrt(np.maximum(0, uniform_filter1d(voice ** 2, int(.08 * SR)))); act = (env > .006).astype('float32'); act = np.maximum(act, np.roll(act, -int(.12 * SR))); duck = uniform_filter1d(act, int(.25 * SR))
 music = music * (1 - .9 * duck); sos = butter(2, [1200 / (SR / 2), 4500 / (SR / 2)], btype='bandstop', output='sos'); mc = sosfilt(sos, music).astype('float32'); music = music * (1 - .5 * duck) + mc * (.5 * duck)
 sfx *= (1 - .7 * duck)
+
+def cap_under_voice(x, ratio, gain):
+    hop = int(.1 * SR); n = len(x) // hop; g = np.ones(n, 'float32')
+    for k in range(n):
+        v = float(np.sqrt((voice[k * hop:(k + 1) * hop] ** 2).mean())); m = float(np.sqrt(((x * gain)[k * hop:(k + 1) * hop] ** 2).mean())) + 1e-9
+        if v > .012: g[k] = min(1.0, ratio * v / m)
+    g = np.minimum.reduce([np.roll(g, d) for d in (-3, -2, -1, 0, 1, 2, 3)]); g = uniform_filter1d(g, 3)
+    return x * np.repeat(g, hop)[:len(x)].astype('float32') if len(np.repeat(g, hop)) >= len(x) else x * np.concatenate([np.repeat(g, hop), np.ones(len(x) - n * hop, 'float32')])
+music = cap_under_voice(music, .16, 1.2); sfx = cap_under_voice(sfx, .22, .5)
 mix = voice * 1.0 + music * 1.2 + sfx * .5; mix = np.tanh(mix * .9) / .9
 sf.write(A + '/mix-pre.wav', mix, SR); subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', A + '/mix-pre.wav', '-af', 'loudnorm=I=-14:TP=-1.2:LRA=9', '-ar', '48000', A + '/final.wav'], check=True)
 # numeric report: voice over music+SFX on voiced 250 ms windows
