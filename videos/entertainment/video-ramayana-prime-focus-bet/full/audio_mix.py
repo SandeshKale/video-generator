@@ -70,7 +70,7 @@ music *= uniform_filter1d(m, int(.25 * SR))
 # voice-activity ducking with look-ahead + carve
 env = np.sqrt(np.maximum(0, uniform_filter1d(voice ** 2, int(.08 * SR)))); act = (env > .006).astype('float32'); act = np.maximum(act, np.roll(act, -int(.12 * SR))); duck = uniform_filter1d(act, int(.25 * SR))
 music = music * (1 - .9 * duck); sos = butter(2, [1200 / (SR / 2), 4500 / (SR / 2)], btype='bandstop', output='sos'); mc = sosfilt(sos, music).astype('float32'); music = music * (1 - .5 * duck) + mc * (.5 * duck)
-sfx *= (1 - .7 * duck)
+sfx *= (1 - .97 * np.clip(uniform_filter1d(np.maximum(act, np.roll(act, int(.2 * SR))), int(.7 * SR)) * 1.6, 0, 1))
 
 def cap_under_voice(x, ratio, gain):
     hop = int(.1 * SR); n = len(x) // hop; g = np.ones(n, 'float32')
