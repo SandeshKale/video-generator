@@ -5,8 +5,8 @@
   "height": 1080,
   "pix_fmt": "yuv420p",
   "r_frame_rate": "30/1",
-  "duration": "419.233333",
-  "nb_frames": "12577"
+  "duration": "419.766667",
+  "nb_frames": "12593"
  },
  "findings": [
   {
@@ -42,11 +42,6 @@
   {
    "kind": "freeze",
    "detail": "static from 210.1s (>=1.5 s)",
-   "severity": "info"
-  },
-  {
-   "kind": "freeze",
-   "detail": "static from 214.033s (>=1.5 s)",
    "severity": "info"
   },
   {
@@ -91,7 +86,7 @@
   },
   {
    "kind": "freeze",
-   "detail": "static from 340.267s (>=1.5 s)",
+   "detail": "static from 340.233s (>=1.5 s)",
    "severity": "info"
   },
   {
@@ -133,24 +128,19 @@
    "kind": "freeze",
    "detail": "static from 403.9s (>=1.5 s)",
    "severity": "info"
-  },
-  {
-   "kind": "freeze",
-   "detail": "static from 417.2s (>=1.5 s)",
-   "severity": "info"
   }
  ],
  "not_viewed": true,
- "blur_last": "4.6981877",
- "block_last": "14.6396908",
- "frames_checked": 6289,
+ "blur_last": "4.6890126",
+ "block_last": "14.6150596",
+ "frames_checked": 6297,
  "luma": {
   "min": 21.257368087768555,
-  "max": 242.71363830566406
+  "max": 242.71804809570312
  },
- "motion_mean_diff": 1.372721791267395,
+ "motion_mean_diff": 1.3708362579345703,
  "flat_noise": {
-  "mean": 0.5116206088625803,
+  "mean": 0.5098512915031213,
   "max": 0.6963729858398438
  },
  "edge_check": "see overlay-lint for DOM safe-zone; pixel edge ink not flagged",
