@@ -5,30 +5,24 @@
   "height": 1080,
   "pix_fmt": "yuv420p",
   "r_frame_rate": "30/1",
-  "duration": "25.766667",
-  "nb_frames": "773"
+  "duration": "25.933333",
+  "nb_frames": "778"
  },
- "findings": [
-  {
-   "kind": "jump",
-   "detail": "frame-to-frame diff 18.7 at 24.00s (flicker or unplanned cut)",
-   "severity": "warn"
-  }
- ],
+ "findings": [],
  "not_viewed": true,
- "blur_last": "4.7877092",
- "block_last": "11.1257493",
- "frames_checked": 387,
+ "blur_last": "4.8016666",
+ "block_last": "12.3097162",
+ "frames_checked": 389,
  "luma": {
-  "min": 25.863750457763672,
-  "max": 230.93685913085938
+  "min": 25.757732391357422,
+  "max": 230.91014099121094
  },
- "motion_mean_diff": 2.885427236557007,
+ "motion_mean_diff": 2.830172538757324,
  "flat_noise": {
-  "mean": 0.45533911810462296,
-  "max": 0.7116232514381409
+  "mean": 0.462227746759626,
+  "max": 0.7166665196418762
  },
  "edge_check": "see overlay-lint for DOM safe-zone; pixel edge ink not flagged",
- "verdict": "review",
+ "verdict": "clean",
  "note": "Evidence from ffmpeg + pixel statistics, not a viewing. Contact sheets of the real frames are still required."
 }
