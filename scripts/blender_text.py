@@ -52,7 +52,10 @@ def label(cam, s, font, px, fill='#f1f3f8', u=0, v=0, dist=6, outline=None, shad
     import bpy
     from mathutils import Vector
     path, w1, h1 = text_png(s, font, px, fill, outline, shadow)
-    W, H = STATE['W'], STATE['H']; vf = 2 * math.atan(18 / cam.data.lens); hh = dist * math.tan(vf / 2); hw = hh * (W / H); wpp = (2 * hh) / H      # world units per final pixel at `dist`
+    W, H = STATE['W'], STATE['H']; fv = 2 * math.atan(18 / cam.data.lens)                       # sensor 36 mm, AUTO fit: this is the fov of the LARGER image dimension
+    if W >= H: hw = dist * math.tan(fv / 2); hh = hw * (H / W)    # landscape
+    else: hh = dist * math.tan(fv / 2); hw = hh * (W / H)         # portrait
+    wpp = (2 * hh) / H      # world units per final pixel at `dist`
     bpy.ops.mesh.primitive_plane_add(size=1); o = bpy.context.object; o.scale = (w1 * wpp, h1 * wpp, 1); bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     cx = u * 2 * hw + (w1 * wpp / 2 if align == 'left' else 0) - (w1 * wpp if align == 'right' else 0); cy = v * 2 * hh
     bpy.context.view_layer.update(); M = cam.matrix_world; o.location = M @ Vector((cx, cy, -dist)); o.rotation_euler = cam.rotation_euler.copy(); o.parent = cam; o.matrix_parent_inverse = cam.matrix_world.inverted()
