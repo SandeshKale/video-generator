@@ -268,3 +268,7 @@ Locked between moves; every move named in the beat: dolly, crane/pedestal, orbit
 
 ## 10. Guardrails
 Business analysis only; no comment on faith, the story, casting or anyone's motives; all figures attributed with tiers; conflicting numbers shown as ranges; gross never called profit; no investment advice; no claims about unreported contracts or personal money; "reported" and "estimate" are on screen wherever the tier is B/C; the Ranbir Kapoor ₹15 cr line is attributed to Finshots and removed if the primary filing cannot confirm it; Adipurush appears only as a reported-numbers cautionary context with no art and no mockery.
+
+
+## Style override (creator, 21 Nov 2026)
+Blender is NOT used for this landscape video. Grammar = the reference brief: 2D flat/semi-flat vector motion graphics (Canvas2D pages, pure functions of t), area-true data objects, split-screen paradox hook, sepia collage era scene, diagram-as-metaphor (balance), number-hero scene with silence beat. On-screen text = small mono guide tags only; visuals carry the story. Mockup: `mockup2/` (20 s, 4 scenes, 1920x1080@30). The earlier Blender mockup was removed.
