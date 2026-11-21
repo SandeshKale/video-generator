@@ -7,12 +7,9 @@ from omnivoice import OmniVoice
 from faster_whisper import WhisperModel
 torch.set_num_threads(4)
 H = os.path.dirname(os.path.abspath(__file__)); SR = 24000
-WORDS = {  # key: (list of spellings, carrier format)
- 'karz': ['कर्ज़', 'क़र्ज़', 'कर्ज़ा', 'कर्जा', 'लोन'], 'kharcha': ['ख़र्चा', 'खर्चा'], 'tankhwah': ['तनख़्वाह', 'तनख्वाह', 'सैलरी'],
- 'byaaj': ['ब्याज', 'बियाज'], 'munafa': ['मुनाफ़ा', 'मुनाफा', 'प्रॉफ़िट'], 'nuksaan': ['नुक़सान', 'नुकसान', 'घाटा'],
- 'dneg': ['डी-नेग', 'डी एन ई जी', 'डीनेग'], 'oscar': ['ऑस्कर', 'ओस्कर'], 'primefocus': ['प्राइम फ़ोकस', 'प्राइम फोकस'], 'vfx': ['वी एफ़ एक्स', 'वीएफ़एक्स'],
- 'spac': ['स्पैक', 'एस पी ए सी'], 'percent': ['परसेंट', 'प्रतिशत'], 'revenue': ['रेवेन्यू', 'आमदनी'], 'crore': ['करोड़', 'क्रोड़'], 'year95': ['उन्नीस सौ पचानवे', 'उन्नीस सौ पंचानवे'],
- 'garage': ['गैराज', 'गेराज'], 'budget': ['बजट', 'बजेट'], 'boxoffice': ['बॉक्स ऑफ़िस', 'गल्ला'], 'strike': ['हड़ताल', 'स्ट्राइक'],
+WORDS = {  # round 2: karz settled (कर्ज़ा); remaining risky finance/English words, one seed
+ 'kharcha': ['ख़र्चा', 'खर्चा'], 'tankhwah': ['तनख़्वाह', 'सैलरी'], 'byaaj': ['ब्याज', 'बियाज'], 'dneg': ['डी-नेग', 'डी एन ई जी'], 'oscar': ['ऑस्कर'], 'primefocus': ['प्राइम फ़ोकस'],
+ 'vfx': ['वी एफ़ एक्स'], 'percent': ['परसेंट'], 'revenue': ['रेवेन्यू'], 'year95': ['उन्नीस सौ पचानवे'], 'garage': ['गैराज'], 'strike': ['हड़ताल'], 'nuksaan': ['नुक़सान', 'घाटा'],
 }
 CAR = 'सुनिए, {w}, बस यही शब्द बोलना है।'
 rp = os.path.join(H, 'lex_results.json'); res = json.load(open(rp)) if os.path.exists(rp) else {}
@@ -24,7 +21,7 @@ def skel(t):
     t = re.sub(r'[़्ँंःा-ौ॑-॔।,.?!\'"’‘ \-]', '', t); return ''.join(MERGE.get(c, c) for c in t)
 for key, vs in WORDS.items():
     for v in vs:
-        for seed in (11, 12):
+        for seed in (11,):
             k = f'{key}|{v}|{seed}'
             if k in res: continue
             torch.manual_seed(seed); a = np.asarray(m.generate(text=CAR.format(w=v), language='hi', num_step=32, speed=1.0, voice_clone_prompt=P)[0]).astype('float32')
