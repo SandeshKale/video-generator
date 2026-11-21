@@ -2,7 +2,7 @@
 // g24: fork in the road + PFT card
 SCN[24] = function (p, u) {
   bgPaper(); var k = eo(pr(p, .05, .35)); draw([[300, 620], [800, 620], [1000, 620]], k, C.ink, 14); var a = eo(pr(p, .3, .6)); draw([[1000, 620], [1300, 460], [1650, 460]], a, C.grey, 14); draw([[1000, 620], [1300, 780], [1650, 780]], a, C.teal, 14);
-  tag('CUT COSTS', 1650, 410, C.grey, 'right', a); tag('DOUBLE DOWN', 1650, 850, C.teal, 'right', a); var c = ob(pr(p, .6, .78)); if (c > 0) { cx.save(); cx.translate(1450, 780); cx.scale(Math.min(1.05, c), Math.min(1.05, c)); cx.translate(-1450, -780); } if (c > 0) { fillRR(1230, 700, 440, 150, 22, C.teal); num('₹693 CR', 1450, 800, 80, '#fff', 'center'); cx.restore(); tag('JULY 2024 · PRIME FOCUS TECHNOLOGIES', 1450, 890, C.grey, 'center', eo(pr(p, .7, .9)), 18); }
+  tag('CUT COSTS', 1650, 410, C.grey, 'right', a); tag('DOUBLE DOWN', 1650, 850, C.teal, 'right', a); var c = ob(pr(p, .6, .78)); if (c > 0) { cx.save(); cx.translate(1450, 870); cx.scale(Math.min(1.05, c), Math.min(1.05, c)); cx.translate(-1450, -870); } if (c > 0) { fillRR(1230, 810, 440, 130, 22, C.teal); num('₹693 CR', 1450, 905, 80, '#fff', 'center'); cx.restore(); tag('JULY 2024 · PRIME FOCUS TECHNOLOGIES', 1450, 975, C.grey, 'center', eo(pr(p, .7, .9)), 18); }
   circ(300, 620, 18, C.ink);
 };
 // g25: scattered vendors -> one pipeline
@@ -91,7 +91,7 @@ SCN[36] = function (p, u) {
 };
 // g37: Hindi version ~650 net
 SCN[37] = function (p, u) {
-  bgPaper(); var K = 700 / 1600; var a = eo(pr(p, .1, .5)), b = eo(pr(p, .35, .8)); var S = 1100 / 1547; fillRR(520, 300, Math.max(1, 1547 * S * a), 130, 20, C.teal); fillRR(520, 540, Math.max(1, 650 * S * b), 130, 20, C.blue);
+  bgPaper(); var K = 700 / 1600; var a = eo(pr(p, .1, .5)), b = eo(pr(p, .35, .8)); var S = 820 / 1547; fillRR(520, 300, Math.max(1, 1547 * S * a), 130, 20, C.teal); fillRR(520, 540, Math.max(1, 650 * S * b), 130, 20, C.blue);
   tag('WORLDWIDE GROSS', 480, 385, C.ink, 'right', a); tag('HINDI NET · THE WEEK', 480, 625, C.ink, 'right', b); num('₹1,547 CR', 520 + 1547 * S * a + 30, 400, 90, C.teal, 'left', a); num('₹650 CR', 520 + 650 * S * b + 30, 640, 90, C.blue, 'left', b);
   tag('DIFFERENT THINGS · DIFFERENT NUMBERS', 960, 900, C.grey, 'center', eo(pr(p, .75, .95)), 22);
 };
