@@ -30,10 +30,17 @@ def thump():
 def tick(f=1800): return tone(f, .12, .001, .03, (1, .4))
 def coin(): return (tone(1568, .35, .001, .12, (1, .5, .25)) + tone(2093, .35, .001, .14, (1, .4)) * .7).astype('float32')
 sfx = np.zeros(N, 'float32')
+_env = np.sqrt(np.maximum(0, uniform_filter1d(voice ** 2, int(.05 * SR))))
+def clear_t(t, span=.6):
+    best = (1e9, t)
+    for d in np.arange(-1.5, 1.51, .05):
+        a = int(max(0, t + d) * SR); b = a + int(span * SR); c = float(_env[a:b].mean()) if b < N else 1e9
+        if c + abs(d) * 1e-4 < best[0]: best = (c + abs(d) * 1e-4, t + d)
+    return best[1]
 for g, t in G.items():
-    if g > 1: put(sfx, whoosh(), t - .2, .25)
+    if g > 1: put(sfx, whoosh(), clear_t(t - .2, .45), .14)
 def hit(g, p, kind):
-    t = G[g] + (GE[g] - G[g]) * p; put(sfx, {'thump': thump, 'coin': coin, 'tick': tick}[kind](), t, {'thump': .8, 'coin': .5, 'tick': .5}[kind])
+    t = clear_t(G[g] + (GE[g] - G[g]) * p); put(sfx, {'thump': thump, 'coin': coin, 'tick': tick}[kind](), t, {'thump': .3, 'coin': .22, 'tick': .22}[kind])
 hit(5, .7, 'thump'); hit(16, .6, 'thump'); hit(17, .8, 'thump'); hit(19, .55, 'thump'); hit(34, .85, 'thump'); hit(1, .1, 'coin'); hit(14, .1, 'coin'); hit(38, .5, 'coin')
 for i in range(8): hit(10, .1 + i * .09, 'coin')
 for i in range(5): hit(1, .56 + i * .03, 'tick')
@@ -62,16 +69,16 @@ m = np.ones(N, 'float32'); a, b = int((G[33] - .4) * SR), int((G[34] + .6) * SR)
 music *= uniform_filter1d(m, int(.25 * SR))
 # voice-activity ducking with look-ahead + carve
 env = np.sqrt(np.maximum(0, uniform_filter1d(voice ** 2, int(.08 * SR)))); act = (env > .006).astype('float32'); act = np.maximum(act, np.roll(act, -int(.12 * SR))); duck = uniform_filter1d(act, int(.25 * SR))
-music = music * (1 - .62 * duck); sos = butter(2, [1200 / (SR / 2), 4500 / (SR / 2)], btype='bandstop', output='sos'); mc = sosfilt(sos, music).astype('float32'); music = music * (1 - .5 * duck) + mc * (.5 * duck)
-sfx *= (1 - .45 * duck)
-mix = voice * 1.0 + music * .9 + sfx * .8; mix = np.tanh(mix * .9) / .9
+music = music * (1 - .9 * duck); sos = butter(2, [1200 / (SR / 2), 4500 / (SR / 2)], btype='bandstop', output='sos'); mc = sosfilt(sos, music).astype('float32'); music = music * (1 - .5 * duck) + mc * (.5 * duck)
+sfx *= (1 - .7 * duck)
+mix = voice * 1.0 + music * 1.2 + sfx * .5; mix = np.tanh(mix * .9) / .9
 sf.write(A + '/mix-pre.wav', mix, SR); subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', A + '/mix-pre.wav', '-af', 'loudnorm=I=-14:TP=-1.2:LRA=9', '-ar', '48000', A + '/final.wav'], check=True)
 # numeric report: voice over music+SFX on voiced 250 ms windows
 fin, _ = sf.read(A + '/final.wav'); rep = {}
 if len(v) > 100:
     w = int(.25 * SR); rows = []
     for i in range(0, N - w, w):
-        vv = voice[i:i + w]; mm = (music + sfx)[i:i + w]
+        vv = voice[i:i + w]; mm = (music * 1.2 + sfx * .5)[i:i + w]
         if np.sqrt((vv ** 2).mean()) > .02: rows.append(20 * np.log10(np.sqrt((vv ** 2).mean()) / (np.sqrt((mm ** 2).mean()) + 1e-9)))
     if rows: rep = dict(voice_over_music_median_db=round(float(np.median(rows)), 1), min_db=round(float(np.min(rows)), 1), p10_db=round(float(np.percentile(rows, 10)), 1), n=len(rows))
 rep['note'] = 'numeric only, not auditioned'; json.dump(rep, open(A + '/mix-report.json', 'w'), indent=1); print(rep)
