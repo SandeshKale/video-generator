@@ -46,7 +46,7 @@ function sceneA(u, t) {
   cx.save(); cam(1.0, 1.04, pr(u, 0, 5));
   cx.fillStyle = C.paper; cx.fillRect(-40, -40, 1000, H + 80); cx.fillStyle = C.navy; cx.fillRect(960, -40, 1000, H + 80); grid('rgba(20,24,36,.05)', 120); cx.save(); cx.beginPath(); cx.rect(960, 0, 960, H); cx.clip(); cx.fillStyle = C.navy; cx.fillRect(960, 0, 960, H); grid('rgba(255,255,255,.04)', 120); cx.restore();
   cx.save(); cx.beginPath(); cx.rect(0, 0, 960, H); cx.clip(); cx.restore();
-  var d = eo(pr(u, .05, .7)); fillRR(954, H / 2 - H * d / 2, 12, H * d, 6, C.gold);
+  var d = eo(pr(u, .05, .7)); fillRR(954, 500 - 500 * d, 12, 1000 * d, 6, C.gold);
   var base = 900, cw = 360, lx = 480 - cw / 2, rx = 1440 - cw / 2;
   var g = eo(pr(u, .6, 2.4)), gH = 1547 * SA * g; shadowRR(lx, base - gH, cw, gH, 18, C.ink, 12); fillRR(lx, base - gH, cw, gH, 18, C.teal);
   cx.save(); rr(lx, base - gH, cw, gH, 18); cx.clip(); for (var r = 0; r < 4; r++) { var k = eo(pr(u, .7 + r * .18, 1.1 + r * .18)); ticket(lx + 28, base - 66 - r * 66 + (1 - k) * 24, cw - 56, 46, 'rgba(255,255,255,.22)', k); } cx.restore();
@@ -58,7 +58,7 @@ function sceneA(u, t) {
   cx.save(); cx.globalAlpha = a1; ticket(430, 62, 100, 64, C.teal); cx.restore(); cx.save(); cx.globalAlpha = a2; bank(1440, 108, 42, C.red); cx.restore();
   cx.save(); cx.translate(480, 340); cx.scale(pop, pop); num('₹' + inr(1547 * g), 0, 0, 170, C.teal, 'center', a1); cx.restore();
   cx.save(); cx.translate(1440, 340); cx.scale(pop, pop); num('₹' + inr(5062 * dd), 0, 0, 170, C.red, 'center', a2); cx.restore();
-  tag('WORLDWIDE GROSS · 15 DAYS · EST.', 480, 962, C.ink, 'center', a1); tag('PRIME FOCUS GROSS DEBT · REPORTED', 1440, 962, C.grey, 'center', a2);
+  tag('WORLDWIDE GROSS · 15 DAYS · EST.', 480, 940, C.ink, 'center', a1); tag('PRIME FOCUS GROSS DEBT · REPORTED', 1440, 940, C.grey, 'center', a2);
   cx.restore();
 }
 // ================= scene B: 1995 garage (flat vector, gentle parallax) =================
@@ -77,7 +77,7 @@ function sceneB(u) {
   cx.save(); par(1.3); var bb = eo(pr(u, 1.0, 1.7)); cx.globalAlpha = bb; fillRR(1200, 700 + (1 - bb) * 90, 190, 150, 8, '#CBA874'); fillRR(1250, 590 + (1 - bb) * 90, 150, 110, 8, '#D9B985'); cx.fillStyle = 'rgba(90,70,48,.25)'; cx.fillRect(1250, 636 + (1 - bb) * 90, 150, 6); cx.restore();
   var cp = ob(pr(u, 1.6, 2.2)); if (cp > 0) { cx.save(); cx.translate(1470, 300); cx.rotate(-.06); cx.scale(cp, cp); shadowRR(-190, -150, 380, 330, 20, C.sepiaDk, 12); fillRR(-190, -150, 380, 330, 20, '#FFFDF6'); cx.save(); rr(-190, -150, 380, 330, 20); cx.clip(); cx.fillStyle = C.verm; cx.fillRect(-190, -150, 380, 82); cx.restore(); cx.fillStyle = '#FFFDF6'; for (var h = -120; h <= 120; h += 80) { cx.beginPath(); cx.arc(h, -150, 11, 0, 7); cx.fill(); } cx.font = '150px ' + NUM; cx.fillStyle = C.sepiaDk; cx.textAlign = 'center'; cx.fillText('1995', 0, 118); cx.restore(); }
   var ls = eo(pr(u, 2.5, 3.3)); if (ls > 0) { cx.save(); cx.translate(lerp(2300, 1520, ls), 760); cx.rotate(.05); shadowRR(-200, -90, 400, 180, 14, C.sepiaDk, 10); fillRR(-200, -90, 400, 180, 14, '#FFFFFF'); cx.fillStyle = C.sepia3; for (var l = 0; l < 3; l++) fillRR(-150, -48 + l * 34, 220 - l * 50, 10, 5, C.sepia3); cx.restore(); var st = ob(pr(u, 3.4, 3.9)); if (st > 0) { cx.save(); cx.translate(1620, 750); cx.rotate(-.18); cx.scale(st, st); cx.strokeStyle = C.red; cx.lineWidth = 8; rr(-120, -42, 240, 84, 14); cx.stroke(); cx.font = '64px ' + NUM; cx.fillStyle = C.red; cx.textAlign = 'center'; if ('letterSpacing' in cx) cx.letterSpacing = '6px'; cx.fillText('LOAN', 3, 22); cx.restore(); } }
-  tag('1995 · BANK LOAN · GARAGE', 120, 980, C.sepiaDk, 'left', eo(pr(u, 2.6, 3.2)));
+  tag('1995 · BANK LOAN · GARAGE', 120, 940, C.sepiaDk, 'left', eo(pr(u, 2.6, 3.2)));
   cx.restore();
 }
 // ================= scene C: the balance (area = amount) =================
@@ -120,12 +120,12 @@ function sceneD(u) {
   if (b > .03) num('₹1,600–2,000', X0 + 2000 * PX * b + 32, 612, 96, '#FF9C84', 'left');
   if (d > .03) num('₹' + inr(5062 * d), X0 + 5062 * PX * d - 30, 832, 104, '#FFFFFF', 'right');
   if (bt > 0 && bt < .3) { cx.fillStyle = 'rgba(224,69,75,' + (.22 * (1 - bt / .3)) + ')'; cx.fillRect(-40, -40, W + 80, H + 80); }
-  tag('SPLIT NOT PUBLIC · ILLUSTRATIVE', 1760, 1000, C.grey, 'right', eo(pr(u, 4.6, 5)));
-  tag('SACNILK · EST.  /  TRADE REPORTS  /  REPORTED', 460, 1000, C.grey, 'left', tr);
+  tag('SPLIT NOT PUBLIC · ILLUSTRATIVE', 1760, 950, C.grey, 'right', eo(pr(u, 4.6, 5)));
+  tag('SACNILK · EST.  /  TRADE REPORTS  /  REPORTED', 460, 950, C.grey, 'left', tr);
   cx.restore();
 }
 // ---- plain captions (small, no box) ----
-function caption(t, dark) { var cs = VT.caps || [], c = null; for (var i = 0; i < cs.length; i++) if (t >= cs[i].t0 && t < cs[i].t1) c = cs[i]; if (!c) return; var a = Math.min(1, (t - c.t0) / .15, (c.t1 - t) / .15); cx.save(); cx.globalAlpha = a; cx.font = '800 40px ' + CAPF; cx.textAlign = 'center'; cx.fillStyle = dark ? '#EDEFF5' : C.ink; cx.fillText(c.text, W / 2, 1040); cx.restore(); }
+function caption(t, dark) { var cs = VT.caps || [], c = null; for (var i = 0; i < cs.length; i++) if (t >= cs[i].t0 && t < cs[i].t1) c = cs[i]; if (!c) return; var a = Math.min(1, (t - c.t0) / .15, (c.t1 - t) / .15); cx.save(); cx.globalAlpha = a; cx.font = '800 40px ' + CAPF; cx.textAlign = 'center'; if (dark === 2) { cx.save(); cx.beginPath(); cx.rect(0, 0, 960, H); cx.clip(); cx.fillStyle = C.ink; cx.fillText(c.text, W / 2, 1040); cx.restore(); cx.save(); cx.beginPath(); cx.rect(960, 0, 960, H); cx.clip(); cx.fillStyle = '#EDEFF5'; cx.fillText(c.text, W / 2, 1040); cx.restore(); } else { cx.fillStyle = dark ? '#EDEFF5' : C.ink; cx.fillText(c.text, W / 2, 1040); } cx.restore(); }
 // ---- transitions: one clean colour panel sweep (sequential, no double exposure) ----
 var TRC = [C.gold, C.teal, C.red];
 function render(t) {
@@ -134,7 +134,7 @@ function render(t) {
   var show = idx; if (tb !== null && t < SC[tb]) show = tb - 1;
   var s0 = SC[show], sd = SC[show + 1] - SC[show], u = cl((t - s0) / sd) * 5;
   cx.clearRect(0, 0, W, H); [sceneA, sceneB, sceneC, sceneD][show](u, t);
-  caption(t, show === 3);
+  caption(t, show === 3 ? 1 : show === 0 ? 2 : 0);
   if (tb !== null) { var p = (t - (SC[tb] - .3)) / .6, x = lerp(-W * 1.2, W * 1.2, eio(p)); cx.save(); cx.fillStyle = TRC[tb - 1]; cx.beginPath(); cx.moveTo(x - 200, 0); cx.lineTo(x + W, 0); cx.lineTo(x + W - 200, H); cx.lineTo(x - 400, H); cx.closePath(); cx.fill(); cx.restore(); }
 }
 window.__reelDurationSec = DUR; window.__ready = false;
