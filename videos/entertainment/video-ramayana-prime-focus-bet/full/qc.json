@@ -1,0 +1,159 @@
+{
+ "spec": {
+  "codec_name": "h264",
+  "width": 1920,
+  "height": 1080,
+  "pix_fmt": "yuv420p",
+  "r_frame_rate": "30/1",
+  "duration": "419.233333",
+  "nb_frames": "12577"
+ },
+ "findings": [
+  {
+   "kind": "freeze",
+   "detail": "static from 62.6s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 98.8s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 162.667s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 179.033s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 183s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 199.733s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 210.1s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 214.033s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 255.233s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 268.733s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 275.6s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 284.067s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 286.1s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 305.467s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 308.7s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 324.633s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 340.267s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 345.767s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 347.967s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 352.8s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 355.7s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 364.333s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 384.067s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 392.9s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 403.9s (>=1.5 s)",
+   "severity": "info"
+  },
+  {
+   "kind": "freeze",
+   "detail": "static from 417.2s (>=1.5 s)",
+   "severity": "info"
+  }
+ ],
+ "not_viewed": true,
+ "blur_last": "4.6981877",
+ "block_last": "14.6396908",
+ "frames_checked": 6289,
+ "luma": {
+  "min": 21.257368087768555,
+  "max": 242.71363830566406
+ },
+ "motion_mean_diff": 1.372721791267395,
+ "flat_noise": {
+  "mean": 0.5116206088625803,
+  "max": 0.6963729858398438
+ },
+ "edge_check": "see overlay-lint for DOM safe-zone; pixel edge ink not flagged",
+ "verdict": "clean",
+ "note": "Evidence from ffmpeg + pixel statistics, not a viewing. Contact sheets of the real frames are still required."
+}
