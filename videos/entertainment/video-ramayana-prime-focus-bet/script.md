@@ -13,7 +13,7 @@ Folder `videos/entertainment/video-ramayana-prime-focus-bet/` (new category fold
 - **Protagonist:** Prime Focus / DNEG and its founder-CEO Namit Malhotra, told as a company, not a person. **Obstacle:** a service business with huge fixed costs that nearly stalled when Hollywood stopped shooting (2023–24). **Reversal:** instead of cutting, it doubled down and became the *owner* of a film instead of a vendor; the film then earns record trade-estimated gross, **but gross is not cash in the producer's hand and the parent still carries ~₹5,000 cr of debt (reported)**. **Honest ending:** Part 2 (reported Diwali 2027) will show whether the model works; the video lists three numbers to watch, not a verdict.
 - **One-sentence test:** "A VFX company that started in a garage and won eight Oscars bet its future on owning a film, and the box office is huge, but what the company keeps, and when, is what decides whether the bet pays."
 - **But/Therefore chain:** garage loan → BUT the 2008 crash → THEREFORE 3D conversion kept it alive → merger with Double Negative → Oscars → BUT a factory whose biggest cost is people → THEREFORE it needs a steady order book → BUT the 2023–24 strikes empty the bench → THEREFORE it bets on its own film → BUT the last big-VFX Ramayana film (2023) was a cautionary case → THEREFORE this one is built on cameras, IMAX and numbers → release → THE NUMBER (gross vs budget vs debt) → BUT gross ≠ cash → twist: the hero is also a shareholder and the market priced the win before release → full circle to the garage.
-- **Open-loop ledger:** (1) "ek number jo sab kuch badal deta hai" planted 1:00 → paid 8:50; (2) "garage se IMAX tak, kaise" planted 0:55 → paid 12:00; (3) "Part 2 ke liye kya dekhein" planted 9:50 → paid 12:25.
+- **Open-loop ledger:** (1) "ek number jo sab kuch badal deta hai" planted ~0:50 (B03) → paid 8:06 (B18); (2) "garage se IMAX tak" planted ~0:50 → paid 10:10 (B22); (3) "Part 2 ke liye kya dekhein" planted 8:40 (B19b) → paid 10:32 (B23).
 - **Cold-read review:** not done (creator declined earlier ones); the mute test is in §8.
 
 ## 2. Style record (Lemo-Opuscar)
@@ -33,7 +33,7 @@ Folder `videos/entertainment/video-ramayana-prime-focus-bet/` (new category fold
 | Hero number as a race + silence beat + sub-drop | Three squares (budget / gross / debt) grow in silence, then the sub-drop; waterfall of what gross is *not* |
 | Mirror ending | 1995 loan → 2026 IMAX: the same four weights on the beam, now with a film on the pan |
 | Pattern interrupt every 20–40 s | Camera move, quote card (source named), map or sound drop every ≤35 s; no more than 40 s without one |
-| Open loops + payoff at ~65 % | Number promised at 1:00, paid at 8:50 (65 %) |
+| Open loops + payoff at ~73 % | Number promised at ~0:50, paid at ~8:06 (~73 %, a little later than 65 % because the hook and mechanics chapters carry the story first) |
 | End screen + CTA | nerdlogic.co end card, like/subscribe/share |
 
 ## 4. Benchmark to beat (landscape bar: `videos/tech/video-ai-bubble-v2`, 7 min, photoreal parallax, 28 scenes)
@@ -58,14 +58,14 @@ SOUND: the marimba stops; a low brass-like pad; one clack of the square locking.
 **B03 · 0:36–0:57**
 VO: "Aaj hum film ki kahani nahi, us company ki kahani dekhenge jisne ye daav lagaaya: ek garage se shuru hui company, aath Oscar, ek strike ka jhatka, aur ek number jo aakhir mein sab kuch badal deta hai. Is video mein sirf business ki baat hogi, kisi aastha ya acting ki nahi." [framing]
 VISUAL: the grid lines draw out and fold away; three small icons-as-shapes (a circle, a square, a triangle) appear at the left as a chapter map; the title card letters rise from a slot: "THE COMPLETE STORY OF RAMAYANA'S ₹4,000 CR BET". Camera: push through the vermilion band into chapter 1.
-SOUND: riser into the cut; soft whoosh; **soft like-CTA is skipped here** (only at 2:00 in the reference; we place it at 3:30).
+SOUND: riser into the cut; soft whoosh; **no CTA here**; the soft like chip comes at the end of chapter 3 (B10).
 
-### CHAPTER 1 · The garage (0:57–2:22)
 **B03b · 0:57–1:19 — gross, net and producer share, kept apart**
 VO: "Pehle ek chhoti si baat samajh lein. Gross matlab ticket par kata hua poora paisa. Net matlab tax hatane ke baad ka number. Aur producer ke haath mein jo aata hai, wo in dono se alag, aur kam hota hai. Is video mein hum teeno ko alag rakhenge, kyunki headlines aksar unhein mila deti hain."
 VISUAL: three concentric flat slabs of the same teal, largest = gross, middle = net, smallest = an outlined empty square labelled "PRODUCER SHARE: NOT PUBLIC". Camera: push through the concentric slabs. The same three-slab motif returns in chapter 7.
 SOUND: three clacks, one per slab; the last one is a hollow wood knock.
 
+### CHAPTER 1 · The garage (0:57–2:22)
 **B04 · 1:19–1:36**
 VO: "1995. Mumbai. Ek unnees saal ka ladka, Namit Malhotra, bank se loan leta hai. Wo teesri peedhi ka film parivaar se aata hai. Ek profile ke mutabik, pehli company wahi shuru hui: ek garage mein, apne computer graphics ke teachers ke saath." [S4]
 VISUAL: sand-coloured ground (era = past). A small vermilion **circle** (protagonist = the company) appears alone, drops and squashes once on the grid. A sand square beside it labelled "LOAN" with a thin tangent line to the circle. Camera: locked, then a slow push-in. Source line: "PROFILE: YAHOO FINANCE, DEC 2022".
@@ -180,7 +180,7 @@ VO: "Trailer multiple delays ke baad 30 July 2026 ko aaya. Plan ye tha: Part 1 D
 VISUAL: two vermilion discs of different sizes share one marigold base slab (shared assets); a calendar rail with two Diwali markers and the 5 Nov date. Camera: dolly along the rail.
 SOUND: a marimba two-note motif (part 1, part 2).
 
-### CHAPTER 7 · THE NUMBER (8:00–9:06) — payoff at ~65 %
+### CHAPTER 7 · THE NUMBER (8:00–9:06) — payoff at ~73 %
 **B17 · 8:00–8:06 — the silence beat**
 VO: "Ab dhyan se sunna."
 VISUAL: everything falls out of frame; the construction grid stays and re-forms (grid match cut); blank paper for 1.2 s. **Music and effects stop completely.**
