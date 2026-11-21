@@ -79,6 +79,7 @@ def cap_under_voice(x, ratio, gain):
         if v > .012: g[k] = min(1.0, ratio * v / m)
     g = np.minimum.reduce([np.roll(g, d) for d in (-3, -2, -1, 0, 1, 2, 3)]); g = uniform_filter1d(g, 3)
     return x * np.repeat(g, hop)[:len(x)].astype('float32') if len(np.repeat(g, hop)) >= len(x) else x * np.concatenate([np.repeat(g, hop), np.ones(len(x) - n * hop, 'float32')])
+music[int(G[38] * SR):] *= .55; music[int(G[2] * SR):int(G[3] * SR)] *= .8
 music = cap_under_voice(music, .16, 1.2); sfx = cap_under_voice(sfx, .22, .5)
 mix = voice * 1.0 + music * 1.2 + sfx * .5; mix = np.tanh(mix * .9) / .9
 sf.write(A + '/mix-pre.wav', mix, SR); subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', A + '/mix-pre.wav', '-af', 'loudnorm=I=-14:TP=-1.2:LRA=9', '-ar', '48000', A + '/final.wav'], check=True)
