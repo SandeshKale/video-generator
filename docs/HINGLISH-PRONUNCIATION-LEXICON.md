@@ -18,7 +18,7 @@ The model fails on **Urdu-origin nukta clusters** (`र्ज़`, `ख़्व
 | percent / revenue | परसेंट / रेवेन्यू | ok | ok |
 | garage | गैराज | गेराज | ok |
 | Oscar | ऑस्कर | औसकर (75%) | borderline: listen |
-| DNEG | डी-नेग heard "दीनेक"; spelled-out letters failed | | listen; if bad say "डी नेग" or the full name Double Negative (डबल नेगेटिव) |
+| DNEG | **say "डबल नेगेटिव"** (heard "डबल नगेटिव"); डी-नेग was heard "दीनेक", letter-by-letter "दियनी जी" | | on-screen name stays DNEG |
 | strike (hadtaal) | हड़ताल heard "हर्ताल" | | prefer "स्ट्राइक" |
 | 1995 | उन्नीस सौ पचानवे | numerals | ok |
 | big numbers | write every part ("दो हज़ार आठ सौ पचासी"): the clone dropped "सौ" in "अट्ठाईस सौ पचासी" | | spell fully |

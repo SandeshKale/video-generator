@@ -1,0 +1,7721 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "group": "g1",
+   "start": 0.0,
+   "end": 4.004,
+   "text": "Pandrah din. Pandrah sau saintalis crore se upar ki kamaai, andaaze se.",
+   "cap": ""
+  },
+  {
+   "id": "s2",
+   "group": "g1",
+   "start": 3.824,
+   "end": 6.864,
+   "text": "Par is film ko banane wali company par? Paanch hazaar crore ka karza.",
+   "cap": ""
+  },
+  {
+   "id": "s3",
+   "group": "g2",
+   "start": 7.453,
+   "end": 12.075,
+   "text": "Ye Ramayana Part 1 ka haal hai. Aur theatre ki line aur bank ki line, ek jaisi nahi hoti.",
+   "cap": ""
+  },
+  {
+   "id": "s4",
+   "group": "g3",
+   "start": 12.63,
+   "end": 19.138,
+   "text": "To aaj film ki nahi, us company ki kahani. Ek garage, aath Oscar, ek strike, aur ek number jo aakhir mein sab badal deta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s5",
+   "group": "g3",
+   "start": 18.958,
+   "end": 21.598,
+   "text": "Sirf business ki baat hogi. Na aastha, na acting.",
+   "cap": ""
+  },
+  {
+   "id": "s6",
+   "group": "g4",
+   "start": 22.159,
+   "end": 26.285,
+   "text": "Pehle ek chhoti si baat. Gross matlab ticket par kata hua poora paisa.",
+   "cap": ""
+  },
+  {
+   "id": "s7",
+   "group": "g4",
+   "start": 26.105,
+   "end": 31.245,
+   "text": "Net matlab tax hatane ke baad ka number. Aur producer ke haath mein jo aata hai, wo dono se alag hota hai, aur kam.",
+   "cap": ""
+  },
+  {
+   "id": "s8",
+   "group": "g5",
+   "start": 31.718,
+   "end": 36.89,
+   "text": "Saal unnees sau pachaanbe. Mumbai. Ek unnees saal ka ladka, Namit Malhotra, bank se loan leta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s9",
+   "group": "g5",
+   "start": 36.61,
+   "end": 40.07,
+   "text": "Ek profile ke hisaab se, pehli company wahin shuru hui: ek garage mein.",
+   "cap": ""
+  },
+  {
+   "id": "s10",
+   "group": "g6",
+   "start": 40.557,
+   "end": 44.267,
+   "text": "Usi profile ke mutabik, is safar mein baadh, aag aur mandi, teeno aaye.",
+   "cap": ""
+  },
+  {
+   "id": "s11",
+   "group": "g6",
+   "start": 43.987,
+   "end": 47.527,
+   "text": "Aur ye baat baar baar lautegi: ye kaarobaar kabhi seedhi line mein nahi chalta.",
+   "cap": ""
+  },
+  {
+   "id": "s12",
+   "group": "g7",
+   "start": 48.147,
+   "end": 50.943,
+   "text": "Do hazaar aath. Mandi aayi, aur film industry mein strike.",
+   "cap": ""
+  },
+  {
+   "id": "s13",
+   "group": "g7",
+   "start": 50.403,
+   "end": 55.183,
+   "text": "Company bachi 3D conversion ke kaam se: purani aur nayi films ko 3D mein badalna.",
+   "cap": ""
+  },
+  {
+   "id": "s14",
+   "group": "g8",
+   "start": 55.772,
+   "end": 60.96,
+   "text": "3D conversion matlab, ek normal film ke har frame mein depth banana, taaki wo 3D screen par chale.",
+   "cap": ""
+  },
+  {
+   "id": "s15",
+   "group": "g8",
+   "start": 60.68,
+   "end": 64.64,
+   "text": "Pehla sabak: jab sab ruk jaye, tab bhi ek kaam chalta rehna chahiye.",
+   "cap": ""
+  },
+  {
+   "id": "s16",
+   "group": "g9",
+   "start": 65.277,
+   "end": 70.532,
+   "text": "Do hazaar chaudah. Prime Focus ka London ki ek VFX company, Double Negative, se merger.",
+   "cap": ""
+  },
+  {
+   "id": "s17",
+   "group": "g9",
+   "start": 70.192,
+   "end": 74.232,
+   "text": "Naam hua D Neg. Staff saat sau se badhkar, profile ke mutabik, lagbhag nau hazaar.",
+   "cap": ""
+  },
+  {
+   "id": "s18",
+   "group": "g10",
+   "start": 74.844,
+   "end": 80.165,
+   "text": "Phir Oscar. Inception, Interstellar, Ex Machina, Blade Runner 2049, First Man, Tenet, Dune.",
+   "cap": ""
+  },
+  {
+   "id": "s19",
+   "group": "g10",
+   "start": 79.945,
+   "end": 85.905,
+   "text": "Kul aath Oscar. Interstellar ke liye to ek asli black hole ka software bana, aur uske do research paper bhi chhape.",
+   "cap": ""
+  },
+  {
+   "id": "s20",
+   "group": "g11",
+   "start": 86.569,
+   "end": 91.497,
+   "text": "Sirf Dune Part Two mein, lagbhag ek hazaar VFX shots. Ye company ka apna bayaan hai.",
+   "cap": ""
+  },
+  {
+   "id": "s21",
+   "group": "g11",
+   "start": 91.297,
+   "end": 95.357,
+   "text": "Interstellar ke kuch frames render hone mein, reports ke hisaab se, sau ghante tak lage.",
+   "cap": ""
+  },
+  {
+   "id": "s22",
+   "group": "g12",
+   "start": 96.007,
+   "end": 101.369,
+   "text": "Isliye Oscar sirf award nahi hota. Wo bharose ka certificate hai, jo agle order mein badal jaata hai.",
+   "cap": ""
+  },
+  {
+   "id": "s23",
+   "group": "g12",
+   "start": 101.209,
+   "end": 102.449,
+   "text": "Ye hamara analysis hai.",
+   "cap": ""
+  },
+  {
+   "id": "s24",
+   "group": "g13",
+   "start": 102.944,
+   "end": 107.367,
+   "text": "Par VFX ek ajeeb business hai. Ye kaarkhaana hai, jahan sabse bada kharcha insaan hain.",
+   "cap": ""
+  },
+  {
+   "id": "s25",
+   "group": "g14",
+   "start": 107.901,
+   "end": 112.11,
+   "text": "Pichhle saal ka staff ka kharcha, lagbhag do hazaar aath sau pachaasi crore.",
+   "cap": ""
+  },
+  {
+   "id": "s26",
+   "group": "g14",
+   "start": 111.67,
+   "end": 115.19,
+   "text": "Upar se lagbhag paanch sau athaavan crore ka interest. Reports ke hisaab se.",
+   "cap": ""
+  },
+  {
+   "id": "s27",
+   "group": "g15",
+   "start": 115.816,
+   "end": 118.834,
+   "text": "Ek chhota udaaharan. Maan lijiye sau rupaye ki kamaai aayi.",
+   "cap": ""
+  },
+  {
+   "id": "s28",
+   "group": "g15",
+   "start": 118.514,
+   "end": 123.594,
+   "text": "Usmein se tehattar rupaye staff ki salary mein chale gaye, aur kuch interest mein. Bachta hai bahut kam.",
+   "cap": ""
+  },
+  {
+   "id": "s29",
+   "group": "g16",
+   "start": 124.149,
+   "end": 129.475,
+   "text": "Ab maan lijiye order aadhe ho gaye, par salary wahi rahi. Tab bachna door, kai baar ghaata ho jaata hai.",
+   "cap": ""
+  },
+  {
+   "id": "s30",
+   "group": "g16",
+   "start": 129.275,
+   "end": 131.775,
+   "text": "Ye sirf samjhane ke liye hai, asli company ke numbers nahi.",
+   "cap": ""
+  },
+  {
+   "id": "s31",
+   "group": "g17",
+   "start": 132.351,
+   "end": 136.87,
+   "text": "Jab order aate hain, to chaaron weight sambhal jaate hain. Jab order ruk jaye? Beam jhukta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s32",
+   "group": "g17",
+   "start": 136.51,
+   "end": 144.67,
+   "text": "Do hazaar baais mein, ek SPAC ke raaste, lagbhag ek dashamlav saat billion dollar par listing ka plan bana, aur market ki halat dekhkar wapas le liya gaya.",
+   "cap": ""
+  },
+  {
+   "id": "s33",
+   "group": "g18",
+   "start": 145.275,
+   "end": 149.436,
+   "text": "Asli sabak: jahan kharcha pehle se fix ho, wahan order ka rukna sabse bada khatra hai.",
+   "cap": ""
+  },
+  {
+   "id": "s34",
+   "group": "g19",
+   "start": 149.964,
+   "end": 154.488,
+   "text": "Phir aayi do hazaar teis aur chaubees ki Hollywood strike. Writers aur actors, dono.",
+   "cap": ""
+  },
+  {
+   "id": "s35",
+   "group": "g19",
+   "start": 154.128,
+   "end": 156.748,
+   "text": "Shooting ruki, to post-production bhi ruk gaya.",
+   "cap": ""
+  },
+  {
+   "id": "s36",
+   "group": "g20",
+   "start": 157.335,
+   "end": 162.84,
+   "text": "Revenue lagbhag chaar hazaar chhah sau crore se girkar, teen hazaar nau sau pachaas ke aas paas aaya.",
+   "cap": ""
+  },
+  {
+   "id": "s37",
+   "group": "g20",
+   "start": 162.42,
+   "end": 166.08,
+   "text": "Aur ghaata, alag alag reports ke hisaab se, chaar sau pachaas se paanch sau crore ke beech.",
+   "cap": ""
+  },
+  {
+   "id": "s38",
+   "group": "g21",
+   "start": 166.674,
+   "end": 170.978,
+   "text": "Artists bench par. Software ke license chalu. Studio ka kiraya chalu.",
+   "cap": ""
+  },
+  {
+   "id": "s39",
+   "group": "g21",
+   "start": 170.458,
+   "end": 172.198,
+   "text": "Kaarkhaana khaali, par meter chalta raha.",
+   "cap": ""
+  },
+  {
+   "id": "s40",
+   "group": "g22",
+   "start": 172.831,
+   "end": 175.43,
+   "text": "Phir do hazaar pachchees mein Hollywood ka pipeline dobara khula.",
+   "cap": ""
+  },
+  {
+   "id": "s41",
+   "group": "g22",
+   "start": 174.97,
+   "end": 184.75,
+   "text": "Finshots ke hisaab se, pehli timahi mein revenue teis percent badhkar, lagbhag nau sau chhihattar crore hua. Pichhle saal ke ghaate ki jagah, lagbhag ek sau das crore ka munafa aaya.",
+   "cap": ""
+  },
+  {
+   "id": "s42",
+   "group": "g23",
+   "start": 185.263,
+   "end": 191.345,
+   "text": "Poore saal mein company ne lagbhag teen sau ek crore ka munafa dikhaya. Wahi bench, jo pehle dhakel rahe the, ab margin badhane lage.",
+   "cap": ""
+  },
+  {
+   "id": "s43",
+   "group": "g24",
+   "start": 191.935,
+   "end": 195.877,
+   "text": "Aise waqt mein zyadatar company kharcha ghatati hai. Prime Focus ne doosra raasta chuna.",
+   "cap": ""
+  },
+  {
+   "id": "s44",
+   "group": "g24",
+   "start": 195.577,
+   "end": 200.937,
+   "text": "Do hazaar chaubees ke July mein, D Neg ne Prime Focus Technologies chhah sau tiraanve crore mein kharidi.",
+   "cap": ""
+  },
+  {
+   "id": "s45",
+   "group": "g25",
+   "start": 201.58,
+   "end": 209.445,
+   "text": "Matlab: studios ab alag alag vendor nahi chahte. Jo ek hi jagah effects bhi banaye, aur content ko streaming ke liye taiyaar bhi kare, uski keemat badhti hai.",
+   "cap": ""
+  },
+  {
+   "id": "s46",
+   "group": "g25",
+   "start": 209.325,
+   "end": 211.825,
+   "text": "Aur phir ek aur daav: apni khud ki film.",
+   "cap": ""
+  },
+  {
+   "id": "s47",
+   "group": "g26",
+   "start": 212.39,
+   "end": 218.976,
+   "text": "Yahi hai Ramayana. Ab tak ye company doosron ki films ke effects banati thi, yaani kiraye ka kaam. Ab wo makaan maalik bhi banna chahti hai.",
+   "cap": ""
+  },
+  {
+   "id": "s48",
+   "group": "g27",
+   "start": 219.497,
+   "end": 222.999,
+   "text": "Makers ke hisaab se, do hisson ka budget lagbhag chaar hazaar crore.",
+   "cap": ""
+  },
+  {
+   "id": "s49",
+   "group": "g27",
+   "start": 222.619,
+   "end": 231.099,
+   "text": "Alag trade reports Part 1 ke liye sola sau se do hazaar crore ka andaaza deti hain, aur ek shuruaati report aath sau paintees se nau sau. Budget ka number khud ek paheli hai.",
+   "cap": ""
+  },
+  {
+   "id": "s50",
+   "group": "g28",
+   "start": 231.754,
+   "end": 240.52,
+   "text": "Kiraye par kaam karne wale ki kamaai tab tak, jab tak order aata hai. Makaan maalik ki kamaai film ke saath saalon tak chal sakti hai: theatre, OTT, music, aur Part 2.",
+   "cap": ""
+  },
+  {
+   "id": "s51",
+   "group": "g28",
+   "start": 240.26,
+   "end": 244.58,
+   "text": "Par makaan banane ka kharcha pehle dena padta hai. Aur wahi karze ka sawaal wapas laata hai.",
+   "cap": ""
+  },
+  {
+   "id": "s52",
+   "group": "g29",
+   "start": 245.166,
+   "end": 248.548,
+   "text": "Ye daav pehle bhi lag chuka hai. Do hazaar teis mein Adipurush.",
+   "cap": ""
+  },
+  {
+   "id": "s53",
+   "group": "g29",
+   "start": 248.148,
+   "end": 257.568,
+   "text": "Reports ke hisaab se budget paanch se saat sau crore, VFX par online aalochna, makers ne kaam dobara kiya, aur ek trade estimate ke mutabik lagbhag do sau pachchees crore ka ghaata.",
+   "cap": ""
+  },
+  {
+   "id": "s54",
+   "group": "g30",
+   "start": 258.097,
+   "end": 263.362,
+   "text": "Ye kisi film ka mazaak nahi. Bas ye dikhana hai ki is zameen par VFX ka daav kitna jokhim bhara hota hai.",
+   "cap": ""
+  },
+  {
+   "id": "s55",
+   "group": "g31",
+   "start": 263.976,
+   "end": 267.496,
+   "text": "Is baar tech par poora zor. Filmed for IMAX.",
+   "cap": ""
+  },
+  {
+   "id": "s56",
+   "group": "g31",
+   "start": 266.676,
+   "end": 272.516,
+   "text": "Cinematographer ke mutabik, motion capture floor par lagbhag bayaalees infrared cameras, aur Jatayu poori tarah CG.",
+   "cap": ""
+  },
+  {
+   "id": "s57",
+   "group": "g32",
+   "start": 273.165,
+   "end": 281.329,
+   "text": "Trailer kai delay ke baad tees July do hazaar chhabbees ko aaya. Plan tha: Part 1 Diwali do hazaar chhabbees, Part 2 Diwali do hazaar sattaees.",
+   "cap": ""
+  },
+  {
+   "id": "s58",
+   "group": "g32",
+   "start": 280.949,
+   "end": 288.669,
+   "text": "Do hisson mein banane ka faayda: sets, assets aur technology ek baar ban kar dono mein chalte hain. Par risk bhi bada: Part 1 ki kamaai se Part 2 ka bharosa judta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s59",
+   "group": "g33",
+   "start": 289.201,
+   "end": 290.307,
+   "text": "Ab dhyaan se sunna.",
+   "cap": ""
+  },
+  {
+   "id": "s60",
+   "group": "g34",
+   "start": 291.509,
+   "end": 297.95,
+   "text": "Pehla number: pandrah din mein, Sacnilk ke estimate ke mutabik, duniya bhar ka gross, lagbhag pandrah sau saintalis crore.",
+   "cap": ""
+  },
+  {
+   "id": "s61",
+   "group": "g34",
+   "start": 297.31,
+   "end": 304.29,
+   "text": "Doosra: Part 1 ka budget, andaaze se, sola sau se do hazaar crore. Teesra: Prime Focus ka gross karza, lagbhag paanch hazaar crore.",
+   "cap": ""
+  },
+  {
+   "id": "s62",
+   "group": "g35",
+   "start": 304.895,
+   "end": 311.177,
+   "text": "Par gross wo paisa hai, jo ticket par kata. Usmein se tax, theatre ka hissa aur distributor ka hissa nikalta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s63",
+   "group": "g35",
+   "start": 310.877,
+   "end": 318.227,
+   "text": "Producer tak kitna pahunchta hai, ye exact split public nahi. Isliye pandrah sau crore ko kamaai kehna galat hoga. Ye ticket ki keemat hai.",
+   "cap": ""
+  },
+  {
+   "id": "s64",
+   "group": "g36",
+   "start": 318.751,
+   "end": 326.151,
+   "text": "Ab teeno ko saath rakhte hain. Agar budget sola sau se do hazaar crore ke beech hai, to gross ne pandrah din mein budget ke lagbhag barabar ka number chhoo liya.",
+   "cap": ""
+  },
+  {
+   "id": "s65",
+   "group": "g36",
+   "start": 325.791,
+   "end": 331.531,
+   "text": "Par us gross ka sirf ek hissa producer tak jaata hai. Aur karze ka square? Wo abhi bhi sabse bada hai.",
+   "cap": ""
+  },
+  {
+   "id": "s66",
+   "group": "g37",
+   "start": 332.184,
+   "end": 336.368,
+   "text": "Hindi version akela, The Week ke mutabik, lagbhag chhah sau pachaas crore net par pahuncha.",
+   "cap": ""
+  },
+  {
+   "id": "s67",
+   "group": "g38",
+   "start": 336.873,
+   "end": 342.559,
+   "text": "Ab ek aur parat. Finshots ke mutabik Ranbir Kapoor ne Prime Focus mein pandrah crore rupaye khud lagaaye.",
+   "cap": ""
+  },
+  {
+   "id": "s68",
+   "group": "g38",
+   "start": 342.059,
+   "end": 346.859,
+   "text": "Matlab film mein ek aadmi do jagah baitha hai: parde par, aur shareholder ke roop mein.",
+   "cap": ""
+  },
+  {
+   "id": "s69",
+   "group": "g39",
+   "start": 347.393,
+   "end": 354.587,
+   "text": "Do hazaar pachchees ke September mein, Madhusudan Kela aur Utpal Sheth jaise nivesh ne milkar, lagbhag teen dashamlav teen percent hissa kharida.",
+   "cap": ""
+  },
+  {
+   "id": "s70",
+   "group": "g40",
+   "start": 355.129,
+   "end": 362.666,
+   "text": "Share bazaar ne daav ko pehle hi daam mein daal diya: trailer ke mahine mein paintees percent, aur ek saal mein lagbhag attanve percent ki badhat.",
+   "cap": ""
+  },
+  {
+   "id": "s71",
+   "group": "g40",
+   "start": 362.266,
+   "end": 365.786,
+   "text": "Jab ummeedein pehle se daam mein hon, to kabhi kabhi badi safalta bhi kaafi nahi lagti.",
+   "cap": ""
+  },
+  {
+   "id": "s72",
+   "group": "g41",
+   "start": 366.442,
+   "end": 374.646,
+   "text": "Ye mera analysis hai, investment salaah nahi. Ek aalochak ka manna ye bhi hai ki marketing film se zyada studio ko bech rahi hai. Dekhna ye hai ki sach kya nikalta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s73",
+   "group": "g42",
+   "start": 375.266,
+   "end": 381.235,
+   "text": "Unnees sau pachaanbe mein, bank loan se kharide computer. Do hazaar chhabbees mein, ek film jo IMAX ke liye shoot hui.",
+   "cap": ""
+  },
+  {
+   "id": "s74",
+   "group": "g42",
+   "start": 380.795,
+   "end": 385.455,
+   "text": "Daav ka size badla, par sawaal wahi: jab order ruke, tab bhi kya kaarkhaana chalta rahega?",
+   "cap": ""
+  },
+  {
+   "id": "s75",
+   "group": "g43",
+   "start": 386.103,
+   "end": 392.446,
+   "text": "Aur ye kahani sirf ek company ki nahi, ek tareeke ki hai. Jo kaam kiraye par karta hai, wo dheere dheere makaan banane ki taraf badhta hai.",
+   "cap": ""
+  },
+  {
+   "id": "s76",
+   "group": "g43",
+   "start": 392.306,
+   "end": 394.346,
+   "text": "Isme jeet bhi badi hoti hai, aur girna bhi.",
+   "cap": ""
+  },
+  {
+   "id": "s77",
+   "group": "g44",
+   "start": 394.959,
+   "end": 399.506,
+   "text": "Part 2 ke liye teen cheezein dekhna. Ek: company ke results mein film ki kamaai kab aur kitni dikhti hai.",
+   "cap": ""
+  },
+  {
+   "id": "s78",
+   "group": "g44",
+   "start": 399.146,
+   "end": 406.646,
+   "text": "Do: karze ka number kitna ghatta hai. Teen: Hollywood ke orders kitne aate hain. Reports ke hisaab se Part 2 Diwali do hazaar sattaees mein hai.",
+   "cap": ""
+  },
+  {
+   "id": "s79",
+   "group": "g45",
+   "start": 407.321,
+   "end": 412.542,
+   "text": "Agar business ko is tarah dekhna pasand aaya, to nerdlogic dot co ko follow aur subscribe karein.",
+   "cap": ""
+  },
+  {
+   "id": "s80",
+   "group": "g45",
+   "start": 412.342,
+   "end": 415.722,
+   "text": "Aur ye video us dost ko bhejiye, jo gross ko hi kamaai samajhta hai.",
+   "cap": ""
+  }
+ ],
+ "groups": [
+  {
+   "group": "g1",
+   "start": 0.0,
+   "end": 6.903,
+   "words": [
+    [
+     " 15",
+     -0.156,
+     0.304
+    ],
+    [
+     " दिन,",
+     0.304,
+     0.684
+    ],
+    [
+     " 1547",
+     0.764,
+     1.684
+    ],
+    [
+     " करोड",
+     1.684,
+     1.964
+    ],
+    [
+     " से",
+     1.964,
+     2.144
+    ],
+    [
+     " उपर",
+     2.144,
+     2.384
+    ],
+    [
+     " की",
+     2.384,
+     2.504
+    ],
+    [
+     " कमाई",
+     2.504,
+     2.784
+    ],
+    [
+     " अंदाजे",
+     2.784,
+     3.184
+    ],
+    [
+     " से",
+     3.184,
+     3.504
+    ],
+    [
+     " पर",
+     3.504,
+     3.824
+    ],
+    [
+     " इस",
+     3.824,
+     4.004
+    ],
+    [
+     " फिल्म",
+     4.004,
+     4.264
+    ],
+    [
+     " को",
+     4.264,
+     4.384
+    ],
+    [
+     " बनाने",
+     4.384,
+     4.764
+    ],
+    [
+     " वाली",
+     4.764,
+     4.904
+    ],
+    [
+     " कम्पनी",
+     4.904,
+     5.224
+    ],
+    [
+     " पर",
+     5.224,
+     5.584
+    ],
+    [
+     " 5000",
+     5.584,
+     6.004
+    ],
+    [
+     " करोड",
+     6.004,
+     6.404
+    ],
+    [
+     " का",
+     6.404,
+     6.544
+    ],
+    [
+     " कर्जा",
+     6.544,
+     6.864
+    ]
+   ]
+  },
+  {
+   "group": "g2",
+   "start": 7.453,
+   "end": 12.08,
+   "words": [
+    [
+     " ये",
+     7.295,
+     7.675
+    ],
+    [
+     " रामायन",
+     7.675,
+     8.095
+    ],
+    [
+     " पाट",
+     8.095,
+     8.275
+    ],
+    [
+     " वन",
+     8.275,
+     8.475
+    ],
+    [
+     " का",
+     8.475,
+     8.635
+    ],
+    [
+     " हाल",
+     8.635,
+     8.875
+    ],
+    [
+     " है",
+     8.875,
+     9.115
+    ],
+    [
+     " और",
+     9.115,
+     9.475
+    ],
+    [
+     " थेटर",
+     9.475,
+     9.895
+    ],
+    [
+     " की",
+     9.895,
+     10.015
+    ],
+    [
+     " लाइन",
+     10.015,
+     10.215
+    ],
+    [
+     " और",
+     10.215,
+     10.335
+    ],
+    [
+     " बैंक",
+     10.335,
+     10.615
+    ],
+    [
+     " की",
+     10.615,
+     10.755
+    ],
+    [
+     " लाइन",
+     10.755,
+     11.055
+    ],
+    [
+     " एक",
+     11.055,
+     11.295
+    ],
+    [
+     " जैसी",
+     11.295,
+     11.575
+    ],
+    [
+     " नहीं",
+     11.575,
+     11.815
+    ],
+    [
+     " होती।",
+     11.815,
+     12.075
+    ]
+   ]
+  },
+  {
+   "group": "g3",
+   "start": 12.63,
+   "end": 21.609,
+   "words": [
+    [
+     " तो",
+     12.478,
+     12.798
+    ],
+    [
+     " आज",
+     12.798,
+     13.038
+    ],
+    [
+     " फिल्म",
+     13.038,
+     13.338
+    ],
+    [
+     " की",
+     13.338,
+     13.478
+    ],
+    [
+     " नहीं",
+     13.478,
+     13.858
+    ],
+    [
+     " उस",
+     13.858,
+     14.038
+    ],
+    [
+     " कामपनी",
+     14.038,
+     14.378
+    ],
+    [
+     " काहानी",
+     14.378,
+     15.018
+    ],
+    [
+     " एक",
+     15.018,
+     15.298
+    ],
+    [
+     " गेराज,",
+     15.298,
+     15.738
+    ],
+    [
+     " आट",
+     15.798,
+     16.018
+    ],
+    [
+     " हूसकर,",
+     16.018,
+     16.438
+    ],
+    [
+     " एक",
+     16.558,
+     16.678
+    ],
+    [
+     " स्ट्राइक",
+     16.678,
+     17.078
+    ],
+    [
+     " और",
+     17.078,
+     17.238
+    ],
+    [
+     " एक",
+     17.238,
+     17.358
+    ],
+    [
+     " नम्बर",
+     17.358,
+     17.698
+    ],
+    [
+     " जो",
+     17.698,
+     17.798
+    ],
+    [
+     " आखिर",
+     17.798,
+     18.098
+    ],
+    [
+     " में",
+     18.098,
+     18.218
+    ],
+    [
+     " सब",
+     18.218,
+     18.398
+    ],
+    [
+     " बदल",
+     18.398,
+     18.698
+    ],
+    [
+     " देता",
+     18.698,
+     18.958
+    ],
+    [
+     " है",
+     18.958,
+     19.138
+    ],
+    [
+     " सिर्व",
+     19.138,
+     19.518
+    ],
+    [
+     " बिसनेस",
+     19.518,
+     19.878
+    ],
+    [
+     " की",
+     19.878,
+     19.938
+    ],
+    [
+     " बात",
+     19.938,
+     20.138
+    ],
+    [
+     " होगी",
+     20.138,
+     20.458
+    ],
+    [
+     " न",
+     20.458,
+     20.658
+    ],
+    [
+     " आस्ता",
+     20.658,
+     21.058
+    ],
+    [
+     " न",
+     21.058,
+     21.218
+    ],
+    [
+     " एक्टिंग",
+     21.218,
+     21.598
+    ]
+   ]
+  },
+  {
+   "group": "g4",
+   "start": 22.159,
+   "end": 31.168,
+   "words": [
+    [
+     " पहले",
+     22.005,
+     22.425
+    ],
+    [
+     " एक",
+     22.425,
+     22.585
+    ],
+    [
+     " छोटी",
+     22.585,
+     22.905
+    ],
+    [
+     " सी",
+     22.905,
+     23.025
+    ],
+    [
+     " बात,",
+     23.025,
+     23.445
+    ],
+    [
+     " ग्रॉस",
+     23.625,
+     23.885
+    ],
+    [
+     " मतलब",
+     23.885,
+     24.165
+    ],
+    [
+     " टिकेट",
+     24.165,
+     24.485
+    ],
+    [
+     " पर",
+     24.485,
+     24.585
+    ],
+    [
+     " कटा",
+     24.585,
+     24.925
+    ],
+    [
+     " हुआ",
+     24.925,
+     25.125
+    ],
+    [
+     " पूरा",
+     25.125,
+     25.385
+    ],
+    [
+     " पैसा,",
+     25.385,
+     25.845
+    ],
+    [
+     " नेट",
+     26.105,
+     26.285
+    ],
+    [
+     " मतलब",
+     26.285,
+     26.585
+    ],
+    [
+     " तैक्स",
+     26.585,
+     26.845
+    ],
+    [
+     " अटाने",
+     26.845,
+     27.205
+    ],
+    [
+     " के",
+     27.205,
+     27.265
+    ],
+    [
+     " बात",
+     27.265,
+     27.465
+    ],
+    [
+     " का",
+     27.465,
+     27.565
+    ],
+    [
+     " नम्बर,",
+     27.565,
+     27.945
+    ],
+    [
+     " और",
+     28.005,
+     28.105
+    ],
+    [
+     " प्रोडूसर",
+     28.105,
+     28.605
+    ],
+    [
+     " के",
+     28.605,
+     28.685
+    ],
+    [
+     " हात",
+     28.685,
+     28.905
+    ],
+    [
+     " में",
+     28.905,
+     29.025
+    ],
+    [
+     " जो",
+     29.025,
+     29.145
+    ],
+    [
+     " आता",
+     29.145,
+     29.405
+    ],
+    [
+     " है",
+     29.405,
+     29.505
+    ],
+    [
+     " वो",
+     29.505,
+     29.625
+    ],
+    [
+     " दोनों",
+     29.625,
+     29.925
+    ],
+    [
+     " से",
+     29.925,
+     30.045
+    ],
+    [
+     " अलग",
+     30.045,
+     30.245
+    ],
+    [
+     " होता",
+     30.245,
+     30.525
+    ],
+    [
+     " है",
+     30.525,
+     30.665
+    ],
+    [
+     " और",
+     30.665,
+     30.845
+    ],
+    [
+     " कम।",
+     30.845,
+     31.245
+    ]
+   ]
+  },
+  {
+   "group": "g5",
+   "start": 31.718,
+   "end": 40.007,
+   "words": [
+    [
+     " साल",
+     31.55,
+     32.11
+    ],
+    [
+     " नुजिस्सो",
+     32.11,
+     32.53
+    ],
+    [
+     " पचान्वे",
+     32.53,
+     33.05
+    ],
+    [
+     " मुभई",
+     33.05,
+     33.41
+    ],
+    [
+     " एक",
+     33.41,
+     33.63
+    ],
+    [
+     " नुजिस्साल",
+     33.63,
+     34.17
+    ],
+    [
+     " का",
+     34.17,
+     34.27
+    ],
+    [
+     " लड़का",
+     34.27,
+     34.71
+    ],
+    [
+     " नमित",
+     34.71,
+     35.05
+    ],
+    [
+     " मल्होत्रा",
+     35.05,
+     35.53
+    ],
+    [
+     " बैंक",
+     35.53,
+     35.77
+    ],
+    [
+     " से",
+     35.77,
+     35.89
+    ],
+    [
+     " लोन",
+     35.89,
+     36.11
+    ],
+    [
+     " लेता",
+     36.11,
+     36.45
+    ],
+    [
+     " है",
+     36.45,
+     36.61
+    ],
+    [
+     " एक",
+     36.61,
+     36.89
+    ],
+    [
+     " प्रोफाईल",
+     36.89,
+     37.35
+    ],
+    [
+     " के",
+     37.35,
+     37.47
+    ],
+    [
+     " हिसाब",
+     37.47,
+     37.75
+    ],
+    [
+     " से",
+     37.75,
+     37.89
+    ],
+    [
+     " पहली",
+     37.89,
+     38.15
+    ],
+    [
+     " कंपनी",
+     38.15,
+     38.55
+    ],
+    [
+     " वहीं",
+     38.55,
+     38.81
+    ],
+    [
+     " शुरू",
+     38.81,
+     39.07
+    ],
+    [
+     " हुए",
+     39.07,
+     39.19
+    ],
+    [
+     " एक",
+     39.19,
+     39.43
+    ],
+    [
+     " गैराज",
+     39.43,
+     39.83
+    ],
+    [
+     " में",
+     39.83,
+     40.07
+    ]
+   ]
+  },
+  {
+   "group": "g6",
+   "start": 40.557,
+   "end": 47.597,
+   "words": [
+    [
+     " उसी",
+     40.407,
+     40.867
+    ],
+    [
+     " प्रोफाल",
+     40.867,
+     41.307
+    ],
+    [
+     " के",
+     41.307,
+     41.407
+    ],
+    [
+     " मुताबे",
+     41.407,
+     41.847
+    ],
+    [
+     " कि",
+     41.847,
+     41.967
+    ],
+    [
+     " सफर",
+     41.967,
+     42.327
+    ],
+    [
+     " में",
+     42.327,
+     42.587
+    ],
+    [
+     " बाड,",
+     42.587,
+     42.907
+    ],
+    [
+     " आग",
+     42.907,
+     43.147
+    ],
+    [
+     " और",
+     43.147,
+     43.207
+    ],
+    [
+     " मंदी",
+     43.207,
+     43.487
+    ],
+    [
+     " तीनो",
+     43.487,
+     43.747
+    ],
+    [
+     " आये",
+     43.747,
+     43.987
+    ],
+    [
+     " और",
+     43.987,
+     44.267
+    ],
+    [
+     " ये",
+     44.267,
+     44.427
+    ],
+    [
+     " बाद",
+     44.427,
+     44.667
+    ],
+    [
+     " बार",
+     44.667,
+     44.907
+    ],
+    [
+     " बार",
+     44.907,
+     45.067
+    ],
+    [
+     " लोटेगी",
+     45.067,
+     45.567
+    ],
+    [
+     " ये",
+     45.567,
+     45.847
+    ],
+    [
+     " कारोबार",
+     45.847,
+     46.267
+    ],
+    [
+     " कभी",
+     46.267,
+     46.507
+    ],
+    [
+     " सीधी",
+     46.507,
+     46.847
+    ],
+    [
+     " लाइन",
+     46.847,
+     46.987
+    ],
+    [
+     " में",
+     46.987,
+     47.087
+    ],
+    [
+     " नहीं",
+     47.087,
+     47.247
+    ],
+    [
+     " चलता",
+     47.247,
+     47.527
+    ]
+   ]
+  },
+  {
+   "group": "g7",
+   "start": 48.147,
+   "end": 55.222,
+   "words": [
+    [
+     " 2008",
+     47.983,
+     48.743
+    ],
+    [
+     " मंदी",
+     48.743,
+     49.123
+    ],
+    [
+     " आई",
+     49.123,
+     49.423
+    ],
+    [
+     " और",
+     49.423,
+     49.583
+    ],
+    [
+     " फिल्म",
+     49.583,
+     49.883
+    ],
+    [
+     " इंड़स्ट्री",
+     49.883,
+     50.223
+    ],
+    [
+     " में",
+     50.223,
+     50.403
+    ],
+    [
+     " स्ट्राइक",
+     50.403,
+     50.943
+    ],
+    [
+     " कंपनी",
+     50.943,
+     51.423
+    ],
+    [
+     " बची",
+     51.423,
+     51.683
+    ],
+    [
+     " 3D",
+     51.683,
+     52.043
+    ],
+    [
+     " कंवर्जन",
+     52.043,
+     52.543
+    ],
+    [
+     " के",
+     52.543,
+     52.643
+    ],
+    [
+     " काम",
+     52.643,
+     52.883
+    ],
+    [
+     " से",
+     52.883,
+     53.123
+    ],
+    [
+     " पूरानी",
+     53.123,
+     53.563
+    ],
+    [
+     " और",
+     53.563,
+     53.663
+    ],
+    [
+     " नहीं",
+     53.663,
+     53.843
+    ],
+    [
+     " फिल्मों",
+     53.843,
+     54.203
+    ],
+    [
+     " को",
+     54.203,
+     54.303
+    ],
+    [
+     " 3D",
+     54.303,
+     54.643
+    ],
+    [
+     " में",
+     54.643,
+     54.763
+    ],
+    [
+     " बदलना",
+     54.763,
+     55.183
+    ]
+   ]
+  },
+  {
+   "group": "g8",
+   "start": 55.772,
+   "end": 64.727,
+   "words": [
+    [
+     " 3D",
+     55.62,
+     56.26
+    ],
+    [
+     " Conversion",
+     56.26,
+     56.6
+    ],
+    [
+     " मतलब",
+     56.6,
+     57.04
+    ],
+    [
+     " एक",
+     57.04,
+     57.3
+    ],
+    [
+     " नौर्मल",
+     57.3,
+     57.68
+    ],
+    [
+     " फिल्म",
+     57.68,
+     57.9
+    ],
+    [
+     " के",
+     57.9,
+     58.02
+    ],
+    [
+     " हर",
+     58.02,
+     58.22
+    ],
+    [
+     " फ्रेम",
+     58.22,
+     58.46
+    ],
+    [
+     " में",
+     58.46,
+     58.6
+    ],
+    [
+     " ड़ेप्थ",
+     58.6,
+     58.86
+    ],
+    [
+     " मनाना",
+     58.86,
+     59.42
+    ],
+    [
+     " ताकि",
+     59.42,
+     59.74
+    ],
+    [
+     " वो",
+     59.74,
+     59.88
+    ],
+    [
+     " 3D",
+     59.88,
+     60.26
+    ],
+    [
+     " स्क्रीन",
+     60.26,
+     60.54
+    ],
+    [
+     " पर",
+     60.54,
+     60.68
+    ],
+    [
+     " चले",
+     60.68,
+     60.96
+    ],
+    [
+     " पहला",
+     60.96,
+     61.66
+    ],
+    [
+     " सबक,",
+     61.66,
+     61.98
+    ],
+    [
+     " जब",
+     62.16,
+     62.24
+    ],
+    [
+     " सब",
+     62.24,
+     62.5
+    ],
+    [
+     " रुग",
+     62.5,
+     62.74
+    ],
+    [
+     " जाये",
+     62.74,
+     63.06
+    ],
+    [
+     " तब",
+     63.06,
+     63.24
+    ],
+    [
+     " भी",
+     63.24,
+     63.36
+    ],
+    [
+     " एक",
+     63.36,
+     63.54
+    ],
+    [
+     " काम",
+     63.54,
+     63.76
+    ],
+    [
+     " चलता",
+     63.76,
+     64.08
+    ],
+    [
+     " रहना",
+     64.08,
+     64.3
+    ],
+    [
+     " चाहिए",
+     64.3,
+     64.64
+    ]
+   ]
+  },
+  {
+   "group": "g9",
+   "start": 65.277,
+   "end": 74.294,
+   "words": [
+    [
+     " 2014",
+     65.112,
+     66.052
+    ],
+    [
+     " प्राइम",
+     66.052,
+     66.592
+    ],
+    [
+     " फोकस",
+     66.592,
+     66.912
+    ],
+    [
+     " का",
+     66.912,
+     67.012
+    ],
+    [
+     " लंदन",
+     67.012,
+     67.432
+    ],
+    [
+     " की",
+     67.432,
+     67.592
+    ],
+    [
+     " एक",
+     67.592,
+     67.912
+    ],
+    [
+     " वी",
+     67.912,
+     68.052
+    ],
+    [
+     " एफ़ेक्स",
+     68.052,
+     68.472
+    ],
+    [
+     " कम्पनी",
+     68.472,
+     68.832
+    ],
+    [
+     " डबल",
+     68.832,
+     69.172
+    ],
+    [
+     " नगेटिव",
+     69.172,
+     69.612
+    ],
+    [
+     " से",
+     69.612,
+     69.772
+    ],
+    [
+     " मर्जर",
+     69.772,
+     70.192
+    ],
+    [
+     " नाम",
+     70.192,
+     70.532
+    ],
+    [
+     " हुआ",
+     70.532,
+     70.752
+    ],
+    [
+     " दीनेक।",
+     70.752,
+     71.252
+    ],
+    [
+     " स्टाफ",
+     71.252,
+     71.512
+    ],
+    [
+     " 700",
+     71.512,
+     71.792
+    ],
+    [
+     " से",
+     71.792,
+     71.972
+    ],
+    [
+     " बढ़कर",
+     71.972,
+     72.392
+    ],
+    [
+     " प्रोफाइल",
+     72.392,
+     72.832
+    ],
+    [
+     " के",
+     72.832,
+     72.932
+    ],
+    [
+     " मुताबिक",
+     72.932,
+     73.352
+    ],
+    [
+     " लगभभग",
+     73.352,
+     73.832
+    ],
+    [
+     " 9",
+     73.832,
+     73.972
+    ],
+    [
+     ",000.",
+     73.972,
+     74.232
+    ]
+   ]
+  },
+  {
+   "group": "g10",
+   "start": 74.844,
+   "end": 86.019,
+   "words": [
+    [
+     " फिर",
+     74.665,
+     75.045
+    ],
+    [
+     " आसकर",
+     75.045,
+     75.465
+    ],
+    [
+     " इंसेपशन,",
+     75.465,
+     76.305
+    ],
+    [
+     " इंटरस",
+     76.445,
+     76.785
+    ],
+    [
+     " टेलर,",
+     76.785,
+     77.045
+    ],
+    [
+     " एक्स",
+     77.205,
+     77.465
+    ],
+    [
+     " माकिना,",
+     77.465,
+     77.905
+    ],
+    [
+     " ब्लेड",
+     77.985,
+     78.265
+    ],
+    [
+     " रौनर,",
+     78.265,
+     78.505
+    ],
+    [
+     " फरस्त",
+     78.545,
+     78.905
+    ],
+    [
+     " मैं,",
+     78.905,
+     79.085
+    ],
+    [
+     " टेनेट",
+     79.105,
+     79.465
+    ],
+    [
+     " दून,",
+     79.465,
+     79.845
+    ],
+    [
+     " कुल",
+     79.945,
+     80.165
+    ],
+    [
+     " आथ",
+     80.165,
+     80.365
+    ],
+    [
+     " आसकर",
+     80.365,
+     80.865
+    ],
+    [
+     " इंटरस",
+     80.865,
+     81.405
+    ],
+    [
+     " टेलर",
+     81.405,
+     81.685
+    ],
+    [
+     " के",
+     81.685,
+     81.805
+    ],
+    [
+     " लिए",
+     81.805,
+     82.005
+    ],
+    [
+     " तो",
+     82.005,
+     82.165
+    ],
+    [
+     " एक",
+     82.165,
+     82.405
+    ],
+    [
+     " असली",
+     82.405,
+     82.745
+    ],
+    [
+     " ब्लाक",
+     82.745,
+     83.065
+    ],
+    [
+     " होल",
+     83.065,
+     83.245
+    ],
+    [
+     " का",
+     83.245,
+     83.385
+    ],
+    [
+     " सॉफ्ट्वेर",
+     83.385,
+     83.865
+    ],
+    [
+     " बना",
+     83.865,
+     84.185
+    ],
+    [
+     " और",
+     84.185,
+     84.445
+    ],
+    [
+     " उसके",
+     84.445,
+     84.725
+    ],
+    [
+     " दो",
+     84.725,
+     84.885
+    ],
+    [
+     " रिसर्च",
+     84.885,
+     85.245
+    ],
+    [
+     " पेपर",
+     85.245,
+     85.525
+    ],
+    [
+     " भी",
+     85.525,
+     85.645
+    ],
+    [
+     " चपे",
+     85.645,
+     85.905
+    ]
+   ]
+  },
+  {
+   "group": "g11",
+   "start": 86.569,
+   "end": 95.457,
+   "words": [
+    [
+     " सिर्फ",
+     86.437,
+     87.057
+    ],
+    [
+     " द्यून",
+     87.057,
+     87.457
+    ],
+    [
+     " पार्ट",
+     87.457,
+     87.717
+    ],
+    [
+     " टू",
+     87.717,
+     87.837
+    ],
+    [
+     " में",
+     87.837,
+     88.017
+    ],
+    [
+     " लगभग",
+     88.017,
+     88.417
+    ],
+    [
+     " एक",
+     88.417,
+     88.597
+    ],
+    [
+     " हजार",
+     88.597,
+     88.977
+    ],
+    [
+     " वी",
+     88.977,
+     89.117
+    ],
+    [
+     " एफक्स",
+     89.117,
+     89.477
+    ],
+    [
+     " शॉर्ट्स",
+     89.477,
+     90.037
+    ],
+    [
+     " ये",
+     90.037,
+     90.197
+    ],
+    [
+     " कंपनी",
+     90.197,
+     90.597
+    ],
+    [
+     " का",
+     90.597,
+     90.717
+    ],
+    [
+     " अपना",
+     90.717,
+     90.957
+    ],
+    [
+     " बयान",
+     90.957,
+     91.297
+    ],
+    [
+     " है",
+     91.297,
+     91.497
+    ],
+    [
+     " इंटरस्टेलर",
+     91.497,
+     92.277
+    ],
+    [
+     " के",
+     92.277,
+     92.397
+    ],
+    [
+     " कुछ",
+     92.397,
+     92.577
+    ],
+    [
+     " फ्रेम",
+     92.577,
+     92.877
+    ],
+    [
+     " रेंडर",
+     92.877,
+     93.177
+    ],
+    [
+     " होने",
+     93.177,
+     93.437
+    ],
+    [
+     " में",
+     93.437,
+     93.537
+    ],
+    [
+     " रिपोट्स",
+     93.537,
+     93.937
+    ],
+    [
+     " के",
+     93.937,
+     94.017
+    ],
+    [
+     " हिसाब",
+     94.017,
+     94.337
+    ],
+    [
+     " से",
+     94.337,
+     94.477
+    ],
+    [
+     " सो",
+     94.477,
+     94.617
+    ],
+    [
+     " घंटे",
+     94.617,
+     94.977
+    ],
+    [
+     " तक",
+     94.977,
+     95.137
+    ],
+    [
+     " लगे",
+     95.137,
+     95.357
+    ]
+   ]
+  },
+  {
+   "group": "g12",
+   "start": 96.007,
+   "end": 102.394,
+   "words": [
+    [
+     " इसलिए",
+     95.849,
+     96.429
+    ],
+    [
+     " असकर",
+     96.429,
+     96.749
+    ],
+    [
+     " सिर्फ",
+     96.749,
+     97.009
+    ],
+    [
+     " अवर्ड",
+     97.009,
+     97.249
+    ],
+    [
+     " नहीं",
+     97.249,
+     97.449
+    ],
+    [
+     " होता।",
+     97.449,
+     98.009
+    ],
+    [
+     " वो",
+     98.009,
+     98.109
+    ],
+    [
+     " भरोसे",
+     98.109,
+     98.549
+    ],
+    [
+     " का",
+     98.549,
+     98.669
+    ],
+    [
+     " सर्टिफिकेट",
+     98.669,
+     99.269
+    ],
+    [
+     " है,",
+     99.269,
+     99.409
+    ],
+    [
+     " जो",
+     99.549,
+     99.669
+    ],
+    [
+     " अगले",
+     99.669,
+     99.989
+    ],
+    [
+     " अदर",
+     99.989,
+     100.229
+    ],
+    [
+     " में",
+     100.229,
+     100.369
+    ],
+    [
+     " बदल",
+     100.369,
+     100.629
+    ],
+    [
+     " जाता",
+     100.629,
+     100.969
+    ],
+    [
+     " है।",
+     100.969,
+     101.209
+    ],
+    [
+     " यह",
+     101.209,
+     101.369
+    ],
+    [
+     " हमारा",
+     101.369,
+     101.729
+    ],
+    [
+     " इनालिसिस",
+     101.729,
+     102.209
+    ],
+    [
+     " है।",
+     102.209,
+     102.449
+    ]
+   ]
+  },
+  {
+   "group": "g13",
+   "start": 102.944,
+   "end": 107.351,
+   "words": [
+    [
+     " पर",
+     102.787,
+     103.147
+    ],
+    [
+     " VFX",
+     103.147,
+     103.667
+    ],
+    [
+     " एक",
+     103.667,
+     103.887
+    ],
+    [
+     " अजीब",
+     103.887,
+     104.167
+    ],
+    [
+     " बिसनेस",
+     104.167,
+     104.527
+    ],
+    [
+     " है,",
+     104.527,
+     104.767
+    ],
+    [
+     " यह",
+     104.927,
+     105.087
+    ],
+    [
+     " कार्खाना",
+     105.087,
+     105.547
+    ],
+    [
+     " है",
+     105.547,
+     105.627
+    ],
+    [
+     " जहां",
+     105.627,
+     105.927
+    ],
+    [
+     " सबसे",
+     105.927,
+     106.307
+    ],
+    [
+     " बढ़ा",
+     106.307,
+     106.527
+    ],
+    [
+     " खरचा",
+     106.527,
+     106.807
+    ],
+    [
+     " इंसान",
+     106.807,
+     107.187
+    ],
+    [
+     " है।",
+     107.187,
+     107.367
+    ]
+   ]
+  },
+  {
+   "group": "g14",
+   "start": 107.901,
+   "end": 115.266,
+   "words": [
+    [
+     " पिछले",
+     107.75,
+     108.33
+    ],
+    [
+     " साल",
+     108.33,
+     108.55
+    ],
+    [
+     " का",
+     108.55,
+     108.67
+    ],
+    [
+     " स्टाफ",
+     108.67,
+     108.99
+    ],
+    [
+     " का",
+     108.99,
+     109.11
+    ],
+    [
+     " खर्चा",
+     109.11,
+     109.57
+    ],
+    [
+     " लगभभग",
+     109.57,
+     110.21
+    ],
+    [
+     " 2885",
+     110.21,
+     111.25
+    ],
+    [
+     " करोड",
+     111.25,
+     111.67
+    ],
+    [
+     " उपर",
+     111.67,
+     112.11
+    ],
+    [
+     " से",
+     112.11,
+     112.21
+    ],
+    [
+     " लगभभभ",
+     112.21,
+     112.65
+    ],
+    [
+     " 558",
+     112.65,
+     113.45
+    ],
+    [
+     " करोड",
+     113.45,
+     113.75
+    ],
+    [
+     " का",
+     113.75,
+     113.85
+    ],
+    [
+     " इंट्रेस्ट",
+     113.85,
+     114.23
+    ],
+    [
+     " रेपोट्स",
+     114.23,
+     114.61
+    ],
+    [
+     " के",
+     114.61,
+     114.73
+    ],
+    [
+     " हिसाब",
+     114.73,
+     115.05
+    ],
+    [
+     " से",
+     115.05,
+     115.19
+    ]
+   ]
+  },
+  {
+   "group": "g15",
+   "start": 115.816,
+   "end": 123.599,
+   "words": [
+    [
+     " एक",
+     115.674,
+     116.054
+    ],
+    [
+     " चोटा",
+     116.054,
+     116.394
+    ],
+    [
+     " उदाहरण,",
+     116.394,
+     116.974
+    ],
+    [
+     " मान",
+     117.094,
+     117.334
+    ],
+    [
+     " लिजी",
+     117.334,
+     117.594
+    ],
+    [
+     " 100",
+     117.594,
+     117.794
+    ],
+    [
+     " रूपे",
+     117.794,
+     118.094
+    ],
+    [
+     " की",
+     118.094,
+     118.194
+    ],
+    [
+     " कमाई",
+     118.194,
+     118.514
+    ],
+    [
+     " आई,",
+     118.514,
+     118.834
+    ],
+    [
+     " उसमेसे",
+     118.974,
+     119.414
+    ],
+    [
+     " 73",
+     119.414,
+     119.754
+    ],
+    [
+     " रूपे",
+     119.754,
+     120.074
+    ],
+    [
+     " स्टाफ",
+     120.074,
+     120.374
+    ],
+    [
+     " की",
+     120.374,
+     120.494
+    ],
+    [
+     " सैलरी",
+     120.494,
+     120.894
+    ],
+    [
+     " में",
+     120.894,
+     121.034
+    ],
+    [
+     " चले",
+     121.034,
+     121.334
+    ],
+    [
+     " गए",
+     121.334,
+     121.534
+    ],
+    [
+     " और",
+     121.534,
+     121.834
+    ],
+    [
+     " कुछ",
+     121.834,
+     122.054
+    ],
+    [
+     " इंट्रेस्ट",
+     122.054,
+     122.494
+    ],
+    [
+     " में",
+     122.494,
+     122.614
+    ],
+    [
+     " बचता",
+     122.614,
+     122.994
+    ],
+    [
+     " है",
+     122.994,
+     123.054
+    ],
+    [
+     " बहुत",
+     123.054,
+     123.394
+    ],
+    [
+     " कम।",
+     123.394,
+     123.594
+    ]
+   ]
+  },
+  {
+   "group": "g16",
+   "start": 124.149,
+   "end": 131.801,
+   "words": [
+    [
+     " अब",
+     123.995,
+     124.375
+    ],
+    [
+     " मान",
+     124.375,
+     124.635
+    ],
+    [
+     " लिजी",
+     124.635,
+     124.875
+    ],
+    [
+     " आदे",
+     124.875,
+     125.375
+    ],
+    [
+     " हो",
+     125.375,
+     125.495
+    ],
+    [
+     " गए",
+     125.495,
+     125.615
+    ],
+    [
+     " पर",
+     125.615,
+     125.775
+    ],
+    [
+     " सैलरी",
+     125.775,
+     126.195
+    ],
+    [
+     " वही",
+     126.195,
+     126.395
+    ],
+    [
+     " रही",
+     126.395,
+     126.675
+    ],
+    [
+     " तब",
+     126.675,
+     127.155
+    ],
+    [
+     " बचना",
+     127.155,
+     127.575
+    ],
+    [
+     " दूर",
+     127.575,
+     127.835
+    ],
+    [
+     " कई",
+     127.835,
+     128.055
+    ],
+    [
+     " बार",
+     128.055,
+     128.235
+    ],
+    [
+     " घाता",
+     128.235,
+     128.595
+    ],
+    [
+     " हो",
+     128.595,
+     128.735
+    ],
+    [
+     " जाता",
+     128.735,
+     129.035
+    ],
+    [
+     " है",
+     129.035,
+     129.075
+    ],
+    [
+     " ये",
+     129.075,
+     129.275
+    ],
+    [
+     " सिर्व",
+     129.275,
+     129.475
+    ],
+    [
+     " सम्जाने",
+     129.475,
+     130.015
+    ],
+    [
+     " के",
+     130.015,
+     130.115
+    ],
+    [
+     " लिए",
+     130.115,
+     130.235
+    ],
+    [
+     " है",
+     130.235,
+     130.375
+    ],
+    [
+     " असली",
+     130.375,
+     130.735
+    ],
+    [
+     " कंपनी",
+     130.735,
+     131.115
+    ],
+    [
+     " के",
+     131.115,
+     131.215
+    ],
+    [
+     " नमबर",
+     131.215,
+     131.515
+    ],
+    [
+     " नहीं",
+     131.515,
+     131.775
+    ]
+   ]
+  },
+  {
+   "group": "g17",
+   "start": 132.351,
+   "end": 144.725,
+   "words": [
+    [
+     " जब",
+     132.19,
+     132.61
+    ],
+    [
+     " order",
+     132.61,
+     132.87
+    ],
+    [
+     " आते",
+     132.87,
+     133.17
+    ],
+    [
+     " हैं",
+     133.17,
+     133.39
+    ],
+    [
+     " तो",
+     133.39,
+     133.53
+    ],
+    [
+     " चारो",
+     133.53,
+     133.87
+    ],
+    [
+     " वजन",
+     133.87,
+     134.13
+    ],
+    [
+     " समपल",
+     134.13,
+     134.45
+    ],
+    [
+     " जाते",
+     134.45,
+     134.77
+    ],
+    [
+     " हैं",
+     134.77,
+     135.19
+    ],
+    [
+     " जब",
+     135.19,
+     135.33
+    ],
+    [
+     " order",
+     135.33,
+     135.55
+    ],
+    [
+     " रुग",
+     135.55,
+     135.79
+    ],
+    [
+     " जाए",
+     135.79,
+     136.13
+    ],
+    [
+     " भीम",
+     136.13,
+     136.51
+    ],
+    [
+     " जुकता",
+     136.51,
+     136.87
+    ],
+    [
+     " है",
+     136.87,
+     137.03
+    ],
+    [
+     " 2022",
+     137.03,
+     137.71
+    ],
+    [
+     " में",
+     137.71,
+     137.99
+    ],
+    [
+     " एक",
+     137.99,
+     138.17
+    ],
+    [
+     " SPAC",
+     138.17,
+     138.45
+    ],
+    [
+     " के",
+     138.45,
+     138.57
+    ],
+    [
+     " रास्ते",
+     138.57,
+     138.97
+    ],
+    [
+     " लगभग",
+     138.97,
+     139.49
+    ],
+    [
+     " एक",
+     139.49,
+     139.67
+    ],
+    [
+     " दश्मलव",
+     139.67,
+     140.09
+    ],
+    [
+     " 7",
+     140.09,
+     140.53
+    ],
+    [
+     " बिल्यन",
+     140.53,
+     140.87
+    ],
+    [
+     " डॉलर",
+     140.87,
+     141.17
+    ],
+    [
+     " पर",
+     141.17,
+     141.31
+    ],
+    [
+     " लिस्टिंग",
+     141.31,
+     141.65
+    ],
+    [
+     " का",
+     141.65,
+     141.77
+    ],
+    [
+     " प्लान",
+     141.77,
+     141.99
+    ],
+    [
+     " बना",
+     141.99,
+     142.35
+    ],
+    [
+     " और",
+     142.35,
+     142.61
+    ],
+    [
+     " market",
+     142.61,
+     142.95
+    ],
+    [
+     " की",
+     142.95,
+     143.15
+    ],
+    [
+     " हालत",
+     143.15,
+     143.43
+    ],
+    [
+     " देख",
+     143.43,
+     143.63
+    ],
+    [
+     " कर",
+     143.63,
+     143.83
+    ],
+    [
+     " वापस",
+     143.83,
+     144.15
+    ],
+    [
+     " ले",
+     144.15,
+     144.31
+    ],
+    [
+     " लिया",
+     144.31,
+     144.51
+    ],
+    [
+     " गया",
+     144.51,
+     144.67
+    ]
+   ]
+  },
+  {
+   "group": "g18",
+   "start": 145.275,
+   "end": 149.414,
+   "words": [
+    [
+     " असली",
+     145.116,
+     145.696
+    ],
+    [
+     " सबक।",
+     145.696,
+     146.136
+    ],
+    [
+     " जहां",
+     146.136,
+     146.296
+    ],
+    [
+     " खरचा",
+     146.296,
+     146.636
+    ],
+    [
+     " पहले",
+     146.636,
+     146.936
+    ],
+    [
+     " से",
+     146.936,
+     147.076
+    ],
+    [
+     " फिक्स",
+     147.076,
+     147.456
+    ],
+    [
+     " हो,",
+     147.456,
+     147.576
+    ],
+    [
+     " वहां",
+     147.656,
+     147.816
+    ],
+    [
+     " और्डर",
+     147.816,
+     148.076
+    ],
+    [
+     " का",
+     148.076,
+     148.156
+    ],
+    [
+     " रुकना",
+     148.156,
+     148.456
+    ],
+    [
+     " सबसे",
+     148.456,
+     148.736
+    ],
+    [
+     " बड़ा",
+     148.736,
+     148.936
+    ],
+    [
+     " खतरा",
+     148.936,
+     149.216
+    ],
+    [
+     " है।",
+     149.216,
+     149.436
+    ]
+   ]
+  },
+  {
+   "group": "g19",
+   "start": 149.964,
+   "end": 156.785,
+   "words": [
+    [
+     " फिर",
+     149.808,
+     150.168
+    ],
+    [
+     " आई",
+     150.168,
+     150.408
+    ],
+    [
+     " 2023",
+     150.408,
+     151.028
+    ],
+    [
+     " और",
+     151.028,
+     151.428
+    ],
+    [
+     " 2024",
+     151.428,
+     151.748
+    ],
+    [
+     " की",
+     151.748,
+     151.968
+    ],
+    [
+     " Hollywood",
+     151.968,
+     152.388
+    ],
+    [
+     " Strike",
+     152.388,
+     152.768
+    ],
+    [
+     " राइटर्स",
+     152.768,
+     153.508
+    ],
+    [
+     " और",
+     153.508,
+     153.608
+    ],
+    [
+     " एक्टर्स",
+     153.608,
+     154.128
+    ],
+    [
+     " दोनों",
+     154.128,
+     154.488
+    ],
+    [
+     " शूटिंग",
+     154.488,
+     154.808
+    ],
+    [
+     " रुकी",
+     154.808,
+     155.208
+    ],
+    [
+     " तो",
+     155.208,
+     155.468
+    ],
+    [
+     " पोस्ट",
+     155.468,
+     155.848
+    ],
+    [
+     " प्रोडक्षण",
+     155.848,
+     156.208
+    ],
+    [
+     " भी",
+     156.208,
+     156.328
+    ],
+    [
+     " रुग",
+     156.328,
+     156.568
+    ],
+    [
+     " गया",
+     156.568,
+     156.748
+    ]
+   ]
+  },
+  {
+   "group": "g20",
+   "start": 157.335,
+   "end": 166.124,
+   "words": [
+    [
+     " रेवेन्यू",
+     157.18,
+     157.84
+    ],
+    [
+     " लगभाग",
+     157.84,
+     158.26
+    ],
+    [
+     " 4",
+     158.26,
+     158.62
+    ],
+    [
+     ",600",
+     158.62,
+     159.06
+    ],
+    [
+     " करोड",
+     159.06,
+     159.38
+    ],
+    [
+     " से",
+     159.38,
+     159.54
+    ],
+    [
+     " गिरकर",
+     159.54,
+     159.96
+    ],
+    [
+     " 3",
+     159.96,
+     160.32
+    ],
+    [
+     ",950",
+     160.32,
+     161.14
+    ],
+    [
+     " के",
+     161.14,
+     161.32
+    ],
+    [
+     " आस्पास",
+     161.32,
+     161.72
+    ],
+    [
+     " आया",
+     161.72,
+     162.14
+    ],
+    [
+     " और",
+     162.14,
+     162.42
+    ],
+    [
+     " घाटा",
+     162.42,
+     162.84
+    ],
+    [
+     " अलग",
+     162.84,
+     163.1
+    ],
+    [
+     "-लग",
+     163.1,
+     163.24
+    ],
+    [
+     " रेपोट्स",
+     163.24,
+     163.64
+    ],
+    [
+     " के",
+     163.64,
+     163.72
+    ],
+    [
+     " हिसाब",
+     163.72,
+     164.02
+    ],
+    [
+     " से",
+     164.02,
+     164.16
+    ],
+    [
+     " 450",
+     164.16,
+     164.7
+    ],
+    [
+     " से",
+     164.7,
+     164.98
+    ],
+    [
+     " 500",
+     164.98,
+     165.34
+    ],
+    [
+     " करोड",
+     165.34,
+     165.64
+    ],
+    [
+     " के",
+     165.64,
+     165.78
+    ],
+    [
+     " भीच",
+     165.78,
+     166.08
+    ]
+   ]
+  },
+  {
+   "group": "g21",
+   "start": 166.674,
+   "end": 172.281,
+   "words": [
+    [
+     " और",
+     166.518,
+     166.978
+    ],
+    [
+     " तिस",
+     166.978,
+     167.158
+    ],
+    [
+     " बेंज",
+     167.158,
+     167.438
+    ],
+    [
+     " पर",
+     167.438,
+     167.718
+    ],
+    [
+     " सॉफ्ट्वेर",
+     167.718,
+     168.238
+    ],
+    [
+     " के",
+     168.238,
+     168.338
+    ],
+    [
+     " लाइसेन्स",
+     168.338,
+     168.758
+    ],
+    [
+     " चालू",
+     168.758,
+     169.078
+    ],
+    [
+     " स्टूडियो",
+     169.078,
+     169.558
+    ],
+    [
+     " का",
+     169.558,
+     169.658
+    ],
+    [
+     " किराया",
+     169.658,
+     170.038
+    ],
+    [
+     " चालू",
+     170.038,
+     170.458
+    ],
+    [
+     " कार्खाना",
+     170.458,
+     170.978
+    ],
+    [
+     " खाली",
+     170.978,
+     171.258
+    ],
+    [
+     " पर",
+     171.258,
+     171.398
+    ],
+    [
+     " मीटर",
+     171.398,
+     171.698
+    ],
+    [
+     " चलता",
+     171.698,
+     171.998
+    ],
+    [
+     " रहा",
+     171.998,
+     172.198
+    ]
+   ]
+  },
+  {
+   "group": "g22",
+   "start": 172.831,
+   "end": 184.713,
+   "words": [
+    [
+     " फिर",
+     172.65,
+     173.07
+    ],
+    [
+     " 2025",
+     173.07,
+     173.65
+    ],
+    [
+     " में",
+     173.65,
+     173.97
+    ],
+    [
+     " Hollywood",
+     173.97,
+     174.35
+    ],
+    [
+     " का",
+     174.35,
+     174.59
+    ],
+    [
+     " pipeline",
+     174.59,
+     174.97
+    ],
+    [
+     " दोबारा",
+     174.97,
+     175.43
+    ],
+    [
+     " खुला।",
+     175.43,
+     175.89
+    ],
+    [
+     " FinShots",
+     175.89,
+     176.35
+    ],
+    [
+     " के",
+     176.35,
+     176.49
+    ],
+    [
+     " इसाप",
+     176.49,
+     176.81
+    ],
+    [
+     " से",
+     176.81,
+     176.99
+    ],
+    [
+     " पहली",
+     176.99,
+     177.41
+    ],
+    [
+     " तिमाही",
+     177.41,
+     177.81
+    ],
+    [
+     " में",
+     177.81,
+     178.01
+    ],
+    [
+     " revenue",
+     178.01,
+     178.35
+    ],
+    [
+     " 23",
+     178.35,
+     178.67
+    ],
+    [
+     "%",
+     178.67,
+     179.05
+    ],
+    [
+     " बढ़़कर",
+     179.05,
+     179.49
+    ],
+    [
+     " लगभभग",
+     179.49,
+     179.95
+    ],
+    [
+     " 976",
+     179.95,
+     180.59
+    ],
+    [
+     " करोड",
+     180.59,
+     180.81
+    ],
+    [
+     " हुआ।",
+     180.81,
+     181.51
+    ],
+    [
+     " पिछले",
+     181.51,
+     181.87
+    ],
+    [
+     " साल",
+     181.87,
+     182.07
+    ],
+    [
+     " के",
+     182.07,
+     182.17
+    ],
+    [
+     " घाते",
+     182.17,
+     182.51
+    ],
+    [
+     " की",
+     182.51,
+     182.59
+    ],
+    [
+     " जगा",
+     182.59,
+     182.83
+    ],
+    [
+     " लगभभग",
+     182.83,
+     183.19
+    ],
+    [
+     " 110",
+     183.19,
+     183.57
+    ],
+    [
+     " करोड",
+     183.57,
+     183.93
+    ],
+    [
+     " का",
+     183.93,
+     184.07
+    ],
+    [
+     " मुनाफा",
+     184.07,
+     184.43
+    ],
+    [
+     " आया।",
+     184.43,
+     184.75
+    ]
+   ]
+  },
+  {
+   "group": "g23",
+   "start": 185.263,
+   "end": 191.385,
+   "words": [
+    [
+     " पुरे",
+     185.105,
+     185.565
+    ],
+    [
+     " साल",
+     185.565,
+     185.765
+    ],
+    [
+     " में",
+     185.765,
+     185.905
+    ],
+    [
+     " कम्पनी",
+     185.905,
+     186.225
+    ],
+    [
+     " ने",
+     186.225,
+     186.365
+    ],
+    [
+     " लगबक",
+     186.365,
+     186.725
+    ],
+    [
+     " 301",
+     186.725,
+     187.245
+    ],
+    [
+     " करोड",
+     187.245,
+     187.485
+    ],
+    [
+     " का",
+     187.485,
+     187.625
+    ],
+    [
+     " मुनाफा",
+     187.625,
+     187.985
+    ],
+    [
+     " दिखाया",
+     187.985,
+     188.525
+    ],
+    [
+     " वही",
+     188.525,
+     188.845
+    ],
+    [
+     " बैंज",
+     188.845,
+     189.105
+    ],
+    [
+     " जो",
+     189.105,
+     189.245
+    ],
+    [
+     " पहले",
+     189.245,
+     189.505
+    ],
+    [
+     " धकेल",
+     189.505,
+     189.905
+    ],
+    [
+     " रहे",
+     189.905,
+     190.065
+    ],
+    [
+     " थे",
+     190.065,
+     190.225
+    ],
+    [
+     " अब",
+     190.225,
+     190.385
+    ],
+    [
+     " मार्जिन",
+     190.385,
+     190.765
+    ],
+    [
+     " बढ़ाने",
+     190.765,
+     191.105
+    ],
+    [
+     " लगे",
+     191.105,
+     191.345
+    ]
+   ]
+  },
+  {
+   "group": "g24",
+   "start": 191.935,
+   "end": 201.03,
+   "words": [
+    [
+     " ऐसे",
+     191.777,
+     192.277
+    ],
+    [
+     " वक्त",
+     192.277,
+     192.477
+    ],
+    [
+     " में",
+     192.477,
+     192.677
+    ],
+    [
+     " ज्यादातर",
+     192.677,
+     193.117
+    ],
+    [
+     " कम्पनी",
+     193.117,
+     193.437
+    ],
+    [
+     " खर्चा",
+     193.437,
+     193.737
+    ],
+    [
+     " घटाती",
+     193.737,
+     194.097
+    ],
+    [
+     " है",
+     194.097,
+     194.297
+    ],
+    [
+     " प्राइम",
+     194.297,
+     194.837
+    ],
+    [
+     " फोकृस",
+     194.837,
+     195.077
+    ],
+    [
+     " ने",
+     195.077,
+     195.217
+    ],
+    [
+     " दूसरा",
+     195.217,
+     195.577
+    ],
+    [
+     " रास्ता",
+     195.577,
+     195.877
+    ],
+    [
+     " चुना",
+     195.877,
+     196.237
+    ],
+    [
+     " 2024",
+     196.237,
+     196.777
+    ],
+    [
+     " के",
+     196.777,
+     197.217
+    ],
+    [
+     " जुलाई",
+     197.217,
+     197.497
+    ],
+    [
+     " में",
+     197.497,
+     197.797
+    ],
+    [
+     " दीनेग",
+     197.797,
+     198.117
+    ],
+    [
+     " ने",
+     198.117,
+     198.277
+    ],
+    [
+     " प्राइम",
+     198.277,
+     198.597
+    ],
+    [
+     " फोकृस",
+     198.597,
+     198.857
+    ],
+    [
+     " टेकनोजीज",
+     198.857,
+     199.437
+    ],
+    [
+     " 693",
+     199.437,
+     200.097
+    ],
+    [
+     " करोड",
+     200.097,
+     200.477
+    ],
+    [
+     " में",
+     200.477,
+     200.617
+    ],
+    [
+     " खरी",
+     200.617,
+     200.837
+    ],
+    [
+     " दी",
+     200.837,
+     200.937
+    ]
+   ]
+  },
+  {
+   "group": "g25",
+   "start": 201.58,
+   "end": 211.84,
+   "words": [
+    [
+     " मतलब",
+     201.425,
+     202.125
+    ],
+    [
+     " स्टूडियोस",
+     202.125,
+     202.685
+    ],
+    [
+     " आप",
+     202.685,
+     202.785
+    ],
+    [
+     " अलग",
+     202.785,
+     203.085
+    ],
+    [
+     "-अलग",
+     203.085,
+     203.205
+    ],
+    [
+     " वेंडर",
+     203.205,
+     203.545
+    ],
+    [
+     " नहीं",
+     203.545,
+     203.765
+    ],
+    [
+     " चाहते",
+     203.765,
+     204.145
+    ],
+    [
+     " जो",
+     204.145,
+     204.625
+    ],
+    [
+     " एक",
+     204.625,
+     204.925
+    ],
+    [
+     " ही",
+     204.925,
+     204.985
+    ],
+    [
+     " जगा",
+     204.985,
+     205.305
+    ],
+    [
+     " इफैक्स",
+     205.305,
+     205.705
+    ],
+    [
+     " भी",
+     205.705,
+     205.825
+    ],
+    [
+     " बिणाए",
+     205.825,
+     206.165
+    ],
+    [
+     " और",
+     206.165,
+     206.345
+    ],
+    [
+     " कुंटेंट",
+     206.345,
+     206.785
+    ],
+    [
+     " को",
+     206.785,
+     206.905
+    ],
+    [
+     " स्ट्रीमिंग",
+     206.905,
+     207.325
+    ],
+    [
+     " के",
+     207.325,
+     207.425
+    ],
+    [
+     " लिए",
+     207.425,
+     207.545
+    ],
+    [
+     " तयार",
+     207.545,
+     207.965
+    ],
+    [
+     " भी",
+     207.965,
+     208.085
+    ],
+    [
+     " करे",
+     208.085,
+     208.305
+    ],
+    [
+     " उसकी",
+     208.305,
+     208.645
+    ],
+    [
+     " कीमत",
+     208.645,
+     208.985
+    ],
+    [
+     " बढ़ती",
+     208.985,
+     209.325
+    ],
+    [
+     " है",
+     209.325,
+     209.445
+    ],
+    [
+     " और",
+     209.445,
+     209.785
+    ],
+    [
+     " फिर",
+     209.785,
+     209.945
+    ],
+    [
+     " एक",
+     209.945,
+     210.165
+    ],
+    [
+     " और",
+     210.165,
+     210.325
+    ],
+    [
+     " दाव",
+     210.325,
+     210.845
+    ],
+    [
+     " अपनी",
+     210.845,
+     211.105
+    ],
+    [
+     " खुद",
+     211.105,
+     211.365
+    ],
+    [
+     " की",
+     211.365,
+     211.485
+    ],
+    [
+     " फिल्म",
+     211.485,
+     211.825
+    ]
+   ]
+  },
+  {
+   "group": "g26",
+   "start": 212.39,
+   "end": 218.947,
+   "words": [
+    [
+     " यही",
+     212.236,
+     212.676
+    ],
+    [
+     " ही",
+     212.676,
+     212.736
+    ],
+    [
+     " है",
+     212.736,
+     212.816
+    ],
+    [
+     " रामार्ण,",
+     212.816,
+     213.176
+    ],
+    [
+     " अपतक",
+     213.236,
+     213.556
+    ],
+    [
+     " यह",
+     213.556,
+     213.716
+    ],
+    [
+     " कम्त्नी",
+     213.716,
+     214.076
+    ],
+    [
+     " दूसरों",
+     214.076,
+     214.496
+    ],
+    [
+     " की",
+     214.496,
+     214.576
+    ],
+    [
+     " फिल्मों",
+     214.576,
+     215.016
+    ],
+    [
+     " के",
+     215.016,
+     215.096
+    ],
+    [
+     " इफेक्ट्स",
+     215.096,
+     215.556
+    ],
+    [
+     " बनाती",
+     215.556,
+     215.936
+    ],
+    [
+     " थी",
+     215.936,
+     216.056
+    ],
+    [
+     " यानी",
+     216.056,
+     216.336
+    ],
+    [
+     " किराय",
+     216.336,
+     216.696
+    ],
+    [
+     " का",
+     216.696,
+     216.836
+    ],
+    [
+     " काम",
+     216.836,
+     217.096
+    ],
+    [
+     " अब",
+     217.096,
+     217.296
+    ],
+    [
+     " वो",
+     217.296,
+     217.456
+    ],
+    [
+     " मकान",
+     217.456,
+     217.856
+    ],
+    [
+     " मालिक",
+     217.856,
+     218.076
+    ],
+    [
+     " भी",
+     218.076,
+     218.196
+    ],
+    [
+     " बनना",
+     218.196,
+     218.496
+    ],
+    [
+     " चाती",
+     218.496,
+     218.776
+    ],
+    [
+     " है।",
+     218.776,
+     218.976
+    ]
+   ]
+  },
+  {
+   "group": "g27",
+   "start": 219.497,
+   "end": 231.204,
+   "words": [
+    [
+     " मेकर्स",
+     219.339,
+     219.979
+    ],
+    [
+     " के",
+     219.979,
+     220.079
+    ],
+    [
+     " हिसाब",
+     220.079,
+     220.379
+    ],
+    [
+     " से",
+     220.379,
+     220.519
+    ],
+    [
+     " दो",
+     220.519,
+     220.679
+    ],
+    [
+     " हिस्सों",
+     220.679,
+     220.979
+    ],
+    [
+     " का",
+     220.979,
+     221.039
+    ],
+    [
+     " बज़त",
+     221.039,
+     221.339
+    ],
+    [
+     " लगभक",
+     221.339,
+     221.679
+    ],
+    [
+     " 4000",
+     221.679,
+     221.999
+    ],
+    [
+     " करोड",
+     221.999,
+     222.619
+    ],
+    [
+     " अलग",
+     222.619,
+     222.999
+    ],
+    [
+     " trade",
+     222.999,
+     223.239
+    ],
+    [
+     " reports",
+     223.239,
+     223.579
+    ],
+    [
+     " part",
+     223.579,
+     223.899
+    ],
+    [
+     " 1",
+     223.899,
+     224.119
+    ],
+    [
+     " के",
+     224.119,
+     224.319
+    ],
+    [
+     " लिए",
+     224.319,
+     224.499
+    ],
+    [
+     " 1600",
+     224.499,
+     224.819
+    ],
+    [
+     " से",
+     224.819,
+     225.119
+    ],
+    [
+     " 2000",
+     225.119,
+     225.459
+    ],
+    [
+     " करोड",
+     225.459,
+     225.739
+    ],
+    [
+     " का",
+     225.739,
+     225.899
+    ],
+    [
+     " अंदाजा",
+     225.899,
+     226.259
+    ],
+    [
+     " देती",
+     226.259,
+     226.559
+    ],
+    [
+     " है",
+     226.559,
+     226.719
+    ],
+    [
+     " और",
+     226.719,
+     227.159
+    ],
+    [
+     " एक",
+     227.159,
+     227.279
+    ],
+    [
+     " शुर्वाती",
+     227.279,
+     227.699
+    ],
+    [
+     " report",
+     227.699,
+     227.979
+    ],
+    [
+     " 835",
+     227.979,
+     228.719
+    ],
+    [
+     " से",
+     228.719,
+     228.959
+    ],
+    [
+     " 900",
+     228.959,
+     229.399
+    ],
+    [
+     " बज़त",
+     229.399,
+     229.879
+    ],
+    [
+     " का",
+     229.879,
+     229.979
+    ],
+    [
+     " नम्बर",
+     229.979,
+     230.239
+    ],
+    [
+     " खुद",
+     230.239,
+     230.499
+    ],
+    [
+     " एक",
+     230.499,
+     230.699
+    ],
+    [
+     " पहली",
+     230.699,
+     231.019
+    ],
+    [
+     " है",
+     231.019,
+     231.099
+    ]
+   ]
+  },
+  {
+   "group": "g28",
+   "start": 231.754,
+   "end": 244.616,
+   "words": [
+    [
+     " किराए",
+     231.6,
+     232.08
+    ],
+    [
+     " पर",
+     232.08,
+     232.22
+    ],
+    [
+     " काम",
+     232.22,
+     232.52
+    ],
+    [
+     " करने",
+     232.52,
+     232.82
+    ],
+    [
+     " वाले",
+     232.82,
+     232.98
+    ],
+    [
+     " की",
+     232.98,
+     233.08
+    ],
+    [
+     " कमाई",
+     233.08,
+     233.42
+    ],
+    [
+     " तब",
+     233.42,
+     233.7
+    ],
+    [
+     " तक",
+     233.7,
+     233.86
+    ],
+    [
+     " जब",
+     233.86,
+     234.06
+    ],
+    [
+     " तक",
+     234.06,
+     234.2
+    ],
+    [
+     " ओडर",
+     234.2,
+     234.46
+    ],
+    [
+     " आता",
+     234.46,
+     234.72
+    ],
+    [
+     " है",
+     234.72,
+     235.04
+    ],
+    [
+     " मकान",
+     235.04,
+     235.58
+    ],
+    [
+     " मालिक",
+     235.58,
+     235.86
+    ],
+    [
+     " की",
+     235.86,
+     235.96
+    ],
+    [
+     " कमाई",
+     235.96,
+     236.32
+    ],
+    [
+     " फिल्म",
+     236.32,
+     236.54
+    ],
+    [
+     " के",
+     236.54,
+     236.7
+    ],
+    [
+     " साथ",
+     236.7,
+     236.96
+    ],
+    [
+     " सालो",
+     236.96,
+     237.22
+    ],
+    [
+     " तक",
+     237.22,
+     237.36
+    ],
+    [
+     " चल",
+     237.36,
+     237.58
+    ],
+    [
+     " सकती",
+     237.58,
+     237.9
+    ],
+    [
+     " है",
+     237.9,
+     238.12
+    ],
+    [
+     " तियेटर,",
+     238.12,
+     238.62
+    ],
+    [
+     " OTT,",
+     238.68,
+     239.06
+    ],
+    [
+     " Music",
+     239.34,
+     239.46
+    ],
+    [
+     " और",
+     239.46,
+     239.66
+    ],
+    [
+     " पार्ट",
+     239.66,
+     239.88
+    ],
+    [
+     " 2",
+     239.88,
+     240.26
+    ],
+    [
+     " पर",
+     240.26,
+     240.52
+    ],
+    [
+     " मकान",
+     240.52,
+     240.9
+    ],
+    [
+     " बनाने",
+     240.9,
+     241.3
+    ],
+    [
+     " का",
+     241.3,
+     241.38
+    ],
+    [
+     " खर्चा",
+     241.38,
+     241.72
+    ],
+    [
+     " पहले",
+     241.72,
+     241.94
+    ],
+    [
+     " देना",
+     241.94,
+     242.16
+    ],
+    [
+     " परता",
+     242.16,
+     242.46
+    ],
+    [
+     " है",
+     242.46,
+     242.6
+    ],
+    [
+     " और",
+     242.6,
+     242.86
+    ],
+    [
+     " वही",
+     242.86,
+     243.06
+    ],
+    [
+     " कर्जे",
+     243.06,
+     243.42
+    ],
+    [
+     " का",
+     243.42,
+     243.56
+    ],
+    [
+     " सवाल",
+     243.56,
+     243.86
+    ],
+    [
+     " वापस",
+     243.86,
+     244.14
+    ],
+    [
+     " लाता",
+     244.14,
+     244.42
+    ],
+    [
+     " है",
+     244.42,
+     244.58
+    ]
+   ]
+  },
+  {
+   "group": "g29",
+   "start": 245.166,
+   "end": 257.547,
+   "words": [
+    [
+     " ये",
+     245.008,
+     245.408
+    ],
+    [
+     " दाव",
+     245.408,
+     245.608
+    ],
+    [
+     " पहले",
+     245.608,
+     245.948
+    ],
+    [
+     " भी",
+     245.948,
+     246.028
+    ],
+    [
+     " लग",
+     246.028,
+     246.228
+    ],
+    [
+     " चुका",
+     246.228,
+     246.508
+    ],
+    [
+     " है।",
+     246.508,
+     246.808
+    ],
+    [
+     " 2023",
+     246.808,
+     247.408
+    ],
+    [
+     " में",
+     247.408,
+     247.688
+    ],
+    [
+     " आदिपूरूश",
+     247.688,
+     248.148
+    ],
+    [
+     " रेपोट्स",
+     248.148,
+     248.548
+    ],
+    [
+     " के",
+     248.548,
+     248.668
+    ],
+    [
+     " हिसाब",
+     248.668,
+     248.988
+    ],
+    [
+     " से",
+     248.988,
+     249.228
+    ],
+    [
+     " बज़ेट",
+     249.228,
+     249.628
+    ],
+    [
+     " 5",
+     249.628,
+     249.828
+    ],
+    [
+     "-700",
+     249.828,
+     250.248
+    ],
+    [
+     " करोड,",
+     250.248,
+     250.788
+    ],
+    [
+     " VFX",
+     250.868,
+     251.348
+    ],
+    [
+     " पर",
+     251.348,
+     251.628
+    ],
+    [
+     " आउनलाइन",
+     251.628,
+     252.028
+    ],
+    [
+     " आलोचना",
+     252.028,
+     252.448
+    ],
+    [
+     " मैकर्स",
+     252.448,
+     252.848
+    ],
+    [
+     " ने",
+     252.848,
+     252.968
+    ],
+    [
+     " काम",
+     252.968,
+     253.188
+    ],
+    [
+     " दोबारा",
+     253.188,
+     253.588
+    ],
+    [
+     " किया",
+     253.588,
+     254.068
+    ],
+    [
+     " और",
+     254.068,
+     254.268
+    ],
+    [
+     " एक",
+     254.268,
+     254.488
+    ],
+    [
+     " trade",
+     254.488,
+     254.668
+    ],
+    [
+     " estimate",
+     254.668,
+     255.028
+    ],
+    [
+     " के",
+     255.028,
+     255.188
+    ],
+    [
+     " मुताबिक",
+     255.188,
+     255.628
+    ],
+    [
+     " लगभग",
+     255.628,
+     256.028
+    ],
+    [
+     " 225",
+     256.028,
+     256.728
+    ],
+    [
+     " करोड",
+     256.728,
+     256.988
+    ],
+    [
+     " का",
+     256.988,
+     257.088
+    ],
+    [
+     " घाटा।",
+     257.088,
+     257.568
+    ]
+   ]
+  },
+  {
+   "group": "g30",
+   "start": 258.097,
+   "end": 263.426,
+   "words": [
+    [
+     " ये",
+     257.942,
+     258.322
+    ],
+    [
+     " किसी",
+     258.322,
+     258.602
+    ],
+    [
+     " फिल्म",
+     258.602,
+     258.842
+    ],
+    [
+     " का",
+     258.842,
+     258.982
+    ],
+    [
+     " मजाक",
+     258.982,
+     259.342
+    ],
+    [
+     " नहीं",
+     259.342,
+     259.702
+    ],
+    [
+     " बस",
+     259.702,
+     259.902
+    ],
+    [
+     " ये",
+     259.902,
+     260.022
+    ],
+    [
+     " दिखाना",
+     260.022,
+     260.402
+    ],
+    [
+     " है",
+     260.402,
+     260.502
+    ],
+    [
+     " कि",
+     260.502,
+     260.622
+    ],
+    [
+     " इस",
+     260.622,
+     260.722
+    ],
+    [
+     " जमीन",
+     260.722,
+     261.042
+    ],
+    [
+     " पर",
+     261.042,
+     261.122
+    ],
+    [
+     " वीए",
+     261.122,
+     261.442
+    ],
+    [
+     " फैक्स",
+     261.442,
+     261.662
+    ],
+    [
+     " का",
+     261.662,
+     261.762
+    ],
+    [
+     " दाउ",
+     261.762,
+     262.022
+    ],
+    [
+     " कितना",
+     262.022,
+     262.382
+    ],
+    [
+     " जोखिम",
+     262.382,
+     262.722
+    ],
+    [
+     " भरा",
+     262.722,
+     263.022
+    ],
+    [
+     " होता",
+     263.022,
+     263.262
+    ],
+    [
+     " है",
+     263.262,
+     263.362
+    ]
+   ]
+  },
+  {
+   "group": "g31",
+   "start": 263.976,
+   "end": 272.615,
+   "words": [
+    [
+     " इस",
+     263.816,
+     264.256
+    ],
+    [
+     " बार",
+     264.256,
+     264.416
+    ],
+    [
+     " तेख",
+     264.416,
+     264.636
+    ],
+    [
+     " पर",
+     264.636,
+     264.816
+    ],
+    [
+     " पूरा",
+     264.816,
+     265.116
+    ],
+    [
+     " जोर,",
+     265.116,
+     265.356
+    ],
+    [
+     " फिल्मड",
+     265.396,
+     265.816
+    ],
+    [
+     " फोर",
+     265.816,
+     265.976
+    ],
+    [
+     " ऐमैक्स,",
+     265.976,
+     266.596
+    ],
+    [
+     " सिनेमाटोग्राफर",
+     266.676,
+     267.496
+    ],
+    [
+     " के",
+     267.496,
+     267.636
+    ],
+    [
+     " मुताबिक",
+     267.636,
+     268.176
+    ],
+    [
+     " मोशन",
+     268.176,
+     268.556
+    ],
+    [
+     " कैप्चर",
+     268.556,
+     268.976
+    ],
+    [
+     " फ्लोर",
+     268.976,
+     269.196
+    ],
+    [
+     " पर",
+     269.196,
+     269.376
+    ],
+    [
+     " लगभग,",
+     269.376,
+     269.856
+    ],
+    [
+     " ब्यालिस",
+     269.896,
+     270.276
+    ],
+    [
+     " इंफरारेट",
+     270.276,
+     270.716
+    ],
+    [
+     " कैमरे",
+     270.716,
+     271.136
+    ],
+    [
+     " और",
+     271.136,
+     271.316
+    ],
+    [
+     " जटायू",
+     271.316,
+     271.776
+    ],
+    [
+     " पूरी",
+     271.776,
+     272.016
+    ],
+    [
+     " तरह",
+     272.016,
+     272.316
+    ],
+    [
+     " सी",
+     272.316,
+     272.456
+    ],
+    [
+     " जी.",
+     272.456,
+     272.516
+    ]
+   ]
+  },
+  {
+   "group": "g32",
+   "start": 273.165,
+   "end": 288.651,
+   "words": [
+    [
+     " ट्रेलर",
+     273.009,
+     273.549
+    ],
+    [
+     " कही",
+     273.549,
+     273.689
+    ],
+    [
+     " डिले",
+     273.689,
+     273.909
+    ],
+    [
+     " के",
+     273.909,
+     274.029
+    ],
+    [
+     " बाद",
+     274.029,
+     274.269
+    ],
+    [
+     " 30",
+     274.269,
+     274.489
+    ],
+    [
+     " जुलाई",
+     274.489,
+     274.869
+    ],
+    [
+     " 2026",
+     274.869,
+     275.549
+    ],
+    [
+     " को",
+     275.549,
+     275.709
+    ],
+    [
+     " आया",
+     275.709,
+     276.129
+    ],
+    [
+     " प्लान",
+     276.129,
+     276.509
+    ],
+    [
+     " था",
+     276.509,
+     276.909
+    ],
+    [
+     " पाट",
+     276.909,
+     277.169
+    ],
+    [
+     " वन",
+     277.169,
+     277.329
+    ],
+    [
+     " दिवाली",
+     277.329,
+     277.709
+    ],
+    [
+     " 2026,",
+     277.709,
+     278.409
+    ],
+    [
+     " पाट",
+     278.549,
+     278.749
+    ],
+    [
+     " टू",
+     278.749,
+     278.909
+    ],
+    [
+     " दिवाली",
+     278.909,
+     279.249
+    ],
+    [
+     " 2027",
+     279.249,
+     280.209
+    ],
+    [
+     " दो",
+     280.209,
+     280.569
+    ],
+    [
+     " हिस्सो",
+     280.569,
+     280.849
+    ],
+    [
+     " में",
+     280.849,
+     280.949
+    ],
+    [
+     " बनाने",
+     280.949,
+     281.329
+    ],
+    [
+     " का",
+     281.329,
+     281.429
+    ],
+    [
+     " फाइदा,",
+     281.429,
+     281.869
+    ],
+    [
+     " सेट्स,",
+     281.989,
+     282.349
+    ],
+    [
+     " असेट्स",
+     282.369,
+     282.769
+    ],
+    [
+     " और",
+     282.769,
+     282.809
+    ],
+    [
+     " टेकनोजी",
+     282.809,
+     283.409
+    ],
+    [
+     " एक",
+     283.409,
+     283.669
+    ],
+    [
+     " बार",
+     283.669,
+     283.849
+    ],
+    [
+     " बनकर",
+     283.849,
+     284.109
+    ],
+    [
+     " दोनों",
+     284.109,
+     284.449
+    ],
+    [
+     " में",
+     284.449,
+     284.489
+    ],
+    [
+     " चलते",
+     284.489,
+     284.849
+    ],
+    [
+     " हैं",
+     284.849,
+     285.269
+    ],
+    [
+     " और",
+     285.269,
+     285.409
+    ],
+    [
+     " रिसक",
+     285.409,
+     285.749
+    ],
+    [
+     " भी",
+     285.749,
+     285.849
+    ],
+    [
+     " बड़ा",
+     285.849,
+     286.169
+    ],
+    [
+     " पार्ट",
+     286.169,
+     286.469
+    ],
+    [
+     " वन",
+     286.469,
+     286.649
+    ],
+    [
+     " की",
+     286.649,
+     286.789
+    ],
+    [
+     " कमाई",
+     286.789,
+     287.109
+    ],
+    [
+     " से",
+     287.109,
+     287.289
+    ],
+    [
+     " पार्ट",
+     287.289,
+     287.609
+    ],
+    [
+     " तू",
+     287.609,
+     287.709
+    ],
+    [
+     " का",
+     287.709,
+     287.829
+    ],
+    [
+     " भहरोसा",
+     287.829,
+     288.169
+    ],
+    [
+     " जुडता",
+     288.169,
+     288.449
+    ],
+    [
+     " है।",
+     288.449,
+     288.669
+    ]
+   ]
+  },
+  {
+   "group": "g33",
+   "start": 289.201,
+   "end": 290.409,
+   "words": [
+    [
+     " अब",
+     289.047,
+     289.487
+    ],
+    [
+     " द्यान",
+     289.487,
+     289.807
+    ],
+    [
+     " से",
+     289.807,
+     289.927
+    ],
+    [
+     " सुनना",
+     289.927,
+     290.307
+    ]
+   ]
+  },
+  {
+   "group": "g34",
+   "start": 291.509,
+   "end": 304.345,
+   "words": [
+    [
+     " पहला",
+     291.35,
+     291.87
+    ],
+    [
+     " नम्बर",
+     291.87,
+     292.31
+    ],
+    [
+     " पंदरा",
+     292.31,
+     292.71
+    ],
+    [
+     " दिन",
+     292.71,
+     292.89
+    ],
+    [
+     " में",
+     292.89,
+     293.05
+    ],
+    [
+     " सैक्निल",
+     293.05,
+     293.51
+    ],
+    [
+     " के",
+     293.51,
+     293.59
+    ],
+    [
+     " अस्टिमेट",
+     293.59,
+     293.99
+    ],
+    [
+     " के",
+     293.99,
+     294.09
+    ],
+    [
+     " मुताबिक",
+     294.09,
+     294.57
+    ],
+    [
+     " दुनिया",
+     294.57,
+     294.95
+    ],
+    [
+     " बर",
+     294.95,
+     295.09
+    ],
+    [
+     " का",
+     295.09,
+     295.25
+    ],
+    [
+     " ग्रॉस",
+     295.25,
+     295.53
+    ],
+    [
+     " लगभभग",
+     295.53,
+     295.93
+    ],
+    [
+     " पंदर",
+     295.93,
+     296.25
+    ],
+    [
+     " सो",
+     296.25,
+     296.35
+    ],
+    [
+     " सैन्तालीस",
+     296.35,
+     296.83
+    ],
+    [
+     " करोड",
+     296.83,
+     297.31
+    ],
+    [
+     " दूसरा",
+     297.31,
+     297.95
+    ],
+    [
+     " पार्ट",
+     297.95,
+     298.23
+    ],
+    [
+     " वन",
+     298.23,
+     298.41
+    ],
+    [
+     " का",
+     298.41,
+     298.53
+    ],
+    [
+     " बज़ट",
+     298.53,
+     298.87
+    ],
+    [
+     " अन्दाजे",
+     298.87,
+     299.37
+    ],
+    [
+     " से",
+     299.37,
+     299.51
+    ],
+    [
+     " सोला",
+     299.51,
+     299.89
+    ],
+    [
+     " सो",
+     299.89,
+     300.05
+    ],
+    [
+     " से",
+     300.05,
+     300.21
+    ],
+    [
+     " दो",
+     300.21,
+     300.45
+    ],
+    [
+     " हसार",
+     300.45,
+     300.69
+    ],
+    [
+     " करोड",
+     300.69,
+     301.17
+    ],
+    [
+     " तीसरा",
+     301.17,
+     301.67
+    ],
+    [
+     " प्राइम",
+     301.67,
+     301.93
+    ],
+    [
+     " फोकस",
+     301.93,
+     302.21
+    ],
+    [
+     " का",
+     302.21,
+     302.39
+    ],
+    [
+     " ग्रॉस",
+     302.39,
+     302.67
+    ],
+    [
+     " कर्जा",
+     302.67,
+     303.01
+    ],
+    [
+     " लगभभग",
+     303.01,
+     303.45
+    ],
+    [
+     " पांच",
+     303.45,
+     303.77
+    ],
+    [
+     " हाजार",
+     303.77,
+     304.01
+    ],
+    [
+     " करोड",
+     304.01,
+     304.29
+    ]
+   ]
+  },
+  {
+   "group": "g35",
+   "start": 304.895,
+   "end": 318.201,
+   "words": [
+    [
+     " पर",
+     304.737,
+     305.117
+    ],
+    [
+     " ग्रौस",
+     305.117,
+     305.397
+    ],
+    [
+     " वो",
+     305.397,
+     305.577
+    ],
+    [
+     " पैसा",
+     305.577,
+     305.937
+    ],
+    [
+     " है",
+     305.937,
+     306.117
+    ],
+    [
+     " जो",
+     306.117,
+     306.317
+    ],
+    [
+     " टिकट",
+     306.317,
+     306.597
+    ],
+    [
+     " पर",
+     306.597,
+     306.777
+    ],
+    [
+     " कटा",
+     306.777,
+     307.217
+    ],
+    [
+     " उसमेसे",
+     307.217,
+     307.837
+    ],
+    [
+     " टैक्स,",
+     307.837,
+     308.257
+    ],
+    [
+     " थियेटर",
+     308.277,
+     308.717
+    ],
+    [
+     " का",
+     308.717,
+     308.837
+    ],
+    [
+     " हिस्सा",
+     308.837,
+     309.297
+    ],
+    [
+     " और",
+     309.297,
+     309.437
+    ],
+    [
+     " दिस्ट्रीबुटर",
+     309.437,
+     310.037
+    ],
+    [
+     " का",
+     310.037,
+     310.177
+    ],
+    [
+     " हिस्सा",
+     310.177,
+     310.437
+    ],
+    [
+     " निकलता",
+     310.437,
+     310.877
+    ],
+    [
+     " है",
+     310.877,
+     311.177
+    ],
+    [
+     " प्रोडूसर",
+     311.177,
+     311.737
+    ],
+    [
+     " तक",
+     311.737,
+     311.897
+    ],
+    [
+     " किन्ना",
+     311.897,
+     312.197
+    ],
+    [
+     " पहुछता",
+     312.197,
+     312.677
+    ],
+    [
+     " है?",
+     312.677,
+     312.837
+    ],
+    [
+     " ये",
+     312.897,
+     313.077
+    ],
+    [
+     " एग्जैक्ट",
+     313.077,
+     313.537
+    ],
+    [
+     " सप्लिट",
+     313.537,
+     313.757
+    ],
+    [
+     " पब्लिक",
+     313.757,
+     314.077
+    ],
+    [
+     " नहीं",
+     314.077,
+     314.367
+    ],
+    [
+     " इसलिए",
+     314.367,
+     314.727
+    ],
+    [
+     " पंदरसो",
+     314.727,
+     315.287
+    ],
+    [
+     " करोड",
+     315.287,
+     315.647
+    ],
+    [
+     " को",
+     315.647,
+     315.847
+    ],
+    [
+     " कमाई",
+     315.847,
+     316.187
+    ],
+    [
+     " कहना",
+     316.187,
+     316.487
+    ],
+    [
+     " गलत",
+     316.487,
+     316.787
+    ],
+    [
+     " होगा,",
+     316.787,
+     317.027
+    ],
+    [
+     " ये",
+     317.127,
+     317.227
+    ],
+    [
+     " टिकट",
+     317.227,
+     317.527
+    ],
+    [
+     " की",
+     317.527,
+     317.707
+    ],
+    [
+     " कीमत",
+     317.707,
+     318.007
+    ],
+    [
+     " है।",
+     318.007,
+     318.227
+    ]
+   ]
+  },
+  {
+   "group": "g36",
+   "start": 318.751,
+   "end": 331.634,
+   "words": [
+    [
+     " अब",
+     318.591,
+     318.951
+    ],
+    [
+     " तीनों",
+     318.951,
+     319.311
+    ],
+    [
+     " को",
+     319.311,
+     319.411
+    ],
+    [
+     " साथ",
+     319.411,
+     319.691
+    ],
+    [
+     " रखते",
+     319.691,
+     320.011
+    ],
+    [
+     " हैं,",
+     320.011,
+     320.391
+    ],
+    [
+     " अगर",
+     320.411,
+     320.611
+    ],
+    [
+     " बज़ेट",
+     320.611,
+     320.911
+    ],
+    [
+     " 1600",
+     320.911,
+     321.351
+    ],
+    [
+     " से",
+     321.351,
+     321.491
+    ],
+    [
+     " 2000",
+     321.491,
+     321.911
+    ],
+    [
+     " करोड",
+     321.911,
+     322.191
+    ],
+    [
+     " के",
+     322.191,
+     322.311
+    ],
+    [
+     " भीच",
+     322.311,
+     322.531
+    ],
+    [
+     " है,",
+     322.531,
+     322.731
+    ],
+    [
+     " तो",
+     322.991,
+     323.091
+    ],
+    [
+     " ग्रॉस",
+     323.091,
+     323.351
+    ],
+    [
+     " ने",
+     323.351,
+     323.511
+    ],
+    [
+     " 15",
+     323.511,
+     323.831
+    ],
+    [
+     " दिन",
+     323.831,
+     324.031
+    ],
+    [
+     " में",
+     324.031,
+     324.111
+    ],
+    [
+     " बज़ेट",
+     324.111,
+     324.431
+    ],
+    [
+     " के",
+     324.431,
+     324.551
+    ],
+    [
+     " लगभाग",
+     324.551,
+     324.871
+    ],
+    [
+     " बराबर",
+     324.871,
+     325.211
+    ],
+    [
+     " का",
+     325.211,
+     325.311
+    ],
+    [
+     " नम्बर",
+     325.311,
+     325.571
+    ],
+    [
+     " चू",
+     325.571,
+     325.791
+    ],
+    [
+     " लिया,",
+     325.791,
+     326.151
+    ],
+    [
+     " पर",
+     326.291,
+     326.391
+    ],
+    [
+     " उस",
+     326.391,
+     326.511
+    ],
+    [
+     " ग्रॉस",
+     326.511,
+     326.851
+    ],
+    [
+     " का",
+     326.851,
+     326.991
+    ],
+    [
+     " सिर्फ",
+     326.991,
+     327.251
+    ],
+    [
+     " एक",
+     327.251,
+     327.431
+    ],
+    [
+     " हिस्सा",
+     327.431,
+     327.751
+    ],
+    [
+     " प्रोडूसर",
+     327.751,
+     328.211
+    ],
+    [
+     " तक",
+     328.211,
+     328.351
+    ],
+    [
+     " जाता",
+     328.351,
+     328.691
+    ],
+    [
+     " है,",
+     328.691,
+     328.831
+    ],
+    [
+     " और",
+     329.011,
+     329.171
+    ],
+    [
+     " कर्जे",
+     329.171,
+     329.551
+    ],
+    [
+     " का",
+     329.551,
+     329.671
+    ],
+    [
+     " स्क्कॉर",
+     329.671,
+     330.171
+    ],
+    [
+     " वो",
+     330.171,
+     330.471
+    ],
+    [
+     " अभी",
+     330.471,
+     330.811
+    ],
+    [
+     " भी",
+     330.811,
+     330.931
+    ],
+    [
+     " सबसे",
+     330.931,
+     331.191
+    ],
+    [
+     " बढ़ा",
+     331.191,
+     331.431
+    ],
+    [
+     " है",
+     331.431,
+     331.531
+    ]
+   ]
+  },
+  {
+   "group": "g37",
+   "start": 332.184,
+   "end": 336.323,
+   "words": [
+    [
+     " हिंदी",
+     332.028,
+     332.528
+    ],
+    [
+     " वर्जन",
+     332.528,
+     332.868
+    ],
+    [
+     " अकेला",
+     332.868,
+     333.188
+    ],
+    [
+     " दवीग",
+     333.188,
+     333.508
+    ],
+    [
+     " के",
+     333.508,
+     333.628
+    ],
+    [
+     " मुताबिक",
+     333.628,
+     334.128
+    ],
+    [
+     " लगभभक",
+     334.128,
+     334.528
+    ],
+    [
+     " 650",
+     334.528,
+     335.028
+    ],
+    [
+     " करोड",
+     335.028,
+     335.548
+    ],
+    [
+     " नेट",
+     335.548,
+     335.728
+    ],
+    [
+     " पर",
+     335.728,
+     335.888
+    ],
+    [
+     " पहूँचा।",
+     335.888,
+     336.368
+    ]
+   ]
+  },
+  {
+   "group": "g38",
+   "start": 336.873,
+   "end": 346.843,
+   "words": [
+    [
+     " अब",
+     336.719,
+     337.099
+    ],
+    [
+     " एक",
+     337.099,
+     337.299
+    ],
+    [
+     " और",
+     337.299,
+     337.419
+    ],
+    [
+     " परत,",
+     337.419,
+     337.899
+    ],
+    [
+     " फिन",
+     337.999,
+     338.259
+    ],
+    [
+     " शॉर्ट्स",
+     338.259,
+     338.559
+    ],
+    [
+     " के",
+     338.559,
+     338.639
+    ],
+    [
+     " मुताबिक",
+     338.639,
+     339.159
+    ],
+    [
+     " रनबीर",
+     339.159,
+     339.579
+    ],
+    [
+     " कपूर",
+     339.579,
+     339.879
+    ],
+    [
+     " ने",
+     339.879,
+     340.039
+    ],
+    [
+     " प्राइम",
+     340.039,
+     340.399
+    ],
+    [
+     " फोकस",
+     340.399,
+     340.699
+    ],
+    [
+     " में",
+     340.699,
+     340.879
+    ],
+    [
+     " 15",
+     340.879,
+     341.239
+    ],
+    [
+     " करोड",
+     341.239,
+     341.519
+    ],
+    [
+     " रूपे",
+     341.519,
+     341.799
+    ],
+    [
+     " खुद",
+     341.799,
+     342.059
+    ],
+    [
+     " लगाए",
+     342.059,
+     342.559
+    ],
+    [
+     " मतलब",
+     342.559,
+     343.019
+    ],
+    [
+     " फिल्म",
+     343.019,
+     343.319
+    ],
+    [
+     " में",
+     343.319,
+     343.459
+    ],
+    [
+     " एक",
+     343.459,
+     343.599
+    ],
+    [
+     " आदमी",
+     343.599,
+     343.919
+    ],
+    [
+     " दो",
+     343.919,
+     344.119
+    ],
+    [
+     " जगा",
+     344.119,
+     344.379
+    ],
+    [
+     " बैठा",
+     344.379,
+     344.699
+    ],
+    [
+     " है",
+     344.699,
+     344.899
+    ],
+    [
+     " परदे",
+     344.899,
+     345.439
+    ],
+    [
+     " पर",
+     345.439,
+     345.599
+    ],
+    [
+     " और",
+     345.599,
+     345.719
+    ],
+    [
+     " शेर",
+     345.719,
+     345.999
+    ],
+    [
+     " हूलडर",
+     345.999,
+     346.339
+    ],
+    [
+     " के",
+     346.339,
+     346.439
+    ],
+    [
+     " रूप",
+     346.439,
+     346.619
+    ],
+    [
+     " में",
+     346.619,
+     346.859
+    ]
+   ]
+  },
+  {
+   "group": "g39",
+   "start": 347.393,
+   "end": 354.579,
+   "words": [
+    [
+     " 2025",
+     347.247,
+     348.167
+    ],
+    [
+     " के",
+     348.167,
+     348.427
+    ],
+    [
+     " सितम्बर",
+     348.427,
+     348.907
+    ],
+    [
+     " में",
+     348.907,
+     349.047
+    ],
+    [
+     " मदुसूदन",
+     349.047,
+     349.607
+    ],
+    [
+     " केला",
+     349.607,
+     349.927
+    ],
+    [
+     " और",
+     349.927,
+     350.027
+    ],
+    [
+     " उत्पल",
+     350.027,
+     350.467
+    ],
+    [
+     " शेथ",
+     350.467,
+     350.687
+    ],
+    [
+     " जैसे",
+     350.687,
+     350.967
+    ],
+    [
+     " निवेश",
+     350.967,
+     351.307
+    ],
+    [
+     " कोने",
+     351.307,
+     351.547
+    ],
+    [
+     " मिलकर",
+     351.547,
+     352.007
+    ],
+    [
+     " लगभाग",
+     352.007,
+     352.507
+    ],
+    [
+     " 3",
+     352.507,
+     352.727
+    ],
+    [
+     " दश्मलव",
+     352.727,
+     353.247
+    ],
+    [
+     " 3",
+     353.247,
+     353.507
+    ],
+    [
+     "%",
+     353.507,
+     353.887
+    ],
+    [
+     " हिस्सा",
+     353.887,
+     354.167
+    ],
+    [
+     " खरीदा।",
+     354.167,
+     354.587
+    ]
+   ]
+  },
+  {
+   "group": "g40",
+   "start": 355.129,
+   "end": 365.892,
+   "words": [
+    [
+     " शेरबाजार",
+     354.966,
+     355.766
+    ],
+    [
+     " ने",
+     355.766,
+     355.886
+    ],
+    [
+     " दावों",
+     355.886,
+     356.206
+    ],
+    [
+     " को",
+     356.206,
+     356.306
+    ],
+    [
+     " पहले",
+     356.306,
+     356.586
+    ],
+    [
+     " ही",
+     356.586,
+     356.686
+    ],
+    [
+     " दाम",
+     356.686,
+     356.906
+    ],
+    [
+     " में",
+     356.906,
+     357.026
+    ],
+    [
+     " डाल",
+     357.026,
+     357.266
+    ],
+    [
+     " दिया",
+     357.266,
+     357.646
+    ],
+    [
+     " ट्रेलर",
+     357.646,
+     358.146
+    ],
+    [
+     " के",
+     358.146,
+     358.226
+    ],
+    [
+     " महिने",
+     358.226,
+     358.546
+    ],
+    [
+     " में",
+     358.546,
+     358.666
+    ],
+    [
+     " 35",
+     358.666,
+     359.006
+    ],
+    [
+     "%",
+     359.006,
+     359.486
+    ],
+    [
+     " और",
+     359.486,
+     359.706
+    ],
+    [
+     " एक",
+     359.706,
+     359.886
+    ],
+    [
+     " साल",
+     359.886,
+     360.046
+    ],
+    [
+     " में",
+     360.046,
+     360.186
+    ],
+    [
+     " लगभाग",
+     360.186,
+     361.026
+    ],
+    [
+     " 98",
+     361.026,
+     361.026
+    ],
+    [
+     "%",
+     361.026,
+     361.386
+    ],
+    [
+     " की",
+     361.386,
+     361.466
+    ],
+    [
+     " बढ़त",
+     361.466,
+     362.006
+    ],
+    [
+     " जब",
+     362.006,
+     362.266
+    ],
+    [
+     " उम्मीदे",
+     362.266,
+     362.666
+    ],
+    [
+     " पहले",
+     362.666,
+     362.946
+    ],
+    [
+     " से",
+     362.946,
+     363.106
+    ],
+    [
+     " दाम",
+     363.106,
+     363.346
+    ],
+    [
+     " में",
+     363.346,
+     363.486
+    ],
+    [
+     " हों",
+     363.486,
+     363.646
+    ],
+    [
+     " तो",
+     363.646,
+     363.786
+    ],
+    [
+     " कभी",
+     363.786,
+     364.086
+    ],
+    [
+     "-कभी",
+     364.086,
+     364.266
+    ],
+    [
+     " बढ़ी",
+     364.266,
+     364.486
+    ],
+    [
+     " सफलता",
+     364.486,
+     364.946
+    ],
+    [
+     " भी",
+     364.946,
+     365.086
+    ],
+    [
+     " काफी",
+     365.086,
+     365.326
+    ],
+    [
+     " नहीं",
+     365.326,
+     365.486
+    ],
+    [
+     " लगती",
+     365.486,
+     365.786
+    ]
+   ]
+  },
+  {
+   "group": "g41",
+   "start": 366.442,
+   "end": 374.716,
+   "words": [
+    [
+     " ये",
+     366.286,
+     366.666
+    ],
+    [
+     " मेरा",
+     366.666,
+     366.946
+    ],
+    [
+     " अनालिसिस",
+     366.946,
+     367.486
+    ],
+    [
+     " है",
+     367.486,
+     367.626
+    ],
+    [
+     " इन्वेस्टमेंट",
+     367.626,
+     368.246
+    ],
+    [
+     " सलाह",
+     368.246,
+     368.526
+    ],
+    [
+     " नहीं",
+     368.526,
+     369.026
+    ],
+    [
+     " एक",
+     369.026,
+     369.286
+    ],
+    [
+     " आलोचक",
+     369.286,
+     369.666
+    ],
+    [
+     " का",
+     369.666,
+     369.786
+    ],
+    [
+     " मानदा",
+     369.786,
+     370.106
+    ],
+    [
+     " ये",
+     370.106,
+     370.266
+    ],
+    [
+     " भी",
+     370.266,
+     370.386
+    ],
+    [
+     " है",
+     370.386,
+     370.566
+    ],
+    [
+     " कि",
+     370.566,
+     370.686
+    ],
+    [
+     " मार्केटिंग",
+     370.686,
+     371.206
+    ],
+    [
+     " फिल्म",
+     371.206,
+     371.426
+    ],
+    [
+     " से",
+     371.426,
+     371.626
+    ],
+    [
+     " ज्यादा",
+     371.626,
+     371.886
+    ],
+    [
+     " स्टूडियो",
+     371.886,
+     372.226
+    ],
+    [
+     " को",
+     372.226,
+     372.326
+    ],
+    [
+     " बेच",
+     372.326,
+     372.566
+    ],
+    [
+     " रही",
+     372.566,
+     372.806
+    ],
+    [
+     " है",
+     372.806,
+     373.006
+    ],
+    [
+     " देखना",
+     373.006,
+     373.486
+    ],
+    [
+     " यह",
+     373.486,
+     373.586
+    ],
+    [
+     " है",
+     373.586,
+     373.686
+    ],
+    [
+     " कि",
+     373.686,
+     373.806
+    ],
+    [
+     " सच",
+     373.806,
+     374.026
+    ],
+    [
+     " क्या",
+     374.026,
+     374.166
+    ],
+    [
+     " निकलता",
+     374.166,
+     374.546
+    ],
+    [
+     " है",
+     374.546,
+     374.646
+    ]
+   ]
+  },
+  {
+   "group": "g42",
+   "start": 375.266,
+   "end": 385.553,
+   "words": [
+    [
+     " उन्निस्सो",
+     375.115,
+     375.755
+    ],
+    [
+     " पचानवे",
+     375.755,
+     376.275
+    ],
+    [
+     " में",
+     376.275,
+     376.415
+    ],
+    [
+     " बैंक",
+     376.415,
+     376.755
+    ],
+    [
+     " लोन",
+     376.755,
+     376.915
+    ],
+    [
+     " से",
+     376.915,
+     377.055
+    ],
+    [
+     " ख़रीदे",
+     377.055,
+     377.375
+    ],
+    [
+     " कम्पूटर",
+     377.375,
+     377.935
+    ],
+    [
+     " दोहाँजार",
+     377.935,
+     378.455
+    ],
+    [
+     " छब्वीस",
+     378.455,
+     378.895
+    ],
+    [
+     " में",
+     378.895,
+     379.175
+    ],
+    [
+     " एक",
+     379.175,
+     379.395
+    ],
+    [
+     " फिल्म",
+     379.395,
+     379.695
+    ],
+    [
+     " जो",
+     379.695,
+     379.835
+    ],
+    [
+     " ऐमैक्स",
+     379.835,
+     380.335
+    ],
+    [
+     " के",
+     380.335,
+     380.435
+    ],
+    [
+     " लिए",
+     380.435,
+     380.535
+    ],
+    [
+     " शूट",
+     380.535,
+     380.795
+    ],
+    [
+     " हुई",
+     380.795,
+     381.235
+    ],
+    [
+     " दाव",
+     381.235,
+     381.595
+    ],
+    [
+     " का",
+     381.595,
+     381.715
+    ],
+    [
+     " साइस",
+     381.715,
+     381.955
+    ],
+    [
+     " बदला",
+     381.955,
+     382.295
+    ],
+    [
+     " पर",
+     382.295,
+     382.435
+    ],
+    [
+     " सवाल",
+     382.435,
+     382.735
+    ],
+    [
+     " वही",
+     382.735,
+     383.015
+    ],
+    [
+     " जब",
+     383.015,
+     383.215
+    ],
+    [
+     " औरडर",
+     383.215,
+     383.515
+    ],
+    [
+     " रुके",
+     383.515,
+     383.895
+    ],
+    [
+     " तब",
+     383.895,
+     384.215
+    ],
+    [
+     " भी",
+     384.215,
+     384.335
+    ],
+    [
+     " क्या",
+     384.335,
+     384.475
+    ],
+    [
+     " कार्खाना",
+     384.475,
+     384.915
+    ],
+    [
+     " चलता",
+     384.915,
+     385.195
+    ],
+    [
+     " रहेगा",
+     385.195,
+     385.455
+    ]
+   ]
+  },
+  {
+   "group": "g43",
+   "start": 386.103,
+   "end": 394.409,
+   "words": [
+    [
+     " और",
+     385.946,
+     386.326
+    ],
+    [
+     " ये",
+     386.326,
+     386.426
+    ],
+    [
+     " कहानी",
+     386.426,
+     386.786
+    ],
+    [
+     " सिर्फ",
+     386.786,
+     387.086
+    ],
+    [
+     " एक",
+     387.086,
+     387.246
+    ],
+    [
+     " कम्पनी",
+     387.246,
+     387.526
+    ],
+    [
+     " की",
+     387.526,
+     387.646
+    ],
+    [
+     " नहीं",
+     387.646,
+     387.806
+    ],
+    [
+     " एक",
+     387.806,
+     387.986
+    ],
+    [
+     " तरीके",
+     387.986,
+     388.406
+    ],
+    [
+     " की",
+     388.406,
+     388.526
+    ],
+    [
+     " हैं",
+     388.526,
+     388.906
+    ],
+    [
+     " जो",
+     388.906,
+     389.066
+    ],
+    [
+     " काम",
+     389.066,
+     389.366
+    ],
+    [
+     " किराय",
+     389.366,
+     389.646
+    ],
+    [
+     " पर",
+     389.646,
+     389.826
+    ],
+    [
+     " करता",
+     389.826,
+     390.146
+    ],
+    [
+     " है",
+     390.146,
+     390.246
+    ],
+    [
+     " वो",
+     390.246,
+     390.346
+    ],
+    [
+     " दिरे",
+     390.346,
+     390.666
+    ],
+    [
+     " दिरे",
+     390.666,
+     390.846
+    ],
+    [
+     " मकान",
+     390.846,
+     391.206
+    ],
+    [
+     " बनाने",
+     391.206,
+     391.626
+    ],
+    [
+     " की",
+     391.626,
+     391.686
+    ],
+    [
+     " तरफ",
+     391.686,
+     391.906
+    ],
+    [
+     " बढ़ता",
+     391.906,
+     392.306
+    ],
+    [
+     " है",
+     392.306,
+     392.446
+    ],
+    [
+     " इसमें",
+     392.446,
+     392.746
+    ],
+    [
+     " जीद",
+     392.746,
+     393.026
+    ],
+    [
+     " भी",
+     393.026,
+     393.106
+    ],
+    [
+     " बढ़ी",
+     393.106,
+     393.366
+    ],
+    [
+     " होती",
+     393.366,
+     393.606
+    ],
+    [
+     " है",
+     393.606,
+     393.706
+    ],
+    [
+     " और",
+     393.706,
+     393.846
+    ],
+    [
+     " गिरना",
+     393.846,
+     394.206
+    ],
+    [
+     " भी",
+     394.206,
+     394.346
+    ]
+   ]
+  },
+  {
+   "group": "g44",
+   "start": 394.959,
+   "end": 406.771,
+   "words": [
+    [
+     " पार्ट",
+     394.806,
+     395.306
+    ],
+    [
+     " टू",
+     395.306,
+     395.386
+    ],
+    [
+     " के",
+     395.386,
+     395.546
+    ],
+    [
+     " लिए",
+     395.546,
+     395.646
+    ],
+    [
+     " तीन",
+     395.646,
+     395.926
+    ],
+    [
+     " चीजे",
+     395.926,
+     396.206
+    ],
+    [
+     " देखना",
+     396.206,
+     396.666
+    ],
+    [
+     " एक",
+     396.666,
+     396.866
+    ],
+    [
+     " कंपनी",
+     396.866,
+     397.226
+    ],
+    [
+     " के",
+     397.226,
+     397.306
+    ],
+    [
+     " रिसेल्ट्स",
+     397.306,
+     397.706
+    ],
+    [
+     " में",
+     397.706,
+     397.866
+    ],
+    [
+     " फिल्म",
+     397.866,
+     398.126
+    ],
+    [
+     " की",
+     398.126,
+     398.266
+    ],
+    [
+     " कमाई",
+     398.266,
+     398.586
+    ],
+    [
+     " कब",
+     398.586,
+     398.786
+    ],
+    [
+     " और",
+     398.786,
+     398.906
+    ],
+    [
+     " कितनी",
+     398.906,
+     399.146
+    ],
+    [
+     " दिखती",
+     399.146,
+     399.506
+    ],
+    [
+     " है",
+     399.506,
+     399.666
+    ],
+    [
+     " दो",
+     399.666,
+     400.126
+    ],
+    [
+     " कर्जे",
+     400.126,
+     400.466
+    ],
+    [
+     " का",
+     400.466,
+     400.526
+    ],
+    [
+     " नम्बर",
+     400.526,
+     400.826
+    ],
+    [
+     " कितना",
+     400.826,
+     401.086
+    ],
+    [
+     " घट्ता",
+     401.086,
+     401.406
+    ],
+    [
+     " है",
+     401.406,
+     401.686
+    ],
+    [
+     " तीन",
+     401.686,
+     402.066
+    ],
+    [
+     " हौलीवौट",
+     402.066,
+     402.526
+    ],
+    [
+     " के",
+     402.526,
+     402.586
+    ],
+    [
+     " अटर",
+     402.586,
+     402.826
+    ],
+    [
+     " कितने",
+     402.826,
+     403.066
+    ],
+    [
+     " आते",
+     403.066,
+     403.306
+    ],
+    [
+     " हैं",
+     403.306,
+     403.846
+    ],
+    [
+     " रिपोट्स",
+     403.846,
+     404.306
+    ],
+    [
+     " के",
+     404.306,
+     404.366
+    ],
+    [
+     " हिसाब",
+     404.366,
+     404.686
+    ],
+    [
+     " से",
+     404.686,
+     404.826
+    ],
+    [
+     " पार्ट",
+     404.826,
+     405.126
+    ],
+    [
+     " टू",
+     405.126,
+     405.206
+    ],
+    [
+     " दिवाली",
+     405.206,
+     405.586
+    ],
+    [
+     " 2027",
+     405.586,
+     406.326
+    ],
+    [
+     " में",
+     406.326,
+     406.526
+    ],
+    [
+     " है",
+     406.526,
+     406.646
+    ]
+   ]
+  },
+  {
+   "group": "g45",
+   "start": 407.321,
+   "end": 415.815,
+   "words": [
+    [
+     " अगर",
+     407.162,
+     407.582
+    ],
+    [
+     " बिसनेस",
+     407.582,
+     408.062
+    ],
+    [
+     " को",
+     408.062,
+     408.182
+    ],
+    [
+     " इस",
+     408.182,
+     408.362
+    ],
+    [
+     " तरह",
+     408.362,
+     408.562
+    ],
+    [
+     " देखना",
+     408.562,
+     408.922
+    ],
+    [
+     " पसंद",
+     408.922,
+     409.242
+    ],
+    [
+     " आया",
+     409.242,
+     409.462
+    ],
+    [
+     " तोlogic",
+     409.462,
+     410.142
+    ],
+    [
+     ".co",
+     410.142,
+     410.602
+    ],
+    [
+     " को",
+     410.602,
+     410.822
+    ],
+    [
+     " फालो",
+     410.822,
+     411.182
+    ],
+    [
+     " और",
+     411.182,
+     411.282
+    ],
+    [
+     " सब्सक्राइब",
+     411.282,
+     411.802
+    ],
+    [
+     " करें",
+     411.802,
+     412.342
+    ],
+    [
+     " और",
+     412.342,
+     412.542
+    ],
+    [
+     " ये",
+     412.542,
+     412.662
+    ],
+    [
+     " वीडियो",
+     412.662,
+     413.022
+    ],
+    [
+     " उस",
+     413.022,
+     413.162
+    ],
+    [
+     " दोस्त",
+     413.162,
+     413.462
+    ],
+    [
+     " को",
+     413.462,
+     413.582
+    ],
+    [
+     " भेजिये",
+     413.582,
+     414.162
+    ],
+    [
+     " जो",
+     414.162,
+     414.382
+    ],
+    [
+     " ग्रॉस",
+     414.382,
+     414.702
+    ],
+    [
+     " को",
+     414.702,
+     414.862
+    ],
+    [
+     " ही",
+     414.862,
+     414.942
+    ],
+    [
+     " कमाई",
+     414.942,
+     415.202
+    ],
+    [
+     " समझता",
+     415.202,
+     415.642
+    ],
+    [
+     " है",
+     415.642,
+     415.722
+    ]
+   ]
+  }
+ ]
+}
