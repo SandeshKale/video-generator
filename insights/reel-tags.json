@@ -400,5 +400,12 @@
   "voice": "clone",
   "host": "none",
   "length": "63s"
+ },
+ "reel-gta6-rating-label": {
+  "genre": "news",
+  "company": "rockstar",
+  "voice": "clone",
+  "host": "no",
+  "length": "~60s"
  }
 }

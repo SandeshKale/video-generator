@@ -1,0 +1,100 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "जीटीए सिक्स में स्टीमी सीन हैं। ये अफ़वाह नहीं है।",
+   "A": "GTA 6 mein steamy scenes hain. Yeh afwah nahi hai.",
+   "cap": "GTA 6 mein steamy scenes hain. Yeh afwah nahi hai."
+  },
+  {
+   "id": "s2",
+   "g": "g1",
+   "B": "रेटिंग बोर्ड ने ख़ुद लिखा है।",
+   "A": "Rating board ne khud likha hai.",
+   "cap": "Rating board ne khud likha hai."
+  },
+  {
+   "id": "s3",
+   "g": "g2",
+   "B": "पहले अमेरिका। ई-एस-आर-बी का लेबल: एम, यानी मैच्योर, सत्रह प्लस।",
+   "A": "Pehle America. ESRB ka label: M, yaani Mature, satrah plus.",
+   "cap": "Pehle America. ESRB ka label: M, yaani Mature, satrah plus."
+  },
+  {
+   "id": "s4",
+   "g": "g3",
+   "B": "लेबल में सात चीज़ें लिखी हैं। मारधाड़, तेज़ हिंसा, गाली, नग्नता, मैच्योर ह्यूमर, नशा, और स्ट्रॉन्ग सेक्सुअल कंटेंट।",
+   "A": "Label mein saat cheezein likhi hain. Maardhaad, tez hinsa, gaali, nudity, mature humor, nasha, aur strong sexual content.",
+   "cap": "Label mein saat cheezein likhi hain. Maardhaad, tez hinsa, gaali, nudity, mature humor, nasha, aur strong sexual content."
+  },
+  {
+   "id": "s5",
+   "g": "g4",
+   "B": "सुनकर लगता है कि ये नया है। पर जीटीए फाइव के लेबल पर भी यही सात चीज़ें हैं।",
+   "A": "Sunkar lagta hai ki yeh naya hai. Par GTA 5 ke label par bhi yahi saat cheezein hain.",
+   "cap": "Sunkar lagta hai ki yeh naya hai. Par GTA 5 ke label par bhi yahi saat cheezein hain."
+  },
+  {
+   "id": "s6",
+   "g": "g5",
+   "B": "तो नया क्या है? शब्द।",
+   "A": "Toh naya kya hai? Shabd.",
+   "cap": "Toh naya kya hai? Shabd."
+  },
+  {
+   "id": "s7",
+   "g": "g6",
+   "B": "ऑस्ट्रेलिया और न्यूजीलैंड की स्टोर लिस्टिंग में सीधा लिखा है: सेक्स सीन।",
+   "A": "Australia aur New Zealand ki store listing mein seedha likha hai: sex scenes.",
+   "cap": "Australia aur New Zealand ki store listing mein seedha likha hai: sex scenes."
+  },
+  {
+   "id": "s8",
+   "g": "g7",
+   "B": "यूरोप में पेगी ने अठारह प्लस का लेबल लगाया। उसकी पहली समरी वेबसाइट पर थोड़ी देर दिखी, फिर हटा दी गई। अब वहाँ एक छोटी, सादी समरी है।",
+   "A": "Europe mein PEGI ne atharah plus ka label lagaya. Uski pehli summary website par thodi der dikhi, phir hata di gayi. Ab wahan ek chhoti, saadi summary hai.",
+   "cap": "Europe mein PEGI ne atharah plus ka label lagaya. Uski pehli summary website par thodi der dikhi, phir hata di gayi. Ab wahan ek chhoti, saadi summary hai."
+  },
+  {
+   "id": "s9",
+   "g": "g8",
+   "B": "जो लिखा बताया गया, उसे पेगी ने कन्फर्म नहीं किया।",
+   "A": "Jo likha bataya gaya, use PEGI ne confirm nahi kiya.",
+   "cap": "Jo likha bataya gaya, use PEGI ne confirm nahi kiya."
+  },
+  {
+   "id": "s10",
+   "g": "g9",
+   "B": "यानी एक ही गेम, अलग-अलग बोर्ड, अलग-अलग शब्द। और एक लाइन मिटा दी गई।",
+   "A": "Yaani ek hi game, alag-alag board, alag-alag shabd. Aur ek line mita di gayi.",
+   "cap": "Yaani ek hi game, alag-alag board, alag-alag shabd. Aur ek line mita di gayi."
+  },
+  {
+   "id": "s11",
+   "g": "g10",
+   "B": "एक बात और। लेबल चेतावनी है, ताला नहीं।",
+   "A": "Ek baat aur. Label chetavni hai, taala nahi.",
+   "cap": "Ek baat aur. Label chetavni hai, taala nahi."
+  },
+  {
+   "id": "s12",
+   "g": "g11",
+   "B": "सीन का पूरा ब्योरा ई-एस-आर-बी की समरी में है। हम उसे दोहराते नहीं। लेबल पढ़िए, अफवाहें नहीं।",
+   "A": "Scenes ka poora byora ESRB ki summary mein hai. Hum use dohrate nahi. Label padhiye, afwahein nahi.",
+   "cap": "Scenes ka poora byora ESRB ki summary mein hai. Hum use dohrate nahi. Label padhiye, afwahein nahi."
+  },
+  {
+   "id": "s13",
+   "g": "g12",
+   "B": "ऐसी बातें रिकॉर्ड से पढ़नी हों, तो फॉलो और शेयर कीजिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "Aisi baatein record se padhni hon, toh follow aur share kijiye, nerdlogic.co ko.",
+   "cap": "Aisi baatein record se padhni hon, toh follow aur share kijiye, nerdlogic.co ko."
+  }
+ ],
+ "pause_after": {
+  "s2": 0.55,
+  "s6": 0.3,
+  "s11": 0.5
+ }
+}
