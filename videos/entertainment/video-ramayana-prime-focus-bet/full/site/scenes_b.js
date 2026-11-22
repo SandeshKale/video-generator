@@ -47,7 +47,7 @@ SCN[18] = function (p, u) {
   var cost = 440; line(X0, cost + 260, X1, cost + 260, C.red, 8, 1, [18, 12]); tag('FIXED COST', X1, cost + 230, C.red, 'right', 1);
   var pts = [[X0, 300], [600, 330], [900, 420], [1200, 620], [1500, 760], [X1, 790]]; var a = eo(pr(p, .1, .6)); var last = draw(pts, a, C.teal, 10); circ(last[0], last[1], 14, C.teal);
   var g = eo(pr(p, .55, .8)); cx.save(); cx.globalAlpha = .35 * g; cx.fillStyle = C.red; cx.beginPath(); cx.moveTo(1010, 700); cx.lineTo(X1, 700); cx.lineTo(X1, 790); cx.lineTo(1500, 760); cx.lineTo(1200, 620); cx.closePath(); cx.fill(); cx.restore();
-  tag('ORDERS', X1, 670, C.teal, 'right', a); tag('FIXED COSTS DO NOT SHRINK WHEN ORDERS DO', 960, 960, C.grey, 'center', eo(pr(p, .75, .95)), 22);
+  tag('ORDERS', X0 + 20, 240, C.teal, 'left', a); tag('FIXED COSTS DO NOT SHRINK WHEN ORDERS DO', 960, 960, C.grey, 'center', eo(pr(p, .75, .95)), 22);
 };
 // g19: strike: calendar 2023-24, reels stop
 SCN[19] = function (p, u) {
