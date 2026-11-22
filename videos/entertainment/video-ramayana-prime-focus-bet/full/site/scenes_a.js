@@ -15,10 +15,10 @@ SCN[1] = function (p, u) {
   cx.save(); rr(rx, base - dH, cw, dH, 18); cx.clip(); for (var j = 0; j < 8; j++) { var rs = eo(pr(p, .56 + j * .02, .62 + j * .02)); for (var q = 0; q < 4; q++) coin(rx + 58 + q * 82, base - 50 - j * 58, 22 * rs, .95); } cx.restore();
   fillRR(lx - 40, base + 4, cw + 80, 8, 4, C.ink, .8); fillRR(rx - 40, base + 4, cw + 80, 8, 4, C.grey, .8);
   var a1 = eo(pr(p, .06, .14)), a2 = eo(pr(p, .5, .58)), pop = 1 + .05 * Math.sin(pr(p, .8, .86) * Math.PI);
-  cx.save(); cx.globalAlpha = a1; ticket(430, 62, 100, 64, C.teal); cx.restore(); cx.save(); cx.globalAlpha = a2; bank(1440, 108, 42, C.red); cx.restore();
+  cx.save(); cx.globalAlpha = a2; bank(1440, 170, 36, C.red); cx.restore();
   cx.save(); cx.translate(480, 340); cx.scale(pop, pop); num('₹' + inr(1547 * g), 0, 0, 170, C.teal, 'center', a1); cx.restore();
   cx.save(); cx.translate(1440, 340); cx.scale(pop, pop); num('₹' + inr(5062 * dd), 0, 0, 170, C.red, 'center', a2); cx.restore();
-  tag('WORLDWIDE GROSS · 15 DAYS · EST.', 480, 940, C.ink, 'center', a1); tag('PRIME FOCUS GROSS DEBT · REPORTED', 1440, 940, C.grey, 'center', a2);
+  tag('WORLDWIDE GROSS · 15 DAYS · EST.', 480, 940, C.ink, 'center', a1); tag('PRIME FOCUS GROSS DEBT · REPORTED', 1440, 940, C.grey, 'center', a2); poster('ramayana', 70, 420, 190, a1); tag('RAMAYANA', 70, 760, C.ink, 'left', a1); tag('PART 1', 70, 804, C.ink, 'left', a1);
   cx.restore();
 };
 // g2: two queues (theatre line vs bank line)
@@ -31,7 +31,7 @@ SCN[2] = function (p, u) {
   line(40, 600, 920, 600, C.ink, 4, .35); line(1000, 600, 1880, 600, C.grey, 4, .5);
   var a = eo(pr(p, .05, .2)), b = eo(pr(p, .3, .45)); ticket(430, 260, 100, 64, C.teal, a); bank(1440, 300, 46, C.red); cx.globalAlpha = 1;
   tag('THEATRE LINE', 480, 700, C.ink, 'center', a); tag('BANK LINE', 1440, 700, C.grey, 'center', b);
-  tag('NOT THE SAME LINE', 960, 960, C.ink, 'center', eo(pr(p, .55, .75)));
+  
 };
 // g3: chapter map
 SCN[3] = function (p, u) {
@@ -51,7 +51,7 @@ SCN[4] = function (p, u) {
 };
 // g5: 1995 garage
 SCN[5] = function (p, u) {
-  cx.save(); cam(1.0, 1.06, p, 900, 560); bgSepia(); var par = function (k) { cx.translate(-(p - .5) * 40 * k, 0); };
+  cx.save(); cam(1.0, 1.06, p, 900, 560); bgSepia(); cx.translate(0, 70); var par = function (k) { cx.translate(-(p - .5) * 40 * k, 0); };
   cx.save(); par(.4); fillRR(260, 120, 1060, 720, 8, C.sepia2); cx.strokeStyle = 'rgba(90,70,48,.16)'; cx.lineWidth = 3; cx.beginPath(); for (var by = 168; by < 820; by += 48) { cx.moveTo(260, by); cx.lineTo(1320, by); } cx.stroke(); var up = eo(pr(p, .05, .3)), sh = 56 + 300 * (1 - up * .85); fillRR(340, 150, 900, sh, 6, '#CDB68A'); cx.strokeStyle = 'rgba(90,70,48,.25)'; cx.beginPath(); for (var s = 40; s < sh; s += 40) { cx.moveTo(340, 150 + s); cx.lineTo(1240, 150 + s); } cx.stroke(); fillRR(332, 140, 916, 14, 5, C.sepiaDk); cx.restore();
   cx.save(); par(.7); var sw = Math.sin(u * 2.2) * .09 * Math.exp(-u * .25); cx.translate(790, 120); cx.rotate(sw); cx.fillStyle = C.sepiaDk; cx.fillRect(-2, 0, 4, 116); circ(0, 150, 92, 'rgba(255,214,120,.28)'); circ(0, 150, 54, 'rgba(255,214,120,.45)'); circ(0, 150, 24, '#FFD470'); cx.restore();
   cx.save(); par(1.0); var dk = eo(pr(p, .1, .3)); cx.translate(0, (1 - dk) * 180); cx.globalAlpha = dk; fillRR(380, 702, 800, 28, 6, C.sepiaDk); fillRR(420, 730, 24, 150, 4, C.sepiaDk); fillRR(1116, 730, 24, 150, 4, C.sepiaDk); shadowRR(540, 472, 300, 232, 22, C.sepiaDk, 10); fillRR(540, 472, 300, 232, 22, '#E6D8B6'); fillRR(566, 498, 248, 166, 12, '#0B2B26'); fillRR(630, 704, 120, 14, 4, '#E6D8B6'); fillRR(926, 678, 180, 24, 8, '#E6D8B6');
@@ -59,7 +59,7 @@ SCN[5] = function (p, u) {
   cx.save(); par(1.3); var bb = eo(pr(p, .2, .38)); cx.globalAlpha = bb; fillRR(1200, 700 + (1 - bb) * 90, 190, 150, 8, '#CBA874'); fillRR(1250, 590 + (1 - bb) * 90, 150, 110, 8, '#D9B985'); cx.restore();
   var cp = ob(pr(p, .3, .45)); if (cp > 0) { cx.save(); cx.translate(1470, 300); cx.rotate(-.06); cx.scale(cp, cp); shadowRR(-190, -150, 380, 330, 20, C.sepiaDk, 12); fillRR(-190, -150, 380, 330, 20, '#FFFDF6'); cx.save(); rr(-190, -150, 380, 330, 20); cx.clip(); cx.fillStyle = C.verm; cx.fillRect(-190, -150, 380, 82); cx.restore(); for (var h = -120; h <= 120; h += 80) circ(h, -150, 11, '#FFFDF6'); cx.font = '150px ' + NUM; cx.fillStyle = C.sepiaDk; cx.textAlign = 'center'; cx.fillText('1995', 0, 118); cx.restore(); }
   var ls = eo(pr(p, .5, .68)); if (ls > 0) { cx.save(); cx.translate(lerp(2300, 1520, ls), 760); cx.rotate(.05); shadowRR(-200, -90, 400, 180, 14, C.sepiaDk, 10); fillRR(-200, -90, 400, 180, 14, '#FFFFFF'); for (var l = 0; l < 3; l++) fillRR(-150, -48 + l * 34, 220 - l * 50, 10, 5, C.sepia3); cx.restore(); var st = ob(pr(p, .7, .82)); if (st > 0) { cx.save(); cx.translate(1620, 750); cx.rotate(-.18); cx.scale(st, st); cx.strokeStyle = C.red; cx.lineWidth = 8; rr(-120, -42, 240, 84, 14); cx.stroke(); cx.font = '64px ' + NUM; cx.fillStyle = C.red; cx.textAlign = 'center'; cx.fillText('LOAN', 0, 22); cx.restore(); } }
-  tag('1995 · MUMBAI · BANK LOAN · GARAGE', 120, 940, C.sepiaDk, 'left', eo(pr(p, .55, .7))); cx.restore();
+  portrait('namit_malhotra', 60, 170, 210, 300, eo(pr(p, .3, .45))); tag('NAMIT', 60, 520, C.sepiaDk, 'left', eo(pr(p, .35, .5))); tag('MALHOTRA', 60, 564, C.sepiaDk, 'left', eo(pr(p, .35, .5))); tag('REAL PHOTO · TMDB', 60, 608, C.sepiaDk, 'left', eo(pr(p, .35, .5)), 38);  cx.restore();
 };
 // g6: flood, fire, downturn on a timeline
 SCN[6] = function (p, u) {
@@ -86,27 +86,26 @@ SCN[8] = function (p, u) {
   for (var i = 3; i >= 0; i--) { var x = 1000 + i * 110 * k, y = 300 + i * 50 * k - (1 - k) * i * 50, w = 520 - i * 70, h = 340 - i * 50; cx.save(); cx.globalAlpha = k > 0 ? 1 : 0; shadowRR(x, y + (1 - k) * 0, w, h, 16, C.ink, 14); fillRR(x, y, w, h, 16, cl2[i]); cx.restore(); }
   var m = eo(pr(p, .1, .3)); cx.save(); cx.globalAlpha = 1 - k; fillRR(1000, 300, 520, 340, 16, C.ink); cx.restore();
   var ar = eo(pr(p, .5, .7)); draw([[780, 500], [940, 500]], ar, C.ink, 8); tag('DEPTH ADDED FRAME BY FRAME', 1260, 800, C.ink, 'center', eo(pr(p, .55, .75)));
-  tag('3D CONVERSION', 960, 160, C.ink, 'center', eo(pr(p, .0, .1)));
+  
 };
 // g9: 2014 merger, staff 700 -> ~9000
 SCN[9] = function (p, u) {
   bgPaper(); var k = eio(pr(p, .1, .4)); var ax = lerp(520, 860, k), bx = lerp(1400, 1060, k); circ(ax, 360, 150, C.blue, .9); circ(bx, 360, 150, C.verm, .9); tag('PRIME FOCUS', 520, 170, C.ink, 'center', 1 - k); tag('DOUBLE NEGATIVE', 1400, 170, C.ink, 'center', 1 - k);
   var m = eo(pr(p, .38, .5)); if (m > 0) { cx.save(); cx.globalAlpha = m; cx.fillStyle = C.ink; cx.textAlign = 'center'; cx.font = '120px ' + NUM; cx.fillText('DNEG', 960, 400); cx.restore(); }
-  var y = 840; var s1 = eo(pr(p, .55, .72)), s2 = eo(pr(p, .68, .92)); var wMax = 1200; fillRR(360, y - 50, wMax * (700 / 9000) * s1, 50, 10, C.grey); fillRR(360, y + 20, wMax * s2, 50, 10, C.teal);
-  tag('700 STAFF', 360, y - 66, C.ink, 'left', s1, 22); tag('~9,000 STAFF · PROFILE', 360, y + 4, C.ink, 'left', s2, 22); big('2014', 1650, 180, 130, C.gold, 'right', eo(pr(p, .1, .25)));
+  var y = 840; var s1 = eo(pr(p, .55, .72)), s2 = eo(pr(p, .68, .92)); var wMax = 1200; fillRR(360, y - 120, Math.max(1, wMax * (700 / 9000) * s1), 44, 10, C.grey); fillRR(360, y - 20, Math.max(1, wMax * s2), 44, 10, C.teal);
+  tag('700 STAFF', 560, y - 86, C.ink, 'left', s1); tag('~9,000 STAFF · PROFILE', 1580, y + 16, C.ink, 'right', s2); big('2014', 1650, 180, 130, C.gold, 'right', eo(pr(p, .1, .25)));
 };
 // g10: eight Oscars
 SCN[10] = function (p, u) {
-  bgNavy(); for (var i = 0; i < 8; i++) { var k = ob(pr(p, .1 + i * .09, .2 + i * .09)); if (k <= 0) continue; var x = 280 + i * 195; cx.save(); cx.translate(x, 470); cx.scale(Math.min(1.1, k), Math.min(1.1, k)); cx.translate(-x, -470); trophy(x, 470, 62, C.gold); star(x, 340, 14, '#fff', .9); cx.restore(); }
+  bgNavy(); for (var i = 0; i < 8; i++) { var k = ob(pr(p, .1 + i * .09, .2 + i * .09)); if (k <= 0) continue; var x = 207 + i * 215; cx.save(); cx.translate(x, 420); cx.scale(Math.min(1.1, k), Math.min(1.1, k)); cx.translate(-x, -420); poster(['inception', 'interstellar', 'exmachina', 'br2049', 'firstman', 'tenet', 'dune', 'dune2'][i], x - 100, 250, 200); star(x, 222, 16, '#fff', .9); cx.restore(); }
   var names = ['INCEPTION', 'INTERSTELLAR', 'EX MACHINA', 'BLADE RUNNER 2049', 'FIRST MAN', 'TENET', 'DUNE', 'DUNE: PART TWO'];
-  var idx = Math.min(7, Math.floor(pr(p, .1, .85) * 8)); tag(names[idx], 960, 820, C.gold, 'center', eo(pr(p, .1, .2)), 30); big(String(Math.min(8, Math.floor(pr(p, .1, .85) * 8 + 1))) + ' / 8', 960, 960, 90, '#fff', 'center', eo(pr(p, .1, .2)));
-  var bh = eo(pr(p, .8, .95)); circ(1640, 220, 60 * bh, '#000'); circ(1640, 220, 60 * bh, 'rgba(255,255,255,.1)'); cx.save(); cx.strokeStyle = '#fff'; cx.lineWidth = 6; cx.globalAlpha = bh; cx.beginPath(); cx.arc(1640, 220, 80 * bh, 0, 7); cx.stroke(); cx.restore(); tag('A REAL BLACK HOLE · 2 PAPERS', 1640, 340, C.grey, 'center', bh, 20);
+  var idx = Math.min(7, Math.floor(pr(p, .1, .85) * 8)); tag(names[idx], 960, 770, C.gold, 'center', eo(pr(p, .1, .2)), 56); big(String(Math.min(8, Math.floor(pr(p, .1, .85) * 8 + 1))) + ' / 8', 960, 960, 90, '#fff', 'center', eo(pr(p, .1, .2)));
 };
 // g11: 1000 shots, 100 hours
 SCN[11] = function (p, u) {
-  bgPaper(); var n = Math.floor(1000 * eo(pr(p, .05, .6))); for (var i = 0; i < 1000; i++) { var cxx = 160 + (i % 50) * 20, cyy = 190 + Math.floor(i / 50) * 20; circ(cxx, cyy, 6.5, i < n ? C.teal : 'rgba(20,24,36,.1)'); }
-  big('1,000', 1700, 440, 170, C.teal, 'right', eo(pr(p, .05, .2))); tag('VFX SHOTS', 1700, 505, C.ink, 'right', eo(pr(p, .1, .25))); tag('DUNE PART TWO · COMPANY CLAIM', 1700, 545, C.grey, 'right', eo(pr(p, .1, .25)), 18);
-  var c = eo(pr(p, .55, .7)); cx.save(); cx.globalAlpha = c; clock(520, 800, 110, p * 6, C.ink); fillRR(700, 740, 220 * pr(p, .6, .95), 30, 15, C.red); cx.restore(); big('100 HRS', 1100, 830, 120, C.ink, 'left', c); tag('ONE FRAME · REPORTED', 1100, 880, C.grey, 'left', c);
+  bgPaper(); var n = Math.floor(1000 * eo(pr(p, .05, .6))); for (var i = 0; i < 1000; i++) { var cxx = 330 + (i % 50) * 20, cyy = 190 + Math.floor(i / 50) * 20; circ(cxx, cyy, 6.5, i < n ? C.teal : 'rgba(20,24,36,.1)'); }
+  big('1,000', 1840, 440, 170, C.teal, 'right', eo(pr(p, .05, .2))); tag('VFX SHOTS', 1840, 505, C.ink, 'right', eo(pr(p, .1, .25))); tag('COMPANY CLAIM', 1840, 548, C.grey, 'right', eo(pr(p, .1, .25))); poster('dune2', 80, 190, 210, eo(pr(p, .0, .15))); tag('DUNE:', 80, 560, C.ink, 'left', eo(pr(p, .0, .15)), 30); tag('PART TWO', 80, 596, C.ink, 'left', eo(pr(p, .0, .15)), 30);
+  var c = eo(pr(p, .55, .7)); cx.save(); cx.globalAlpha = c; clock(520, 800, 110, p * 6, C.ink); fillRR(700, 740, 220 * pr(p, .6, .95), 30, 15, C.red); cx.restore(); big('100 HRS', 1100, 830, 120, C.ink, 'left', c); tag('INTERSTELLAR FRAME · REPORTED', 1100, 885, C.grey, 'left', c, 30);
 };
 // g12: Oscar -> trust -> order
 SCN[12] = function (p, u) {

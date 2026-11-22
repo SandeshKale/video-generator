@@ -15,6 +15,8 @@ Like, share aur subscribe karein: nerdlogic.co
 - DNEG: Prime Focus Technologies deal ~₹693 cr (Jul 2024), eight Oscars, 2022 SPAC listing called off.
 - The "100 rupees" example, the staff/orders chart and the seat grids are ILLUSTRATIVE, not company data.
 
-**Disclosures:** voice is an AI clone of the creator's voice (script, research and edit are the creator's); visuals are original vector graphics; no film footage, stills or cast likeness used.
+**Image credits:** film posters and two identification portraits (Namit Malhotra, Ranbir Kapoor) are from The Movie Database (TMDB); all rights belong to the studios and people shown; used for commentary and identification, not affiliated. Details: `site/img/CREDITS.md`.
+
+**Disclosures:** voice is an AI clone of the creator's voice (script, research and edit are the creator's); visuals are original vector graphics plus the credited poster/portrait images above; no film footage or stills used.
 
 **Tags:** ramayana, prime focus, dneg, vfx, box office, gross vs net, business case study, film business, hinglish explainer, nerdlogic

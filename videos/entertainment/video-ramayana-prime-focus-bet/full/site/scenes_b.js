@@ -15,21 +15,21 @@ SCN[14] = function (p, u) {
   shadowRR(x3, base - sR * c, sR, sR * c, 14, C.ink, 10); fillRR(x3, base - sR * c, sR, sR * c, 14, C.teal); if (c > .5) ticket(x3 + sR * .15, base - sR * .7, sR * .7, 60, 'rgba(255,255,255,.25)');
   fillRR(160, base + 4, 1600, 8, 4, C.ink, .6);
   num('₹' + inr(2885 * a), x1 + sP / 2, base + 90, 70, C.red, 'center', a); num('₹' + inr(558 * b), x2 + sI / 2, base + 90, 70, C.redD, 'center', b); num('₹' + inr(3950 * c), x3 + sR / 2, base + 90, 70, C.teal, 'center', c);
-  tag('STAFF', x1 + sP / 2, base - sP - 24, C.ink, 'center', a); tag('INTEREST', x2 + sI / 2, base - sI - 24, C.ink, 'center', b); tag('REVENUE', x3 + sR / 2, base - sR - 24, C.teal, 'center', c); tag('AREA = AMOUNT · REPORTED', 960, 1000, C.grey, 'center', eo(pr(p, .8, .95)), 20);
+  tag('STAFF', x1 + sP / 2, base + 150, C.ink, 'center', a); tag('INTEREST', x2 + sI / 2 + 40, base + 150, C.redD, 'center', b); tag('REVENUE', x3 + sR / 2, base + 150, C.teal, 'center', c); 
 };
 // g15: 100 coins -> 73 to salary
 SCN[15] = function (p, u) {
   bgPaper(); var X = 200, Y = 250, k = eo(pr(p, .05, .25)); var mv = Math.floor(73 * eio(pr(p, .35, .75))), mi = Math.floor(6 * eio(pr(p, .6, .85)));
   fillRR(1160, 250, 560, 560, 24, 'rgba(224,69,75,.1)'); tag('SALARY', 1440, 230, C.red, 'center', k);
   for (var i = 0; i < 100; i++) { var cx0 = X + (i % 10) * 82 + 40, cy0 = Y + Math.floor(i / 10) * 60 + 30; var tx, ty; if (i < mv) { var f = eio(pr(p, .35 + (i / 73) * .3, .45 + (i / 73) * .3)); tx = 1200 + (i % 8) * 64 + 30; ty = 290 + Math.floor(i / 8) * 54 + 30; cx0 = lerp(cx0, tx, f); cy0 = lerp(cy0, ty, f); } coin(cx0, cy0, 24, k * (i < mv ? 1 : .55 + .0)); }
-  big(String(100 - mv) + ' LEFT', 600, 925, 90, C.ink, 'center', k); tag('100 RUPEES IN · 73 GO TO SALARY · ILLUSTRATIVE', 960, 975, C.grey, 'center', k, 20);
+  big(String(100 - mv) + ' LEFT', 600, 925, 90, C.ink, 'center', k); 
 };
 // g16: orders halve, salary stays -> loss
 SCN[16] = function (p, u) {
   bgPaper(); var h = eio(pr(p, .12, .45)); var n = Math.round(100 - 50 * h); for (var i = 0; i < 100; i++) { var x = 200 + (i % 10) * 54 + 20, y = 300 + Math.floor(i / 10) * 54; coin(x, y, 20, i < n ? 1 : 0.1); }
   var sal = 73; fillRR(1000, 300, 600, 540, 24, 'rgba(224,69,75,.1)'); for (var j = 0; j < sal; j++) coin(1040 + (j % 9) * 62, 340 + Math.floor(j / 9) * 56, 22, 1);
   var s = ob(pr(p, .6, .78)); if (s > 0) { cx.save(); cx.translate(1300, 560); cx.rotate(-.12); cx.scale(s, s); cx.strokeStyle = C.red; cx.lineWidth = 10; rr(-230, -70, 460, 140, 16); cx.stroke(); cx.font = '110px ' + NUM; cx.fillStyle = C.red; cx.textAlign = 'center'; cx.fillText('LOSS', 0, 38); cx.restore(); }
-  big(String(n) + ' IN', 460, 920, 90, C.ink, 'center'); big('73 OUT', 1300, 920, 90, C.red, 'center'); tag('SAME SALARY · HALF THE ORDERS · ILLUSTRATIVE', 960, 975, C.grey, 'center', 1, 20);
+  big(String(n) + ' IN', 460, 920, 90, C.ink, 'center'); big('73 OUT', 1300, 920, 90, C.red, 'center'); 
 };
 // g17: balance beam: four weights; orders stop; SPAC called off
 SCN[17] = function (p, u) {
@@ -37,7 +37,7 @@ SCN[17] = function (p, u) {
   cx.fillStyle = C.gold; cx.beginPath(); cx.moveTo(pcx, pcy); cx.lineTo(pcx - 100, pcy + 280); cx.lineTo(pcx + 100, pcy + 280); cx.closePath(); cx.fill(); fillRR(pcx - 260, pcy + 280, 520, 26, 10, C.gold);
   var ang = -th; cx.save(); cx.translate(pcx, pcy); cx.rotate(ang); fillRR(-arm - 24, -14, arm * 2 + 48, 28, 14, C.ink); circ(0, 0, 22, C.gold); cx.restore();
   var Lx = pcx - Math.cos(ang) * arm, Ly = pcy + Math.sin(ang) * arm * -1, Rx = pcx + Math.cos(ang) * arm, Ry = pcy - Math.sin(ang) * arm * -1; Ly = pcy - Math.sin(ang) * arm; Ry = pcy + Math.sin(ang) * arm;
-  var w = [[C.red, 'ARTISTS'], [C.verm, 'SOFTWARE'], [C.redD, 'STUDIOS'], [C.ink, 'DEBT']]; for (var i = 0; i < 4; i++) { var k = ob(pr(p, .05 + i * .06, .15 + i * .06)); var s = 110; var x = Lx - 190 + i * 130, y = Ly + 150 - s - (1 - Math.min(1, k)) * 400; fillRR(x - s / 2, y, s, s, 10, w[i][0]); tag(w[i][1], x, y + s + 30, C.ink, 'center', k, 18); }
+  var w = [[C.red, 'ARTISTS'], [C.verm, 'SOFTWARE'], [C.redD, 'STUDIOS'], [C.ink, 'DEBT']]; for (var i = 0; i < 4; i++) { var k = ob(pr(p, .05 + i * .06, .15 + i * .06)); var s = 110; var x = Lx - 190 + i * 130, y = Ly + 150 - s - (1 - Math.min(1, k)) * 400; fillRR(x - s / 2, y, s, s, 10, w[i][0]); (i == 0 ? seat : i == 1 ? gear : i == 2 ? building : bank).apply(null, i == 0 ? [x, y + s * .78, 56, '#fff'] : i == 1 ? [x, y + s / 2, 36, '#fff'] : i == 2 ? [x, y + s * .55, 40, '#fff'] : [x, y + s * .5, 40, '#fff']); }
   var rk = orders; var oh = 60 * rk + 10; fillRR(Rx - 110, Ry + 150 - oh, 220, oh, 12, C.teal); tag('ORDERS', Rx, Ry + 200, C.teal, 'center', 1);
   var s2 = ob(pr(p, .68, .8)); if (s2 > 0) { cx.save(); cx.translate(960, 230); cx.scale(s2, s2); fillRR(-250, -60, 500, 120, 18, '#fff'); cx.strokeStyle = C.ink; cx.lineWidth = 4; rr(-250, -60, 500, 120, 18); cx.stroke(); cx.font = '60px ' + NUM; cx.fillStyle = C.ink; cx.textAlign = 'center'; cx.fillText('2022 · SPAC · $1.7B', 0, 22); cx.restore(); var st = ob(pr(p, .8, .9)); if (st > 0) { cx.save(); cx.translate(960, 240); cx.rotate(-.14); cx.scale(st, st); cx.strokeStyle = C.red; cx.lineWidth = 9; rr(-170, -46, 340, 92, 12); cx.stroke(); cx.font = '56px ' + NUM; cx.fillStyle = C.red; cx.textAlign = 'center'; cx.fillText('CALLED OFF', 0, 20); cx.restore(); } }
 };
@@ -47,7 +47,7 @@ SCN[18] = function (p, u) {
   var cost = 440; line(X0, cost + 260, X1, cost + 260, C.red, 8, 1, [18, 12]); tag('FIXED COST', X1, cost + 230, C.red, 'right', 1);
   var pts = [[X0, 300], [600, 330], [900, 420], [1200, 620], [1500, 760], [X1, 790]]; var a = eo(pr(p, .1, .6)); var last = draw(pts, a, C.teal, 10); circ(last[0], last[1], 14, C.teal);
   var g = eo(pr(p, .55, .8)); cx.save(); cx.globalAlpha = .35 * g; cx.fillStyle = C.red; cx.beginPath(); cx.moveTo(1010, 700); cx.lineTo(X1, 700); cx.lineTo(X1, 790); cx.lineTo(1500, 760); cx.lineTo(1200, 620); cx.closePath(); cx.fill(); cx.restore();
-  tag('ORDERS', X1, 740, C.teal, 'right', a); tag('FIXED COSTS DO NOT SHRINK WHEN ORDERS DO', 960, 960, C.grey, 'center', eo(pr(p, .75, .95)), 22);
+  tag('ORDERS', X1, 670, C.teal, 'right', a); tag('FIXED COSTS DO NOT SHRINK WHEN ORDERS DO', 960, 960, C.grey, 'center', eo(pr(p, .75, .95)), 22);
 };
 // g19: strike: calendar 2023-24, reels stop
 SCN[19] = function (p, u) {
@@ -61,7 +61,7 @@ SCN[20] = function (p, u) {
   bgNavy(); var Yb = 820, K = 150 / 1000; var a = eo(pr(p, .08, .3)), b = eo(pr(p, .35, .6)); var h1 = 4600 * K * a * 1.0 / 1.0, h2 = 3950 * K * b;
   fillRR(440, Yb - 4600 * K * a * .9, 300, 4600 * K * a * .9, 16, C.teal); fillRR(940, Yb - 3950 * K * b * .9, 300, 3950 * K * b * .9, 16, C.teal);
   var d = eo(pr(p, .6, .85)); cx.save(); cx.globalAlpha = d; cx.setLineDash([12, 10]); cx.strokeStyle = C.red; cx.lineWidth = 5; rr(940, Yb - 4600 * K * .9, 300, (4600 - 3950) * K * .9, 16); cx.stroke(); cx.restore();
-  num('₹4,600', 590, Yb + 90, 80, C.tealL, 'center', a); num('₹3,950', 1090, Yb + 90, 80, C.tealL, 'center', b); tag('REVENUE · FY23 → FY24 · REPORTED', 960, 160, C.grey, 'center', a);
+  num('₹4,600', 590, Yb + 90, 80, C.tealL, 'center', a); num('₹3,950', 1090, Yb + 90, 80, C.tealL, 'center', b); 
   var l = ob(pr(p, .75, .9)); if (l > 0) { cx.save(); cx.translate(1580, 520); cx.scale(l, l); fillRR(-170, -90, 340, 180, 20, C.red); cx.font = '70px ' + NUM; cx.fillStyle = '#fff'; cx.textAlign = 'center'; cx.fillText('450–500', 0, 14); cx.font = '600 20px ' + LAB; cx.fillText('LOSS · SOURCES DIFFER', 0, 60); cx.restore(); }
 };
 // g21: the bench: empty seats, meter running
@@ -72,9 +72,9 @@ SCN[21] = function (p, u) {
 // g22: recovery: revenue +23% to ~976 ; loss 158 -> profit 110
 SCN[22] = function (p, u) {
   bgPaper(); var k = eo(pr(p, .08, .4)); var pts = [[200, 760], [520, 720], [840, 600], [1160, 420], [1480, 300]]; var last = draw(pts, k, C.teal, 12); circ(last[0], last[1], 16, C.teal);
-  var a = ob(pr(p, .35, .5)); if (a > 0) { cx.save(); cx.translate(1500, 230); cx.scale(a, a); fillRR(-170, -70, 340, 140, 20, C.teal); num('₹976 CR', 0, 24, 66, '#fff', 'center'); cx.font = '600 20px ' + LAB; cx.fillStyle = '#fff'; cx.textAlign = 'center'; cx.fillText('Q1 FY26 · +23% · REPORTED', 0, 56); cx.restore(); }
+  var a = ob(pr(p, .35, .5)); if (a > 0) { cx.save(); cx.translate(1480, 250); cx.scale(a, a); fillRR(-230, -80, 460, 170, 22, C.teal); num('₹976 CR', 0, 22, 78, '#fff', 'center'); cx.font = '600 32px ' + LAB; cx.fillStyle = '#fff'; cx.textAlign = 'center'; cx.fillText('Q1 · +23% · REPORTED', 0, 68); cx.restore(); }
   var b = eo(pr(p, .6, .8)), c = eo(pr(p, .75, .95)); var x0 = 1240, base = 880; fillRR(x0, base, 160, 158 * .6 * b, 10, C.red); fillRR(x0 + 220, base - 110 * .6 * c, 160, 110 * .6 * c, 10, C.teal); line(x0 - 40, base, x0 + 420, base, C.ink, 4); tag('LOSS ₹158 CR', x0 + 80, base - 24, C.red, 'center', b, 20); tag('PROFIT ₹110 CR', x0 + 300, base - 110 * .6 - 24, C.teal, 'center', c, 20);
-  big('2025', 330, 240, 130, C.gold, 'left', eo(pr(p, .05, .2)));
+  big('2025', 100, 330, 130, C.gold, 'left', eo(pr(p, .05, .2)));
 };
 // g23: FY26 profit 301 ; bench refills
 SCN[23] = function (p, u) {

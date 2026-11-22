@@ -21,8 +21,16 @@ caps = []
 for s in sents:
     ch = [c.strip() for c in re.split(r'(?<=[.?,])\s+', s['text']) if c.strip()]; out = []
     for c in ch:
-        if out and len(out[-1]) + len(c) < 46: out[-1] += ' ' + c
+        if out and len(out[-1]) + len(c) < 36: out[-1] += ' ' + c
         else: out.append(c)
+    def split(c):
+        if len(c) <= 40: return [c]
+        w = c.split(' '); best = None
+        for i in range(1, len(w)):
+            a, b = ' '.join(w[:i]), ' '.join(w[i:]); d = abs(len(a) - len(b))
+            if best is None or d < best[0]: best = (d, a, b)
+        return split(best[1]) + split(best[2])
+    out = [x for c in out for x in split(c)]
     tot = sum(len(c) for c in out); t = s['start']
     for c in out: d = (s['end'] - s['start']) * len(c) / tot; caps.append(dict(t0=round(t, 2), t1=round(t + d, 2), text=c)); t += d
 open(H + '/site/timing.js', 'w').write('window.VT=' + json.dumps(dict(groups=groups, end=round(end, 2), caps=caps), ensure_ascii=False) + ';')
