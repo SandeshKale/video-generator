@@ -1,0 +1,79 @@
+{
+ "sentences": [
+  {
+   "id": "s1",
+   "g": "g1",
+   "B": "एक अप्रैल की शाम। एक रॉकेट, छह कैमरे, एक ही पल।",
+   "A": "Ek April ki shaam. Ek rocket, chhe camere, ek hi pal.",
+   "cap": "Ek April ki shaam. Ek rocket, chhe camere, ek hi pal."
+  },
+  {
+   "id": "s2",
+   "g": "g1",
+   "B": "ये आर्टेमिस दो है। पचास साल से ज़्यादा बाद, इंसान फिर चाँद की तरफ़।",
+   "A": "Ye Artemis Do hai. Pachaas saal se zyada baad, insaan phir Chaand ki taraf.",
+   "cap": "Ye Artemis Do hai. Pachaas saal se zyada baad, insaan phir Chaand ki taraf."
+  },
+  {
+   "id": "s3",
+   "g": "g2",
+   "B": "देखिए, दस सेकंड, असली समय में।",
+   "A": "Dekhiye, das second, asli samay mein.",
+   "cap": "Dekhiye, das second, asli samay mein."
+  },
+  {
+   "id": "s4",
+   "g": "g3",
+   "B": "छह कैमरे एक हो गए। आठ मिनट बाद पहला स्टेज अलग हुआ।",
+   "A": "Chhe camere ek ho gaye. Aath minute baad pehla stage alag hua.",
+   "cap": "Chhe camere ek ho gaye. Aath minute baad pehla stage alag hua."
+  },
+  {
+   "id": "s5",
+   "g": "g4",
+   "B": "नौ दिन, एक घंटा, बत्तीस मिनट बाद, ओरियन प्रशांत महासागर में उतरा, सैन डिएगो के पास।",
+   "A": "Nau din, ek ghanta, battees minute baad, Orion Pacific mein utra, San Diego ke paas.",
+   "cap": "Nau din, ek ghanta, battees minute baad, Orion Pacific mein utra, San Diego ke paas."
+  },
+  {
+   "id": "s6",
+   "g": "g5",
+   "B": "बीच में चार लोग पृथ्वी से इतनी दूर गए, जितनी पहले कोई इंसान नहीं गया। क़रीब चार लाख सात हज़ार किलोमीटर। प्रेस रिपोर्ट्स के मुताबिक़।",
+   "A": "Beech mein chaar log Earth se itni door gaye, jitni pehle koi insaan nahi gaya. Kareeb 4 lakh 7 hazaar kilometre. Press reports ke mutabik.",
+   "cap": "Beech mein chaar log Earth se itni door gaye, jitni pehle koi insaan nahi gaya. Kareeb 4 lakh 7 hazaar kilometre. Press reports ke mutabik."
+  },
+  {
+   "id": "s7",
+   "g": "g6",
+   "B": "पर उतरे नहीं। सिर्फ़ चाँद का चक्कर।",
+   "A": "Par utre nahi. Sirf Chaand ka chakkar.",
+   "cap": "Par utre nahi. Sirf Chaand ka chakkar."
+  },
+  {
+   "id": "s8",
+   "g": "g7",
+   "B": "अगली फ़्लाइट, आर्टेमिस तीन, दो हज़ार सत्ताईस में: वो भी चाँद पर नहीं जाएगी। धरती के पास लैंडर से डॉकिंग का टेस्ट।",
+   "A": "Agli flight, Artemis Teen, 2027 mein: wo bhi Chaand par nahi jayegi. Dharti ke paas lander se docking ka test.",
+   "cap": "Agli flight, Artemis Teen, 2027 mein: wo bhi Chaand par nahi jayegi. Dharti ke paas lander se docking ka test."
+  },
+  {
+   "id": "s9",
+   "g": "g8",
+   "B": "उतरना आर्टेमिस चार में है: दो हज़ार अट्ठाईस की शुरुआत, नासा के मुताबिक़। तारीख़ें बदल सकती हैं।",
+   "A": "Utarna Artemis Chaar mein hai: 2028 ki shuruaat, NASA ke mutabik. Dates badal sakti hain.",
+   "cap": "Utarna Artemis Chaar mein hai: 2028 ki shuruaat, NASA ke mutabik. Dates badal sakti hain."
+  },
+  {
+   "id": "s10",
+   "g": "g9",
+   "B": "ऐसी असली फ़ुटेज वाली कहानियाँ चाहिए? फॉलो और शेयर कीजिए, नर्डलॉजिक डॉट सी ओ को।",
+   "A": "Aisi asli footage wali kahaniyan chahiye? Follow aur share kijiye, nerdlogic.co ko.",
+   "cap": "Aisi asli footage wali kahaniyan chahiye? Follow aur share kijiye, nerdlogic.co ko."
+  }
+ ],
+ "pause_after": {
+  "s3": 14.5,
+  "s4": 0.5,
+  "s5": 0.5
+ }
+}

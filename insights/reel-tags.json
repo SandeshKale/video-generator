@@ -407,5 +407,12 @@
   "voice": "clone",
   "host": "no",
   "length": "~60s"
+ },
+ "reel-artemis-ii-ten-seconds": {
+  "genre": "science",
+  "company": "nasa",
+  "voice": "clone",
+  "host": "no",
+  "length": "~64s"
  }
 }
