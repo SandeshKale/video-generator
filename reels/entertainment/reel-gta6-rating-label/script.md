@@ -49,3 +49,27 @@ Scenes A (same 7 ESRB descriptors as GTA V, magenta sweep on the one row, tick c
 - **Measured:** beauty pass 720×1280 at 16 samples ≈ **9.7 s/frame** + crisp text overlay at 1080×1920 ≈ **0.9 s** = **≈ 11.4 s/frame** on 4 CPU cores. A full 65 s film at 12 fps with held frames reused is ≈ 780 frames → **≈ 2.5 h** worst case; most beats are holds, so unique frames are far fewer (est. 1–1.5 h). Cheaper levers if needed: 8 samples, 540×960 beauty.
 - **Known mockup issues to fix in the full build:** tick marks are filled squares (draw real ticks; Inter has no ✓ glyph), the PEGI "page today" card was tight (fixed by a taller card), AU/NZ "level: reports differ" line needs a source tag, the bottom third is intentionally empty for captions, camera is locked (full build adds the style's slow push and a match-cut between scenes).
 - **Fact changes after reading the boards first-hand:** ESRB descriptor list is the same 7 for GTA V and GTA VI (tier A); ESRB's long summary is now posted but is not quoted; PEGI's page today carries a short generic summary; Australian Classification returned 503 (level not voiced).
+
+## REVISION 2 (22 Nov 2026) — creator: "completely textual, no viewer will like this; get a visual-first style and real footage/images"
+The text-card mockup (`visual-investigation`, scenes A–C) is **dropped**. New direction: footage first, type is structure.
+- **Style: `kino-montage`** (Constructivist Montage; runner-up `double-exposure`). Real footage in windows, one two-tone print grade (ink → paper), one red, −18° bands carrying the few words, a cut on the beat. Why: it is the library's footage-led style that still carries a record/claim story (documents as marked evidence), and it makes the *seven labels* literally **seven film strips**.
+- **Palette (own):** paper `#EFE5D3`, ink `#17122B` (night indigo), red `#F0364F`; Anton / Inter 800 / IBM Plex Mono; paper-fibre noise over everything.
+- **Visual-first beat list:** (1) real Miami-night window + red band "READ THE LABEL" (the film's own city; Vice City is Miami-inspired, see `reel-gta6-vice-city-real`); (2) seven footage strips = the seven ESRB descriptors, strip 6 boxed red, band "SAME 7 AS GTA V"; (3) a club-footage window slammed with a red "PULLED." band + a short ink card "PEGI · SUMMARY REMOVED · reported, not confirmed"; (4) three windows ESRB M / PEGI 18 / AU-NZ with big numerals (to build); (5) CTA window + handle. Words on screen are ≤ 4 per scene; the voice carries the rest.
+- **Footage honesty:** every footage window is tagged "STAND-IN FOOTAGE · NOT THE GAME". Nothing from Rockstar is used.
+
+### Where footage and images come from (checked from this sandbox, 22 Nov)
+| Source | Reachable? | Use |
+|---|---|---|
+| **Mixkit** (mixkit.co, free stock video, 720p mp4 URLs work) | yes | **Used in the mockup**: Miami skyline night 11816 / 12022 / 12028 / 12026, club crowd 14116, toast 48636, sunset car 35540, night car interior 27717, synth palm 5391 (+ neon loops 35327, 35338, 46997). **Licence not yet read per clip**: Mixkit has a *Free* and a *Restricted* video licence; open each clip's page and record which applies before the full build |
+| **Coverr** (coverr.co) | yes (home page) | second stock source, not yet searched |
+| Pexels / Pixabay | **403 blocked** | no |
+| Wikimedia Commons | API **rate-limited (429)** from here | retry slowly with a descriptive User-Agent; good for CC-BY/CC0 Miami stills with credits |
+| YouTube | reachable | only for videos the creator owns or that carry a Creative Commons licence (needs `yt-dlp`, not installed); **not for Rockstar's trailers** |
+| rockstargames.com | page loads, no press-kit images reachable | see decision below |
+| Library of Congress, Internet Archive | reachable | public-domain / archive stills and film if a retro angle is wanted |
+
+**Decision needed from the creator — Rockstar's own footage.** Rockstar's published policy allows fan footage only if it is **non-commercial** (no money made from it, no promotion of a product or service) and not pre-release/spoiler material; it can be taken down at any time and doesn't cover film/TV/advertising uses (policy page last updated 10 Jan 2025, read via search results, not first-hand). A monetised channel falls outside it, so the plan uses **no Rockstar trailer frames or screenshots**. If the creator wants a ≤ 2.5 s trailer or screenshot as commentary, that is their call and risk; I would credit it and keep it unedited, as with the TMDB film stills.
+Sourcing the creator can do in minutes that would lift the reel most: (a) their own phone clips of night streets / neon / beach (best, zero licence risk), (b) clips from a paid stock account (Envato/Artgrid) if they have one, (c) permission to try Coverr and Commons Miami photos.
+
+### Mockup v2 (real Blender renders, `blender/mockup2.py`, `mockup/mockup-visual.png`)
+Measured: beauty pass 720×1280 at 8 samples ≈ **6–7 s/frame** + crisp text ≈ **0.9 s**; at 12 fps with held frames reused the 65 s film is ≈ 780 frames ≈ **1.5 h**. Known flaws: footage frames are stills (full build bakes graded image sequences from the clips), strip 6 frame is too dark (pick a brighter one), window sizes should grow, the band bleeds off the left edge by design, tick/stamp details, no motion test yet.
